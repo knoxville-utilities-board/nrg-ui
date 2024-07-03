@@ -1,0 +1,23 @@
+{
+  "name": "design-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:sass": "sass --load-path node_modules src:dist",
+    "watch:sass": "sass --load-path node_modules --watch src:dist",
+    "start": "npm-run-all build:sass --parallel watch:sass",
+    "build": "npm-run-all build:sass",
+    "sasstest": "sass --help"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@primer/css": "^21.3.4",
+    "@primer/primitives": "^8.2.0",
+    "@primer/view-components": "^0.26.1",
+    "sass": "^1.54.8",
+    "npm-run-all": "^4.1.5"
+  }
+}

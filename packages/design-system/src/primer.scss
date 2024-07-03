@@ -1,0 +1,55 @@
+////////////////////
+/// Themes
+////////////////////
+@import '@primer/primitives/dist/css/primitives';
+@import '@primer/primitives/dist/css/functional/themes/light';
+@import '@primer/primitives/dist/css/functional/themes/dark';
+
+////////////////////
+/// Core
+////////////////////
+@import '@primer/css/support/index';
+@import '@primer/css/base/index';
+@import '@primer/css/box/index';
+@import '@primer/css/breadcrumb/index';
+@import '@primer/css/buttons/index';
+@import '@primer/css/table-object/index';
+@import '@primer/css/forms/index';
+@import '@primer/css/layout/index';
+@import '@primer/css/links/index';
+@import '@primer/css/navigation/index';
+@import '@primer/css/pagination/index';
+@import '@primer/css/tooltips/index';
+@import '@primer/css/truncate/index';
+@import '@primer/css/overlay/index';
+@import '@primer/css/utilities/index';
+
+////////////////////
+/// Product
+////////////////////
+@import '@primer/css/alerts/index';
+@import '@primer/css/autocomplete/index';
+@import '@primer/css/avatars/index';
+@import '@primer/css/blankslate/index';
+@import '@primer/css/branch-name/index';
+@import '@primer/css/dropdown/index';
+@import '@primer/css/header/index';
+@import '@primer/css/labels/index';
+@import '@primer/css/loaders/index';
+@import '@primer/css/markdown/index';
+@import '@primer/css/popover/index';
+@import '@primer/css/progress/index';
+@import '@primer/css/select-menu/index';
+@import '@primer/css/subhead/index';
+@import '@primer/css/timeline/index';
+@import '@primer/css/toasts/index';
+@import '@primer/css/toggle-switch/index';
+
+////////////////////
+/// Marketing
+////////////////////
+// @import '@primer/css/marketing/support/index';
+// @import '@primer/css/marketing/type/index';
+// @import '@primer/css/marketing/buttons/index';
+// @import '@primer/css/marketing/links/index';
+// @import '@primer/css/marketing/utilities/index';
