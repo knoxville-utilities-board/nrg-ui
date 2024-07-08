@@ -9,7 +9,7 @@
     "lint:fix": "pnpm --filter '*' lint:fix",
     "prepare": "pnpm build",
     "start": "concurrently 'pnpm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
-    "start:addon": "pnpm --filter ember-nrg-ui start --no-watch.clearScreen",
+    "start:addon": "pnpm --filter @nrg-ui/ember start --no-watch.clearScreen",
     "start:test-app": "pnpm --filter ember-test-app start",
     "start:design-system": "pnpm --filter @nrg-ui/css start",
     "test": "pnpm --filter '*' test",

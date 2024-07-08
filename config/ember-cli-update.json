@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectName": "ember-nrg-ui",
+  "projectName": "@nrg-ui/ember",
   "packages": [
     {
       "name": "@embroider/addon-blueprint",

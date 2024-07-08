@@ -3,7 +3,7 @@
 ## Installation
 
 - `git clone <repository-url>`
-- `cd ember-nrg-ui`
+- `cd packages/ember`
 - `pnpm install`
 
 ## Linting

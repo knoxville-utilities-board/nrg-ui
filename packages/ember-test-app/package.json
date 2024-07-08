@@ -2,7 +2,7 @@
   "name": "ember-test-app",
   "version": "0.0.0",
   "private": true,
-  "description": "Test app for ember-nrg-ui addon",
+  "description": "Test app for @nrg-ui/ember addon",
   "repository": "",
   "license": "MIT",
   "author": "",

@@ -1,4 +1,4 @@
-# ember-nrg-ui
+# @nrg-ui/ember
 
 [Short description of the addon.]
 
@@ -10,7 +10,7 @@
 ## Installation
 
 ```
-ember install ember-nrg-ui
+ember install @nrg-ui/ember
 ```
 
 ## Usage
