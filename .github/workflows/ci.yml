@@ -29,6 +29,11 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Lint
         run: pnpm lint
+
+      - name: Build design system
+        run: pnpm build
+        working-directory: packages/design-system
+
       - name: Run Tests
         run: pnpm test
 
@@ -48,6 +53,11 @@ jobs:
           cache: pnpm
       - name: Install Dependencies
         run: pnpm install --no-lockfile
+
+      - name: Build design system
+        run: pnpm build
+        working-directory: packages/design-system
+
       - name: Run Tests
         run: pnpm test
 
@@ -80,6 +90,11 @@ jobs:
           cache: pnpm
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Build design system
+        run: pnpm build
+        working-directory: packages/design-system
+
       - name: Run Tests
         run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }} --skip-cleanup
         working-directory: packages/ember-test-app
