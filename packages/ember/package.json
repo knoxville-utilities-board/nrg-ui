@@ -103,7 +103,7 @@
     "typescript": "^5.3.3"
   },
   "peerDependencies": {
-    "@nrg-ui/css": ">= 0.0.0"
+    "@nrg-ui/css": "workspace:*"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"

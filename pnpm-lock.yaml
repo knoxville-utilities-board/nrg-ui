@@ -47,6 +47,9 @@ importers:
       '@embroider/addon-shim':
         specifier: ^1.8.7
         version: 1.8.9
+      '@nrg-ui/css':
+        specifier: workspace:*
+        version: link:../design-system
       decorator-transforms:
         specifier: ^1.0.1
         version: 1.2.1(@babel/core@7.24.7)
@@ -225,6 +228,12 @@ importers:
       '@glint/template':
         specifier: ^1.4.0
         version: 1.4.0
+      '@nrg-ui/css':
+        specifier: workspace:*
+        version: link:../design-system
+      '@nrg-ui/ember':
+        specifier: workspace:*
+        version: link:../ember
       '@tsconfig/ember':
         specifier: ^3.0.8
         version: 3.0.8
@@ -324,9 +333,6 @@ importers:
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
-      design-system:
-        specifier: workspace:*
-        version: link:../design-system
       ember-auto-import:
         specifier: ^2.7.3
         version: 2.7.4(@glint/template@1.4.0)(webpack@5.92.1)
@@ -369,9 +375,6 @@ importers:
       ember-modifier:
         specifier: ^4.1.0
         version: 4.1.0(ember-source@5.9.0(@babel/core@7.24.7)(@glimmer/component@1.1.2(@babel/core@7.24.7))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.92.1))
-      ember-nrg-ui:
-        specifier: workspace:*
-        version: link:../ember
       ember-page-title:
         specifier: ^8.2.3
         version: 8.2.3(ember-source@5.9.0(@babel/core@7.24.7)(@glimmer/component@1.1.2(@babel/core@7.24.7))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.92.1))

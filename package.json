@@ -4,14 +4,14 @@
   "license": "MIT",
   "author": "",
   "scripts": {
-    "build": "pnpm --filter ember-nrg-ui build",
+    "build": "pnpm --filter @nrg-ui/ember build",
     "lint": "pnpm --filter '*' lint",
     "lint:fix": "pnpm --filter '*' lint:fix",
     "prepare": "pnpm build",
     "start": "concurrently 'pnpm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
     "start:addon": "pnpm --filter ember-nrg-ui start --no-watch.clearScreen",
     "start:test-app": "pnpm --filter ember-test-app start",
-    "start:design-system": "pnpm --filter design-system start",
+    "start:design-system": "pnpm --filter @nrg-ui/css start",
     "test": "pnpm --filter '*' test",
     "test:ember": "pnpm --filter '*' test:ember"
   },
