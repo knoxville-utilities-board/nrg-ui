@@ -123,6 +123,7 @@
     "app-js": {
       "./components/nrg/button.js": "./dist/_app_/components/nrg/button.js",
       "./components/nrg/text-field.js": "./dist/_app_/components/nrg/text-field.js"
-    }
+    },
+    "defaultBlueprint": "@nrg-ui-ember"
   }
 }
