@@ -9,4 +9,6 @@ export default class Router extends EmberRouter {
 Router.map(function () {
   this.route('marketing');
   this.route('form');
+  this.route('cards');
+  this.route('promo');
 });
