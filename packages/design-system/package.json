@@ -14,9 +14,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@primer/css": "^21.3.4",
-    "@primer/primitives": "^8.2.0",
-    "@primer/view-components": "^0.26.1",
+    "bootstrap": "5.3.3",
     "sass": "^1.54.8",
     "concurrently": "^8.2.2"
   }
