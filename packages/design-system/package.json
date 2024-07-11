@@ -6,11 +6,11 @@
   "scripts": {
     "build:icons": "mkdir -p dist/assets/icons && cp -r node_modules/bootstrap-icons/font/fonts node_modules/bootstrap-icons/font/bootstrap-icons.css dist/assets/icons",
     "build:sass": "sass --load-path node_modules src:dist",
-    "watch:sass": "sass --load-path node_modules --watch src:dist",
     "start": "concurrently pnpm:build:icons pnpm:*:sass",
     "build": "concurrently 'pnpm:build:*' --prefix-colors cyan,magenta,yellow",
     "format": "prettier --write .",
-    "sasstest": "sass --help"
+    "sasstest": "sass --help",
+    "watch:sass": "sass --load-path node_modules --watch src:dist"
   },
   "keywords": [],
   "author": "",
