@@ -103,7 +103,12 @@
     "typescript": "^5.3.3"
   },
   "peerDependencies": {
-    "@nrg-ui/css": "workspace:*"
+    "@glimmer/component": "^1.1.2",
+    "@glimmer/tracking": "^1.1.2",
+    "@nrg-ui/css": "workspace:*",
+    "ember-auto-import": "^2.0.0",
+    "ember-source": "^4.12.0 || ^5.0.0",
+    "webpack": "^5.0.0"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
@@ -118,6 +123,7 @@
     "app-js": {
       "./components/nrg/button.js": "./dist/_app_/components/nrg/button.js",
       "./components/nrg/text-field.js": "./dist/_app_/components/nrg/text-field.js"
-    }
+    },
+    "defaultBlueprint": "@nrg-ui-ember"
   }
 }
