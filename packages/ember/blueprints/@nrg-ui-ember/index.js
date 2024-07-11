@@ -19,5 +19,12 @@ module.exports = {
           / {2}const { maybeEmbroider } = require\('@embroider\/test-setup'\);/g,
       },
     );
+    await this.insertIntoFile(
+      'ember-cli-build.js',
+      `  app.import('node_modules/@nrg-ui/css/dist/main.css');\n\n`,
+      {
+        before: / {2}return app.toTree\(\);/g,
+      },
+    );
   },
 };
