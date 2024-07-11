@@ -29,6 +29,9 @@ importers:
       bootstrap:
         specifier: 5.3.3
         version: 5.3.3(@popperjs/core@2.11.8)
+      bootstrap-icons:
+        specifier: ^1.11.3
+        version: 1.11.3
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -2396,6 +2399,9 @@ packages:
 
   body@5.1.0:
     resolution: {integrity: sha512-chUsBxGRtuElD6fmw1gHLpvnKdVLK302peeFa9ZqAEk8TyzZ3fygLyUEDDPTJvL9+Bor0dIwn6ePOsRM2y0zQQ==}
+
+  bootstrap-icons@1.11.3:
+    resolution: {integrity: sha512-+3lpHrCw/it2/7lBL15VR0HEumaBss0+f/Lb6ZvHISn1mlK83jjFpooTLsMWbIjJMDjDjOExMsTxnXSIT4k4ww==}
 
   bootstrap@5.3.3:
     resolution: {integrity: sha512-8HLCdWgyoMguSO9o+aH+iuZ+aht+mzW0u3HIMzVu7Srrpv7EBBxTnrFlSCskwdY1+EOFQSm7uMJhNQHkdPcmjg==}
@@ -9495,6 +9501,8 @@ snapshots:
       error: 7.2.1
       raw-body: 1.1.7
       safe-json-parse: 1.0.1
+
+  bootstrap-icons@1.11.3: {}
 
   bootstrap@5.3.3(@popperjs/core@2.11.8):
     dependencies:
