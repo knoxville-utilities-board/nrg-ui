@@ -35,6 +35,8 @@ jobs:
             ~/.cache/yarn
             ~/.local/share/pnpm/store
           key: node-${{ hashFiles('**/package-lock.json', '**/yarn.lock', '**/pnpm-lock.yaml') }}
+          restore-keys: |
+            node-
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -114,6 +116,8 @@ jobs:
             ~/.cache/yarn
             ~/.local/share/pnpm/store
           key: node-${{ hashFiles('**/package-lock.json', '**/yarn.lock', '**/pnpm-lock.yaml') }}
+          restore-keys: |
+            node-
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
