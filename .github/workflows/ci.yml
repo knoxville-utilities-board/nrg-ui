@@ -18,6 +18,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - uses: pnpm/action-setup@v3
         with:
           version: 9
@@ -28,7 +29,7 @@ jobs:
           cache: pnpm
 
       - name: Node Cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             ~/.npm
@@ -37,6 +38,7 @@ jobs:
           key: node-${{ hashFiles('**/package-lock.json', '**/yarn.lock', '**/pnpm-lock.yaml') }}
           restore-keys: |
             node-
+          save-always: true
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -109,7 +111,7 @@ jobs:
           cache: pnpm
 
       - name: Node Cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             ~/.npm
