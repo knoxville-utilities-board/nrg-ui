@@ -18,5 +18,11 @@ module.exports = {
         templateSingleQuote: false,
       },
     },
+    {
+      files: '*.{css,scss}',
+      options: {
+        singleQuote: false,
+      },
+    },
   ],
 };

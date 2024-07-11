@@ -9,6 +9,7 @@
     "watch:sass": "sass --load-path node_modules --watch src:dist",
     "start": "concurrently pnpm:build:icons pnpm:*:sass",
     "build": "concurrently 'pnpm:build:*' --prefix-colors cyan,magenta,yellow",
+    "format": "prettier --write .",
     "sasstest": "sass --help"
   },
   "keywords": [],
@@ -19,5 +20,8 @@
     "bootstrap-icons": "^1.11.3",
     "concurrently": "^8.2.2",
     "sass": "^1.54.8"
+  },
+  "dependencies": {
+    "prettier": "^3.3.2"
   }
 }

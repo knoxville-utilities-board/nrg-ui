@@ -35,6 +35,7 @@
     "build": "concurrently 'pnpm:build:*'",
     "build:js": "rollup --config",
     "build:types": "glint --declaration",
+    "format": "prettier --write .",
     "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
     "lint:fix": "concurrently 'pnpm:lint:*:fix' --names 'fix:'",
     "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",

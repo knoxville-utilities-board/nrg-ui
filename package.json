@@ -7,6 +7,7 @@
     "build": "pnpm --filter @nrg-ui/ember build",
     "lint": "pnpm --filter '*' lint",
     "lint:fix": "pnpm --filter '*' lint:fix",
+    "format": "pnpm --filter '*' format",
     "prepare": "pnpm build",
     "start": "concurrently 'pnpm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
     "start:addon": "pnpm --filter @nrg-ui/ember start --no-watch.clearScreen",
