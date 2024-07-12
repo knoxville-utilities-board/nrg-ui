@@ -12,6 +12,7 @@ module.exports = {
       },
     },
     {
+      parser: 'ember-template-tag',
       files: '*.{js,ts,gjs,gts}',
       options: {
         singleQuote: true,
