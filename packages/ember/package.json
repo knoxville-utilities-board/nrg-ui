@@ -90,7 +90,6 @@
     "babel-plugin-ember-template-compilation": "^2.2.1",
     "concurrently": "^8.2.2",
     "ember-cli": "~5.8.0",
-    "ember-eslint-parser": "^0.5.0",
     "ember-template-imports": "^4.1.1",
     "ember-template-lint": "^5.13.0",
     "eslint": "^8.56.0",
