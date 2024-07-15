@@ -1,0 +1,30 @@
+<div class="g-col-12" ...attributes>
+  <label for={{this.focusId}} class="form-label">
+    {{@label}}
+    {{#if @required}}<i
+        class="bi bi-sm bi-asterisk"
+        style="color: var(--bs-danger); font-size: 0.6rem;"
+        role="img"
+        aria-label="Required"
+      ></i>{{/if}}
+  </label>
+
+  {{yield
+    (hash
+      text-field=(component
+        "nrg/text-field"
+        model=this.model
+        valuePath=this.valuePath
+        focusId=this.focusId
+        required=this.required
+      )
+      bad-select=(component
+        "nrg/bad-select"
+        model=this.model
+        valuePath=this.valuePath
+        focusId=this.focusId
+        required=this.required
+      )
+    )
+  }}
+</div>

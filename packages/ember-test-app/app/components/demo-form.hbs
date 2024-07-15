@@ -1,0 +1,21 @@
+<Nrg::FormContainer @onSubmit={{this.submit}} as |form|>
+
+  <form.field @label="First Name" @required={{true}} as |field|>
+    <field.text-field
+      @model={{this}}
+      @valuePath="person.firstName"
+      @name="firstname"
+    />
+  </form.field>
+
+  <form.field @label="Last Name" @required={{true}} as |field|>
+    <field.text-field @model={{this}} @valuePath="lastName" @name="lastname" />
+  </form.field>
+
+  <form.field @label="Combo Order" @required={{true}} as |field|>
+    <field.bad-select @model={{this}} @valuePath="combos" @name="combos" />
+  </form.field>
+
+</Nrg::FormContainer>
+<div>Name Length: {{this.nameLength}}</div>
+<div>Combo Count: {{this.comboCount}}</div>

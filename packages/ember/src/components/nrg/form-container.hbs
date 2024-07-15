@@ -1,0 +1,10 @@
+<form class="grid needs-validation" novalidate="" ...attributes>
+
+  {{yield (hash form=this field=(component "nrg/form-field" form=this))}}
+
+  <Nrg::Button
+    @onClick={{this.submit}}
+    class="btn btn-primary"
+  >Submit</Nrg::Button>
+
+</form>
