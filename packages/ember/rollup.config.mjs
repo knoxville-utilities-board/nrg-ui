@@ -65,7 +65,7 @@ export default {
     copy({
       targets: [
         { src: '../../README.md', dest: '.' },
-        { src: '../../LICENSE.md', dest: '.' },
+        { src: '../../LICENSE', dest: '.' },
       ],
     }),
   ],

@@ -2,7 +2,7 @@
 # more useful on github that way), but the build copies them into here so they
 # will also appear in published NPM packages.
 /README.md
-/LICENSE.md
+/LICENSE
 
 # compiled output
 dist/
