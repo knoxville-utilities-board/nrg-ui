@@ -1,21 +1,10 @@
-# @nrg-ui/ember
+# @nrg-ui
 
-[Short description of the addon.]
-
-## Compatibility
-
-- Ember.js v4.12 or above
-- Embroider or ember-auto-import v2
-
-## Installation
-
-```
-ember install @nrg-ui/ember
-```
+NRG UI is the design system maintained by the Knoxville Utilities Board. It is built on top of Bootstrap.
 
 ## Usage
 
-[Longer description of how to use the addon in apps.]
+While the collection of raw CSS is available for use by non-Ember applications, the [Ember addon](./packages/ember/) provides a more integrated experience for Ember applications.
 
 ## Contributing
 
