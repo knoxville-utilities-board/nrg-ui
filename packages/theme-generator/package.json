@@ -1,0 +1,22 @@
+{
+  "name": "theme-generator",
+  "version": "0.0.0",
+  "description": "",
+  "main": "src/extract-theme.js",
+  "type": "module",
+  "scripts": {
+    "build:sass": "sass --load-path ../design-system/node_modules --load-path ../design-system/src src:tmp",
+    "build:theme": "node src/extract-theme.js",
+    "build:compress": "node src/variable-compression.js",
+    "format": "prettier --write dist",
+    "build": "pnpm run build:sass && pnpm run build:theme && pnpm run build:compress && pnpm run format"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-tree": "2.3.1",
+    "sass": "^1.54.8",
+    "prettier": "^2.4.1"
+  }
+}
