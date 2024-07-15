@@ -1,6 +1,12 @@
 {{page-title "MarketingTest"}}
-
 <main data-theme="marketing" class="container p-3">
+  <Nrg::Mktg::Header
+    @icon="https://placehold.co/70x70"
+    @title="KUB Fiber is available at {{this.address}}"
+    @options={{this.headerOptions}}
+    @previousButton={{false}}
+    @nextButton={{true}}
+  />
   <h4>Billing & Contact Information</h4>
   <hr class="my-4" />
   <form class="needs-validation" novalidate="">

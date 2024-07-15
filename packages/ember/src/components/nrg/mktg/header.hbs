@@ -1,0 +1,28 @@
+<div class="d-flex flex-row align-items-center justify-content-between p-2">
+  {{#if this.icon}}
+    <div>
+      <img src={{this.icon}} />
+    </div>
+  {{/if}}
+  <div class="d-flex flex-row justify-self-center">
+    {{#if this.title}}
+      <p class="fw-bold m-0">{{this.title}}</p>
+    {{/if}}
+    {{#if this.options}}
+      {{#each this.options as |option|}}
+        {{#if option.label}}
+          <p>{{option.label}}</p>
+        {{/if}}
+        <LinkTo @route={{option.route}}>{{option.value}}</LinkTo>
+      {{/each}}
+    {{/if}}
+  </div>
+  <div class="d-flex justify-self-end">
+  {{#if this.previousButton}}
+    <Button>Prev</Button>
+  {{/if}}
+  {{#if this.nextButton}}
+    <ButtonComponent>Next</ButtonComponent>
+  {{/if}}
+  </div>
+</div>
