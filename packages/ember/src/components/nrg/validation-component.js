@@ -32,11 +32,31 @@ export default class ValidationComponent extends Component {
       return undefined;
     }
 
+    if (!this.useNestedValuePath) {
+      return this.model?.[this.valuePath];
+    }
+
     return get(this.model, this.valuePath);
   }
 
   set value(newValue) {
     if (!this.hasModelPath) {
+      return;
+    }
+
+    if (!this.useNestedValuePath) {
+      this.model[this.valuePath] = newValue;
+
+      if (newValue === null) {
+        this.model[this.valuePath] = null;
+      } else if (Array.isArray(newValue)) {
+        this.model[this.valuePath] = [...newValue];
+      } else if (typeof newValue === 'object') {
+        this.model[this.valuePath] = { ...newValue };
+      } else {
+        this.model[this.valuePath] = newValue;
+      }
+
       return;
     }
 
@@ -51,6 +71,10 @@ export default class ValidationComponent extends Component {
     } else {
       set(this.model, this.valuePath, newValue);
     }
+  }
+
+  get useNestedValuePath() {
+    return this.args.useNestedValuePath ?? true;
   }
 
   get useDefaultValue() {
