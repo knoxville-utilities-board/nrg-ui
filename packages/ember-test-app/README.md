@@ -18,6 +18,7 @@ You will need the following things properly installed on your computer.
 - `git clone <repository-url>` this repository
 - `cd ember-test-app`
 - `pnpm install`
+- From the `design-system` directory run `pnpm build`
 
 ## Running / Development
 
