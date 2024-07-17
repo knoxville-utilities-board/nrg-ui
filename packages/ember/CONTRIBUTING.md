@@ -3,6 +3,7 @@
 ## Installation
 
 - `git clone https://github.com/knoxville-utilities-board/nrg-ui.git` (or `git clone git@github.com:knoxville-utilities-board/nrg-ui.git`)
+- `cd packages/ember`
 - `pnpm install`
 
 ## Linting
@@ -10,30 +11,25 @@
 - `pnpm lint`
 - `pnpm lint:fix`
 
-## Building the design system
-
-- `cd packages/design-system`
-- `pnpm build`
-
-## Building the Ember addon
+## Building the addon
 
 - `cd packages/ember`
 - `pnpm build`
 
-## Running the Ember tests
+## Running tests
 
 - `cd packages/ember-test-app`
 - `pnpm test` – Runs the test suite on the current Ember version
 - `pnpm test:watch` – Runs the test suite in "watch mode"
 
-## Build the design system (while watching for changes)
+### Ember Try
 
-- `pnpm start:design-system`
-- Note that the design system does not provide its own application. You can use the Ember test application to see the changes in action, or you can use the compiled CSS in your own project.
+This project uses [ember-try](https://github.com/ember-cli/ember-try) to test against multiple versions of Ember. To run the test suite against all supported versions of Ember, run `pnpm --filter 'ember-test-app' exec ember try:each --skip-cleanup`.
 
-## Running the Ember test application
+## Running the test application
 
-- `pnpm start:test-app`
+- `cd packages/ember-test-app`
+- `pnpm start`
 - Visit the test application at [http://localhost:4200](http://localhost:4200).
 
 For more information on using ember-cli, visit [https://cli.emberjs.com/release/](https://cli.emberjs.com/release/).
