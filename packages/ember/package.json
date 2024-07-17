@@ -125,7 +125,16 @@
     "app-js": {
       "./components/nrg/button.js": "./dist/_app_/components/nrg/button.js",
       "./components/nrg/mktg/card.js": "./dist/_app_/components/nrg/mktg/card.js",
+      "./components/nrg/mktg/header-container.js": "./dist/_app_/components/nrg/mktg/header-container.js",
+      "./components/nrg/mktg/header/header-icon.js": "./dist/_app_/components/nrg/mktg/header/header-icon.js",
+      "./components/nrg/mktg/header/header-nav.js": "./dist/_app_/components/nrg/mktg/header/header-nav.js",
+      "./components/nrg/mktg/header/header-title.js": "./dist/_app_/components/nrg/mktg/header/header-title.js",
       "./components/nrg/mktg/promo.js": "./dist/_app_/components/nrg/mktg/promo.js",
+      "./components/nrg/mktg/responsive-header-container.js": "./dist/_app_/components/nrg/mktg/responsive-header-container.js",
+      "./components/nrg/mktg/responsive-header/drop-section.js": "./dist/_app_/components/nrg/mktg/responsive-header/drop-section.js",
+      "./components/nrg/mktg/responsive-header/responsive-icon.js": "./dist/_app_/components/nrg/mktg/responsive-header/responsive-icon.js",
+      "./components/nrg/mktg/responsive-header/responsive-nav.js": "./dist/_app_/components/nrg/mktg/responsive-header/responsive-nav.js",
+      "./components/nrg/mktg/responsive-header/responsive-title.js": "./dist/_app_/components/nrg/mktg/responsive-header/responsive-title.js",
       "./components/nrg/text-field.js": "./dist/_app_/components/nrg/text-field.js"
     },
     "defaultBlueprint": "@nrg-ui-ember"

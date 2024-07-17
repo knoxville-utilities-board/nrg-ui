@@ -1,180 +1,226 @@
 {{page-title "MarketingTest"}}
-<main data-theme="marketing" class="container p-3">
-  <h4>Billing & Contact Information</h4>
-  <hr class="my-4" />
-  <form class="needs-validation" novalidate="">
-    <div class="row g-3">
-      <div class="col-sm-4">
-        <label for="firstName" class="form-label">
-          First name
-          <span class="text-body-secondary">*</span>
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          id="firstName"
-          placeholder="First"
-          value=""
-          required
-        />
-        <div class="invalid-feedback">
-          Valid first name is required.
-        </div>
-      </div>
+<main data-theme="marketing vw-100">
+  <Nrg::Mktg::HeaderContainer>
+    <Nrg::Mktg::Header::HeaderIcon>
+      <img src="https://imageplaceholder.net/50" alt="Icon" />
+    </Nrg::Mktg::Header::HeaderIcon>
+    <Nrg::Mktg::Header::HeaderTitle>
+      <p class="fw-bold m-0 fs-4">Title</p>
+    </Nrg::Mktg::Header::HeaderTitle>
+    <Nrg::Mktg::Header::HeaderNav>
+      <Nrg::Button
+        class="btn-outline-light me-1 rounded-pill"
+      >Prev</Nrg::Button>
+      <Nrg::Button
+        class="btn-outline-light rounded-pill me-1"
+      >Next</Nrg::Button>
+    </Nrg::Mktg::Header::HeaderNav>
+  </Nrg::Mktg::HeaderContainer>
 
-      <div class="col-sm-4">
-        <label for="middleName" class="form-label">
-          Middle
-          <span class="text-body-secondary">*</span>
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          id="middleName"
-          placeholder="Middle"
-          value=""
-          required
-        />
-        <div class="invalid-feedback">
-          Valid middle name is required.
-        </div>
-      </div>
+  <div class="p-5 w-100"></div>
 
-      <div class="col-sm-4">
-        <label for="lastName" class="form-label">
-          Last name
-          <span class="text-body-secondary">*</span>
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          id="lastName"
-          placeholder="Last"
-          value=""
-          required
-        />
-        <div class="invalid-feedback">
-          Valid last name is required.
-        </div>
-      </div>
+  <Nrg::Mktg::ResponsiveHeaderContainer>
+    <Nrg::Mktg::ResponsiveHeader::ResponsiveIcon>
+      <img src="https://imageplaceholder.net/50" alt="Icon" />
+    </Nrg::Mktg::ResponsiveHeader::ResponsiveIcon>
+    <Nrg::Mktg::ResponsiveHeader::ResponsiveTitle>
+      <p class="fw-bold my-0 mx-2 fs-4">Title</p>
+    </Nrg::Mktg::ResponsiveHeader::ResponsiveTitle>
+    <Nrg::Mktg::ResponsiveHeader::DropSection>
+      <p class="my-0 me-2 fw-bold">Option</p>
+      <LinkTo @route="marketing" class="link-light me-2">Link</LinkTo>
+      <p class="my-0 me-2 fw-bold">Option</p>
+      <LinkTo @route="marketing" class="link-light me-2">Link</LinkTo>
+      <p class="my-0 me-2 fw-bold">Option</p>
+      <LinkTo @route="marketing" class="link-light me-2">Link</LinkTo>
+    </Nrg::Mktg::ResponsiveHeader::DropSection>
+    <Nrg::Mktg::ResponsiveHeader::ResponsiveNav>
+      <Nrg::Button
+        class="btn-outline-light me-1 rounded-pill"
+      >Prev</Nrg::Button>
+      <Nrg::Button
+        class="btn-outline-light rounded-pill me-1"
+      >Next</Nrg::Button>
+    </Nrg::Mktg::ResponsiveHeader::ResponsiveNav>
+  </Nrg::Mktg::ResponsiveHeaderContainer>
 
-      <hr class="my-4" />
-
-      <div class="col-12">
-        <div class="form-check form-switch">
+  <div class="container p-3">
+    <h4>Billing & Contact Information</h4>
+    <hr class="my-4" />
+    <form class="needs-validation" novalidate="">
+      <div class="row g-3">
+        <div class="col-sm-4">
+          <label for="firstName" class="form-label">
+            First name
+            <span class="text-body-secondary">*</span>
+          </label>
           <input
-            class="form-check-input"
-            type="checkbox"
-            role="switch"
-            id="flexSwitchCheckDefault"
-            checked
-            aria-checked="true"
+            type="text"
+            class="form-control"
+            id="firstName"
+            placeholder="First"
+            value=""
+            required
           />
-          <label class="form-check-label" for="flexSwitchCheckDefault">Billing
-            is the same as service location</label>
+          <div class="invalid-feedback">
+            Valid first name is required.
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <label for="middleName" class="form-label">
+            Middle
+            <span class="text-body-secondary">*</span>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            id="middleName"
+            placeholder="Middle"
+            value=""
+            required
+          />
+          <div class="invalid-feedback">
+            Valid middle name is required.
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <label for="lastName" class="form-label">
+            Last name
+            <span class="text-body-secondary">*</span>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            placeholder="Last"
+            value=""
+            required
+          />
+          <div class="invalid-feedback">
+            Valid last name is required.
+          </div>
+        </div>
+
+        <hr class="my-4" />
+
+        <div class="col-12">
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckDefault"
+              checked
+              aria-checked="true"
+            />
+            <label class="form-check-label" for="flexSwitchCheckDefault">Billing
+              is the same as service location</label>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <label for="address" class="form-label">
+            Address Line 1
+            <span class="text-body-secondary">*</span>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            id="address1"
+            placeholder="Company"
+            required=""
+          />
+          <div class="invalid-feedback">
+            Please enter your shipping address.
+          </div>
+        </div>
+
+        <div class="col-6">
+          <label for="address" class="form-label">
+            Address Line 2</label>
+          <input
+            type="text"
+            class="form-control"
+            id="address2"
+            placeholder="123 Main St"
+            required=""
+          />
+          <div class="invalid-feedback">
+            Please enter your shipping address.
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <label for="city" class="form-label">
+            City
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            id="city"
+            placeholder="City"
+            required=""
+          />
+          <div class="invalid-feedback">
+            Please enter a valid city.
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <label for="state" class="form-label">State</label>
+          <select class="form-select" id="state" required="">
+            <option>State</option>
+          </select>
+          <div class="invalid-feedback">
+            Please provide a valid state.
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <label for="zip" class="form-label">Zip</label>
+          <input
+            type="text"
+            class="form-control"
+            id="zip"
+            placeholder="12345"
+            required=""
+          />
+          <div class="invalid-feedback">
+            Zip code required.
+          </div>
+        </div>
+
+        <hr class="my-4" />
+
+        <div class="col-6">
+          <label for="phone" class="form-label">
+            Phone
+            <span class="text-body-secondary">*</span>
+          </label>
+          <input class="form-control" id="phone" placeholder="(555) 555-5555" />
+          <div class="invalid-feedback">
+            Please enter a valid phone.
+          </div>
+        </div>
+
+        <div class="col-6">
+          <label for="email" class="form-label">
+            Email Address
+            <span class="text-body-secondary">*</span>
+          </label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="e@mail.com"
+          />
+          <div class="invalid-feedback">
+            Please enter a valid email address.
+          </div>
         </div>
       </div>
-
-      <div class="col-6">
-        <label for="address" class="form-label">
-          Address Line 1
-          <span class="text-body-secondary">*</span>
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          id="address1"
-          placeholder="Company"
-          required=""
-        />
-        <div class="invalid-feedback">
-          Please enter your shipping address.
-        </div>
-      </div>
-
-      <div class="col-6">
-        <label for="address" class="form-label">
-          Address Line 2</label>
-        <input
-          type="text"
-          class="form-control"
-          id="address2"
-          placeholder="123 Main St"
-          required=""
-        />
-        <div class="invalid-feedback">
-          Please enter your shipping address.
-        </div>
-      </div>
-
-      <div class="col-md-5">
-        <label for="city" class="form-label">
-          City
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          id="city"
-          placeholder="City"
-          required=""
-        />
-        <div class="invalid-feedback">
-          Please enter a valid city.
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <label for="state" class="form-label">State</label>
-        <select class="form-select" id="state" required="">
-          <option>State</option>
-        </select>
-        <div class="invalid-feedback">
-          Please provide a valid state.
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <label for="zip" class="form-label">Zip</label>
-        <input
-          type="text"
-          class="form-control"
-          id="zip"
-          placeholder="12345"
-          required=""
-        />
-        <div class="invalid-feedback">
-          Zip code required.
-        </div>
-      </div>
-
-      <hr class="my-4" />
-
-      <div class="col-6">
-        <label for="phone" class="form-label">
-          Phone
-          <span class="text-body-secondary">*</span>
-        </label>
-        <input class="form-control" id="phone" placeholder="(555) 555-5555" />
-        <div class="invalid-feedback">
-          Please enter a valid phone.
-        </div>
-      </div>
-
-      <div class="col-6">
-        <label for="email" class="form-label">
-          Email Address
-          <span class="text-body-secondary">*</span>
-        </label>
-        <input
-          type="email"
-          class="form-control"
-          id="email"
-          placeholder="e@mail.com"
-        />
-        <div class="invalid-feedback">
-          Please enter a valid email address.
-        </div>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </main>
