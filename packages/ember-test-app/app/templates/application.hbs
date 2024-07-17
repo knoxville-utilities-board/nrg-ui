@@ -1,3 +1,35 @@
 {{page-title "EmberTestApp"}}
-
+<div class="container-fluid w-100">
+  {{! header icon }}
+  <div class="row row-cols-12 bg-primary text-light p-1 align-items-center">
+    <div class="col">
+      <img src="https://imageplaceholder.net/50" alt="Icon" />
+    </div>
+    {{! header title }}
+    <div
+      class="col d-flex flex-row justify-content-center justify-content-md-end"
+      ...attributes
+    >
+      <p class="fw-bold m-0 fs-4">$65/mo</p>
+    </div>
+    {{! header responsive section }}
+    <div
+      class="mt-1 col-12 col-md-4 order-1 order-md-0 p-3 p-md-0 d-flex flex-row justify-content-center justify-content-md-start align-items-center"
+    >
+      <p class="my-0 me-2 fw-bold">Fiber:</p>
+      <LinkTo class="link-light me-2" @route="marketing">The Gig</LinkTo>
+      <p class="my-0 me-2 fw-bold">TV:</p>
+      <LinkTo class="link-light me-2" @route="marketing">Add</LinkTo>
+      <p class="my-0 me-2 fw-bold">Phone:</p>
+      <LinkTo class="link-light me-2" @route="marketing">Add</LinkTo>
+    </div>
+    {{! header nav }}
+    <div class="col d-flex flex-row justify-content-end" ...attributes>
+      <button type="button" class="btn btn-outline-light me-1 rounded-pill">Prev
+      </button>
+      <button type="button" class="btn btn-outline-light rounded-pill">Next
+      </button>
+    </div>
+  </div>
+</div>
 {{outlet}}
