@@ -4,8 +4,9 @@
     @icon="https://placehold.co/70x70"
     @title="KUB Fiber is available at {{this.address}}"
     @options={{this.headerOptions}}
-    @previousButton={{false}}
-    @nextButton={{true}}
+    @navButtons={{true}}
+    @previousButtonDisabled={{"disabled d-none"}}
+    @nextButtonDisabled={{"disabled"}}
   />
   <h4>Billing & Contact Information</h4>
   <hr class="my-4" />
