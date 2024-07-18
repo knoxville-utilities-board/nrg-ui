@@ -26,6 +26,9 @@ await cp(join(fontDirectory, 'fonts'), join(ASSETS_PATH, 'fonts'), {
 // Copy CSS for font
 await copy(join(fontDirectory, 'bootstrap-icons.css'), ASSETS_PATH);
 
+// Copy JSON for TypeScript types
+await copy(join(fontDirectory, 'bootstrap-icons.json'), ASSETS_PATH);
+
 function copy(filePath, directory) {
   const fileName = basename(filePath);
   return copyFile(filePath, join(directory, fileName));
