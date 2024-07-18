@@ -4,7 +4,7 @@
   "license": "MIT",
   "author": "",
   "scripts": {
-    "build": "pnpm --filter @nrg-ui/ember build",
+    "build": "pnpm --filter '@nrg-ui/*' build",
     "lint": "pnpm --filter '*' lint",
     "lint:fix": "pnpm --filter '*' lint:fix",
     "format": "pnpm --filter '*' format",
