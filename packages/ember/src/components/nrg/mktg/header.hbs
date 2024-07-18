@@ -1,17 +1,26 @@
-<div
-  class="row row-cols-12 bg-primary text-light p-1 align-items-center justify-content-evenly"
-  ...attributes
->
-  {{yield}}
-  <div class="col-2 d-flex {{this.iconAlignment}}">
-    {{yield to="icon"}}
-  </div>
+<div class="container-fluid">
   <div
-    class="col justify-content-center text-center w-100 {{this.titleAlignment}}"
+    class="row row-cols-12 bg-primary text-light p-1 align-items-center justify-content-evenly"
+    ...attributes
   >
-    {{yield to="title"}}
-  </div>
-  <div class="col-2 d-flex {{this.navAlignment}}">
-    {{yield to="nav"}}
+    <div class="col-2 d-flex {{this.iconClasses}}">
+      {{yield to="icon"}}
+    </div>
+    <div
+      class="col d-flex justify-content-center flex-row {{this.titleClasses}}"
+    >
+      <div class="justify-content-center text-center">
+        {{yield to="title"}}
+      </div>
+      <div class="mt-2 mx-2 d-none d-md-flex">
+        {{yield to="drop-section"}}
+      </div>
+    </div>
+    <div class="col-2 d-flex {{this.navClasses}}">
+      {{yield to="nav"}}
+    </div>
+    <div class="col-12 d-flex d-md-none order-last justify-content-center">
+      {{yield to="drop-section"}}
+    </div>
   </div>
 </div>

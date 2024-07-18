@@ -1,9 +1,9 @@
 {{page-title "MarketingTest"}}
 <main data-theme="marketing vw-100">
   <Nrg::Mktg::Header
-    @iconAlignment="order-2 justify-content-end"
-    @titleAlignment="order-1 justify-content-center"
-    @navAlignment="order-0 justify-content-start"
+    @iconClasses="order-2 justify-content-end"
+    @titleClasses="order-1 justify-content-center"
+    @navClasses="order-0 justify-content-start"
   >
     <:title>
       <p class="fw-bold m-0 fs-4">Title</p>
@@ -16,6 +16,14 @@
         class="btn-outline-light rounded-pill me-1"
       >Next</Nrg::Button>
     </:nav>
+    <:drop-section>
+      <p class="my-0 me-2 fw-bold">Option</p>
+      <LinkTo @route="marketing" class="link-light me-2">Link</LinkTo>
+      <p class="my-0 me-2 fw-bold">Option</p>
+      <LinkTo @route="marketing" class="link-light me-2">Link</LinkTo>
+      <p class="my-0 me-2 fw-bold">Option</p>
+      <LinkTo @route="marketing" class="link-light me-2">Link</LinkTo>
+    </:drop-section>
     <:icon>
       <img src="https://imageplaceholder.net/50" alt="Icon" />
     </:icon>
@@ -24,8 +32,8 @@
   <div class="p-5 w-100"></div>
 
   <Nrg::Mktg::Header
-    @iconAlignment="justify-content-start"
-    @navAlignment="justify-content-end"
+    @iconClasses="justify-content-start"
+    @navClasses="justify-content-end"
   >
     <:icon>
       <img src="https://imageplaceholder.net/50" alt="Icon" />
