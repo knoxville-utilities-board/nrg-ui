@@ -1,0 +1,17 @@
+<div
+  class="row row-cols-12 bg-primary text-light p-1 align-items-center justify-content-evenly"
+  ...attributes
+>
+  {{yield}}
+  <div class="col-2 d-flex {{this.iconAlignment}}">
+    {{yield to="icon"}}
+  </div>
+  <div
+    class="col justify-content-center text-center w-100 {{this.titleAlignment}}"
+  >
+    {{yield to="title"}}
+  </div>
+  <div class="col-2 d-flex {{this.navAlignment}}">
+    {{yield to="nav"}}
+  </div>
+</div>

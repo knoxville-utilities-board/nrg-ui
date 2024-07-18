@@ -125,6 +125,7 @@
     "app-js": {
       "./components/nrg/button.js": "./dist/_app_/components/nrg/button.js",
       "./components/nrg/mktg/card.js": "./dist/_app_/components/nrg/mktg/card.js",
+      "./components/nrg/mktg/header.js": "./dist/_app_/components/nrg/mktg/header.js",
       "./components/nrg/mktg/promo.js": "./dist/_app_/components/nrg/mktg/promo.js",
       "./components/nrg/text-field.js": "./dist/_app_/components/nrg/text-field.js"
     },
