@@ -34,7 +34,9 @@
   "scripts": {
     "build": "concurrently 'pnpm:build:*'",
     "build:js": "rollup --config",
-    "build:types": "glint --declaration",
+    "build:types": "concurrently 'pnpm:build:types:*' --names 'types:'",
+    "build:types:glint": "glint --declaration",
+    "build:types:icons": "node lib/build-icon-types.mjs",
     "format": "prettier --write .",
     "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
     "lint:fix": "concurrently 'pnpm:lint:*:fix' --names 'fix:'",
