@@ -3,12 +3,10 @@
     class="row row-cols-12 bg-primary text-light p-1 align-items-center justify-content-evenly"
     ...attributes
   >
-    <div class="col-2 d-flex {{this.iconClasses}}">
-      {{yield to="icon"}}
+    <div class="{{this.brandClassList}}">
+      {{yield to="brand"}}
     </div>
-    <div
-      class="col d-flex justify-content-center flex-row {{this.titleClasses}}"
-    >
+    <div class="{{this.titleClassList}}">
       <div class="justify-content-center text-center">
         {{yield to="title"}}
       </div>
@@ -16,7 +14,7 @@
         {{yield to="dropSection"}}
       </div>
     </div>
-    <div class="col-2 d-flex {{this.navClasses}}">
+    <div class="{{this.navClassList}}">
       {{yield to="nav"}}
     </div>
     <div class="col-12 d-flex d-md-none order-last justify-content-center">
