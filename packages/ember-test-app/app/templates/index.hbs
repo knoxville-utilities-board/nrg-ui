@@ -14,4 +14,12 @@
 
 <Nrg::Button class="btn-success" @text="Add" @icon="bi-plus" />
 
+<Nrg::ButtonGroup as |Group|>
+  <Group.Button class="btn-success" @text="Foo" />
+  <Group.Button @text="Bar" />
+  <Group.Button class="btn-danger">
+    Baz
+  </Group.Button>
+</Nrg::ButtonGroup>
+
 {{outlet}}

@@ -4,11 +4,13 @@ import { action } from '@ember/object';
 import { and, not, or } from 'ember-truth-helpers';
 
 import type { NrgIconValue } from '../../icon-types';
+import type NrgButtonGroup from './button-group';
 
 interface ButtonSignature {
   Element: HTMLButtonElement;
   Args: {
     disabled?: boolean;
+    group?: NrgButtonGroup;
     icon?: NrgIconValue;
     iconPosition?: 'right' | 'left';
     iconLabel?: string;
@@ -56,6 +58,8 @@ export default class ButtonComponent extends Component<ButtonSignature> {
     evt?.stopPropagation();
 
     this.args.onClick?.(evt);
+
+    this.args.group?.onClick(evt);
   }
 
   <template>
