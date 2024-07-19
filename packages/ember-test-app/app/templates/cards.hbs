@@ -1,5 +1,16 @@
-<div data-theme="marketing" class="container grid p-3">
-  <Nrg::Mktg::Card class="g-col-12 g-col-md-4" />
-  <Nrg::Mktg::Card class="g-col-12 g-col-md-4" />
-  <Nrg::Mktg::Card class="g-col-12 g-col-md-4" />
+<div data-theme="marketing" class="container">
+  <p class="py-3">Row on desktop, stacked on mobile</p>
+  <Nrg::Mktg::CardContainer>
+    <Nrg::Mktg::Card class="col-12 col-md mx-md-2 my-2" />
+    <Nrg::Mktg::Card class="col-12 col-md mx-md-2 my-2" />
+    <Nrg::Mktg::Card class="col-12 col-md mx-md-2 my-2" />
+  </Nrg::Mktg::CardContainer>
+  <p class="py-3">stacked on mobile and desktop</p>
+  <Nrg::Mktg::CardContainer>
+    <div class="col-12 col-md-8">
+      <Nrg::Mktg::Card class="col-12 my-2" />
+      <Nrg::Mktg::Card class="col-12 my-2" />
+      <Nrg::Mktg::Card class="col-12 my-2" />
+    </div>
+  </Nrg::Mktg::CardContainer>
 </div>
