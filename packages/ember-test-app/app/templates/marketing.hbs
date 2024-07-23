@@ -1,6 +1,20 @@
 {{page-title "MarketingTest"}}
 <main data-theme="marketing">
-  <Nrg::Mktg::Header>
+  <Nrg::Header>
+    <:left>
+      <p class="m-0 p-0">This is the left side</p>
+    </:left>
+    <:center>
+      <p class="m-0 p-0">This is the center</p>
+    </:center>
+    <:right>
+      <p class="m-0 p-0">This is the right side</p>
+    </:right>
+    <:mobileDropSection>
+      <p class="m-0 p-0">This is the mobile drop section</p>
+    </:mobileDropSection>
+  </Nrg::Header>
+  {{!-- <Nrg::Mktg::Header>
     <:brand as |Brand|>
       <Brand>
         <img src="https://imageplaceholder.net/50" alt="Icon" />
@@ -39,11 +53,9 @@
         <img src="https://imageplaceholder.net/50" alt="Icon" />
       </Brand>
     </:brand>
-    <:dropdown as |Dropdown|>
-      <Dropdown>
-        <p class="my-0 me-2 fw-bold">Available at 123 Main Street</p>
-        <LinkTo @route="marketing" class="link-light me-2">Change address</LinkTo>
-      </Dropdown>
+    <:dropdown>
+      <p class="my-0 me-2 fw-bold">Available at 123 Main Street</p>
+      <LinkTo @route="marketing" class="link-light me-2">Change address</LinkTo>
     </:dropdown>
     <:nav as |Nav|>
       <Nav class="justify-content-start order-first">
@@ -78,7 +90,7 @@
         >Next</Nrg::Button>
       </Nav>
     </:nav>
-  </Nrg::Mktg::Header>
+  </Nrg::Mktg::Header> --}}
 
   <div class="container p-3">
     <h4>Billing &amp; Contact Information</h4>
