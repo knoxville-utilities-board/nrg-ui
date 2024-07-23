@@ -1,36 +1,42 @@
-<h2 id="title">
-  Welcome to Ember
-</h2>
+<div class="px-3">
+  <h2 id="title" class="my-3">
+    Welcome to Ember
+  </h2>
+  <div class="my-3">
+    <LinkTo @route="marketing" class="btn btn-outline-dark" role="link">
+      Marketing Test
+      <i class="text-success bi-currency-dollar"></i>
+    </LinkTo>
 
-<LinkTo @route="marketing" class="btn btn-outline-dark" role="link">
-  Marketing Test
-  <i class="text-success bi-currency-dollar"></i>
-</LinkTo>
+    <LinkTo @route="form" class="btn btn-outline-primary" role="link">
+      Form Test
+      <i class="text-danger bi-input-cursor-text"></i>
+    </LinkTo>
+  </div>
+  <div class="my-3">
+    <Button class="btn-success" @text="Add" @icon="bi-plus" />
 
-<LinkTo @route="form" class="btn btn-outline-primary" role="link">
-  Form Test
-  <i class="text-danger bi-input-cursor-text"></i>
-</LinkTo>
-
-<Button class="btn-success" @text="Add" @icon="bi-plus" />
-
-<ButtonGroup as |Group|>
-  <Group.Button class="btn-success" @text="Foo" />
-  <Group.Button @text="Bar" />
-  <Group.Button class="btn-danger">
-    Baz
-  </Group.Button>
-</ButtonGroup>
-<Progress @animated={{true}} @progress={{30}} @striped={{true}} />
-<hr />
-<Progress
-  @animated={{true}}
-  @stacked={{true}}
-  @striped={{true}}
-  as |Segment|
->
-  <Segment @progress={{30}} />
-  <Segment class="bg-info" @progress={{50}} />
-</Progress>
+    <ButtonGroup as |Group|>
+      <Group.Button class="btn-success" @text="Foo" />
+      <Group.Button @text="Bar" />
+      <Group.Button class="btn-danger">
+        Baz
+      </Group.Button>
+    </ButtonGroup>
+  </div>
+  <div class="my-3">
+    <Progress @animated={{true}} @progress={{30}} @striped={{true}} />
+    <hr />
+    <Progress
+      @animated={{true}}
+      @stacked={{true}}
+      @striped={{true}}
+      as |Segment|
+    >
+      <Segment @progress={{30}} />
+      <Segment class="bg-info" @progress={{50}} />
+    </Progress>
+  </div>
+</div>
 
 {{outlet}}
