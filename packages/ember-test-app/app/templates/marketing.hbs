@@ -200,3 +200,38 @@
     </form>
   </div>
 </main>
+
+<Nrg::Mktg::Footer @hasHorizontalLine={{true}}>
+  <:topLeftSection as |TopLeftSection|>
+    <TopLeftSection @isCollapsible={{true}}>
+      <a href="" class="text-light">Get Started</a>
+      <a href="" class="text-light">Pricing & Plans</a>
+      <a href="" class="text-light">Fiber for Business</a>
+      <a href="" class="text-light">Construction Rollout</a>
+      <a href="" class="text-light">FAQs</a>
+    </TopLeftSection>
+  </:topLeftSection>
+  <:topRightSection as |TopRightSection|>
+    <TopRightSection @isCollapsible={{false}}>
+      <i class="bi-facebook h5" />
+      <i class="bi-twitter h5" />
+      <i class="bi-instagram h5" />
+      <i class="bi-linkedin h5" />
+      <i class="bi-youtube h5" />
+    </TopRightSection>
+  </:topRightSection>
+  <:bottomLeftSection as |BottomLeftSection|>
+    <BottomLeftSection @isCollapsible={{true}}>
+      <div>
+        <img src="https://imageplaceholder.net/50x50" alt="Sample icon" />
+      </div>
+      <a href="" class="text-light">Sample Test</a>
+    </BottomLeftSection>
+  </:bottomLeftSection>
+  <:bottomRightSection as |BottomRightSection|>
+    <BottomRightSection @isCollapsible={{true}}>
+      <a href="" class="text-light">Privacy Policy</a>
+      <a href="" class="text-light">Terms of Service</a>
+    </BottomRightSection>
+  </:bottomRightSection>
+</Nrg::Mktg::Footer>
