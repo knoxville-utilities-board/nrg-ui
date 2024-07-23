@@ -34,7 +34,9 @@
   "scripts": {
     "build": "concurrently 'pnpm:build:*'",
     "build:js": "rollup --config",
-    "build:types": "glint --declaration",
+    "build:types": "concurrently 'pnpm:build:types:*' --names 'types:'",
+    "build:types:glint": "glint --declaration",
+    "build:types:icons": "node lib/build-icon-types.mjs",
     "format": "prettier --write .",
     "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
     "lint:fix": "concurrently 'pnpm:lint:*:fix' --names 'fix:'",
@@ -109,6 +111,7 @@
     "@glimmer/tracking": "^1.1.2",
     "@nrg-ui/css": "workspace:*",
     "ember-auto-import": "^2.0.0",
+    "ember-truth-helpers": "^4.0.3",
     "ember-source": "^4.12.0 || ^5.0.0",
     "webpack": "^5.0.0"
   },
@@ -123,6 +126,7 @@
     "type": "addon",
     "main": "addon-main.cjs",
     "app-js": {
+      "./components/nrg/button-group.js": "./dist/_app_/components/nrg/button-group.js",
       "./components/nrg/button.js": "./dist/_app_/components/nrg/button.js",
       "./components/nrg/mktg/card.js": "./dist/_app_/components/nrg/mktg/card.js",
       "./components/nrg/mktg/promo.js": "./dist/_app_/components/nrg/mktg/promo.js",
