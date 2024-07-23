@@ -5,6 +5,11 @@
   "author": "",
   "scripts": {
     "build": "pnpm --filter '@nrg-ui/*' build",
+    "gember": "pnpm --filter '@nrg-ui/ember' run generate",
+    "gember:component": "pnpm --filter @nrg-ui/ember run generate component --class-based --typescript",
+    "gember:helper": "pnpm --filter @nrg-ui/ember run generate helper --class-based --typescript",
+    "gember:modifier": "pnpm --filter @nrg-ui/ember run generate modifier --class-based --typescript",
+    "gember:service": "pnpm --filter @nrg-ui/ember run generate service --class-based --typescript",
     "lint": "pnpm --filter '*' lint",
     "lint:fix": "pnpm --filter '*' lint:fix",
     "format": "pnpm --filter '*' format",

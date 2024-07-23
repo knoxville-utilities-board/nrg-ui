@@ -38,6 +38,7 @@
     "build:types:glint": "glint --declaration",
     "build:types:icons": "node lib/build-icon-types.mjs",
     "format": "prettier --write .",
+    "generate": "pnpm exec gember",
     "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
     "lint:fix": "concurrently 'pnpm:lint:*:fix' --names 'fix:'",
     "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
