@@ -36,10 +36,10 @@ class FooterSection extends Component<FooterSectionSignature> {
         class="row
           {{if
             this.isCollapsible
-            'row-cols-1 row-cols-lg-auto'
+            'row-cols-1 row-cols-md-auto'
             'row-cols-auto'
           }}
-          align-items-center"
+          align-items-center gx-3 gy-4 gx-md-4"
       >
         {{yield}}
       </div>
@@ -49,7 +49,7 @@ class FooterSection extends Component<FooterSectionSignature> {
 
 export default class MarketingFooterComponent extends Component<MarketingFooterSignature> {
   get classList() {
-    let classes = ['container', 'p-5'];
+    let classes = ['bg-primary', 'text-light'];
 
     return classes.join(' ');
   }
@@ -59,23 +59,25 @@ export default class MarketingFooterComponent extends Component<MarketingFooterS
   }
 
   <template>
-    <footer class="bg-primary text-light">
-      <div class={{this.classList}}>
+    <footer class={{this.classList}}>
+      <div class="container p-5">
         <div
-          class="row row-cols-1 row-cols-lg-auto justify-content-between align-items-center"
+          class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center gx-3 gy-4 gx-md-4 gy-md-4"
         >
           {{yield (component FooterSection) to="topLeftSection"}}
           {{yield (component FooterSection) to="topRightSection"}}
         </div>
         {{#if this.hasHorizontalLine}}
-          <hr />
+          <hr class="mb-0 mt-3" />
         {{/if}}
-        <div
-          class="row row-cols-1 row-cols-lg-auto justify-content-between align-items-center"
-        >
-          {{yield (component FooterSection) to="bottomLeftSection"}}
-          {{yield (component FooterSection) to="bottomRightSection"}}
-        </div>
+        {{#if (has-block "bottomLeftSection")}}
+          <div
+            class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center gx-3 gy-4 gx-md-4 gy-md-4 mt-0"
+          >
+            {{yield (component FooterSection) to="bottomLeftSection"}}
+            {{yield (component FooterSection) to="bottomRightSection"}}
+          </div>
+        {{/if}}
       </div>
     </footer>
   </template>
