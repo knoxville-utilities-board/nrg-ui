@@ -59,7 +59,7 @@ export default class MarketingFooterComponent extends Component<MarketingFooterS
   }
 
   <template>
-    <footer class={{this.classList}}>
+    <footer class={{this.classList}} ...attributes>
       <div class="container p-5">
         <div
           class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center gx-3 gy-4 gx-md-4 gy-md-4"
