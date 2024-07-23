@@ -38,6 +38,12 @@
         <Segment class="bg-info" @progress={{50}} />
       </Progress>
     </div>
+    <div class="my-3">
+      <div class="d-flex align-items-center vw-100 p-3 text-secondary">
+        <LoadingIndicator class="ms-auto" @showLabel={{true}} />
+      </div>
+    </div>
   </div>
 </div>
+
 {{outlet}}
