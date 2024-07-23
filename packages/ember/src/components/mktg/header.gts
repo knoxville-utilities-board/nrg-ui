@@ -20,9 +20,11 @@ const Header: TOC<HeaderSignature> = <template>
       {{yield to="brand"}}
     </:left>
     <:center>
-      {{#if @title}}
-        <div class="justify-content-center text-center text-nowrap">
-          <p class="fw-bold m-0 fs-4">{{@title}}</p>
+      {{#if (has-block "title")}}
+        <div
+          class="justify-content-center align-items-center text-center text-nowrap fw-bold m-0 fs-4"
+        >
+          {{yield to="title"}}
         </div>
       {{/if}}
       <div class="d-none d-md-flex">
