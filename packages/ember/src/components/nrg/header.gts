@@ -6,7 +6,7 @@ interface HeaderSignature {
     left: [];
     right: [];
     center: [];
-    mobileDropSection: [];
+    'mobile-drop-section': [];
   };
 }
 
@@ -27,7 +27,7 @@ const HeaderComponent: TOC<HeaderSignature> = <template>
       class="d-flex col-12 d-md-none order-last justify-content-center w-100"
     >
       <div class="d-flex flex-row mt-2 mx-2 text-nowrap">
-        {{yield to="mobileDropSection"}}
+        {{yield to="mobile-drop-section"}}
       </div>
     </div>
   </div>

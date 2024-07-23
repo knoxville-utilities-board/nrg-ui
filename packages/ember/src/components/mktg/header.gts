@@ -38,11 +38,11 @@ const Header: TOC<HeaderSignature> = <template>
         {{yield to="nav"}}
       </div>
     </:right>
-    <:mobileDropSection>
+    <:mobile-drop-section>
       <div class="d-flex flex-row mt-2 mx-2 text-nowrap">
         {{yield to="options"}}
       </div>
-    </:mobileDropSection>
+    </:mobile-drop-section>
   </HeaderComponent>
 </template>;
 
