@@ -3,7 +3,6 @@ import type { TOC } from '@ember/component/template-only';
 interface HeaderSignature {
   Element: HTMLDivElement;
   Blocks: {
-    default: [];
     left: [];
     right: [];
     center: [];
@@ -31,7 +30,6 @@ const HeaderComponent: TOC<HeaderSignature> = <template>
         {{yield to="mobileDropSection"}}
       </div>
     </div>
-    {{yield to="default"}}
   </div>
 </template>;
 
