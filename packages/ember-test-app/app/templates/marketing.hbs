@@ -2,96 +2,42 @@
 <main data-theme="marketing">
   <Nrg::Header>
     <:left>
-      <p class="m-0 p-0">This is the left side</p>
+      <p class="m-0 p-0">Left side content</p>
     </:left>
     <:center>
-      <p class="m-0 p-0">This is the center</p>
+      <p class="m-0 p-0">center content</p>
     </:center>
     <:right>
-      <p class="m-0 p-0">This is the right side</p>
+      <p class="m-0 p-0">right side content</p>
     </:right>
     <:mobileDropSection>
-      <p class="m-0 p-0">This is the mobile drop section</p>
+      <p class="m-0 p-0">mobile drop section content</p>
     </:mobileDropSection>
   </Nrg::Header>
-  {{!-- <Nrg::Mktg::Header>
-    <:brand as |Brand|>
-      <Brand>
-        <img src="https://imageplaceholder.net/50" alt="Icon" />
-      </Brand>
-    </:brand>
-    <:title as |Title|>
-      <Title @text="$65/mo" />
-    </:title>
-    <:nav as |Nav|>
-      <Nav class="justify-content-end">
-        <Nrg::Button
-          class="btn-outline-light me-1 rounded-pill"
-        >Prev</Nrg::Button>
-        <Nrg::Button
-          class="btn-outline-light me-1 rounded-pill"
-        >Next</Nrg::Button>
-      </Nav>
-    </:nav>
-    <:dropdown as |Dropdown|>
-      <Dropdown>
-        <p class="my-0 me-2 fw-bold">Fiber:</p>
-        <LinkTo @route="marketing" class="link-light me-2">The Gig</LinkTo>
-        <p class="my-0 me-2 fw-bold">TV:</p>
-        <LinkTo @route="marketing" class="link-light me-2">Add</LinkTo>
-        <p class="my-0 me-2 fw-bold">Phone:</p>
-        <LinkTo @route="marketing" class="link-light me-2">Add</LinkTo>
-      </Dropdown>
-    </:dropdown>
-  </Nrg::Mktg::Header>
 
   <div class="p-5"></div>
 
-  <Nrg::Mktg::Header>
-    <:brand as |Brand|>
-      <Brand class="order-2 justify-content-end">
-        <img src="https://imageplaceholder.net/50" alt="Icon" />
-      </Brand>
+  <Nrg::Mktg::Header @title="$65/mo">
+    <:brand>
+      <img src="https://imageplaceholder.net/50" alt="Icon" />
     </:brand>
-    <:dropdown>
-      <p class="my-0 me-2 fw-bold">Available at 123 Main Street</p>
-      <LinkTo @route="marketing" class="link-light me-2">Change address</LinkTo>
-    </:dropdown>
-    <:nav as |Nav|>
-      <Nav class="justify-content-start order-first">
-        <Nrg::Button
-          class="btn-outline-light me-1 rounded-pill"
-        >Prev</Nrg::Button>
-        <Nrg::Button
-          class="btn-outline-light me-1 rounded-pill"
-        >Next</Nrg::Button>
-      </Nav>
+    <:nav>
+      <Nrg::Button
+        class="btn-outline-light me-1 rounded-pill"
+      >Prev</Nrg::Button>
+      <Nrg::Button
+        class="btn-outline-light me-1 rounded-pill"
+      >Next</Nrg::Button>
     </:nav>
+    <:options>
+      <p class="my-0 me-2 fw-bold">Fiber:</p>
+      <LinkTo @route="marketing" class="link-light me-2">The Gig</LinkTo>
+      <p class="my-0 me-2 fw-bold">TV:</p>
+      <LinkTo @route="marketing" class="link-light me-2">Add</LinkTo>
+      <p class="my-0 me-2 fw-bold">Phone:</p>
+      <LinkTo @route="marketing" class="link-light me-2">Add</LinkTo>
+    </:options>
   </Nrg::Mktg::Header>
-
-  <div class="p-5"></div>
-
-  <Nrg::Mktg::Header>
-    <:brand as |Brand|>
-      <Brand>
-        <img src="https://imageplaceholder.net/50" alt="Icon" />
-      </Brand>
-    </:brand>
-    <:title as |Title|>
-      <Title @text="$65/mo" />
-    </:title>
-    <:nav as |Nav|>
-      <Nav class="justify-content-end">
-        <Nrg::Button
-          class="btn-outline-light me-1 rounded-pill"
-        >Prev</Nrg::Button>
-        <Nrg::Button
-          class="btn-outline-light me-1 rounded-pill"
-        >Next</Nrg::Button>
-      </Nav>
-    </:nav>
-  </Nrg::Mktg::Header> --}}
-
   <div class="container p-3">
     <h4>Billing &amp; Contact Information</h4>
     <hr class="my-4" />

@@ -1,5 +1,5 @@
 import type { TOC } from '@ember/component/template-only';
-import { HeaderComponent } from '../nrg/header';
+import HeaderComponent from '../header.gts';
 
 interface HeaderSignature {
   Element: HTMLDivElement;
@@ -14,15 +14,17 @@ interface HeaderSignature {
   };
 }
 
-const MktgHeaderComponent: TOC<HeaderSignature> = <template>
+const Header: TOC<HeaderSignature> = <template>
   <HeaderComponent>
     <:left>
       {{yield to="brand"}}
     </:left>
     <:center>
-      <div class="justify-content-center text-center text-nowrap">
-        <p class="fw-bold m-0 fs-4">{{@title}}</p>
-      </div>
+      {{#if @title}}
+        <div class="justify-content-center text-center text-nowrap">
+          <p class="fw-bold m-0 fs-4">{{@title}}</p>
+        </div>
+      {{/if}}
       <div class="d-none d-md-flex">
         <div class="d-flex flex-row mt-2 mx-2 text-nowrap">
           {{yield to="options"}}
@@ -30,7 +32,7 @@ const MktgHeaderComponent: TOC<HeaderSignature> = <template>
       </div>
     </:center>
     <:right>
-      <div class="col d-flex">
+      <div class="col d-flex justify-content-end">
         {{yield to="nav"}}
       </div>
     </:right>
@@ -42,4 +44,4 @@ const MktgHeaderComponent: TOC<HeaderSignature> = <template>
   </HeaderComponent>
 </template>;
 
-export default MktgHeaderComponent;
+export default Header;
