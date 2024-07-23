@@ -114,4 +114,24 @@ module('Integration | components | nrg/button-group', function (hooks) {
       'actions are fired in correct order (subgroup)',
     );
   });
+
+  test('nested groups fire only one action per event', async function (this: Context, assert) {
+    assert.expect(1);
+
+    this.clickHandler = (type: string, evt: MouseEvent) => {
+      assert.ok(evt, 'action is fired with event');
+    };
+
+    await render(hbs`
+      <Nrg::ButtonGroup @onClick={{fn this.clickHandler "group"}} as |Group|>
+        <Group.SubGroup as |SubGroup|>
+          <SubGroup.SubGroup as |SubGroup2|>
+            <SubGroup2.Button/>
+          </SubGroup.SubGroup>
+        </Group.SubGroup>
+      </Nrg::ButtonGroup>
+    `);
+
+    await click('button');
+  });
 });

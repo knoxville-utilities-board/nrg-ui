@@ -60,12 +60,7 @@ export default class ButtonGroupComponent extends Component<ButtonGroupSignature
   onClick(evt: MouseEvent) {
     this.args.onClick?.(evt);
 
-    let { parent } = this;
-
-    while (parent) {
-      parent.onClick?.(evt);
-      parent = parent.parent;
-    }
+    this.parent?.onClick?.(evt);
   }
 
   <template>
@@ -78,14 +73,9 @@ export default class ButtonGroupComponent extends Component<ButtonGroupSignature
     >
       {{yield
         (hash
-          Button=(component
-            NrgButton group=this disabled=this.disabled onClick=this.onClick
-          )
+          Button=(component NrgButton group=this disabled=this.disabled)
           SubGroup=(component
-            ButtonGroupComponent
-            parent=this
-            disabled=this.disabled
-            onClick=this.onClick
+            ButtonGroupComponent parent=this disabled=this.disabled
           )
         )
       }}
