@@ -3,14 +3,14 @@ import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import { and, not, or } from 'ember-truth-helpers';
 
-import type { NrgIconValue } from '../../icon-types';
-import type NrgButtonGroup from './button-group';
+import type { NrgIconValue } from '../icon-types';
+import type ButtonGroup from './button-group';
 
 interface ButtonSignature {
   Element: HTMLButtonElement;
   Args: {
     disabled?: boolean;
-    group?: NrgButtonGroup;
+    group?: ButtonGroup;
     icon?: NrgIconValue;
     iconPosition?: 'right' | 'left';
     iconLabel?: string;
