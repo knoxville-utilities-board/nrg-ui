@@ -16,6 +16,20 @@
 - `cd packages/ember`
 - `pnpm build`
 
+### Scaffolding
+
+Since the file structure is different in an Embroider addon, the [`gember`](https://github.com/bertdeblock/gember) tool can be used to generate files. To scaffold a new component, run `pnpm gember:component <component-name>`. The following commands are available for each module that can be generated:
+
+```sh
+pnpm gember // Base command, in case other options are needed
+pnpm gember:component component-name
+pnpm gember:helper helper-name
+pnpm gember:modifier modifier-name
+pnpm gember:service service-name
+```
+
+By default, all modules will be generated as TypeScript files with a backing class (when applicable). For full usage instructions, see the [gember README](https://github.com/bertdeblock/gember?tab=readme-ov-file#usage).
+
 ## Running tests
 
 - `cd packages/ember-test-app`
