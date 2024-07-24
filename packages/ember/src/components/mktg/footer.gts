@@ -71,10 +71,10 @@ export default class MarketingFooterComponent extends Component<MarketingFooterS
             {{yield to="socialMedia"}}
           </FooterSection>
         </div>
+        {{#if this.hasHorizontalLine}}
+          <hr class="mb-0 mt-3" />
+        {{/if}}
         {{#if (or (has-block "brand") (has-block "legal"))}}
-          {{#if this.hasHorizontalLine}}
-            <hr class="mb-0 mt-3" />
-          {{/if}}
           <div
             class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center mt-0"
           >
