@@ -3,12 +3,12 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | components | nrg/mktg/header', function (hooks) {
+module('Integration | components | mktg/header', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function () {
     await render(hbs`
-      <Nrg::Mktg::Header>
+      <Mktg::Header>
         <:brand>
           <img src="https://imageplaceholder.net/50" alt="Icon" />
         </:brand>
@@ -16,17 +16,17 @@ module('Integration | components | nrg/mktg/header', function (hooks) {
             <p class="m-0">Title</p>
         </:title>
         <:nav>
-          <Nrg::Button
+          <Button
             class="btn-outline-light me-1 rounded-pill"
-          >Prev</Nrg::Button>
-          <Nrg::Button
+          >Prev</Button>
+          <Button
             class="btn-outline-light me-1 rounded-pill"
-          >Next</Nrg::Button>
+          >Next</Button>
         </:nav>
         <:options>
           <p class="my-0 me-2 fw-bold">Options content</p>
         </:options>
-      </Nrg::Mktg::Header>`);
+      </Mktg::Header>`);
 
     assert.dom('div div img').exists('Brand renders content');
     assert

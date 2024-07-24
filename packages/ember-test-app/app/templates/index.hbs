@@ -1,18 +1,19 @@
-<div class="px-3">
-  <h2 id="title" class="my-3">
-    Welcome to Ember
-  </h2>
-  <div class="my-3">
-    <LinkTo @route="marketing" class="btn btn-outline-dark" role="link">
-      Marketing Test
-      <i class="text-success bi-currency-dollar"></i>
-    </LinkTo>
+<Header class="mb-4">
+  <:center>
+    <p class="p-2 m-0 fs-4 fw-bold text-nowrap">Welcome to Ember Test App</p>
+  </:center>
+</Header>
 
-    <LinkTo @route="form" class="btn btn-outline-primary" role="link">
-      Form Test
-      <i class="text-danger bi-input-cursor-text"></i>
-    </LinkTo>
-  </div>
+<div>
+  <LinkTo @route="marketing" class="btn btn-outline-dark" role="link">
+    Marketing Test
+    <i class="text-success bi-currency-dollar"></i>
+  </LinkTo>
+
+  <LinkTo @route="form" class="btn btn-outline-primary" role="link">
+    Form Test
+    <i class="text-danger bi-input-cursor-text"></i>
+  </LinkTo>
   <div class="my-3">
     <Button class="btn-success" @text="Add" @icon="bi-plus" />
 

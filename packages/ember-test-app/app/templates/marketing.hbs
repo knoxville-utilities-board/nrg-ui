@@ -1,23 +1,6 @@
 {{page-title "MarketingTest"}}
 <main data-theme="marketing">
-  <Nrg::Header>
-    <:left>
-      <p class="m-0 p-0">Left side content</p>
-    </:left>
-    <:center>
-      <p class="m-0 p-0">center content</p>
-    </:center>
-    <:right>
-      <p class="m-0 p-0">right side content</p>
-    </:right>
-    <:mobile-drop-section>
-      <p class="m-0 p-0">mobile drop section content</p>
-    </:mobile-drop-section>
-  </Nrg::Header>
-
-  <div class="p-5"></div>
-
-  <Nrg::Mktg::Header>
+  <Mktg::Header>
     <:brand>
       <img src="https://imageplaceholder.net/50" alt="Icon" />
     </:brand>
@@ -25,12 +8,12 @@
         <p class="m-0">Title</p>
     </:title>
     <:nav>
-      <Nrg::Button
+      <Button
         class="btn-outline-light me-1 rounded-pill"
-      >Prev</Nrg::Button>
-      <Nrg::Button
+      >Prev</Button>
+      <Button
         class="btn-outline-light me-1 rounded-pill"
-      >Next</Nrg::Button>
+      >Next</Button>
     </:nav>
     <:options>
       <p class="my-0 me-2 fw-bold">Fiber:</p>
@@ -40,7 +23,7 @@
       <p class="my-0 me-2 fw-bold">Phone:</p>
       <LinkTo @route="marketing" class="link-light me-2">Add</LinkTo>
     </:options>
-  </Nrg::Mktg::Header>
+  </Mktg::Header>
   <div class="container p-3">
     <h4>Billing &amp; Contact Information</h4>
     <hr class="my-4" />
