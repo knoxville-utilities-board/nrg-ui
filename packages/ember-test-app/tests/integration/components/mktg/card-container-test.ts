@@ -8,10 +8,10 @@ module('Integration | Component | mktg/card-container', function (hooks) {
 
   test('it renders', async function () {
     await render(hbs`
-      <Mktg::CardContainer class="bg-info rounded" as |CardContainer|>
-        <CardContainer.Card class="first g-col-12 g-col-md-4" />
-        <CardContainer.Card class="second g-col-12 g-col-md-4" />
-        <CardContainer.Card class="third g-col-12 g-col-md-4" />
+      <Mktg::CardContainer class="bg-info rounded" as |Container|>
+        <Container.Card class="first g-col-12 g-col-md-4" />
+        <Container.Card class="second g-col-12 g-col-md-4" />
+        <Container.Card class="third g-col-12 g-col-md-4" />
       </Mktg::CardContainer>
       `);
 

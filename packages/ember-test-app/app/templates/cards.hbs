@@ -1,15 +1,15 @@
 <div data-theme="marketing" class="container">
   <p class="py-3">Row on desktop, stacked on mobile</p>
   {{!-- template-lint-disable no-inline-styles --}}
-  <Mktg::CardContainer class="bg-info rounded" style="--bs-gap: .5rem;" as |CardContainer|>
-    <CardContainer.Card class="g-col-12 g-col-md-4" />
-    <CardContainer.Card class="g-col-12 g-col-md-4" />
-    <CardContainer.Card class="g-col-12 g-col-md-4" />
+  <Mktg::CardContainer class="bg-info rounded" style="--bs-gap: .5rem;" as |Container|>
+    <Container.Card class="g-col-12 g-col-md-4" />
+    <Container.Card class="g-col-12 g-col-md-4" />
+    <Container.Card class="g-col-12 g-col-md-4" />
   </Mktg::CardContainer>
   <p class="py-3">stacked on mobile and desktop</p>
-  <Mktg::CardContainer class="bg-secondary" as |CardContainer|>
-    <CardContainer.Card class="g-col-12" />
-    <CardContainer.Card class="g-col-12" />
-    <CardContainer.Card class="g-col-12" />
+  <Mktg::CardContainer class="bg-secondary" as |Container|>
+    <Container.Card class="g-col-12" />
+    <Container.Card class="g-col-12" />
+    <Container.Card class="g-col-12" />
   </Mktg::CardContainer>
 </div>
