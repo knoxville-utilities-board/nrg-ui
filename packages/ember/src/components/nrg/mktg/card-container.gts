@@ -14,7 +14,7 @@ interface CardContainerSignature {
   };
 }
 const CardContainer: TOC<CardContainerSignature> = <template>
-  <div class="row justify-content-center p-2" ...attributes>
+  <div class="grid p-2" ...attributes>
     {{yield (hash Card=(component Card))}}
   </div>
 </template>;

@@ -8,16 +8,14 @@ module('Integration | Component | nrg/mktg/card-container', function (hooks) {
 
   test('it renders', async function () {
     await render(hbs`
-      <Nrg::Mktg::CardContainer class="bg-info rounded p-2">
-        <Nrg::Mktg::Card class="first col-12 col-md me-md-2 my-sm-2" />
-        <Nrg::Mktg::Card class="second col-12 col-md me-md-2 my-sm-2" />
-        <Nrg::Mktg::Card class="third col-12 col-md" />
+      <Nrg::Mktg::CardContainer class="bg-info rounded" as |CardContainer|>
+        <CardContainer.Card class="first g-col-12 g-col-md-4" />
+        <CardContainer.Card class="second g-col-12 g-col-md-4" />
+        <CardContainer.Card class="third g-col-12 g-col-md-4" />
       </Nrg::Mktg::CardContainer>
       `);
 
-    assert
-      .dom('.row.justify-content-center.p-2')
-      .exists('Card container renders');
+    assert.dom('.grid.p-2').exists('Card container renders');
     assert
       .dom('div div.card')
       .exists({ count: 3 }, 'Three content cards render');
