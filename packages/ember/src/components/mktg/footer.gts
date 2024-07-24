@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import type { ComponentLike } from '@glint/template';
+import { or } from 'ember-truth-helpers';
 
 interface FooterSectionSignature {
   Element: HTMLDivElement;
@@ -49,7 +50,7 @@ class FooterSection extends Component<FooterSectionSignature> {
 
 export default class MarketingFooterComponent extends Component<MarketingFooterSignature> {
   get classList() {
-    let classes = ['bg-primary', 'text-light'];
+    let classes = ['bg-primary', 'text-light', 'mt-auto'];
 
     return classes.join(' ');
   }
@@ -70,7 +71,9 @@ export default class MarketingFooterComponent extends Component<MarketingFooterS
         {{#if this.hasHorizontalLine}}
           <hr class="mb-0 mt-3" />
         {{/if}}
-        {{#if (has-block "bottomLeftSection")}}
+        {{#if
+          (or (has-block "bottomLeftSection") (has-block "bottomRightSection"))
+        }}
           <div
             class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center gx-3 gy-4 gx-md-4 gy-md-4 mt-0"
           >
