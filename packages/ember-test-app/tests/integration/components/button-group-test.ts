@@ -7,7 +7,7 @@ interface Context extends TestContext {
   clickHandler: (type: string, evt: MouseEvent) => void;
 }
 
-module('Integration | components | nrg/button-group', function (hooks) {
+module('Integration | components | button-group', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (this: Context, assert) {
@@ -19,9 +19,9 @@ module('Integration | components | nrg/button-group', function (hooks) {
     };
 
     await render(hbs`
-      <Nrg::ButtonGroup @onClick={{fn this.clickHandler "group"}} as |Group|>
+      <ButtonGroup @onClick={{fn this.clickHandler "group"}} as |Group|>
         <Group.Button @text="Foo bar" @onClick={{fn this.clickHandler "button"}} />
-      </Nrg::ButtonGroup>
+      </ButtonGroup>
     `);
 
     assert.dom('div:has(button)').hasAttribute('role', 'group');
@@ -49,10 +49,10 @@ module('Integration | components | nrg/button-group', function (hooks) {
     };
 
     await render(hbs`
-      <Nrg::ButtonGroup @disabled={{true}} @onClick={{fn this.clickHandler "group"}} as |Group|>
+      <ButtonGroup @disabled={{true}} @onClick={{fn this.clickHandler "group"}} as |Group|>
         <Group.Button @text="Foo" @onClick={{fn this.clickHandler "foo"}} />
         <Group.Button @text="Bar" @onClick={{fn this.clickHandler "bar"}} />
-      </Nrg::ButtonGroup>
+      </ButtonGroup>
     `);
 
     assert
@@ -83,13 +83,13 @@ module('Integration | components | nrg/button-group', function (hooks) {
     };
 
     await render(hbs`
-      <Nrg::ButtonGroup @onClick={{fn this.clickHandler "group"}} as |Group|>
+      <ButtonGroup @onClick={{fn this.clickHandler "group"}} as |Group|>
         <Group.Button class="btn-primary" @text="Foo" @onClick={{fn this.clickHandler "foo"}} />
         <Group.SubGroup @onClick={{fn this.clickHandler "subgroup"}} data-test-subgroup as |SubGroup|>
           <SubGroup.Button class="btn-primary" @text="Bar" @onClick={{fn this.clickHandler "bar"}} />
           <SubGroup.Button class="btn-primary" @text="Baz" @onClick={{fn this.clickHandler "baz"}} />
         </Group.SubGroup>
-      </Nrg::ButtonGroup>
+      </ButtonGroup>
     `);
 
     assert.dom('div:has(button)').hasAttribute('role', 'group');
@@ -123,13 +123,13 @@ module('Integration | components | nrg/button-group', function (hooks) {
     };
 
     await render(hbs`
-      <Nrg::ButtonGroup @onClick={{fn this.clickHandler "group"}} as |Group|>
+      <ButtonGroup @onClick={{fn this.clickHandler "group"}} as |Group|>
         <Group.SubGroup as |SubGroup|>
           <SubGroup.SubGroup as |SubGroup2|>
             <SubGroup2.Button/>
           </SubGroup.SubGroup>
         </Group.SubGroup>
-      </Nrg::ButtonGroup>
+      </ButtonGroup>
     `);
 
     await click('button');
