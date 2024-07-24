@@ -143,6 +143,7 @@
       "./components/icon.js": "./dist/_app_/components/icon.js",
       "./components/loading-indicator.js": "./dist/_app_/components/loading-indicator.js",
       "./components/mktg/card-container.js": "./dist/_app_/components/mktg/card-container.js",
+      "./components/mktg/footer.js": "./dist/_app_/components/mktg/footer.js",
       "./components/mktg/card.js": "./dist/_app_/components/mktg/card.js",
       "./components/mktg/faq.js": "./dist/_app_/components/mktg/faq.js",
       "./components/mktg/footer.js": "./dist/_app_/components/mktg/footer.js",
