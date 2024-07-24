@@ -1,5 +1,4 @@
 import Component from '@glimmer/component';
-import type { ComponentLike } from '@glint/template';
 import { or } from 'ember-truth-helpers';
 
 interface FooterSectionSignature {
@@ -18,26 +17,32 @@ interface MarketingFooterSignature {
     hasHorizontalLine?: boolean;
   };
   Blocks: {
-    topLeftSection: [ComponentLike<FooterSection>];
-    topRightSection: [ComponentLike<FooterSection>];
-    bottomLeftSection: [ComponentLike<FooterSection>];
-    bottomRightSection: [ComponentLike<FooterSection>];
+    nav: [];
+    socialMedia: [];
+    brand: [];
+    legal: [];
     default?: [];
   };
 }
 
 class FooterSection extends Component<FooterSectionSignature> {
   get isCollapsible() {
-    return this.args.isCollapsible ?? false;
+    return this.args.isCollapsible ?? true;
   }
 
   <template>
-    <div
-      class="row
-        {{if this.isCollapsible 'row-cols-1 row-cols-md-auto' 'row-cols-auto'}}
-        align-items-center gx-3 gy-4 gx-md-4 my-0"
-    >
-      {{yield}}
+    <div class="col">
+      <div
+        class="row
+          {{if
+            this.isCollapsible
+            'row-cols-1 row-cols-md-auto'
+            'row-cols-auto'
+          }}
+          align-items-center gx-3 gy-4 gx-md-4 my-0"
+      >
+        {{yield}}
+      </div>
     </div>
   </template>
 }
@@ -59,28 +64,26 @@ export default class MarketingFooterComponent extends Component<MarketingFooterS
         <div
           class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center"
         >
-          <div class="col">
-            {{yield (component FooterSection) to="topLeftSection"}}
-          </div>
-          <div class="col">
-            {{yield (component FooterSection) to="topRightSection"}}
-          </div>
+          <FooterSection>
+            {{yield to="nav"}}
+          </FooterSection>
+          <FooterSection @isCollapsible={{false}}>
+            {{yield to="socialMedia"}}
+          </FooterSection>
         </div>
-        {{#if this.hasHorizontalLine}}
-          <hr class="mb-0 mt-3" />
-        {{/if}}
-        {{#if
-          (or (has-block "bottomLeftSection") (has-block "bottomRightSection"))
-        }}
+        {{#if (or (has-block "brand") (has-block "legal"))}}
+          {{#if this.hasHorizontalLine}}
+            <hr class="mb-0 mt-3" />
+          {{/if}}
           <div
             class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center mt-0"
           >
-            <div class="col">
-              {{yield (component FooterSection) to="bottomLeftSection"}}
-            </div>
-            <div class="col">
-              {{yield (component FooterSection) to="bottomRightSection"}}
-            </div>
+            <FooterSection>
+              {{yield to="brand"}}
+            </FooterSection>
+            <FooterSection>
+              {{yield to="legal"}}
+            </FooterSection>
           </div>
         {{/if}}
       </div>
