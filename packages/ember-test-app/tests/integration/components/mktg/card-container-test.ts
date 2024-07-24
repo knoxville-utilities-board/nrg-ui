@@ -3,16 +3,16 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | nrg/mktg/card-container', function (hooks) {
+module('Integration | Component | mktg/card-container', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function () {
     await render(hbs`
-      <Nrg::Mktg::CardContainer class="bg-info rounded" as |CardContainer|>
+      <Mktg::CardContainer class="bg-info rounded" as |CardContainer|>
         <CardContainer.Card class="first g-col-12 g-col-md-4" />
         <CardContainer.Card class="second g-col-12 g-col-md-4" />
         <CardContainer.Card class="third g-col-12 g-col-md-4" />
-      </Nrg::Mktg::CardContainer>
+      </Mktg::CardContainer>
       `);
 
     assert.dom('.grid.p-2').exists('Card container renders');
