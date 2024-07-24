@@ -13,7 +13,7 @@ interface FooterSectionSignature {
 }
 
 interface MarketingFooterSignature {
-  Element: HTMLDivElement;
+  Element: HTMLElement;
   Args: {
     hasHorizontalLine?: boolean;
   };
@@ -32,18 +32,12 @@ class FooterSection extends Component<FooterSectionSignature> {
   }
 
   <template>
-    <div class="col">
-      <div
-        class="row
-          {{if
-            this.isCollapsible
-            'row-cols-1 row-cols-md-auto'
-            'row-cols-auto'
-          }}
-          align-items-center gx-3 gy-4 gx-md-4"
-      >
-        {{yield}}
-      </div>
+    <div
+      class="row
+        {{if this.isCollapsible 'row-cols-1 row-cols-md-auto' 'row-cols-auto'}}
+        align-items-center gx-3 gy-4 gx-md-4 my-0"
+    >
+      {{yield}}
     </div>
   </template>
 }
@@ -63,10 +57,14 @@ export default class MarketingFooterComponent extends Component<MarketingFooterS
     <footer class={{this.classList}} ...attributes>
       <div class="container p-5">
         <div
-          class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center gx-3 gy-4 gx-md-4 gy-md-4"
+          class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center"
         >
-          {{yield (component FooterSection) to="topLeftSection"}}
-          {{yield (component FooterSection) to="topRightSection"}}
+          <div class="col">
+            {{yield (component FooterSection) to="topLeftSection"}}
+          </div>
+          <div class="col">
+            {{yield (component FooterSection) to="topRightSection"}}
+          </div>
         </div>
         {{#if this.hasHorizontalLine}}
           <hr class="mb-0 mt-3" />
@@ -75,10 +73,14 @@ export default class MarketingFooterComponent extends Component<MarketingFooterS
           (or (has-block "bottomLeftSection") (has-block "bottomRightSection"))
         }}
           <div
-            class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center gx-3 gy-4 gx-md-4 gy-md-4 mt-0"
+            class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center mt-0"
           >
-            {{yield (component FooterSection) to="bottomLeftSection"}}
-            {{yield (component FooterSection) to="bottomRightSection"}}
+            <div class="col">
+              {{yield (component FooterSection) to="bottomLeftSection"}}
+            </div>
+            <div class="col">
+              {{yield (component FooterSection) to="bottomRightSection"}}
+            </div>
           </div>
         {{/if}}
       </div>
