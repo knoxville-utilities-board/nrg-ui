@@ -1,6 +1,6 @@
-import NrgButton from '@nrg-ui/ember/components/nrg/button';
+import Button from '@nrg-ui/ember/components/button';
 
 export default interface Registry {
-  'Nrg::Button': typeof NrgButton;
-  'nrg/button': typeof NrgButton;
+  Button: typeof Button;
+  button: typeof Button;
 }

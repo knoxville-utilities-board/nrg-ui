@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { hash } from '@ember/helper';
 import { action } from '@ember/object';
 
-import NrgButton from './button.gts';
+import Button from './button.gts';
 import type { ComponentLike } from '@glint/template';
 
 declare interface ButtonGroupSignature {
@@ -19,7 +19,7 @@ declare interface ButtonGroupSignature {
   Blocks: {
     default: [
       {
-        Button: ComponentLike<NrgButton>;
+        Button: ComponentLike<Button>;
         SubGroup: ComponentLike<ButtonGroupComponent>;
       },
     ];
@@ -73,7 +73,7 @@ export default class ButtonGroupComponent extends Component<ButtonGroupSignature
     >
       {{yield
         (hash
-          Button=(component NrgButton group=this disabled=this.disabled)
+          Button=(component Button group=this disabled=this.disabled)
           SubGroup=(component
             ButtonGroupComponent parent=this disabled=this.disabled
           )

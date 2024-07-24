@@ -12,14 +12,14 @@
   <i class="text-danger bi-input-cursor-text"></i>
 </LinkTo>
 
-<Nrg::Button class="btn-success" @text="Add" @icon="bi-plus" />
+<Button class="btn-success" @text="Add" @icon="bi-plus" />
 
-<Nrg::ButtonGroup as |Group|>
+<ButtonGroup as |Group|>
   <Group.Button class="btn-success" @text="Foo" />
   <Group.Button @text="Bar" />
   <Group.Button class="btn-danger">
     Baz
   </Group.Button>
-</Nrg::ButtonGroup>
+</ButtonGroup>
 
 {{outlet}}

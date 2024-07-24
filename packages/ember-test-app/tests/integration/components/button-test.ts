@@ -7,7 +7,7 @@ interface Context extends TestContext {
   clickHandler: (evt: MouseEvent) => void;
 }
 
-module('Integration | components | nrg/button', function (hooks) {
+module('Integration | components | button', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (this: Context, assert) {
@@ -18,7 +18,7 @@ module('Integration | components | nrg/button', function (hooks) {
     };
 
     await render(
-      hbs`<Nrg::Button @text="Foo bar" @onClick={{this.clickHandler}} />`,
+      hbs`<Button @text="Foo bar" @onClick={{this.clickHandler}} />`,
     );
 
     assert
@@ -32,9 +32,9 @@ module('Integration | components | nrg/button', function (hooks) {
     await click('button');
 
     await render(hbs`
-      <Nrg::Button @onClick={{this.clickHandler}}>
+      <Button @onClick={{this.clickHandler}}>
         <div>Inner content</div>
-      </Nrg::Button>
+      </Button>
     `);
 
     assert
@@ -57,7 +57,7 @@ module('Integration | components | nrg/button', function (hooks) {
     };
 
     await render(
-      hbs`<Nrg::Button @disabled={{true}} @onClick={{this.clickHandler}} />`,
+      hbs`<Button @disabled={{true}} @onClick={{this.clickHandler}} />`,
     );
 
     assert
@@ -82,7 +82,7 @@ module('Integration | components | nrg/button', function (hooks) {
     };
 
     await render(
-      hbs`<Nrg::Button @loading={{true}} @onClick={{this.clickHandler}} />`,
+      hbs`<Button @loading={{true}} @onClick={{this.clickHandler}} />`,
     );
 
     assert
@@ -117,27 +117,27 @@ module('Integration | components | nrg/button', function (hooks) {
     assert.expect(7);
 
     await render(hbs`
-      <Nrg::Button @icon="bi-suitcase">
+      <Button @icon="bi-suitcase">
         <span>Text</span>
-      </Nrg::Button>
+      </Button>
     `);
 
     assert.dom('button > i:first-child').hasClass('bi-suitcase');
     assert.dom('button > span:last-child').containsText('Text');
 
     await render(hbs`
-      <Nrg::Button @icon="bi-suitcase" @iconPosition="right">
+      <Button @icon="bi-suitcase" @iconPosition="right">
         <span>Text</span>
-      </Nrg::Button>
+      </Button>
     `);
 
     assert.dom('button > span:first-child').containsText('Text');
     assert.dom('button > i:last-child').hasClass('bi-suitcase');
 
     await render(hbs`
-      <Nrg::Button @icon="bi-suitcase" @iconLabel="Suitcase">
+      <Button @icon="bi-suitcase" @iconLabel="Suitcase">
         <span>Text</span>
-      </Nrg::Button>
+      </Button>
     `);
 
     assert
