@@ -2,3 +2,4 @@ packages:
   - 'packages/ember'
   - 'packages/design-system'
   - 'packages/ember-test-app'
+  - 'packages/theme-generator'
