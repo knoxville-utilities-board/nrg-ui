@@ -2,7 +2,7 @@
   <p class="py-3">Row on desktop, stacked on mobile</p>
   {{! template-lint-disable no-inline-styles }}
   <Mktg::CardContainer style="--bs-gap: .5rem;" as |Container|>
-    <Container.Card class="g-col-12 g-col-md-4">
+    <Container.Card @onClick={{this.clickHandler}} class="g-col-12 g-col-md-4">
       <:card-header>
         <p>Here is a title</p>
       </:card-header>
@@ -10,7 +10,7 @@
         <p>Here is some body content</p>
       </:card-body>
     </Container.Card>
-    <Container.Card class="g-col-12 g-col-md-4">
+    <Container.Card @onClick={{this.clickHandler}} class="g-col-12 g-col-md-4">
       <:card-header>
         <p>Here is a title</p>
       </:card-header>
@@ -18,7 +18,7 @@
         <p>Here is some body content</p>
       </:card-body>
     </Container.Card>
-    <Container.Card class="g-col-12 g-col-md-4">
+    <Container.Card @onClick={{this.clickHandler}} class="g-col-12 g-col-md-4">
       <:card-header>
         <p>Here is a title</p>
       </:card-header>
@@ -29,18 +29,36 @@
   </Mktg::CardContainer>
 
   <p class="py-3">stacked on mobile and desktop</p>
-
-  <Mktg::CardContainer as |Container|>
-    <Container.Card class="g-col-12" @onClick={{this.clickHandler}}>
-      <:card-header>
-        <p>Here is a title</p>
-      </:card-header>
-      <:card-body>
-        <p>Here is some body content</p>
-      </:card-body>
-    </Container.Card>
-  </Mktg::CardContainer>
+  <div class="container">
+    <Mktg::CardContainer class="justify-content-center" as |Container|>
+      <Container.VerticalCard
+        class="g-col-12"
+        @title="The Gig"
+        @subtitle="Experience lightning-fast internet connectivity"
+        @price="315"
+      >
+        <p class="card-text mt-2">Includes:</p>
+        <div class="container">
+          <div class="row row-cols-2">
+            <p class="col-12 col-md-6"><span class="me-2 fw-bold">&#x2713;</span>Cool
+              feature</p>
+            <p class="col-12 col-md-6"><span class="me-2 fw-bold">&#x2713;</span>Cool
+              feature</p>
+            <p class="col-12 col-md-6"><span class="me-2 fw-bold">&#x2713;</span>Cool
+              feature</p>
+            <p class="col-12 col-md-6"><span class="me-2 fw-bold">&#x2713;</span>Cool
+              feature</p>
+          </div>
+        </div>
+        <Button @text="Add to Bundle" class="btn-primary w-100 mt-2" />
+      </Container.VerticalCard>
+    </Mktg::CardContainer>
+  </div>
 </div>
+            {{!--  --}}
+                {{!--  --}}
+                {{!-- my-1  align-self-end --}}
+
 {{! <div class="card" ...attributes>
   <div class="card-body">
     <h3 class="float-end">$1/mo</h3>
