@@ -134,6 +134,7 @@
       "./components/alert.js": "./dist/_app_/components/alert.js",
       "./components/button-group.js": "./dist/_app_/components/button-group.js",
       "./components/button.js": "./dist/_app_/components/button.js",
+      "./components/footer.js": "./dist/_app_/components/footer.js",
       "./components/header.js": "./dist/_app_/components/header.js",
       "./components/loading-indicator.js": "./dist/_app_/components/loading-indicator.js",
       "./components/mktg/card-container.js": "./dist/_app_/components/mktg/card-container.js",
