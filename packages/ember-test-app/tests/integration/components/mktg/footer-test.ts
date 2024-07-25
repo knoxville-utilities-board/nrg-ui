@@ -26,7 +26,7 @@ module('Integration | components | mktg/footer', function (hooks) {
     </Mktg::Footer>`);
 
     assert
-      .dom('footer div div:first-child div:first-child div')
+      .dom('footer div div:first-child div:first-child')
       .exists()
       .hasText('Nav Test');
   });
@@ -39,7 +39,7 @@ module('Integration | components | mktg/footer', function (hooks) {
     </Mktg::Footer>`);
 
     assert
-      .dom('footer div div:first-child div:nth-child(2) div')
+      .dom('footer div div:first-child div:nth-child(2)')
       .exists()
       .hasText('Social Media Test');
   });
@@ -52,7 +52,7 @@ module('Integration | components | mktg/footer', function (hooks) {
     </Mktg::Footer>`);
 
     assert
-      .dom('footer div div:nth-child(2) div:first-child div')
+      .dom('footer div div:nth-child(2) div:first-child')
       .exists()
       .hasText('Brand Test');
   });
@@ -65,7 +65,7 @@ module('Integration | components | mktg/footer', function (hooks) {
     </Mktg::Footer>`);
 
     assert
-      .dom('footer div div:nth-child(2) div:nth-child(2) div')
+      .dom('footer div div:nth-child(2) div:nth-child(2)')
       .exists()
       .hasText('Legal Test');
   });

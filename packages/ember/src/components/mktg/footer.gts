@@ -31,18 +31,12 @@ class FooterSection extends Component<FooterSectionSignature> {
   }
 
   <template>
-    <div class="col">
-      <div
-        class="row
-          {{if
-            this.isCollapsible
-            'row-cols-1 row-cols-md-auto'
-            'row-cols-auto'
-          }}
-          align-items-center gx-3 gy-4 gx-md-4 my-0"
-      >
-        {{yield}}
-      </div>
+    <div
+      class="col row
+        {{if this.isCollapsible 'row-cols-1 row-cols-md-auto' 'row-cols-auto'}}
+        align-items-center gx-3 gy-4 gx-md-4 my-0"
+    >
+      {{yield}}
     </div>
   </template>
 }
