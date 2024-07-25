@@ -8,6 +8,13 @@ module.exports = function (defaults) {
     autoImport: {
       watchDependencies: ['@nrg-ui/ember', '@nrg-ui/css'],
     },
+    '@embroider/macros': {
+      setConfig: {
+        'ember-css-transitions': {
+          useTestWaiters: true,
+        },
+      },
+    },
   });
 
   app.import('node_modules/@nrg-ui/css/dist/main.css');

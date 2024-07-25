@@ -115,5 +115,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "ember-css-transitions": "^4.4.0"
   }
 }
