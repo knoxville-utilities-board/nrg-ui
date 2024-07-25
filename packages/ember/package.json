@@ -133,7 +133,8 @@
       "./components/button.js": "./dist/_app_/components/button.js",
       "./components/nrg/mktg/card.js": "./dist/_app_/components/nrg/mktg/card.js",
       "./components/nrg/mktg/promo.js": "./dist/_app_/components/nrg/mktg/promo.js",
-      "./components/nrg/text-field.js": "./dist/_app_/components/nrg/text-field.js"
+      "./components/nrg/text-field.js": "./dist/_app_/components/nrg/text-field.js",
+      "./components/progress.js": "./dist/_app_/components/progress.js"
     },
     "defaultBlueprint": "@nrg-ui-ember"
   }
