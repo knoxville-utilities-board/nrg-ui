@@ -3782,6 +3782,10 @@ packages:
       ember-source:
         optional: true
 
+  ember-responsive@4.0.2:
+    resolution: {integrity: sha512-cNpR7ZA/JqF4f9+wCct3LXVjNLCv+biIVrAoo3fuCkIiGp3/I6D9GBhKZngvSFQiKp/tp2N52zvS7v5h0ahF4A==}
+    engines: {node: 10.* || >= 12}
+
   ember-rfc176-data@0.3.18:
     resolution: {integrity: sha512-JtuLoYGSjay1W3MQAxt3eINWXNYYQliK90tLwtb8aeCuQK8zKGCRbBodVIrkcTqshULMnRuTOS6t1P7oQk3g6Q==}
 
@@ -5120,6 +5124,9 @@ packages:
 
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
+
+  ismobilejs@1.1.1:
+    resolution: {integrity: sha512-VaFW53yt8QO61k2WJui0dHf4SlL8lxBofUuUmwBo0ljPk0Drz2TiuDW4jo3wDcv41qy/SxrJ+VAzJ/qYqsmzRw==}
 
   isobject@2.1.0:
     resolution: {integrity: sha512-+OUdGJlgjOBZDfxnDjYYG6zp487z0JGNQq3cYQYg5f5hKR+syHMsaztzGeml/4kGG55CSpKSpWTY+jYGgsHLgA==}
@@ -12315,6 +12322,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  ember-responsive@4.0.2:
+    dependencies:
+      ember-cli-babel: 7.26.11
+    transitivePeerDependencies:
+      - supports-color
+
   ember-rfc176-data@0.3.18: {}
 
   ember-router-generator@2.0.0:
@@ -14083,6 +14096,8 @@ snapshots:
   isbinaryfile@5.0.2: {}
 
   isexe@2.0.0: {}
+
+  ismobilejs@1.1.1: {}
 
   isobject@2.1.0:
     dependencies:
