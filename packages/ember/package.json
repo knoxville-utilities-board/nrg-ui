@@ -131,8 +131,9 @@
     "app-js": {
       "./components/button-group.js": "./dist/_app_/components/button-group.js",
       "./components/button.js": "./dist/_app_/components/button.js",
-      "./components/nrg/mktg/card.js": "./dist/_app_/components/nrg/mktg/card.js",
-      "./components/nrg/mktg/promo.js": "./dist/_app_/components/nrg/mktg/promo.js",
+      "./components/mktg/card-container.js": "./dist/_app_/components/mktg/card-container.js",
+      "./components/mktg/card.js": "./dist/_app_/components/mktg/card.js",
+      "./components/mktg/promo.js": "./dist/_app_/components/mktg/promo.js",
       "./components/nrg/text-field.js": "./dist/_app_/components/nrg/text-field.js",
       "./components/progress.js": "./dist/_app_/components/progress.js"
     },
