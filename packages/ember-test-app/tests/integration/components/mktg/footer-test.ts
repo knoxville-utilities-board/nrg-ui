@@ -33,9 +33,9 @@ module('Integration | components | mktg/footer', function (hooks) {
 
   test('it contains social media links', async function (assert) {
     await render(hbs`<Mktg::Footer>
-      <:socialMedia>
+      <:social-media>
         Social Media Test
-      </:socialMedia>
+      </:social-media>
     </Mktg::Footer>`);
 
     assert

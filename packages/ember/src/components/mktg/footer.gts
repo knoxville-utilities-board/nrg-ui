@@ -18,7 +18,7 @@ interface MarketingFooterSignature {
   };
   Blocks: {
     nav: [];
-    socialMedia: [];
+    'social-media': [];
     brand: [];
     legal: [];
     default?: [];
@@ -62,7 +62,7 @@ export default class MarketingFooterComponent extends Component<MarketingFooterS
             {{yield to="nav"}}
           </FooterSection>
           <FooterSection @isCollapsible={{false}}>
-            {{yield to="socialMedia"}}
+            {{yield to="social-media"}}
           </FooterSection>
         </div>
         {{#if this.hasHorizontalLine}}
