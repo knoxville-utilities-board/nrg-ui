@@ -1,15 +1,63 @@
 <div class="container">
   <p class="py-3">Row on desktop, stacked on mobile</p>
-  {{!-- template-lint-disable no-inline-styles --}}
-  <Mktg::CardContainer class="bg-info rounded" style="--bs-gap: .5rem;" as |Container|>
-    <Container.Card class="g-col-12 g-col-md-4" />
-    <Container.Card class="g-col-12 g-col-md-4" />
-    <Container.Card class="g-col-12 g-col-md-4" />
+  {{! template-lint-disable no-inline-styles }}
+  <Mktg::CardContainer style="--bs-gap: .5rem;" as |Container|>
+    <Container.Card class="g-col-12 g-col-md-4">
+      <:card-header>
+        <p>Here is a title</p>
+      </:card-header>
+      <:card-body>
+        <p>Here is some body content</p>
+      </:card-body>
+    </Container.Card>
+    <Container.Card class="g-col-12 g-col-md-4">
+      <:card-header>
+        <p>Here is a title</p>
+      </:card-header>
+      <:card-body>
+        <p>Here is some body content</p>
+      </:card-body>
+    </Container.Card>
+    <Container.Card class="g-col-12 g-col-md-4">
+      <:card-header>
+        <p>Here is a title</p>
+      </:card-header>
+      <:card-body>
+        <p>Here is some body content</p>
+      </:card-body>
+    </Container.Card>
   </Mktg::CardContainer>
+
   <p class="py-3">stacked on mobile and desktop</p>
-  <Mktg::CardContainer class="bg-secondary" as |Container|>
-    <Container.Card class="g-col-12" />
-    <Container.Card class="g-col-12" />
-    <Container.Card class="g-col-12" />
+
+  <Mktg::CardContainer as |Container|>
+    <Container.Card class="g-col-12" @onClick={{this.clickHandler}}>
+      <:card-header>
+        <p>Here is a title</p>
+      </:card-header>
+      <:card-body>
+        <p>Here is some body content</p>
+      </:card-body>
+    </Container.Card>
   </Mktg::CardContainer>
 </div>
+{{! <div class="card" ...attributes>
+  <div class="card-body">
+    <h3 class="float-end">$1/mo</h3>
+    <h5 class="card-title">Product name</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Product description</h6>
+    <hr />
+    <div class="card-text">
+      <div>Features:</div>
+
+      <ul>
+        <li>Feature 1</li>
+        <li>Feature 2</li>
+        <li>Feature 3</li>
+      </ul>
+    </div>
+    <div class="d-grid">
+      <button type="button" class="btn btn-primary">Add Product</button>
+    </div>
+  </div>
+</div> }}
