@@ -3,41 +3,41 @@
     <p class="p-2 m-0 fs-4 fw-bold text-nowrap">Welcome to Ember Test App</p>
   </:center>
 </Header>
-
-<div>
-  <LinkTo @route="marketing" class="btn btn-outline-dark" role="link">
-    Marketing Test
-    <i class="text-success bi-currency-dollar"></i>
-  </LinkTo>
-
-  <LinkTo @route="form" class="btn btn-outline-primary" role="link">
-    Form Test
-    <i class="text-danger bi-input-cursor-text"></i>
-  </LinkTo>
+<div class="px-3">
   <div class="my-3">
-    <Button class="btn-success" @text="Add" @icon="bi-plus" />
+    <LinkTo @route="marketing" class="btn btn-outline-dark" role="link">
+      Marketing Test
+      <i class="text-success bi-currency-dollar"></i>
+    </LinkTo>
 
-    <ButtonGroup as |Group|>
-      <Group.Button class="btn-success" @text="Foo" />
-      <Group.Button @text="Bar" />
-      <Group.Button class="btn-danger">
-        Baz
-      </Group.Button>
-    </ButtonGroup>
-  </div>
-  <div class="my-3">
-    <Progress @animated={{true}} @progress={{30}} @striped={{true}} />
-    <hr />
-    <Progress
-      @animated={{true}}
-      @stacked={{true}}
-      @striped={{true}}
-      as |Segment|
-    >
-      <Segment @progress={{30}} />
-      <Segment class="bg-info" @progress={{50}} />
-    </Progress>
+    <LinkTo @route="form" class="btn btn-outline-primary" role="link">
+      Form Test
+      <i class="text-danger bi-input-cursor-text"></i>
+    </LinkTo>
+    <div class="my-3">
+      <Button class="btn-success" @text="Add" @icon="bi-plus" />
+
+      <ButtonGroup as |Group|>
+        <Group.Button class="btn-success" @text="Foo" />
+        <Group.Button @text="Bar" />
+        <Group.Button class="btn-danger">
+          Baz
+        </Group.Button>
+      </ButtonGroup>
+    </div>
+    <div class="my-3">
+      <Progress @animated={{true}} @progress={{30}} @striped={{true}} />
+      <hr />
+      <Progress
+        @animated={{true}}
+        @stacked={{true}}
+        @striped={{true}}
+        as |Segment|
+      >
+        <Segment @progress={{30}} />
+        <Segment class="bg-info" @progress={{50}} />
+      </Progress>
+    </div>
   </div>
 </div>
-
 {{outlet}}
