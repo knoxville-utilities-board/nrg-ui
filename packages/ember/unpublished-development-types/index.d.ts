@@ -5,6 +5,14 @@ import '@glint/environment-ember-loose';
 import '@glint/environment-ember-template-imports';
 
 import type CssTransitionsRegistry from 'ember-css-transitions/template-registry';
+declare interface MediaService {
+  isSmallMobile: boolean;
+  isMobile: boolean;
+  isTablet: boolean;
+  isComputer: boolean;
+  isLargeMonitor: boolean;
+  isWidescreenMonitor: boolean;
+}
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry extends CssTransitionsRegistry {
