@@ -11,4 +11,5 @@ Router.map(function () {
   this.route('form');
   this.route('cards');
   this.route('promo');
+  this.route('faq');
 });
