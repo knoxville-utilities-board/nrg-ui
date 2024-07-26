@@ -27,15 +27,15 @@ interface MktgServicePricingSignature {
 }
 
 const Addon: TOC<AddonSignature> = <template>
-  <div class="row align-items-center mx-0 my-1" ...attributes>
-    <div class="col-6 offset-2 text-truncate pe-0">
+  <div class="row align-items-center mx-0 my-2" ...attributes>
+    <div class="col text-truncate">
       {{@title}}
       {{#if @quantity}}
         | Qty:
         {{@quantity}}
       {{/if}}
     </div>
-    <div class="col-auto ms-auto">{{@description}}</div>
+    <div class="col-5 text-end">{{@description}}</div>
   </div>
 </template>;
 
@@ -46,12 +46,16 @@ export default class MktgServicePricing extends Component<MktgServicePricingSign
 
   <template>
     <div class={{this.classList}} ...attributes>
-      <div class="row fw-bold align-items-center mx-0 my-1">
-        <i class="col-2 bi fs-2 {{@icon}} mx-atuo pe-0" />
-        <div class="col-6 fs-5">{{@title}}</div>
-        <div class="col-auto fs-5 ms-auto">{{@description}}</div>
+      <div class="row">
+        <i class="col-auto bi {{@icon}} fs-1" />
+        <div class="col">
+          <div class="row align-items-center mx-0 my-2 fw-bold">
+            <div class="col text-truncate fs-5">{{@title}}</div>
+            <div class="col-5 text-end fs-5">{{@description}}</div>
+          </div>
+          {{yield (component Addon)}}
+        </div>
       </div>
-      {{yield (component Addon)}}
     </div>
   </template>
 }
