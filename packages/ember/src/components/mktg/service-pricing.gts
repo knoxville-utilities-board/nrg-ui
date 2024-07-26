@@ -19,6 +19,7 @@ interface MktgServicePricingSignature {
     serviceName?: string;
     serviceType?: string;
     price?: string;
+    active?: boolean;
   };
   Blocks: {
     default: [];
@@ -40,7 +41,10 @@ const Addon: TOC<AddonSignature> = <template>
 </template>;
 
 const MktgServicePricing: TOC<MktgServicePricingSignature> = <template>
-  <div class="card p-4 border-2 rounded-4 my-4" ...attributes>
+  <div
+    class="card p-4 border-2 rounded-4 my-4 {{if @active 'border-primary'}}"
+    ...attributes
+  >
     <div class="row">
       <div class="col-auto align-items-center py-2">
         <i class="bi {{@icon}} fs-1" />
