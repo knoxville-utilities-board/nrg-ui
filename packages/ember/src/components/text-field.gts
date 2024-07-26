@@ -5,12 +5,11 @@ import { isEmpty } from '@ember/utils';
 import { hash } from '@ember/helper';
 
 import type { ComponentLike } from '@glint/template';
-
+import type ValidationComponentSignature from './validation-interface.ts'
 
 const defaultType = 'text';
 
-
-declare interface TextFieldSignature {
+declare interface TextFieldSignature extends ValidationComponentSignature {
   Element: HTMLDivElement;
   Args: {
     focusId?: string;
@@ -19,13 +18,6 @@ declare interface TextFieldSignature {
     min?: number;
     max?: number;
     step?: string | number;
-    value?: string | number;
-
-    defaultValue?: string | number;
-    model?: object;
-    valuePath?: string;
-    useNestedValuePath?: boolean;
-    useDefaultValue?: boolean;
 
     name?: string;
     autocapitalize?: boolean;
@@ -106,10 +98,11 @@ export default class NrgTextFieldComponent extends ValidationComponent<TextField
   @action
   onChange(value: string) {
     const validatedValue = this.validateInput(value);
-    if (Boolean(validatedValue) === false) {
+
+    if (validatedValue === undefined) {
       return;
     }
-    super.onChange(validatedValue);
+    super.onChange(value);
   }
 
   <template>

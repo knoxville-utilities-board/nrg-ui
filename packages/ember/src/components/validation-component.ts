@@ -1,24 +1,14 @@
-// @ts-nocheck
+//@ts-nocheck
 
 import { action, get, set } from '@ember/object';
 import Component from '@glimmer/component';
 import ensurePathExists from '../utils/ensure-path-exists';
 import { schedule } from '@ember/runloop';
+import type ValidationComponentSignature from './validation-interface.ts';
 
-// declare interface ValidationComponentSignature {
-//   Args: {
-//     value?: string | number;
-//     defaultValue?: string | number;
-//     model?: object;
-//     valuePath?: string;
-//     useNestedValuePath?: boolean;
-//     useDefaultValue?: boolean;
-//     // eslint-disable-next-line no-unused-vars
-//     onChange?: (value: any) => unknown;
-//   };
-// }
-
-export default class ValidationComponent<Type> extends Component<Type> {
+export default class ValidationComponent<
+  Type extends ValidationComponentSignature,
+> extends Component<Type> {
   constructor() {
     // @ts-ignore
     super(...arguments);

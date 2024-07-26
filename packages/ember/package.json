@@ -142,7 +142,8 @@
       "./components/mktg/promo.js": "./dist/_app_/components/mktg/promo.js",
       "./components/progress.js": "./dist/_app_/components/progress.js",
       "./components/text-field.js": "./dist/_app_/components/text-field.js",
-      "./components/validation-component.js": "./dist/_app_/components/validation-component.js"
+      "./components/validation-component.js": "./dist/_app_/components/validation-component.js",
+      "./components/validation-interface.js": "./dist/_app_/components/validation-interface.js"
     },
     "defaultBlueprint": "@nrg-ui-ember"
   }
