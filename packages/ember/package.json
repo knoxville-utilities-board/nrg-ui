@@ -152,6 +152,7 @@
       "./components/mktg/promo.js": "./dist/_app_/components/mktg/promo.js",
       "./components/mktg/section-header.js": "./dist/_app_/components/mktg/section-header.js",
       "./components/nav-item.js": "./dist/_app_/components/nav-item.js",
+      "./components/mktg/service-pricing.js": "./dist/_app_/components/mktg/service-pricing.js",
       "./components/nrg/text-field.js": "./dist/_app_/components/nrg/text-field.js",
       "./components/progress.js": "./dist/_app_/components/progress.js",
       "./components/text-area.js": "./dist/_app_/components/text-area.js",
