@@ -22,7 +22,7 @@ export default class LoadingIndicatorComponent extends Component<LoadingIndicato
     );
 
     if (type === typeGrowing) {
-      return 'spinner-growing';
+      return 'spinner-grow';
     }
     return 'spinner-border';
   }
