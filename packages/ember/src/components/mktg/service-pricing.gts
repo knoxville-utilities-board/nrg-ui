@@ -16,7 +16,8 @@ interface AddonSignature {
 interface MktgServicePricingSignature {
   Args: {
     icon?: NrgIconValue;
-    service?: string;
+    serviceName?: string;
+    serviceType?: string;
     price?: string;
   };
   Blocks: {
@@ -44,7 +45,13 @@ const MktgServicePricing: TOC<MktgServicePricingSignature> = <template>
       <i class="col-auto bi {{@icon}} fs-1" />
       <div class="col">
         <div class="row align-items-center mx-0 my-2 fw-bold">
-          <div class="col text-truncate fs-5">{{@service}}</div>
+          <div class="col text-truncate fs-5">
+            {{@serviceName}}
+            {{#if @serviceType}}
+              :
+              {{@serviceType}}
+            {{/if}}
+          </div>
           <div class="col-5 text-end fs-5">{{@price}}</div>
         </div>
         {{yield (component Addon)}}
