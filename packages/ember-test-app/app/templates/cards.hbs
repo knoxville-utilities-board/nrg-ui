@@ -28,13 +28,42 @@
     </Container.Card>
   </Mktg::CardContainer>
   <div class="container">
-    <p class="pt-3 fw-bold">Vertical card</p>
+    <p class="pt-3 fw-bold">Vertical card with right aligned price</p>
     <Mktg::CardContainer class="justify-content-center" as |Container|>
       <Container.VerticalCard
         class="g-col-12"
         @title="The Gig"
         @subtitle="Experience lightning-fast internet connectivity"
         @price="300"
+      >
+        <p class="card-text mt-2">Includes:</p>
+        <div class="container">
+          <div class="row row-cols-2">
+            <p class="col-12 col-md-6"><span
+                class="me-2 fw-bold"
+              >&#x2713;</span>Cool feature</p>
+            <p class="col-12 col-md-6"><span
+                class="me-2 fw-bold"
+              >&#x2713;</span>Cool feature</p>
+            <p class="col-12 col-md-6"><span
+                class="me-2 fw-bold"
+              >&#x2713;</span>Cool feature</p>
+            <p class="col-12 col-md-6"><span
+                class="me-2 fw-bold"
+              >&#x2713;</span>Cool feature</p>
+          </div>
+        </div>
+        <Button @text="Add to Bundle" class="btn-primary w-100 mt-2" />
+      </Container.VerticalCard>
+    </Mktg::CardContainer>
+     <p class="pt-3 fw-bold">Vertical card with left aligned price</p>
+    <Mktg::CardContainer class="justify-content-center" as |Container|>
+      <Container.VerticalCard
+        class="g-col-12"
+        @title="The Gig"
+        @subtitle="Experience lightning-fast internet connectivity"
+        @price="300"
+        @leftAlignPrice={{true}}
       >
         <p class="card-text mt-2">Includes:</p>
         <div class="container">
