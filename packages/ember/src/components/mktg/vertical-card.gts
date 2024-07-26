@@ -36,9 +36,9 @@ export default class VerticalCard extends Component<VerticalCardSignature> {
             <p class="fw-bold fs-4 mt-2">{{this.title}}</p>
             {{#if this.price}}
               <p
-                class="d-flex align-self-start align-self-md-center fs-1 fw-bold m-0"
+                class="card-title d-flex align-self-start align-self-md-center fs-1 fw-bold m-0"
               >&dollar;{{this.price}}<span
-                  class="fs-5 align-self-end mb-1"
+                  class="fs-5 align-self-end mb-2"
                 >/mo</span></p>
             {{/if}}
           </div>

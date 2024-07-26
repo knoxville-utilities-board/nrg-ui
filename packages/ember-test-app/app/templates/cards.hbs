@@ -1,4 +1,4 @@
-<div class="container">
+<div data-theme="marketing" class="container">
   <p class="py-3">Row on desktop, stacked on mobile</p>
   {{! template-lint-disable no-inline-styles }}
   <Mktg::CardContainer style="--bs-gap: .5rem;" as |Container|>
@@ -27,55 +27,67 @@
       </:card-body>
     </Container.Card>
   </Mktg::CardContainer>
-
-  <p class="py-3">stacked on mobile and desktop</p>
   <div class="container">
+    <p class="pt-3 fw-bold">Vertical card</p>
     <Mktg::CardContainer class="justify-content-center" as |Container|>
       <Container.VerticalCard
         class="g-col-12"
         @title="The Gig"
         @subtitle="Experience lightning-fast internet connectivity"
-        @price="315"
+        @price="300"
       >
         <p class="card-text mt-2">Includes:</p>
         <div class="container">
           <div class="row row-cols-2">
-            <p class="col-12 col-md-6"><span class="me-2 fw-bold">&#x2713;</span>Cool
-              feature</p>
-            <p class="col-12 col-md-6"><span class="me-2 fw-bold">&#x2713;</span>Cool
-              feature</p>
-            <p class="col-12 col-md-6"><span class="me-2 fw-bold">&#x2713;</span>Cool
-              feature</p>
-            <p class="col-12 col-md-6"><span class="me-2 fw-bold">&#x2713;</span>Cool
-              feature</p>
+            <p class="col-12 col-md-6"><span
+                class="me-2 fw-bold"
+              >&#x2713;</span>Cool feature</p>
+            <p class="col-12 col-md-6"><span
+                class="me-2 fw-bold"
+              >&#x2713;</span>Cool feature</p>
+            <p class="col-12 col-md-6"><span
+                class="me-2 fw-bold"
+              >&#x2713;</span>Cool feature</p>
+            <p class="col-12 col-md-6"><span
+                class="me-2 fw-bold"
+              >&#x2713;</span>Cool feature</p>
           </div>
         </div>
         <Button @text="Add to Bundle" class="btn-primary w-100 mt-2" />
       </Container.VerticalCard>
     </Mktg::CardContainer>
   </div>
-</div>
-            {{!--  --}}
-                {{!--  --}}
-                {{!-- my-1  align-self-end --}}
 
-{{! <div class="card" ...attributes>
-  <div class="card-body">
-    <h3 class="float-end">$1/mo</h3>
-    <h5 class="card-title">Product name</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Product description</h6>
-    <hr />
-    <div class="card-text">
-      <div>Features:</div>
-
-      <ul>
-        <li>Feature 1</li>
-        <li>Feature 2</li>
-        <li>Feature 3</li>
-      </ul>
-    </div>
-    <div class="d-grid">
-      <button type="button" class="btn btn-primary">Add Product</button>
-    </div>
+  <div class="container">
+    <p class="pt-3 fw-bold">Horizontal card</p>
+    <Mktg::CardContainer as |Container|>
+      <Container.HorizontalCard
+        @title="The Gig 10"
+        @price="300"
+        class="g-col-12"
+      >
+        <:left>
+          <p class="card-text text-secondary">Stream multiple 4k videos, download large files
+            in seconds, and dominate online gaming like never before.</p>
+          <Button @text="Get Started" class="bg-primary text-white w-100 mt-2"/>
+        </:left>
+        <:right>
+          <p class="card-text mt-2">Includes:</p>
+          <div class="container">
+            <div class="row">
+              <p class="col-12"><span class="me-2 fw-bold">&#x2713;</span>Cool
+                feature</p>
+              <p class="col-12"><span class="me-2 fw-bold">&#x2713;</span>Cool
+                feature</p>
+              <p class="col-12"><span class="me-2 fw-bold">&#x2713;</span>Cool
+                feature</p>
+              <p class="col-12"><span class="me-2 fw-bold">&#x2713;</span>Cool
+                feature</p>
+            </div>
+          </div>
+        </:right>
+      </Container.HorizontalCard>
+    </Mktg::CardContainer>
   </div>
-</div> }}
+  <div class="p-5"></div>
+</div>
