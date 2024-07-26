@@ -36,7 +36,7 @@ const Addon: TOC<AddonSignature> = <template>
         {{@quantity}}
       {{/if}}
     </div>
-    <div class="col-6 text-end">{{@price}}</div>
+    <div class="col-auto text-end">{{@price}}</div>
   </div>
 </template>;
 
@@ -46,7 +46,7 @@ const MktgServicePricing: TOC<MktgServicePricingSignature> = <template>
     ...attributes
   >
     <div class="row">
-      <div class="col-auto align-items-center py-2">
+      <div class="col-12 col-sm-auto align-items-center py-2">
         <i class="bi {{@icon}} fs-1" />
       </div>
       <div class="col">
@@ -58,7 +58,7 @@ const MktgServicePricing: TOC<MktgServicePricingSignature> = <template>
               {{@serviceType}}
             {{/if}}
           </div>
-          <div class="col-6 text-end fs-5">{{@price}}</div>
+          <div class="col-auto text-end fs-5">{{@price}}</div>
         </div>
         {{yield (component Addon)}}
       </div>

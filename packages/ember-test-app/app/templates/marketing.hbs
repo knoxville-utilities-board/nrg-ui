@@ -199,54 +199,48 @@
       </div>
     </form>
 
-    <div class="row">
-      <div class="col">
-        <Mktg::Service-Pricing
-          @serviceName="Fiber"
-          @serviceType="The Gig"
-          @price="$65/mo"
-          @icon="bi-wifi"
-          as |Addon|
-        >
-          <Addon @addon="Smart Gig" @price="$15/mo" />
-        </Mktg::Service-Pricing>
-        <Mktg::Service-Pricing
-          @serviceName="TV"
-          @serviceType="Silver"
-          @price="$107/mo"
-          @icon="bi-tv"
-          as |Addon|
-        >
-          <Addon @addon="FireStick" @price="$80" @quantity="2" />
-          <Addon @addon="HBO" @price="$5.99/mo" />
-          <Addon @addon="STARZ" @price="$4.99/mo" />
-          <Addon @addon="Spanish Language Channels" @price="$4.99/mo" />
-        </Mktg::Service-Pricing>
-        <Mktg::Service-Pricing
-          @serviceName="Phone"
-          @price="$129/mo"
-          @icon="bi-telephone"
-        />
-      </div>
-      <div class="col">
-        <Mktg::Service-Pricing
-          @serviceName="Fiber"
-          @serviceType="The Gig"
-          @price="Required"
-          @icon="bi-wifi"
-          @active="true"
-        />
-        <Mktg::Service-Pricing
-          @serviceName="TV"
-          @price="Add (optional)"
-          @icon="bi-tv"
-        />
-        <Mktg::Service-Pricing
-          @serviceName="Phone"
-          @price="Add (optional)"
-          @icon="bi-telephone"
-        />
-      </div>
-    </div>
+    <Mktg::Service-Pricing
+      @serviceName="Fiber"
+      @serviceType="The Gig"
+      @price="$65/mo"
+      @icon="bi-wifi"
+      as |Addon|
+    >
+      <Addon @addon="Smart Gig" @price="$15/mo" />
+    </Mktg::Service-Pricing>
+    <Mktg::Service-Pricing
+      @serviceName="TV"
+      @serviceType="Silver"
+      @price="$107/mo"
+      @icon="bi-tv"
+      as |Addon|
+    >
+      <Addon @addon="FireStick" @price="$80" @quantity="2" />
+      <Addon @addon="HBO" @price="$5.99/mo" />
+      <Addon @addon="STARZ" @price="$4.99/mo" />
+      <Addon @addon="Spanish Language Channels" @price="$4.99/mo" />
+    </Mktg::Service-Pricing>
+    <Mktg::Service-Pricing
+      @serviceName="Phone"
+      @price="$129/mo"
+      @icon="bi-telephone"
+    />
+    <Mktg::Service-Pricing
+      @serviceName="Fiber"
+      @serviceType="The Gig"
+      @price="Required"
+      @icon="bi-wifi"
+      @active="true"
+    />
+    <Mktg::Service-Pricing
+      @serviceName="TV"
+      @price="Add (optional)"
+      @icon="bi-tv"
+    />
+    <Mktg::Service-Pricing
+      @serviceName="Phone"
+      @price="Add (optional)"
+      @icon="bi-telephone"
+    />
   </div>
 </main>
