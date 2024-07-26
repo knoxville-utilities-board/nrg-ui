@@ -1,1 +1,6 @@
 @import url("marketing-theme.css");
+
+.index-nav-list {
+  max-width: 400px;
+}
+

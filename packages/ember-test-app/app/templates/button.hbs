@@ -1,0 +1,14 @@
+{{page-title "Button"}}
+
+
+<div class="my-3">
+  <Button class="btn-success" @text="Add" @icon="bi-plus" />
+
+  <ButtonGroup as |Group|>
+    <Group.Button class="btn-success" @text="Foo" />
+    <Group.Button @text="Bar" />
+    <Group.Button class="btn-danger">
+      Baz
+    </Group.Button>
+  </ButtonGroup>
+</div>

@@ -1,0 +1,10 @@
+{{page-title "Progress"}}
+
+<div class="my-3">
+  <Progress @animated={{true}} @progress={{30}} @striped={{true}} />
+  <hr />
+  <Progress @animated={{true}} @stacked={{true}} @striped={{true}} as |Segment|>
+    <Segment @progress={{30}} />
+    <Segment class="bg-info" @progress={{50}} />
+  </Progress>
+</div>
