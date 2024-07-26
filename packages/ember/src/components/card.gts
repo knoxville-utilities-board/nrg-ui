@@ -24,7 +24,12 @@ export default class Card extends Component<CardSignature> {
   }
 
   <template>
-    <div class="card p-4 shadow-sm" {{on "click" this.onClick}} ...attributes>
+    <div
+      class="card p-4 shadow-sm"
+      role="button"
+      {{on "click" this.onClick}}
+      ...attributes
+    >
       {{#if (has-block "card-header")}}
         <div class="card-header bg-white">
           {{yield to="card-header"}}
