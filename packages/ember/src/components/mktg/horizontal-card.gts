@@ -25,7 +25,7 @@ export default class HorizontalCard extends Component<HorizontalCardSignature> {
     <Card ...attributes>
       <:card-body>
         <div class="d-flex flex-column flex-md-row p-md-3">
-          <div class="bg-white d-flex flex-column justify-content-start pb-2">
+          <div class="d-flex flex-column justify-content-start pb-2">
             <div class="d-flex flex-column justify-content-between w-100 m-0">
               {{#if this.title}}
                 <p class="fw-bold fs-5 m-0">{{this.title}}</p>

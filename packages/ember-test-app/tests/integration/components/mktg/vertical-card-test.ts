@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integratioin | Component | mktg/vertical-card', function (hooks) {
+module('Integration | Component | mktg/vertical-card', function (hooks) {
   setupRenderingTest(hooks);
 
   test('vertical card correctly renders', async function () {
