@@ -42,18 +42,12 @@ class FooterSection extends Component<FooterSectionSignature> {
 }
 
 export default class MarketingFooterComponent extends Component<MarketingFooterSignature> {
-  get classList() {
-    let classes = ['bg-primary', 'text-light', 'mt-auto'];
-
-    return classes.join(' ');
-  }
-
   get hasHorizontalLine() {
     return this.args.hasHorizontalLine ?? false;
   }
 
   <template>
-    <footer class={{this.classList}} ...attributes>
+    <footer class="bg-primary text-light mt-auto" ...attributes>
       <div class="container p-5">
         <div
           class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center"
