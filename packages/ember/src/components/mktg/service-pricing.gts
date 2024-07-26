@@ -1,5 +1,6 @@
 import type { NrgIconValue } from '../../icon-types';
 import type { TOC } from '@ember/component/template-only';
+import { concat } from '@ember/helper';
 
 interface AddonSignature {
   Args: {
@@ -30,10 +31,10 @@ interface MktgServicePricingSignature {
 const Addon: TOC<AddonSignature> = <template>
   <div class="row align-items-center mx-0 my-2" ...attributes>
     <div class="col text-truncate ps-0">
-      {{@addon}}
       {{#if @quantity}}
-        | Qty:
-        {{@quantity}}
+        {{concat @addon " | Qty:" @quantity}}
+      {{else}}
+        {{@addon}}
       {{/if}}
     </div>
     <div class="col-auto text-end">{{@price}}</div>
@@ -52,10 +53,10 @@ const MktgServicePricing: TOC<MktgServicePricingSignature> = <template>
       <div class="col">
         <div class="row align-items-center mx-0 my-2 fw-bold">
           <div class="col text-truncate ps-0 fs-5">
-            {{@serviceName}}
             {{#if @serviceType}}
-              :
-              {{@serviceType}}
+              {{concat @serviceName ": " @serviceType}}
+            {{else}}
+              {{@serviceName}}
             {{/if}}
           </div>
           <div class="col-auto text-end fs-5">{{@price}}</div>
