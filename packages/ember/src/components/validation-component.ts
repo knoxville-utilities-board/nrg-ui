@@ -1,11 +1,28 @@
+// @ts-nocheck
+
 import { action, get, set } from '@ember/object';
 import Component from '@glimmer/component';
-import ensurePathExists from '../../utils/ensure-path-exists.js';
+import ensurePathExists from '../utils/ensure-path-exists';
 import { schedule } from '@ember/runloop';
 
-export default class ValidationComponent extends Component {
+// declare interface ValidationComponentSignature {
+//   Args: {
+//     value?: string | number;
+//     defaultValue?: string | number;
+//     model?: object;
+//     valuePath?: string;
+//     useNestedValuePath?: boolean;
+//     useDefaultValue?: boolean;
+//     // eslint-disable-next-line no-unused-vars
+//     onChange?: (value: any) => unknown;
+//   };
+// }
+
+export default class ValidationComponent<Type> extends Component<Type> {
   constructor() {
+    // @ts-ignore
     super(...arguments);
+
     const defaultValue = this.defaultValue;
     const initialValue = this.hasModelPath ? this.value : this.args.value;
     if (
@@ -97,8 +114,8 @@ export default class ValidationComponent extends Component {
   }
 
   @action
-  onChange(newValue) {
+  onChange(newValue: any) {
     this.value = newValue;
-    this.args.onChange?.(...arguments);
+    this.args.onChange?.(newValue);
   }
 }

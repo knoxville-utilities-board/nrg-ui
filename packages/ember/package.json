@@ -129,23 +129,20 @@
     "type": "addon",
     "main": "addon-main.cjs",
     "app-js": {
+      "./components/bad-select.js": "./dist/_app_/components/bad-select.js",
       "./components/button-group.js": "./dist/_app_/components/button-group.js",
       "./components/button.js": "./dist/_app_/components/button.js",
+      "./components/form-container.js": "./dist/_app_/components/form-container.js",
+      "./components/form-field.js": "./dist/_app_/components/form-field.js",
       "./components/header.js": "./dist/_app_/components/header.js",
+      "./components/internal/base-input-field.js": "./dist/_app_/components/internal/base-input-field.js",
       "./components/mktg/card-container.js": "./dist/_app_/components/mktg/card-container.js",
       "./components/mktg/card.js": "./dist/_app_/components/mktg/card.js",
       "./components/mktg/header.js": "./dist/_app_/components/mktg/header.js",
       "./components/mktg/promo.js": "./dist/_app_/components/mktg/promo.js",
       "./components/progress.js": "./dist/_app_/components/progress.js",
-      "./components/nrg/bad-select.js": "./dist/_app_/components/nrg/bad-select.js",
-      "./components/nrg/button.js": "./dist/_app_/components/nrg/button.js",
-      "./components/nrg/form-container.js": "./dist/_app_/components/nrg/form-container.js",
-      "./components/nrg/form-field.js": "./dist/_app_/components/nrg/form-field.js",
-      "./components/nrg/internal/base-input-field.js": "./dist/_app_/components/nrg/internal/base-input-field.js",
-      "./components/nrg/mktg/card.js": "./dist/_app_/components/nrg/mktg/card.js",
-      "./components/nrg/mktg/promo.js": "./dist/_app_/components/nrg/mktg/promo.js",
-      "./components/nrg/text-field.js": "./dist/_app_/components/nrg/text-field.js",
-      "./components/nrg/validation-component.js": "./dist/_app_/components/nrg/validation-component.js"
+      "./components/text-field.js": "./dist/_app_/components/text-field.js",
+      "./components/validation-component.js": "./dist/_app_/components/validation-component.js"
     },
     "defaultBlueprint": "@nrg-ui-ember"
   }
