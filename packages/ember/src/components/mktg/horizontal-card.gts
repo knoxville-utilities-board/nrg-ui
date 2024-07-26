@@ -24,8 +24,8 @@ export default class HorizontalCard extends Component<HorizontalCardSignature> {
   <template>
     <Card ...attributes>
       <:card-body>
-        <div class="d-flex flex-column flex-md-row p-md-3">
-          <div class="d-flex flex-column justify-content-start pb-2">
+        <div class="row-md d-flex flex-column flex-md-row p-md-3">
+          <div class="col-md d-flex flex-column justify-content-start pb-2">
             <div class="d-flex flex-column justify-content-between w-100 m-0">
               {{#if this.title}}
                 <p class="fw-bold fs-5 m-0">{{this.title}}</p>
@@ -38,9 +38,13 @@ export default class HorizontalCard extends Component<HorizontalCardSignature> {
               {{yield to="left"}}
             </div>
           </div>
-          <div class="vr d-none d-md-flex mx-5 text-secondary"></div>
-          <hr class="d-flex d-md-none text-secondary" />
-          <div>
+          {{#if (has-block "right")}}
+            <div class="col-md-1 d-flex justify-content-center">
+              <div class="vr d-none d-md-flex text-secondary"></div>
+            </div>
+            <hr class="d-flex d-md-none text-secondary" />
+          {{/if}}
+          <div class="col-md">
             {{yield to="right"}}
           </div>
         </div>

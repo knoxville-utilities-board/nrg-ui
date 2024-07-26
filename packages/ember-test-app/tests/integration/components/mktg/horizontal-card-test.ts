@@ -36,7 +36,7 @@ module('Integration | Component | mktg/horizontal-card', function (hooks) {
         'Content in left named block renders correctly',
       );
     assert
-      .dom('.card .card-body div div:nth-of-type(2)')
+      .dom('.card .card-body div div:nth-of-type(2) div')
       .hasClass('vr', 'Vertical rule divider renders');
     assert
       .dom('.card .card-body div hr')
