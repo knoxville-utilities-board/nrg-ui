@@ -43,13 +43,11 @@ export default class FaqComponent extends Component<FaqSignature> {
 
   <template>
     <div class="d-flex flex-column p-2 m-2 bg-white rounded" ...attributes>
-      <div
-        role="button"
-        class="d-flex justify-content-between align-items-center"
-        {{on "click" this.toggleMenu}}
-      >
+      <div class="d-flex justify-content-between align-items-center">
         <p class="fw-bold m-2">{{this.question}}</p>
-        <i class="text-dark h2 {{this.menuIcon}}" />
+        <button type="button" class="btn" {{on "click" this.toggleMenu}}><i
+            class="text-dark h2 {{this.menuIcon}}"
+          /></button>
       </div>
       <div class="{{this.classList}}">
         <p class="m-2">{{this.answer}}</p>
