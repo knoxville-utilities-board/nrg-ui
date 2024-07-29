@@ -202,7 +202,7 @@
     <Mktg::Service-Pricing
       @serviceName="Fiber"
       @serviceType="The Gig"
-      @price="$65/mo"
+      @description="$65/mo"
       @icon="bi-wifi"
       as |Addon|
     >
@@ -211,7 +211,7 @@
     <Mktg::Service-Pricing
       @serviceName="TV"
       @serviceType="Silver"
-      @price="$107/mo"
+      @description="$107/mo"
       @icon="bi-tv"
       as |Addon|
     >
@@ -222,25 +222,27 @@
     </Mktg::Service-Pricing>
     <Mktg::Service-Pricing
       @serviceName="Phone"
-      @price="$129/mo"
+      @description="$129/mo"
       @icon="bi-telephone"
     />
     <Mktg::Service-Pricing
       @serviceName="Fiber"
       @serviceType="The Gig"
-      @price="Required"
+      @description="Required"
       @icon="bi-wifi"
       @active="true"
     />
     <Mktg::Service-Pricing
       @serviceName="TV"
-      @price="Add (optional)"
+      @description="Add (optional)"
       @icon="bi-tv"
+      @descriptionDisabled = {{true}}
     />
     <Mktg::Service-Pricing
       @serviceName="Phone"
-      @price="Add (optional)"
+      @description="Add (optional)"
       @icon="bi-telephone"
+      @descriptionDisabled = {{true}}
     />
   </div>
 </main>

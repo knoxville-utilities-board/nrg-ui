@@ -20,8 +20,9 @@ interface MktgServicePricingSignature {
     icon?: NrgIconValue;
     serviceName?: string;
     serviceType?: string;
-    price?: string;
+    description?: string;
     active?: boolean;
+    descriptionDisabled?: boolean;
   };
   Blocks: {
     default: [ComponentLike<typeof Addon>];
@@ -38,7 +39,9 @@ const Addon: TOC<AddonSignature> = <template>
         {{@addon}}
       {{/if}}
     </div>
-    <div class="col-auto text-end">{{@price}}</div>
+    <div class="col-auto text-end">
+      {{@price}}
+    </div>
   </div>
 </template>;
 
@@ -60,7 +63,13 @@ const MktgServicePricing: TOC<MktgServicePricingSignature> = <template>
               {{@serviceName}}
             {{/if}}
           </div>
-          <div class="col-auto text-end fs-5">{{@price}}</div>
+          <div
+            class="col-auto text-end fs-5
+              {{if
+                @descriptionDisabled
+                'fw-normal text-decoration-underline text-secondary'
+              }}"
+          >{{@description}}</div>
         </div>
         {{yield (component Addon)}}
       </div>
