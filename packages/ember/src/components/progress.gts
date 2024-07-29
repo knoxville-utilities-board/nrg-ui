@@ -1,4 +1,5 @@
 import Component from '@glimmer/component';
+import { htmlSafe } from '@ember/template';
 
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike } from '@glint/template';
@@ -55,7 +56,7 @@ class Segment extends Component<SegmentSignature> {
   }
 
   get widthStyle() {
-    return `width: ${this.args.progress}%`;
+    return htmlSafe(`width: ${this.args.progress}%`);
   }
 
   <template>
