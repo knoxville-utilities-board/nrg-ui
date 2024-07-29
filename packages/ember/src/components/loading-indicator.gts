@@ -2,14 +2,14 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 
 export const typeBorder = 'border';
-export const typeGrowing = 'growing';
+export const typeGrow = 'grow';
 
 interface LoadingIndicatorSignature {
   Element: HTMLDivElement;
   Args: {
     label?: string;
     showLabel?: boolean;
-    type?: typeof typeBorder | typeof typeGrowing;
+    type?: typeof typeBorder | typeof typeGrow;
   };
 }
 
@@ -17,11 +17,11 @@ export default class LoadingIndicatorComponent extends Component<LoadingIndicato
   get typeClass() {
     const { type } = this.args;
     assert(
-      'type must be either `border` or `growing`',
-      type === undefined || type === typeBorder || type === typeGrowing,
+      'type must be either `border` or `grow`',
+      type === undefined || type === typeBorder || type === typeGrow,
     );
 
-    if (type === typeGrowing) {
+    if (type === typeGrow) {
       return 'spinner-grow';
     }
     return 'spinner-border';
