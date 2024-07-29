@@ -67,7 +67,7 @@ const MktgServicePricing: TOC<MktgServicePricingSignature> = <template>
             class="col-auto text-end fs-5
               {{if
                 @descriptionDisabled
-                'fw-normal text-decoration-underline text-secondary'
+                'fw-normal text-decoration-underline text-light-emphasis'
               }}"
           >{{@description}}</div>
         </div>
