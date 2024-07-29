@@ -16,17 +16,9 @@ module('Integration | components | mktg/service-pricing', function (hooks) {
       .dom('div div:nth-child(1) div:nth-child(1) > i')
       .hasClass('bi-emoji-smile');
 
-    assert
-      .dom(
-        'div div:nth-child(1) div:nth-child(2) div:nth-child(1) div:nth-child(1)',
-      )
-      .hasText('Service');
+    assert.dom('div div:nth-child(1) div:nth-child(2)').hasText('Service');
 
-    assert
-      .dom(
-        'div div:nth-child(1) div:nth-child(2) div:nth-child(1) div:nth-child(2)',
-      )
-      .hasText('Description');
+    assert.dom('div div:nth-child(1) div:nth-child(3)').hasText('Description');
   });
 
   test('it has different color border when active', async function () {
@@ -43,20 +35,14 @@ module('Integration | components | mktg/service-pricing', function (hooks) {
     await render(hbs`<Mktg::ServicePricing @description="Description Test"/>`);
 
     assert
-      .dom(
-        'div div:nth-child(1) div:nth-child(2) div:nth-child(1) div:nth-child(2)',
-      )
+      .dom('div div:nth-child(1) div:nth-child(3)')
       .doesNotHaveClass('fw-normal');
 
     await render(
       hbs`<Mktg::ServicePricing @description="Description Test" @descriptionDisabled={{true}}/>`,
     );
 
-    assert
-      .dom(
-        'div div:nth-child(1) div:nth-child(2) div:nth-child(1) div:nth-child(2)',
-      )
-      .hasClass('fw-normal');
+    assert.dom('div div:nth-child(1) div:nth-child(3)').hasClass('fw-normal');
   });
 
   test('it can render a service type', async function () {
@@ -65,9 +51,7 @@ module('Integration | components | mktg/service-pricing', function (hooks) {
       @serviceType="Service Type"/>`);
 
     assert
-      .dom(
-        'div div:nth-child(1) div:nth-child(2) div:nth-child(1) div:nth-child(1)',
-      )
+      .dom('div div:nth-child(1) div:nth-child(2)')
       .hasText('Service: Service Type');
   });
 
@@ -81,17 +65,9 @@ module('Integration | components | mktg/service-pricing', function (hooks) {
       <Addon @addon="Addon" @price="$100" />
     </Mktg::Service-Pricing>`);
 
-    assert
-      .dom(
-        'div div:nth-child(1) div:nth-child(2) div:nth-child(2) div:nth-child(1)',
-      )
-      .hasText('Addon');
+    assert.dom('div div:nth-child(2) div:nth-child(1)').hasText('Addon');
 
-    assert
-      .dom(
-        'div div:nth-child(1) div:nth-child(2) div:nth-child(2) div:nth-child(2)',
-      )
-      .hasText('$100');
+    assert.dom('div div:nth-child(2) div:nth-child(2)').hasText('$100');
   });
 
   test('it can render an addon with a quantity', async function () {
@@ -105,9 +81,7 @@ module('Integration | components | mktg/service-pricing', function (hooks) {
     </Mktg::Service-Pricing>`);
 
     assert
-      .dom(
-        'div div:nth-child(1) div:nth-child(2) div:nth-child(2) div:nth-child(1)',
-      )
+      .dom('div div:nth-child(2) div:nth-child(1)')
       .hasText('Addon | Qty: 2');
   });
 });
