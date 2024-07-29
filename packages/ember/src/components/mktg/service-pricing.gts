@@ -1,6 +1,7 @@
 import type { NrgIconValue } from '../../icon-types';
 import type { TOC } from '@ember/component/template-only';
 import { concat } from '@ember/helper';
+import type { ComponentLike } from '@glint/template';
 
 interface AddonSignature {
   Args: {
@@ -23,7 +24,7 @@ interface MktgServicePricingSignature {
     active?: boolean;
   };
   Blocks: {
-    default: [];
+    default: [ComponentLike<typeof Addon>];
   };
   Element: HTMLElement;
 }
