@@ -9,6 +9,8 @@ interface PromoSignature {
     headerText?: string;
     // eslint-disable-next-line no-unused-vars
     onClick?: (evt: MouseEvent) => unknown;
+    imageSrc?: string;
+    imageAltText?: string;
   };
   Blocks: {
     header: [];
@@ -37,8 +39,8 @@ export default class PromoComponent extends Component<PromoSignature> {
         <img
           {{! template-lint-disable "no-inline-styles" }}
           style="width: 100%; height: 100%;"
-          src="https://place-hold.it/700x700"
-          alt="placholder"
+          src={{@imageSrc}}
+          alt={{@imageAltText}}
         />
       </div>
     </div>
