@@ -24,7 +24,6 @@ declare interface BaseInputFieldSignature {
     onChange?: (value: any) => unknown;
     onBlur?: () => unknown;
     onFocus?: () => unknown;
-
   };
 }
 

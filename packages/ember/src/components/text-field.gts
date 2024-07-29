@@ -5,7 +5,7 @@ import { isEmpty } from '@ember/utils';
 import { hash } from '@ember/helper';
 
 import type { ComponentLike } from '@glint/template';
-import type ValidationComponentSignature from './validation-interface.ts'
+import type ValidationComponentSignature from './validation-interface.ts';
 
 const defaultType = 'text';
 
@@ -46,7 +46,6 @@ declare interface TextFieldSignature extends ValidationComponentSignature {
   };
 
 }
-
 
 
 export default class NrgTextFieldComponent extends ValidationComponent<TextFieldSignature> {
@@ -92,7 +91,7 @@ export default class NrgTextFieldComponent extends ValidationComponent<TextField
         input = min.toString();
       }
     }
-    return isValid ? input: undefined;
+    return isValid ? input : undefined;
   }
 
   @action

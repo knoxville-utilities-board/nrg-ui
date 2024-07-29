@@ -20,7 +20,7 @@ declare interface FormContainerSignature {
   Blocks: {
     default: [
       {
-        "field": ComponentLike<FormField>;
+        field: ComponentLike<FormField>;
       },
     ];
   };

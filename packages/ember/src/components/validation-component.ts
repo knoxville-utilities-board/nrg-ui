@@ -1,8 +1,6 @@
-//@ts-nocheck
-
 import { action, get, set } from '@ember/object';
 import Component from '@glimmer/component';
-import ensurePathExists from '../utils/ensure-path-exists';
+import ensurePathExists from '../utils/ensure-path-exists.js';
 import { schedule } from '@ember/runloop';
 import type ValidationComponentSignature from './validation-interface.ts';
 
@@ -39,6 +37,10 @@ export default class ValidationComponent<
       return undefined;
     }
 
+    if (this.valuePath === undefined) {
+      return undefined;
+    }
+
     if (!this.useNestedValuePath) {
       return this.model?.[this.valuePath];
     }
@@ -48,6 +50,14 @@ export default class ValidationComponent<
 
   set value(newValue) {
     if (!this.hasModelPath) {
+      return;
+    }
+
+    if (this.valuePath === undefined) {
+      return;
+    }
+
+    if (this.model === undefined) {
       return;
     }
 
@@ -70,9 +80,9 @@ export default class ValidationComponent<
     ensurePathExists(this.model, this.valuePath);
 
     if (newValue === null) {
-      set(this.model, this.valuePath, null);
+      set(this.model, this.valuePath, null as any);
     } else if (Array.isArray(newValue)) {
-      set(this.model, this.valuePath, [...newValue]);
+      set(this.model, this.valuePath, [...newValue] as any);
     } else if (typeof newValue === 'object') {
       set(this.model, this.valuePath, { ...newValue });
     } else {
@@ -96,7 +106,7 @@ export default class ValidationComponent<
   }
 
   get hasModelPath() {
-    return Boolean(this.model && this.valuePath);
+    return Boolean(this.model && this.valuePath != null);
   }
 
   getDefaultValue() {

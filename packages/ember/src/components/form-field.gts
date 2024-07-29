@@ -2,8 +2,8 @@ import { guidFor } from '@ember/object/internals';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { hash } from '@ember/helper';
-import BadSelect from './bad-select.gjs'
-import TextField from './text-field.gts'
+import BadSelect from './bad-select.gjs';
+import TextField from './text-field.gts';
 
 import type { ComponentLike } from '@glint/template';
 
@@ -19,8 +19,8 @@ declare interface FormFieldSignature {
   Blocks: {
     default: [
       {
-        "text-field": ComponentLike<TextField>;
-        "bad-select": ComponentLike<BadSelect>;
+        'text-field': ComponentLike<TextField>;
+        'bad-select': ComponentLike<BadSelect>;
       },
     ];
   };
