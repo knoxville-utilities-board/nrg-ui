@@ -31,10 +31,10 @@ interface MktgServicePricingSignature {
 }
 
 const Addon: TOC<AddonSignature> = <template>
-  <div class="row align-items-center mx-0 my-2" ...attributes>
-    <div class="col text-truncate ps-0">
+  <div class="row align-items-center my-2" ...attributes>
+    <div class="col text-truncate">
       {{#if @quantity}}
-        {{concat @addon " | Qty:" @quantity}}
+        {{concat @addon " | Qty: " @quantity}}
       {{else}}
         {{@addon}}
       {{/if}}
@@ -47,16 +47,16 @@ const Addon: TOC<AddonSignature> = <template>
 
 const MktgServicePricing: TOC<MktgServicePricingSignature> = <template>
   <div
-    class="card p-4 border-2 rounded-4 my-4 {{if @active 'border-primary'}}"
+    class="card p-4 border-2 rounded-4 {{if @active 'border-primary'}} my-4"
     ...attributes
   >
-    <div class="row">
-      <div class="col-12 col-sm-auto align-items-center py-2">
+    <div class="row my-2">
+      <div class="col-sm-auto align-items-center my-2 my-sm-0">
         <i class="bi {{@icon}} fs-1" />
       </div>
       <div class="col">
-        <div class="row align-items-center mx-0 my-2 fw-bold">
-          <div class="col text-truncate ps-0 fs-5">
+        <div class="row align-items-center fw-bold">
+          <div class="col text-truncate fs-5">
             {{#if @serviceType}}
               {{concat @serviceName ": " @serviceType}}
             {{else}}
