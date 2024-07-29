@@ -1,7 +1,1 @@
-/* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
-
-[data-theme="marketing"] {
-  .btn {
-    --bs-btn-border-radius: 999rem;
-  }
-}
+@import url("marketing-theme.css");
