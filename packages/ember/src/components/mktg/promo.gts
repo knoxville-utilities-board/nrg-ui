@@ -7,10 +7,10 @@ interface PromoSignature {
   Args: {
     productName?: string;
     headerText?: string;
-    // eslint-disable-next-line no-unused-vars
-    onClick?: (evt: MouseEvent) => unknown;
     imageSrc?: string;
     imageAltText?: string;
+    // eslint-disable-next-line no-unused-vars
+    onClick?: (evt: MouseEvent) => unknown;
   };
   Blocks: {
     header: [];
@@ -27,7 +27,12 @@ export default class PromoComponent extends Component<PromoSignature> {
     this.args.onClick?.(evt);
   }
   <template>
-    <div class="row bg-primary text-white" ...attributes>
+    <div
+      class="row bg-primary text-white"
+      role="button"
+      {{on "click" this.onClick}}
+      ...attributes
+    >
       <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
         <div class="p-3 p-md-5">
           <p class="text-uppercase p-0 my-2 fw-semibold">{{@productName}}</p>
