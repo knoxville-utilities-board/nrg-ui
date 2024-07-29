@@ -7,11 +7,11 @@ module('Integration | components | mktg/faq', function (hooks) {
   setupRenderingTest(hooks);
 
   test('faq renders', async function () {
-    await render(hbs`<Mktg::Faq
-      class="test"
-      @question="Question"
-      @answer="Answer"
-    />`);
+    await render(hbs`<Mktg::Faq class="test" @question="Question">
+      <:answer>
+        <p>Answer</p>
+      </:answer>
+    </Mktg::Faq>`);
 
     assert
       .dom('.d-flex.flex-column.p-2.m-2.bg-white.rounded.test')
@@ -43,19 +43,22 @@ module('Integration | components | mktg/faq', function (hooks) {
       .dom('div div button i')
       .hasClass('bi-dash', 'Icon switches to dash after clicking button');
 
-    await render(hbs`<Mktg::Faq
-        @open={{true}}
-        @question="Question"
-        @answer="Answer"
-      />`);
+    await render(hbs`<Mktg::Faq @defaultOpen={{true}} @question="Question">
+      <:answer>
+        <p>Answer</p>
+      </:answer>
+    </Mktg::Faq>`);
     assert
       .dom('div div div:nth-of-type(2)')
       .hasClass(
         'show',
-        'Div containing answer has class show when open parameter is true',
+        'Div containing answer has class show when defaultOpen parameter is true',
       );
     assert
       .dom('div div button i')
-      .hasClass('bi-dash', 'Icon starts as dash when open parameter is true');
+      .hasClass(
+        'bi-dash',
+        'Icon starts as dash when defaultOpen parameter is true',
+      );
   });
 });

@@ -7,14 +7,16 @@ interface FaqSignature {
   Element: HTMLDivElement;
   Args: {
     question?: string;
-    answer?: string;
-    open?: boolean;
+    defaultOpen?: boolean;
+  };
+  Blocks: {
+    answer: [];
   };
 }
 
 export default class FaqComponent extends Component<FaqSignature> {
   @tracked
-  isMenuOpen = this.args.open || false;
+  isMenuOpen = this.args.defaultOpen || false;
 
   @action
   toggleMenu() {
@@ -23,10 +25,6 @@ export default class FaqComponent extends Component<FaqSignature> {
 
   get question() {
     return this.args.question;
-  }
-
-  get answer() {
-    return this.args.answer;
   }
 
   get classList() {
@@ -49,8 +47,8 @@ export default class FaqComponent extends Component<FaqSignature> {
             class="text-dark h2 {{this.menuIcon}}"
           /></button>
       </div>
-      <div class="{{this.classList}}">
-        <p class="m-2">{{this.answer}}</p>
+      <div class="mx-2 mb-0 mt-2 {{this.classList}}">
+        {{yield to="answer"}}
       </div>
     </div>
   </template>
