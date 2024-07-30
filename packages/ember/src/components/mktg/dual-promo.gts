@@ -5,45 +5,39 @@ interface DualPromoSignature {
   Args: {
     subject?: string;
     headerText?: string;
-    callout?: string;
-    leftProductTitle?: string;
-    rightProductTitle?: string;
+    leftPromoTitle?: string;
+    rightPromoTitle?: string;
   };
   Blocks: {
     'left-img': [];
     'right-img': [];
     'left-description': [];
     'right-description': [];
+    'header-description': [];
   };
 }
 
 const DualPromo: TOC<DualPromoSignature> = <template>
   <div class="row p-4 text-primary" ...attributes>
-    <div
-      class="col-12 d-flex flex-column align-items-center justify-content-center mb-4"
-    >
+    <div class="col-12 mb-5 text-center">
       <p class="text-uppercase p-0 m-0 fw-semibold">{{@subject}}</p>
       <p class="mx-0 my-2 fw-semibold fs-1">{{@headerText}}</p>
-      <p class="m-0">{{@callout}}</p>
+      {{yield to="header-description"}}
     </div>
-    <div class="col-6 d-flex justify-content-center">
-      <div class="col-10">
-        <div class="mb-4">
-          {{yield to="left-img"}}
-        </div>
-        <div class="mx-4">
-          <p class="fw-semibold fs-3">{{@leftProductTitle}}</p>
+    <div class="col-12 col-md-6 d-flex justify-content-center mb-5">
+      <div class="col-12 col-md-10 justify-content-center">
+        {{yield to="left-img"}}
+        <div class="mx-md-4">
+          <p class="fw-semibold fs-3">{{@leftPromoTitle}}</p>
           {{yield to="left-description"}}
         </div>
       </div>
     </div>
-    <div class="col-6 d-flex justify-content-center">
-      <div class="col-10">
-        <div class="mb-4">
-          {{yield to="right-img"}}
-        </div>
-        <div class="mx-4">
-          <p class="fw-semibold fs-3">{{@rightProductTitle}}</p>
+    <div class="col-12 col-md-6 d-flex justify-content-center mb-5">
+      <div class="col-12 col-md-10 justify-content-center">
+        {{yield to="right-img"}}
+        <div class="mx-md-4">
+          <p class="fw-semibold fs-3">{{@rightPromoTitle}}</p>
           {{yield to="right-description"}}
         </div>
       </div>

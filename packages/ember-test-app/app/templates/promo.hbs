@@ -1,46 +1,49 @@
 {{! <div class="container p-3">
   <Mktg::Promo />
 </div> }}
-<main data-theme="marketing" class="h-full d-flex bg-primary-subtle">
+<main data-theme="marketing" class="bg-primary-subtle vw-100">
   <div class="container p-3">
     <Mktg::DualPromo
-      @subject="Fiber Add-ons"
+      @subject="Fiber add-ons"
       @headerText="Add TV and Phone Packages"
-      @callout="Make the most of your KUB Fiber plan by adding our TV and phone services."
-      @leftProductTitle="KUB TV Packages"
-      @rightProductTitle="KUB Phone Packages"
+      @leftPromoTitle="KUB TV Packages"
+      @rightPromoTitle="KUB Phone Packages"
     >
+      <:header-description>
+        <p class="m-0">Make the most of your KUB Fiber plan by adding our TV and
+          phone services.</p>
+      </:header-description>
       <:left-img>
         <img
-          src="https://place-hold.it/100x100"
+          src="https://place-hold.it/400x150"
           alt="Placeholder"
-          class="w-100 h-25 rounded"
+          class="rounded d-flex mb-3 w-100"
         />
       </:left-img>
       <:left-description>
-        <p>
-          With KUB Smart Gig, we will provide you with a router, and you'll have
-          everything you need to seamlessly use your wired and wireless devices,
-          keeping each of them running at optimal speeds at the same time.<br />
-          <span class="fw-semibold">For only $15 per month</span>
-          <ul class="my-3">
-            <li><span class="fw-semibold">$15 a month:</span>
-              We'll provide you a router to get everything set up to run
-              smoothly</li>
-            <li><span class="fw-semibold">24/7/365 Support:</span>
-              Get local support whenever you need it.</li>
-          </ul>
-        </p>
-        <Button
-          type="button"
-          class="mt-2 btn btn-primary"
-        >Learn More</Button>
+        <div>
+          <p>
+            With KUB Smart Gig, we will provide you with a router, and you'll
+            have everything you need to seamlessly use your wired and wireless
+            devices, keeping each of them running at optimal speeds at the same
+            time.<br />
+            <span class="fw-semibold">For only $15 per month</span>
+            <ul class="my-3">
+              <li><span class="fw-semibold">$15 a month:</span>
+                We'll provide you a router to get everything set up to run
+                smoothly</li>
+              <li><span class="fw-semibold">24/7/365 Support:</span>
+                Get local support whenever you need it.</li>
+            </ul>
+          </p>
+          <Button type="button" class="mt-2 btn btn-primary">Learn More</Button>
+        </div>
       </:left-description>
       <:right-img>
         <img
-          src="https://place-hold.it/100x100"
+          src="https://place-hold.it/400x150"
           alt="Placeholder"
-          class="w-100 h-25 rounded"
+          class="rounded d-flex mb-3 w-100"
         />
       </:right-img>
       <:right-description>
@@ -57,10 +60,55 @@
               Get local support whenever you need it.</li>
           </ul>
         </p>
-        <Button
-          type="button"
-          class="mt-2 btn btn-primary"
-        >Learn More</Button>
+        <Button type="button" class="mt-2 btn btn-primary">Learn More</Button>
+      </:right-description>
+    </Mktg::DualPromo>
+    <Mktg::DualPromo
+      @subject="Construction Rollout"
+      @headerText="Construction rollout and how it affects your day-to-day life"
+      @leftPromoTitle="Overhead Construction"
+      @rightPromoTitle="Underground Construction"
+    >
+      <:header-description>
+        <p class="m-0">KUB is installing its fiber optic cables alongside
+          existing electric wires. Fiber cables will be underground where
+          electric lines are underground, and overhead where electric lines are
+          overhead.</p>
+        <div class="d-flex justify-content-center">
+          <Button type="button" class="mx-2 mt-2 btn btn-primary">Contact Us</Button>
+          <Button type="button" class="mx-2 mt-2 btn text-primary">Or call
+            (865)111-2323</Button>
+        </div>
+      </:header-description>
+      <:left-img>
+        <img
+          src="https://place-hold.it/400x150"
+          alt="Placeholder"
+          class="rounded d-flex mb-3 w-100"
+        />
+      </:left-img>
+      <:left-description>
+        <p>The vast majority of KUB's fiber network will be connected to
+          existing utility poles by KUB contractors. This work is minimally
+          obstructive to traffic and customer property. This work does not
+          require any digging or boring.</p>
+        <Button type="button" class="mt-2 btn btn-primary">Have Questions?</Button>
+      </:left-description>
+      <:right-img>
+        <img
+          src="https://place-hold.it/400x150"
+          alt="Placeholder"
+          class="rounded d-flex mb-3 w-100"
+        />
+      </:right-img>
+      <:right-description>
+        <p>In some cases, KUB and its contract crews will have to bore
+          underneath the ground and roadways to lay the fiber. The boring
+          process involves digging in existing right-of-ways, often near roads.
+          We will use specialized equipment and follow industry baest practices
+          to minimize disruptions and complete the project efficiently.</p>
+        <Button type="button" class="mt-2 btn btn-primary">Watch our
+          Construction Video</Button>
       </:right-description>
     </Mktg::DualPromo>
   </div>
