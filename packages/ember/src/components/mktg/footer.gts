@@ -21,7 +21,6 @@ interface MarketingFooterSignature {
     'social-media': [];
     brand: [];
     legal: [];
-    default?: [];
   };
 }
 
