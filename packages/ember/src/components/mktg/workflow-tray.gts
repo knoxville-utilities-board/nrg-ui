@@ -1,5 +1,4 @@
 import type { TOC } from '@ember/component/template-only';
-import Button from '@nrg-ui/ember/components/button';
 
 export interface MktgWorkflowTraySignature {
   Args: {
