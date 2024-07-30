@@ -6,8 +6,6 @@ interface PromoSignature {
     productName?: string;
     headerText?: string;
     vertical?: boolean;
-    // eslint-disable-next-line no-unused-vars
-    onClick?: (evt: MouseEvent) => unknown;
   };
   Blocks: {
     img: [];
@@ -22,8 +20,8 @@ const Promo: TOC<PromoSignature> = <template>
       <div class="d-flex justify-content-center mb-5">
         <div class="col-12 col-md-10 justify-content-center">
           {{yield to="img"}}
-          <div class="mx-md-4">
-            <p class="fw-semibold fs-3">{{@productName}}</p>
+          <div class="ms-md-4">
+            <p class="fw-semibold fs-3 my-2">{{@productName}}</p>
             {{yield to="description"}}
           </div>
         </div>

@@ -33,7 +33,10 @@ interface PromoContainerSignature {
 }
 const PromoContainer: TOC<PromoContainerSignature> = <template>
   <div class="container">
-    <div class="row p-4 text-primary" ...attributes>
+    <div
+      class="row p-4 text-primary d-flex justify-content-center"
+      ...attributes
+    >
       <div class="col-12 text-center">
         <p class="text-uppercase p-0 m-0 fw-semibold">{{@subject}}</p>
         <p class="mx-0 my-2 fw-semibold fs-1">{{@title}}</p>
