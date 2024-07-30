@@ -45,11 +45,13 @@ module('Integration | components | mktg/footer', function (hooks) {
   });
 
   test('it contains a brand section', async function (assert) {
-    await render(hbs`<Mktg::Footer>
-      <:brand>
-        Brand Test
-      </:brand>
-    </Mktg::Footer>`);
+    await render(hbs`
+      <Mktg::Footer>
+        <:nav>
+          Nav Test
+        </:nav>
+      </Mktg::Footer>
+    `);
 
     assert
       .dom('footer div div:nth-child(2) div:first-child')
