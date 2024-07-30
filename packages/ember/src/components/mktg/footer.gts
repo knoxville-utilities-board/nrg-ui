@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { or } from 'ember-truth-helpers';
+import type { TOC } from '@ember/component/template-only';
 
 interface FooterSectionSignature {
   Element: HTMLDivElement;
@@ -14,7 +15,7 @@ interface FooterSectionSignature {
 interface MarketingFooterSignature {
   Element: HTMLElement;
   Args: {
-    hasHorizontalLine?: boolean;
+    hasDivider?: boolean;
   };
   Blocks: {
     nav: [];
@@ -40,40 +41,36 @@ class FooterSection extends Component<FooterSectionSignature> {
   </template>
 }
 
-export default class MarketingFooterComponent extends Component<MarketingFooterSignature> {
-  get hasHorizontalLine() {
-    return this.args.hasHorizontalLine ?? false;
-  }
-
-  <template>
-    <footer class="bg-primary text-light mt-auto" ...attributes>
-      <div class="container p-5">
+const MarketingFooterComponent: TOC<MarketingFooterSignature> = <template>
+  <footer class="bg-primary text-light mt-auto" ...attributes>
+    <div class="container p-5">
+      <div
+        class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center"
+      >
+        <FooterSection>
+          {{yield to="nav"}}
+        </FooterSection>
+        <FooterSection @isCollapsible={{false}}>
+          {{yield to="social-media"}}
+        </FooterSection>
+      </div>
+      {{#if @hasDivider}}
+        <hr class="mb-0 mt-3" />
+      {{/if}}
+      {{#if (or (has-block "brand") (has-block "legal"))}}
         <div
-          class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center"
+          class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center mt-0"
         >
           <FooterSection>
-            {{yield to="nav"}}
+            {{yield to="brand"}}
           </FooterSection>
-          <FooterSection @isCollapsible={{false}}>
-            {{yield to="social-media"}}
+          <FooterSection>
+            {{yield to="legal"}}
           </FooterSection>
         </div>
-        {{#if this.hasHorizontalLine}}
-          <hr class="mb-0 mt-3" />
-        {{/if}}
-        {{#if (or (has-block "brand") (has-block "legal"))}}
-          <div
-            class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center mt-0"
-          >
-            <FooterSection>
-              {{yield to="brand"}}
-            </FooterSection>
-            <FooterSection>
-              {{yield to="legal"}}
-            </FooterSection>
-          </div>
-        {{/if}}
-      </div>
-    </footer>
-  </template>
-}
+      {{/if}}
+    </div>
+  </footer>
+</template>
+
+export default MarketingFooterComponent
