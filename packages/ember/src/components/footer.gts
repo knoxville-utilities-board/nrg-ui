@@ -5,7 +5,6 @@ interface FooterSignature {
   Blocks: {
     left?: [];
     right?: [];
-    default?: [];
   };
 }
 
