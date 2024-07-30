@@ -29,9 +29,9 @@ const MktgWorkflowTray: TOC<MktgWorkflowTraySignature> = <template>
         {{@monthly-bill-total}}
       </div>
     </div>
-    {{#if (has-block "default")}}
+    {{#if (has-block)}}
       <div class="row mt-5 mx-0">
-        {{yield to="default"}}
+        {{yield}}
       </div>
     {{/if}}
   </div>
