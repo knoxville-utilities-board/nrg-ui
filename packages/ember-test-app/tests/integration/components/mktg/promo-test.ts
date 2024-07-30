@@ -10,9 +10,13 @@ module('Integration | components | mktg/promo', function (hooks) {
     await render(hbs`  <Mktg::Promo
       class="promo"
       @productName="Product name"
-      @imageSrc="https://place-hold.it/700x700"
-      @imageAltText="Placeholder"
     >
+      <:img>
+          <img
+            src="https://place-hold.it/700x700"
+            alt="Placeholder"
+          />
+      </:img>
       <:header>
         <p class="m-0 p-0">Header Text</p>
       </:header>

@@ -5,12 +5,11 @@ interface PromoSignature {
   Args: {
     productName?: string;
     headerText?: string;
-    imageSrc?: string;
-    imageAltText?: string;
     // eslint-disable-next-line no-unused-vars
     onClick?: (evt: MouseEvent) => unknown;
   };
   Blocks: {
+    img: [];
     header: [];
     description: [];
   };
@@ -26,12 +25,7 @@ const Promo: TOC<PromoSignature> = <template>
       </div>
     </div>
     <div class="col-12 col-md-6 p-0">
-      <img
-        {{! template-lint-disable "no-inline-styles" }}
-        style="width: 100%; height: 100%;"
-        src={{@imageSrc}}
-        alt={{@imageAltText}}
-      />
+      {{yield to="img"}}
     </div>
   </div>
 </template>;

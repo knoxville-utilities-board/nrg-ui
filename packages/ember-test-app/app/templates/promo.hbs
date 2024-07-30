@@ -1,10 +1,13 @@
 <main data-theme="marketing" class="bg-primary-subtle vh-100 vw-100">
   <div class="container p-3">
-    <Mktg::Promo
-      @productName="Smart Gig Add-on"
-      @imageSrc="https://place-hold.it/700x700"
-      @imageAltText="Placeholder"
-    >
+    <Mktg::Promo @productName="Smart Gig Add-on">
+      <:img>
+        <img
+          src="https://place-hold.it/700x700"
+          alt="Placeholder"
+          class="w-100 h-100"
+        />
+      </:img>
       <:header>
         <p class="m-0 p-0">Add Smart Gig <br />Managed Wi-Fi</p>
       </:header>
