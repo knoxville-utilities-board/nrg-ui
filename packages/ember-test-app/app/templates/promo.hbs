@@ -1,11 +1,50 @@
-<main data-theme="marketing" class="bg-primary-subtle vh-100 vw-100">
+<main data-theme="marketing" class="container bg-primary-subtle">
   <div class="container p-3">
-    <Mktg::Promo @productName="Smart Gig Add-on">
+    <Mktg::Promo
+      class="bg-primary text-white row p-0"
+      @productName="Smart Gig Add-on"
+    >
       <:img>
         <img
           src="https://place-hold.it/700x700"
           alt="Placeholder"
           class="w-100 h-100"
+        />
+      </:img>
+      <:header>
+        <p class="m-0 p-0">Add Smart Gig <br />Managed Wi-Fi</p>
+      </:header>
+      <:description>
+        <p>
+          With KUB Smart Gig, we will provide you with a router, and you'll have
+          everything you need to seamlessly use your wired and wireless devices,
+          keeping each of them running at optimal speeds at the same time.
+          <span class="fw-semibold">For only $15 per month</span>
+          <ul class="my-3">
+            <li><span class="fw-semibold">$15 a month:</span>
+              We'll provide you a router to get everything set up to run
+              smoothly</li>
+            <li><span class="fw-semibold">24/7/365 Support:</span>
+              Get local support whenever you need it.</li>
+          </ul>
+        </p>
+        <Button
+          type="button"
+          class="mt-2 btn bg-primary-subtle text-primary"
+        >Learn More</Button>
+      </:description>
+    </Mktg::Promo>
+    <div class="p-3"></div>
+    <Mktg::Promo
+      class="col-12 col-md-6"
+      @vertical={{true}}
+      @productName="Smart Gig Add-on"
+    >
+      <:img>
+        <img
+          src="https://place-hold.it/700x700"
+          alt="Placeholder"
+          class="w-100 h-25 rounded"
         />
       </:img>
       <:header>
