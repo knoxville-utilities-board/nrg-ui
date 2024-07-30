@@ -1,6 +1,12 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render, type TestContext } from '@ember/test-helpers';
+import {
+  clearRender,
+  click,
+  render,
+  waitUntil,
+  type TestContext,
+} from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 interface Context extends TestContext {
@@ -55,13 +61,17 @@ module('Integration | components | alert', function (hooks) {
       .hasAria('label', 'Close')
       .hasAttribute('type', 'button')
       .hasClass('btn-close');
+
+    await clearRender();
   });
 
   test('it can be dismissed', async function (this: Context, assert) {
     assert.expect(1);
 
+    let actionFired = false;
+
     this.dismissHandler = () => {
-      assert.true(true, 'action is fired');
+      actionFired = true;
     };
 
     await render(hbs`
@@ -72,5 +82,9 @@ module('Integration | components | alert', function (hooks) {
     `);
 
     await click('button');
+    await clearRender();
+    await waitUntil(() => actionFired);
+
+    assert.true(actionFired, 'action is fired');
   });
 });
