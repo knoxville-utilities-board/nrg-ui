@@ -28,7 +28,7 @@ const Promo: TOC<PromoSignature> = <template>
       </div>
     </div>
   {{else}}
-    <div ...attributes>
+    <div class="row" ...attributes>
       <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
         <div class="p-3 p-md-5">
           <p class="text-uppercase p-0 my-2 fw-semibold">{{@productName}}</p>
@@ -36,7 +36,7 @@ const Promo: TOC<PromoSignature> = <template>
           {{yield to="description"}}
         </div>
       </div>
-      <div class="col-12 col-md-6 p-0">
+      <div class="col-12 col-md-6 p-0 d-flex flex-column">
         {{yield to="img"}}
       </div>
     </div>
