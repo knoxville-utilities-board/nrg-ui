@@ -1,4 +1,4 @@
-import Component from '@glimmer/component';
+import type { TOC } from '@ember/component/template-only';
 import Button from '@nrg-ui/ember/components/button';
 
 export interface MktgWorkflowTraySignature {
@@ -14,28 +14,31 @@ export interface MktgWorkflowTraySignature {
   Element: null;
 }
 
-export default class MktgWorkflowTray extends Component<MktgWorkflowTraySignature> {
-  <template>
-    <div class='p-2 my-3'>
-      <div class="row my-2">
-        <div class="col">
-          First Bill Including Fees
-        </div>
-        <div class="col-auto">
-          {{yield to="first-bill-total"}}
-        </div>
+const MktgWorkflowTray: TOC<MktgWorkflowTraySignature> = <template>
+  <div class="p-2 my-3">
+    <div class="row my-2">
+      <div class="col">
+        First Bill Including Fees
       </div>
-      <div class="row my-2">
-        <div class="col">
-          Monthly Bill
-        </div>
-        <div class="col-auto">
-          {{yield to="monthly-bill-total"}}
-        </div>
-      </div>
-      <div class="row mt-5 mx-0">
-        <Button class="btn bg-primary text-light p-3" @onClick={{@onClick}}>Next</Button>
+      <div class="col-auto">
+        {{yield to="first-bill-total"}}
       </div>
     </div>
-  </template>
-}
+    <div class="row my-2">
+      <div class="col">
+        Monthly Bill
+      </div>
+      <div class="col-auto">
+        {{yield to="monthly-bill-total"}}
+      </div>
+    </div>
+    <div class="row mt-5 mx-0">
+      <Button
+        class="btn bg-primary text-light p-3"
+        @onClick={{@onClick}}
+      >Next</Button>
+    </div>
+  </div>
+</template>;
+
+export default MktgWorkflowTray;
