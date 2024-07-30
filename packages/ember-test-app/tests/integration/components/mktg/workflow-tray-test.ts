@@ -32,6 +32,5 @@ module('Integration | components | nrg/workflow-tray', function (hooks) {
     assert.dom('div.row:nth-child(2)').containsText('Monthly Bill $100');
 
     await click('button');
-
   });
 });

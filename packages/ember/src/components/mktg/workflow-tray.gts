@@ -15,7 +15,7 @@ export interface MktgWorkflowTraySignature {
 }
 
 const MktgWorkflowTray: TOC<MktgWorkflowTraySignature> = <template>
-  <div class="p-2 my-3">
+  <div class="p-2 my-3" ...attributes>
     <div class="row my-2">
       <div class="col">
         First Bill Including Fees
