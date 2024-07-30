@@ -32,12 +32,11 @@ const MktgWorkflowTray: TOC<MktgWorkflowTraySignature> = <template>
         {{yield to="monthly-bill-total"}}
       </div>
     </div>
-    <div class="row mt-5 mx-0">
-      <Button
-        class="btn bg-primary text-light p-3"
-        @onClick={{@onClick}}
-      >Next</Button>
-    </div>
+    {{#if (has-block "default")}}
+      <div class="row mt-5 mx-0">
+        {{yield to="default"}}
+      </div>
+    {{/if}}
   </div>
 </template>;
 
