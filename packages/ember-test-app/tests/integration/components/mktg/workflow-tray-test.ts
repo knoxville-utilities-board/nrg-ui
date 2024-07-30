@@ -10,17 +10,18 @@ module('Integration | components | nrg/workflow-tray', function (hooks) {
     assert.expect(3);
 
     await render(hbs`
-    <Mktg::WorkflowTray>
-      <:first-bill-total>$65/mo</:first-bill-total>
-      <:monthly-bill-total>$100/mo</:monthly-bill-total>
-      <:default>Default</:default>
+    <Mktg::WorkflowTray
+      @first-bill-total="$65/mo"
+      @monthly-bill-total="$100/mo"
+    >
+      Default
     </Mktg::WorkflowTray>`);
 
     assert
       .dom('div.row:nth-child(1)')
       .containsText('First Bill Including Fees $65/mo');
 
-    assert.dom('div.row:nth-child(2)').containsText('Monthly Bill $100');
+    assert.dom('div.row:nth-child(2)').containsText('Monthly Bill $100/mo');
 
     assert.dom('div.row:nth-child(3)').containsText('Default');
   });

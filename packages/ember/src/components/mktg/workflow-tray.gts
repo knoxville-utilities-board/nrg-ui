@@ -2,12 +2,10 @@ import type { TOC } from '@ember/component/template-only';
 
 export interface MktgWorkflowTraySignature {
   Args: {
-    // eslint-disable-next-line no-unused-vars
-    onClick?: (evt: MouseEvent) => unknown;
+    'first-bill-total': string;
+    'monthly-bill-total': string;
   };
   Blocks: {
-    'first-bill-total': [];
-    'monthly-bill-total': [];
     default: [];
   };
   Element: HTMLDivElement;
@@ -20,7 +18,7 @@ const MktgWorkflowTray: TOC<MktgWorkflowTraySignature> = <template>
         First Bill Including Fees
       </div>
       <div class="col-auto">
-        {{yield to="first-bill-total"}}
+        {{@first-bill-total}}
       </div>
     </div>
     <div class="row my-2">
@@ -28,7 +26,7 @@ const MktgWorkflowTray: TOC<MktgWorkflowTraySignature> = <template>
         Monthly Bill
       </div>
       <div class="col-auto">
-        {{yield to="monthly-bill-total"}}
+        {{@monthly-bill-total}}
       </div>
     </div>
     {{#if (has-block "default")}}
