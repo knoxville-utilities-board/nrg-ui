@@ -11,7 +11,7 @@ export interface MktgWorkflowTraySignature {
     'monthly-bill-total': [];
     default: [];
   };
-  Element: null;
+  Element: HTMLDivElement;
 }
 
 const MktgWorkflowTray: TOC<MktgWorkflowTraySignature> = <template>
