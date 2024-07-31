@@ -13,7 +13,6 @@ declare interface ButtonGroupSignature {
     parent?: ButtonGroupComponent;
     toolbar?: boolean;
     vertical?: boolean;
-    // eslint-disable-next-line no-unused-vars
     onClick?: (evt: MouseEvent) => unknown;
   };
   Blocks: {

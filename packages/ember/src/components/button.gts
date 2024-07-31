@@ -17,7 +17,6 @@ interface ButtonSignature {
     loading?: boolean;
     text?: string;
     type?: 'button' | 'submit';
-    // eslint-disable-next-line no-unused-vars
     onClick?: (evt: MouseEvent) => unknown;
   };
   Blocks: {
