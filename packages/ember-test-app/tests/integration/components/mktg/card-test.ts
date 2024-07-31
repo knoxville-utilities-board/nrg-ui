@@ -149,7 +149,7 @@ module('Integration | Component | mktg/card', function (hooks) {
       );
     assert
       .dom(
-        '.card .card-body div:nth-of-type(2) .vr.d-none.d-md-flex.text-secondary',
+        '.card .card-body div:nth-of-type(2) .vr.d-none.d-md-flex.text-body-secondary',
       )
       .exists('Divider renders if end block is present');
     assert

@@ -32,9 +32,9 @@ const MktgCard: TOC<CardSignature> = <template>
           </div>
           {{#if (has-block "end")}}
             <div class="col-md-1 d-flex justify-content-center">
-              <div class="vr d-none d-md-flex text-secondary"></div>
+              <div class="vr d-none d-md-flex text-body-secondary"></div>
             </div>
-            <hr class="d-flex d-md-none text-secondary" />
+            <hr class="d-flex d-md-none text-body-secondary" />
             <div class="col-md">
               {{yield to="end"}}
             </div>
