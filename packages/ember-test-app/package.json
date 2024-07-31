@@ -31,6 +31,7 @@
     "@ember/optional-features": "^2.1.0",
     "@ember/string": "^3.1.1",
     "@ember/test-helpers": "^3.3.0",
+    "@embroider/macros": "^1.16.5",
     "@embroider/test-setup": "^3.0.1",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
@@ -114,5 +115,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "ember-css-transitions": "^4.4.0"
   }
 }
