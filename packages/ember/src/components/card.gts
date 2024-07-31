@@ -20,13 +20,6 @@ export default class Card extends Component<CardSignature> {
     return this.args.isClickable;
   }
 
-  get role() {
-    if (this.isClickable) {
-      return 'button';
-    }
-    return '';
-  }
-
   @action
   onClick(evt: MouseEvent) {
     evt?.preventDefault();
@@ -38,7 +31,8 @@ export default class Card extends Component<CardSignature> {
   <template>
     <div
       class="card p-4 shadow-sm"
-      role={{(if this.isClickable "button")}}
+      role={{if this.isClickable "button"}}
+      {{! waiting for this issue to be resolved https://github.com/typed-ember/glint/issues/661 }}
       {{! @glint-expect-error }}
       {{(if this.isClickable (modifier on "click" this.onClick))}}
       ...attributes

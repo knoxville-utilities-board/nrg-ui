@@ -10,7 +10,7 @@ interface CardContainerSignature {
     default: [
       {
         Card: ComponentLike<Card>;
-        MktgCard: ComponentLike<MktgCard>;
+        MktgCard: ComponentLike<typeof MktgCard>;
       },
     ];
   };
