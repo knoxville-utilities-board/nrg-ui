@@ -47,12 +47,16 @@ const MarketingFooterComponent: TOC<MarketingFooterSignature> = <template>
       <div
         class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center"
       >
-        <FooterSection>
-          {{yield to="nav"}}
-        </FooterSection>
-        <FooterSection @isCollapsible={{false}}>
-          {{yield to="social-media"}}
-        </FooterSection>
+        {{#if (has-block "nav")}}
+          <FooterSection>
+            {{yield to="nav"}}
+          </FooterSection>
+        {{/if}}
+        {{#if (has-block "social-media")}}
+          <FooterSection @isCollapsible={{false}}>
+            {{yield to="social-media"}}
+          </FooterSection>
+        {{/if}}
       </div>
       {{#if @hasDivider}}
         <hr class="mb-0 mt-3" />
@@ -61,12 +65,16 @@ const MarketingFooterComponent: TOC<MarketingFooterSignature> = <template>
         <div
           class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center mt-0"
         >
-          <FooterSection>
-            {{yield to="brand"}}
-          </FooterSection>
-          <FooterSection>
-            {{yield to="legal"}}
-          </FooterSection>
+          {{#if (has-block "brand")}}
+            <FooterSection>
+              {{yield to="brand"}}
+            </FooterSection>
+          {{/if}}
+          {{#if (has-block "legal")}}
+            <FooterSection>
+              {{yield to="legal"}}
+            </FooterSection>
+          {{/if}}
         </div>
       {{/if}}
     </div>
