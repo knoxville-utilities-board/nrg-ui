@@ -54,8 +54,7 @@ export default class NavbarComponent extends Component<NavbarSignature> {
       <button
         class="navbar-toggler mx-5"
         type="button"
-        data-bs-toggle="collapse"
-        aria-expanded="false"
+        aria-expanded={{this.menuOpen}}
         aria-label="Toggle context menu"
         {{on "click" this.toggleMenu}}
       >

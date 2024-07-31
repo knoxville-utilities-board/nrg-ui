@@ -1,11 +1,8 @@
 import Component from '@glimmer/component';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import ResponsiveService from '../services/responsive.ts';
 
 export interface NrgNavItemSignature {
-  Blocks: {
-    default: [];
-  };
   Element: HTMLLIElement;
   Args: {
     label: string;
