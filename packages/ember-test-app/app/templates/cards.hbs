@@ -2,7 +2,11 @@
   <p class="py-3 fw-bold">Row on desktop, stacked on mobile</p>
   {{! template-lint-disable no-inline-styles }}
   <Mktg::CardContainer style="--bs-gap: .5rem;" as |Container|>
-    <Container.Card @isClickable={{true}} @onClick={{this.clickHandler}} class="g-col-12 g-col-md-4">
+    <Container.Card
+      @isClickable={{true}}
+      @onClick={{this.clickHandler}}
+      class="g-col-12 g-col-md-4"
+    >
       <:header>
         <p>Here is a title</p>
       </:header>
@@ -10,7 +14,11 @@
         <p>Here is some body content</p>
       </:body>
     </Container.Card>
-    <Container.Card @onClick={{this.clickHandler}} class="g-col-12 g-col-md-4">
+    <Container.Card
+      @isClickable={{true}}
+      @onClick={{this.clickHandler}}
+      class="g-col-12 g-col-md-4"
+    >
       <:header>
         <p>Here is a title</p>
       </:header>
@@ -18,7 +26,11 @@
         <p>Here is some body content</p>
       </:body>
     </Container.Card>
-    <Container.Card @onClick={{this.clickHandler}} class="g-col-12 g-col-md-4">
+    <Container.Card
+      @isClickable={{true}}
+      @onClick={{this.clickHandler}}
+      class="g-col-12 g-col-md-4"
+    >
       <:header>
         <p>Here is a title</p>
       </:header>
@@ -35,6 +47,11 @@
         @title="The Gig"
         @subtitle="Experience lightning-fast internet connectivity"
       >
+        <:start>
+          <div class="d-flex w-100 align-items-start">
+            <p>Start Section can go here if you'd like</p>
+          </div>
+        </:start>
         <:callout>
           <p
             class="d-flex align-self-start align-self-md-center fs-1 fw-bold m-0"

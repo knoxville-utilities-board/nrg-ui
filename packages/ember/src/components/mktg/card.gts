@@ -45,9 +45,6 @@ export default class MktgCard extends Component<CardSignature> {
                 {{/if}}
                 {{#if (has-block "callout")}}
                   {{yield to="callout"}}
-                  {{!-- <p
-                    class="card-title d-flex align-self-start fs-1 fw-bold m-0 pb-2"
-                  >&dollar;{{this.price}}/mo</p> --}}
                 {{/if}}
                 {{yield to="start"}}
               </div>
@@ -73,7 +70,6 @@ export default class MktgCard extends Component<CardSignature> {
             {{#if this.leftAlignCallout}}
               <div class="d-flex flex-column justify-content-start w-100 m-0">
                 {{yield to="callout"}}
-                {{!-- <p class="d-flex fs-1 fw-bold m-0">&dollar;{{this.price}}/mo</p> --}}
                 <p class="fw-bold fs-4 mt-2">{{this.title}}</p>
               </div>
             {{else}}
@@ -81,11 +77,6 @@ export default class MktgCard extends Component<CardSignature> {
                 <p class="fw-bold fs-4 mt-2">{{this.title}}</p>
                 {{#if (has-block "callout")}}
                   {{yield to="callout"}}
-                  {{!-- <p
-                    class="d-flex align-self-start align-self-md-center fs-1 fw-bold m-0"
-                  >&dollar;{{this.price}}<span
-                      class="fs-5 align-self-end mb-2"
-                    >/mo</span></p> --}}
                 {{/if}}
               </div>
             {{/if}}

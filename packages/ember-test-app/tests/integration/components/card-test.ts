@@ -9,12 +9,12 @@ module('Integration | components | card', function (hooks) {
   test('it renders the card with the correct content', async function () {
     await render(hbs`
     <Card>
-      <:card-header>
+      <:header>
         <p>Header content</p>
-      </:card-header>
-      <:card-body>
+      </:header>
+      <:body>
         <p>Body content</p>
-      </:card-body>
+      </:body>
     </Card>`);
 
     assert.dom('.card').exists('Card is rendered');
