@@ -34,7 +34,7 @@ class FooterSection extends Component<FooterSectionSignature> {
     <div
       class="col row
         {{if this.isCollapsible 'row-cols-1 row-cols-md-auto' 'row-cols-auto'}}
-        align-items-center gx-3 gy-4 gx-md-4 my-0"
+        align-items-center gy-4 my-0"
     >
       {{yield}}
     </div>
@@ -42,8 +42,8 @@ class FooterSection extends Component<FooterSectionSignature> {
 }
 
 const MarketingFooterComponent: TOC<MarketingFooterSignature> = <template>
-  <footer class="bg-primary text-light mt-auto" ...attributes>
-    <div class="container p-5">
+  <footer class="bg-primary text-light mt-auto p-2" ...attributes>
+    <div class="container pt-0 mb-4">
       <div
         class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center"
       >
@@ -59,11 +59,11 @@ const MarketingFooterComponent: TOC<MarketingFooterSignature> = <template>
         {{/if}}
       </div>
       {{#if @hasDivider}}
-        <hr class="mb-0 mt-3" />
+        <hr class="mb-0 mt-4"/>
       {{/if}}
       {{#if (or (has-block "brand") (has-block "legal"))}}
         <div
-          class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center mt-0"
+          class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center"
         >
           {{#if (has-block "brand")}}
             <FooterSection>
