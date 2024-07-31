@@ -5,16 +5,21 @@ import { action } from '@ember/object';
 interface CardSignature {
   Element: HTMLDivElement;
   Args: {
+    isClickable?: boolean;
     // eslint-disable-next-line no-unused-vars
     onClick?: (evt: MouseEvent) => unknown;
   };
   Blocks: {
-    'card-header': [];
-    'card-body': [];
+    header: [];
+    body: [];
   };
 }
 
 export default class Card extends Component<CardSignature> {
+  get isClickable() {
+    return this.args.isClickable;
+  }
+
   @action
   onClick(evt: MouseEvent) {
     evt?.preventDefault();
@@ -26,18 +31,19 @@ export default class Card extends Component<CardSignature> {
   <template>
     <div
       class="card p-4 shadow-sm"
-      role="button"
-      {{on "click" this.onClick}}
+      role={{if this.isClickable "button"}}
+      {{! @glint-expect-error }}
+      {{if this.isClickable (modifier on "click" this.onClick)}}
       ...attributes
     >
-      {{#if (has-block "card-header")}}
+      {{#if (has-block "header")}}
         <div class="card-header bg-white">
-          {{yield to="card-header"}}
+          {{yield to="header"}}
         </div>
       {{/if}}
-      {{#if (has-block "card-body")}}
+      {{#if (has-block "body")}}
         <div class="card-body">
-          {{yield to="card-body"}}
+          {{yield to="body"}}
         </div>
       {{/if}}
     </div>

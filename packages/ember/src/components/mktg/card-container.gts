@@ -1,8 +1,7 @@
 import type { TOC } from '@ember/component/template-only';
 import { hash } from '@ember/helper';
 import type { ComponentLike } from '@glint/template';
-import VerticalCard from './vertical-card.gts';
-import HorizontalCard from './horizontal-card.gts';
+import MktgCard from './card.gts';
 import Card from '../card.gts';
 
 interface CardContainerSignature {
@@ -11,21 +10,14 @@ interface CardContainerSignature {
     default: [
       {
         Card: ComponentLike<Card>;
-        VerticalCard: ComponentLike<VerticalCard>;
-        HorizontalCard: ComponentLike<HorizontalCard>;
+        MktgCard: ComponentLike<MktgCard>;
       },
     ];
   };
 }
 const CardContainer: TOC<CardContainerSignature> = <template>
   <div class="grid p-2" ...attributes>
-    {{yield
-      (hash
-        Card=(component Card)
-        VerticalCard=(component VerticalCard)
-        HorizontalCard=(component HorizontalCard)
-      )
-    }}
+    {{yield (hash Card=(component Card) MktgCard=(component MktgCard))}}
   </div>
 </template>;
 

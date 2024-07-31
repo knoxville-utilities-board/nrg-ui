@@ -7,13 +7,14 @@ module('Integration | Component | mktg/vertical-card', function (hooks) {
   setupRenderingTest(hooks);
 
   test('vertical card correctly renders', async function () {
-    await render(hbs`<Mktg::VerticalCard
-      class="g-col-12"
-      @title="Title"
-      @subtitle="Subtitle"
-      @price="25"
-      >
-      <p class="card-text">Bottom section content</p>
+    await render(hbs`
+      <Mktg::VerticalCard
+        class="g-col-12"
+        @title="Title"
+        @subtitle="Subtitle"
+        @price="25"
+        >
+        <p class="card-text">Bottom section content</p>
       </Mktg::VerticalCard>`);
 
     assert
@@ -39,14 +40,15 @@ module('Integration | Component | mktg/vertical-card', function (hooks) {
   });
 
   test('vertical card correctly renders price and title when leftAlignPrice is true', async function () {
-    await render(hbs`<Mktg::VerticalCard
-      class="g-col-12"
-      @title="Title"
-      @subtitle="Subtitle"
-      @price="25"
-      @leftAlignPrice={{true}}
-      >
-      <p class="card-text">Bottom section content</p>
+    await render(hbs`
+      <Mktg::VerticalCard
+        class="g-col-12"
+        @title="Title"
+        @subtitle="Subtitle"
+        @price="25"
+        @leftAlignPrice={{true}}
+        >
+        <p class="card-text">Bottom section content</p>
       </Mktg::VerticalCard>`);
 
     assert
@@ -63,14 +65,15 @@ module('Integration | Component | mktg/vertical-card', function (hooks) {
   });
 
   test('vertical card renders correctly renders price and title when leftAlignPrice is false', async function () {
-    await render(hbs`<Mktg::VerticalCard
-      class="g-col-12"
-      @title="Title"
-      @subtitle="Subtitle"
-      @price="25"
-      @leftAlignPrice={{false}}
-      >
-      <p class="card-text">Bottom section content</p>
+    await render(hbs`
+      <Mktg::VerticalCard
+        class="g-col-12"
+        @title="Title"
+        @subtitle="Subtitle"
+        @price="25"
+        @leftAlignPrice={{false}}
+        >
+        <p class="card-text">Bottom section content</p>
       </Mktg::VerticalCard>`);
     assert
       .dom(

@@ -7,17 +7,18 @@ module('Integration | Component | mktg/horizontal-card', function (hooks) {
   setupRenderingTest(hooks);
 
   test('horizontal card correctly renders', async function () {
-    await render(hbs`<Mktg::HorizontalCard
-      class="g-col-12"
-      @title="Title"
-      @price="25"
-      >
-        <:left>
-          <p>Left yielded content</p>
-        </:left>
-        <:right>
-          <p>Right yielded content</p>
-        </:right>
+    await render(hbs`
+      <Mktg::HorizontalCard
+        class="g-col-12"
+        @title="Title"
+        @price="25"
+        >
+          <:left>
+            <p>Left yielded content</p>
+          </:left>
+          <:right>
+            <p>Right yielded content</p>
+          </:right>
       </Mktg::HorizontalCard>`);
 
     assert

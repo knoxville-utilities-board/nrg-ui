@@ -7,7 +7,8 @@ module('Integration | components | card', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders the card with the correct content', async function () {
-    await render(hbs`<Card>
+    await render(hbs`
+    <Card>
       <:card-header>
         <p>Header content</p>
       </:card-header>
