@@ -24,9 +24,7 @@ const HeaderComponent: TOC<HeaderSignature> = <template>
     <div class="col d-flex justify-content-end">
       {{yield to="right"}}
     </div>
-    <div
-      class="d-flex col-12 d-md-none order-last justify-content-center w-100"
-    >
+    <div class="d-flex col-12 d-md-none order-last justify-content-center">
       <div class="d-flex flex-row mt-2 mx-2 text-nowrap">
         {{yield to="mobile-drop-section"}}
       </div>

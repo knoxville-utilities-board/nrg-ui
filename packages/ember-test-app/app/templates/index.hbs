@@ -1,59 +1,69 @@
-<Header class="mb-4">
-  <:center>
-    <p class="p-2 m-0 fs-4 fw-bold text-nowrap">Welcome to Ember Test App</p>
-  </:center>
-</Header>
-<div class="px-3">
-  <div class="my-3">
-    <LinkTo @route="marketing" class="btn btn-outline-dark" role="link">
-      Marketing Test
-      <i class="text-success bi-currency-dollar"></i>
-    </LinkTo>
-
-    <LinkTo @route="form" class="btn btn-outline-primary" role="link">
-      Form Test
-      <i class="text-danger bi-input-cursor-text"></i>
-    </LinkTo>
-
-    <LinkTo @route="faq" class="btn btn-outline-success" role="link">
-      FAQs Test
-      <i class="bi-plus"></i>
-    </LinkTo>
+<main class="container-fluid">
+  <Header class="mb-4">
+    <:center>
+      <p class="p-2 m-0 fs-4 fw-bold text-nowrap">Welcome to Ember Test App</p>
+    </:center>
+  </Header>
+  <div class="px-3">
     <div class="my-3">
-      <Button class="btn-success" @text="Add" @icon="bi-plus" />
+      <LinkTo @route="marketing" class="btn btn-outline-dark" role="link">
+        Marketing Test
+        <i class="text-success bi-currency-dollar"></i>
+      </LinkTo>
 
-      <ButtonGroup as |Group|>
-        <Group.Button class="btn-success" @text="Foo" />
-        <Group.Button @text="Bar" />
-        <Group.Button class="btn-danger">
-          Baz
-        </Group.Button>
-      </ButtonGroup>
-    </div>
-    <div class="my-3">
-      <Progress @animated={{true}} @progress={{30}} @striped={{true}} />
-      <hr />
-      <Progress
-        @animated={{true}}
-        @stacked={{true}}
-        @striped={{true}}
-        as |Segment|
+      <LinkTo @route="form" class="btn btn-outline-primary" role="link">
+        Form Test
+        <i class="text-danger bi-input-cursor-text"></i>
+      </LinkTo>
+
+      <LinkTo @route="faq" class="btn btn-outline-success" role="link">
+        FAQs Test
+        <i class="bi-plus"></i>
+      </LinkTo>
+      <LinkTo
+        @route="promo"
+        class="btn btn-outline-info text-primary"
+        role="link"
       >
-        <Segment @progress={{30}} />
-        <Segment class="bg-info" @progress={{50}} />
-      </Progress>
-    </div>
-    <div class="my-3">
-      <div class="d-flex align-items-center vw-100 p-3 text-secondary">
-        <LoadingIndicator class="ms-auto" @showLabel={{true}} />
+        Promo Test
+        <i class="bi-badge-ad"></i>
+      </LinkTo>
+      <div class="my-3">
+        <Button class="btn-success" @text="Add" @icon="bi-plus" />
+
+        <ButtonGroup as |Group|>
+          <Group.Button class="btn-success" @text="Foo" />
+          <Group.Button @text="Bar" />
+          <Group.Button class="btn-danger">
+            Baz
+          </Group.Button>
+        </ButtonGroup>
+      </div>
+      <div class="my-3">
+        <Progress @animated={{true}} @progress={{30}} @striped={{true}} />
+        <hr />
+        <Progress
+          @animated={{true}}
+          @stacked={{true}}
+          @striped={{true}}
+          as |Segment|
+        >
+          <Segment @progress={{30}} />
+          <Segment class="bg-info" @progress={{50}} />
+        </Progress>
+      </div>
+      <div class="my-3">
+        <div class="d-flex align-items-center vw-100 p-3 text-secondary">
+          <LoadingIndicator class="ms-auto" @showLabel={{true}} />
+        </div>
       </div>
     </div>
+    <div class="my-3">
+      <Alert @icon="bi-info-circle-fill" @dismissible={{true}}>
+        Hey neighbor!
+      </Alert>
+    </div>
   </div>
-  <div class="my-3">
-    <Alert @icon="bi-info-circle-fill" @dismissible={{true}}>
-      Hey neighbor!
-    </Alert>
-  </div>
-</div>
+</main>
 
 {{outlet}}
