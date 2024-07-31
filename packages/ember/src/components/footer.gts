@@ -13,7 +13,7 @@ const Footer: TOC<FooterSignature> = <template>
     class="bg-body-secondary border-top border-2 border-dark-subtle mt-auto fs-6"
     ...attributes
   >
-    <div class="container-fluid py-2 px-4">
+    <div class="container-fluid py-2 px-2 px-sm-4">
       <div
         class="row row-cols-auto justify-content-between align-content-center"
       >
