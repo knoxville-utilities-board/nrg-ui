@@ -71,6 +71,6 @@ const MarketingFooterComponent: TOC<MarketingFooterSignature> = <template>
       {{/if}}
     </div>
   </footer>
-</template>
+</template>;
 
-export default MarketingFooterComponent
+export default MarketingFooterComponent;
