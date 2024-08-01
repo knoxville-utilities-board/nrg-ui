@@ -199,7 +199,7 @@
       </div>
     </form>
 
-    <Mktg::Service-Pricing
+    <Mktg::ServicePricing
       @serviceName="Fiber"
       @serviceType="The Gig"
       @description="$65/mo"
@@ -207,8 +207,8 @@
       as |Addon|
     >
       <Addon @addon="Smart Gig" @price="$15/mo" />
-    </Mktg::Service-Pricing>
-    <Mktg::Service-Pricing
+    </Mktg::ServicePricing>
+    <Mktg::ServicePricing
       @serviceName="TV"
       @serviceType="Silver"
       @description="$107/mo"
@@ -219,26 +219,26 @@
       <Addon @addon="HBO" @price="$5.99/mo" />
       <Addon @addon="STARZ" @price="$4.99/mo" />
       <Addon @addon="Spanish Language Channels" @price="$4.99/mo" />
-    </Mktg::Service-Pricing>
-    <Mktg::Service-Pricing
+    </Mktg::ServicePricing>
+    <Mktg::ServicePricing
       @serviceName="Phone"
       @description="$129/mo"
       @icon="bi-telephone"
     />
-    <Mktg::Service-Pricing
+    <Mktg::ServicePricing
       @serviceName="Fiber"
       @serviceType="The Gig"
       @description="Required"
       @icon="bi-wifi"
       @active="true"
     />
-    <Mktg::Service-Pricing
+    <Mktg::ServicePricing
       @serviceName="TV"
       @description="Add (optional)"
       @icon="bi-tv"
       @descriptionDisabled = {{true}}
     />
-    <Mktg::Service-Pricing
+    <Mktg::ServicePricing
       @serviceName="Phone"
       @description="Add (optional)"
       @icon="bi-telephone"
