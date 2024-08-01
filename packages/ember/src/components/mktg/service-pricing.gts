@@ -5,7 +5,7 @@ import type { ComponentLike } from '@glint/template';
 
 interface AddonSignature {
   Args: {
-    addon?: string;
+    label?: string;
     price?: string;
     quantity?: number;
   };
@@ -18,9 +18,9 @@ interface AddonSignature {
 interface MktgServicePricingSignature {
   Args: {
     icon?: NrgIconValue;
-    serviceName?: string;
-    serviceType?: string;
-    description?: string;
+    name: string;
+    type?: string;
+    description: string;
     active?: boolean;
     descriptionDisabled?: boolean;
   };
@@ -34,9 +34,9 @@ const Addon: TOC<AddonSignature> = <template>
   <div class="row align-items-center my-2" ...attributes>
     <div class="col text-truncate">
       {{#if @quantity}}
-        {{concat @addon " | Qty: " @quantity}}
+        {{concat @label " | Qty: " @quantity}}
       {{else}}
-        {{@addon}}
+        {{@label}}
       {{/if}}
     </div>
     <div class="col-auto text-end">
@@ -55,10 +55,10 @@ const MktgServicePricing: TOC<MktgServicePricingSignature> = <template>
         <i class="bi {{@icon}} fs-1" />
       </div>
       <div class="col fs-5 text-truncate">
-        {{#if @serviceType}}
-          {{concat @serviceName ": " @serviceType}}
+        {{#if @type}}
+          {{concat @name ": " @type}}
         {{else}}
-          {{@serviceName}}
+          {{@name}}
         {{/if}}
       </div>
       <div

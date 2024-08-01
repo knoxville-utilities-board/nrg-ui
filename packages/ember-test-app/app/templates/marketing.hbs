@@ -200,8 +200,8 @@
     </form>
 
     <Mktg::ServicePricing
-      @serviceName="Fiber"
-      @serviceType="The Gig"
+      @name="Fiber"
+      @type="The Gig"
       @description="$65/mo"
       @icon="bi-wifi"
       as |Addon|
@@ -209,37 +209,37 @@
       <Addon @addon="Smart Gig" @price="$15/mo" />
     </Mktg::ServicePricing>
     <Mktg::ServicePricing
-      @serviceName="TV"
-      @serviceType="Silver"
+      @name="TV"
+      @type="Silver"
       @description="$107/mo"
       @icon="bi-tv"
       as |Addon|
     >
-      <Addon @addon="FireStick" @price="$80" @quantity="2" />
-      <Addon @addon="HBO" @price="$5.99/mo" />
-      <Addon @addon="STARZ" @price="$4.99/mo" />
-      <Addon @addon="Spanish Language Channels" @price="$4.99/mo" />
+      <Addon @label="FireStick" @price="$80" @quantity="2" />
+      <Addon @label="HBO" @price="$5.99/mo" />
+      <Addon @label="STARZ" @price="$4.99/mo" />
+      <Addon @label="Spanish Language Channels" @price="$4.99/mo" />
     </Mktg::ServicePricing>
     <Mktg::ServicePricing
-      @serviceName="Phone"
+      @name="Phone"
       @description="$129/mo"
       @icon="bi-telephone"
     />
     <Mktg::ServicePricing
-      @serviceName="Fiber"
-      @serviceType="The Gig"
+      @name="Fiber"
+      @type="The Gig"
       @description="Required"
       @icon="bi-wifi"
       @active="true"
     />
     <Mktg::ServicePricing
-      @serviceName="TV"
+      @name="TV"
       @description="Add (optional)"
       @icon="bi-tv"
       @descriptionDisabled = {{true}}
     />
     <Mktg::ServicePricing
-      @serviceName="Phone"
+      @name="Phone"
       @description="Add (optional)"
       @icon="bi-telephone"
       @descriptionDisabled = {{true}}
