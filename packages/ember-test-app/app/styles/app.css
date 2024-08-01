@@ -1,8 +1,1 @@
 @import url("marketing-theme.css");
-
-/* The following css ensures that the footer is always at the bottom of the page (no matter the size of the page content). */
-#theme-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
