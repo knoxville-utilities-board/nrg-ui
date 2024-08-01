@@ -28,7 +28,7 @@ const MktgWorkflowTray: TOC<MktgWorkflowTraySignature> = <template>
   <div ...attributes>
     {{yield (component Total) to="totals"}}
     <div class="row mt-4 mx-0">
-      {{yield to="default"}}
+      {{yield}}
     </div>
   </div>
 </template>;
