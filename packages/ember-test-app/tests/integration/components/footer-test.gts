@@ -39,7 +39,7 @@ module('Integration | components | footer', function (hooks) {
       </Footer>
     </template>);
 
-    assert.dom('footer div div div:nth-child(2)').hasText('Right Content Test');
+    assert.dom('footer div div div:nth-child(1)').hasText('Right Content Test');
   });
 
   test('it renders both the left and right content', async function (assert) {
