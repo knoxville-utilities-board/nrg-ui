@@ -1,4 +1,5 @@
 import type { TOC } from '@ember/component/template-only';
+import type { NrgIconValue } from '../../icon-types';
 
 declare type ColorType =
   | 'primary'
@@ -13,7 +14,7 @@ declare type ColorType =
 interface IconBubbleSignature {
   Element: HTMLDivElement;
   Args: {
-    icon: string;
+    icon: NrgIconValue;
     color: ColorType;
   };
 }
