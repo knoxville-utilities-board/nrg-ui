@@ -12,7 +12,6 @@ module('Integration | components | mktg/promo-container', function (hooks) {
         <Container.SectionHeader
           @title="Title"
           @subject="Subject"
-          as |Section|
           />
         <Container.Promo class="promo"
           @productName="Product name"
