@@ -81,7 +81,7 @@ export default class ButtonComponent extends Component<ButtonSignature> {
         </span>
       {{else}}
         {{#if (and this.hasIcon (not this.alignIconRight))}}
-          <i class={{@icon}} aria-label={{@iconLabel}}></i>
+          <i class="me-1 {{@icon}}" aria-label={{@iconLabel}}></i>
         {{/if}}
         {{#if (has-block)}}
           {{yield}}
@@ -89,7 +89,7 @@ export default class ButtonComponent extends Component<ButtonSignature> {
           {{@text}}
         {{/if}}
         {{#if (and this.hasIcon this.alignIconRight)}}
-          <i class={{@icon}} aria-label={{@iconLabel}}></i>
+          <i class="ms-1 {{@icon}}" aria-label={{@iconLabel}}></i>
         {{/if}}
       {{/if}}
     </button>
