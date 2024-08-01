@@ -15,14 +15,22 @@ const Footer: TOC<FooterSignature> = <template>
   >
     <div class="container-fluid py-2 px-2 px-sm-4">
       <div
-        class="row row-cols-auto justify-content-between align-content-center"
+        class="row row-cols-auto justify-content-between align-content-center m-0"
       >
-        <div class="col row row-cols-auto align-content-center small">
-          {{yield to="left"}}
-        </div>
-        <div class="col row row-cols-auto align-content-center small">
-          {{yield to="right"}}
-        </div>
+        {{#if (has-block "left")}}
+          <div
+            class="col row row-cols-auto align-content-center small ms-0 me-auto"
+          >
+            {{yield to="left"}}
+          </div>
+        {{/if}}
+        {{#if (has-block "right")}}
+          <div
+            class="col row row-cols-auto align-content-center small me-0 ms-auto"
+          >
+            {{yield to="right"}}
+          </div>
+        {{/if}}
       </div>
     </div>
   </footer>
