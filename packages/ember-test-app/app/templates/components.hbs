@@ -1,18 +1,22 @@
 {{page-title "Components"}}
 <div class="row">
-  <div class="col-3">
-    <div class="mx-auto">
-      <div class="list-group">
-        <LinkTo
-          @route="components.button"
-          class="list-group-item list-group-item-action"
-        >
-          Button
-        </LinkTo>
+  <div class="col-12 col-md-2 px-0">
+    <div class="p-4 sticky-top">
+      <div class="card mx-auto">
+        <div class="card-body">
+          <div class="list-group">
+            <LinkTo
+              @route="components.button"
+              class="list-group-item list-group-item-action"
+            >
+              Button
+            </LinkTo>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col">
+  <div class="col p-4">
     {{outlet}}
   </div>
 </div>
