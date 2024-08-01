@@ -59,7 +59,7 @@ const MarketingFooterComponent: TOC<MarketingFooterSignature> = <template>
         {{/if}}
       </div>
       {{#if @hasDivider}}
-        <hr class="mb-0 mt-4"/>
+        <hr class="mb-0 mt-4" />
       {{/if}}
       {{#if (or (has-block "brand") (has-block "legal"))}}
         <div
