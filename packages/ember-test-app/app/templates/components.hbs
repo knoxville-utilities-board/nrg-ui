@@ -1,2 +1,18 @@
 {{page-title "Components"}}
-{{outlet}}
+<div class="row">
+  <div class="col-3">
+    <div class="mx-auto">
+      <div class="list-group">
+        <LinkTo
+          @route="components.button"
+          class="list-group-item list-group-item-action"
+        >
+          Button
+        </LinkTo>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    {{outlet}}
+  </div>
+</div>
