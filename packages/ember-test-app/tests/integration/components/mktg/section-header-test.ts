@@ -13,9 +13,9 @@ module('Integration | components | mktg/section-header', function (hooks) {
         @title="Title"
         @subject="Subject"
       >
-        <:sub-content>
-          <p>sub-content</p>
-        </:sub-content>
+        <:subheader>
+          <p>subheader</p>
+        </:subheader>
       </Mktg::SectionHeader>,
       `,
     );
@@ -31,6 +31,6 @@ module('Integration | components | mktg/section-header', function (hooks) {
       .hasText('Title', 'Title renders within header');
     assert
       .dom('div div p:nth-of-type(3)')
-      .hasText('sub-content', 'Sub-content renders within named block');
+      .hasText('subheader', 'Subheader renders within named block');
   });
 });

@@ -7,7 +7,7 @@ interface SectionHeaderSignature {
     title?: string;
   };
   Blocks: {
-    "sub-content": [];
+    subheader: [];
   };
 }
 
@@ -16,7 +16,7 @@ const SectionHeader: TOC<SectionHeaderSignature> = <template>
     <div class="text-center" ...attributes>
       <p class="text-uppercase p-0 m-0 fw-semibold">{{@subject}}</p>
       <p class="mx-0 mb-2 fw-semibold fs-1">{{@title}}</p>
-      {{yield to="sub-content"}}
+      {{yield to="subheader"}}
     </div>
   </div>
 </template>;
