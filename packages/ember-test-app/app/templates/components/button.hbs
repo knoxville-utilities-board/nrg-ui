@@ -1,0 +1,93 @@
+{{page-title "Button"}}
+
+<div class="container mx-auto">
+  <FreestyleSection @name="Button" as |Section|>
+    <Section.subsection @name="Basics">
+      <Freestyle::Usage>
+        <:example>
+          <Button
+            class={{this.class}}
+            @disabled={{this.disabled}}
+            @loading={{this.loading}}
+            @text={{this.text}}
+            @type={{this.type}}
+          />
+        </:example>
+        <:api as |Args|>
+          <Args.String
+            @name="class"
+            @description="The class to apply to the button. Note that this is not an argument but rather a class applied directly to the button"
+            @value={{this.class}}
+            @onInput={{fn (mut this.class)}}
+            @options={{this.classOptions}}
+          />
+          <Args.Bool
+            @name="disabled"
+            @defaultValue={{false}}
+            @description="When true, the button will be disabled"
+            @value={{this.disabled}}
+            @onInput={{fn (mut this.disabled)}}
+          />
+          <Args.Bool
+            @name="loading"
+            @defaultValue={{false}}
+            @description="When true, the text will be replaced with a loading spinner"
+            @value={{this.loading}}
+            @onInput={{fn (mut this.loading)}}
+          />
+          <Args.String
+            @name="text"
+            @description="The text to display on the button"
+            @value={{this.text}}
+            @onInput={{fn (mut this.text)}}
+          />
+          <Args.String
+            @name="type"
+            @defaultValue="button"
+            @description="The type of button"
+            @value={{this.type}}
+            @options={{array "button" "submit"}}
+            @onInput={{fn (mut this.type)}}
+          />
+        </:api>
+      </Freestyle::Usage>
+    </Section.subsection>
+
+    <Section.subsection @name="Icon">
+      <Freestyle::Usage>
+        <:example>
+          <Button
+            class="btn-primary"
+            @icon={{this.icon}}
+            @iconLabel={{this.iconLabel}}
+            @iconPosition={{this.iconPosition}}
+          >
+            Go now
+          </Button>
+        </:example>
+        <:api as |Args|>
+          <Args.String
+            @name="icon"
+            @description="The icon to display"
+            @value={{this.icon}}
+            @onInput={{fn (mut this.icon)}}
+          />
+          <Args.String
+            @name="iconLabel"
+            @description="The label for the icon (for accessibility)"
+            @value={{this.iconLabel}}
+            @onInput={{fn (mut this.iconLabel)}}
+          />
+          <Args.String
+            @name="iconPosition"
+            @defaultValue="left"
+            @description="The position of the icon relative to the text"
+            @value={{this.iconPosition}}
+            @options={{array "left" "right"}}
+            @onInput={{fn (mut this.iconPosition)}}
+          />
+        </:api>
+      </Freestyle::Usage>
+    </Section.subsection>
+  </FreestyleSection>
+</div>
