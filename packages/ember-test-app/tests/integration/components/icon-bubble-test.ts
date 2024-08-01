@@ -7,22 +7,23 @@ module('Integration | components | mktg/icon-bubble', function (hooks) {
   setupRenderingTest(hooks);
 
   test('icon-bubble renders', async function () {
-    await render(
-      hbs`<Mktg::IconBubble class="test" @icon="icon" @color="primary"/>`,
-    );
+    await render(hbs`
+      <IconBubble
+        class="test"
+        @icon="icon"
+        @backgroundColor="primary"
+        @iconColor="light"
+      />`);
 
     assert.dom('.d-flex.test').exists('IconBubble renders passed attributes');
     assert
       .dom('.d-flex.test div')
-      .hasClass(
-        'bg-primary-subtle',
-        'Color param renders background color correctly',
-      );
+      .hasClass('bg-primary', 'Color param renders background color correctly');
     assert
       .dom('div div i')
       .hasClass('icon', 'Icon param renders icon correctly');
     assert
       .dom('div div i')
-      .hasClass('text-primary', 'Icon param renders text color correctly');
+      .hasClass('text-light', 'Icon param renders text color correctly');
   });
 });
