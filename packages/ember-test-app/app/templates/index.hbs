@@ -75,13 +75,12 @@
           </LinkTo>
         </div>
       </div>
-      <div class="d-flex align-items-center">
-        <IconBubble
-          @icon="bi-building-fill-gear"
-          @backgroundColor="primary"
-          @iconColor="light"
-        />
-        <p class="my-0 mx-2 fs-5">This is a building icon from Bootstrap icons</p>
+      <p class="m-0 fw-semibold">These are icons without a circular background</p>
+      <div class="d-flex flex-row">
+        <Icon @type="bi-building-fill-gear" @color="primary" />
+        <Icon @type="bi-phone" @color="warning" />
+        <Icon @type="bi-bag-check-fill" @color="success" />
+        <Icon @type="bi-calendar3" @color="info" />
       </div>
     </div>
   </div>
