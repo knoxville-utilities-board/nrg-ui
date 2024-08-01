@@ -1,5 +1,9 @@
-{{page-title "EmberTestApp"}}
+{{page-title "@nrg-ui/ember"}}
 
-<div data-theme="marketing">
-  {{outlet}}
+<div data-theme={{this.application.theme}}>
+  {{! TODO: Add header/sidebar }}
+  <main class="p-4 container-fluid">
+    {{outlet}}
+  </main>
+  {{! TODO: Add footer }}
 </div>
