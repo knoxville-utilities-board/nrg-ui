@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { find, render, type TestContext } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
+import Progress from '@nrg-ui/ember/components/progress';
 
 interface Context extends TestContext {
   element: HTMLElement;
@@ -11,9 +11,9 @@ module('Integration | components | progress', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders (inline)', async function (this: Context, assert) {
-    await render(
-      hbs`<Progress @animated={{true}} @progress={{40}} @striped={{true}} />`,
-    );
+    await render(<template>
+      <Progress @animated={{true}} @progress={{40}} @striped={{true}} />
+    </template>);
 
     assert
       .dom('div:has(> div)')
@@ -30,13 +30,11 @@ module('Integration | components | progress', function (hooks) {
       .hasClass('progress-bar-animated')
       .hasClass('progress-bar-striped');
 
-    /*
-      assert.dom(...).hasStyle uses window.getComputedStyle, which
-      calculates values (e.g. width) based on the actual rendered
-      dimensions of the element. Since we are using a test container
-      with a variable width, we can't use this method to test the width
-      of the progress bar.
-    */
+    //  assert.dom(...).hasStyle uses window.getComputedStyle, which
+    //  calculates values (e.g. width) based on the actual rendered
+    //  dimensions of the element. Since we are using a test container
+    //  with a variable width, we can't use this method to test the width
+    //  of the progress bar.
     const progress = this.element.querySelector(
       'div > div:not(:has(> *))',
     ) as HTMLDivElement;
@@ -45,12 +43,12 @@ module('Integration | components | progress', function (hooks) {
   });
 
   test('it renders (stacked)', async function (this: Context, assert) {
-    await render(hbs`
+    await render(<template>
       <Progress @stacked={{true}} as |Segment|>
         <Segment @progress={{40}} @striped={{true}} @animated={{true}} />
         <Segment class="bg-warning" @title="foo bar" @progress={{60}} />
       </Progress>
-    `);
+    </template>);
 
     const container = find('div.progress-stacked') as HTMLDivElement;
     let segment = container.querySelector(

@@ -1,13 +1,13 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
+import LoadingIndicator from '@nrg-ui/ember/components/loading-indicator';
 
 module('Integration | components | loading-indicator', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(hbs`<LoadingIndicator />`);
+    await render(<template><LoadingIndicator /></template>);
 
     assert
       .dom('div')
@@ -21,9 +21,9 @@ module('Integration | components | loading-indicator', function (hooks) {
   });
 
   test('label can be displayed', async function (assert) {
-    await render(
-      hbs`<LoadingIndicator @label="Foo bar" @showLabel={{true}} />`,
-    );
+    await render(<template>
+      <LoadingIndicator @label="Foo bar" @showLabel={{true}} />
+    </template>);
 
     assert
       .dom('strong:has(+ div)')

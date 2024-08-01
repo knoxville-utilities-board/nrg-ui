@@ -1,21 +1,22 @@
 import { assert, module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
+import Card from '@nrg-ui/ember/components/card';
 
 module('Integration | components | card', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders the card with the correct content', async function () {
-    await render(hbs`
-    <Card>
-      <:header>
-        <p>Header content</p>
-      </:header>
-      <:body>
-        <p>Body content</p>
-      </:body>
-    </Card>`);
+    await render(<template>
+      <Card>
+        <:header>
+          <p>Header content</p>
+        </:header>
+        <:body>
+          <p>Body content</p>
+        </:body>
+      </Card>
+    </template>);
 
     assert.dom('.card').exists('Card is rendered');
     assert

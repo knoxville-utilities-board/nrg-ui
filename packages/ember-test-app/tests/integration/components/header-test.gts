@@ -1,13 +1,13 @@
 import { assert, module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
+import Header from '@nrg-ui/ember/components/header';
 
 module('Integration | components | header', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders content within the correct named blocks', async function () {
-    await render(hbs`
+    await render(<template>
       <Header>
         <:left>
           <p class="m-0">Left side content</p>
@@ -21,7 +21,8 @@ module('Integration | components | header', function (hooks) {
         <:mobile-drop-section>
           <p class="m-0">mobile drop section content</p>
         </:mobile-drop-section>
-      </Header>`);
+      </Header>
+    </template>);
 
     assert
       .dom('.col.d-flex.justify-content-start p')
@@ -50,7 +51,7 @@ module('Integration | components | header', function (hooks) {
   });
 
   test('it renders content in the correct order', async function () {
-    await render(hbs`
+    await render(<template>
       <Header>
         <:left>
           <p class="m-0">Left side content</p>
@@ -64,7 +65,9 @@ module('Integration | components | header', function (hooks) {
         <:mobile-drop-section>
           <p class="m-0">mobile drop section content</p>
         </:mobile-drop-section>
-      </Header>`);
+      </Header>
+    </template>);
+
     assert.dom('div div p').hasText('Left side content');
     assert.dom('div div:nth-of-type(2) p').hasText('center content');
     assert.dom('div div:nth-of-type(3) p').hasText('right side content');
