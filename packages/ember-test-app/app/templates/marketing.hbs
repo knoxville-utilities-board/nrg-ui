@@ -198,9 +198,14 @@
         </div>
       </div>
     </form>
-    <Mktg::WorkflowTray as |Total|>
-      <Total @name="First Bill Including Fees" @total="$491.97/mo"></Total>
-      <Total @name="Monthly Bill" @total="$331.97/mo"></Total>
+    <Mktg::WorkflowTray >
+      <:totals as |Total|>
+        <Total @name="First Bill Including Fees" @total="$491.97/mo"></Total>
+        <Total @name="Monthly Bill" @total="$331.97/mo"></Total>
+      </:totals>
+      <:default>
+        <Button class="btn-primary d-block">Next</Button>
+      </:default>
     </Mktg::WorkflowTray>
   </div>
 </main>

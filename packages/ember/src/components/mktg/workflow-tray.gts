@@ -1,6 +1,5 @@
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike } from '@glint/template';
-import { hash } from '@ember/helper';
 
 interface TotalSignature {
   Args: {
@@ -12,7 +11,8 @@ interface TotalSignature {
 
 interface MktgWorkflowTraySignature {
   Blocks: {
-    default?: [ComponentLike<typeof Total>];
+    totals?: [ComponentLike<typeof Total>];
+    default?: [];
   };
   Element: HTMLElement;
 }
@@ -26,7 +26,10 @@ const Total: TOC<TotalSignature> = <template>
 
 const MktgWorkflowTray: TOC<MktgWorkflowTraySignature> = <template>
   <div ...attributes>
-    {{yield (component Total)}}
+    {{yield (component Total) to="totals"}}
+    <div class="row mt-4 mx-0">
+      {{yield to="default"}}
+    </div>
   </div>
 </template>;
 
