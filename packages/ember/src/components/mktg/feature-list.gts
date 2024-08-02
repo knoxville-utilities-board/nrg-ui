@@ -15,6 +15,7 @@ interface FeatureSignature {
   Args: {
     icon?: string;
     text?: string;
+    meta?: string;
     class: string;
   };
   Element: HTMLParagraphElement;
@@ -34,7 +35,7 @@ export interface MktgFeatureListSignature {
 
 const Feature: TOC<FeatureSignature> = <template>
   <p class={{@class}} ...attributes>
-    <span class="me-2 fw-bold bi {{@icon}}" />{{@text}}
+    <span class="me-2 fw-bold bi {{@icon}}">{{@meta}}</span>{{@text}}
   </p>
 </template>;
 
