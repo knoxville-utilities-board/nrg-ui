@@ -42,7 +42,11 @@ export default class NrgNavItem extends Component<NrgNavItemSignature> {
       {{#if @url}}
         <a class="nav-link" href={{@url}}>{{@label}}</a>
       {{else}}
-        <LinkTo @route={{@route}} @model={{@model}} class="nav-link" />
+        <LinkTo
+          @route={{@route}}
+          @model={{@model}}
+          class="nav-link"
+        >{{@label}}</LinkTo>
       {{/if}}
     </li>
   </template>
