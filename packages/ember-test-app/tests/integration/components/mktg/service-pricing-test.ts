@@ -31,18 +31,48 @@ module('Integration | components | mktg/service-pricing', function (hooks) {
     assert.dom('div').hasClass('border-primary');
   });
 
-  test('it has a description that can be disabled', async function () {
-    await render(hbs`<Mktg::ServicePricing @description="Description Test"/>`);
+  test('it can change the status of the  description', async function () {
+    await render(
+      hbs`<Mktg::ServicePricing @label="Service" @description="Description" @active={{true}} @selected={{true}}/>`,
+    );
 
     assert
       .dom('div div:nth-child(1) div:nth-child(3)')
-      .doesNotHaveClass('fw-normal');
+      .hasText('Description')
+      .hasClass('fw-bold')
+      .hasNoClass('fw-normal')
+      .hasNoClass('text-decoration-underline text-light-emphasis');
 
     await render(
-      hbs`<Mktg::ServicePricing @description="Description Test" @descriptionDisabled={{true}}/>`,
+      hbs`<Mktg::ServicePricing @label="Service" @description="Description" @active={{true}} @selected={{false}}/>`,
     );
 
-    assert.dom('div div:nth-child(1) div:nth-child(3)').hasClass('fw-normal');
+    assert
+      .dom('div div:nth-child(1) div:nth-child(3)')
+      .hasText('Description')
+      .hasClass('fw-normal')
+      .hasNoClass('fw-bold')
+      .hasNoClass('text-decoration-underline text-light-emphasis');
+
+    await render(
+      hbs`<Mktg::ServicePricing @label="Service" @description="Description" @active={{false}} @selected={{true}}/>`,
+    );
+
+    assert
+      .dom('div div:nth-child(1) div:nth-child(3)')
+      .hasText('Description')
+      .hasClass('fw-bold')
+      .hasNoClass('fw-normal')
+      .hasNoClass('text-decoration-underline text-light-emphasis');
+
+    await render(
+      hbs`<Mktg::ServicePricing @label="Service" @description="Description" @active={{false}} @selected={{false}}/>`,
+    );
+
+    assert
+      .dom('div div:nth-child(1) div:nth-child(3)')
+      .hasText('Description')
+      .hasClass('fw-normal');
   });
 
   test('it can render a service package', async function () {
