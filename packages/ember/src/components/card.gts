@@ -21,10 +21,6 @@ export default class Card extends Component<CardSignature> {
     return this.args.hasBorder == undefined ? true : this.args.hasBorder;
   }
 
-  get borderClass() {
-    return this.hasBorder ? '' : 'border-0';
-  }
-
   @action
   onClick(evt: MouseEvent) {
     evt?.preventDefault();
@@ -35,7 +31,7 @@ export default class Card extends Component<CardSignature> {
 
   <template>
     <div
-      class="card p-4 shadow-sm {{this.borderClass}}"
+      class="card p-4 shadow-sm {{if this.hasBorder '' 'border-0'}}"
       role={{if @isClickable "button"}}
       {{! waiting for this issue to be resolved https://github.com/typed-ember/glint/issues/661 }}
       {{! @glint-expect-error }}
