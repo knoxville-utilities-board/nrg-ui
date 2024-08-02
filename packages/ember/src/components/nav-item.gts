@@ -25,11 +25,7 @@ export default class NrgNavItem extends Component<NrgNavItemSignature> {
     );
     assert(
       'You must provide either a `url` or a `route` to the nav-item component',
-      args.url && !args.route,
-    );
-    assert(
-      'You must provide either a `url` or a `route` to the nav-item component',
-      !args.url && args.route,
+      (args.url && !args.route) || (!args.url && args.route),
     );
   }
 
