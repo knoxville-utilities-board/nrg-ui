@@ -8,7 +8,7 @@ module('Integration | components | mktg/service-pricing', function (hooks) {
 
   test('it renders', async function () {
     await render(hbs`<Mktg::ServicePricing
-      @serviceName="Service"
+      @label="Service"
       @description="Description"
       @icon="bi-emoji-smile"/>`);
 
@@ -45,24 +45,24 @@ module('Integration | components | mktg/service-pricing', function (hooks) {
     assert.dom('div div:nth-child(1) div:nth-child(3)').hasClass('fw-normal');
   });
 
-  test('it can render a service type', async function () {
+  test('it can render a service package', async function () {
     await render(hbs`<Mktg::ServicePricing
-      @serviceName="Service"
-      @serviceType="Service Type"/>`);
+      @label="Service"
+      @package="Service Package"/>`);
 
     assert
       .dom('div div:nth-child(1) div:nth-child(2)')
-      .hasText('Service: Service Type');
+      .hasText('Service: Service Package');
   });
 
   test('it can render an addon', async function () {
     await render(hbs`<Mktg::Service-Pricing
-      @serviceName="Service"
+      @label="Service"
       @description="Description"
       @icon="bi-emoji-smile"
       as |Addon|
     >
-      <Addon @addon="Addon" @price="$100" />
+      <Addon @label="Addon" @price="$100" />
     </Mktg::Service-Pricing>`);
 
     assert.dom('div div:nth-child(2) div:nth-child(1)').hasText('Addon');
@@ -72,12 +72,12 @@ module('Integration | components | mktg/service-pricing', function (hooks) {
 
   test('it can render an addon with a quantity', async function () {
     await render(hbs`<Mktg::Service-Pricing
-      @serviceName="Service"
+      @label="Service"
       @description="Description"
       @icon="bi-emoji-smile"
       as |Addon|
     >
-      <Addon @addon="Addon" @price="$100" @quantity="2"/>
+      <Addon @label="Addon" @price="$100" @quantity="2"/>
     </Mktg::Service-Pricing>`);
 
     assert

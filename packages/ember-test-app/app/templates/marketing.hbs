@@ -26,56 +26,56 @@
     <form class="needs-validation" novalidate="">
       <div class="row g-3">
         <div class="col-sm-4">
-          <label for="firstName" class="form-label">
-            First name
+          <label for="firstlabel" class="form-label">
+            First label
             <span class="text-body-secondary">*</span>
           </label>
           <input
             type="text"
             class="form-control"
-            id="firstName"
+            id="firstlabel"
             placeholder="First"
             value=""
             required
           />
           <div class="invalid-feedback">
-            Valid first name is required.
+            Valid first label is required.
           </div>
         </div>
 
         <div class="col-sm-4">
-          <label for="middleName" class="form-label">
+          <label for="middlelabel" class="form-label">
             Middle
             <span class="text-body-secondary">*</span>
           </label>
           <input
             type="text"
             class="form-control"
-            id="middleName"
+            id="middlelabel"
             placeholder="Middle"
             value=""
             required
           />
           <div class="invalid-feedback">
-            Valid middle name is required.
+            Valid middle label is required.
           </div>
         </div>
 
         <div class="col-sm-4">
-          <label for="lastName" class="form-label">
-            Last name
+          <label for="lastlabel" class="form-label">
+            Last label
             <span class="text-body-secondary">*</span>
           </label>
           <input
             type="text"
             class="form-control"
-            id="lastName"
+            id="lastlabel"
             placeholder="Last"
             value=""
             required
           />
           <div class="invalid-feedback">
-            Valid last name is required.
+            Valid last label is required.
           </div>
         </div>
 
@@ -200,7 +200,7 @@
     </form>
 
     <Mktg::ServicePricing
-      @name="Fiber"
+      @label="Fiber"
       @type="The Gig"
       @description="$65/mo"
       @icon="bi-wifi"
@@ -209,8 +209,8 @@
       <Addon @addon="Smart Gig" @price="$15/mo" />
     </Mktg::ServicePricing>
     <Mktg::ServicePricing
-      @name="TV"
-      @type="Silver"
+      @label="TV"
+      @package="Silver"
       @description="$107/mo"
       @icon="bi-tv"
       as |Addon|
@@ -221,25 +221,25 @@
       <Addon @label="Spanish Language Channels" @price="$4.99/mo" />
     </Mktg::ServicePricing>
     <Mktg::ServicePricing
-      @name="Phone"
+      @label="Phone"
       @description="$129/mo"
       @icon="bi-telephone"
     />
     <Mktg::ServicePricing
-      @name="Fiber"
-      @type="The Gig"
+      @label="Fiber"
+      @package="The Gig"
       @description="Required"
       @icon="bi-wifi"
       @active="true"
     />
     <Mktg::ServicePricing
-      @name="TV"
+      @label="TV"
       @description="Add (optional)"
       @icon="bi-tv"
       @descriptionDisabled = {{true}}
     />
     <Mktg::ServicePricing
-      @name="Phone"
+      @label="Phone"
       @description="Add (optional)"
       @icon="bi-telephone"
       @descriptionDisabled = {{true}}
