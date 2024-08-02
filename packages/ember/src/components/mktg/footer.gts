@@ -35,6 +35,7 @@ class FooterSection extends Component<FooterSectionSignature> {
       class="col row
         {{if this.isCollapsible 'row-cols-1 row-cols-md-auto' 'row-cols-auto'}}
         align-items-center gy-4 my-0"
+      ...attributes
     >
       {{yield}}
     </div>
@@ -53,7 +54,10 @@ const MarketingFooterComponent: TOC<MarketingFooterSignature> = <template>
           </FooterSection>
         {{/if}}
         {{#if (has-block "social-media")}}
-          <FooterSection @isCollapsible={{false}}>
+          <FooterSection
+            @isCollapsible={{false}}
+            class={{unless (has-block "nav") "ms-md-auto"}}
+          >
             {{yield to="social-media"}}
           </FooterSection>
         {{/if}}
@@ -71,7 +75,7 @@ const MarketingFooterComponent: TOC<MarketingFooterSignature> = <template>
             </FooterSection>
           {{/if}}
           {{#if (has-block "legal")}}
-            <FooterSection>
+            <FooterSection class={{unless (has-block "nav") "ms-md-auto"}}>
               {{yield to="legal"}}
             </FooterSection>
           {{/if}}
