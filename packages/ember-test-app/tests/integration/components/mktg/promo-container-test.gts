@@ -8,14 +8,9 @@ module('Integration | components | mktg/promo-container', function (hooks) {
 
   test('Promo container renders', async function () {
     await render(<template>
-      <Mktg::PromoContainer class="promo-container" as |Container|>
-        <Container.SectionHeader
-          @title="Title"
-          @subject="Subject"
-          />
-        <Container.Promo class="promo"
-          @productName="Product name"
-        >
+      <PromoContainer class="promo-container" as |Container|>
+        <Container.SectionHeader @title="Title" @subject="Subject" />
+        <Container.Promo class="promo" @productName="Product name">
           <:img>
             <img src="https://place-hold.it/700x700" alt="Placeholder" />
           </:img>

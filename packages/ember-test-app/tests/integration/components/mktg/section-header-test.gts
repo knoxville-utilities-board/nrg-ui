@@ -1,24 +1,19 @@
 import { assert, module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
+import SectionHeader from '@nrg-ui/ember/components/mktg/section-header';
 
 module('Integration | components | mktg/section-header', function (hooks) {
   setupRenderingTest(hooks);
 
   test('Section header renders', async function () {
-    await render(
-      hbs`<Mktg::SectionHeader
-        class="section-header"
-        @title="Title"
-        @subject="Subject"
-      >
+    await render(<template>
+      <SectionHeader class="section-header" @title="Title" @subject="Subject">
         <:subheader>
           <p>subheader</p>
         </:subheader>
-      </Mktg::SectionHeader>,
-      `,
-    );
+      </SectionHeader>,
+    </template>);
 
     assert
       .dom(
