@@ -29,15 +29,16 @@ module('Integration | components | card', function (hooks) {
     assert
       .dom('.card .card-body p')
       .hasText('Body content', 'Correct content is rendered in card body');
-    await render(hbs`
-        <Card @noBorder={{true}}>
-          <:header>
-            <p>Header content</p>
-          </:header>
-          <:body>
-            <p>Body content</p>
-          </:body>
-        </Card>`);
+    await render(<template>
+      <Card @noBorder={{true}}>
+        <:header>
+          <p>Header content</p>
+        </:header>
+        <:body>
+          <p>Body content</p>
+        </:body>
+      </Card>
+    </template>);
     assert
       .dom('.card.p-4.shadow-sm.border-0')
       .exists('Card has class of border-0 if noBorder is true');
