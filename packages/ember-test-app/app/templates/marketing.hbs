@@ -204,15 +204,17 @@
       @type="The Gig"
       @description="$65/mo"
       @icon="bi-wifi"
+      @selected="true"
       as |Addon|
     >
-      <Addon @addon="Smart Gig" @price="$15/mo" />
+      <Addon @label="Smart Gig" @price="$15/mo" />
     </Mktg::ServicePricing>
     <Mktg::ServicePricing
       @label="TV"
       @package="Silver"
       @description="$107/mo"
       @icon="bi-tv"
+      @selected="true"
       as |Addon|
     >
       <Addon @label="FireStick" @price="$80" @quantity="2" />
@@ -224,6 +226,8 @@
       @label="Phone"
       @description="$129/mo"
       @icon="bi-telephone"
+      @selected="true"
+      @active="true"
     />
     <Mktg::ServicePricing
       @label="Fiber"
@@ -236,13 +240,11 @@
       @label="TV"
       @description="Add (optional)"
       @icon="bi-tv"
-      @descriptionDisabled = {{true}}
     />
     <Mktg::ServicePricing
       @label="Phone"
       @description="Add (optional)"
       @icon="bi-telephone"
-      @descriptionDisabled = {{true}}
     />
   </div>
 </main>
