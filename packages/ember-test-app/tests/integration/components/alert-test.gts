@@ -8,6 +8,7 @@ import {
   type TestContext,
 } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import Alert from '@nrg-ui/ember/components/alert';
 
 interface Context extends TestContext {
   dismissHandler: () => void;
@@ -17,12 +18,13 @@ module('Integration | components | alert', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(hbs`
+    await render(<template>
       <Alert
         @dismissible={{true}}
         @icon="bi-exclamation-triangle-fill"
-        @text="Foo bar" />
-    `);
+        @text="Foo bar"
+      />
+    </template>);
 
     assert
       .dom('div.alert')
@@ -70,16 +72,17 @@ module('Integration | components | alert', function (hooks) {
 
     let actionFired = false;
 
-    this.dismissHandler = () => {
+    const dismissHandler = () => {
       actionFired = true;
     };
 
-    await render(hbs`
+    await render(<template>
       <Alert
         @dismissible={{true}}
         @type="success"
-        @onDismiss={{this.dismissHandler}} />
-    `);
+        @onDismiss={{dismissHandler}}
+      />
+    </template>);
 
     await click('button');
     await clearRender();

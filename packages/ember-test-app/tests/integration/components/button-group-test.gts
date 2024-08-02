@@ -1,7 +1,8 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, render, type TestContext } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
+import { fn } from '@ember/helper';
+import ButtonGroup from '@nrg-ui/ember/components/button-group';
 
 interface Context extends TestContext {
   clickHandler: (type: string, evt: MouseEvent) => void;
@@ -13,16 +14,16 @@ module('Integration | components | button-group', function (hooks) {
   test('it renders', async function (this: Context, assert) {
     assert.expect(9);
 
-    this.clickHandler = (type: string, evt: MouseEvent) => {
+    const clickHandler = (type: string, evt: MouseEvent) => {
       assert.step(type);
       assert.ok(evt, 'action is fired with event');
     };
 
-    await render(hbs`
-      <ButtonGroup @onClick={{fn this.clickHandler "group"}} as |Group|>
-        <Group.Button @text="Foo bar" @onClick={{fn this.clickHandler "button"}} />
+    await render(<template>
+      <ButtonGroup @onClick={{fn clickHandler "group"}} as |Group|>
+        <Group.Button @text="Foo bar" @onClick={{fn clickHandler "button"}} />
       </ButtonGroup>
-    `);
+    </template>);
 
     assert.dom('div:has(button)').hasAttribute('role', 'group');
 
@@ -43,17 +44,21 @@ module('Integration | components | button-group', function (hooks) {
   test('a disabled group disables all buttons', async function (this: Context, assert) {
     assert.expect(6);
 
-    this.clickHandler = (type: string, evt: MouseEvent) => {
+    const clickHandler = (type: string, evt: MouseEvent) => {
       assert.notOk(type);
       assert.notOk(evt, 'action is fired with event');
     };
 
-    await render(hbs`
-      <ButtonGroup @disabled={{true}} @onClick={{fn this.clickHandler "group"}} as |Group|>
-        <Group.Button @text="Foo" @onClick={{fn this.clickHandler "foo"}} />
-        <Group.Button @text="Bar" @onClick={{fn this.clickHandler "bar"}} />
+    await render(<template>
+      <ButtonGroup
+        @disabled={{true}}
+        @onClick={{fn clickHandler "group"}}
+        as |Group|
+      >
+        <Group.Button @text="Foo" @onClick={{fn clickHandler "foo"}} />
+        <Group.Button @text="Bar" @onClick={{fn clickHandler "bar"}} />
       </ButtonGroup>
-    `);
+    </template>);
 
     assert
       .dom('div:has(button)')
@@ -77,20 +82,36 @@ module('Integration | components | button-group', function (hooks) {
   test('nested groups fire actions', async function (this: Context, assert) {
     assert.expect(16);
 
-    this.clickHandler = (type: string, evt: MouseEvent) => {
+    const clickHandler = (type: string, evt: MouseEvent) => {
       assert.step(type);
       assert.ok(evt, 'action is fired with event');
     };
 
-    await render(hbs`
-      <ButtonGroup @onClick={{fn this.clickHandler "group"}} as |Group|>
-        <Group.Button class="btn-primary" @text="Foo" @onClick={{fn this.clickHandler "foo"}} />
-        <Group.SubGroup @onClick={{fn this.clickHandler "subgroup"}} data-test-subgroup as |SubGroup|>
-          <SubGroup.Button class="btn-primary" @text="Bar" @onClick={{fn this.clickHandler "bar"}} />
-          <SubGroup.Button class="btn-primary" @text="Baz" @onClick={{fn this.clickHandler "baz"}} />
+    await render(<template>
+      <ButtonGroup @onClick={{fn clickHandler "group"}} as |Group|>
+        <Group.Button
+          class="btn-primary"
+          @text="Foo"
+          @onClick={{fn clickHandler "foo"}}
+        />
+        <Group.SubGroup
+          @onClick={{fn clickHandler "subgroup"}}
+          data-test-subgroup
+          as |SubGroup|
+        >
+          <SubGroup.Button
+            class="btn-primary"
+            @text="Bar"
+            @onClick={{fn clickHandler "bar"}}
+          />
+          <SubGroup.Button
+            class="btn-primary"
+            @text="Baz"
+            @onClick={{fn clickHandler "baz"}}
+          />
         </Group.SubGroup>
       </ButtonGroup>
-    `);
+    </template>);
 
     assert.dom('div:has(button)').hasAttribute('role', 'group');
 
@@ -118,19 +139,19 @@ module('Integration | components | button-group', function (hooks) {
   test('nested groups fire only one action per event', async function (this: Context, assert) {
     assert.expect(1);
 
-    this.clickHandler = (type: string, evt: MouseEvent) => {
+    const clickHandler = (type: string, evt: MouseEvent) => {
       assert.ok(evt, 'action is fired with event');
     };
 
-    await render(hbs`
-      <ButtonGroup @onClick={{fn this.clickHandler "group"}} as |Group|>
+    await render(<template>
+      <ButtonGroup @onClick={{fn clickHandler "group"}} as |Group|>
         <Group.SubGroup as |SubGroup|>
           <SubGroup.SubGroup as |SubGroup2|>
-            <SubGroup2.Button/>
+            <SubGroup2.Button />
           </SubGroup.SubGroup>
         </Group.SubGroup>
       </ButtonGroup>
-    `);
+    </template>);
 
     await click('button');
   });

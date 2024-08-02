@@ -1,30 +1,28 @@
 import { assert, module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
+import Card from '@nrg-ui/ember/components/mktg/card';
 
 module('Integration | Component | mktg/card', function (hooks) {
   setupRenderingTest(hooks);
 
   test('card correctly renders vertical as default', async function () {
-    await render(hbs`
-      <Mktg::Card
-          class="g-col-12"
-          @title="Title"
-          @subtitle="Subtitle"
-        >
+    await render(<template>
+      <Card class="g-col-12" @title="Title" @subtitle="Subtitle">
         <:callout>
           <p>Callout</p>
         </:callout>
         <:start>
-        <div>
-          <p>Start section content</p>
-        </div>
+          <div>
+            <p>Start section content</p>
+          </div>
         </:start>
         <:end>
           <p>End section content</p>
         </:end>
-      </Mktg::Card>`);
+      </Card>
+    </template>);
+
     assert
       .dom('.card.g-col-12')
       .exists('Base card is rendered with passed attributes');
@@ -65,26 +63,28 @@ module('Integration | Component | mktg/card', function (hooks) {
         'End section content',
         'End section renders when block is present',
       );
-    await render(hbs`
-      <Mktg::Card
-          class="g-col-12"
-          @title="Title"
-          @subtitle="Subtitle"
-          @leftAlignCallout={{true}}
-        >
+
+    await render(<template>
+      <Card
+        class="g-col-12"
+        @title="Title"
+        @subtitle="Subtitle"
+        @leftAlignCallout={{true}}
+      >
         <:callout>
           <p>Callout</p>
         </:callout>
         <:start>
-        <div>
-          <p>Start section content</p>
-        </div>
+          <div>
+            <p>Start section content</p>
+          </div>
         </:start>
         <:end>
           <p>End section content</p>
         </:end>
-      </Mktg::Card>
-      `);
+      </Card>
+    </template>);
+
     assert
       .dom(
         '.card .card-header div .d-flex.flex-column.justify-content-start.w-100.m-0',
@@ -107,25 +107,26 @@ module('Integration | Component | mktg/card', function (hooks) {
   });
 
   test('card correctly renders horizontal when @horizontal is true', async function () {
-    await render(hbs`
-      <Mktg::Card
-          class="g-col-12"
-          @title="Title"
-          @subtitle="Subtitle"
-          @horizontal={{true}}
-        >
+    await render(<template>
+      <Card
+        class="g-col-12"
+        @title="Title"
+        @subtitle="Subtitle"
+        @horizontal={{true}}
+      >
         <:callout>
           <p>Callout</p>
         </:callout>
         <:start>
-        <div>
-          <p>Start section content</p>
-        </div>
+          <div>
+            <p>Start section content</p>
+          </div>
         </:start>
         <:end>
           <p>End section content</p>
         </:end>
-      </Mktg::Card>`);
+      </Card>
+    </template>);
 
     assert.notOk(
       document.querySelector('.card-header'),

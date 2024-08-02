@@ -1,29 +1,25 @@
 import { assert, module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, find } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
+import Promo from '@nrg-ui/ember/components/mktg/promo';
 
 module('Integration | components | mktg/promo', function (hooks) {
   setupRenderingTest(hooks);
 
   test('Promo component renders', async function () {
-    await render(hbs`<Mktg::Promo
-      class="promo"
-      @productName="Product name"
-    >
-      <:img>
-          <img
-            src="https://place-hold.it/700x700"
-            alt="Placeholder"
-          />
-      </:img>
-      <:header>
-        <p class="m-0 p-0">Header Text</p>
-      </:header>
-      <:description>
-        <p>Description</p>
-      </:description>
-    </Mktg::Promo>`);
+    await render(<template>
+      <Promo class="promo" @productName="Product name">
+        <:img>
+          <img src="https://place-hold.it/700x700" alt="Placeholder" />
+        </:img>
+        <:header>
+          <p class="m-0 p-0">Header Text</p>
+        </:header>
+        <:description>
+          <p>Description</p>
+        </:description>
+      </Promo>
+    </template>);
 
     assert.dom('.row.promo').exists('Promo renders default horizontal');
     assert
@@ -38,7 +34,9 @@ module('Integration | components | mktg/promo', function (hooks) {
         'Description',
         'Description named block renders correct content',
       );
+
     const imageElement = find('img');
+
     assert.equal(
       imageElement?.src,
       'https://place-hold.it/700x700',
@@ -49,24 +47,20 @@ module('Integration | components | mktg/promo', function (hooks) {
       'Placeholder',
       'The img alt tag renders correctly',
     );
-    await render(hbs`<Mktg::Promo
-      class="promo"
-      @vertical={{true}}
-      @productName="Product name"
-    >
-      <:img>
-          <img
-            src="https://place-hold.it/700x700"
-            alt="Placeholder"
-          />
-      </:img>
-      <:header>
-        <p class="m-0 p-0">Header Text</p>
-      </:header>
-      <:description>
-        <p>Description</p>
-      </:description>
-    </Mktg::Promo>`);
+
+    await render(<template>
+      <Promo class="promo" @vertical={{true}} @productName="Product name">
+        <:img>
+          <img src="https://place-hold.it/700x700" alt="Placeholder" />
+        </:img>
+        <:header>
+          <p class="m-0 p-0">Header Text</p>
+        </:header>
+        <:description>
+          <p>Description</p>
+        </:description>
+      </Promo>
+    </template>);
 
     assert.dom('.promo').exists('Promo renders vertical when param is true');
     assert

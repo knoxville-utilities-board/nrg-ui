@@ -1,32 +1,30 @@
 import { assert, module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
+import Header from '@nrg-ui/ember/components/mktg/header';
+import Button from '@nrg-ui/ember/components/button';
 
 module('Integration | components | mktg/header', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function () {
-    await render(hbs`
-      <Mktg::Header>
+    await render(<template>
+      <Header>
         <:brand>
           <img src="https://imageplaceholder.net/50" alt="Icon" />
         </:brand>
         <:title>
-            <p class="m-0">Title</p>
+          <p class="m-0">Title</p>
         </:title>
         <:nav>
-          <Button
-            class="btn-outline-light me-1 rounded-pill"
-          >Prev</Button>
-          <Button
-            class="btn-outline-light me-1 rounded-pill"
-          >Next</Button>
+          <Button class="btn-outline-light me-1 rounded-pill">Prev</Button>
+          <Button class="btn-outline-light me-1 rounded-pill">Next</Button>
         </:nav>
         <:options>
           <p class="my-0 me-2 fw-bold">Options content</p>
         </:options>
-      </Mktg::Header>`);
+      </Header>
+    </template>);
 
     assert.dom('div div img').exists('Brand renders content');
     assert

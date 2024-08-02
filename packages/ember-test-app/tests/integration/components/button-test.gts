@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, findAll, render, type TestContext } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
+import Button from '@nrg-ui/ember/components/button';
 
 interface Context extends TestContext {
   clickHandler: (evt: MouseEvent) => void;
@@ -13,13 +13,13 @@ module('Integration | components | button', function (hooks) {
   test('it renders', async function (this: Context, assert) {
     assert.expect(12);
 
-    this.clickHandler = (evt: MouseEvent) => {
+    const clickHandler = (evt: MouseEvent) => {
       assert.ok(evt, 'action is fired with event');
     };
 
-    await render(
-      hbs`<Button @text="Foo bar" @onClick={{this.clickHandler}} />`,
-    );
+    await render(<template>
+      <Button @text="Foo bar" @onClick={{clickHandler}} />
+    </template>);
 
     assert
       .dom('button')
@@ -31,11 +31,11 @@ module('Integration | components | button', function (hooks) {
 
     await click('button');
 
-    await render(hbs`
-      <Button @onClick={{this.clickHandler}}>
+    await render(<template>
+      <Button @onClick={{clickHandler}}>
         <div>Inner content</div>
       </Button>
-    `);
+    </template>);
 
     assert
       .dom('button')
@@ -52,13 +52,13 @@ module('Integration | components | button', function (hooks) {
   test('it can be disabled', async function (this: Context, assert) {
     assert.expect(4);
 
-    this.clickHandler = (evt: MouseEvent) => {
+    const clickHandler = (evt: MouseEvent) => {
       assert.notOk(evt, 'action is fired with event');
     };
 
-    await render(
-      hbs`<Button @disabled={{true}} @onClick={{this.clickHandler}} />`,
-    );
+    await render(<template>
+      <Button @disabled={{true}} @onClick={{clickHandler}} />
+    </template>);
 
     assert
       .dom('button')
@@ -77,13 +77,13 @@ module('Integration | components | button', function (hooks) {
   test('it can be loading', async function (this: Context, assert) {
     assert.expect(10);
 
-    this.clickHandler = (evt: MouseEvent) => {
+    const clickHandler = (evt: MouseEvent) => {
       assert.notOk(evt, 'action is fired with event');
     };
 
-    await render(
-      hbs`<Button @loading={{true}} @onClick={{this.clickHandler}} />`,
-    );
+    await render(<template>
+      <Button @loading={{true}} @onClick={{clickHandler}} />
+    </template>);
 
     assert
       .dom('button')
@@ -116,29 +116,29 @@ module('Integration | components | button', function (hooks) {
   test('it can have an icon', async function (assert) {
     assert.expect(7);
 
-    await render(hbs`
+    await render(<template>
       <Button @icon="bi-suitcase">
         <span>Text</span>
       </Button>
-    `);
+    </template>);
 
     assert.dom('button > i:first-child').hasClass('bi-suitcase');
     assert.dom('button > span:last-child').containsText('Text');
 
-    await render(hbs`
+    await render(<template>
       <Button @icon="bi-suitcase" @iconPosition="right">
         <span>Text</span>
       </Button>
-    `);
+    </template>);
 
     assert.dom('button > span:first-child').containsText('Text');
     assert.dom('button > i:last-child').hasClass('bi-suitcase');
 
-    await render(hbs`
+    await render(<template>
       <Button @icon="bi-suitcase" @iconLabel="Suitcase">
         <span>Text</span>
       </Button>
-    `);
+    </template>);
 
     assert
       .dom('button > i:first-child')

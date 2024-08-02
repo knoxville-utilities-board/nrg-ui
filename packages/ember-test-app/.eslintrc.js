@@ -6,7 +6,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
   },
-  plugins: ['ember', '@typescript-eslint'],
+  plugins: ['ember', '@typescript-eslint', 'import'],
   extends: [
     'eslint:recommended',
     'plugin:ember/recommended',
@@ -19,12 +19,28 @@ module.exports = {
   overrides: [
     // ts files
     {
-      files: ['**/*.ts'],
+      files: ['**/*.ts', '**/*.gts'],
       extends: [
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
       ],
       rules: {},
+    },
+    {
+      files: ['**/*.gjs'],
+      parser: 'ember-eslint-parser',
+      plugins: ['ember'],
+      extends: [
+        'eslint:recommended',
+        'plugin:ember/recommended',
+        'plugin:ember/recommended-gjs',
+      ],
+    },
+    {
+      files: ['**/*.gts'],
+      parser: 'ember-eslint-parser',
+      plugins: ['ember'],
+      extends: ['plugin:ember/recommended', 'plugin:ember/recommended-gts'],
     },
     // node files
     {
@@ -48,7 +64,7 @@ module.exports = {
     },
     {
       // test files
-      files: ['tests/**/*-test.{js,ts}'],
+      files: ['tests/**/*-test.{js,ts,gjs,gts}'],
       extends: ['plugin:qunit/recommended'],
       rules: {
         'qunit/require-expect': ['error', 'except-simple'],
