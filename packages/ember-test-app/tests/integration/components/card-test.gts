@@ -21,7 +21,7 @@ module('Integration | components | card', function (hooks) {
     assert.dom('.card.p-4.shadow-sm').exists('Card is rendered');
     assert.notOk(
       document.querySelector('.border-0'),
-      'Border renders if noBorder is not present',
+      'Border renders if hasBorder is not present',
     );
     assert
       .dom('.card .card-header p')
@@ -30,7 +30,7 @@ module('Integration | components | card', function (hooks) {
       .dom('.card .card-body p')
       .hasText('Body content', 'Correct content is rendered in card body');
     await render(<template>
-      <Card @noBorder={{true}}>
+      <Card @hasBorder={{false}}>
         <:header>
           <p>Header content</p>
         </:header>
@@ -41,6 +41,6 @@ module('Integration | components | card', function (hooks) {
     </template>);
     assert
       .dom('.card.p-4.shadow-sm.border-0')
-      .exists('Card has class of border-0 if noBorder is true');
+      .exists('Card has class of border-0 if hasBorder is false');
   });
 });
