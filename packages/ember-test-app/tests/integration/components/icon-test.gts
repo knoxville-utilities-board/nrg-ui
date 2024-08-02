@@ -1,18 +1,15 @@
 import { assert, module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
+import Icon from '@nrg-ui/ember/components/icon';
 
-module('Integration | components | mktg/icon', function (hooks) {
+module('Integration | components | icon', function (hooks) {
   setupRenderingTest(hooks);
 
   test('icon renders without circular background', async function () {
-    await render(hbs`
-      <Icon
-        class="test"
-        @type="icon"
-        @color="primary"
-      />`);
+    await render(<template>
+      <Icon class="test" @type="icon" @color="primary" />
+    </template>);
 
     assert.dom('.d-flex.test').exists('Icon renders passed attributes');
     assert.notOk(
@@ -28,13 +25,9 @@ module('Integration | components | mktg/icon', function (hooks) {
   });
 
   test('icon renders with circular background', async function () {
-    await render(hbs`
-      <Icon
-        class="test"
-        @type="icon"
-        @color="warning"
-        @circular={{true}}
-      />`);
+    await render(<template>
+      <Icon class="test" @type="icon" @color="warning" @circular={{true}} />
+    </template>);
     assert
       .dom('.test div')
       .hasClass(
