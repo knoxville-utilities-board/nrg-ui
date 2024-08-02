@@ -157,4 +157,29 @@ module('Integration | Component | mktg/card', function (hooks) {
       .dom('.card .card-body div:nth-of-type(3) p')
       .hasText('End section content', 'End section renders when present');
   });
+
+  test('Card passes noBorder param correctly', async function () {
+    await render(hbs`
+      <Mktg::Card
+          class="g-col-12"
+          @title="Title"
+          @subtitle="Subtitle"
+          @noBorder={{true}}
+        >
+        <:callout>
+          <p>Callout</p>
+        </:callout>
+        <:start>
+        <div>
+          <p>Start section content</p>
+        </div>
+        </:start>
+        <:end>
+          <p>End section content</p>
+        </:end>
+      </Mktg::Card>`);
+    assert
+      .dom('.card')
+      .hasClass('border-0', 'Base card is passed noBorder param');
+  });
 });

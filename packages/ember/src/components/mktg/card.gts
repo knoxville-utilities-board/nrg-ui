@@ -8,6 +8,7 @@ interface CardSignature {
     subtitle?: string;
     leftAlignCallout?: boolean;
     horizontal?: boolean;
+    noBorder?: boolean;
   };
   Blocks: {
     start: [];
@@ -18,7 +19,7 @@ interface CardSignature {
 
 const MktgCard: TOC<CardSignature> = <template>
   {{#if @horizontal}}
-    <Card ...attributes>
+    <Card @noBorder={{@noBorder}} ...attributes>
       <:body>
         <div class="row-md d-flex flex-column flex-md-row p-md-3">
           <div class="col-md d-flex flex-column justify-content-start pb-2">
@@ -43,7 +44,7 @@ const MktgCard: TOC<CardSignature> = <template>
       </:body>
     </Card>
   {{else}}
-    <Card ...attributes>
+    <Card @noBorder={{@noBorder}} ...attributes>
       <:header>
         <div
           class="d-flex flex-column justify-content-start align-items-center bg-white mb-2"

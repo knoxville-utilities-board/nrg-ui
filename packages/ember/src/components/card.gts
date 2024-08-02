@@ -8,6 +8,7 @@ interface CardSignature {
     isClickable?: boolean;
     // eslint-disable-next-line no-unused-vars
     onClick?: (evt: MouseEvent) => unknown;
+    noBorder?: boolean;
   };
   Blocks: {
     header: [];
@@ -26,7 +27,7 @@ export default class Card extends Component<CardSignature> {
 
   <template>
     <div
-      class="card p-4 shadow-sm"
+      class="card p-4 shadow-sm {{if @noBorder 'border-0'}}"
       role={{if @isClickable "button"}}
       {{! waiting for this issue to be resolved https://github.com/typed-ember/glint/issues/661 }}
       {{! @glint-expect-error }}

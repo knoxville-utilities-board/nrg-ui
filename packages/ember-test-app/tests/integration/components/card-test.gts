@@ -18,12 +18,28 @@ module('Integration | components | card', function (hooks) {
       </Card>
     </template>);
 
-    assert.dom('.card').exists('Card is rendered');
+    assert.dom('.card.p-4.shadow-sm').exists('Card is rendered');
+    assert.notOk(
+      document.querySelector('.border-0'),
+      'Border renders if noBorder is not present',
+    );
     assert
       .dom('.card .card-header p')
       .hasText('Header content', 'Correct content is rendered in card header');
     assert
       .dom('.card .card-body p')
       .hasText('Body content', 'Correct content is rendered in card body');
+    await render(hbs`
+        <Card @noBorder={{true}}>
+          <:header>
+            <p>Header content</p>
+          </:header>
+          <:body>
+            <p>Body content</p>
+          </:body>
+        </Card>`);
+    assert
+      .dom('.card.p-4.shadow-sm.border-0')
+      .exists('Card has class of border-0 if noBorder is true');
   });
 });
