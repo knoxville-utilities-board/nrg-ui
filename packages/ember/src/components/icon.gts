@@ -32,10 +32,16 @@ interface IconSignature {
 }
 
 export default class Icon extends Component<IconSignature> {
+  get backgroundColor() {
+    return this.args.backgroundColor
+      ? this.args.backgroundColor
+      : `${this.args.color}-subtle`;
+  }
+
   get classList() {
     let classes = ['d-flex', 'justify-content-center', 'fs-2', 'm-2'];
     if (this.args.circular) {
-      classes.push('rounded-circle', 'p-3', `bg-${this.args.backgroundColor}`);
+      classes.push('rounded-circle', 'p-3', `bg-${this.backgroundColor}`);
     }
     return classes.join(' ');
   }

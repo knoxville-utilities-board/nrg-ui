@@ -34,7 +34,6 @@ module('Integration | components | mktg/icon', function (hooks) {
         @type="icon"
         @color="warning"
         @circular={{true}}
-        @backgroundColor="warning-subtle"
       />`);
     assert
       .dom('.test div')
