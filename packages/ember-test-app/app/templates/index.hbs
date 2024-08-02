@@ -1,78 +1,80 @@
-<main class="container-fluid">
-  <Header class="mb-4">
-    <:center>
-      <p class="p-2 m-0 fs-4 fw-bold text-nowrap">Welcome to Ember Test App</p>
-    </:center>
-  </Header>
-  <div class="px-3">
-    <div class="my-3">
-      <LinkTo @route="marketing" class="btn btn-outline-dark" role="link">
-        Marketing Test
-        <i class="text-success bi-currency-dollar"></i>
-      </LinkTo>
-      <LinkTo @route="form" class="btn btn-outline-primary" role="link">
-        Form Test
-        <i class="text-danger bi-input-cursor-text"></i>
-      </LinkTo>
-      <LinkTo @route="cards" class="btn btn-outline-info" role="link">
-        Cards Test
-        <i class="text-dark bi-wallet2"></i>
-      </LinkTo>
-      <LinkTo @route="faq" class="btn btn-outline-success" role="link">
-        FAQs Test
-        <i class="bi-plus"></i>
-      </LinkTo>
-      <LinkTo
-        @route="promo"
-        class="btn btn-outline-info text-primary"
-        role="link"
-      >
-        Promo Test
-        <i class="bi-badge-ad"></i>
-      </LinkTo>
-      <div class="my-3">
-        <Button class="btn-success" @text="Add" @icon="bi-plus" />
+{{page-title "Home"}}
 
-        <ButtonGroup as |Group|>
-          <Group.Button class="btn-success" @text="Foo" />
-          <Group.Button @text="Bar" />
-          <Group.Button class="btn-danger">
-            Baz
-          </Group.Button>
-        </ButtonGroup>
-      </div>
-      <div class="my-3">
-        <Progress @animated={{true}} @progress={{30}} @striped={{true}} />
-        <hr />
-        <Progress
-          @animated={{true}}
-          @stacked={{true}}
-          @striped={{true}}
-          as |Segment|
-        >
-          <Segment @progress={{30}} />
-          <Segment class="bg-info" @progress={{50}} />
-        </Progress>
-      </div>
-      <div class="my-3">
-        <div class="d-flex align-items-center p-3 text-secondary">
-          <LoadingIndicator class="ms-auto" @showLabel={{true}} />
+<div class="row row-cols-1 row-cols-md-3 g-3">
+  <div class="mb-0">
+    <div class="card bg-secondary-subtle text-center">
+      <div class="card-body">
+        <h5 class="card-title">
+          <i class="bi-puzzle-fill fs-3 align-middle"></i>
+          <span class="align-middle">
+            Components
+          </span>
+        </h5>
+        <div class="mb-2">
+        </div>
+        <div class="d-grid col-8 col-md-4 mx-auto">
+          <LinkTo class="btn btn-primary fw-semibold" @route="components">
+            Go
+          </LinkTo>
         </div>
       </div>
     </div>
-    <div class="my-3">
-      <Alert @icon="bi-info-circle-fill" @dismissible={{true}}>
-        Hey neighbor!
-      </Alert>
+  </div>
+  <div class="mb-0">
+    <div class="card bg-secondary-subtle text-center">
+      <div class="card-body">
+        <h5 class="card-title">
+          <i class="bi-patch-question-fill fs-3 align-middle"></i>
+          <span class="align-middle">
+            Helpers
+          </span>
+        </h5>
+        <div class="mb-2">
+        </div>
+        <div class="d-grid col-8 col-md-4 mx-auto">
+          <LinkTo class="btn btn-primary fw-semibold" @route="helpers">
+            Go
+          </LinkTo>
+        </div>
+      </div>
     </div>
   </div>
-</main>
-
-{{outlet}}
-
-<Footer>
-  <:right>
-    <a href="">Privacy</a>
-    <a href="">Terms</a>
-  </:right>
-</Footer>
+  <div class="mb-0">
+    <div class="card bg-secondary-subtle text-center">
+      <div class="card-body">
+        <h5 class="card-title">
+          <i class="bi-braces-asterisk fs-3 align-middle"></i>
+          <span class="align-middle">
+            Modifiers
+          </span>
+        </h5>
+        <div class="mb-2">
+        </div>
+        <div class="d-grid col-8 col-md-4 mx-auto">
+          <LinkTo class="btn btn-primary fw-semibold" @route="modifiers">
+            Go
+          </LinkTo>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mb-0">
+    <div class="card bg-secondary-subtle text-center">
+      <div class="card-body">
+        <h5 class="card-title">
+          <i class="bi-hdd-stack-fill fs-3 align-middle"></i>
+          <span class="align-middle">
+            Services
+          </span>
+        </h5>
+        <div class="mb-2">
+        </div>
+        <div class="d-grid col-8 col-md-4 mx-auto">
+          <LinkTo class="btn btn-primary fw-semibold" @route="modifiers">
+            Go
+          </LinkTo>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

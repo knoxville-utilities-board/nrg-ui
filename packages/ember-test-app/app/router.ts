@@ -12,4 +12,10 @@ Router.map(function () {
   this.route('cards');
   this.route('promo');
   this.route('faq');
+  this.route('components', function () {
+    this.route('button');
+  });
+  this.route('helpers');
+  this.route('modifiers');
+  this.route('services');
 });
