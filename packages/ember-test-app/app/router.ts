@@ -12,6 +12,7 @@ Router.map(function () {
   this.route('cards');
   this.route('promo');
   this.route('faq');
+  this.route('workflow-tray');
   this.route('components', function () {
     this.route('button');
     this.route('card');
@@ -21,4 +22,5 @@ Router.map(function () {
   this.route('helpers');
   this.route('modifiers');
   this.route('services');
+  this.route('workflow-tray');
 });

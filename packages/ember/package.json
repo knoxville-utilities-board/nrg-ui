@@ -155,6 +155,8 @@
       "./components/nav-item.js": "./dist/_app_/components/nav-item.js",
       "./components/nrg/text-field.js": "./dist/_app_/components/nrg/text-field.js",
       "./components/progress.js": "./dist/_app_/components/progress.js",
+      "./components/mktg/service-pricing.js": "./dist/_app_/components/mktg/service-pricing.js",
+      "./components/mktg/workflow-tray.js": "./dist/_app_/components/mktg/workflow-tray.js",
       "./components/text-area.js": "./dist/_app_/components/text-area.js",
       "./components/text-field.js": "./dist/_app_/components/text-field.js",
       "./helpers/bind.js": "./dist/_app_/helpers/bind.js",
