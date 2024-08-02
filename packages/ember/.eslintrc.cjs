@@ -49,11 +49,7 @@ module.exports = {
       files: ['**/*.gts'],
       parser: 'ember-eslint-parser',
       plugins: ['ember'],
-      extends: [
-        'eslint:recommended',
-        'plugin:ember/recommended',
-        'plugin:ember/recommended-gts',
-      ],
+      extends: ['plugin:ember/recommended', 'plugin:ember/recommended-gts'],
     },
     // node files
     {

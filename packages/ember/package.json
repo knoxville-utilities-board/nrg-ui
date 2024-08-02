@@ -55,7 +55,8 @@
   "dependencies": {
     "@embroider/addon-shim": "^1.8.7",
     "decorator-transforms": "^1.0.1",
-    "ember-css-transitions": "^4.4.0"
+    "ember-css-transitions": "^4.4.0",
+    "ember-lifeline": "^7.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.23.6",
@@ -132,6 +133,7 @@
     "main": "addon-main.cjs",
     "app-js": {
       "./components/alert.js": "./dist/_app_/components/alert.js",
+      "./components/bound-value.js": "./dist/_app_/components/bound-value.js",
       "./components/button-group.js": "./dist/_app_/components/button-group.js",
       "./components/button.js": "./dist/_app_/components/button.js",
       "./components/card.js": "./dist/_app_/components/card.js",
@@ -146,7 +148,10 @@
       "./components/mktg/promo.js": "./dist/_app_/components/mktg/promo.js",
       "./components/mktg/section-header.js": "./dist/_app_/components/mktg/section-header.js",
       "./components/nrg/text-field.js": "./dist/_app_/components/nrg/text-field.js",
-      "./components/progress.js": "./dist/_app_/components/progress.js"
+      "./components/progress.js": "./dist/_app_/components/progress.js",
+      "./components/text-area.js": "./dist/_app_/components/text-area.js",
+      "./components/text-field.js": "./dist/_app_/components/text-field.js",
+      "./helpers/bind.js": "./dist/_app_/helpers/bind.js"
     },
     "defaultBlueprint": "@nrg-ui-ember"
   }
