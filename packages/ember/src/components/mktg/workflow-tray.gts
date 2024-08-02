@@ -1,9 +1,6 @@
 import type { TOC } from '@ember/component/template-only';
 
 interface MktgWorkflowTraySignature {
-  Args: {
-    title?: string;
-  };
   Blocks: {
     default: [];
   };
@@ -11,12 +8,10 @@ interface MktgWorkflowTraySignature {
 }
 
 const MktgWorkflowTray: TOC<MktgWorkflowTraySignature> = <template>
-  <div
-    class="w-md-33 flex-md-fill d-flex flex-column py-5 px-4 px-md-5 bg-light"
-    ...attributes
-  >
-    <h1>{{@title}}</h1>
-    {{yield}}
+  <div class="col-12 col-md-4 py-5 px-4 px-md-5 bg-light" ...attributes>
+    <div class="m-2">
+      {{yield}}
+    </div>
   </div>
 </template>;
 
