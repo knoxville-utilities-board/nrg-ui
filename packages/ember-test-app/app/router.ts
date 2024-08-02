@@ -14,6 +14,7 @@ Router.map(function () {
   this.route('faq');
   this.route('components', function () {
     this.route('button');
+    this.route('icon');
     this.route('navbar');
   });
   this.route('helpers');
