@@ -11,9 +11,6 @@ export default class extends Component {
   isClickable = false;
 
   @tracked
-  onClick?: (evt: MouseEvent) => unknown;
-
-  @tracked
   hasBorder = true;
 
   @tracked
@@ -50,6 +47,20 @@ export default class extends Component {
               @value={{this.class}}
               @onInput={{fn this.update "class"}}
               @defaultValue="none"
+            />
+            <Args.Bool
+              @name="isClickable"
+              @description="When true, the card is given a role of button and allows for an onClick method parameter to be passed."
+              @value={{this.isClickable}}
+              @defaultValue={{false}}
+              @onInput={{fn this.update "isClickable"}}
+            />
+            <Args.Bool
+              @name="hasBorder"
+              @description="When false, the card's border is removed. Note that the default value is true."
+              @value={{this.hasBorder}}
+              @defaultValue={{true}}
+              @onInput={{fn this.update "hasBorder"}}
             />
           </:api>
         </FreestyleUsage>
