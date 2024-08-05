@@ -9,7 +9,7 @@ import { tracked } from '@glimmer/tracking';
 
 export default class extends Component {
   @tracked
-  class = 'row-cols-1 row-cols-md-3';
+  class = 'bg-white';
 
   @action
   update(key: string, value: unknown) {
@@ -22,19 +22,36 @@ export default class extends Component {
         <FreestyleUsage>
           <:description>
             <p>The promo container acts as a container for one or more promo
-              components. The container implements flex box grid to aid in the
-              organization of promo components. Sizing of the promo components
-              can be defined by adding classes such as 'col-{number}' to each
-              promo component, or by specifying 'row-cols-{number}' on the promo
-              container itself. This can be seen most clearly when implementing
-              multiple promo components with vertical orientation.
-              <br />Note that each child promo component must be implemented
-              using dot notation.</p>
+              components as well as a section header component. The container
+              implements flex box grid to aid in the organization of promo
+              components. Sizing of the promo components can be defined by
+              adding classes such as 'col-{number}' to each promo component, or
+              by specifying 'row-cols-{number}' on the promo container itself.
+              <br />Note that each child component must be implemented using dot
+              notation.</p>
           </:description>
           <:example>
             <PromoContainer class={{this.class}} as |Container|>
+              <Container.SectionHeader
+                @subject="Subject"
+                @title="Section Title"
+                class={{this.class}}
+              >
+                <:subheader>
+                  <p class="m-0">Here's some content to give context and
+                    summarize this section.</p>
+                  <div class="d-flex justify-content-center mb-4">
+                    <Button
+                      type="button"
+                      class="mx-2 mt-2 btn btn-primary"
+                    >Contact Us</Button>
+                    <Button type="button" class="mx-2 mt-2 btn text-primary">Or
+                      call (865)111-2323</Button>
+                  </div>
+                </:subheader>
+              </Container.SectionHeader>
               <Container.Promo
-                class=""
+                class="col-12 col-md-4"
                 @vertical={{true}}
                 @productName="Product"
               >
@@ -65,7 +82,7 @@ export default class extends Component {
                 </:description>
               </Container.Promo>
               <Container.Promo
-                class=""
+                class="col-12 col-md-4"
                 @vertical={{true}}
                 @productName="Product"
               >
@@ -96,7 +113,7 @@ export default class extends Component {
                 </:description>
               </Container.Promo>
               <Container.Promo
-                class=""
+                class="col-12 col-md-4"
                 @vertical={{true}}
                 @productName="Product"
               >
