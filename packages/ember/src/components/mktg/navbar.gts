@@ -10,8 +10,7 @@ export interface NavbarSignature {
   Blocks: {
     default: [];
     brand: [];
-    'desktop-action-button': [ComponentLike<Button>];
-    'mobile-action-button': [ComponentLike<Button>];
+    actions: [ComponentLike<Button>];
   };
 }
 
@@ -43,9 +42,11 @@ export default class NavbarComponent extends Component<NavbarSignature> {
   // TODO: --bs-navbar-toggler-focus-width: 0;
 
   <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary" ...attributes>
       {{yield to="brand"}}
-      {{yield (component Button) to="mobile-action-button"}}
+      {{#if this.responsive.isMobileDevice}}
+        {{yield to="actions"}}
+      {{/if}}
       <button
         class="navbar-toggler mx-5"
         type="button"
@@ -60,7 +61,9 @@ export default class NavbarComponent extends Component<NavbarSignature> {
           {{yield}}
         </ul>
       </div>
-      {{yield (component Button) to="desktop-action-button"}}
+      {{#unless this.responsive.isMobileDevice}}
+        {{yield to="actions"}}
+      {{/unless}}
     </nav>
   </template>
 }
