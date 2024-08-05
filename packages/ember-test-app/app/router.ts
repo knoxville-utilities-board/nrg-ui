@@ -15,6 +15,7 @@ Router.map(function () {
   this.route('components', function () {
     this.route('button');
     this.route('card');
+    this.route('header');
     this.route('icon');
     this.route('navbar');
   });
