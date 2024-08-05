@@ -56,7 +56,8 @@
     "@embroider/addon-shim": "^1.8.7",
     "decorator-transforms": "^1.0.1",
     "ember-css-transitions": "^4.4.0",
-    "ember-lifeline": "^7.0.0"
+    "ember-lifeline": "^7.0.0",
+    "ismobilejs": "^1.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.23.6",
@@ -144,14 +145,17 @@
       "./components/mktg/card.js": "./dist/_app_/components/mktg/card.js",
       "./components/mktg/faq.js": "./dist/_app_/components/mktg/faq.js",
       "./components/mktg/header.js": "./dist/_app_/components/mktg/header.js",
+      "./components/mktg/navbar.js": "./dist/_app_/components/mktg/navbar.js",
       "./components/mktg/promo-container.js": "./dist/_app_/components/mktg/promo-container.js",
       "./components/mktg/promo.js": "./dist/_app_/components/mktg/promo.js",
       "./components/mktg/section-header.js": "./dist/_app_/components/mktg/section-header.js",
+      "./components/nav-item.js": "./dist/_app_/components/nav-item.js",
       "./components/nrg/text-field.js": "./dist/_app_/components/nrg/text-field.js",
       "./components/progress.js": "./dist/_app_/components/progress.js",
       "./components/text-area.js": "./dist/_app_/components/text-area.js",
       "./components/text-field.js": "./dist/_app_/components/text-field.js",
-      "./helpers/bind.js": "./dist/_app_/helpers/bind.js"
+      "./helpers/bind.js": "./dist/_app_/helpers/bind.js",
+      "./services/responsive.js": "./dist/_app_/services/responsive.js"
     },
     "defaultBlueprint": "@nrg-ui-ember"
   }
