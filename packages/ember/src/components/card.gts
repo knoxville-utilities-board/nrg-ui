@@ -18,7 +18,7 @@ interface CardSignature {
 
 export default class Card extends Component<CardSignature> {
   get hasBorder() {
-    return this.args.hasBorder == undefined ? true : this.args.hasBorder;
+    return this.args.hasBorder ?? true;
   }
 
   @action
@@ -31,7 +31,7 @@ export default class Card extends Component<CardSignature> {
 
   <template>
     <div
-      class="card p-4 shadow-sm {{if this.hasBorder '' 'border-0'}}"
+      class="card p-4 shadow-sm {{unless this.hasBorder 'border-0'}}"
       role={{if @isClickable "button"}}
       {{! waiting for this issue to be resolved https://github.com/typed-ember/glint/issues/661 }}
       {{! @glint-expect-error }}
