@@ -5,10 +5,11 @@
     <Container.Card
       @isClickable={{true}}
       @onClick={{this.clickHandler}}
+      @hasBorder={{false}}
       class="g-col-12 g-col-md-4"
     >
       <:header>
-        <p>Here is a title</p>
+        <p>This card has hasBorder param false</p>
       </:header>
       <:body>
         <p>Here is some body content</p>
@@ -40,12 +41,14 @@
     </Container.Card>
   </Mktg::CardContainer>
   <div class="container">
-    <p class="pt-3 fw-bold">Vertical card with right aligned price</p>
+    <p class="pt-3 fw-bold">Vertical card with right aligned price and hasBorder
+      param false</p>
     <Mktg::CardContainer class="justify-content-center" as |Container|>
       <Container.MktgCard
         class="g-col-12"
         @title="The Gig"
         @subtitle="Experience lightning-fast internet connectivity"
+        @hasBorder={{false}}
       >
         <:start>
           <div class="d-flex w-100 align-items-start">

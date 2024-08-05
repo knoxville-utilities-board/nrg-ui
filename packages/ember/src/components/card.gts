@@ -8,6 +8,7 @@ interface CardSignature {
     isClickable?: boolean;
     // eslint-disable-next-line no-unused-vars
     onClick?: (evt: MouseEvent) => unknown;
+    hasBorder?: boolean;
   };
   Blocks: {
     header: [];
@@ -16,6 +17,10 @@ interface CardSignature {
 }
 
 export default class Card extends Component<CardSignature> {
+  get hasBorder() {
+    return this.args.hasBorder ?? true;
+  }
+
   @action
   onClick(evt: MouseEvent) {
     evt?.preventDefault();
@@ -26,7 +31,7 @@ export default class Card extends Component<CardSignature> {
 
   <template>
     <div
-      class="card p-4 shadow-sm"
+      class="card p-4 shadow-sm {{unless this.hasBorder 'border-0'}}"
       role={{if @isClickable "button"}}
       {{! waiting for this issue to be resolved https://github.com/typed-ember/glint/issues/661 }}
       {{! @glint-expect-error }}

@@ -27,6 +27,11 @@ module('Integration | Component | mktg/card', function (hooks) {
       .dom('.card.g-col-12')
       .exists('Base card is rendered with passed attributes');
     assert
+      .dom('.border-0')
+      .doesNotExist(
+        'Base card has border by default if hasBorder is not present',
+      );
+    assert
       .dom(
         '.card .card-header .d-flex.flex-column.justify-content-start.align-items-center.bg-white.mb-2',
       )
@@ -156,5 +161,31 @@ module('Integration | Component | mktg/card', function (hooks) {
     assert
       .dom('.card .card-body div:nth-of-type(3) p')
       .hasText('End section content', 'End section renders when present');
+  });
+
+  test('Card passes hasBorder param correctly', async function () {
+    await render(<template>
+      <Card
+        class="g-col-12"
+        @title="Title"
+        @subtitle="Subtitle"
+        @hasBorder={{false}}
+      >
+        <:callout>
+          <p>Callout</p>
+        </:callout>
+        <:start>
+          <div>
+            <p>Start section content</p>
+          </div>
+        </:start>
+        <:end>
+          <p>End section content</p>
+        </:end>
+      </Card>
+    </template>);
+    assert
+      .dom('.card')
+      .hasClass('border-0', 'Base card is passed hasBorder param');
   });
 });
