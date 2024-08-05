@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { LinkTo } from '@ember/routing';
 import { assert } from '@ember/debug';
+import ResponsiveService from '../services/responsive.ts';
 
 export interface NrgNavItemSignature {
   Element: HTMLLIElement;
@@ -14,7 +15,7 @@ export interface NrgNavItemSignature {
 }
 
 export default class NrgNavItem extends Component<NrgNavItemSignature> {
-  @service declare responsive;
+  @service declare responsive: ResponsiveService;
 
   constructor(owner: unknown, args: NrgNavItemSignature['Args']) {
     super(owner, args);

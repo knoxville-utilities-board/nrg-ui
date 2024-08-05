@@ -1,22 +1,24 @@
 import Component from '@glimmer/component';
-import type { ComponentLike } from '@glint/template';
 import { on } from '@ember/modifier';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import Button from '../button.gts';
+import { service } from '@ember/service';
+import ResponsiveService from '../../services/responsive.ts';
 
 export interface NavbarSignature {
   Element: HTMLElement;
   Blocks: {
     default: [];
     brand: [];
-    actions: [ComponentLike<Button>];
+    actions: [];
   };
 }
 
 export default class NavbarComponent extends Component<NavbarSignature> {
   @tracked
   isMenuOpen = false;
+
+  @service declare responsive: ResponsiveService;
 
   @action
   toggleMenu() {
