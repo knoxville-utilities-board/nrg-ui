@@ -21,6 +21,7 @@ Router.map(function () {
   });
   this.route('helpers');
   this.route('mktg-components', function () {
+    this.route('card');
     this.route('faq');
     this.route('header');
   });

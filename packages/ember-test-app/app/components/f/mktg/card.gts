@@ -1,0 +1,91 @@
+import Component from '@glimmer/component';
+import Card from '@nrg-ui/ember/components/mktg/card';
+import FreestyleSection from 'ember-freestyle/components/freestyle-section';
+import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
+import { fn } from '@ember/helper';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
+
+export default class extends Component {
+  @tracked
+  class = 'col-6 justify-content-start';
+
+  @tracked
+  title = 'Title';
+
+  @tracked
+  subtitle = 'Subtitle';
+
+  @tracked
+  leftAlignCallout = false;
+
+  @tracked
+  horizontal = false;
+
+  @action
+  update(key: string, value: unknown) {
+    this[key] = value;
+  }
+
+  <template>
+    <FreestyleSection @name="Card" as |Section|>
+      <Section.subsection @name="Basics">
+        <FreestyleUsage>
+          <:example>
+            <Card
+              class={{this.class}}
+              @title={{this.title}}
+              @subtitle={{this.subtitle}}
+              @leftAlignCallout={{this.leftAlignCallout}}
+              @horizontal={{this.horizontal}}
+            >
+              <:callout>
+                <p class="m-0 fw-semibold fs-2">$20/mo</p>
+              </:callout>
+              <:start>
+                <p class="d-flex align-self-start m-0">Start section</p>
+              </:start>
+              <:end>
+                <p class="m-0">End section</p>
+              </:end>
+            </Card>
+          </:example>
+          <:api as |Args|>
+            <Args.String
+              @name="class"
+              @description="The class to apply to the card. Note that this is not an argument but rather a class applied directly to the card."
+              @value={{this.class}}
+              @onInput={{fn this.update "class"}}
+            />
+            <Args.String
+              @name="title"
+              @description="The title for the card"
+              @value={{this.title}}
+              @onInput={{fn this.update "title"}}
+            />
+            <Args.String
+              @name="subtitle"
+              @description="The subtitle for the card"
+              @value={{this.subtitle}}
+              @onInput={{fn this.update "subtitle"}}
+            />
+            <Args.Bool
+              @name="leftAlignCallout"
+              @description="When true, callout will render on the left side of the card. Note that this only affects layout when @horizontal is false."
+              @defaultValue={{false}}
+              @value={{this.leftAlignCallout}}
+              @onInput={{fn this.update "leftAlignCallout"}}
+            />
+            <Args.Bool
+              @name="horizontal"
+              @description="When true, the card's layout will be horizontal. Note that the default layout is vertical."
+              @defaultValue={{false}}
+              @value={{this.horizontal}}
+              @onInput={{fn this.update "horizontal"}}
+            />
+          </:api>
+        </FreestyleUsage>
+      </Section.subsection>
+    </FreestyleSection>
+  </template>
+}
