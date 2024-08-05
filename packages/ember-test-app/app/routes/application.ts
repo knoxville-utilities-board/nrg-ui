@@ -14,6 +14,7 @@ export default class ApplicationRoute extends Route {
       return `https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/${theme}.min.css`;
     };
     await this.freestyle.ensureHljs();
+    await this.freestyle.ensureHljsLanguage('typescript');
     this.freestyle.ensureHljsTheme(syntaxHighlightingTheme);
     this.freestyle.defaultTheme = syntaxHighlightingTheme;
   }
