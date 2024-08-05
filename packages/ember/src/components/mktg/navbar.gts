@@ -7,11 +7,6 @@ import Button from '../button.gts';
 
 export interface NavbarSignature {
   Element: HTMLElement;
-  Args: {
-    logoUrl: string;
-    logoPath: string;
-    logoAlt: string;
-  };
   Blocks: {
     default: [];
     brand: [];
