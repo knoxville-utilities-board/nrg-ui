@@ -26,10 +26,11 @@ module('Integration | Component | mktg/card', function (hooks) {
     assert
       .dom('.card.g-col-12')
       .exists('Base card is rendered with passed attributes');
-    assert.notOk(
-      document.querySelector('.border-0'),
-      'Base card has border by default if hasBorder is not present',
-    );
+    assert
+      .dom('.border-0')
+      .doesNotExist(
+        'Base card has border by default if hasBorder is not present',
+      );
     assert
       .dom(
         '.card .card-header .d-flex.flex-column.justify-content-start.align-items-center.bg-white.mb-2',

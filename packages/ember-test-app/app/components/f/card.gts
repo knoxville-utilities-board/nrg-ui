@@ -28,9 +28,9 @@ export default class extends Component {
           <:example>
             <Card
               class={{this.class}}
+              @hasBorder={{this.hasBorder}}
               @isClickable={{this.isClickable}}
               @onClick={{this.onClick}}
-              @hasBorder={{this.hasBorder}}
             >
               <:header>
                 <p>Card header</p>
@@ -46,7 +46,13 @@ export default class extends Component {
               @description="The class to apply to the card. Note that this is not an argument but rather a class applied directly to the card and should be implemented for organiziation, utilizing Bootstrap flexbox grid using 'col-{number}'"
               @value={{this.class}}
               @onInput={{fn this.update "class"}}
-              @defaultValue="none"
+            />
+            <Args.Bool
+              @name="hasBorder"
+              @description="When false, the card's border is removed."
+              @value={{this.hasBorder}}
+              @defaultValue={{true}}
+              @onInput={{fn this.update "hasBorder"}}
             />
             <Args.Bool
               @name="isClickable"
@@ -54,13 +60,6 @@ export default class extends Component {
               @value={{this.isClickable}}
               @defaultValue={{false}}
               @onInput={{fn this.update "isClickable"}}
-            />
-            <Args.Bool
-              @name="hasBorder"
-              @description="When false, the card's border is removed. Note that the default value is true."
-              @value={{this.hasBorder}}
-              @defaultValue={{true}}
-              @onInput={{fn this.update "hasBorder"}}
             />
           </:api>
         </FreestyleUsage>

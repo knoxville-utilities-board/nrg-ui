@@ -19,10 +19,9 @@ module('Integration | components | card', function (hooks) {
     </template>);
 
     assert.dom('.card.p-4.shadow-sm').exists('Card is rendered');
-    assert.notOk(
-      document.querySelector('.border-0'),
-      'Border renders if hasBorder is not present',
-    );
+    assert
+      .dom('.border-0')
+      .doesNotExist('Border renders if hasBorder is not present');
     assert
       .dom('.card .card-header p')
       .hasText('Header content', 'Correct content is rendered in card header');
