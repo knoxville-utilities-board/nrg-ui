@@ -4,7 +4,6 @@ interface PromoSignature {
   Element: HTMLDivElement;
   Args: {
     productName?: string;
-    headerText?: string;
     vertical?: boolean;
   };
   Blocks: {

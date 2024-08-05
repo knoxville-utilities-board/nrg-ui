@@ -9,7 +9,7 @@ export default class extends Component {
   class = '';
 
   <template>
-    <FreestyleSection @name="Card" as |Section|>
+    <FreestyleSection @name="Card Container" as |Section|>
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
