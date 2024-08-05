@@ -23,7 +23,7 @@ export default class extends Component {
             <div class="container-fluid">
               <Header class={{this.class}}>
                 <:left>
-                  <p class="m-0">Left Section</p>
+                  <p class="m-0">Left section</p>
                 </:left>
                 <:center>
                   <p class="m-0">Center Section</p>
@@ -39,10 +39,26 @@ export default class extends Component {
           </:example>
           <:api as |Args|>
             <Args.String
-              @name="class"
               @description="The class to apply to the header. Note that this is not an argument but rather a class applied directly to the header"
+              @name="class"
               @value={{this.class}}
               @onInput={{fn this.update "class"}}
+            />
+            <Args.Yield
+              @description="Named yield block that renders content on the left side of the header"
+              @name="left"
+            />
+            <Args.Yield
+              @description="Named yield block that renders content in the center of the header"
+              @name="center"
+            />
+            <Args.Yield
+              @description="Named yield block that renders content on the right side of the header"
+              @name="right"
+            />
+            <Args.Yield
+              @description="Named yield block that renders content in a row below the header when on smaller screen sizes"
+              @name="mobile-drop-section"
             />
           </:api>
         </FreestyleUsage>

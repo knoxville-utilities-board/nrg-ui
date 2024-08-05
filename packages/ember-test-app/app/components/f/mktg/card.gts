@@ -57,17 +57,12 @@ export default class extends Component {
               @value={{this.class}}
               @onInput={{fn this.update "class"}}
             />
-            <Args.String
-              @name="title"
-              @description="The title for the card"
-              @value={{this.title}}
-              @onInput={{fn this.update "title"}}
-            />
-            <Args.String
-              @name="subtitle"
-              @description="The subtitle for the card"
-              @value={{this.subtitle}}
-              @onInput={{fn this.update "subtitle"}}
+            <Args.Bool
+              @name="horizontal"
+              @description="When true, the card's layout will be horizontal. Note that the default layout is vertical."
+              @defaultValue={{false}}
+              @value={{this.horizontal}}
+              @onInput={{fn this.update "horizontal"}}
             />
             <Args.Bool
               @name="leftAlignCallout"
@@ -76,12 +71,25 @@ export default class extends Component {
               @value={{this.leftAlignCallout}}
               @onInput={{fn this.update "leftAlignCallout"}}
             />
-            <Args.Bool
-              @name="horizontal"
-              @description="When true, the card's layout will be horizontal. Note that the default layout is vertical."
-              @defaultValue={{false}}
-              @value={{this.horizontal}}
-              @onInput={{fn this.update "horizontal"}}
+            <Args.String
+              @name="subtitle"
+              @description="The subtitle for the card"
+              @value={{this.subtitle}}
+              @onInput={{fn this.update "subtitle"}}
+            />
+            <Args.String
+              @name="title"
+              @description="The title for the card"
+              @value={{this.title}}
+              @onInput={{fn this.update "title"}}
+            />
+            <Args.Yield
+              @name="start"
+              @description="Named yield block to render content at the start of the card. This refers to the top of the card in vertical orientation and the left of the card in horizontal orientation."
+            />
+            <Args.Yield
+              @name="end"
+              @description="Named yield block to render content at the end of the card. This refers to the bottom of the card in vertical orientation and the right of the card in horizontal orientation."
             />
           </:api>
         </FreestyleUsage>

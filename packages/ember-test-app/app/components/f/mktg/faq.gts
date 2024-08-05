@@ -40,6 +40,12 @@ export default class extends Component {
               @value={{this.class}}
               @onInput={{fn this.update "class"}}
             />
+            <Args.Bool
+              @name="defaultOpen"
+              @description="When true, the FAQ will default to being open on render"
+              @defaultValue={{false}}
+              @hideControls={{true}}
+            />
             <Args.String
               @name="question"
               @description="The question for each FAQ"
@@ -47,11 +53,9 @@ export default class extends Component {
               @onInput={{fn this.update "question"}}
               @required={{true}}
             />
-            <Args.Bool
-              @name="defaultOpen"
-              @description="When true, the FAQ will default to being open on render"
-              @defaultValue={{false}}
-              @hideControls={{true}}
+            <Args.Yield
+              @description="Named yield block to render the answer to the question"
+              @name="answer"
             />
           </:api>
         </FreestyleUsage>

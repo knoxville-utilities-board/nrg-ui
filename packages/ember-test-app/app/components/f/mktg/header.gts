@@ -45,10 +45,26 @@ export default class extends Component {
           </:example>
           <:api as |Args|>
             <Args.String
-              @name="class"
               @description="The class to apply to the header. Note that this is not an argument but rather a class applied directly to the header"
+              @name="class"
               @value={{this.class}}
               @onInput={{fn this.update "class"}}
+            />
+            <Args.Yield
+              @description="Named yield block to render branding content such as icons"
+              @name="brand"
+            />
+            <Args.Yield
+              @description="Named yield block to render nav content such as buttons"
+              @name="nav"
+            />
+            <Args.Yield
+              @description="Named yield block to render optional content next to the title on large displays. On small screen sizes, this content drops below the header into it's own row."
+              @name="options"
+            />
+            <Args.Yield
+              @description="Named yield block to render the title of the header"
+              @name="title"
             />
           </:api>
         </FreestyleUsage>
