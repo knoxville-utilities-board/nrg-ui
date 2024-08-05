@@ -26,6 +26,7 @@ Router.map(function () {
     this.route('faq');
     this.route('header');
     this.route('promo');
+    this.route('promo-container');
   });
   this.route('modifiers');
   this.route('services');
