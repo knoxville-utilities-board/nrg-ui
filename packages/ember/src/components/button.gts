@@ -3,7 +3,7 @@ import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import { and, not, or } from 'ember-truth-helpers';
 
-import type { NrgIconValue } from '../icon-types';
+import type { Icon } from '../types';
 import type ButtonGroup from './button-group';
 
 interface ButtonSignature {
@@ -11,7 +11,7 @@ interface ButtonSignature {
   Args: {
     disabled?: boolean;
     group?: ButtonGroup;
-    icon?: NrgIconValue;
+    icon?: Icon;
     iconPosition?: 'right' | 'left';
     iconLabel?: string;
     loading?: boolean;

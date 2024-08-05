@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import type { NrgIconValue } from '../';
+import type { Icon as IconType } from '../types';
 
 declare type SubtleColorType =
   | 'primary-subtle'
@@ -24,7 +24,7 @@ declare type ColorType =
 interface IconSignature {
   Element: HTMLDivElement;
   Args: {
-    type: NrgIconValue;
+    type: IconType;
     backgroundColor?: SubtleColorType | ColorType;
     color: ColorType;
     circular?: boolean;

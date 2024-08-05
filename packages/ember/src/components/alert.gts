@@ -3,7 +3,7 @@ import { on } from '@ember/modifier';
 import { tracked } from '@glimmer/tracking';
 import { cssTransition } from 'ember-css-transitions';
 
-import type { NrgIconValue } from '../icon-types';
+import type { Icon } from '../types';
 import { action } from '@ember/object';
 
 declare type AlertType =
@@ -20,7 +20,7 @@ interface AlertSignature {
   Element: HTMLDivElement | null;
   Args: {
     dismissible?: boolean;
-    icon?: NrgIconValue;
+    icon?: Icon;
     text?: string;
     type?: AlertType;
     onDismiss?: () => unknown;

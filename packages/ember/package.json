@@ -33,10 +33,10 @@
   ],
   "scripts": {
     "build": "concurrently 'pnpm:build:*'",
+    "build:icons": "node lib/build-icons.mjs",
     "build:js": "rollup --config",
     "build:types": "concurrently 'pnpm:build:types:*' --names 'types:'",
     "build:types:glint": "glint --declaration",
-    "build:types:icons": "node lib/build-icon-types.mjs",
     "format": "prettier --write .",
     "generate": "pnpm exec gember",
     "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
