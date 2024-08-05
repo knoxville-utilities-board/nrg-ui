@@ -17,6 +17,9 @@ Router.map(function () {
     this.route('header');
   });
   this.route('helpers');
+  this.route('mktg-components', function () {
+    this.route('header');
+  });
   this.route('modifiers');
   this.route('services');
 });

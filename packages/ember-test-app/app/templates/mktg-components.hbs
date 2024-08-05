@@ -1,0 +1,22 @@
+{{page-title "Marketing Components"}}
+<div class="row">
+  <div class="col-12 col-md-2 px-0">
+    <div class="p-4 sticky-top">
+      <div class="card mx-auto">
+        <div class="card-body">
+          <div class="list-group">
+            <LinkTo
+              @route="mktg-components.header"
+              class="list-group-item list-group-item-action"
+            >
+              Header
+            </LinkTo>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col p-4">
+    {{outlet}}
+  </div>
+</div>
