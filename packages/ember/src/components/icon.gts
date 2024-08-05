@@ -32,10 +32,18 @@ interface IconSignature {
 }
 
 export default class Icon extends Component<IconSignature> {
+  get color() {
+    return this.args.color || 'reset';
+  }
+
   get backgroundColor() {
-    return this.args.backgroundColor
-      ? this.args.backgroundColor
-      : `${this.args.color}-subtle`;
+    if (this.args.backgroundColor) {
+      return this.args.backgroundColor;
+    }
+    if (!this.args.color) {
+      return 'bg-transparent';
+    }
+    return `${this.args.color}-subtle`;
   }
 
   get classList() {
@@ -48,8 +56,8 @@ export default class Icon extends Component<IconSignature> {
 
   <template>
     <div class="d-flex" ...attributes>
-      <div class="{{this.classList}}">
-        <i class="bi {{@type}} text-{{@color}}" />
+      <div class={{this.classList}}>
+        <i class="bi {{@type}} text-{{this.color}}" />
       </div>
     </div>
   </template>

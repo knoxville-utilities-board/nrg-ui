@@ -19,7 +19,7 @@ export default class extends Component {
   ];
 
   backgroundColorOptions = [
-    'Default',
+    '',
     'primary-subtle',
     'primary',
     'secondary-subtle',
@@ -37,6 +37,8 @@ export default class extends Component {
     'dark-subtle',
     'dark',
   ];
+  @tracked
+  class = '';
 
   @tracked
   type = 'bi-telephone';
@@ -52,9 +54,6 @@ export default class extends Component {
 
   @action
   update(key: string, value: unknown) {
-    if (key === 'backgroundColor' && value === 'Default') {
-      value = `${this.color}-subtle`;
-    }
     if (key === 'circular' && value === false) {
       this.backgroundColor = undefined;
     }
@@ -67,42 +66,42 @@ export default class extends Component {
         <FreestyleUsage>
           <:example>
             <Icon
-              @type={{this.type}}
-              @color={{this.color}}
-              @circular={{this.circular}}
               @backgroundColor={{this.backgroundColor}}
+              @circular={{this.circular}}
+              @color={{this.color}}
+              @type={{this.type}}
             />
           </:example>
           <:api as |Args|>
             <Args.String
-              @name="type"
+              @defaultValue="{{this.color}}-subtle"
+              @description="When circular is true, the background color will be determined if a value is passed here. Note that default of this value is the subtle version of the color used for icon color."
+              @name="backgroundColor"
+              @value={{this.backgroundColor}}
+              @options={{this.backgroundColorOptions}}
+              @onInput={{fn this.update "backgroundColor"}}
+            />
+            <Args.Bool
+              @defaultValue={{false}}
+              @description="When true, the icon will render within a padded circle. Note that the default value is false."
+              @name="circular"
+              @value={{this.circular}}
+              @onInput={{fn this.update "circular"}}
+            />
+            <Args.String
+              @description="The color of the icon."
+              @name="color"
+              @options={{this.colorOptions}}
+              @required={{true}}
+              @value={{this.color}}
+              @onInput={{fn this.update "color"}}
+            />
+            <Args.String
               @description="The bootstrap icon type. This is a class that is applied to the icon tag utilizing Bootstrap's icon library."
+              @name="type"
               @required={{true}}
               @value={{this.type}}
               @onInput={{fn this.update "type"}}
-            />
-            <Args.String
-              @name="color"
-              @description="The color of the icon."
-              @value={{this.color}}
-              @onInput={{fn this.update "color"}}
-              @options={{this.colorOptions}}
-              @required={{true}}
-            />
-            <Args.Bool
-              @name="circular"
-              @description="When true, the icon will render within a padded circle. Note that the default value is false."
-              @value={{this.circular}}
-              @onInput={{fn this.update "circular"}}
-              @defaultValue={{false}}
-            />
-            <Args.String
-              @name="backgroundColor"
-              @description="When circular is true, the background color will be determined if a value is passed here. Note that default of this value is the subtle version of the color used for icon color."
-              @value={{this.backgroundColor}}
-              @onInput={{fn this.update "backgroundColor"}}
-              @options={{this.backgroundColorOptions}}
-              @defaultValue="{{this.color}}-subtle"
             />
           </:api>
         </FreestyleUsage>
