@@ -1,55 +1,57 @@
 import { assert, module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, render } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
+import Navbar from '@nrg-ui/ember/components/mktg/navbar';
+import NavItem from '@nrg-ui/ember/components/nav-item';
 
 module('Integration | components | mktg/navbar', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function () {
-    await render(hbs`
-      <Mktg::Navbar>
+    await render(<template>
+      <Navbar>
         <:brand>
           <a class="navbar-brand mx-5" href="https://www.kub.org">
             <img src="https://imageplaceholder.net/50" alt="Placeholder" />
           </a>
         </:brand>
-        <:mobile-action-button as |Button|>
-          <Button @text="Mobile Button" class="btn-secondary ms-auto d-lg-none" />
-        </:mobile-action-button>
+        <:actions as |Button|>
+          <Button
+            @text="Mobile Button"
+            class="btn-secondary ms-auto d-lg-none"
+          />
+        </:actions>
         <:default>
           <NavItem @url="#" @label="Home" />
           <NavItem @url="#" @label="Products" />
         </:default>
-        <:desktop-action-button as |Button|>
-          <Button @text="Desktop Button" class="btn-secondary me-5 d-none d-lg-block" />
-        </:desktop-action-button>
-      </Mktg::Navbar>`);
+      </Navbar>
+    </template>);
 
     assert.dom('nav a img').exists('Brand renders content');
     assert.dom('.navbar-nav').containsText('Home');
   });
 
   test('clicking the menu toggle changes the icon class', async function (assert) {
-    await render(hbs`
-      <Mktg::Navbar>
+    await render(<template>
+      <Navbar>
         <:brand>
           <a class="navbar-brand mx-5" href="https://www.kub.org">
             <img src="https://imageplaceholder.net/50" alt="Placeholder" />
           </a>
         </:brand>
-        <:mobile-action-button as |Button|>
-          <Button @text="Mobile Button" class="btn-secondary ms-auto d-lg-none" />
-        </:mobile-action-button>
+        <:actions as |Button|>
+          <Button
+            @text="Mobile Button"
+            class="btn-secondary ms-auto d-lg-none"
+          />
+        </:actions>
         <:default>
           <NavItem @url="#" @label="Home" />
           <NavItem @url="#" @label="Products" />
         </:default>
-        <:desktop-action-button as |Button|>
-          <Button @text="Desktop Button" class="btn-secondary me-5 d-none d-lg-block" />
-        </:desktop-action-button>
-      </Mktg::Navbar>
-    `);
+      </Navbar>
+    </template>);
     assert.dom('.navbar-toggler span').hasClass('bi-list');
     await click('.navbar-toggler');
     assert.dom('.navbar-toggler span').hasClass('bi-x');
