@@ -3,9 +3,6 @@ import HeaderComponent from '../header.gts';
 
 interface HeaderSignature {
   Element: HTMLDivElement;
-  Args: {
-    title: string;
-  };
   Blocks: {
     brand: [];
     title: [];
@@ -15,7 +12,7 @@ interface HeaderSignature {
 }
 
 const Header: TOC<HeaderSignature> = <template>
-  <HeaderComponent>
+  <HeaderComponent ...attributes>
     <:left>
       {{yield to="brand"}}
     </:left>
