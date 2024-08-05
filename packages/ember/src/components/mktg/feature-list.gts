@@ -3,12 +3,12 @@ import type { ComponentLike } from '@glint/template';
 import type { TOC } from '@ember/component/template-only';
 
 const columnMap = {
-  '1': 'g-col-12',
-  '2': 'g-col-6',
-  '3': 'g-col-4',
-  '4': 'g-col-3',
-  '6': 'g-col-2',
-  '12': 'g-col-1',
+  1: 'g-col-12',
+  2: 'g-col-6',
+  3: 'g-col-4',
+  4: 'g-col-3',
+  6: 'g-col-2',
+  12: 'g-col-1',
 };
 
 interface FeatureSignature {
