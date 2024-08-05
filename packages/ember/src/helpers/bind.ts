@@ -1,6 +1,6 @@
 import Helper from '@ember/component/helper';
 
-import type { Binding } from '../';
+import type { Binding } from '../types';
 
 type Positional = [Record<string, unknown>, string];
 type Return = Binding;
