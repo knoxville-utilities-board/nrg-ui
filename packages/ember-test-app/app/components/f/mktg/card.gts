@@ -84,12 +84,12 @@ export default class extends Component {
               @onInput={{fn this.update "title"}}
             />
             <Args.Yield
-              @name="start"
-              @description="Named yield block to render content at the start of the card. This refers to the top of the card in vertical orientation and the left of the card in horizontal orientation."
-            />
-            <Args.Yield
               @name="end"
               @description="Named yield block to render content at the end of the card. This refers to the bottom of the card in vertical orientation and the right of the card in horizontal orientation."
+            />
+            <Args.Yield
+              @name="start"
+              @description="Named yield block to render content at the start of the card. This refers to the top of the card in vertical orientation and the left of the card in horizontal orientation."
             />
           </:api>
         </FreestyleUsage>

@@ -45,20 +45,20 @@ export default class extends Component {
               @onInput={{fn this.update "class"}}
             />
             <Args.Yield
-              @description="Named yield block that renders content on the left side of the header"
-              @name="left"
-            />
-            <Args.Yield
               @description="Named yield block that renders content in the center of the header"
               @name="center"
             />
             <Args.Yield
-              @description="Named yield block that renders content on the right side of the header"
-              @name="right"
+              @description="Named yield block that renders content on the left side of the header"
+              @name="left"
             />
             <Args.Yield
               @description="Named yield block that renders content in a row below the header when on smaller screen sizes"
               @name="mobile-drop-section"
+            />
+            <Args.Yield
+              @description="Named yield block that renders content on the right side of the header"
+              @name="right"
             />
           </:api>
         </FreestyleUsage>

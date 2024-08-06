@@ -61,6 +61,11 @@ export default class extends Component {
               @defaultValue={{false}}
               @onInput={{fn this.update "isClickable"}}
             />
+            <Args.Action
+              @name="onClick"
+              @description="The action to be called when the card is clicked."
+              @hideControls={{true}}
+            />
           </:api>
         </FreestyleUsage>
       </Section.subsection>
