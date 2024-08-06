@@ -40,7 +40,7 @@ class Addon extends Component<AddonSignature> {
 
   <template>
     <div class="row align-items-center my-2" ...attributes>
-      <div class="col text-truncate">
+      <div class="col">
         {{this.label}}
       </div>
       <div class="col-auto text-end">
@@ -75,7 +75,7 @@ export default class MktgServicePricing extends Component<MktgServicePricingSign
       ...attributes
     >
       <div class="row align-items-center">
-        <div class="col-auto">
+        <div class="col-12 col-md-auto my-1">
           <i class="fs-1 {{@icon}}" />
         </div>
         <div class="col fs-5 text-truncate fw-bold">

@@ -20,7 +20,7 @@
       <LinkTo @route="marketing" class="link-light me-2">Add</LinkTo>
     </:options>
   </Mktg::Header>
-  <div class="container p-3">
+  <div class="container p-0 p-md-3">
     <h4>Billing &amp; Contact Information</h4>
     <hr class="my-4" />
     <form class="needs-validation" novalidate="">
@@ -201,7 +201,7 @@
 
     <Mktg::ServicePricing
       @label="Fiber"
-      @type="The Gig"
+      @package="The Gig"
       @description="$65/mo"
       @icon="bi-wifi"
       @selected={{true}}
@@ -212,7 +212,7 @@
     </Mktg::ServicePricing>
     <Mktg::ServicePricing
       @label="TV"
-      @type="Silver"
+      @package="Silver"
       @description="$107/mo"
       @icon="bi-tv"
       @selected={{true}}
@@ -222,7 +222,7 @@
       <Addon @label="FireStick" @price="$80" @quantity="2" />
       <Addon @label="HBO" @price="$5.99/mo" />
       <Addon @label="STARZ" @price="$4.99/mo" />
-      <Addon @label="Spanish Language Channels" @price="$4.99/mo" />
+      <Addon @label="Spanish Channels" @price="$4.99/mo" />
     </Mktg::ServicePricing>
     <Mktg::ServicePricing
       @label="Phone"
@@ -233,7 +233,7 @@
     />
     <Mktg::ServicePricing
       @label="Fiber"
-      @type="The Gig"
+      @package="The Gig 2.5"
       @description="Required"
       @icon="bi-wifi"
       @selected={{false}}
