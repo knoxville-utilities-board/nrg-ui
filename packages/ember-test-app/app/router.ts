@@ -22,5 +22,4 @@ Router.map(function () {
   this.route('helpers');
   this.route('modifiers');
   this.route('services');
-  this.route('workflow-tray');
 });
