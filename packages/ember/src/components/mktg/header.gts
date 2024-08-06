@@ -15,7 +15,7 @@ interface HeaderSignature {
 }
 
 const Header: TOC<HeaderSignature> = <template>
-  <HeaderComponent>
+  <HeaderComponent ...attributes>
     <:left>
       {{yield to="brand"}}
     </:left>
