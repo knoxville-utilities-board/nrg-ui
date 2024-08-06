@@ -1,6 +1,7 @@
-import type { Icon } from '../../icons';
+import type { Icon as IconType } from '../../types';
 import type { ComponentLike } from '@glint/template';
 import Component from '@glimmer/component';
+import Icon from '@nrg-ui/ember/components/icon';
 
 interface AddonSignature {
   Args: {
@@ -16,7 +17,7 @@ interface AddonSignature {
 
 interface MktgServicePricingSignature {
   Args: {
-    icon?: Icon;
+    icon: IconType;
     label: string;
     package?: string;
     description: string;
@@ -75,10 +76,10 @@ export default class MktgServicePricing extends Component<MktgServicePricingSign
       ...attributes
     >
       <div class="row align-items-center">
-        <div class="col-12 col-md-auto my-1">
-          <i class="fs-1 {{@icon}}" />
+        <div class="col-12">
+          <Icon @type={{@icon}} class="my-2" />
         </div>
-        <div class="col fs-5 text-truncate fw-bold">
+        <div class="col fs-5 fw-bold">
           {{this.label}}
         </div>
         <div class="col-auto fs-5 {{this.status}}">
