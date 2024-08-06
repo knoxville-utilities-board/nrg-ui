@@ -2,7 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { fillIn, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import TextField from '@nrg-ui/ember/components/text-field';
+import TextArea from '@nrg-ui/ember/components/form/text-area';
 import bind from '@nrg-ui/ember/helpers/bind';
 
 class Model {
@@ -10,39 +10,35 @@ class Model {
   value: string = 'Hello, world!';
 }
 
-module('Integration | components | text-field', function (hooks) {
+module('Integration | components | form/text-area', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders (inline)', async function (assert) {
-    assert.expect(6);
-    const model = new Model();
+    assert.expect(5);
 
+    const model = new Model();
     const actionHandler = (text) => {
       assert.strictEqual(text, 'Foo bar');
     };
 
     await render(<template>
-      <TextField @binding={{bind model "value"}} @onChange={{actionHandler}} />
+      <TextArea @binding={{bind model "value"}} @onChange={{actionHandler}} />
     </template>);
 
-    assert
-      .dom('input')
-      .hasAttribute('type', 'text')
-      .hasClass('form-control')
-      .hasValue('Hello, world!');
+    assert.dom('textarea').hasClass('form-control').hasValue('Hello, world!');
 
-    await fillIn('div > input', 'Foo bar');
+    await fillIn('div > textarea', 'Foo bar');
 
-    assert.dom('div > input').hasValue('Foo bar');
+    assert.dom('div > textarea').hasValue('Foo bar');
 
     await render(<template>
-      <TextField
+      <TextArea
         @binding={{bind model "value"}}
         @basic={{true}}
         @onChange={{actionHandler}}
       />
     </template>);
 
-    assert.dom('div > input').hasClass('form-control-plaintext');
+    assert.dom('div > textarea').hasClass('form-control-plaintext');
   });
 });

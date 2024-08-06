@@ -134,11 +134,13 @@
     "main": "addon-main.cjs",
     "app-js": {
       "./components/alert.js": "./dist/_app_/components/alert.js",
-      "./components/bound-value.js": "./dist/_app_/components/bound-value.js",
       "./components/button-group.js": "./dist/_app_/components/button-group.js",
       "./components/button.js": "./dist/_app_/components/button.js",
       "./components/card.js": "./dist/_app_/components/card.js",
       "./components/footer.js": "./dist/_app_/components/footer.js",
+      "./components/form/bound-value.js": "./dist/_app_/components/form/bound-value.js",
+      "./components/form/text-area.js": "./dist/_app_/components/form/text-area.js",
+      "./components/form/text-field.js": "./dist/_app_/components/form/text-field.js",
       "./components/header.js": "./dist/_app_/components/header.js",
       "./components/icon.js": "./dist/_app_/components/icon.js",
       "./components/loading-indicator.js": "./dist/_app_/components/loading-indicator.js",
@@ -154,8 +156,6 @@
       "./components/nav-item.js": "./dist/_app_/components/nav-item.js",
       "./components/nrg/text-field.js": "./dist/_app_/components/nrg/text-field.js",
       "./components/progress.js": "./dist/_app_/components/progress.js",
-      "./components/text-area.js": "./dist/_app_/components/text-area.js",
-      "./components/text-field.js": "./dist/_app_/components/text-field.js",
       "./helpers/bind.js": "./dist/_app_/helpers/bind.js",
       "./services/responsive.js": "./dist/_app_/services/responsive.js"
     },

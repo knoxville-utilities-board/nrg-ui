@@ -5,7 +5,7 @@ import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import { fn } from '@ember/helper';
 import bind from '@nrg-ui/ember/helpers/bind';
-import TextArea from '@nrg-ui/ember/components/text-area';
+import TextArea from '@nrg-ui/ember/components/form/text-area';
 import CodeBlock from '../code-block';
 
 // TypeScript doesn't recognize that this function is used in the template
