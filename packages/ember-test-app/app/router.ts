@@ -17,6 +17,8 @@ Router.map(function () {
     this.route('card');
     this.route('icon');
     this.route('navbar');
+    this.route('text-area');
+    this.route('text-field');
   });
   this.route('helpers');
   this.route('modifiers');

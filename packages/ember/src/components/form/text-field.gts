@@ -25,7 +25,7 @@ export default class TextField extends BoundValue<TextFieldSignature, string> {
   @action
   change(evt: Event) {
     const target = evt.target as HTMLInputElement;
-    this.args.onChange?.(target?.value);
+    this.onChange(target?.value);
   }
 
   <template>
