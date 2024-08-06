@@ -1,9 +1,51 @@
 {{page-title "@nrg-ui/ember"}}
 
-<div class="min-vh-100 d-flex flex-column" data-theme={{this.application.theme}}>
-  {{! TODO: Add header/sidebar }}
-  <main>
+<div data-theme="marketing">
+  <Mktg::Header>
+    <:brand>
+      <img src="https://imageplaceholder.net/50" alt="Icon" />
+    </:brand>
+    <:title>
+      {{#if this.title}}
+        <p class="m-0">{{this.title}}</p>
+      {{/if}}
+    </:title>
+    <:nav>
+      {{#if this.showPreviousNav}}
+        <Button class="btn-outline-light me-1 rounded-pill">Prev</Button>
+      {{/if}}
+      <Button
+        class="btn-outline-light me-1 rounded-pill"
+        @disabled={{this.nextNavDisabled}}
+      >Next</Button>
+    </:nav>
+    <:options>
+      {{#if this.options}}
+        {{#each this.options as |option|}}
+          <div class="d-flex flex-row flex-wrap justify-content-center">
+            <p class="my-0 me-2 fw-bold">{{option.label}}</p>
+            <LinkTo
+              @route={{option.link.route}}
+              class="link-light me-2"
+            >{{option.link.text}}</LinkTo>
+          </div>
+        {{/each}}
+      {{/if}}
+    </:options>
+  </Mktg::Header>
+
+  <main class="min-vh-100">
     {{outlet}}
   </main>
-  {{! TODO: Add footer }}
+  <Footer>
+    <:left>
+      <p class="m-0">Knoxville Utility Board | KUB.org</p>
+    </:left>
+    <:right>
+      <div class="d-flex flex-row flex-wrap">
+        <LinkTo @route="index" class="me-2 p-0">Privacy</LinkTo>
+        <LinkTo @route="index" class="m-0 p-0">Terms</LinkTo>
+      </div>
+    </:right>
+  </Footer>
 </div>
