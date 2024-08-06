@@ -22,6 +22,9 @@ export default class extends Component {
   @tracked
   horizontal = false;
 
+  @tracked
+  hasBorder = true;
+
   @action
   update(key: string, value: unknown) {
     this[key] = value;
@@ -34,10 +37,11 @@ export default class extends Component {
           <:example>
             <Card
               class={{this.class}}
-              @title={{this.title}}
-              @subtitle={{this.subtitle}}
-              @leftAlignCallout={{this.leftAlignCallout}}
+              @hasBorder={{this.hasBorder}}
               @horizontal={{this.horizontal}}
+              @leftAlignCallout={{this.leftAlignCallout}}
+              @subtitle={{this.subtitle}}
+              @title={{this.title}}
             >
               <:callout>
                 <p class="m-0 fw-semibold fs-2">$20/mo</p>
@@ -56,6 +60,13 @@ export default class extends Component {
               @description="The class to apply to the card. Note that this is not an argument but rather a class applied directly to the card."
               @value={{this.class}}
               @onInput={{fn this.update "class"}}
+            />
+            <Args.Bool
+              @name="hasBorder"
+              @description="When false, the card's border is removed."
+              @value={{this.hasBorder}}
+              @defaultValue={{true}}
+              @onInput={{fn this.update "hasBorder"}}
             />
             <Args.Bool
               @name="horizontal"
@@ -82,6 +93,10 @@ export default class extends Component {
               @description="The title for the card"
               @value={{this.title}}
               @onInput={{fn this.update "title"}}
+            />
+            <Args.Yield
+              @name="callout"
+              @description="Named yield block to render a callout in the card."
             />
             <Args.Yield
               @name="end"

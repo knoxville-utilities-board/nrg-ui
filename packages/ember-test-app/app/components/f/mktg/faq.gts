@@ -25,8 +25,8 @@ export default class extends Component {
           <:example>
             <Faq
               class={{this.class}}
-              @question={{this.question}}
               @defaultOpen={{this.defaultOpen}}
+              @question={{this.question}}
             >
               <:answer>
                 <p>Your answer goes here</p>

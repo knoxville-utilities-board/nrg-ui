@@ -52,8 +52,8 @@ export default class extends Component {
               </Container.SectionHeader>
               <Container.Promo
                 class="col-12 col-md-4"
-                @vertical={{true}}
                 @productName="Product"
+                @vertical={{true}}
               >
                 <:img>
                   <img
@@ -62,12 +62,10 @@ export default class extends Component {
                     class="rounded d-flex mb-3 w-100"
                   />
                 </:img>
-                <:header>
-                  <p class="m-0 p-0">Try This Product</p>
-                </:header>
                 <:description>
                   <p>Here's why you should try this product and a description of
                     it.
+                    <br />
                     <span class="fw-semibold">For only $15 per month</span>
                     <ul class="my-3">
                       <li>Option</li>
@@ -83,8 +81,8 @@ export default class extends Component {
               </Container.Promo>
               <Container.Promo
                 class="col-12 col-md-4"
-                @vertical={{true}}
                 @productName="Product"
+                @vertical={{true}}
               >
                 <:img>
                   <img
@@ -93,12 +91,10 @@ export default class extends Component {
                     class="rounded d-flex mb-3 w-100"
                   />
                 </:img>
-                <:header>
-                  <p class="m-0 p-0">Try This Product</p>
-                </:header>
                 <:description>
                   <p>Here's why you should try this product and a description of
                     it.
+                    <br />
                     <span class="fw-semibold">For only $15 per month</span>
                     <ul class="my-3">
                       <li>Option</li>
@@ -114,8 +110,8 @@ export default class extends Component {
               </Container.Promo>
               <Container.Promo
                 class="col-12 col-md-4"
-                @vertical={{true}}
                 @productName="Product"
+                @vertical={{true}}
               >
                 <:img>
                   <img
@@ -124,12 +120,10 @@ export default class extends Component {
                     class="rounded d-flex mb-3 w-100"
                   />
                 </:img>
-                <:header>
-                  <p class="m-0 p-0">Try This Product</p>
-                </:header>
                 <:description>
                   <p>Here's why you should try this product and a description of
                     it.
+                    <br />
                     <span class="fw-semibold">For only $15 per month</span>
                     <ul class="my-3">
                       <li>Option</li>
