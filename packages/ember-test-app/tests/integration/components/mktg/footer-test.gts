@@ -13,7 +13,7 @@ module('Integration | components | footer', function (hooks) {
   });
 
   test('it contains a horizontal line', async function (assert) {
-    await render(<template><Footer @hasDivider={{true}}/></template>);
+    await render(<template><Footer @hasDivider={{true}} /></template>);
 
     assert.dom('footer div hr').exists();
   });
