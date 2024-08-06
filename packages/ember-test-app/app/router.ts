@@ -16,6 +16,7 @@ Router.map(function () {
     this.route('button');
     this.route('icon');
     this.route('navbar');
+    this.route('text-area');
   });
   this.route('helpers');
   this.route('modifiers');
