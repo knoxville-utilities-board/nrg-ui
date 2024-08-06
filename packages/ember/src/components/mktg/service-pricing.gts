@@ -1,4 +1,4 @@
-import type { NrgIconValue } from '../../icon-types';
+import type { Icon } from '../../icons';
 import type { ComponentLike } from '@glint/template';
 import Component from '@glimmer/component';
 
@@ -16,7 +16,7 @@ interface AddonSignature {
 
 interface MktgServicePricingSignature {
   Args: {
-    icon?: NrgIconValue;
+    icon?: Icon;
     label: string;
     package?: string;
     description: string;
