@@ -20,62 +20,62 @@
       <LinkTo @route="marketing" class="link-light me-2">Add</LinkTo>
     </:options>
   </Mktg::Header>
-  <div class="container p-3">
+  <div class="container p-0 p-md-3">
     <h4>Billing &amp; Contact Information</h4>
     <hr class="my-4" />
     <form class="needs-validation" novalidate="">
       <div class="row g-3">
         <div class="col-sm-4">
-          <label for="firstName" class="form-label">
-            First name
+          <label for="firstlabel" class="form-label">
+            First label
             <span class="text-body-secondary">*</span>
           </label>
           <input
             type="text"
             class="form-control"
-            id="firstName"
+            id="firstlabel"
             placeholder="First"
             value=""
             required
           />
           <div class="invalid-feedback">
-            Valid first name is required.
+            Valid first label is required.
           </div>
         </div>
 
         <div class="col-sm-4">
-          <label for="middleName" class="form-label">
+          <label for="middlelabel" class="form-label">
             Middle
             <span class="text-body-secondary">*</span>
           </label>
           <input
             type="text"
             class="form-control"
-            id="middleName"
+            id="middlelabel"
             placeholder="Middle"
             value=""
             required
           />
           <div class="invalid-feedback">
-            Valid middle name is required.
+            Valid middle label is required.
           </div>
         </div>
 
         <div class="col-sm-4">
-          <label for="lastName" class="form-label">
-            Last name
+          <label for="lastlabel" class="form-label">
+            Last label
             <span class="text-body-secondary">*</span>
           </label>
           <input
             type="text"
             class="form-control"
-            id="lastName"
+            id="lastlabel"
             placeholder="Last"
             value=""
             required
           />
           <div class="invalid-feedback">
-            Valid last name is required.
+            Valid last label is required.
           </div>
         </div>
 
@@ -198,5 +198,60 @@
         </div>
       </div>
     </form>
+
+    <Mktg::ServicePricing
+      @label="Fiber"
+      @package="The Gig"
+      @description="$65/mo"
+      @icon="bi-wifi"
+      @selected={{true}}
+      @active={{false}}
+      as |Addon|
+    >
+      <Addon @label="Smart Gig" @price="$15/mo" />
+    </Mktg::ServicePricing>
+    <Mktg::ServicePricing
+      @label="TV"
+      @package="Silver"
+      @description="$107/mo"
+      @icon="bi-tv"
+      @selected={{true}}
+      @active={{false}}
+      as |Addon|
+    >
+      <Addon @label="FireStick" @price="$80" @quantity="2" />
+      <Addon @label="HBO" @price="$5.99/mo" />
+      <Addon @label="STARZ" @price="$4.99/mo" />
+      <Addon @label="Spanish Channels" @price="$4.99/mo" />
+    </Mktg::ServicePricing>
+    <Mktg::ServicePricing
+      @label="Phone"
+      @description="$129/mo"
+      @icon="bi-telephone"
+      @selected={{true}}
+      @active={{true}}
+    />
+    <Mktg::ServicePricing
+      @label="Fiber"
+      @package="The Gig 2.5"
+      @description="Required"
+      @icon="bi-wifi"
+      @selected={{false}}
+      @active={{true}}
+    />
+    <Mktg::ServicePricing
+      @label="TV"
+      @description="Add (optional)"
+      @icon="bi-tv"
+      @selected={{false}}
+      @active={{false}}
+    />
+    <Mktg::ServicePricing
+      @label="Phone"
+      @description="Add (optional)"
+      @icon="bi-telephone"
+      @selected={{false}}
+      @active={{false}}
+    />
   </div>
 </main>
