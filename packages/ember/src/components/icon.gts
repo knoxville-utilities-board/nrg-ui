@@ -27,7 +27,7 @@ interface IconSignature {
     type: IconType;
     backgroundColor?: SubtleColorType | ColorType;
     size?: '1' | '2' | '3' | '4' | '5' | '6';
-    color: ColorType;
+    color?: ColorType;
     circular?: boolean;
   };
 }
