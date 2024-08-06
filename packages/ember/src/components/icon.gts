@@ -26,6 +26,7 @@ interface IconSignature {
   Args: {
     type: IconType;
     backgroundColor?: SubtleColorType | ColorType;
+    size?: '1' | '2' | '3' | '4' | '5' | '6';
     color: ColorType;
     circular?: boolean;
   };
@@ -46,8 +47,17 @@ export default class Icon extends Component<IconSignature> {
     return `${this.args.color}-subtle`;
   }
 
+  get fontSizeClass() {
+    return `fs-${this.args.size ?? '2'}`;
+  }
+
   get classList() {
-    let classes = ['d-flex', 'justify-content-center', 'fs-2', 'm-2'];
+    let classes = [
+      'd-flex',
+      'justify-content-center',
+      this.fontSizeClass,
+      'm-2',
+    ];
     if (this.args.circular) {
       classes.push('rounded-circle', 'p-3', `bg-${this.backgroundColor}`);
     }

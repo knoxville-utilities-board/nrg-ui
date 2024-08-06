@@ -38,4 +38,14 @@ module('Integration | components | icon', function (hooks) {
       .dom('.test div')
       .hasClass('bg-warning-subtle', 'Icon bubble has correct bg color passed');
   });
+
+  test('icon renders at a diffrent size background', async function () {
+    await render(<template>
+      <Icon class="test" @type="icon" @color="primary" @size={{3}} />
+    </template>);
+
+    assert
+      .dom('.test div')
+      .hasClass('fs-3', 'Has a fontsize class based on the the size argument');
+  });
 });

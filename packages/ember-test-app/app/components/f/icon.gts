@@ -37,8 +37,14 @@ export default class extends Component {
     'dark-subtle',
     'dark',
   ];
+
+  sizeOptions = ['1', '2', '3', '4', '5', '6'];
+
   @tracked
   class = '';
+
+  @tracked
+  size = '2';
 
   @tracked
   type = 'bi-telephone';
@@ -70,6 +76,7 @@ export default class extends Component {
               @circular={{this.circular}}
               @color={{this.color}}
               @type={{this.type}}
+              @size={{this.size}}
             />
           </:example>
           <:api as |Args|>
@@ -96,6 +103,15 @@ export default class extends Component {
               @value={{this.color}}
               @onInput={{fn this.update "color"}}
             />
+            <Args.String
+              @description="The size of the icon."
+              @name="size"
+              @options={{this.sizeOptions}}
+              @required={{true}}
+              @value={{this.size}}
+              @onInput={{fn this.update "size"}}
+            />
+
             <Args.String
               @description="The bootstrap icon type. This is a class that is applied to the icon tag utilizing Bootstrap's icon library."
               @name="type"
