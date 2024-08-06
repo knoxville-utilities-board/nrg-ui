@@ -1,31 +1,31 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
+import Footer from '@nrg-ui/ember/components/mktg/footer';
 
-module('Integration | components | mktg/footer', function (hooks) {
+module('Integration | components | footer', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(hbs`<Mktg::Footer />`);
+    await render(<template><Footer /></template>);
 
     assert.dom('footer').exists();
   });
 
   test('it contains a horizontal line', async function (assert) {
-    await render(hbs`<Mktg::Footer @hasDivider={{true}}/>`);
+    await render(<template><Footer @hasDivider={{true}}/></template>);
 
     assert.dom('footer div hr').exists();
   });
 
   test('it contains a navigation bar', async function (assert) {
-    await render(hbs`
-      <Mktg::Footer>
+    await render(<template>
+      <Footer>
         <:nav>
           Nav Test
         </:nav>
-      </Mktg::Footer>
-    `);
+      </Footer>
+    </template>);
 
     assert
       .dom('footer div div:first-child div:first-child')
@@ -34,13 +34,13 @@ module('Integration | components | mktg/footer', function (hooks) {
   });
 
   test('it contains social media links', async function (assert) {
-    await render(hbs`
-      <Mktg::Footer>
+    await render(<template>
+      <Footer>
         <:social-media>
           Social Media Test
         </:social-media>
-      </Mktg::Footer>
-    `);
+      </Footer>
+    </template>);
 
     assert
       .dom('footer div div:first-child div:nth-child(1)')
@@ -50,13 +50,13 @@ module('Integration | components | mktg/footer', function (hooks) {
   });
 
   test('it contains a brand section', async function (assert) {
-    await render(hbs`
-      <Mktg::Footer>
+    await render(<template>
+      <Footer>
         <:brand>
           Brand Test
         </:brand>
-      </Mktg::Footer>
-    `);
+      </Footer>
+    </template>);
 
     assert
       .dom('footer div div:nth-child(2) div:first-child')
@@ -65,13 +65,13 @@ module('Integration | components | mktg/footer', function (hooks) {
   });
 
   test('it contains a legal section', async function (assert) {
-    await render(hbs`
-      <Mktg::Footer>
+    await render(<template>
+      <Footer>
         <:legal>
           Legal Test
         </:legal>
-      </Mktg::Footer>
-    `);
+      </Footer>
+    </template>);
 
     assert
       .dom('footer div div:nth-child(2) div:nth-child(1)')
@@ -81,8 +81,8 @@ module('Integration | components | mktg/footer', function (hooks) {
   });
 
   test('it contains all sections', async function (assert) {
-    await render(hbs`
-      <Mktg::Footer>
+    await render(<template>
+      <Footer>
         <:nav>
           Nav Test
         </:nav>
@@ -95,8 +95,8 @@ module('Integration | components | mktg/footer', function (hooks) {
         <:legal>
           Legal Test
         </:legal>
-      </Mktg::Footer>
-    `);
+      </Footer>
+    </template>);
 
     assert
       .dom('footer div div:nth-child(1) div:nth-child(1)')
