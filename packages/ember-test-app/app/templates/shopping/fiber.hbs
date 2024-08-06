@@ -1,0 +1,133 @@
+<Mktg::CardContainer class="p-5" as |Container|>
+  <Container.MktgCard
+    class="g-col-12"
+    @hasBorder={{false}}
+    @title="The Gig"
+    @subtitle="Experience lightning-fast internet connectivity"
+  >
+    <:callout>
+      <p class="fw-bold fs-1">$65<span class="fs-5 mb-2">/mo</span></p>
+    </:callout>
+    <:end>
+      <Mktg::FeatureList @columns={{2}}>
+        <:label>
+          <p>Includes:</p>
+        </:label>
+        <:features as |Feature|>
+          <Feature
+            class="mx-4"
+            @icon="bi-check-lg"
+            @text="1Gbps upload/download"
+          />
+          <Feature class="mx-4" @icon="bi-check-lg" @text="Low Latency" />
+          <Feature
+            class="mx-4"
+            @icon="bi-check-lg"
+            @text="Reliable Connection"
+          />
+          <Feature
+            class="mx-4"
+            @icon="bi-check-lg"
+            @text="Seamless streaming of 4k"
+          />
+        </:features>
+      </Mktg::FeatureList>
+      <Button
+        class="bg-primary w-100 text-white mt-2"
+        @text="Add to Bundle"
+        @type="button"
+        @onClick={{this.addToBundle}}
+      />
+    </:end>
+  </Container.MktgCard>
+  <Container.MktgCard
+    class="g-col-12"
+    @hasBorder={{false}}
+    @title="The Gig 2.5"
+    @subtitle="Experience lightning-fast internet connectivity"
+  >
+    <:callout>
+      <p class="fw-bold fs-1">$150<span class="fs-5 mb-2">/mo</span></p>
+    </:callout>
+    <:end>
+      <Mktg::FeatureList @columns={{2}}>
+        <:label>
+          <p>Includes:</p>
+        </:label>
+        <:features as |Feature|>
+          <Feature
+            class="mx-4"
+            @icon="bi-check-lg"
+            @text="2.5Gbps upload/download"
+          />
+          <Feature
+            class="mx-4"
+            @icon="bi-check-lg"
+            @text="Extremely Low Latency Gaming"
+          />
+          <Feature
+            class="mx-4"
+            @icon="bi-check-lg"
+            @text="Reliable Connection"
+          />
+          <Feature
+            class="mx-4"
+            @icon="bi-check-lg"
+            @text="Seamless streaming of 4k"
+          />
+        </:features>
+      </Mktg::FeatureList>
+      <Button
+        class="bg-primary w-100 text-white mt-2"
+        @text="Add to Bundle"
+        @type="button"
+        @onClick={{this.addToBundle}}
+      />
+    </:end>
+  </Container.MktgCard>
+  <Container.MktgCard
+    class="g-col-12"
+    @hasBorder={{false}}
+    @title="The Gig 10"
+    @subtitle="Experience lightning-fast internet connectivity"
+  >
+    <:callout>
+      <p class="fw-bold fs-1">$300<span class="fs-5 mb-2">/mo</span></p>
+    </:callout>
+    <:end>
+      <Mktg::FeatureList @columns={{2}}>
+        <:label>
+          <p>Includes:</p>
+        </:label>
+        <:features as |Feature|>
+          <Feature
+            class="mx-4"
+            @icon="bi-check-lg"
+            @text="2.5Gbps upload/download"
+          />
+          <Feature
+            class="mx-4"
+            @icon="bi-check-lg"
+            @text="1 Millisecond Latency"
+          />
+          <Feature
+            class="mx-4"
+            @icon="bi-check-lg"
+            @text="Reliable Connection"
+          />
+          <Feature
+            class="mx-4"
+            @icon="bi-check-lg"
+            @text="Seamless streaming of 4k"
+          />
+        </:features>
+      </Mktg::FeatureList>
+      <Button
+        class="bg-primary w-100 text-white mt-2"
+        @text="Add to Bundle"
+        @type="button"
+        @onClick={{this.addToBundle}}
+      />
+    </:end>
+  </Container.MktgCard>
+</Mktg::CardContainer>

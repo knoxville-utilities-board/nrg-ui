@@ -34,4 +34,16 @@ Router.map(function () {
   });
   this.route('modifiers');
   this.route('services');
+  this.route('index', { path: '/' });
+  this.route('shopping', function () {
+    this.route('fiber', function () {
+      this.route('addons');
+    });
+    this.route('phone', function () {
+      this.route('addons');
+    });
+    this.route('tv', function () {
+      this.route('addons');
+    });
+  });
 });
