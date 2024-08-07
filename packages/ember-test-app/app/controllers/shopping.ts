@@ -1,18 +1,8 @@
 import Controller from '@ember/controller';
-import { service } from '@ember/service';
-import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-
-import type RouterService from '@ember/routing/router-service';
+import { tracked } from '@glimmer/tracking';
 
 export default class ApplicationController extends Controller {
-  @service
-  declare router: RouterService;
-
-  redirect() {
-    this.router.transitionTo('shopping.fiber');
-  }
-
   @tracked
   active = 'fiber';
 
@@ -23,6 +13,10 @@ export default class ApplicationController extends Controller {
     } else {
       return false;
     }
+  }
+
+  get selectionMade() {
+    return this.model === true;
   }
 
   @action
@@ -40,7 +34,7 @@ export default class ApplicationController extends Controller {
   phoneDescription = 'Add (optional)';
 
   @tracked
-  fiberSelected = false;
+  fiberSelected = this.selectionMade;
 
   @tracked
   tvSelected = false;

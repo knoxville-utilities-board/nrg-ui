@@ -81,7 +81,10 @@
       </div>
     </div>
     <div class="d-flex">
-      <Button class="btn-primary py-3 flex-fill">Next</Button>
+      <Button
+        class="btn-primary py-3 flex-fill"
+        @disabled={{if (eq this.fiberSelected true) false true}}
+      >Next</Button>
     </div>
   </Mktg::WorkflowTray>
   <div

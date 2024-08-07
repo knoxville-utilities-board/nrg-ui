@@ -1,0 +1,53 @@
+<Mktg::CardContainer class="my-3 col-12 col-md-8" as |Container|>
+  <Container.MktgCard
+    class="g-col-12"
+    @hasBorder={{false}}
+    @title="Smart Gig Service"
+    @subtitle="Managed wifi service, router and professional in-home technician setup"
+  >
+    <:callout>
+      <p class="fw-bold fs-1 m-0 p-0">$65<span class="fs-5 mb-2">/mo</span></p>
+    </:callout>
+    <:end>
+      <p class="m-0 p-0">
+        We’ll provide you with a gig-capable router and you’ll have everything
+        you need to seamlessly use your wired and wireless devices.
+        <br />
+        <br />
+        KUB technicians will set up and install a home networking solution for
+        you, including a gig-speed router, and provide 24/7/365 support when you
+        need it.
+        <br />
+        <br />
+        Without Smart Gig Managed WiFi, you will be responsible for purchasing
+        and providing your own WiFi router. If you are going to provide your own
+        wireless router, we recommend using a WiFi 6 router. You can find
+        recommended routers here.
+      </p>
+      <Button
+        class="add-option bg-primary w-100 text-white mt-4"
+        @text="Add to Bundle"
+        @type="button"
+        @onClick={{this.clickHandler}}
+      />
+    </:end>
+  </Container.MktgCard>
+  <Container.MktgCard
+    class="g-col-12"
+    @hasBorder={{false}}
+    @title="Use My Own Router"
+    @subtitle="You will need to supply your own router and setup"
+  >
+    <:callout>
+      <p class="fw-bold fs-1 m-0 p-0">$0<span class="fs-5 mb-2">/mo</span></p>
+    </:callout>
+    <:end>
+      <Button
+        class="add-option bg-primary w-100 text-white mt-4"
+        @text="Add to Bundle"
+        @type="button"
+        @onClick={{this.clickHandler}}
+      />
+    </:end>
+  </Container.MktgCard>
+</Mktg::CardContainer>

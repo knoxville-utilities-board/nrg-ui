@@ -1,0 +1,174 @@
+<Mktg::CardContainer class="my-3 col-12 col-md-8" as |Container|>
+  <Container.MktgCard
+    class="g-col-12"
+    @hasBorder={{false}}
+    @title="Firestick"
+    @subtitle="Add Firesticks to your KUB order"
+  >
+    <:callout>
+      <p class="fw-bold fs-1 m-0 p-0">$65<span class="fs-5 mb-2">/mo</span></p>
+    </:callout>
+    <:end>
+      <p class="m-0 p-0">
+        Enjoy simultaneous streaming on up to 10 devices using the Firestick.
+        Without it, you'll need your own smart device to stream KUB TV.
+      </p>
+      <div class="dropdown mt-3">
+        <button
+          class="btn border dropdown-toggle d-flex justify-content-between align-items-center w-100"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Select Quantity
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
+      <Button
+        class="add-option bg-primary w-100 text-white mt-4"
+        @text="Add to Bundle"
+        @type="button"
+        @onClick={{this.clickHandler}}
+      />
+    </:end>
+  </Container.MktgCard>
+  <Container.MktgCard
+    class="g-col-12"
+    @hasBorder={{false}}
+    @title="HBO Max"
+    @subtitle="Add HBO Max to your subscription"
+  >
+    <:callout>
+      <p class="fw-bold fs-1 m-0 p-0">$5.99<span
+          class="fs-5 mb-2"
+        >/mo</span></p>
+    </:callout>
+    <:end>
+      <p>Watch HBO Originals like Succession, Barry, and The Last of Us on Max.
+        Plus, stream hit movies like Black Adam, Shazam!, Fury of the Gods, and
+        more.</p>
+      <Button
+        class="add-option bg-primary w-100 text-white mt-4"
+        @text="Add to Bundle"
+        @type="button"
+        @onClick={{this.clickHandler}}
+      />
+    </:end>
+  </Container.MktgCard>
+  <Container.MktgCard
+    class="g-col-12"
+    @hasBorder={{false}}
+    @title="STARZ"
+    @subtitle="Add Starz to your subscription"
+  >
+    <:callout>
+      <p class="fw-bold fs-1 m-0 p-0">$4.99<span
+          class="fs-5 mb-2"
+        >/mo</span></p>
+    </:callout>
+    <:end>
+      <p>Don't miss the newest season of STARZ visionary series like Power Book
+        III: Raising Kanan and catch up on seasons of Power Book II: Ghost,
+        P-Valley and Outlander. Plus, stream thousands of hit movies like The
+        Island, John Wick: Chapter 4, and more!</p>
+      <Button
+        class="add-option bg-primary w-100 text-white mt-4"
+        @text="Add to Bundle"
+        @type="button"
+        @onClick={{this.clickHandler}}
+      />
+    </:end>
+  </Container.MktgCard>
+  <Container.MktgCard
+    class="g-col-12"
+    @hasBorder={{false}}
+    @title="Showtime"
+    @subtitle="Add Showtime to your subscription"
+  >
+    <:callout>
+      <p class="fw-bold fs-1 m-0 p-0">$4.99<span
+          class="fs-5 mb-2"
+        >/mo</span></p>
+    </:callout>
+    <:end>
+      <p>Add award-winning SHOWTIME programming like Yellowjackets and The CHI,
+        groundbreaking documentaries and star-studded movies!</p>
+      <Button
+        class="add-option bg-primary w-100 text-white mt-4"
+        @text="Add to Bundle"
+        @type="button"
+        @onClick={{this.clickHandler}}
+      />
+    </:end>
+  </Container.MktgCard>
+  <Container.MktgCard
+    class="g-col-12"
+    @hasBorder={{false}}
+    @title="Spanish Language Channels"
+    @subtitle="Add Spanish Language Channels to your subscription"
+  >
+    <:callout>
+      <p class="fw-bold fs-1 m-0 p-0">$4.99<span
+          class="fs-5 mb-2"
+        >/mo</span></p>
+    </:callout>
+    <:end>
+      <p>For an extra $5 a month, you get the following channels with the KUB TV
+        Spanish Language Channels.</p>
+      <Mktg::FeatureList class="mb-2 mb-md-4" @columns={{4}}>
+        <:features as |Feature|>
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @meta="1"
+            @text="KUB TV"
+          />
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @meta="2"
+            @text="KUB TV"
+          />
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @meta="3"
+            @text="KUB TV"
+          />
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @meta="4"
+            @text="KUB TV"
+          />
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @meta="5"
+            @text="KUB TV"
+          />
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @meta="6"
+            @text="KUB TV"
+          />
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @meta="1"
+            @text="KUB TV"
+          />
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @meta="1"
+            @text="KUB TV"
+          />
+        </:features>
+      </Mktg::FeatureList>
+      <Button
+        class="add-option bg-primary w-100 text-white mt-4"
+        @text="Add to Bundle"
+        @type="button"
+        @onClick={{this.clickHandler}}
+      />
+    </:end>
+  </Container.MktgCard>
+</Mktg::CardContainer>

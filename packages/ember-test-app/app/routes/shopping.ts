@@ -1,12 +1,19 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import type RouterService from '@ember/routing/router-service';
-
 export default class ShoppingRoute extends Route {
   @service
   declare router: RouterService;
 
-  redirect() {
-    this.router.transitionTo('shopping.fiber');
+  // redirect() {
+  //   this.router.transitionTo('shopping.fiber');
+  // }
+
+  selectionMade = false;
+
+  async model() {
+    return {
+      selectionMade: this.selectionMade,
+    };
   }
 }

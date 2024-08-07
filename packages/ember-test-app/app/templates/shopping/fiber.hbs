@@ -1,7 +1,4 @@
-<Mktg::CardContainer
-  class="my-3"
-  as |Container|
->
+<Mktg::CardContainer class="my-3 col-12 col-md-8" as |Container|>
   <Container.MktgCard
     class="g-col-12"
     @hasBorder={{false}}
@@ -9,37 +6,41 @@
     @subtitle="Experience lightning-fast internet connectivity"
   >
     <:callout>
-      <p class="fw-bold fs-1">$65<span class="fs-5 mb-2">/mo</span></p>
+      <p class="fw-bold fs-1 m-0 p-0">$65<span class="fs-5 mb-2">/mo</span></p>
     </:callout>
     <:end>
-      <Mktg::FeatureList @columns={{2}}>
+      <Mktg::FeatureList class="mb-2 mb-md-4" @columns={{2}}>
         <:label>
           <p>Includes:</p>
         </:label>
         <:features as |Feature|>
           <Feature
-            class="mx-4"
+            class="mx-md-4 my-0 d-flex align-items-center"
             @icon="bi-check-lg"
             @text="1Gbps upload/download"
           />
-          <Feature class="mx-4" @icon="bi-check-lg" @text="Low Latency" />
           <Feature
-            class="mx-4"
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @icon="bi-check-lg"
+            @text="Low Latency"
+          />
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
             @icon="bi-check-lg"
             @text="Reliable Connection"
           />
           <Feature
-            class="mx-4"
+            class="mx-md-4 my-0 d-flex align-items-center"
             @icon="bi-check-lg"
             @text="Seamless streaming of 4k"
           />
         </:features>
       </Mktg::FeatureList>
       <Button
-        class="bg-primary w-100 text-white mt-2"
+        class="add-option bg-primary w-100 text-white mt-4"
         @text="Add to Bundle"
         @type="button"
-        @onClick={{this.addToBundle}}
+        @onClick={{this.clickHandler}}
       />
     </:end>
   </Container.MktgCard>
@@ -50,41 +51,40 @@
     @subtitle="Experience lightning-fast internet connectivity"
   >
     <:callout>
-      <p class="fw-bold fs-1">$150<span class="fs-5 mb-2">/mo</span></p>
+      <p class="fw-bold fs-1 m-0 p-0">$150<span class="fs-5 mb-2">/mo</span></p>
     </:callout>
     <:end>
-      <Mktg::FeatureList @columns={{2}}>
+      <Mktg::FeatureList class="mb-2 mb-md-4" @columns={{2}}>
         <:label>
           <p>Includes:</p>
         </:label>
         <:features as |Feature|>
           <Feature
-            class="mx-4"
+            class="mx-md-4 my-0 d-flex align-items-center"
             @icon="bi-check-lg"
             @text="2.5Gbps upload/download"
           />
           <Feature
-            class="mx-4"
+            class="mx-md-4 my-0 d-flex align-items-center"
             @icon="bi-check-lg"
             @text="Extremely Low Latency Gaming"
           />
           <Feature
-            class="mx-4"
+            class="mx-md-4 my-0 d-flex align-items-center"
             @icon="bi-check-lg"
             @text="Reliable Connection"
           />
           <Feature
-            class="mx-4"
+            class="mx-md-4 my-0 d-flex align-items-center"
             @icon="bi-check-lg"
             @text="Seamless streaming of 4k"
           />
         </:features>
       </Mktg::FeatureList>
       <Button
-        class="bg-primary w-100 text-white mt-2"
+        class="bg-primary w-100 text-white mt-4"
         @text="Add to Bundle"
         @type="button"
-        @onClick={{this.addToBundle}}
       />
     </:end>
   </Container.MktgCard>
@@ -95,7 +95,7 @@
     @subtitle="Experience lightning-fast internet connectivity"
   >
     <:callout>
-      <p class="fw-bold fs-1">$300<span class="fs-5 mb-2">/mo</span></p>
+      <p class="fw-bold fs-1 m-0 p-0">$300<span class="fs-5 mb-2">/mo</span></p>
     </:callout>
     <:end>
       <Mktg::FeatureList @columns={{2}}>
@@ -104,32 +104,31 @@
         </:label>
         <:features as |Feature|>
           <Feature
-            class="mx-4"
+            class="mx-md-4 my-0 d-flex align-items-center"
             @icon="bi-check-lg"
             @text="2.5Gbps upload/download"
           />
           <Feature
-            class="mx-4"
+            class="mx-md-4 my-0 d-flex align-items-center"
             @icon="bi-check-lg"
             @text="1 Millisecond Latency"
           />
           <Feature
-            class="mx-4"
+            class="mx-md-4 my-0 d-flex align-items-center"
             @icon="bi-check-lg"
             @text="Reliable Connection"
           />
           <Feature
-            class="mx-4"
+            class="mx-md-4 my-0 d-flex align-items-center"
             @icon="bi-check-lg"
             @text="Seamless streaming of 4k"
           />
         </:features>
       </Mktg::FeatureList>
       <Button
-        class="bg-primary w-100 text-white mt-2"
+        class="bg-primary w-100 text-white mt-4"
         @text="Add to Bundle"
         @type="button"
-        @onClick={{this.addToBundle}}
       />
     </:end>
   </Container.MktgCard>

@@ -36,14 +36,11 @@ Router.map(function () {
   this.route('services');
   this.route('index', { path: '/' });
   this.route('shopping', function () {
-    this.route('fiber', function () {
-      this.route('addons');
-    });
-    this.route('phone', function () {
-      this.route('addons');
-    });
-    this.route('tv', function () {
-      this.route('addons');
-    });
+    this.route('fiber');
+    this.route('fiber-addons');
+    this.route('phone');
+    this.route('phone-addons');
+    this.route('tv');
+    this.route('tv-addons');
   });
 });
