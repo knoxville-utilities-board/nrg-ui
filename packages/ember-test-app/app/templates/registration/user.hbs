@@ -1,0 +1,28 @@
+<Card class="w-75 m-3">
+  <:header>
+    <h3>Create a username and password</h3>
+    <p>
+      Already have a KUB account? <LinkTo @route="login">Sign in</LinkTo>
+    </p>
+  </:header>
+  <:body>
+    <div class="mb-3">
+      <div class="row">
+        <label for="username" class="form-label">Username</label>
+        <Nrg::TextField placeholder="Choose a username" id="username" />
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="row">
+        <label for="password" class="form-label">Password</label>
+        <Nrg::TextField placeholder="Choose a Password" id="password" />
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="row">
+        <label for="confirm-password" class="form-label">Confirm Password</label>
+        <Nrg::TextField placeholder="Confirm Password" id="confirm-password" />
+      </div>
+    </div>
+  </:body>
+</Card>

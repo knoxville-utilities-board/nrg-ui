@@ -6,6 +6,6 @@ export default class IndexRoute extends Route {
   declare router: RouterService;
 
   redirect() {
-    this.router.transitionTo('shopping');
+    this.router.transitionTo('signup');
   }
 }

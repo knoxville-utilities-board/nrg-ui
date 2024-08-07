@@ -1,0 +1,14 @@
+{{page-title "Signup"}}
+<div class="container p-5">
+  <Card class="g-col-12">
+    <:header>
+      <h2 class="text-center">Are you a current KUB customer?</h2>
+    </:header>
+    <:body>
+              <div class="d-flex justify-content-center mb-4">
+          <Button type="button" class="mx-2 mt-2 btn-lg btn-primary" {{on "click" this.login}}>Yes</Button>
+          <Button type="button" class="mx-2 mt-2 btn-lg btn-primary" {{on "click" this.goToAddress}}>No</Button>
+        </div>
+    </:body>
+  </Card>
+</div>

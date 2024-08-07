@@ -1,0 +1,91 @@
+<Card class="w-75 m-3">
+  <:header>
+    <h3>Billing & Contact Info</h3>
+  </:header>
+  <:body>
+    <div class="mb-3">
+      <div class="row">
+        <label for="first-name" class="form-label">First Name</label>
+        <Nrg::TextField placeholder="First Name" id="first-name" />
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="row">
+        <label for="last-name" class="form-label">Last Name</label>
+        <Nrg::TextField placeholder="Last Name" id="last-name" />
+      </div>
+    </div>
+    <hr />
+    <div class="mb-3">
+      <div class="row">
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="flexSwitchCheckChecked"
+            checked
+          />
+          <label class="form-check-label" for="flexSwitchCheckChecked">Billing
+            is the same as service location</label>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="row">
+        <label for="address" class="form-label">Address</label>
+        <Nrg::TextField placeholder="Address" id="address" />
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="row">
+        <label for="address2" class="form-label">Address Line 2</label>
+        <Nrg::TextField placeholder="Address Line 2" id="address2" />
+      </div>
+    </div>
+    <hr />
+    <div class="mb-3">
+      <div class="row">
+        <label for="city" class="form-label">City</label>
+        <Nrg::TextField placeholder="City" id="city" />
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="row">
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            State
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">TN</a></li>
+            <li><a class="dropdown-item" href="#">Is there anything else?</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="row">
+        <label for="zip" class="form-label">Zip</label>
+        <Nrg::TextField placeholder="Zip" id="zip" />
+      </div>
+    </div>
+    <hr />
+    <div class="mb-3">
+      <div class="row">
+        <label for="phone" class="form-label">Phone</label>
+        <Nrg::TextField placeholder="Phone" id="phone" />
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="row">
+        <label for="email" class="form-label">Email</label>
+        <Nrg::TextField placeholder="Email" id="email" />
+      </div>
+    </div>
+  </:body>
+</Card>
