@@ -1,1 +1,18 @@
-@import url("marketing-theme.css");
+@import url('marketing-theme.css');
+
+@media (min-width: 768px) {
+  #application {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  main {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .scrollable-md {
+    height: 100%;
+    overflow-y: auto;
+  }
+}

@@ -1,6 +1,6 @@
 {{page-title "@nrg-ui/ember"}}
 
-<div data-theme="marketing">
+<div data-theme="marketing" id="application" class="d-flex flex-column">
   <Mktg::Header>
     <:brand>
       <img src="https://imageplaceholder.net/50" alt="Icon" />
@@ -34,7 +34,7 @@
     </:options>
   </Mktg::Header>
 
-  <main class="min-vh-100 d-flex flex-row">
+  <main class="d-flex" >
     {{outlet}}
   </main>
 
