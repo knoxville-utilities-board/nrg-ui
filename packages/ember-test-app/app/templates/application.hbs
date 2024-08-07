@@ -1,7 +1,7 @@
 {{page-title "@nrg-ui/ember"}}
 
 <div data-theme="marketing" id="application" class="d-flex flex-column">
-  <Mktg::Header>
+  <Mktg::Header class={{if (eq this.currentRoute "shopping.fiber-selected") "bg-success"}}>
     <:brand>
       <img src="https://imageplaceholder.net/50" alt="Icon" />
     </:brand>
@@ -11,11 +11,11 @@
       {{/if}}
     </:title>
     <:nav>
-      {{#if this.showPreviousNav}}
-        <Button class="btn-outline-light me-1 rounded-pill">Prev</Button>
-      {{/if}}
+      {{#unless (eq this.currentRoute "shopping.fiber")}}
+        <Button class="btn-outline-light me-1">Prev</Button>
+      {{/unless}}
       <Button
-        class="btn-outline-light me-1 rounded-pill"
+        class="btn-outline-light me-1"
         @disabled={{this.nextNavDisabled}}
       >Next</Button>
     </:nav>
@@ -34,14 +34,11 @@
     </:options>
   </Mktg::Header>
 
-  <main class="d-flex" >
+  <main class="d-flex">
     {{outlet}}
   </main>
 
   <Footer>
-    <:left>
-      <p class="m-0">Knoxville Utility Board | KUB.org</p>
-    </:left>
     <:right>
       <div class="d-flex flex-row flex-wrap">
         <LinkTo @route="index" class="me-2 p-0">Privacy</LinkTo>

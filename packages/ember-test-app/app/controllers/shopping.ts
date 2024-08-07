@@ -1,8 +1,12 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { service } from '@ember/service';
+import type RouterService from '@ember/routing/router-service';
 
 export default class ApplicationController extends Controller {
+  @service declare router: RouterService;
+
   @tracked
   active = 'fiber';
 
@@ -15,26 +19,54 @@ export default class ApplicationController extends Controller {
     }
   }
 
-  get selectionMade() {
-    return this.model === true;
-  }
-
   @action
   setActive(path: string) {
     this.active = path;
   }
 
-  @tracked
-  fiberDescription = 'Required';
+  @action
+  nextRoute() {
+    this.router.transitionTo('shopping.fiber-addons');
+  }
 
+  get currentRoute() {
+    return this.router.currentRouteName;
+  }
+
+  get fiberDescription() {
+    if (
+      this.currentRoute === 'shopping' ||
+      this.currentRoute === 'shopping.fiber'
+    ) {
+      return 'Required';
+    }
+    return '$65/mo';
+  }
+
+  get fiberSelected() {
+    if (
+      this.currentRoute === 'shopping' ||
+      this.currentRoute === 'shopping.fiber'
+    ) {
+      return false;
+    }
+    return true;
+  }
+
+  get fiberLabel() {
+    if (
+      this.currentRoute === 'shopping' ||
+      this.currentRoute === 'shopping.fiber'
+    ) {
+      return 'Fiber';
+    }
+    return 'Fiber: The Gig';
+  }
   @tracked
   tvDescription = 'Add (optional)';
 
   @tracked
   phoneDescription = 'Add (optional)';
-
-  @tracked
-  fiberSelected = this.selectionMade;
 
   @tracked
   tvSelected = false;

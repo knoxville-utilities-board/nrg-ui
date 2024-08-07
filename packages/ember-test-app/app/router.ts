@@ -37,6 +37,7 @@ Router.map(function () {
   this.route('index', { path: '/' });
   this.route('shopping', function () {
     this.route('fiber');
+    this.route('fiber-selected');
     this.route('fiber-addons');
     this.route('phone');
     this.route('phone-addons');

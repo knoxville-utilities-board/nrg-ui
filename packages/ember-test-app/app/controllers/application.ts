@@ -23,31 +23,7 @@ export default class ApplicationController extends Controller {
     },
   ];
 
-  @tracked
-  title: string | undefined;
-
-  @tracked
-  showPreviousNav = false;
-
-  @tracked
-  nextNavDisabled = true;
-
-  @tracked
-  selection: string | undefined;
-
-  shouldShowPreviousNav() {
-    if (this.router.currentRouteName === 'index') {
-      this.showPreviousNav = false;
-    } else {
-      this.showPreviousNav = true;
-    }
-  }
-
-  shouldDisabledNextNav() {
-    if (this.selection) {
-      this.nextNavDisabled = false;
-    } else {
-      this.nextNavDisabled = true;
-    }
+  get currentRoute() {
+    return this.router.currentRouteName;
   }
 }

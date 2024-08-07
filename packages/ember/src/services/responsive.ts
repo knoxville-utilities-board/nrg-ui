@@ -26,7 +26,7 @@ export default class Responsive extends Service {
   }
 
   get isTabletScreen() {
-    return this.media?.isTablet;
+    return this.isMobile?.tablet;
   }
 
   get isComputerScreen() {
