@@ -35,6 +35,10 @@ Router.map(function () {
   this.route('modifiers');
   this.route('services');
   this.route('index', { path: '/' });
+  this.route('signup');
+  this.route('login');
+  this.route('address');
+  this.route('confirmation');
   this.route('shopping', function () {
     this.route('fiber');
     this.route('fiber-selected');
@@ -46,4 +50,10 @@ Router.map(function () {
     this.route('tv-addons');
   });
   this.route('installation');
+  this.route('registration', function () {
+    this.route('user');
+    this.route('billing');
+    this.route('privacy');
+    this.route('confirmation');
+  });
 });

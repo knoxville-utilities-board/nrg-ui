@@ -1,0 +1,27 @@
+{{page-title "Login"}}
+<div class="container p-5">
+<Card class="g-col-12">
+  <:body>
+    <h2>Login to your KUB Account</h2>
+    <div class="mb-3">
+      <div class="row">
+        <label for="username" class="form-label">Username</label>
+        <Nrg::TextField placeholder="Username" id="username" />
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="row">
+        <label for="password" class="form-label">Password</label>
+        <Nrg::TextField placeholder="Password" id="password" />
+      </div>
+    </div>
+
+    <Button
+      class="bg-primary w-100 text-white mt-2"
+      @text="Login"
+      @type="button"
+      {{on "click" this.goToOrder}}
+    />
+  </:body>
+</Card>
+</div>
