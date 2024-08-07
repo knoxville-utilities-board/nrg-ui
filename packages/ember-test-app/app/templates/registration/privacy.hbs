@@ -1,0 +1,80 @@
+<Card class="w-75 m-3">
+  <:header>
+    <h4>Set Up Your Security Code</h4>
+    <p>
+      Create a security code with a minimum of 4 digits. You'll use this code to
+      verify your identity when you contact KUB.
+    </p>
+    <div class="mb-3">
+      <div class="row">
+        <label for="security-code" class="form-label">Security Code</label>
+        <Nrg::TextField placeholder="Security Code" id="security-code" />
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="row">
+        <label for="confirm-security-code" class="form-label">Confirm Security
+          Code</label>
+        <Nrg::TextField
+          placeholder="Confirm Security Code"
+          id="confirm-security-code"
+        />
+      </div>
+    </div>
+  </:header>
+  <:body>
+    <h4>Enter security questions</h4>
+    <p>
+      In the event of an emergency, we'll use these questions to verify your
+      identity.
+    </p>
+    <div class="mb-3">
+      <div class="row">
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle w-100"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Security Question 1
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">TN</a></li>
+            <li><a class="dropdown-item" href="#">Is there anything else?</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="row">
+        <label for="answer1" class="form-label">Answer</label>
+        <Nrg::TextField placeholder="Answer" id="answer1" />
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="row">
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle w-100"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Security Question 1
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">TN</a></li>
+            <li><a class="dropdown-item" href="#">Is there anything else?</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="row">
+        <label for="answer2" class="form-label">Answer</label>
+        <Nrg::TextField placeholder="Answer" id="answer2" />
+      </div>
+    </div>
+  </:body>
+</Card>
