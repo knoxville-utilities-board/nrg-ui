@@ -9,7 +9,6 @@ export interface RadioFieldSignature {
     option?: string;
     label?: string;
     disabled?: boolean;
-    readonly?: boolean;
     onChange?: (value: string, ...args: unknown[]) => void;
   };
 }
@@ -42,7 +41,6 @@ export default class RadioField extends BoundValue<
       <input
         class="form-check-input"
         disabled={{@disabled}}
-        readonly={{@readonly}}
         id={{this.id}}
         type="radio"
         name={{@name}}
