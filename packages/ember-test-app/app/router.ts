@@ -21,6 +21,7 @@ Router.map(function () {
     this.route('navbar');
     this.route('text-area');
     this.route('text-field');
+    this.route('radio-group');
   });
   this.route('helpers');
   this.route('mktg-components', function () {
