@@ -206,9 +206,9 @@
       @icon="bi-wifi"
       @selected={{true}}
       @active={{false}}
-      as |Addon|
+      as |Pricing|
     >
-      <Addon @label="Smart Gig" @price="$15/mo" />
+      <Pricing.Item @label="Smart Gig" @price="$15/mo" />
     </Mktg::ServicePricing>
     <Mktg::ServicePricing
       @label="TV"
@@ -217,12 +217,12 @@
       @icon="bi-tv"
       @selected={{true}}
       @active={{false}}
-      as |Addon|
+      as |Pricing|
     >
-      <Addon @label="FireStick" @price="$80" @quantity="2" />
-      <Addon @label="HBO" @price="$5.99/mo" />
-      <Addon @label="STARZ" @price="$4.99/mo" />
-      <Addon @label="Spanish Channels" @price="$4.99/mo" />
+      <Pricing.Item @label="FireStick" @price="$80" @quantity="2" />
+      <Pricing.Item @label="HBO" @price="$5.99/mo" />
+      <Pricing.Item @label="STARZ" @price="$4.99/mo" />
+      <Pricing.Item @label="Spanish Channels" @price="$4.99/mo" />
     </Mktg::ServicePricing>
     <Mktg::ServicePricing
       @label="Phone"

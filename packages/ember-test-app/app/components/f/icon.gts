@@ -6,6 +6,8 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { fn } from '@ember/helper';
 
+import type { ColorType, Size } from '@nrg-ui/ember/components/icon';
+
 export default class extends Component {
   colorOptions = [
     'primary',
@@ -44,13 +46,13 @@ export default class extends Component {
   class = '';
 
   @tracked
-  size = '2';
+  size: Size = '2';
 
   @tracked
   type = 'bi-telephone';
 
   @tracked
-  color = 'primary';
+  color: ColorType = 'primary';
 
   @tracked
   circular = false;
@@ -63,6 +65,7 @@ export default class extends Component {
     if (key === 'circular' && value === false) {
       this.backgroundColor = undefined;
     }
+    // @ts-expect-error - This is an easy setter
     this[key] = value;
   }
 

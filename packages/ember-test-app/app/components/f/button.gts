@@ -6,7 +6,7 @@ import { array, fn } from '@ember/helper';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
-export default class extends Component {
+export default class FreestyleButton extends Component {
   classOptions = [
     'btn-primary',
     'btn-secondary',
@@ -32,16 +32,20 @@ export default class extends Component {
   text = 'Click me!';
 
   @tracked
+  type: 'button' | 'submit' = 'button';
+
+  @tracked
   icon = 'bi-arrow-right';
 
   @tracked
   iconLabel?: string;
 
   @tracked
-  iconPosition = 'left';
+  iconPosition: 'left' | 'right' = 'left';
 
   @action
   update(key: string, value: unknown) {
+    // @ts-expect-error - This is an easy setter
     this[key] = value;
   }
 
@@ -136,4 +140,10 @@ export default class extends Component {
       </Section.subsection>
     </FreestyleSection>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'F::Button': typeof FreestyleButton;
+  }
 }

@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import type { Icon as IconType } from '../types';
 
-declare type SubtleColorType =
+export type SubtleColorType =
   | 'primary-subtle'
   | 'secondary-subtle'
   | 'success-subtle'
@@ -11,7 +11,7 @@ declare type SubtleColorType =
   | 'light-subtle'
   | 'dark-subtle';
 
-declare type ColorType =
+export type ColorType =
   | 'primary'
   | 'secondary'
   | 'success'
@@ -21,12 +21,14 @@ declare type ColorType =
   | 'light'
   | 'dark';
 
+export type Size = '1' | '2' | '3' | '4' | '5' | '6';
+
 interface IconSignature {
   Element: HTMLDivElement;
   Args: {
     type: IconType;
     backgroundColor?: SubtleColorType | ColorType;
-    size?: '1' | '2' | '3' | '4' | '5' | '6';
+    size?: Size;
     color: ColorType;
     circular?: boolean;
   };

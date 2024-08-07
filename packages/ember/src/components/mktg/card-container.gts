@@ -9,7 +9,7 @@ interface CardContainerSignature {
   Blocks: {
     default: [
       {
-        Card: ComponentLike<Card>;
+        Card: ComponentLike<typeof Card>;
         MktgCard: ComponentLike<typeof MktgCard>;
       },
     ];

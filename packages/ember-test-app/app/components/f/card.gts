@@ -6,7 +6,7 @@ import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
-export default class extends Component {
+export default class FreestyleCard extends Component {
   @tracked
   isClickable = false;
 
@@ -18,7 +18,13 @@ export default class extends Component {
 
   @action
   update(key: string, value: unknown) {
+    // @ts-expect-error - This is an easy setter
     this[key] = value;
+  }
+
+  @action
+  onClick() {
+    alert('Card clicked!');
   }
 
   <template>
@@ -66,4 +72,10 @@ export default class extends Component {
       </Section.subsection>
     </FreestyleSection>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'F::Card': typeof FreestyleCard;
+  }
 }

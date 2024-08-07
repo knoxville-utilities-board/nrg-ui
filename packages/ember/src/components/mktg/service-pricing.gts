@@ -1,12 +1,13 @@
 import type { Icon } from '../../icons';
 import type { ComponentLike } from '@glint/template';
 import Component from '@glimmer/component';
+import { hash } from '@ember/helper';
 
 interface AddonSignature {
   Args: {
     label?: string;
     price?: string;
-    quantity?: number;
+    quantity?: string | number;
   };
   Blocks: {
     default: [];
@@ -24,7 +25,7 @@ interface MktgServicePricingSignature {
     selected?: boolean;
   };
   Blocks: {
-    default: [ComponentLike<typeof Addon>];
+    default: [{ Item: ComponentLike<AddonSignature> }];
   };
   Element: HTMLElement;
 }
@@ -85,7 +86,7 @@ export default class MktgServicePricing extends Component<MktgServicePricingSign
           {{@description}}
         </div>
       </div>
-      {{yield (component Addon)}}
+      {{yield (hash Item=(component Addon))}}
     </div>
   </template>
 }
