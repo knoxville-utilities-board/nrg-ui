@@ -6,10 +6,6 @@ import SectionHeader from './section-header.gts';
 
 interface PromoContainerSignature {
   Element: HTMLDivElement;
-  Args: {
-    subject?: string;
-    title?: string;
-  };
   Blocks: {
     default: [
       {
@@ -21,10 +17,7 @@ interface PromoContainerSignature {
 }
 const PromoContainer: TOC<PromoContainerSignature> = <template>
   <div class="container">
-    <div
-      class="row p-4 text-primary d-flex justify-content-center"
-      ...attributes
-    >
+    <div class="row p-4 d-flex justify-content-center" ...attributes>
       {{yield
         (hash SectionHeader=(component SectionHeader) Promo=(component Promo))
       }}

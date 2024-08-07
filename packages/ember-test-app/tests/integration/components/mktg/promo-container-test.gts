@@ -25,9 +25,7 @@ module('Integration | components | mktg/promo-container', function (hooks) {
     </template>);
 
     assert
-      .dom(
-        '.container .row.p-4.text-primary.d-flex.justify-content-center.promo-container',
-      )
+      .dom('.container .row.p-4.d-flex.justify-content-center.promo-container')
       .exists('Promo container renders with correct classes');
     assert
       .dom('.container div .col-12.d-flex.flex-column.align-items-center')

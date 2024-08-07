@@ -3,9 +3,6 @@ import HeaderComponent from '../header.gts';
 
 interface HeaderSignature {
   Element: HTMLDivElement;
-  Args: {
-    title: string;
-  };
   Blocks: {
     brand: [];
     title: [];

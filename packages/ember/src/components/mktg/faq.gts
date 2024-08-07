@@ -6,7 +6,7 @@ import { on } from '@ember/modifier';
 interface FaqSignature {
   Element: HTMLDivElement;
   Args: {
-    question?: string;
+    question: string;
     defaultOpen?: boolean;
   };
   Blocks: {
