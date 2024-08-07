@@ -164,7 +164,8 @@
       "./components/nrg/text-field.js": "./dist/_app_/components/nrg/text-field.js",
       "./components/progress.js": "./dist/_app_/components/progress.js",
       "./helpers/bind.js": "./dist/_app_/helpers/bind.js",
-      "./services/responsive.js": "./dist/_app_/services/responsive.js"
+      "./services/responsive.js": "./dist/_app_/services/responsive.js",
+      "./validation/index.js": "./dist/_app_/validation/index.js"
     },
     "defaultBlueprint": "@nrg-ui-ember"
   }
