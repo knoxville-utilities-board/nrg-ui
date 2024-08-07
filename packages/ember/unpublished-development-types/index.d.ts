@@ -4,7 +4,9 @@
 import '@glint/environment-ember-loose';
 import '@glint/environment-ember-template-imports';
 
+import type IntlService from 'ember-intl/services/intl';
 import type CssTransitionsRegistry from 'ember-css-transitions/template-registry';
+
 declare interface MediaService {
   isSmallMobile: boolean;
   isMobile: boolean;
@@ -18,5 +20,11 @@ declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry extends CssTransitionsRegistry {
     // Add any registry entries from other addons here that your addon itself uses (in non-strict mode templates)
     // See https://typed-ember.gitbook.io/glint/using-glint/ember/using-addons
+  }
+}
+
+declare module '@ember/service' {
+  interface Registry {
+    intl: IntlService;
   }
 }
