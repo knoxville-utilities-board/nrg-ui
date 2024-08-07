@@ -148,6 +148,7 @@
       "./components/card.js": "./dist/_app_/components/card.js",
       "./components/footer.js": "./dist/_app_/components/footer.js",
       "./components/form/bound-value.js": "./dist/_app_/components/form/bound-value.js",
+      "./components/form/select.js": "./dist/_app_/components/form/select.js",
       "./components/form/text-area.js": "./dist/_app_/components/form/text-area.js",
       "./components/form/text-field.js": "./dist/_app_/components/form/text-field.js",
       "./components/header.js": "./dist/_app_/components/header.js",
