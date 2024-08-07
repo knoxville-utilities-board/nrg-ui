@@ -1,0 +1,37 @@
+.FreestyleMenu {
+  font-size: 14px;
+  list-style: none;
+  padding-left: 1rem;
+
+  &-item,
+  &-submenuItem {
+    padding-top: 0.1rem;
+  }
+
+  &-itemLink,
+  &-submenuItemLink {
+    border-radius: 6px;
+    color: $FreestyleGuide-color--foreground;
+    display: block;
+    padding: 0.3rem 0.3rem 0.3rem 0.5rem;
+    text-decoration: none;
+
+    &.active {
+      background-color: $FreestyleGuide-color--primary;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    &:hover {
+      background-color: $FreestyleGuide-color--primary;
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  &-submenu {
+    list-style: none;
+    padding-left: 1rem;
+  }
+}

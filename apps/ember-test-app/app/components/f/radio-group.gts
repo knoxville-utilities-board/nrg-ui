@@ -1,12 +1,11 @@
-import { fn } from '@ember/helper';
-import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import TextField from '@nrg-ui/ember/components/form/text-field';
-import bind from '@nrg-ui/ember/helpers/bind';
-import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
+import { action, set } from '@ember/object';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
-
+import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
+import { fn } from '@ember/helper';
+import bind from '@nrg-ui/ember/helpers/bind';
+import RadioGroup from '@nrg-ui/ember/components/form/radio-group';
 import CodeBlock from '../code-block';
 
 // TypeScript doesn't recognize that this function is used in the template
@@ -27,13 +26,23 @@ export default class extends Component {
   model = new Model();
 
   @tracked
-  basic = false;
+  name = 'radio';
+
+  @tracked
+  options = [
+    { option: '1', label: 'One' },
+    { option: '2', label: 'Two' },
+    { option: '3', label: 'Three' },
+  ];
 
   @tracked
   disabled = false;
 
   @tracked
   readonly = false;
+
+  @tracked
+  basic = false;
 
   @tracked
   value = '';
@@ -48,10 +57,12 @@ export default class extends Component {
       <Section.subsection @name="Basic">
         <FreestyleUsage>
           <:example>
-            <TextField
+            <RadioGroup
               class={{this.class}}
-              @basic={{this.basic}}
+              @name={{this.name}}
+              @options={{this.options}}
               @binding={{bind this.model "property"}}
+              @basic={{this.basic}}
               @disabled={{this.disabled}}
               @readonly={{this.readonly}}
               @onChange={{fn log "The value changed to"}}
@@ -60,7 +71,7 @@ export default class extends Component {
           <:api as |Args|>
             <Args.String
               @name="class"
-              @description="The class to apply to the field. Note that this is not an argument but rather a class applied directly to the field"
+              @description="The class to apply to the group <div>. Note that this is not an argument but rather a class applied directly to the group"
               @value={{this.class}}
               @onInput={{fn this.update "class"}}
               @options={{this.classOptions}}
@@ -71,6 +82,12 @@ export default class extends Component {
               @description="When true, the border will be removed"
               @value={{this.basic}}
               @onInput={{fn this.update "basic"}}
+            />
+            <Args.String
+              @name="name"
+              @description="the shared name used for the input value, must be unique for the group"
+              @value={{this.name}}
+              @onInput={{fn this.update "name"}}
             />
             <Args.String
               @name="binding"

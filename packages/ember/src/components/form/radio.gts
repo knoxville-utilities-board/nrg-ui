@@ -1,5 +1,5 @@
 import { on } from '@ember/modifier';
-import { action, get, set } from '@ember/object';
+import { action } from '@ember/object';
 import BoundValue from './bound-value.ts';
 
 export interface RadioFieldSignature {
