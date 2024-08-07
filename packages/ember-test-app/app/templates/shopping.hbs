@@ -19,6 +19,7 @@
           @active={{if (eq this.active "fiber") true false}}
           as |Addon|
         >
+          <LinkTo @route="shopping.fiber-addons">View Addons</LinkTo>
           {{#if this.fiberAddons.length}}
             {{#each this.fiberAddons as |addon|}}
               <Addon @label={{addon.label}} @price={{addon.price}} />
@@ -40,6 +41,7 @@
           @active={{if (eq this.active "tv") true false}}
           as |Addon|
         >
+          <LinkTo @route="shopping.tv-addons">View Addons</LinkTo>
           {{#if this.tvAddons.length}}
             {{#each this.tvAddons as |addon|}}
               <Addon @label={{addon.label}} @price={{addon.price}} />
@@ -61,6 +63,7 @@
           @active={{if (eq this.active "phone") true false}}
           as |Addon|
         >
+          <LinkTo @route="shopping.phone-addons">View Addons</LinkTo>
           {{#if this.phoneAddons.length}}
             {{#each this.phoneAddons as |addon|}}
               <Addon @label={{addon.label}} @price={{addon.price}} />
@@ -84,7 +87,7 @@
       <Button
         class="btn-primary py-3 flex-fill"
         @disabled={{unless (eq this.currentRoute "shopping.fiber") false true}}
-        @onClick={{this.nextRoute}}
+        @onClick={{this.changeRoute}}
       >Next</Button>
     </div>
   </Mktg::WorkflowTray>

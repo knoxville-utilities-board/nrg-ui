@@ -24,9 +24,25 @@ export default class ApplicationController extends Controller {
     this.active = path;
   }
 
+  @tracked routeNumber = 0;
+
+  routes = [
+    'shopping.fiber-addons',
+    'shopping.tv',
+    'shopping.tv-addons',
+    'shopping.phone',
+    'shopping.phone-addons',
+  ];
+
+  get nextRoute() {
+    const next = this.routes[this.routeNumber];
+    return next;
+  }
+
   @action
-  nextRoute() {
-    this.router.transitionTo('shopping.fiber-addons');
+  changeRoute() {
+    this.router.transitionTo(this.nextRoute);
+    this.routeNumber++;
   }
 
   get currentRoute() {
