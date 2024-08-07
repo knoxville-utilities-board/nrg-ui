@@ -39,9 +39,6 @@ export default class extends Component {
   disabled = false;
 
   @tracked
-  readonly = false;
-
-  @tracked
   basic = false;
 
   @tracked
@@ -64,7 +61,6 @@ export default class extends Component {
               @binding={{bind this.model "property"}}
               @basic={{this.basic}}
               @disabled={{this.disabled}}
-              @readonly={{this.readonly}}
               @onChange={{fn log "The value changed to"}}
             />
           </:example>
@@ -101,13 +97,6 @@ export default class extends Component {
               @description="When true, the input will be disabled"
               @value={{this.disabled}}
               @onInput={{fn this.update "disabled"}}
-            />
-            <Args.Bool
-              @name="readonly"
-              @defaultValue={{false}}
-              @description="When true, the input will be readonly"
-              @value={{this.readonly}}
-              @onInput={{fn this.update "readonly"}}
             />
             <Args.Action
               @name="onChange"

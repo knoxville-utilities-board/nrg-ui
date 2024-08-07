@@ -11,7 +11,6 @@ export interface RadioGroupFieldSignature {
     name: string;
     basic?: boolean;
     disabled?: boolean;
-    readonly?: boolean;
     onChange?: (value: string, ...args: unknown[]) => void;
   };
 }
@@ -38,15 +37,12 @@ export default class RadioGroupField extends BoundValue<
     return classes.join(' ');
   }
 
-
-
   <template>
     <div class={{this.classList}} ...attributes>
       {{#each this.args.options as |radio|}}
         <Radio
           @name={{@name}}
           @disabled={{@disabled}}
-          @readonly={{@readonly}}
           @option={{radio.option}}
           @label={{radio.label}}
           @onChange={{this.change}}
