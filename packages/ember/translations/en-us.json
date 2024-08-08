@@ -1,5 +1,9 @@
 {
   "nrg": {
-    "validation": {}
+    "validation": {
+      "confirmation": {
+        "invalid": "This field does not match {label}"
+      }
+    }
   }
 }
