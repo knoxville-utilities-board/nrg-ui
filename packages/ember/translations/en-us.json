@@ -3,6 +3,9 @@
     "validation": {
       "confirmation": {
         "invalid": "This field does not match {label}"
+      },
+      "custom": {
+        "invalid": "This field is invalid"
       }
     }
   }
