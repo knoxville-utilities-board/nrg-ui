@@ -11,18 +11,10 @@
     <:end>
       <Mktg::FeatureList class="mb-2 mb-md-4" @columns={{4}}>
         <:label>
-          <ul class="nav nav-tabs mb-2">
-            <li class="nav-item">
-              <a
-                class="nav-link active bg-primary text-white"
-                aria-current="page"
-                href="#"
-              >Highlights</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">All Channels</a>
-            </li>
-          </ul>
+          <ButtonGroup as |Group|>
+            <Group.Button class="btn-primary" @text="Highlights" />
+            <Group.Button class="btn-outline-primary" @text="All Channels" />
+          </ButtonGroup>
         </:label>
         <:features as |Feature|>
           <Feature
@@ -78,18 +70,10 @@
     <:end>
       <Mktg::FeatureList class="mb-2 mb-md-4" @columns={{2}}>
         <:label>
-          <ul class="nav nav-tabs mb-2">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Highlights</a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link active bg-primary text-white"
-                aria-current="page"
-                href="#"
-              >All Channels</a>
-            </li>
-          </ul>
+          <ButtonGroup as |Group|>
+            <Group.Button class="btn-outline-primary" @text="Highlights" />
+            <Group.Button class="btn-primary" @text="All Channels" />
+          </ButtonGroup>
         </:label>
         <:features as |Feature|>
           <Feature
@@ -193,7 +177,11 @@
     <:end>
       <Mktg::FeatureList @columns={{4}}>
         <:label>
-          <ul class="nav nav-tabs mb-2">
+          <ButtonGroup as |Group|>
+            <Group.Button class="btn-primary" @text="Highlights" />
+            <Group.Button class="btn-outline-primary" @text="All Channels" />
+          </ButtonGroup>
+          {{! <ul class="nav nav-tabs mb-2">
             <li class="nav-item">
               <a
                 class="nav-link active bg-primary text-white"
@@ -204,7 +192,7 @@
             <li class="nav-item">
               <a class="nav-link" href="#">All Channels</a>
             </li>
-          </ul>
+          </ul> }}
         </:label>
         <:features as |Feature|>
           <Feature
