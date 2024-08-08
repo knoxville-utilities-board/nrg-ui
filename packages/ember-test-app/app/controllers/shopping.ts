@@ -40,6 +40,7 @@ export default class ApplicationController extends Controller {
     'shopping.tv-addons',
     'shopping.phone',
     'shopping.phone-addons',
+    'shopping.phone-registration',
   ];
 
   get activeTab() {
@@ -51,14 +52,13 @@ export default class ApplicationController extends Controller {
       return 'fiber';
     } else if (
       this.currentRoute === 'shopping.tv' ||
-      this.currentRoute === 'shopping.tv-addons' ||
-      this.currentRoute === 'shopping.tv-selected'
+      this.currentRoute === 'shopping.tv-addons'
     ) {
       return 'tv';
     } else if (
       this.currentRoute === 'shopping.phone' ||
       this.currentRoute === 'shopping.phone-addons' ||
-      this.currentRoute === 'shopping.phone-selected'
+      this.currentRoute === 'shopping.phone-registration'
     ) {
       return 'phone';
     }

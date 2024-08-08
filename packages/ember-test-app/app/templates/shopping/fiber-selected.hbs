@@ -38,8 +38,12 @@
       </Mktg::FeatureList>
       <Button
         class="btn-success w-100 text-white mt-4"
+        @icon="bi-check-lg"
+        @iconPosition="right"
+        @iconLabel="selected"
         @text="Selected"
         @type="button"
+        @disabled={{true}}
         @onClick={{this.clickHandler}}
       />
     </:end>

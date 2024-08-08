@@ -41,6 +41,7 @@ Router.map(function () {
     this.route('fiber-addons');
     this.route('phone');
     this.route('phone-addons');
+    this.route('phone-registration');
     this.route('tv');
     this.route('tv-addons');
   });

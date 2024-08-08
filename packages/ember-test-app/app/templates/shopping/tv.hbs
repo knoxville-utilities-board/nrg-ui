@@ -11,18 +11,18 @@
     <:end>
       <Mktg::FeatureList class="mb-2 mb-md-4" @columns={{4}}>
         <:label>
-          <ButtonGroup class="mb-3" as |Group|>
-            <Group.Button
-              class="btn-primary"
-              @text="Highlights"
-              @type="button"
-            />
-            <Group.Button
-              class="btn-outline-primary"
-              @text="All Channels"
-              @type="button"
-            />
-          </ButtonGroup>
+          <ul class="nav nav-tabs mb-2">
+            <li class="nav-item">
+              <a
+                class="nav-link active bg-primary text-white"
+                aria-current="page"
+                href="#"
+              >Highlights</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">All Channels</a>
+            </li>
+          </ul>
         </:label>
         <:features as |Feature|>
           <Feature
@@ -78,18 +78,18 @@
     <:end>
       <Mktg::FeatureList class="mb-2 mb-md-4" @columns={{2}}>
         <:label>
-          <ButtonGroup class="mb-3" as |Group|>
-            <Group.Button
-              class="btn-outline-primary"
-              @text="Highlights"
-              @type="button"
-            />
-            <Group.Button
-              class="btn-primary"
-              @text="All Channels"
-              @type="button"
-            />
-          </ButtonGroup>
+          <ul class="nav nav-tabs mb-2">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Highlights</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active bg-primary text-white"
+                aria-current="page"
+                href="#"
+              >All Channels</a>
+            </li>
+          </ul>
         </:label>
         <:features as |Feature|>
           <Feature
@@ -193,18 +193,18 @@
     <:end>
       <Mktg::FeatureList @columns={{4}}>
         <:label>
-          <ButtonGroup class="mb-3" as |Group|>
-            <Group.Button
-              class="btn-primary"
-              @text="Highlights"
-              @type="button"
-            />
-            <Group.Button
-              class="btn-outline-primary"
-              @text="All Channels"
-              @type="button"
-            />
-          </ButtonGroup>
+          <ul class="nav nav-tabs mb-2">
+            <li class="nav-item">
+              <a
+                class="nav-link active bg-primary text-white"
+                aria-current="page"
+                href="#"
+              >Highlights</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">All Channels</a>
+            </li>
+          </ul>
         </:label>
         <:features as |Feature|>
           <Feature
