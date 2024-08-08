@@ -9,6 +9,39 @@ export default class ApplicationController extends Controller {
 
   @tracked routeNumber = 0;
 
+  @tracked
+  tvDescription = 'Add (optional)';
+
+  @tracked
+  phoneDescription = 'Add (optional)';
+
+  @tracked
+  tvSelected = false;
+
+  @tracked
+  phoneSelected = false;
+
+  @action
+  viewAddons(path: string, event: Event) {
+    event.stopPropagation();
+    this.router.transitionTo(`shopping.${path}-addons`);
+  }
+
+  @action
+  changeRoute() {
+    this.router.transitionTo(this.nextRoute);
+  }
+
+  routes = [
+    'shopping.fiber',
+    'shopping.fiber-selected',
+    'shopping.fiber-addons',
+    'shopping.tv',
+    'shopping.tv-addons',
+    'shopping.phone',
+    'shopping.phone-addons',
+  ];
+
   get activeTab() {
     if (
       this.currentRoute === 'shopping.fiber' ||
@@ -32,16 +65,6 @@ export default class ApplicationController extends Controller {
     return 'fiber';
   }
 
-  routes = [
-    'shopping.fiber',
-    'shopping.fiber-addons',
-    'shopping.fiber-selected',
-    'shopping.tv',
-    'shopping.tv-addons',
-    'shopping.phone',
-    'shopping.phone-addons',
-  ];
-
   get nextRoute() {
     const currentIndex = this.routes.findIndex(
       (route) => route === this.currentRoute,
@@ -51,11 +74,6 @@ export default class ApplicationController extends Controller {
       return next;
     }
     return '/';
-  }
-
-  @action
-  changeRoute() {
-    this.router.transitionTo(this.nextRoute);
   }
 
   get currentRoute() {
@@ -91,15 +109,30 @@ export default class ApplicationController extends Controller {
     }
     return 'Fiber: The Gig';
   }
-  @tracked
-  tvDescription = 'Add (optional)';
 
-  @tracked
-  phoneDescription = 'Add (optional)';
+  get total() {
+    if (
+      this.currentRoute === 'shopping' ||
+      this.currentRoute === 'shopping.fiber'
+    ) {
+      return '';
+    } else if (
+      this.currentRoute === 'shopping.fiber-selected' ||
+      this.currentRoute === 'shopping.fiber-addons'
+    ) {
+      return '$65/mo';
+    }
+    return '$80/mo';
+  }
 
-  @tracked
-  tvSelected = false;
-
-  @tracked
-  phoneSelected = false;
+  get addonSelected() {
+    if (
+      this.currentRoute === 'shopping.fiber' ||
+      this.currentRoute === 'shopping.fiber-selected' ||
+      this.currentRoute === 'shopping.fiber-addons'
+    ) {
+      return false;
+    }
+    return true;
+  }
 }

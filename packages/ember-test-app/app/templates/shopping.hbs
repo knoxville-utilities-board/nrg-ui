@@ -18,11 +18,9 @@
           @active={{if (eq this.activeTab "fiber") true false}}
           as |Addon|
         >
-          <LinkTo @route="shopping.fiber-addons">View Addons</LinkTo>
-          {{#if this.fiberAddons.length}}
-            {{#each this.fiberAddons as |addon|}}
-              <Addon @label={{addon.label}} @price={{addon.price}} />
-            {{/each}}
+          <LinkTo class="z-1" @route="shopping.fiber-addons">View Addons</LinkTo>
+          {{#if this.addonSelected}}
+            <Addon @label="Smart Gig" @price="$15/mo" />
           {{/if}}
         </Mktg::ServicePricing>
       </LinkTo>
@@ -39,7 +37,7 @@
           @active={{if (eq this.activeTab "tv") true false}}
           as |Addon|
         >
-          <LinkTo @route="shopping.tv-addons">View Addons</LinkTo>
+          <LinkTo class="z-1" @route="shopping.tv-addons">View Addons</LinkTo>
           {{#if this.tvAddons.length}}
             {{#each this.tvAddons as |addon|}}
               <Addon @label={{addon.label}} @price={{addon.price}} />
@@ -60,7 +58,7 @@
           @active={{if (eq this.activeTab "phone") true false}}
           as |Addon|
         >
-          <LinkTo @route="shopping.phone-addons">View Addons</LinkTo>
+          <LinkTo class="z-1" @route="shopping.phone-addons">View Addons</LinkTo>
           {{#if this.phoneAddons.length}}
             {{#each this.phoneAddons as |addon|}}
               <Addon @label={{addon.label}} @price={{addon.price}} />
@@ -73,11 +71,11 @@
     <div class="my-3">
       <div class="row justify-content-between my-2" ...attributes>
         <div class="col-auto">First Bill Including Fees</div>
-        <div class="col-auto"></div>
+        <div class="col-auto">{{this.total}}</div>
       </div>
       <div class="row justify-content-between my-2" ...attributes>
         <div class="col-auto">Monthly Total</div>
-        <div class="col-auto"></div>
+        <div class="col-auto">{{this.total}}</div>
       </div>
     </div>
     <div class="d-flex">
