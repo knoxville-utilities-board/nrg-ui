@@ -1,13 +1,16 @@
 import { action } from '@ember/object';
+import Component from '@glimmer/component';
 
 // @ts-expect-error Glimmer doesn't currently ship a type for the `cached` decorator
 // https://github.com/glimmerjs/glimmer.js/issues/408
 import { tracked, cached } from '@glimmer/tracking';
 
+// @ts-expect-error Ember keyboard doesn't currently ship a type for the `on-key` modifier
+import onKey from 'ember-keyboard/modifiers/on-key';
+
 import { on } from '@ember/modifier';
 import BoundValue from './bound-value.ts';
 import { fn } from '@ember/helper';
-import { eq } from 'ember-truth-helpers';
 import { get } from '@ember/object';
 
 import type { Optional } from '../../types.d.ts';
@@ -42,13 +45,13 @@ export default class Select<T> extends BoundValue<
   string | T
 > {
   get classList() {
-    let classes = ['form-control'];
-
-    if (!this.args.loading) {
-      classes.push('form-select');
-    }
+    let classes = ['form-control', 'text-start', 'focus-ring'];
 
     return classes.join(' ');
+  }
+
+  get caretIcon() {
+    return this.isOpen ? 'bi-caret-up' : 'bi-caret-down-fill';
   }
 
   get defaultText() {
@@ -56,18 +59,16 @@ export default class Select<T> extends BoundValue<
   }
 
   @tracked
+  menuId = crypto.randomUUID();
+
+  @tracked
   isOpen = false;
 
   @action
-  toggleSelect(evt: MouseEvent) {
-    evt.preventDefault();
-    evt.stopPropagation();
-    this.isOpen = !this.isOpen;
-  }
-
-  @action
-  onSelectInternal(option: SelectOption<T>) {
-    this.isOpen = false;
+  onSelectInternal(option: SelectOption<T>, evt?: MouseEvent) {
+    evt?.preventDefault();
+    evt?.stopPropagation();
+    this.onBlur();
     this.selected = option;
   }
 
@@ -115,68 +116,193 @@ export default class Select<T> extends BoundValue<
   }
 
   @action
-  onBlur() {
-    this.isOpen = false;
+  toggleSelect(evt: MouseEvent) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    if (this.disabled) {
+      return;
+    }
+    if (this.isOpen) {
+      this.onBlur();
+    } else {
+      this.onFocus();
+    }
   }
 
-  get stringValue() {
-    return this.value;
+  @action
+  onFocus() {
+    const currentlySelectedIndex = this.internalOptions.findIndex(
+      (option) => option.value === this.value,
+    );
+    if (currentlySelectedIndex > -1) {
+      this.activeItem = currentlySelectedIndex;
+    }
+
+    this.isOpen = true;
+  }
+
+  @action
+  onBlur() {
+    this.activeItem = -1;
+    this.isOpen = false;
   }
 
   get disabled() {
     return this.args.disabled || this.args.loading;
   }
 
+  @tracked
+  activeItem = -1;
+
+  @action
+  moveUp(evt: KeyboardEvent) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    if (this.activeItem > 0) {
+      this.activeItem--;
+    }
+  }
+
+  @action
+  moveDown(evt: KeyboardEvent) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    if (this.activeItem < this.internalOptions.length - 1) {
+      this.activeItem++;
+    }
+  }
+
+  @action
+  enterKeyHandler(evt?: KeyboardEvent) {
+    evt?.preventDefault();
+    evt?.stopPropagation();
+    if (!this.isOpen) {
+      this.onFocus();
+    } else {
+      this.exitKeyHandler();
+    }
+  }
+
+  @action
+  exitKeyHandler(evt?: KeyboardEvent) {
+    const optionsLength = this.internalOptions.length;
+    const validRange = this.activeItem >= 0 && this.activeItem < optionsLength;
+    evt?.preventDefault();
+    evt?.stopPropagation();
+    if (validRange) {
+      const option = this.internalOptions[this.activeItem];
+      if (option != undefined) {
+        this.onSelectInternal(option);
+        return;
+      }
+    }
+    this.onBlur();
+  }
+
   <template>
     <div class="dropdown">
-      <div class="input-group">
-        {{#if @loading}}
-          <span class="input-group-text">
-            <span
-              class="spinner-border spinner-border-sm"
-              aria-hidden="true"
-            ></span>
-            <span class="visually-hidden" role="status">Loading...</span>
-          </span>
+      <button
+        class={{this.classList}}
+        role="combobox"
+        disabled={{this.disabled}}
+        aria-controls={{this.menuId}}
+        aria-expanded={{this.isOpen}}
+        aria-haspopup="listbox"
+        {{on "click" this.toggleSelect}}
+        {{on "blue" this.onBlur}}
+        {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
+        {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
+        {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
+        {{onKey "NumpadEnter" this.enterKeyHandler onlyWhenFocused=true}}
+        {{onKey "Tab" this.exitKeyHandler onlyWhenFocused=true}}
+        {{onKey "Escape" this.exitKeyHandler onlyWhenFocused=true}}
+      >
+        {{#if this.hasSelected}}
+          {{#if (has-block "display")}}
+            {{yield this.selected.raw to="display"}}
+          {{else if (has-block "option")}}
+            {{yield this.selected.raw to="option"}}
+          {{else}}
+            {{this.selected.label}}
+          {{/if}}
+        {{else}}
+          {{#if (has-block "empty")}}
+            {{yield to="empty"}}
+          {{else}}
+            {{this.defaultText}}
+          {{/if}}
         {{/if}}
 
-        <div
-          class={{this.classList}}
-          {{on "click" this.toggleSelect}}
-          role="button"
+        {{#if @loading}}
+          <span
+            class="spinner-border spinner-border-sm float-end m-1"
+            aria-hidden="true"
+          ></span>
+          <span class="visually-hidden" role="status">Loading...</span>
+        {{else}}
+          <i class="bi {{this.caretIcon}} float-end m-1" />
+        {{/if}}
+        <ul
+          id={{this.menuId}}
+          class="dropdown-menu {{if this.isOpen 'show'}}"
+          role="listbox"
         >
-          {{#if this.hasSelected}}
-            {{#if (has-block "display")}}
-              {{yield this.selected.raw to="display"}}
-            {{else if (has-block "option")}}
-              {{yield this.selected.raw to="option"}}
-            {{else}}
-              {{this.selected.label}}
-            {{/if}}
-          {{else}}
-            {{#if (has-block "empty")}}
-              {{yield to="empty"}}
-            {{else}}
-              {{this.defaultText}}
-            {{/if}}
-          {{/if}}
-        </div>
-      </div>
-      <ul class="dropdown-menu {{if this.isOpen 'show'}}">
-        {{#each this.internalOptions as |option|}}
-          <li
-            class="dropdown-item {{if (eq option.value this.value) 'active'}}"
-            {{on "click" (fn this.onSelectInternal option)}}
-            role="button"
-          >
-            {{#if (has-block "option")}}
-              {{yield option.raw to="option"}}
-            {{else}}
-              {{option.label}}
-            {{/if}}
-          </li>
-        {{/each}}
-      </ul>
+          {{#each this.internalOptions as |option i|}}
+            <SelectItem
+              @optionIndex={{i}}
+              @activeIndex={{this.activeItem}}
+              @currentValue={{this.value}}
+              @option={{option}}
+              {{on "click" (fn this.onSelectInternal option)}}
+            >
+              {{#if (has-block "option")}}
+                {{yield option.raw to="option"}}
+              {{else}}
+                {{option.label}}
+              {{/if}}
+            </SelectItem>
+          {{/each}}
+        </ul>
+      </button>
     </div>
+  </template>
+}
+
+interface SelectItemSignature<T> {
+  Args: {
+    optionIndex: number;
+    activeIndex: number;
+    currentValue: string | T;
+    option: SelectOption<T>;
+  };
+  Blocks: {
+    default: [];
+  };
+  Element: HTMLLIElement;
+}
+
+class SelectItem<T> extends Component<SelectItemSignature<T>> {
+  get classList() {
+    let classes = ['dropdown-item'];
+
+    const useIndexActive = this.args.activeIndex != -1;
+    const isCurrentIndex = this.args.optionIndex === this.args.activeIndex;
+    const isCurrentValue = this.args.option.value === this.args.currentValue;
+
+    if (useIndexActive && isCurrentIndex) {
+      classes.push('active');
+    }
+
+    if (!useIndexActive && isCurrentValue) {
+      classes.push('active');
+    }
+
+    return classes.join(' ');
+  }
+
+  <template>
+    <li class={{this.classList}} role="option" ...attributes>
+      {{yield}}
+    </li>
   </template>
 }
