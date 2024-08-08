@@ -1,0 +1,228 @@
+{{page-title "Shopping"}}
+<div class="m-0 row flex-fill">
+  <Mktg::WorkflowTray id="scroll-vertical">
+    <div class="col-12 d-flex flex-column align-items-center">
+      <div class="d-none d-md-flex fs-2 text-wrap mb-2">
+        <h2>Thank You For Your KUB Order
+        </h2>
+      </div>
+      <div class="d-flex flex-column my-2 col-10">
+        <div class="d-flex justify-content-between">
+          <p class="m-0 p-0">
+            Order Number
+          </p>
+          <p class="text-end m-0 p-0">
+            ORD-01422-G7N4S0
+          </p>
+        </div>
+        <div class="d-flex justify-content-between">
+          <p class="m-0 p-0">
+            Account Number
+          </p>
+          <p class="text-end m-0 p-0">
+            100209
+          </p>
+        </div>
+        <div class="d-flex justify-content-between">
+          <p class="m-0 p-0">
+            Security Code
+          </p>
+          <p class="text-end m-0 p-0">
+            1234
+          </p>
+        </div>
+        {{#if this.dateSelected}}
+          <div class="d-flex justify-content-between mt-4">
+            <p class="m-0 p-0 fw-semibold">
+              Installation
+            </p>
+            <p class="text-end m-0 p-0 fw-semibold">
+              Tuesday, April 6 at 10:00am
+            </p>
+          </div>
+        {{/if}}
+      </div>
+
+      <Button
+        @onClick={{this.confirmOrder}}
+        @text="Confirm Installation"
+        @type="button"
+        @disabled={{if this.dateSelected false true}}
+        class="btn-primary col-10 mt-4"
+      />
+    </div>
+  </Mktg::WorkflowTray>
+  <div
+    class="scrollable-md bg-primary-subtle col-12 col-md-7 col-lg-8 order-1 order-md-2 d-flex flex-column align-items-center"
+  >
+    <div class="d-flex d-md-none mt-3 justify-self-center mx-2 fs-2">
+      <h2 class="m-0">Thank You For Your KUB Order</h2>
+    </div>
+    <div class="container my-md-4">
+      <Mktg::CardContainer as |Container|>
+        <Container.Card class="g-col-12 d-flex">
+          <:body>
+            <div>
+              <p class="fw-semibold fs-5">Friday, April 2</p>
+              <div>
+                <Button
+                  @onClick={{this.selectDate}}
+                  @text="10:00am"
+                  class="btn-outline-secondary"
+                  type="button"
+                />
+                <Button
+                  @onClick={{this.selectDate}}
+                  @text="12:00pm"
+                  class="btn-outline-secondary"
+                  type="button"
+                />
+                <Button
+                  @onClick={{this.selectDate}}
+                  @text="2:00pm"
+                  class="btn-outline-secondary"
+                  type="button"
+                />
+              </div>
+            </div>
+          </:body>
+        </Container.Card>
+        <Container.Card class="g-col-12 d-flex">
+          <:body>
+            <div>
+              <p class="fw-semibold fs-5">Monday, April 5</p>
+              <div>
+                <Button
+                  @onClick={{this.selectDate}}
+                  @text="9:00am"
+                  class="btn-outline-secondary"
+                  type="button"
+                />
+              </div>
+            </div>
+          </:body>
+        </Container.Card>
+        <Container.Card class="g-col-12 d-flex">
+          <:body>
+            <div>
+              <p class="fw-semibold fs-5">Tuesday, April 6</p>
+              <div>
+                <Button
+                  @onClick={{this.selectDate}}
+                  @text="8:30am"
+                  class="btn-outline-secondary"
+                  type="button"
+                />
+                <Button
+                  @onClick={{this.selectDate}}
+                  @text="10:00am"
+                  class="btn-outline-secondary"
+                  type="button"
+                />
+                <Button
+                  @onClick={{this.selectDate}}
+                  @text="12:00pm"
+                  class="btn-outline-secondary"
+                  type="button"
+                />
+                <Button
+                  @onClick={{this.selectDate}}
+                  @text="2:00pm"
+                  class="btn-outline-secondary"
+                  type="button"
+                />
+              </div>
+            </div>
+          </:body>
+        </Container.Card>
+        <Container.Card class="g-col-12 d-flex">
+          <:body>
+            <div>
+              <p class="fw-semibold fs-5">Wednesday, April 7</p>
+              <div>
+                <Button
+                  @onClick={{this.selectDate}}
+                  @text="10:00am"
+                  class="btn-outline-secondary"
+                  type="button"
+                />
+                <Button
+                  @onClick={{this.selectDate}}
+                  @text="12:00pm"
+                  class="btn-outline-secondary"
+                  type="button"
+                />
+                <Button
+                  @onClick={{this.selectDate}}
+                  @text="2:00pm"
+                  class="btn-outline-secondary"
+                  type="button"
+                />
+              </div>
+            </div>
+          </:body>
+        </Container.Card>
+        <Container.Card class="g-col-12 d-flex">
+          <:body>
+            <div>
+              <p class="fw-semibold fs-5">Thursday, April 8</p>
+              <div>
+                <Button
+                  @onClick={{this.selectDate}}
+                  @text="8:30am"
+                  class="btn-outline-secondary"
+                  type="button"
+                />
+                <Button
+                  @onClick={{this.selectDate}}
+                  @text="10:00am"
+                  class="btn-outline-secondary"
+                  type="button"
+                />
+                <Button
+                  @onClick={{this.selectDate}}
+                  @text="12:00pm"
+                  class="btn-outline-secondary"
+                  type="button"
+                />
+                <Button
+                  @onClick={{this.selectDate}}
+                  @text="2:00pm"
+                  class="btn-outline-secondary"
+                  type="button"
+                />
+              </div>
+            </div>
+          </:body>
+        </Container.Card>
+        <Container.Card class="g-col-12 d-flex">
+          <:body>
+            <div>
+              <p class="fw-semibold fs-5">Friday, April 9</p>
+              <div>
+                <Button
+                  @onClick={{this.selectDate}}
+                  @text="10:00am"
+                  class="btn-outline-secondary"
+                  type="button"
+                />
+                <Button
+                  @onClick={{this.selectDate}}
+                  @text="12:00pm"
+                  class="btn-outline-secondary"
+                  type="button"
+                />
+                <Button
+                  @onClick={{this.selectDate}}
+                  @text="2:00pm"
+                  class="btn-outline-secondary"
+                  type="button"
+                />
+              </div>
+            </div>
+          </:body>
+        </Container.Card>
+      </Mktg::CardContainer>
+    </div>
+  </div>
+</div>

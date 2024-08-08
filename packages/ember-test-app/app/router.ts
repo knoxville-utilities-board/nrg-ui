@@ -45,4 +45,7 @@ Router.map(function () {
     this.route('tv');
     this.route('tv-addons');
   });
+  this.route('installation', function () {
+    this.route('schedule');
+  });
 });
