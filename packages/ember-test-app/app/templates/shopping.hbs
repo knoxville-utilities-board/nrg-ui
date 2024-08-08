@@ -1,6 +1,6 @@
 {{page-title "Shopping"}}
 <div class="m-0 row flex-fill">
-  <Mktg::WorkflowTray>
+  <Mktg::WorkflowTray id="scroll-vertical">
     <div class="d-none d-md-flex mx-2 fs-2">
       <h2>Select Your Services</h2>
     </div>
@@ -8,7 +8,6 @@
       <LinkTo
         class="link-underline link-underline-opacity-0"
         @route="shopping.fiber"
-        {{on "click" (fn this.setActive "fiber")}}
       >
         <Mktg::ServicePricing
           @label={{this.fiberLabel}}
@@ -16,7 +15,7 @@
           @description={{this.fiberDescription}}
           @icon="bi-wifi"
           @selected={{this.fiberSelected}}
-          @active={{if (eq this.active "fiber") true false}}
+          @active={{if (eq this.activeTab "fiber") true false}}
           as |Addon|
         >
           <LinkTo @route="shopping.fiber-addons">View Addons</LinkTo>
@@ -30,7 +29,6 @@
       <LinkTo
         class="link-underline link-underline-opacity-0"
         @route="shopping.tv"
-        {{on "click" (fn this.setActive "tv")}}
       >
         <Mktg::ServicePricing
           @label="TV"
@@ -38,7 +36,7 @@
           @description={{this.tvDescription}}
           @icon="bi-tv"
           @selected={{this.tvSelected}}
-          @active={{if (eq this.active "tv") true false}}
+          @active={{if (eq this.activeTab "tv") true false}}
           as |Addon|
         >
           <LinkTo @route="shopping.tv-addons">View Addons</LinkTo>
@@ -52,7 +50,6 @@
       <LinkTo
         class="link-underline link-underline-opacity-0"
         @route="shopping.phone"
-        {{on "click" (fn this.setActive "phone")}}
       >
         <Mktg::ServicePricing
           @label="Phone"
@@ -60,7 +57,7 @@
           @description={{this.phoneDescription}}
           @icon="bi-telephone"
           @selected={{this.phoneSelected}}
-          @active={{if (eq this.active "phone") true false}}
+          @active={{if (eq this.activeTab "phone") true false}}
           as |Addon|
         >
           <LinkTo @route="shopping.phone-addons">View Addons</LinkTo>
