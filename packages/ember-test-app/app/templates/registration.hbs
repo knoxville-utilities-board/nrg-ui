@@ -9,7 +9,10 @@
         class="link-underline link-underline-opacity-0"
         @route="registration.user"
       >
-        <Card class={{if (eq this.active "user") "border-2 border-primary"}}>
+        <Card
+          class="{{if (eq this.active 'user') 'border-2 border-primary'}}
+            rounded-4"
+        >
           <:body><p class="fw-semibold fs-4 m-0 p-0">Username & Password</p></:body>
         </Card>
       </LinkTo>
@@ -19,7 +22,10 @@
         class="link-underline link-underline-opacity-0"
         @route="registration.billing"
       >
-        <Card class={{if (eq this.active "billing") "border-2 border-primary"}}>
+        <Card
+          class="{{if (eq this.active 'billing') 'border-2 border-primary'}}
+            rounded-4"
+        >
           <:body><p class="fw-semibold fs-4 m-0 p-0">Billing & Contact Info</p></:body>
         </Card>
       </LinkTo>
@@ -29,7 +35,10 @@
         class="link-underline link-underline-opacity-0"
         @route="registration.privacy"
       >
-        <Card class={{if (eq this.active "privacy") "border-2 border-primary"}}>
+        <Card
+          class="{{if (eq this.active 'privacy') 'border-2 border-primary'}}
+            rounded-4"
+        >
           <:body><p class="fw-semibold fs-4 m-0 p-0">Privacy & Security</p></:body>
         </Card>
       </LinkTo>
