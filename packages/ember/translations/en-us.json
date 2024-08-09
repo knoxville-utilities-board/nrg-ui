@@ -36,6 +36,10 @@
         "even": "This field must be an even number",
         "odd": "This field must be an odd number",
         "multipleOf": "This field must be a multiple of {multipleOf, number}"
+      },
+      "presence": {
+        "blank": "This field cannot be blank",
+        "notBlank": "This field must be blank"
       }
     }
   }
