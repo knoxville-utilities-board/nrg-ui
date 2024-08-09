@@ -1,0 +1,1 @@
+{"version":3,"file":"workflow-tray.d.ts","sourceRoot":"","sources":["../../../src/components/mktg/workflow-tray.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,GAAG,EAAE,MAAM,gCAAgC,CAAC;AAE1D,UAAU,yBAAyB;IACjC,MAAM,EAAE;QACN,OAAO,EAAE,EAAE,CAAC;KACb,CAAC;IACF,OAAO,EAAE,WAAW,CAAC;CACtB;AAED,QAAA,MAAM,gBAAgB,EAAE,GAAG,CAAC,yBAAyB,CAgBnD,CAAC;AAEH,eAAe,gBAAgB,CAAC"}
