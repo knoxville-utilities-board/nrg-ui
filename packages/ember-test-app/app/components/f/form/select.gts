@@ -21,13 +21,23 @@ export default class extends Component {
   selectValue;
 
   @tracked
-  stringOptions = ['Option 1', 'Option 2', 'Option 3'];
+  stringOptions = [
+    'Option 1',
+    'Option 2',
+    'Option 3',
+    'Option 4',
+    'Option 5',
+    'Option 6',
+  ];
 
   @tracked
   objectOptions = [
-    { key: 'Option 1', id: 'option-1' },
-    { key: 'Option 2', id: 'option-2' },
-    { key: 'Option 3', id: 'option-3' },
+    { key: 'Option 1', id: '1' },
+    { key: 'Option 2', id: '2' },
+    { key: 'Option 3', id: '3' },
+    { key: 'Option 4', id: '4' },
+    { key: 'Option 5', id: '5' },
+    { key: 'Option 6', id: '6' },
   ];
 
   @action
@@ -113,14 +123,10 @@ export default class extends Component {
                 <span>Nothing to see here</span>
               </:empty>
               <:display as |option|>
-                <span>{{option.id}}</span>
-                <span>=</span>
-                <span>{{option.key}}</span>
+                <span>Custom Display {{option.id}}</span>
               </:display>
               <:option as |option|>
-                <span>{{option.key}}</span>
-                <span>-</span>
-                <span>{{option.id}}</span>
+                <span>Custom Option {{option.id}}</span>
               </:option>
             </Select>
           </:example>

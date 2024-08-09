@@ -5,12 +5,16 @@ import Component from '@glimmer/component';
 // https://github.com/glimmerjs/glimmer.js/issues/408
 import { tracked, cached } from '@glimmer/tracking';
 
+// @ts-expect-error Ember keyboard doesn't currently ship a type for the `on-key` modifier
+import onKey from 'ember-keyboard/modifiers/on-key';
+
 import { on } from '@ember/modifier';
 import BoundValue from './bound-value.ts';
 import { fn } from '@ember/helper';
 import { get } from '@ember/object';
 
 import type { Optional } from '../../types.d.ts';
+import { runTask } from 'ember-lifeline';
 
 declare type SelectOption<T> = {
   label: string;
@@ -33,7 +37,7 @@ export interface SelectSignature<T> {
     option?: [T | undefined];
     empty?: [];
   };
-  Element: HTMLInputElement;
+  Element: HTMLButtonElement;
 }
 
 const baseDefaultText = 'Select an Option'; // TODO i18n
@@ -142,6 +146,13 @@ export default class Select<T> extends BoundValue<
     );
     if (currentlySelectedIndex > -1) {
       this.activeItem = currentlySelectedIndex;
+      runTask(
+        this,
+        () => {
+          this.scrollActiveItemIntoView();
+        },
+        0,
+      );
     }
 
     this.isOpen = true;
@@ -157,33 +168,106 @@ export default class Select<T> extends BoundValue<
     return this.args.disabled || this.args.loading;
   }
 
+  @tracked
+  activeItem = -1;
+
+  scrollActiveItemIntoView() {
+    if (this.activeItem == -1) {
+      return;
+    }
+    const childElements = Array.from(
+      document.querySelectorAll(`#${CSS.escape(this.menuId)} > li`),
+    );
+    const activeElement = childElements[this.activeItem];
+    if (!activeElement) {
+      return;
+    }
+    activeElement.scrollIntoView({ block: 'nearest' });
+  }
+
+  @action
+  moveUp(evt: KeyboardEvent) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    if (this.activeItem > 0) {
+      this.activeItem--;
+      this.scrollActiveItemIntoView();
+    }
+  }
+
+  @action
+  moveDown(evt: KeyboardEvent) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    if (this.activeItem < this.internalOptions.length - 1) {
+      this.activeItem++;
+      this.scrollActiveItemIntoView();
+    }
+  }
+
+  @action
+  enterKeyHandler(evt?: KeyboardEvent) {
+    evt?.preventDefault();
+    evt?.stopPropagation();
+    if (!this.isOpen) {
+      this.onFocus();
+    } else {
+      this.exitKeyHandler();
+    }
+  }
+
+  @action
+  exitKeyHandler(evt?: KeyboardEvent) {
+    const optionsLength = this.internalOptions.length;
+    const validRange = this.activeItem >= 0 && this.activeItem < optionsLength;
+    evt?.preventDefault();
+    evt?.stopPropagation();
+    if (validRange) {
+      const option = this.internalOptions[this.activeItem];
+      if (option != undefined) {
+        this.onSelectInternal(option);
+        return;
+      }
+    }
+    this.onBlur();
+  }
+
   <template>
-    <div class="dropdown">
       <button
-          class={{this.classList}}
+        class={{this.classList}}
         role="combobox"
         disabled={{this.disabled}}
         aria-controls={{this.menuId}}
         aria-expanded={{this.isOpen}}
         aria-haspopup="listbox"
-          {{on "click" this.toggleSelect}}
-        {{on "blue" this.onBlur}}
-        >
-          {{#if this.hasSelected}}
-            {{#if (has-block "display")}}
-              {{yield this.selected.raw to="display"}}
-            {{else if (has-block "option")}}
-              {{yield this.selected.raw to="option"}}
-            {{else}}
-              {{this.selected.label}}
-            {{/if}}
+        {{on "click" this.toggleSelect}}
+      {{on "blur" this.onBlur}}
+        {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
+        {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
+        {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
+      {{onKey "Space" this.enterKeyHandler onlyWhenFocused=true}}
+        {{onKey "NumpadEnter" this.enterKeyHandler onlyWhenFocused=true}}
+        {{onKey "Tab" this.exitKeyHandler onlyWhenFocused=true}}
+        {{onKey "Escape" this.exitKeyHandler onlyWhenFocused=true}}
+      ...attributes
+      >
+      <span class="selected-display">
+        {{#if this.hasSelected}}
+          {{#if (has-block "display")}}
+            {{yield this.selected.raw to="display"}}
+          {{else if (has-block "option")}}
+            {{yield this.selected.raw to="option"}}
           {{else}}
-            {{#if (has-block "empty")}}
-              {{yield to="empty"}}
-            {{else}}
-              {{this.defaultText}}
-            {{/if}}
+            {{this.selected.label}}
           {{/if}}
+        {{else}}
+          {{#if (has-block "empty")}}
+            {{yield to="empty"}}
+          {{else}}
+            {{this.defaultText}}
+          {{/if}}
+        {{/if}}
+      </span>
 
         {{#if @loading}}
           <span
@@ -205,18 +289,17 @@ export default class Select<T> extends BoundValue<
               @activeIndex={{this.activeItem}}
               @currentValue={{this.value}}
               @option={{option}}
-            {{on "click" (fn this.onSelectInternal option)}}
-          >
-            {{#if (has-block "option")}}
-              {{yield option.raw to="option"}}
-            {{else}}
-              {{option.label}}
-            {{/if}}
+              {{on "click" (fn this.onSelectInternal option)}}
+            >
+              {{#if (has-block "option")}}
+                {{yield option.raw to="option"}}
+              {{else}}
+                {{option.label}}
+              {{/if}}
             </SelectItem>
-        {{/each}}
-      </ul>
+          {{/each}}
+        </ul>
       </button>
-    </div>
   </template>
 }
 

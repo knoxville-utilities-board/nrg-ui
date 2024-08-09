@@ -4,6 +4,7 @@ import { module, test } from 'qunit';
 import Select from '@nrg-ui/ember/components/form/select';
 import bind from '@nrg-ui/ember/helpers/bind';
 import { tracked } from '@glimmer/tracking';
+import { triggerKeyDown } from 'ember-keyboard';
 
 module('Integration | components | form/select', function (hooks) {
   setupRenderingTest(hooks);
@@ -40,7 +41,7 @@ module('Integration | components | form/select', function (hooks) {
     await render(<template>
       <Select @binding={{bind model "value"}} />
     </template>);
-    assert.dom('.form-select').hasText('Select an Option');
+    assert.dom('.selected-display').hasText('Select an Option');
   });
 
   test('it renders custom empty block', async function (assert) {
@@ -52,7 +53,7 @@ module('Integration | components | form/select', function (hooks) {
         </:empty>
       </Select>
     </template>);
-    assert.dom('.form-select').hasText('Custom Empty Block');
+    assert.dom('.selected-display').hasText('Custom Empty Block');
   });
 
   test('it opens when clicked', async function (assert) {
@@ -60,15 +61,16 @@ module('Integration | components | form/select', function (hooks) {
     await render(<template>
       <Select @binding={{bind model "value"}} />
     </template>);
-    await click('.form-select');
+    await click('button');
     assert.dom('.dropdown-menu').hasClass('show');
   });
+
   test('it closes when selecting an option', async function (assert) {
     const model = new Model();
     await render(<template>
       <Select @binding={{bind model "value"}} @options={{stringOptions}} />
     </template>);
-    await click('.form-select');
+    await click('button');
     assert.dom('.dropdown-menu').hasClass('show');
     await click(find('.dropdown-menu li'));
     assert.dom('.dropdown-menu').doesNotHaveClass('show');
@@ -80,9 +82,9 @@ module('Integration | components | form/select', function (hooks) {
       <Select @binding={{bind model "value"}} @options={{stringOptions}} />
     </template>);
 
-    assert.dom('.form-select').hasText('Select an Option');
+    assert.dom('.selected-display').hasText('Select an Option');
 
-    await click('.form-select');
+    await click('button');
     assert
       .dom('.dropdown-menu')
       .containsText('Option 1')
@@ -90,7 +92,7 @@ module('Integration | components | form/select', function (hooks) {
       .containsText('Option 3');
 
     await click(find('.dropdown-menu li'));
-    assert.dom('.form-select').hasText('Option 1');
+    assert.dom('.selected-display').hasText('Option 1');
     assert.strictEqual(model.value, 'Option 1');
   });
 
@@ -100,9 +102,9 @@ module('Integration | components | form/select', function (hooks) {
       <Select @binding={{bind model "value"}} @options={{objectOptions}} />
     </template>);
 
-    assert.dom('.form-select').hasText('Select an Option');
+    assert.dom('.selected-display').hasText('Select an Option');
 
-    await click('.form-select');
+    await click('button');
     assert
       .dom('.dropdown-menu')
       .containsText('label 1')
@@ -110,7 +112,7 @@ module('Integration | components | form/select', function (hooks) {
       .containsText('label 3');
 
     await click(find('.dropdown-menu li'));
-    assert.dom('.form-select').hasText('label 1');
+    assert.dom('.selected-display').hasText('label 1');
     assert.strictEqual(model.value, 'value 1');
   });
 
@@ -125,9 +127,9 @@ module('Integration | components | form/select', function (hooks) {
       />
     </template>);
 
-    assert.dom('.form-select').hasText('Select an Option');
+    assert.dom('.selected-display').hasText('Select an Option');
 
-    await click('.form-select');
+    await click('button');
     assert
       .dom('.dropdown-menu')
       .containsText('key 1')
@@ -135,7 +137,7 @@ module('Integration | components | form/select', function (hooks) {
       .containsText('key 3');
 
     await click(find('.dropdown-menu li'));
-    assert.dom('.form-select').hasText('key 1');
+    assert.dom('.selected-display').hasText('key 1');
     assert.strictEqual(model.value, 1);
   });
 
@@ -149,9 +151,9 @@ module('Integration | components | form/select', function (hooks) {
       </Select>
     </template>);
 
-    assert.dom('.form-select').hasText('Select an Option');
+    assert.dom('.selected-display').hasText('Select an Option');
 
-    await click('.form-select');
+    await click('button');
     assert
       .dom('.dropdown-menu')
       .containsText('key 1')
@@ -159,7 +161,7 @@ module('Integration | components | form/select', function (hooks) {
       .containsText('key 3');
 
     await click(find('.dropdown-menu li'));
-    assert.dom('.form-select').hasText('key 1');
+    assert.dom('.selected-display').hasText('key 1');
     assert.strictEqual(model.value, 'value 1');
   });
 
@@ -175,9 +177,9 @@ module('Integration | components | form/select', function (hooks) {
       </Select>
     </template>);
 
-    assert.dom('.form-select').hasText('Custom Display 2');
+    assert.dom('.selected-display').hasText('Custom Display 2');
 
-    await click('.form-select');
+    await click('button');
     assert
       .dom('.dropdown-menu')
       .containsText('label 1')
@@ -192,6 +194,107 @@ module('Integration | components | form/select', function (hooks) {
       <Select @binding={{bind model "value"}} @options={{objectOptions}} />
     </template>);
 
-    assert.dom('.dropdown-menu .dropdown-item.active').hasText('label 2');
+    assert.dom('.dropdown-item.active').hasText('label 2');
+  });
+
+  test('it opens and closes via keyboard when focused', async function (assert) {
+    const model = new Model();
+    await render(<template>
+      <Select @binding={{bind model "value"}} @options={{objectOptions}} />
+    </template>);
+
+    await click('button');
+    assert.dom('.dropdown-menu').hasClass('show');
+    await triggerKeyDown('Escape');
+    assert.dom('.dropdown-menu').doesNotHaveClass('show');
+    await triggerKeyDown('Space');
+    assert.dom('.dropdown-menu').hasClass('show');
+    await triggerKeyDown('Tab');
+    assert.dom('.dropdown-menu').doesNotHaveClass('show');
+    await triggerKeyDown('NumpadEnter');
+    assert.dom('.dropdown-menu').hasClass('show');
+    await triggerKeyDown('Enter');
+    assert.dom('.dropdown-menu').doesNotHaveClass('show');
+    await triggerKeyDown('Enter');
+    assert.dom('.dropdown-menu').hasClass('show');
+  });
+
+  test('it allows items to be selected via keyboard', async function (assert) {
+    const model = new Model();
+    await render(<template>
+      <Select @binding={{bind model "value"}} @options={{objectOptions}} />
+    </template>);
+    assert.dom('.selected-display').hasText('Select an Option');
+
+    await click('button');
+    await triggerKeyDown('ArrowDown');
+    assert.dom('.dropdown-item.active').hasText('label 1');
+
+    await triggerKeyDown('ArrowDown');
+    assert.dom('.dropdown-item.active').hasText('label 2');
+
+    await triggerKeyDown('Enter');
+    assert.dom('.dropdown-menu').doesNotHaveClass('show');
+
+    assert.strictEqual(model.value, 'value 2');
+    assert.dom('.selected-display').hasText('label 2');
+  });
+
+  test('it displays currently active item when reopening', async function (assert) {
+    const model = new Model();
+    model.value = 'value 2';
+    await render(<template>
+      <Select @binding={{bind model "value"}} @options={{objectOptions}} />
+    </template>);
+    assert.dom('.selected-display').hasText('label 2');
+
+    await click('button');
+    assert.dom('.dropdown-item.active').hasText('label 2');
+
+    await triggerKeyDown('ArrowUp');
+    assert.dom('.dropdown-item.active').hasText('label 1');
+
+    await triggerKeyDown('Space');
+    assert.strictEqual(model.value, 'value 1');
+    assert.dom('.selected-display').hasText('label 1');
+  });
+
+  test('it disallows arrow up from first item', async function (assert) {
+    const model = new Model();
+    model.value = 'value 1';
+    await render(<template>
+      <Select @binding={{bind model "value"}} @options={{objectOptions}} />
+    </template>);
+
+    assert.dom('.selected-display').hasText('label 1');
+
+    await click('button');
+    assert.dom('.dropdown-item.active').hasText('label 1');
+
+    await triggerKeyDown('ArrowUp');
+    assert.dom('.dropdown-item.active').hasText('label 1');
+
+    await triggerKeyDown('Tab');
+    assert.strictEqual(model.value, 'value 1');
+    assert.dom('.selected-display').hasText('label 1');
+  });
+
+  test('it disallows arrow down from last item', async function (assert) {
+    const model = new Model();
+    model.value = 'value 3';
+    await render(<template>
+      <Select @binding={{bind model "value"}} @options={{objectOptions}} />
+    </template>);
+    assert.dom('.selected-display').hasText('label 3');
+
+    await click('button');
+    assert.dom('.dropdown-item.active').hasText('label 3');
+
+    await triggerKeyDown('ArrowDown');
+    assert.dom('.dropdown-item.active').hasText('label 3');
+
+    await triggerKeyDown('Tab');
+    assert.strictEqual(model.value, 'value 3');
+    assert.dom('.selected-display').hasText('label 3');
   });
 });
