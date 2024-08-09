@@ -9,6 +9,7 @@ interface CardSignature {
     leftAlignCallout?: boolean;
     horizontal?: boolean;
     hasBorder?: boolean;
+    hasHorizontalDivider?: boolean;
   };
   Blocks: {
     start: [];
@@ -44,7 +45,11 @@ const MktgCard: TOC<CardSignature> = <template>
       </:body>
     </Card>
   {{else}}
-    <Card @hasBorder={{@hasBorder}} ...attributes>
+    <Card
+      @hasBorder={{@hasBorder}}
+      @hasHorizontalDivider={{@hasHorizontalDivider}}
+      ...attributes
+    >
       <:header>
         <div
           class="d-flex flex-column justify-content-start align-items-center bg-white mb-2"

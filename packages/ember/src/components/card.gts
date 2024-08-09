@@ -9,6 +9,7 @@ interface CardSignature {
     // eslint-disable-next-line no-unused-vars
     onClick?: (evt: MouseEvent) => unknown;
     hasBorder?: boolean;
+    hasHorizontalDivider?: boolean;
   };
   Blocks: {
     header: [];
@@ -19,6 +20,9 @@ interface CardSignature {
 export default class Card extends Component<CardSignature> {
   get hasBorder() {
     return this.args.hasBorder ?? true;
+  }
+  get hasHorizontalDivider() {
+    return this.args.hasHorizontalDivider ?? true;
   }
 
   @action
@@ -39,9 +43,15 @@ export default class Card extends Component<CardSignature> {
       ...attributes
     >
       {{#if (has-block "header")}}
-        <div class="card-header bg-white">
-          {{yield to="header"}}
-        </div>
+        {{#if this.hasHorizontalDivider}}
+          <div class="card-header bg-white">
+            {{yield to="header"}}
+          </div>
+        {{else}}
+          <div class="card-body">
+            {{yield to="header"}}
+          </div>
+        {{/if}}
       {{/if}}
       {{#if (has-block "body")}}
         <div class="card-body">
