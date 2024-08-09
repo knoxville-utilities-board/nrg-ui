@@ -7,6 +7,7 @@ export { default as LengthValidator } from './validators/length.ts';
 export { default as NumberValidator } from './validators/number.ts';
 export { default as PresenceValidator } from './validators/presence.ts';
 export { default as RangeValidator } from './validators/range.ts';
+export { default as RegexValidator } from './validators/regex.ts';
 
 export type {
   ComputedProperty,
