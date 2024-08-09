@@ -7,7 +7,14 @@ import type { Binding } from '../../types';
 import type { ValidateFnResponse } from '../types';
 
 export type RegexOptions = {
+  /**
+   * If `true`, the value must not match the pattern.
+   * @default false
+   */
   inverse?: boolean;
+  /**
+   * A regular expression pattern that the value must match.
+   */
   pattern: RegExp | string;
 };
 

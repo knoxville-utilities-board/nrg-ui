@@ -1,7 +1,7 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/ember/helpers/bind';
-import { ExclusionValidator } from '@nrg-ui/ember/validation/index';
+import { ExclusionValidator } from '@nrg-ui/ember/validation';
 import { setupIntl } from 'ember-intl/test-support';
 import { setupTest } from 'ember-test-app/tests/helpers';
 import { module, test } from 'qunit';

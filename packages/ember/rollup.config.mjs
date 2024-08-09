@@ -30,7 +30,6 @@ export default {
       'helpers/**/*.js',
       'modifiers/**/*.js',
       'services/**/*.js',
-      'validation/index.js',
     ]),
 
     // Follow the V2 Addon rules about dependencies. Your code can import from
