@@ -14,6 +14,9 @@ export default class extends Component {
   hasBorder = true;
 
   @tracked
+  hasHorizontalDivider = true;
+
+  @tracked
   class = 'col-6';
 
   @action
@@ -29,6 +32,7 @@ export default class extends Component {
             <Card
               class={{this.class}}
               @hasBorder={{this.hasBorder}}
+              @hasHorizontalDivider={{this.hasHorizontalDivider}}
               @isClickable={{this.isClickable}}
               @onClick={{this.onClick}}
             >
@@ -53,6 +57,13 @@ export default class extends Component {
               @value={{this.hasBorder}}
               @defaultValue={{true}}
               @onInput={{fn this.update "hasBorder"}}
+            />
+            <Args.Bool
+              @name="hasHorizontalDivider"
+              @description="When false, the card's horizontal divider is removed."
+              @value={{this.hasHorizontalDivider}}
+              @defaultValue={{true}}
+              @onInput={{fn this.update "hasHorizontalDivider"}}
             />
             <Args.Bool
               @name="isClickable"
