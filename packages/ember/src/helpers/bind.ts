@@ -2,28 +2,20 @@ import Helper from '@ember/component/helper';
 
 import type { Binding } from '../types';
 
-type Positional = [Record<string, unknown>, string];
-type Return = Binding;
-
-export interface BindSignature {
-  Args: {
-    Positional: Positional;
-  };
-  Return: Return;
-}
-
-export function bind(
-  model: Record<string, unknown>,
+export function bind<Model extends object = Record<string, unknown>>(
+  model: Model,
   valuePath: string,
-): Binding {
+): Binding<Model> {
   return {
     model,
     valuePath,
   };
 }
 
-export default class Bind extends Helper<BindSignature> {
-  compute([model, valuePath]: Positional): Return {
+export default class Bind<
+  Model extends object = Record<string, unknown>,
+> extends Helper {
+  compute([model, valuePath]: [Model, string]) {
     return bind(model, valuePath);
   }
 }
