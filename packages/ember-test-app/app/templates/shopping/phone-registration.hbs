@@ -2,12 +2,13 @@
   <Container.MktgCard
     class="g-col-12"
     @hasBorder={{false}}
+    @hasHorizontalDivider={{this.showForm}}
     @title="Phone Number"
     @subtitle="Do you have an existing phone number you'd like to transfer or would you like a new phone number?"
   >
     <:start>
       <div
-        class="w-100 my-4 row d-flex justify-self-center justify-content-center align-items-center"
+        class="w-100 mt-4 row d-flex justify-self-center justify-content-center align-items-center"
       >
         <div class="col-6 d-flex">
           <Button

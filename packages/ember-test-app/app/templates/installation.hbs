@@ -116,7 +116,11 @@
                 <Button
                   @onClick={{this.selectDate}}
                   @text="10:00am"
-                  class="btn-outline-secondary"
+                  class={{if
+                    this.dateSelected
+                    "btn-primary"
+                    "btn-outline-secondary"
+                  }}
                   type="button"
                 />
                 <Button

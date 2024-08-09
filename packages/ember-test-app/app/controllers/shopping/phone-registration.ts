@@ -11,6 +11,10 @@ export default class ApplicationController extends Controller {
     this.phoneNumberOption = value;
   }
 
+  get showForm() {
+    return this.phoneNumberOption ? true : false;
+  }
+
   get existingBtnClass() {
     if (this.phoneNumberOption === 'existing') {
       return 'btn-success text-white';
