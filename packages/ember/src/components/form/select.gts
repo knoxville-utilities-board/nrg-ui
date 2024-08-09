@@ -293,6 +293,7 @@ export default class Select<T> extends BoundValue<
   <template>
     <button
       class={{this.classList}}
+      type="button"
       role="combobox"
       disabled={{this.disabled}}
       aria-controls={{this.menuId}}
@@ -394,8 +395,17 @@ class SelectItem<T> extends Component<SelectItemSignature<T>> {
     return classes.join(' ');
   }
 
+  get isActive() {
+    return this.args.option.value === this.args.currentValue;
+  }
+
   <template>
-    <li class={{this.classList}} role="option" ...attributes>
+    <li
+      class={{this.classList}}
+      role="option"
+      aria-selected={{this.isActive}}
+      ...attributes
+    >
       {{yield}}
     </li>
   </template>
