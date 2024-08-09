@@ -1,7 +1,8 @@
-import type { Icon as IconType } from '../../types';
-import type { ComponentLike } from '@glint/template';
 import Component from '@glimmer/component';
-import Icon from '@nrg-ui/ember/components/icon';
+import Icon from '../icon.gts';
+
+import type { ComponentLike } from '@glint/template';
+import type { Icon as IconType } from '../../types';
 
 interface AddonSignature {
   Args: {
