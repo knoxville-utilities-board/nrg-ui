@@ -41,6 +41,7 @@ export default class ApplicationController extends Controller {
     'shopping.phone',
     'shopping.phone-addons',
     'shopping.phone-registration',
+    'registration.user',
   ];
 
   get activeTab() {

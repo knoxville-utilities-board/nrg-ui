@@ -6,8 +6,26 @@ import type RouterService from '@ember/routing/router-service';
 export default class RegistrationController extends Controller {
   @service declare router: RouterService;
 
+  get active() {
+    if (this.currentRoute === 'registration.user') {
+      return 'user';
+    } else if (this.currentRoute === 'registration.billing') {
+      return 'billing';
+    } else if (this.currentRoute === 'registration.privacy') {
+      return 'privacy';
+    }
+    return '';
+  }
+  get currentRoute() {
+    return this.router.currentRouteName;
+  }
+
   get nextRoute() {
-    return 'registration.confirmation';
+    if (this.currentRoute === 'registration.privacy') {
+      return 'registration.confirmation';
+    } else {
+      return 'confirmation';
+    }
   }
 
   @action
@@ -15,7 +33,13 @@ export default class RegistrationController extends Controller {
     this.router.transitionTo(this.nextRoute);
   }
 
-  get currentRoute() {
-    return this.router.currentRouteName;
+  get buttonDisabled() {
+    if (
+      this.currentRoute === 'registration.privacy' ||
+      this.currentRoute === 'registration.confirmation'
+    ) {
+      return false;
+    }
+    return true;
   }
 }

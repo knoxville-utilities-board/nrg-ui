@@ -1,6 +1,6 @@
 <Card class="w-75 m-3">
-<:body>
-  <div>
+  <:body>
+    <div>
       <Mktg::ServicePricing
         @label="Fiber"
         @package="The Gig 2.5"
@@ -32,7 +32,7 @@
         @description="$129/mo"
         @icon="bi-telephone"
         @selected={{true}}
-        @active={{true}}
+        @active={{false}}
       />
     </div>
     <div class="m-3">
@@ -45,9 +45,9 @@
         <div class="col-auto">$6500/mo</div>
       </div>
     </div>
-</:body>
+  </:body>
 </Card>
-{{!-- TODO Make a table component? --}}
+{{! TODO Make a table component? }}
 <Card class="w-75 m-3">
   <:body>
     <h4>Username & Password</h4>
@@ -71,8 +71,9 @@
         </div>
       </div>
     </div>
-    <hr>
-        <div class="mb-3">
+    <hr />
+    <h4>Billing &amp; Contact Information</h4>
+    <div class="mb-3">
       <div class="row">
         <div class="col">
           <label for="username" class="form-label">Username</label>
@@ -92,7 +93,7 @@
         </div>
       </div>
     </div>
-        <div class="mb-3">
+    <div class="mb-3">
       <div class="row">
         <div class="col">
           <label for="username" class="form-label">Username</label>
@@ -112,8 +113,9 @@
         </div>
       </div>
     </div>
-    <hr>
-        <div class="mb-3">
+    <hr />
+    <h4>Privacy &amp; Security</h4>
+    <div class="mb-3">
       <div class="row">
         <div class="col">
           <label for="username" class="form-label">Username</label>
@@ -132,7 +134,8 @@
           MyUsername
         </div>
       </div>
-    </div>    <div class="mb-3">
+    </div>
+    <div class="mb-3">
       <div class="row">
         <div class="col">
           <label for="username" class="form-label">Username</label>
