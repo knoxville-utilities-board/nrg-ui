@@ -1,17 +1,19 @@
 {{page-title "Signup"}}
-<main data-theme="marketing" class="bg-primary-subtle vh-100 text-primary">
-  <div class="container p-5">
-    <Card class="g-col-12">
-      <:body>
-        <h2 class="text-center">Where would you like to start KUB Fiber service?</h2>
-        <div class="mb-3">
-          <div class="row">
-            <label for="address" class="form-label">Service Address</label>
-            <Nrg::TextField placeholder="Address" id="address" />
-          </div>
+<div class="container-fluid p-5">
+  <Card class="g-col-12">
+    <:body>
+      <h2 class="text-center">Where would you like to start KUB Fiber service?</h2>
+      <div class="mb-3">
+        <div class="row">
+          <label for="address" class="form-label px-1">Service Address</label>
+          <Nrg::TextField placeholder="Address" id="address" />
         </div>
-        <Button type="submit" class="btn btn-primary" {{on "click" this.goToOrder}}>Check Address</Button>
-        </:body>
-    </Card>
-    </div>
-</main>
+      </div>
+      <Button
+        type="submit"
+        class="btn btn-primary"
+        {{on "click" this.goToOrder}}
+      >Check Address</Button>
+    </:body>
+  </Card>
+</div>

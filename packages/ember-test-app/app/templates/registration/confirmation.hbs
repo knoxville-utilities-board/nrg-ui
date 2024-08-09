@@ -1,159 +1,168 @@
-<Card class="w-75 m-3">
-  <:body>
-    <div>
-      <Mktg::ServicePricing
-        @label="Fiber"
-        @package="The Gig 2.5"
-        @description="$65/mo"
-        @icon="bi-wifi"
-        @selected={{true}}
-        @active={{false}}
-        as |Addon|
-      >
-        <Addon @label="Smart Gig" @price="$15/mo" />
-      </Mktg::ServicePricing>
-      <Mktg::ServicePricing
-        @label="TV"
-        @package="Bronze"
-        @description="$107/mo"
-        @icon="bi-tv"
-        @selected={{true}}
-        @active={{false}}
-        as |Addon|
-      >
-        <Addon @label="FireStick" @price="$80" @quantity="2" />
-        <Addon @label="HBO" @price="$5.99/mo" />
-        <Addon @label="STARZ" @price="$4.99/mo" />
-        <Addon @label="Spanish Language Channels" @price="$4.99/mo" />
-      </Mktg::ServicePricing>
-      <Mktg::ServicePricing
-        @label="Phone"
-        @package="KUB"
-        @description="$129/mo"
-        @icon="bi-telephone"
-        @selected={{true}}
-        @active={{false}}
-      />
-    </div>
-    <div class="m-3">
-      <div class="row justify-content-between my-2">
-        <div class="col-auto">First Bill Including Fees</div>
-        <div class="col-auto">$65/mo</div>
+<Mktg::CardContainer class="my-3 col-12 col-lg-9" as |Container|>
+  <Container.Card
+    class="g-col-12 d-flex justify-content-start"
+    @hasBorder={{false}}
+    @hasHorizontalDivider={{false}}
+  >
+    <:body>
+      <div>
+        <Mktg::ServicePricing
+          @label="Fiber"
+          @package="The Gig 2.5"
+          @description="$65/mo"
+          @icon="bi-wifi"
+          @selected={{true}}
+          @active={{false}}
+          as |Addon|
+        >
+          <Addon @label="Smart Gig" @price="$15/mo" />
+        </Mktg::ServicePricing>
+        <Mktg::ServicePricing
+          @label="TV"
+          @package="Bronze"
+          @description="$107/mo"
+          @icon="bi-tv"
+          @selected={{true}}
+          @active={{false}}
+          as |Addon|
+        >
+          <Addon @label="FireStick" @price="$80" @quantity="2" />
+          <Addon @label="HBO" @price="$5.99/mo" />
+          <Addon @label="STARZ" @price="$4.99/mo" />
+          <Addon @label="Spanish Language Channels" @price="$4.99/mo" />
+        </Mktg::ServicePricing>
+        <Mktg::ServicePricing
+          @label="Phone"
+          @package="KUB"
+          @description="$129/mo"
+          @icon="bi-telephone"
+          @selected={{true}}
+          @active={{false}}
+        />
       </div>
-      <div class="row justify-content-between my-2">
-        <div class="col-auto">Monthly Total</div>
-        <div class="col-auto">$6500/mo</div>
-      </div>
-    </div>
-  </:body>
-</Card>
-{{! TODO Make a table component? }}
-<Card class="w-75 m-3">
-  <:body>
-    <h4>Username & Password</h4>
-    <div class="mb-3">
-      <div class="row">
-        <div class="col">
-          <label for="username" class="form-label">Username</label>
+      <div class="m-3">
+        <div class="row justify-content-between my-2">
+          <div class="col-auto">First Bill Including Fees</div>
+          <div class="col-auto">$65/mo</div>
         </div>
-        <div class="col text-right">
-          MyUsername
+        <div class="row justify-content-between my-2">
+          <div class="col-auto">Monthly Total</div>
+          <div class="col-auto">$6500/mo</div>
         </div>
       </div>
-    </div>
-    <div class="mb-3">
-      <div class="row">
-        <div class="col">
-          <label for="username" class="form-label">Username</label>
-        </div>
-        <div class="col text-right">
-          MyUsername
-        </div>
-      </div>
-    </div>
-    <hr />
-    <h4>Billing &amp; Contact Information</h4>
-    <div class="mb-3">
-      <div class="row">
-        <div class="col">
-          <label for="username" class="form-label">Username</label>
-        </div>
-        <div class="col text-right">
-          MyUsername
+    </:body>
+  </Container.Card>
+  {{! TODO Make a table component? }}
+  <Container.Card
+    @hasHorizontalDivider={{false}}
+    class="g-col-12 d-flex justify-content-start"
+  >
+    <:body>
+      <h4 class="mb-3">Username &amp; Password</h4>
+      <div class="mb-3">
+        <div class="row">
+          <div class="col">
+            <label for="username" class="form-label">Username</label>
+          </div>
+          <div class="col text-right">
+            MyUsername
+          </div>
         </div>
       </div>
-    </div>
-    <div class="mb-3">
-      <div class="row">
-        <div class="col">
-          <label for="username" class="form-label">Username</label>
-        </div>
-        <div class="col text-right">
-          MyUsername
-        </div>
-      </div>
-    </div>
-    <div class="mb-3">
-      <div class="row">
-        <div class="col">
-          <label for="username" class="form-label">Username</label>
-        </div>
-        <div class="col text-right">
-          MyUsername
+      <div class="mb-3">
+        <div class="row">
+          <div class="col">
+            <label for="username" class="form-label">Username</label>
+          </div>
+          <div class="col text-right">
+            MyUsername
+          </div>
         </div>
       </div>
-    </div>
-    <div class="mb-3">
-      <div class="row">
-        <div class="col">
-          <label for="username" class="form-label">Username</label>
-        </div>
-        <div class="col text-right">
-          MyUsername
-        </div>
-      </div>
-    </div>
-    <hr />
-    <h4>Privacy &amp; Security</h4>
-    <div class="mb-3">
-      <div class="row">
-        <div class="col">
-          <label for="username" class="form-label">Username</label>
-        </div>
-        <div class="col text-right">
-          MyUsername
+      <hr />
+      <h4 class="mb-3">Billing &amp; Contact Information</h4>
+      <div class="mb-3">
+        <div class="row">
+          <div class="col">
+            <label for="username" class="form-label">Username</label>
+          </div>
+          <div class="col text-right">
+            MyUsername
+          </div>
         </div>
       </div>
-    </div>
-    <div class="mb-3">
-      <div class="row">
-        <div class="col">
-          <label for="username" class="form-label">Username</label>
-        </div>
-        <div class="col text-right">
-          MyUsername
-        </div>
-      </div>
-    </div>
-    <div class="mb-3">
-      <div class="row">
-        <div class="col">
-          <label for="username" class="form-label">Username</label>
-        </div>
-        <div class="col text-right">
-          MyUsername
+      <div class="mb-3">
+        <div class="row">
+          <div class="col">
+            <label for="username" class="form-label">Username</label>
+          </div>
+          <div class="col text-right">
+            MyUsername
+          </div>
         </div>
       </div>
-    </div>
-    <div class="mb-3">
-      <div class="row">
-        <div class="col">
-          <label for="username" class="form-label">Username</label>
-        </div>
-        <div class="col text-right">
-          MyUsername
+      <div class="mb-3">
+        <div class="row">
+          <div class="col">
+            <label for="username" class="form-label">Username</label>
+          </div>
+          <div class="col text-right">
+            MyUsername
+          </div>
         </div>
       </div>
-    </div>
-  </:body>
-</Card>
+      <div class="mb-3">
+        <div class="row">
+          <div class="col">
+            <label for="username" class="form-label">Username</label>
+          </div>
+          <div class="col text-right">
+            MyUsername
+          </div>
+        </div>
+      </div>
+      <hr />
+      <h4 class="mb-3">Privacy &amp; Security</h4>
+      <div class="mb-3">
+        <div class="row">
+          <div class="col">
+            <label for="username" class="form-label">Username</label>
+          </div>
+          <div class="col text-right">
+            MyUsername
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="row">
+          <div class="col">
+            <label for="username" class="form-label">Username</label>
+          </div>
+          <div class="col text-right">
+            MyUsername
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="row">
+          <div class="col">
+            <label for="username" class="form-label">Username</label>
+          </div>
+          <div class="col text-right">
+            MyUsername
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="row">
+          <div class="col">
+            <label for="username" class="form-label">Username</label>
+          </div>
+          <div class="col text-right">
+            MyUsername
+          </div>
+        </div>
+      </div>
+    </:body>
+  </Container.Card>
+</Mktg::CardContainer>
