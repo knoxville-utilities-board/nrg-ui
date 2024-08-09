@@ -5,10 +5,6 @@ export default class ShoppingRoute extends Route {
   @service
   declare router: RouterService;
 
-  // redirect() {
-  //   this.router.transitionTo('shopping.fiber');
-  // }
-
   selectionMade = false;
 
   async model() {

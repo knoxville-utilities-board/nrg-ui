@@ -9,38 +9,42 @@
         class="link-underline link-underline-opacity-0"
         @route="registration.user"
       >
-      <Card>
-        <:body><h3>Username & Password</h3></:body>
-      </Card>
-     </LinkTo>
-  </div>
+        <Card class={{if (eq this.active "user") "border-2 border-primary"}}>
+          <:body><p class="fw-semibold fs-4 m-0 p-0">Username & Password</p></:body>
+        </Card>
+      </LinkTo>
+    </div>
     <div class="my-3">
       <LinkTo
         class="link-underline link-underline-opacity-0"
         @route="registration.billing"
       >
-      <Card>
-        <:body><h3>Billing & Contact Info</h3></:body>
-      </Card>
-     </LinkTo>
-  </div>
+        <Card class={{if (eq this.active "billing") "border-2 border-primary"}}>
+          <:body><p class="fw-semibold fs-4 m-0 p-0">Billing & Contact Info</p></:body>
+        </Card>
+      </LinkTo>
+    </div>
     <div class="my-3">
       <LinkTo
         class="link-underline link-underline-opacity-0"
         @route="registration.privacy"
       >
-      <Card>
-        <:body><h3>Privacy & Security</h3></:body>
-      </Card>
-     </LinkTo>
-  </div>
+        <Card class={{if (eq this.active "privacy") "border-2 border-primary"}}>
+          <:body><p class="fw-semibold fs-4 m-0 p-0">Privacy & Security</p></:body>
+        </Card>
+      </LinkTo>
+    </div>
     <hr class="my-0" />
     <div class="d-flex">
       <Button
         class="btn-primary py-3 flex-fill"
-        @disabled={{not this.privacySelected}}
+        @disabled={{this.buttonDisabled}}
         {{on "click" this.changeRoute}}
-      >Next</Button>
+      >{{if
+          (eq this.currentRoute "registration.confirmation")
+          "Confirm"
+          "Next"
+        }}</Button>
     </div>
   </Mktg::WorkflowTray>
   <div
