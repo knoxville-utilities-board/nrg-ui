@@ -12,6 +12,21 @@
       },
       "inclusion": {
         "in": "This field is not a valid value. Valid values are: {in}"
+      },
+      "length": {
+        "array": {
+          "between": "This field must have between {min} and {max} values (has {length})",
+          "tooLong": "This field must have at most {max} values (has {length})",
+          "tooShort": "This field must have at least {min} values (has {length})",
+          "wrongLength": "This field must have {is} values (has {length})"
+        },
+        "invalid": "This field is invalid",
+        "string": {
+          "between": "This field must be between {min} and {max} characters (has {length})",
+          "tooLong": "This field must be at most {max} characters (has {length})",
+          "tooShort": "This field must be at least {min} characters (has {length})",
+          "wrongLength": "This field must be {is} characters (has {length})"
+        }
       }
     }
   }
