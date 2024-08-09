@@ -15,6 +15,9 @@ export default class extends Component {
   loading = false;
 
   @tracked
+  scrollable = true;
+
+  @tracked
   selectValue;
 
   @tracked
@@ -49,6 +52,7 @@ export default class extends Component {
               @binding={{bind this "selectValue"}}
               @disabled={{this.disabled}}
               @loading={{this.loading}}
+              @scrollable={{this.scrollable}}
               @options={{this.stringOptions}}
             />
           </:example>
@@ -67,6 +71,13 @@ export default class extends Component {
               @value={{this.loading}}
               @onInput={{fn this.update "loading"}}
             />
+            <Args.Bool
+              @name="scrollable"
+              @defaultValue={{false}}
+              @description="Unless false, the dropdown will be scrollable"
+              @value={{this.scrollable}}
+              @onInput={{fn this.update "scrollable"}}
+            />
           </:api>
         </FreestyleUsage>
       </Section.subsection>
@@ -78,6 +89,7 @@ export default class extends Component {
               @binding={{bind this "selectValue"}}
               @disabled={{this.disabled}}
               @loading={{this.loading}}
+              @scrollable={{this.scrollable}}
               @options={{this.objectOptions}}
               @displayPath="key"
               @serializationPath="key"
@@ -93,6 +105,7 @@ export default class extends Component {
               @binding={{bind this "selectValue"}}
               @disabled={{this.disabled}}
               @loading={{this.loading}}
+              @scrollable={{this.scrollable}}
               @options={{this.objectOptions}}
               @serializationPath="key"
             >

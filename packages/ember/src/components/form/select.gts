@@ -22,6 +22,7 @@ export interface SelectSignature<T> {
   Args: {
     disabled?: boolean;
     loading?: boolean;
+    scrollable?: boolean;
     defaultText?: string;
     options: T[];
     displayPath?: string;
@@ -42,7 +43,11 @@ export default class Select<T> extends BoundValue<
   string | T
 > {
   get classList() {
-    let classes = ['form-control', 'text-start', 'focus-ring'];
+    let classes = ['dropdown', 'form-control', 'text-start', 'focus-ring'];
+
+    if (this.scrollable) {
+      classes.push('scrollable');
+    }
 
     return classes.join(' ');
   }
@@ -53,6 +58,10 @@ export default class Select<T> extends BoundValue<
 
   get defaultText() {
     return this.args.defaultText ?? baseDefaultText;
+  }
+
+  get scrollable() {
+    return this.args.scrollable ?? true;
   }
 
   @tracked

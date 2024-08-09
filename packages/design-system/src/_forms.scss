@@ -1,0 +1,4 @@
+.form-control.dropdown.scrollable > .dropdown-menu {
+  max-height: clamp(9rem, 50vh, 21rem);
+  overflow-y: auto;
+}
