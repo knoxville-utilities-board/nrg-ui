@@ -1,5 +1,5 @@
-export type Binding = {
-  model: Record<string, unknown>;
+export type Binding<Model extends object = Record<string, unknown>> = {
+  model: Model;
   valuePath: string;
 };
 export type Optional<T> = T | null;
