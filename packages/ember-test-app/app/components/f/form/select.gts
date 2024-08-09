@@ -32,12 +32,12 @@ export default class extends Component {
 
   @tracked
   objectOptions = [
-    { key: 'Option 1', id: '1' },
-    { key: 'Option 2', id: '2' },
-    { key: 'Option 3', id: '3' },
-    { key: 'Option 4', id: '4' },
-    { key: 'Option 5', id: '5' },
-    { key: 'Option 6', id: '6' },
+    { key: 'Option 1', id: '1', searchableDisplay: 'Lorem' },
+    { key: 'Option 2', id: '2', searchableDisplay: 'ipsum' },
+    { key: 'Option 3', id: '3', searchableDisplay: 'incididunt' },
+    { key: 'Option 4', id: '4', searchableDisplay: 'labore' },
+    { key: 'Option 5', id: '5', searchableDisplay: 'AMET' },
+    { key: 'Option 6', id: '6', searchableDisplay: 'consectetur' },
   ];
 
   @action
@@ -101,7 +101,7 @@ export default class extends Component {
               @loading={{this.loading}}
               @scrollable={{this.scrollable}}
               @options={{this.objectOptions}}
-              @displayPath="key"
+              @displayPath="searchableDisplay"
               @serializationPath="key"
             />
           </:example>

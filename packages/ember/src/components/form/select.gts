@@ -171,6 +171,60 @@ export default class Select<T> extends BoundValue<
   @tracked
   activeItem = -1;
 
+  @action
+  onKeyboardInput(evt: KeyboardEvent) {
+    if (!this.isOpen) {
+      return;
+    }
+    const key = evt.key.toLowerCase();
+    const isSingleChar = key.length === 1;
+    const isLetter = 'a' <= key && key <= 'z';
+    const isNumber = '0' <= key && key <= '9';
+    const isAlphaNumeric = (isLetter || isNumber) && isSingleChar;
+    if (!isAlphaNumeric) {
+      return;
+    }
+    evt.preventDefault();
+    evt.stopPropagation();
+    this.internalSearchBuffer += key;
+    const foundItem = this.selectItemBySearch();
+    if (!foundItem && this.internalSearchBuffer.length > 1) {
+      this.internalSearchBuffer = key;
+      this.selectItemBySearch();
+    }
+  }
+
+  @tracked
+  internalSearchBuffer = '';
+
+  selectItemBySearch() {
+    const searchBuffer = this.internalSearchBuffer;
+    if (searchBuffer.length === 0) {
+      return;
+    }
+
+    const childElements = Array.from(
+      document.querySelectorAll(`#${CSS.escape(this.menuId)} > li`),
+    );
+    for (const stringIndex in childElements) {
+      const index = parseInt(stringIndex);
+      const element = childElements[index];
+      if (!element) {
+        continue;
+      }
+      const text = element.textContent?.toLowerCase() ?? '';
+      const splitText = text.split(' ') ?? [];
+      for (const text of splitText) {
+        if (text.startsWith(searchBuffer)) {
+          this.activeItem = index;
+          this.scrollActiveItemIntoView();
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   scrollActiveItemIntoView() {
     if (this.activeItem == -1) {
       return;
@@ -189,6 +243,7 @@ export default class Select<T> extends BoundValue<
   moveUp(evt: KeyboardEvent) {
     evt.preventDefault();
     evt.stopPropagation();
+    this.internalSearchBuffer = '';
     if (this.activeItem > 0) {
       this.activeItem--;
       this.scrollActiveItemIntoView();
@@ -199,6 +254,7 @@ export default class Select<T> extends BoundValue<
   moveDown(evt: KeyboardEvent) {
     evt.preventDefault();
     evt.stopPropagation();
+    this.internalSearchBuffer = '';
     if (this.activeItem < this.internalOptions.length - 1) {
       this.activeItem++;
       this.scrollActiveItemIntoView();
@@ -209,6 +265,7 @@ export default class Select<T> extends BoundValue<
   enterKeyHandler(evt?: KeyboardEvent) {
     evt?.preventDefault();
     evt?.stopPropagation();
+    this.internalSearchBuffer = '';
     if (!this.isOpen) {
       this.onFocus();
     } else {
@@ -222,6 +279,7 @@ export default class Select<T> extends BoundValue<
     const validRange = this.activeItem >= 0 && this.activeItem < optionsLength;
     evt?.preventDefault();
     evt?.stopPropagation();
+    this.internalSearchBuffer = '';
     if (validRange) {
       const option = this.internalOptions[this.activeItem];
       if (option != undefined) {
@@ -233,24 +291,25 @@ export default class Select<T> extends BoundValue<
   }
 
   <template>
-      <button
-        class={{this.classList}}
-        role="combobox"
-        disabled={{this.disabled}}
-        aria-controls={{this.menuId}}
-        aria-expanded={{this.isOpen}}
-        aria-haspopup="listbox"
-        {{on "click" this.toggleSelect}}
+    <button
+      class={{this.classList}}
+      role="combobox"
+      disabled={{this.disabled}}
+      aria-controls={{this.menuId}}
+      aria-expanded={{this.isOpen}}
+      aria-haspopup="listbox"
+      {{on "click" this.toggleSelect}}
       {{on "blur" this.onBlur}}
-        {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
-        {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
-        {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
+      {{on "keydown" this.onKeyboardInput}}
+      {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
+      {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
+      {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
       {{onKey "Space" this.enterKeyHandler onlyWhenFocused=true}}
-        {{onKey "NumpadEnter" this.enterKeyHandler onlyWhenFocused=true}}
-        {{onKey "Tab" this.exitKeyHandler onlyWhenFocused=true}}
-        {{onKey "Escape" this.exitKeyHandler onlyWhenFocused=true}}
+      {{onKey "NumpadEnter" this.enterKeyHandler onlyWhenFocused=true}}
+      {{onKey "Tab" this.exitKeyHandler onlyWhenFocused=true}}
+      {{onKey "Escape" this.exitKeyHandler onlyWhenFocused=true}}
       ...attributes
-      >
+    >
       <span class="selected-display">
         {{#if this.hasSelected}}
           {{#if (has-block "display")}}
@@ -269,37 +328,37 @@ export default class Select<T> extends BoundValue<
         {{/if}}
       </span>
 
-        {{#if @loading}}
-          <span
-            class="spinner-border spinner-border-sm float-end m-1"
-            aria-hidden="true"
-          ></span>
-          <span class="visually-hidden" role="status">Loading...</span>
-        {{else}}
-          <i class="bi {{this.caretIcon}} float-end m-1" />
-        {{/if}}
-        <ul
-          id={{this.menuId}}
-          class="dropdown-menu {{if this.isOpen 'show'}}"
-          role="listbox"
-        >
-          {{#each this.internalOptions as |option i|}}
-            <SelectItem
-              @optionIndex={{i}}
-              @activeIndex={{this.activeItem}}
-              @currentValue={{this.value}}
-              @option={{option}}
-              {{on "click" (fn this.onSelectInternal option)}}
-            >
-              {{#if (has-block "option")}}
-                {{yield option.raw to="option"}}
-              {{else}}
-                {{option.label}}
-              {{/if}}
-            </SelectItem>
-          {{/each}}
-        </ul>
-      </button>
+      {{#if @loading}}
+        <span
+          class="spinner-border spinner-border-sm float-end m-1"
+          aria-hidden="true"
+        ></span>
+        <span class="visually-hidden" role="status">Loading...</span>
+      {{else}}
+        <i class="bi {{this.caretIcon}} float-end m-1" />
+      {{/if}}
+      <ul
+        id={{this.menuId}}
+        class="dropdown-menu {{if this.isOpen 'show'}}"
+        role="listbox"
+      >
+        {{#each this.internalOptions as |option i|}}
+          <SelectItem
+            @optionIndex={{i}}
+            @activeIndex={{this.activeItem}}
+            @currentValue={{this.value}}
+            @option={{option}}
+            {{on "click" (fn this.onSelectInternal option)}}
+          >
+            {{#if (has-block "option")}}
+              {{yield option.raw to="option"}}
+            {{else}}
+              {{option.label}}
+            {{/if}}
+          </SelectItem>
+        {{/each}}
+      </ul>
+    </button>
   </template>
 }
 
