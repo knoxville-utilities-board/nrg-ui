@@ -47,6 +47,10 @@
         "lessThan": "This field must be less than {max, number}",
         "lessThanOrEqualTo": "This field must be less than or equal to {max, number}",
         "notANumber": "This field must be a number"
+      },
+      "regex": {
+        "match": "This field is invalid",
+        "doesNotMatch": "This field is invalid"
       }
     }
   }
