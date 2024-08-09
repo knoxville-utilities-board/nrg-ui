@@ -27,6 +27,15 @@
           "tooShort": "This field must be at least {min} characters (has {length})",
           "wrongLength": "This field must be {is} characters (has {length})"
         }
+      },
+      "number": {
+        "notANumber": "This field must be a number",
+        "integer": "This field must be an integer",
+        "positive": "This field must be a positive number",
+        "negative": "This field must be a negative number",
+        "even": "This field must be an even number",
+        "odd": "This field must be an odd number",
+        "multipleOf": "This field must be a multiple of {multipleOf, number}"
       }
     }
   }
