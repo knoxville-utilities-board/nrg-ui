@@ -1,4 +1,5 @@
 import Component from '@glimmer/component';
+
 import type { Icon as IconType } from '../types';
 
 declare type SubtleColorType =

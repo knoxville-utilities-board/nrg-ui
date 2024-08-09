@@ -1,5 +1,6 @@
-import type { TOC } from '@ember/component/template-only';
 import Card from '../card.gts';
+
+import type { TOC } from '@ember/component/template-only';
 
 interface CardSignature {
   Element: HTMLDivElement;

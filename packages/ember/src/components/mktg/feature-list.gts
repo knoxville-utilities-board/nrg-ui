@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
-import type { ComponentLike } from '@glint/template';
+
 import type { TOC } from '@ember/component/template-only';
+import type { ComponentLike } from '@glint/template';
 
 const columnMap = {
   1: 'g-col-12',

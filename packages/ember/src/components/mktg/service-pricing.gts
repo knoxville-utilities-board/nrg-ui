@@ -1,8 +1,9 @@
 import Component from '@glimmer/component';
+
 import Icon from '../icon.gts';
 
-import type { ComponentLike } from '@glint/template';
 import type { Icon as IconType } from '../../types';
+import type { ComponentLike } from '@glint/template';
 
 interface AddonSignature {
   Args: {

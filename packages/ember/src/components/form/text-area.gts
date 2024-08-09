@@ -1,6 +1,7 @@
-import BoundValue from './bound-value.ts';
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
+
+import BoundValue from './bound-value.ts';
 
 export interface TextAreaSignature {
   Element: HTMLTextAreaElement;

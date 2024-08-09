@@ -1,8 +1,10 @@
-import type { TOC } from '@ember/component/template-only';
 import { hash } from '@ember/helper';
-import type { ComponentLike } from '@glint/template';
+
 import MktgCard from './card.gts';
 import Card from '../card.gts';
+
+import type { TOC } from '@ember/component/template-only';
+import type { ComponentLike } from '@glint/template';
 
 interface CardContainerSignature {
   Element: HTMLDivElement;
