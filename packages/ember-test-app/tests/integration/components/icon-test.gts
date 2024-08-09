@@ -1,7 +1,7 @@
-import { assert, module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import Icon from '@nrg-ui/ember/components/icon';
+import { setupRenderingTest } from 'ember-qunit';
+import { assert, module, test } from 'qunit';
 
 module('Integration | components | icon', function (hooks) {
   setupRenderingTest(hooks);

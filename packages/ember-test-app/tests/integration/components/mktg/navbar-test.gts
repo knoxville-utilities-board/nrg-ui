@@ -1,8 +1,8 @@
-import { assert, module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { click, render } from '@ember/test-helpers';
 import Navbar from '@nrg-ui/ember/components/mktg/navbar';
 import NavItem from '@nrg-ui/ember/components/nav-item';
+import { setupRenderingTest } from 'ember-qunit';
+import { assert, module, test } from 'qunit';
 
 module('Integration | components | mktg/navbar', function (hooks) {
   setupRenderingTest(hooks);

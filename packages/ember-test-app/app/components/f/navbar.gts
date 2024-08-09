@@ -1,10 +1,10 @@
+import { action } from '@ember/object';
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import Navbar from '@nrg-ui/ember/components/mktg/navbar';
 import NavItem from '@nrg-ui/ember/components/nav-item';
-import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
-import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
+import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 export default class extends Component {
   @tracked

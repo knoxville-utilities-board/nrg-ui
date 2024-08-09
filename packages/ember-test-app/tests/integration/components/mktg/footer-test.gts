@@ -1,7 +1,7 @@
 import { render } from '@ember/test-helpers';
+import Footer from '@nrg-ui/ember/components/mktg/footer';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
-import Footer from '@nrg-ui/ember/components/mktg/footer';
 
 module('Integration | components | footer', function (hooks) {
   setupRenderingTest(hooks);

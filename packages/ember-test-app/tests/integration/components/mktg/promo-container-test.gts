@@ -1,7 +1,7 @@
-import { assert, module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import PromoContainer from '@nrg-ui/ember/components/mktg/promo-container';
+import { setupRenderingTest } from 'ember-qunit';
+import { assert, module, test } from 'qunit';
 
 module('Integration | components | mktg/promo-container', function (hooks) {
   setupRenderingTest(hooks);

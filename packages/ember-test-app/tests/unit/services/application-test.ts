@@ -1,5 +1,5 @@
-import { module, test } from 'qunit';
 import { setupTest } from 'ember-test-app/tests/helpers';
+import { module, test } from 'qunit';
 
 module('Unit | Service | application', function (hooks) {
   setupTest(hooks);

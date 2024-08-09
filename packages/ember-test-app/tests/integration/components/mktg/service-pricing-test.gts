@@ -1,7 +1,7 @@
-import { assert, module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import ServicePricing from '@nrg-ui/ember/components/mktg/service-pricing';
+import { setupRenderingTest } from 'ember-qunit';
+import { assert, module, test } from 'qunit';
 
 module('Integration | components | mktg/service-pricing', function (hooks) {
   setupRenderingTest(hooks);

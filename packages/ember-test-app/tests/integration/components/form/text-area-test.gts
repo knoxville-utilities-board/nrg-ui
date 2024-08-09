@@ -1,9 +1,9 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { fillIn, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import TextArea from '@nrg-ui/ember/components/form/text-area';
 import bind from '@nrg-ui/ember/helpers/bind';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 
 class Model {
   @tracked

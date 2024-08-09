@@ -1,7 +1,7 @@
-import { assert, module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import Card from '@nrg-ui/ember/components/card';
+import { setupRenderingTest } from 'ember-qunit';
+import { assert, module, test } from 'qunit';
 
 module('Integration | components | card', function (hooks) {
   setupRenderingTest(hooks);

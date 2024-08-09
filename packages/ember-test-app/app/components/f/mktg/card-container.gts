@@ -1,8 +1,8 @@
 import Component from '@glimmer/component';
-import CardContainer from '@nrg-ui/ember/components/mktg/card-container';
-import FreestyleSection from 'ember-freestyle/components/freestyle-section';
-import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import { tracked } from '@glimmer/tracking';
+import CardContainer from '@nrg-ui/ember/components/mktg/card-container';
+import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
+import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 export default class extends Component {
   @tracked
