@@ -39,7 +39,7 @@ export default class RadioGroupField extends BoundValue<
 
   <template>
     <div class={{this.classList}} ...attributes>
-      {{#each this.args.options as |radio|}}
+      {{#each @options as |radio|}}
         <Radio
           @name={{@name}}
           @disabled={{@disabled}}
