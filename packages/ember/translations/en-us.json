@@ -6,6 +6,9 @@
       },
       "custom": {
         "invalid": "This field is invalid"
+      },
+      "exclusion": {
+        "in": "This field is not a valid value. Value cannot be: {in}"
       }
     }
   }
