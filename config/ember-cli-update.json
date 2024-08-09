@@ -13,7 +13,7 @@
             "--addon-location=packages/ember",
             "--ci-provider=github",
             "--pnpm",
-            "--test-app-location=packages/ember-test-app",
+            "--test-app-location=apps/ember-test-app",
             "--test-app-name=ember-test-app",
             "--typescript"
           ]
