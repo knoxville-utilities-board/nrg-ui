@@ -1,8 +1,10 @@
-import type { TOC } from '@ember/component/template-only';
-import Promo from './promo.gts';
 import { hash } from '@ember/helper';
-import type { ComponentLike } from '@glint/template';
+
+import Promo from './promo.gts';
 import SectionHeader from './section-header.gts';
+
+import type { TOC } from '@ember/component/template-only';
+import type { ComponentLike } from '@glint/template';
 
 interface PromoContainerSignature {
   Element: HTMLDivElement;

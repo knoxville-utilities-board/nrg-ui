@@ -1,5 +1,5 @@
-import Component from '@glimmer/component';
 import { htmlSafe } from '@ember/template';
+import Component from '@glimmer/component';
 
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike } from '@glint/template';

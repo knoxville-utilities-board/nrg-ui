@@ -1,6 +1,7 @@
 import Service, { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import isMobile, { type isMobileResult } from 'ismobilejs';
+
 // TODO: Make this better
 import type { MediaService } from '../../unpublished-development-types';
 

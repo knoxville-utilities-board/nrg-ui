@@ -1,6 +1,9 @@
 'use strict';
 
 module.exports = {
+  settings: {
+    'import/resolver': 'webpack',
+  },
   root: true,
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -15,7 +18,23 @@ module.exports = {
   env: {
     browser: true,
   },
-  rules: {},
+  rules: {
+    'import/order': [
+      'error',
+      {
+        'newlines-between': 'always',
+        groups: [
+          ['builtin', 'external', 'internal', 'object'],
+          ['parent', 'sibling', 'index'],
+          'type',
+        ],
+        alphabetize: {
+          order: 'asc',
+          orderImportKind: 'asc',
+        },
+      },
+    ],
+  },
   overrides: [
     // ts files
     {

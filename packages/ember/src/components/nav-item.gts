@@ -1,7 +1,8 @@
-import Component from '@glimmer/component';
-import { service } from '@ember/service';
-import { LinkTo } from '@ember/routing';
 import { assert } from '@ember/debug';
+import { LinkTo } from '@ember/routing';
+import { service } from '@ember/service';
+import Component from '@glimmer/component';
+
 import ResponsiveService from '../services/responsive.ts';
 
 export interface NrgNavItemSignature {

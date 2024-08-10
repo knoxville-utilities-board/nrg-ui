@@ -1,6 +1,6 @@
-import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
+import Component from '@glimmer/component';
 import onInsert from 'ember-test-app/modifiers/did-insert';
 
 export default class CodeBlock extends Component {

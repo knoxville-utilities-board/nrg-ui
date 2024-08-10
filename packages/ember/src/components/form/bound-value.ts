@@ -1,8 +1,9 @@
+import { assert } from '@ember/debug';
 import { action, get, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { scheduleTask } from 'ember-lifeline';
+
 import { ensurePathExists } from '../../utils/ensure-path-exists.ts';
-import { assert } from '@ember/debug';
 
 import type { Binding, Optional } from '../../types.d.ts';
 

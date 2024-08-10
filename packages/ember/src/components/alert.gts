@@ -1,10 +1,10 @@
-import Component from '@glimmer/component';
 import { on } from '@ember/modifier';
+import { action } from '@ember/object';
+import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { cssTransition } from 'ember-css-transitions';
 
 import type { Icon } from '../types';
-import { action } from '@ember/object';
 
 declare type AlertType =
   | 'primary'

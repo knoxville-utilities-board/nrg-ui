@@ -1,7 +1,7 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { click, findAll, render, type TestContext } from '@ember/test-helpers';
 import Button from '@nrg-ui/ember/components/button';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 
 interface Context extends TestContext {
   clickHandler: (evt: MouseEvent) => void;

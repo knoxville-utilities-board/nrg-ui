@@ -1,10 +1,10 @@
-import Component from '@glimmer/component';
-import Icon from '@nrg-ui/ember/components/icon';
-import FreestyleSection from 'ember-freestyle/components/freestyle-section';
-import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
-import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
 import { fn } from '@ember/helper';
+import { action } from '@ember/object';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+import Icon from '@nrg-ui/ember/components/icon';
+import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
+import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 export default class extends Component {
   colorOptions = [

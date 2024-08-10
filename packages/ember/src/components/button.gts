@@ -1,10 +1,10 @@
-import Component from '@glimmer/component';
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
+import Component from '@glimmer/component';
 import { and, not, or } from 'ember-truth-helpers';
 
-import type { Icon } from '../types';
 import type ButtonGroup from './button-group';
+import type { Icon } from '../types';
 
 interface ButtonSignature {
   Element: HTMLButtonElement;

@@ -1,5 +1,3 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import {
   clearRender,
   click,
@@ -7,8 +5,10 @@ import {
   waitUntil,
   type TestContext,
 } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
 import Alert from '@nrg-ui/ember/components/alert';
+import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 
 interface Context extends TestContext {
   dismissHandler: () => void;

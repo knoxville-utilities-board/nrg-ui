@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { or } from 'ember-truth-helpers';
+
 import type { TOC } from '@ember/component/template-only';
 
 interface FooterSectionSignature {

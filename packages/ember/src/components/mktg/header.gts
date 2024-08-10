@@ -1,5 +1,6 @@
-import type { TOC } from '@ember/component/template-only';
 import HeaderComponent from '../header.gts';
+
+import type { TOC } from '@ember/component/template-only';
 
 interface HeaderSignature {
   Element: HTMLDivElement;

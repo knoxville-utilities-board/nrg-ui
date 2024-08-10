@@ -1,8 +1,9 @@
-import Component from '@glimmer/component';
 import { on } from '@ember/modifier';
-import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+
 import ResponsiveService from '../../services/responsive.ts';
 
 export interface NavbarSignature {

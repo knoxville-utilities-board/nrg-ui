@@ -1,11 +1,11 @@
-import Component from '@glimmer/component';
-import PromoContainer from '@nrg-ui/ember/components/mktg/promo-container';
-import Button from '@nrg-ui/ember/components/button';
-import FreestyleSection from 'ember-freestyle/components/freestyle-section';
-import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import { fn } from '@ember/helper';
 import { action } from '@ember/object';
+import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import Button from '@nrg-ui/ember/components/button';
+import PromoContainer from '@nrg-ui/ember/components/mktg/promo-container';
+import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
+import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 export default class extends Component {
   @tracked

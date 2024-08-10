@@ -1,7 +1,7 @@
-import { assert, module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { click, render } from '@ember/test-helpers';
 import Faq from '@nrg-ui/ember/components/mktg/faq';
+import { setupRenderingTest } from 'ember-qunit';
+import { assert, module, test } from 'qunit';
 
 module('Integration | components | mktg/faq', function (hooks) {
   setupRenderingTest(hooks);
