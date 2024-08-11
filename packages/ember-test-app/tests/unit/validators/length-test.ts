@@ -1,7 +1,10 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/ember/helpers/bind';
-import { LengthValidator } from '@nrg-ui/ember/validation';
+import {
+  validator as buildValidator,
+  LengthValidator,
+} from '@nrg-ui/ember/validation';
 import { setupIntl } from 'ember-intl/test-support';
 import { setupTest } from 'ember-test-app/tests/helpers';
 import { module, test } from 'qunit';
@@ -227,6 +230,73 @@ module('Unit | Validator | length', function (hooks) {
       { between: [5, 10] },
       this.model,
     );
+
+    this.model.field = Array.from(Array(4).keys());
+
+    let result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: false,
+      isWarning: false,
+      message: 'This field must have between 5 and 10 values (has 4)',
+    });
+
+    this.model.field = 'A'.repeat(4);
+
+    result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: false,
+      isWarning: false,
+      message: 'This field must be between 5 and 10 characters (has 4)',
+    });
+
+    this.model.field = Array.from(Array(11).keys());
+
+    result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: false,
+      isWarning: false,
+      message: 'This field must have between 5 and 10 values (has 11)',
+    });
+
+    this.model.field = 'A'.repeat(11);
+
+    result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: false,
+      isWarning: false,
+      message: 'This field must be between 5 and 10 characters (has 11)',
+    });
+
+    this.model.field = Array.from(Array(5).keys());
+
+    result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: true,
+      isWarning: false,
+      message: undefined,
+    });
+
+    this.model.field = 'A'.repeat(5);
+
+    result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: true,
+      isWarning: false,
+      message: undefined,
+    });
+  });
+
+  test('works with `validator` function', function (this: TestContext, assert) {
+    const builder = buildValidator('length', {
+      between: [5, 10],
+    });
+    const validator = builder(this.binding, this.model);
 
     this.model.field = Array.from(Array(4).keys());
 

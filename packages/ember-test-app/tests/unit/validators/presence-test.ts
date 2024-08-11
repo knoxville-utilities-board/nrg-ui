@@ -1,7 +1,10 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/ember/helpers/bind';
-import { PresenceValidator } from '@nrg-ui/ember/validation';
+import {
+  validator as buildValidator,
+  PresenceValidator,
+} from '@nrg-ui/ember/validation';
 import { setupIntl } from 'ember-intl/test-support';
 import { setupTest } from 'ember-test-app/tests/helpers';
 import { module, test } from 'qunit';
@@ -144,6 +147,71 @@ module('Unit | Validator | inclusion', function (hooks) {
       { ignoreBlank: false, presence: false },
       this,
     );
+
+    result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: false,
+      isWarning: false,
+      message: 'This field must be blank',
+    });
+
+    this.model.field = ' ';
+    result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: false,
+      isWarning: false,
+      message: 'This field must be blank',
+    });
+
+    this.model.field = 'test';
+    result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: false,
+      isWarning: false,
+      message: 'This field must be blank',
+    });
+  });
+
+  test('works with `validator` function', function (this: TestContext, assert) {
+    let builder = buildValidator('presence', {
+      ignoreBlank: true,
+      presence: true,
+    });
+    let validator = builder(this.binding, this.model);
+    let result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: false,
+      isWarning: false,
+      message: 'This field cannot be blank',
+    });
+
+    this.model.field = ' ';
+    result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: false,
+      isWarning: false,
+      message: 'This field cannot be blank',
+    });
+
+    this.model.field = 'test';
+    result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: true,
+      isWarning: false,
+      message: undefined,
+    });
+
+    builder = buildValidator('presence', {
+      ignoreBlank: false,
+      presence: false,
+    });
+    validator = builder(this.binding, this.model);
 
     result = validator.result;
 

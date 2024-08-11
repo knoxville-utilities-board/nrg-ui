@@ -1,7 +1,10 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/ember/helpers/bind';
-import { RangeValidator } from '@nrg-ui/ember/validation';
+import {
+  validator as buildValidator,
+  RangeValidator,
+} from '@nrg-ui/ember/validation';
 import { setupIntl } from 'ember-intl/test-support';
 import { setupTest } from 'ember-test-app/tests/helpers';
 import { module, test } from 'qunit';
@@ -121,6 +124,47 @@ module('Unit | Validator | range', function (hooks) {
       { max: 16, maxInclusive: false },
       this.model,
     );
+
+    this.model.field = 16;
+
+    result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: false,
+      isWarning: false,
+      message: 'This field must be less than 16',
+    });
+  });
+
+  test('works with `validator` function', function (this: TestContext, assert) {
+    let builder = buildValidator('range', {
+      max: 16,
+    });
+    let validator = builder(this.binding, this.model);
+
+    this.model.field = 17;
+    let result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: false,
+      isWarning: false,
+      message: 'This field must be less than or equal to 16',
+    });
+
+    this.model.field = 16;
+    result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: true,
+      isWarning: false,
+      message: undefined,
+    });
+
+    builder = buildValidator('range', {
+      max: 16,
+      maxInclusive: false,
+    });
+    validator = builder(this.binding, this.model);
 
     this.model.field = 16;
 

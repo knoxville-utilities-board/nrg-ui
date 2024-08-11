@@ -1,7 +1,10 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/ember/helpers/bind';
-import { ConfirmationValidator } from '@nrg-ui/ember/validation';
+import {
+  validator as buildValidator,
+  ConfirmationValidator,
+} from '@nrg-ui/ember/validation';
 import { setupIntl } from 'ember-intl/test-support';
 import { setupTest } from 'ember-test-app/tests/helpers';
 import { module, test } from 'qunit';
@@ -91,6 +94,37 @@ module('Unit | Validator | confirmation', function (hooks) {
       { on: 'passwordConfirmation', label: 'Confirm Password' },
       this.model,
     );
+
+    result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: false,
+      isWarning: false,
+      message: 'This field does not match Confirm Password',
+    });
+  });
+
+  test('works with `validator` function', function (this: TestContext, assert) {
+    let builder = buildValidator('confirmation', {
+      on: 'passwordConfirmation',
+    });
+    let validator = builder(this.binding, this.model);
+
+    this.model.passwordConfirmation = 'different';
+
+    let result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: false,
+      isWarning: false,
+      message: 'This field does not match passwordConfirmation',
+    });
+
+    builder = buildValidator('confirmation', {
+      on: 'passwordConfirmation',
+      label: 'Confirm Password',
+    });
+    validator = builder(this.binding, this.model);
 
     result = validator.result;
 

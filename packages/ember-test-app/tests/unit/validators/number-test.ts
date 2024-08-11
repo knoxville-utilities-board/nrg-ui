@@ -1,7 +1,10 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/ember/helpers/bind';
-import { NumberValidator } from '@nrg-ui/ember/validation';
+import {
+  validator as buildValidator,
+  NumberValidator,
+} from '@nrg-ui/ember/validation';
 import { setupIntl } from 'ember-intl/test-support';
 import { setupTest } from 'ember-test-app/tests/helpers';
 import { module, test } from 'qunit';
@@ -422,6 +425,31 @@ module('Unit | Validator | number', function (hooks) {
       { multipleOf: 5 },
       this.model,
     );
+
+    this.model.field = 16;
+
+    let result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: false,
+      isWarning: false,
+      message: 'This field must be a multiple of 5',
+    });
+
+    this.model.field = 15;
+
+    result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: true,
+      isWarning: false,
+      message: undefined,
+    });
+  });
+
+  test('works with `validator` function', function (this: TestContext, assert) {
+    const builder = buildValidator('number', { multipleOf: 5 });
+    const validator = builder(this.binding, this.model);
 
     this.model.field = 16;
 

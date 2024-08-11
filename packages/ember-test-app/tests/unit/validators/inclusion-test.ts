@@ -1,7 +1,10 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/ember/helpers/bind';
-import { InclusionValidator } from '@nrg-ui/ember/validation';
+import {
+  validator as buildValidator,
+  InclusionValidator,
+} from '@nrg-ui/ember/validation';
 import { setupIntl } from 'ember-intl/test-support';
 import { setupTest } from 'ember-test-app/tests/helpers';
 import { module, test } from 'qunit';
@@ -73,6 +76,23 @@ module('Unit | Validator | inclusion', function (hooks) {
       },
       this.model,
     );
+
+    this.model.field = 'D';
+
+    const result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: false,
+      isWarning: false,
+      message: 'This field is not a valid value. Valid values are: A, B, and C',
+    });
+  });
+
+  test('works with `validator` function', function (this: TestContext, assert) {
+    const builder = buildValidator('inclusion', {
+      in: ['A', 'B', 'C'],
+    });
+    const validator = builder(this.binding, this.model);
 
     this.model.field = 'D';
 

@@ -1,7 +1,10 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/ember/helpers/bind';
-import { RegexValidator } from '@nrg-ui/ember/validation';
+import {
+  validator as buildValidator,
+  RegexValidator,
+} from '@nrg-ui/ember/validation';
 import { setupIntl } from 'ember-intl/test-support';
 import { setupTest } from 'ember-test-app/tests/helpers';
 import { module, test } from 'qunit';
@@ -92,6 +95,29 @@ module('Unit | Validator | regex', function (hooks) {
       { pattern: /^Foo/, inverse: true },
       this.model,
     );
+
+    this.model.field = 'foo';
+    let result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: true,
+      isWarning: false,
+      message: undefined,
+    });
+
+    this.model.field = 'Foo';
+    result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: false,
+      isWarning: false,
+      message: 'This field is invalid',
+    });
+  });
+
+  test('works with `validator` function', function (this: TestContext, assert) {
+    const builder = buildValidator('regex', { pattern: /^Foo/, inverse: true });
+    const validator = builder(this.binding, this.model);
 
     this.model.field = 'foo';
     let result = validator.result;

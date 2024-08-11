@@ -1,7 +1,10 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/ember/helpers/bind';
-import { CustomValidator } from '@nrg-ui/ember/validation';
+import {
+  validator as buildValidator,
+  CustomValidator,
+} from '@nrg-ui/ember/validation';
 import { addTranslations, setupIntl } from 'ember-intl/test-support';
 import { setupTest } from 'ember-test-app/tests/helpers';
 import { module, test } from 'qunit';
@@ -132,6 +135,23 @@ module('Unit | Validator | custom', function (hooks) {
       isValid: false,
       isWarning: false,
       message: 'This field is invalid: foo,bar',
+    });
+  });
+
+  test('works with `validator` function', function (this: TestContext, assert) {
+    const builder = buildValidator('custom', {
+      validate: () => {
+        return false;
+      },
+    });
+    const validator = builder(this.binding, this.model);
+
+    const result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: false,
+      isWarning: false,
+      message: 'This field is invalid',
     });
   });
 });
