@@ -1,14 +1,12 @@
-import {
-  ConfirmationValidator,
-  CustomValidator,
-  ExclusionValidator,
-  InclusionValidator,
-  LengthValidator,
-  NumberValidator,
-  PresenceValidator,
-  RangeValidator,
-  RegexValidator,
-} from './index.ts';
+import ConfirmationValidator from './validators/confirmation.ts';
+import CustomValidator from './validators/custom.ts';
+import ExclusionValidator from './validators/exclusion.ts';
+import InclusionValidator from './validators/inclusion.ts';
+import LengthValidator from './validators/length.ts';
+import NumberValidator from './validators/number.ts';
+import PresenceValidator from './validators/presence.ts';
+import RangeValidator from './validators/range.ts';
+import RegexValidator from './validators/regex.ts';
 
 import type { Binding } from '../types';
 
