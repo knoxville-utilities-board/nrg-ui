@@ -246,6 +246,9 @@ importers:
       eslint-import-resolver-webpack:
         specifier: ^0.13.8
         version: 0.13.8(eslint-plugin-import@2.29.1)(webpack@5.93.0)
+      eslint-plugin-decorator-position:
+        specifier: ^5.0.2
+        version: 5.0.2(@babel/eslint-parser@7.23.10(@babel/core@7.25.2)(eslint@8.57.0))(eslint@8.57.0)
       eslint-plugin-ember:
         specifier: ^12.1.1
         version: 12.1.1(@babel/core@7.25.2)(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)
