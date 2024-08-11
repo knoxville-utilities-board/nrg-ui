@@ -1,11 +1,11 @@
+import ArrayProxy from '@ember/array/proxy';
 import { assert } from '@ember/debug';
 import { get } from '@ember/object';
+import ObjectProxy from '@ember/object/proxy';
 import { getOwner } from '@ember/owner';
 // @ts-expect-error Glimmer doesn't currently ship a type for the `cached` decorator
 // https://github.com/glimmerjs/glimmer.js/issues/408
 import { cached } from '@glimmer/tracking';
-
-import { unwrapProxy } from '../utils.ts';
 
 import type { Binding } from '../../types';
 import type {
@@ -15,6 +15,20 @@ import type {
   ValidateFnResponse,
   ValidationResult,
 } from '../types.d.ts';
+
+export function isProxy(
+  value: unknown,
+): value is ObjectProxy | ArrayProxy<never> {
+  return value instanceof ObjectProxy || value instanceof ArrayProxy;
+}
+
+export function unwrapProxy<T>(value: T): T {
+  if (isProxy(value)) {
+    return unwrapProxy(value.content as T);
+  }
+
+  return value;
+}
 
 export default abstract class BaseValidator<
   T,

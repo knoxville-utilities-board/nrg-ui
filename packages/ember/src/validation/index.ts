@@ -9,6 +9,8 @@ export { default as PresenceValidator } from './validators/presence.ts';
 export { default as RangeValidator } from './validators/range.ts';
 export { default as RegexValidator } from './validators/regex.ts';
 
+export { validator } from './utils.ts';
+
 export type {
   ComputedProperty,
   DerivedOptions,
