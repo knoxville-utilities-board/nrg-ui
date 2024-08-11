@@ -19,7 +19,8 @@ export default class NavbarComponent extends Component<NavbarSignature> {
   @tracked
   isMenuOpen = false;
 
-  @service declare responsive: ResponsiveService;
+  @service
+  declare responsive: ResponsiveService;
 
   @action
   toggleMenu() {

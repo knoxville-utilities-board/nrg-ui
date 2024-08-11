@@ -16,7 +16,8 @@ export interface NrgNavItemSignature {
 }
 
 export default class NrgNavItem extends Component<NrgNavItemSignature> {
-  @service declare responsive: ResponsiveService;
+  @service
+  declare responsive: ResponsiveService;
 
   constructor(owner: unknown, args: NrgNavItemSignature['Args']) {
     super(owner, args);
