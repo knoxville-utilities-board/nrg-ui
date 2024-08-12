@@ -1,18 +1,23 @@
+import Component from '@glimmer/component';
 import BoundValue from './bound-value.ts';
+import { hash } from '@ember/helper';
+import { on } from '@ember/modifier';
 import { action } from '@ember/object';
-import Radio from './radio.gts';
-import bind from '../../helpers/bind.ts';
+
 import type { Optional } from '../../types';
+import type { ComponentLike } from '@glint/template';
 
 export interface RadioGroupFieldSignature {
   Element: HTMLDivElement;
   Args: {
-    options: Array<Record<'option' | 'label', string>>;
     name: string;
     basic?: boolean;
     disabled?: boolean;
     onChange?: (value: string, ...args: unknown[]) => void;
   };
+  Blocks: {
+    default: [{ Radio: ComponentLike<RadioField>}]
+  }
 }
 
 export default class RadioGroupField extends BoundValue<
@@ -39,16 +44,62 @@ export default class RadioGroupField extends BoundValue<
 
   <template>
     <div class={{this.classList}} ...attributes>
-      {{#each @options as |radio|}}
-        <Radio
-          @name={{@name}}
-          @disabled={{@disabled}}
-          @option={{radio.option}}
-          @label={{radio.label}}
-          @onChange={{this.change}}
-          @binding={{bind this.model this.valuePath}}
-        />
-      {{/each}}
+      {{yield (hash Radio=(component RadioField name=@name  disabled=@disabled onChange=this.change))}}
+    </div>
+  </template>
+}
+
+
+export interface RadioFieldSignature {
+  Element: HTMLInputElement;
+  Args: {
+    name: string;
+    option?: string;
+    currentValue?: string;
+    label?: string;
+    disabled?: boolean;
+    onChange?: (value: string, ...args: unknown[]) => void;
+  };
+}
+
+class RadioField extends Component<
+  RadioFieldSignature
+> {
+  @action
+  change(evt: Event) {
+    const target = evt.target as HTMLInputElement;
+    this.args.onChange?.(target?.value);
+  }
+
+  get checked() {
+    // do I need a null check here since TS makes option required?
+    return this.args.option === this.args.currentValue;
+  }
+
+  get id() {
+    return `${this.args.name}-${this.args.option}`;
+  }
+
+  get label() {
+    return this.args.label ?? this.args.option;
+  }
+
+  <template>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        disabled={{@disabled}}
+        id={{this.id}}
+        type="radio"
+        name={{@name}}
+        checked={{this.checked}}
+        value={{@option}}
+        {{on "input" this.change}}
+        ...attributes
+      />
+      <label class="form-check-label" for={{this.id}}>
+        {{this.label}}
+      </label>
     </div>
   </template>
 }

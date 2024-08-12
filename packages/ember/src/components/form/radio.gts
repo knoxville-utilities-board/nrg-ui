@@ -1,21 +1,21 @@
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
-import BoundValue from './bound-value.ts';
+import Component from '@glimmer/component';
 
 export interface RadioFieldSignature {
   Element: HTMLInputElement;
   Args: {
-    name?: string;
+    name: string;
     option?: string;
+    currentValue?: string;
     label?: string;
     disabled?: boolean;
     onChange?: (value: string, ...args: unknown[]) => void;
   };
 }
 
-export default class RadioField extends BoundValue<
-  RadioFieldSignature,
-  string
+export default class RadioField extends Component<
+  RadioFieldSignature
 > {
   @action
   change(evt: Event) {
@@ -25,7 +25,7 @@ export default class RadioField extends BoundValue<
 
   get checked() {
     // do I need a null check here since TS makes option required?
-    return this.args.option === this.value;
+    return this.args.option === this.args.currentValue;
   }
 
   get id() {
