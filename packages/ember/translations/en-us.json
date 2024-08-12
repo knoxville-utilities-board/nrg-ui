@@ -1,0 +1,57 @@
+{
+  "nrg": {
+    "validation": {
+      "confirmation": {
+        "invalid": "This field does not match {label}"
+      },
+      "custom": {
+        "invalid": "This field is invalid"
+      },
+      "exclusion": {
+        "in": "This field is not a valid value. Value cannot be: {in}"
+      },
+      "inclusion": {
+        "in": "This field is not a valid value. Valid values are: {in}"
+      },
+      "length": {
+        "array": {
+          "between": "This field must have between {min} and {max} values (has {length})",
+          "tooLong": "This field must have at most {max} values (has {length})",
+          "tooShort": "This field must have at least {min} values (has {length})",
+          "wrongLength": "This field must have {is} values (has {length})"
+        },
+        "invalid": "This field is invalid",
+        "string": {
+          "between": "This field must be between {min} and {max} characters (has {length})",
+          "tooLong": "This field must be at most {max} characters (has {length})",
+          "tooShort": "This field must be at least {min} characters (has {length})",
+          "wrongLength": "This field must be {is} characters (has {length})"
+        }
+      },
+      "number": {
+        "notANumber": "This field must be a number",
+        "integer": "This field must be an integer",
+        "positive": "This field must be a positive number",
+        "negative": "This field must be a negative number",
+        "even": "This field must be an even number",
+        "odd": "This field must be an odd number",
+        "multipleOf": "This field must be a multiple of {multipleOf, number}"
+      },
+      "presence": {
+        "blank": "This field cannot be blank",
+        "notBlank": "This field must be blank"
+      },
+      "range": {
+        "greaterThan": "This field must be greater than {min, number}",
+        "greaterThanOrEqualTo": "This field must be greater than or equal to {min, number}",
+        "lessThan": "This field must be less than {max, number}",
+        "lessThanOrEqualTo": "This field must be less than or equal to {max, number}",
+        "notANumber": "This field must be a number"
+      },
+      "regex": {
+        "match": "This field is invalid",
+        "doesNotMatch": "This field is invalid"
+      }
+    }
+  }
+}
