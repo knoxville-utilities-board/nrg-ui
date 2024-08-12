@@ -9,11 +9,12 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
   },
-  plugins: ['ember', '@typescript-eslint', 'import'],
+  plugins: ['ember', '@typescript-eslint', 'import', 'decorator-position'],
   extends: [
     'eslint:recommended',
     'plugin:ember/recommended',
     'plugin:prettier/recommended',
+    'plugin:decorator-position/ember',
   ],
   env: {
     browser: true,
@@ -32,6 +33,13 @@ module.exports = {
           order: 'asc',
           orderImportKind: 'asc',
         },
+      },
+    ],
+    'decorator-position/decorator-position': [
+      'error',
+      {
+        methods: 'above',
+        properties: 'above',
       },
     ],
   },

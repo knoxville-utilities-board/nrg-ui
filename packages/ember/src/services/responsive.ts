@@ -6,8 +6,11 @@ import isMobile, { type isMobileResult } from 'ismobilejs';
 import type { MediaService } from '../../unpublished-development-types';
 
 export default class Responsive extends Service {
-  @service declare media: MediaService;
-  @tracked declare isMobile: isMobileResult;
+  @service
+  declare media: MediaService;
+
+  @tracked
+  declare isMobile: isMobileResult;
 
   constructor() {
     super();
