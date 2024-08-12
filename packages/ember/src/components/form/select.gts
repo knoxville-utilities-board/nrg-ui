@@ -1,26 +1,72 @@
-import { action } from '@ember/object';
+import { fn } from '@ember/helper';
+import { on } from '@ember/modifier';
+import { get, action } from '@ember/object';
 import Component from '@glimmer/component';
-
 // @ts-expect-error Glimmer doesn't currently ship a type for the `cached` decorator
 // https://github.com/glimmerjs/glimmer.js/issues/408
 import { tracked, cached } from '@glimmer/tracking';
-
 // @ts-expect-error Ember keyboard doesn't currently ship a type for the `on-key` modifier
 import onKey from 'ember-keyboard/modifiers/on-key';
+import { runTask } from 'ember-lifeline';
 
-import { on } from '@ember/modifier';
 import BoundValue from './bound-value.ts';
-import { fn } from '@ember/helper';
-import { get } from '@ember/object';
+import onInsert from '../../modifiers/on-insert.ts';
 
 import type { Optional } from '../../types.d.ts';
-import { runTask } from 'ember-lifeline';
 
 declare type SelectOption<T> = {
   label: string;
   value: string | T;
   raw: T;
 };
+
+interface SelectItemSignature<T> {
+  Args: {
+    optionIndex: number;
+    activeIndex: number;
+    currentValue: string | T;
+    option: SelectOption<T>;
+  };
+  Blocks: {
+    default: [];
+  };
+  Element: HTMLLIElement;
+}
+
+class SelectItem<T> extends Component<SelectItemSignature<T>> {
+  get classList() {
+    let classes = ['dropdown-item'];
+
+    const useIndexActive = this.args.activeIndex != -1;
+    const isCurrentIndex = this.args.optionIndex === this.args.activeIndex;
+    const isCurrentValue = this.args.option.value === this.args.currentValue;
+
+    if (useIndexActive && isCurrentIndex) {
+      classes.push('active');
+    }
+
+    if (!useIndexActive && isCurrentValue) {
+      classes.push('active');
+    }
+
+    return classes.join(' ');
+  }
+
+  get isActive() {
+    return this.args.option.value === this.args.currentValue;
+  }
+
+  <template>
+    <li
+      class={{this.classList}}
+      role="option"
+      aria-selected={{this.isActive}}
+      ...attributes
+    >
+      {{yield}}
+    </li>
+  </template>
+}
 
 export interface SelectSignature<T> {
   Args: {
@@ -125,6 +171,14 @@ export default class Select<T> extends BoundValue<
     });
   }
 
+  @tracked
+  menuElement: Optional<HTMLElement> = null;
+
+  @action
+  onInsert(element: HTMLElement) {
+    this.menuElement = element;
+  }
+
   @action
   toggleSelect(evt: MouseEvent) {
     evt.preventDefault();
@@ -204,7 +258,7 @@ export default class Select<T> extends BoundValue<
     }
 
     const childElements = Array.from(
-      document.querySelectorAll(`#${CSS.escape(this.menuId)} > li`),
+      this.menuElement?.querySelectorAll(`li`) ?? [],
     );
     for (const stringIndex in childElements) {
       const index = parseInt(stringIndex);
@@ -342,6 +396,7 @@ export default class Select<T> extends BoundValue<
         id={{this.menuId}}
         class="dropdown-menu {{if this.isOpen 'show'}}"
         role="listbox"
+        {{onInsert this.onInsert}}
       >
         {{#each this.internalOptions as |option i|}}
           <SelectItem
@@ -360,53 +415,5 @@ export default class Select<T> extends BoundValue<
         {{/each}}
       </ul>
     </button>
-  </template>
-}
-
-interface SelectItemSignature<T> {
-  Args: {
-    optionIndex: number;
-    activeIndex: number;
-    currentValue: string | T;
-    option: SelectOption<T>;
-  };
-  Blocks: {
-    default: [];
-  };
-  Element: HTMLLIElement;
-}
-
-class SelectItem<T> extends Component<SelectItemSignature<T>> {
-  get classList() {
-    let classes = ['dropdown-item'];
-
-    const useIndexActive = this.args.activeIndex != -1;
-    const isCurrentIndex = this.args.optionIndex === this.args.activeIndex;
-    const isCurrentValue = this.args.option.value === this.args.currentValue;
-
-    if (useIndexActive && isCurrentIndex) {
-      classes.push('active');
-    }
-
-    if (!useIndexActive && isCurrentValue) {
-      classes.push('active');
-    }
-
-    return classes.join(' ');
-  }
-
-  get isActive() {
-    return this.args.option.value === this.args.currentValue;
-  }
-
-  <template>
-    <li
-      class={{this.classList}}
-      role="option"
-      aria-selected={{this.isActive}}
-      ...attributes
-    >
-      {{yield}}
-    </li>
   </template>
 }

@@ -6,6 +6,7 @@ import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import bind from '@nrg-ui/ember/helpers/bind';
+import CodeBlock from '../../code-block';
 
 export default class extends Component {
   @tracked
@@ -137,11 +138,11 @@ export default class extends Component {
     <div class="grid">
       <div class="g-col-4 border p-3">
         <h3>String Options</h3>
-        <pre>{{this.stringOptionsSource}}</pre>
+        <CodeBlock @lang="json" @code={{this.stringOptionsSource}} />
       </div>
       <div class="g-col-4 border p-3">
         <h3>Object Options</h3>
-        <pre>{{this.objectOptionsSource}}</pre>
+        <CodeBlock @lang="json" @code={{this.objectOptionsSource}} />
       </div>
       <div class="g-col-4 border p-3">
         <h3>Selected</h3>

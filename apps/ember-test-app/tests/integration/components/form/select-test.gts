@@ -1,4 +1,4 @@
-import { click, find, render } from '@ember/test-helpers';
+import { click, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import Select from '@nrg-ui/ember/components/form/select';
 import bind from '@nrg-ui/ember/helpers/bind';
@@ -72,7 +72,7 @@ module('Integration | components | form/select', function (hooks) {
     </template>);
     await click('button');
     assert.dom('.dropdown-menu').hasClass('show');
-    await click(find('.dropdown-menu li'));
+    await click('.dropdown-menu li');
     assert.dom('.dropdown-menu').doesNotHaveClass('show');
   });
 
@@ -91,7 +91,7 @@ module('Integration | components | form/select', function (hooks) {
       .containsText('Option 2')
       .containsText('Option 3');
 
-    await click(find('.dropdown-menu li'));
+    await click('.dropdown-menu li');
     assert.dom('.selected-display').hasText('Option 1');
     assert.strictEqual(model.value, 'Option 1');
   });
@@ -111,7 +111,7 @@ module('Integration | components | form/select', function (hooks) {
       .containsText('label 2')
       .containsText('label 3');
 
-    await click(find('.dropdown-menu li'));
+    await click('.dropdown-menu li');
     assert.dom('.selected-display').hasText('label 1');
     assert.strictEqual(model.value, 'value 1');
   });
@@ -136,7 +136,7 @@ module('Integration | components | form/select', function (hooks) {
       .containsText('key 2')
       .containsText('key 3');
 
-    await click(find('.dropdown-menu li'));
+    await click('.dropdown-menu li');
     assert.dom('.selected-display').hasText('key 1');
     assert.strictEqual(model.value, 1);
   });
@@ -160,7 +160,7 @@ module('Integration | components | form/select', function (hooks) {
       .containsText('key 2')
       .containsText('key 3');
 
-    await click(find('.dropdown-menu li'));
+    await click('.dropdown-menu li');
     assert.dom('.selected-display').hasText('key 1');
     assert.strictEqual(model.value, 'value 1');
   });

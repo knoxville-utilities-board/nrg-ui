@@ -7,11 +7,11 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function () {
-  this.route('marketing');
-  this.route('form');
   this.route('cards');
-  this.route('promo');
   this.route('faq');
+  this.route('form');
+  this.route('marketing');
+  this.route('promo');
   this.route('workflow-tray');
   this.route('components', function () {
     this.route('button');
@@ -19,9 +19,9 @@ Router.map(function () {
     this.route('header');
     this.route('icon');
     this.route('navbar');
+    this.route('select');
     this.route('text-area');
     this.route('text-field');
-    this.route('select');
   });
   this.route('helpers');
   this.route('mktg-components', function () {
