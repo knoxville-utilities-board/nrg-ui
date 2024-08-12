@@ -32,7 +32,7 @@ By default, all modules will be generated as TypeScript files with a backing cla
 
 ## Running tests
 
-- `cd packages/ember-test-app`
+- `cd apps/ember-test-app`
 - `pnpm test` – Runs the test suite on the current Ember version
 - `pnpm test:watch` – Runs the test suite in "watch mode"
 
@@ -42,7 +42,7 @@ This project uses [ember-try](https://github.com/ember-cli/ember-try) to test ag
 
 ## Running the test application
 
-- `cd packages/ember-test-app`
+- `cd apps/ember-test-app`
 - `pnpm start`
 - Visit the test application at [http://localhost:4200](http://localhost:4200).
 
