@@ -1,8 +1,9 @@
-import Component from '@glimmer/component';
-import BoundValue from './bound-value.ts';
 import { hash } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
+import Component from '@glimmer/component';
+
+import BoundValue from './bound-value.ts';
 
 import type { Optional } from '../../types';
 import type { ComponentLike } from '@glint/template';
@@ -16,8 +17,8 @@ export interface RadioGroupFieldSignature {
     onChange?: (value: string, ...args: unknown[]) => void;
   };
   Blocks: {
-    default: [{ Radio: ComponentLike<RadioField>}]
-  }
+    default: [{ Radio: ComponentLike<RadioField> }];
+  };
 }
 
 export default class RadioGroupField extends BoundValue<
@@ -44,11 +45,16 @@ export default class RadioGroupField extends BoundValue<
 
   <template>
     <div class={{this.classList}} ...attributes>
-      {{yield (hash Radio=(component RadioField name=@name  disabled=@disabled onChange=this.change))}}
+      {{yield
+        (hash
+          Radio=(component
+            RadioField name=@name disabled=@disabled onChange=this.change
+          )
+        )
+      }}
     </div>
   </template>
 }
-
 
 export interface RadioFieldSignature {
   Element: HTMLInputElement;
@@ -62,9 +68,7 @@ export interface RadioFieldSignature {
   };
 }
 
-class RadioField extends Component<
-  RadioFieldSignature
-> {
+class RadioField extends Component<RadioFieldSignature> {
   @action
   change(evt: Event) {
     const target = evt.target as HTMLInputElement;

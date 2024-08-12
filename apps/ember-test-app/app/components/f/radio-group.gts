@@ -42,9 +42,6 @@ export default class extends Component {
   @tracked
   basic = false;
 
-  @tracked
-  value = '';
-
   @action
   update(key: string, value: unknown) {
     set(this, key, value);

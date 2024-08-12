@@ -151,7 +151,6 @@
       "./components/footer.js": "./dist/_app_/components/footer.js",
       "./components/form/bound-value.js": "./dist/_app_/components/form/bound-value.js",
       "./components/form/radio-group.js": "./dist/_app_/components/form/radio-group.js",
-      "./components/form/radio.js": "./dist/_app_/components/form/radio.js",
       "./components/form/select.js": "./dist/_app_/components/form/select.js",
       "./components/form/text-area.js": "./dist/_app_/components/form/text-area.js",
       "./components/form/text-field.js": "./dist/_app_/components/form/text-field.js",
