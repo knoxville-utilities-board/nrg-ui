@@ -172,7 +172,7 @@
       "./components/nrg/text-field.js": "./dist/_app_/components/nrg/text-field.js",
       "./components/progress.js": "./dist/_app_/components/progress.js",
       "./helpers/bind.js": "./dist/_app_/helpers/bind.js",
-      "./modifiers/on-insert.js": "./dist/_app_/modifiers/on-insert.js",
+      "./modifiers/did-insert.js": "./dist/_app_/modifiers/did-insert.js",
       "./services/responsive.js": "./dist/_app_/services/responsive.js"
     },
     "defaultBlueprint": "@nrg-ui-ember"

@@ -59,7 +59,7 @@ module('Integration | components | form/select', function (hooks) {
   test('it opens when clicked', async function (assert) {
     const model = new Model();
     await render(<template>
-      <Select @binding={{bind model "value"}} />
+      <Select @binding={{bind model "value"}} @options={{stringOptions}} />
     </template>);
     await click('button');
     assert.dom('.dropdown-menu').hasClass('show');

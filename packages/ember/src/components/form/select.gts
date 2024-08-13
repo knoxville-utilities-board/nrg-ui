@@ -10,7 +10,7 @@ import onKey from 'ember-keyboard/modifiers/on-key';
 import { runTask } from 'ember-lifeline';
 
 import BoundValue from './bound-value.ts';
-import onInsert from '../../modifiers/on-insert.ts';
+import onInsert from '../../modifiers/did-insert.ts';
 
 import type { Optional } from '../../types.d.ts';
 
@@ -92,6 +92,21 @@ export default class Select<T> extends BoundValue<
   SelectSignature<T>,
   string | T
 > {
+  @tracked
+  _isOpen = false;
+
+  @tracked
+  menuId = crypto.randomUUID();
+
+  @tracked
+  menuElement: Optional<HTMLElement> = null;
+
+  @tracked
+  activeItem = -1;
+
+  @tracked
+  internalSearchBuffer = '';
+
   get classList() {
     let classes = ['dropdown', 'form-control', 'text-start', 'focus-ring'];
 
@@ -114,18 +129,8 @@ export default class Select<T> extends BoundValue<
     return this.args.scrollable ?? true;
   }
 
-  @tracked
-  menuId = crypto.randomUUID();
-
-  @tracked
-  isOpen = false;
-
-  @action
-  onSelectInternal(option: SelectOption<T>, evt?: MouseEvent) {
-    evt?.preventDefault();
-    evt?.stopPropagation();
-    this.onBlur();
-    this.selected = option;
+  get isOpen() {
+    return this._isOpen && !this.disabled && !!this.internalOptions.length;
   }
 
   get selected(): Optional<SelectOption<T>> {
@@ -159,7 +164,7 @@ export default class Select<T> extends BoundValue<
 
       const label = get(option, this.args.displayPath ?? 'label') as string;
       let value: string | T = option;
-      // null valuePath results in value being the raw option
+      // null serializationPath results in value being the raw option
       if (this.args.serializationPath !== null) {
         value = get(option, this.args.serializationPath ?? 'value') as string;
       }
@@ -171,85 +176,9 @@ export default class Select<T> extends BoundValue<
     });
   }
 
-  @tracked
-  menuElement: Optional<HTMLElement> = null;
-
-  @action
-  onInsert(element: HTMLElement) {
-    this.menuElement = element;
-  }
-
-  @action
-  toggleSelect(evt: MouseEvent) {
-    evt.preventDefault();
-    evt.stopPropagation();
-    if (this.disabled) {
-      return;
-    }
-    if (this.isOpen) {
-      this.onBlur();
-    } else {
-      this.onFocus();
-    }
-  }
-
-  @action
-  onFocus() {
-    const currentlySelectedIndex = this.internalOptions.findIndex(
-      (option) => option.value === this.value,
-    );
-    if (currentlySelectedIndex > -1) {
-      this.activeItem = currentlySelectedIndex;
-      runTask(
-        this,
-        () => {
-          this.scrollActiveItemIntoView();
-        },
-        0,
-      );
-    }
-
-    this.isOpen = true;
-  }
-
-  @action
-  onBlur() {
-    this.activeItem = -1;
-    this.isOpen = false;
-  }
-
   get disabled() {
     return this.args.disabled || this.args.loading;
   }
-
-  @tracked
-  activeItem = -1;
-
-  @action
-  onKeyboardInput(evt: KeyboardEvent) {
-    if (!this.isOpen) {
-      return;
-    }
-    const key = evt.key.toLowerCase();
-    const isSingleChar = key.length === 1;
-    const isLetter = 'a' <= key && key <= 'z';
-    const isNumber = '0' <= key && key <= '9';
-    const isAlphaNumeric = (isLetter || isNumber) && isSingleChar;
-    if (!isAlphaNumeric) {
-      return;
-    }
-    evt.preventDefault();
-    evt.stopPropagation();
-    this.internalSearchBuffer += key;
-    const foundItem = this.selectItemBySearch();
-    if (!foundItem && this.internalSearchBuffer.length > 1) {
-      this.internalSearchBuffer = key;
-      this.selectItemBySearch();
-    }
-  }
-
-  @tracked
-  internalSearchBuffer = '';
 
   selectItemBySearch() {
     const searchBuffer = this.internalSearchBuffer;
@@ -294,9 +223,87 @@ export default class Select<T> extends BoundValue<
   }
 
   @action
+  onSelectInternal(option: SelectOption<T>, evt?: MouseEvent) {
+    evt?.preventDefault();
+    evt?.stopPropagation();
+    this.onBlur();
+    this.selected = option;
+  }
+
+  @action
+  onInsert(element: HTMLElement) {
+    this.menuElement = element;
+  }
+
+  @action
+  toggleSelect(evt: MouseEvent) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    if (this.disabled) {
+      return;
+    }
+    if (this.isOpen) {
+      this.onBlur();
+    } else {
+      this.onFocus();
+    }
+  }
+
+  @action
+  onFocus() {
+    const currentlySelectedIndex = this.internalOptions.findIndex(
+      (option) => option.value === this.value,
+    );
+    if (currentlySelectedIndex > -1) {
+      this.activeItem = currentlySelectedIndex;
+      runTask(
+        this,
+        () => {
+          this.scrollActiveItemIntoView();
+        },
+        0,
+      );
+    }
+
+    this._isOpen = true;
+  }
+
+  @action
+  onBlur() {
+    this.activeItem = -1;
+    this._isOpen = false;
+  }
+
+  @action
+  onKeyboardInput(evt: KeyboardEvent) {
+    if (!this._isOpen) {
+      return;
+    }
+    const key = evt.key.toLowerCase();
+    const isSingleChar = key.length === 1;
+    const isLetter = 'a' <= key && key <= 'z';
+    const isNumber = '0' <= key && key <= '9';
+    const isAlphaNumeric = (isLetter || isNumber) && isSingleChar;
+    if (!isAlphaNumeric) {
+      return;
+    }
+    evt.preventDefault();
+    evt.stopPropagation();
+    this.internalSearchBuffer += key;
+    const foundItem = this.selectItemBySearch();
+    if (!foundItem && this.internalSearchBuffer.length > 1) {
+      this.internalSearchBuffer = key;
+      this.selectItemBySearch();
+    }
+  }
+
+  @action
   moveUp(evt: KeyboardEvent) {
     evt.preventDefault();
     evt.stopPropagation();
+    if (!this._isOpen) {
+      return;
+    }
     this.internalSearchBuffer = '';
     if (this.activeItem > 0) {
       this.activeItem--;
@@ -308,6 +315,9 @@ export default class Select<T> extends BoundValue<
   moveDown(evt: KeyboardEvent) {
     evt.preventDefault();
     evt.stopPropagation();
+    if (!this._isOpen) {
+      return;
+    }
     this.internalSearchBuffer = '';
     if (this.activeItem < this.internalOptions.length - 1) {
       this.activeItem++;
@@ -320,20 +330,13 @@ export default class Select<T> extends BoundValue<
     evt?.preventDefault();
     evt?.stopPropagation();
     this.internalSearchBuffer = '';
-    if (!this.isOpen) {
+    if (!this._isOpen) {
       this.onFocus();
-    } else {
-      this.exitKeyHandler();
+      return;
     }
-  }
 
-  @action
-  exitKeyHandler(evt?: KeyboardEvent) {
     const optionsLength = this.internalOptions.length;
     const validRange = this.activeItem >= 0 && this.activeItem < optionsLength;
-    evt?.preventDefault();
-    evt?.stopPropagation();
-    this.internalSearchBuffer = '';
     if (validRange) {
       const option = this.internalOptions[this.activeItem];
       if (option != undefined) {
@@ -344,6 +347,17 @@ export default class Select<T> extends BoundValue<
     this.onBlur();
   }
 
+  @action
+  exitKeyHandler(evt?: KeyboardEvent) {
+    evt?.preventDefault();
+    evt?.stopPropagation();
+    if (!this._isOpen) {
+      return;
+    }
+    this.internalSearchBuffer = '';
+    this.onBlur();
+  }
+
   <template>
     <button
       class={{this.classList}}
@@ -351,7 +365,7 @@ export default class Select<T> extends BoundValue<
       role="combobox"
       disabled={{this.disabled}}
       aria-controls={{this.menuId}}
-      aria-expanded={{this.isOpen}}
+      aria-expanded={{this._isOpen}}
       aria-haspopup="listbox"
       {{on "click" this.toggleSelect}}
       {{on "blur" this.onBlur}}
