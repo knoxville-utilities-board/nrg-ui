@@ -14,7 +14,7 @@ interface Context extends TestContext {
   dismissHandler: () => void;
 }
 
-module('Integration | components | alert', function (hooks) {
+module('Integration | Component | alert', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {

@@ -3,7 +3,7 @@ import Promo from '@nrg-ui/ember/components/mktg/promo';
 import { setupRenderingTest } from 'ember-qunit';
 import { assert, module, test } from 'qunit';
 
-module('Integration | components | mktg/promo', function (hooks) {
+module('Integration | Component | mktg/promo', function (hooks) {
   setupRenderingTest(hooks);
 
   test('Promo component renders', async function () {

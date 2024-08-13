@@ -3,7 +3,7 @@ import Faq from '@nrg-ui/ember/components/mktg/faq';
 import { setupRenderingTest } from 'ember-qunit';
 import { assert, module, test } from 'qunit';
 
-module('Integration | components | mktg/faq', function (hooks) {
+module('Integration | Component | mktg/faq', function (hooks) {
   setupRenderingTest(hooks);
 
   test('faq renders', async function () {

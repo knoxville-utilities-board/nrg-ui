@@ -3,7 +3,7 @@ import PromoContainer from '@nrg-ui/ember/components/mktg/promo-container';
 import { setupRenderingTest } from 'ember-qunit';
 import { assert, module, test } from 'qunit';
 
-module('Integration | components | mktg/promo-container', function (hooks) {
+module('Integration | Component | mktg/promo-container', function (hooks) {
   setupRenderingTest(hooks);
 
   test('Promo container renders', async function () {

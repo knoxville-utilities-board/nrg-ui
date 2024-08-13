@@ -10,7 +10,7 @@ class Model {
   value: string = 'Hello, world!';
 }
 
-module('Integration | components | form/text-field', function (hooks) {
+module('Integration | Component | form/text-field', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders (inline)', async function (assert) {
