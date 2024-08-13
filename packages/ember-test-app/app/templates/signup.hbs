@@ -1,13 +1,28 @@
 {{page-title "Signup"}}
-<div class="container-fluid px-3 py-5 px-md-5">
-  <Card class="g-col-12">
+<div class="container-fluid px-3 py-5 px-md-5 grid">
+  <Card class="g-col-6">
     <:header>
-      <h2 class="text-center">Are you a current KUB customer?</h2>
+      <h2 class="text-center">Existing KUB Website Login?</h2>
     </:header>
     <:body>
-              <div class="d-flex justify-content-center mb-4">
-          <Button type="button" class="mx-2 mt-2 btn-lg btn-primary" {{on "click" this.login}}>Yes</Button>
-          <Button type="button" class="mx-2 mt-2 btn-lg btn-primary" {{on "click" this.goToAddress}}>No</Button>
+       <p>
+        If you have an existing KUB website login, please login to continue. Links the two accounts.
+      </p>
+        <div class="d-flex justify-content-center mb-4">
+          <Button type="button" class="mx-2 mt-2 btn-lg btn-primary" {{on "click" this.login}}>Go to login</Button>
+        </div>
+    </:body>
+  </Card>
+  <Card class="g-col-6">
+    <:header>
+      <h2 class="text-center">No login</h2>
+    </:header>
+    <:body>
+      <p>
+        If you do not have a KUB website login, please sign up. Keeps the logins separate.
+      </p>
+          <div class="d-flex justify-content-center mb-4">
+          <Button type="button" class="mx-2 mt-2 btn-lg btn-primary" {{on "click" this.goToAddress}}>Go to address</Button>
         </div>
     </:body>
   </Card>
