@@ -1,71 +1,54 @@
-<div class="bg-primary container-fluid flex-fill p-4">
+{{page-title "Confirmation"}}
+<div class="bg-primary container-fluid p-4 overflow-auto">
   <Mktg::SectionHeader class="text-white" @title="Thank You For Your Order">
     <:subheader>
       <p>Success! Your order has been received. Check your inbox for a
         confirmation email and receipt.</p>
     </:subheader>
   </Mktg::SectionHeader>
-  <div class="row d-flex justify-content-center mt-4">
-    <div class="col-12 col-md-4 mb-4 mb-md-0">
-      <Mktg::Card
-        class="col-12"
-        @hasBorder={{false}}
-        @hasHorizontalDivider={{false}}
-      >
-        <:start>
-          <p
-            class="d-flex w-100 mb-2 p-0 fw-semibold fs-4 justify-self-start"
-          >Write Down This Account Info</p>
-          <div class="d-flex flex-column w-100">
-            <div class="d-flex justify-content-between">
-              <p class="my-1 p-0">Account Number:</p>
-              <p class="my-1 p-0">111111</p>
-            </div>
-            <div class="d-flex justify-content-between">
-              <p class="my-1 p-0">Security Code:</p>
-              <p class="my-1 p-0">1234</p>
-            </div>
-            <div class="d-flex justify-content-between">
-              <p class="my-1 p-0">Order Number:</p>
-              <p class="my-1 p-0">Provided via email</p>
-            </div>
-          </div>
-        </:start>
-      </Mktg::Card>
-    </div>
-    <div class="col-12 col-md-4">
-      <Mktg::Card
-        class="col-12"
-        @hasBorder={{false}}
-        @hasHorizontalDivider={{false}}
-      >
-        <:start>
-          <p
-            class="d-flex mb-2 p-0 fw-semibold fs-4 align-self-start"
-          >Installation</p>
-          <p>One of our representatives will contact you soon via email to set
-            up an installation appointment.</p>
-          <div class="mb-2 d-flex flex-column">
-            <div class="mb-2 d-flex justify-content-between">
-              <p class="m-0 p-0 fw-semibold">Date:</p>
-              <p class="m-0 p-0">Tuesday, April 6 at 10:00am</p>
-            </div>
-            <div class="mb-2 d-flex flex-column justify-content-start">
-              <p class="m-0 p-0 fw-semibold">Special Instructions</p>
-              <p class="m-0 p-0">Please use driveway around the back of the
-                house. Park on the left side so cars can enter and exit.</p>
-            </div>
-            <div class="mb-2 d-flex justify-content-between">
-              <p class="m-0 p-0 fw-semibold">Call Us:</p>
-              <p class="m-0 p-0">(555)555-5555</p>
-            </div>
-            <div class="mb-2 d-flex justify-content-between">
-              <p class="m-0 p-0 fw-semibold">Email Us:</p>
-              <p class="m-0 p-0">orders@kub.org</p>
-            </div>
-          </div>
-        </:start>
-      </Mktg::Card>
-    </div>
-  </div>
+  <Mktg::CardContainer class="row d-flex justify-content-center" as |Container|>
+    <Container.MktgCard
+      class="col-12 col-lg-5 my-4 mb-md-0 mx-4"
+      @hasBorder={{false}}
+      @hasHorizontalDivider={{false}}
+    >
+      <:start>
+        <p
+          class="d-flex w-100 mb-2 p-0 fw-semibold fs-4 justify-self-start"
+        >Write Down This Account Info</p>
+        <div class="d-flex flex-column w-100">
+          <p class="m-0 p-0 fw-semibold">Account Number:</p>
+          <p class="mb-3 p-0">111111</p>
+          <p class="m-0 p-0 fw-semibold">Security Code:</p>
+          <p class="mb-3 p-0">1234</p>
+          <p class="m-0 p-0 fw-semibold">Order Number:</p>
+          <p class="mb-3 p-0">Provided via email</p>
+        </div>
+      </:start>
+    </Container.MktgCard>
+    <Container.MktgCard
+      class="col-12 col-lg-5 my-4 mb-md-0 mx-4"
+      @hasBorder={{false}}
+      @hasHorizontalDivider={{false}}
+    >
+      <:start>
+        <p
+          class="d-flex mb-2 p-0 fw-semibold fs-4 align-self-start"
+        >Installation</p>
+        <p>One of our representatives will contact you soon via email to set up
+          an installation appointment.</p>
+        <div class="mb-3 d-flex flex-column">
+          <p class="m-0 p-0 fw-semibold">Date:</p>
+          <p class="mb-3 p-0">Tuesday, April 6 at 10:00am</p>
+          <p class="m-0 p-0 fw-semibold">Special Instructions</p>
+          <p class="mb-3 p-0">Please use driveway around the back of the house.
+            Park on the left side so cars can enter and exit.</p>
+          <p class="m-0 p-0 fw-semibold">Call Us:</p>
+          <p class="mb-3 p-0">(555)555-5555</p>
+          <p class="m-0 p-0 fw-semibold">Email Us:</p>
+          <p class="mb-3 p-0">orders@kub.org</p>
+        </div>
+      </:start>
+    </Container.MktgCard>
+  </Mktg::CardContainer>
 </div>

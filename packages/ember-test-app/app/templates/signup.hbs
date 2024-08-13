@@ -1,29 +1,59 @@
 {{page-title "Signup"}}
-<div class="container-fluid px-3 py-5 px-md-5 grid">
-  <Card class="g-col-6">
-    <:header>
-      <h2 class="text-center">Existing KUB Website Login?</h2>
-    </:header>
-    <:body>
-       <p>
-        If you have an existing KUB website login, please login to continue. Links the two accounts.
-      </p>
-        <div class="d-flex justify-content-center mb-4">
-          <Button type="button" class="mx-2 mt-2 btn-lg btn-primary" {{on "click" this.login}}>Go to login</Button>
+<div class="container-fluid flex-fill p-4 overflow-auto">
+  <Mktg::SectionHeader class="my-2 my-md-4" @title="Let's Get Started" />
+  <Mktg::CardContainer class="row d-flex justify-content-center" as |Container|>
+    <Container.Card class="col-12 col-lg-5 mb-4 mb-md-0 mx-4">
+      <:header>
+        <p class="m-0 p-0 fw-semibold fs-2">Existing KUB Login</p>
+      </:header>
+      <:body>
+        <div class="d-flex flex-column justify-content-between w-100 h-100">
+          <p class="m-0 p-0 fs-5">
+            To link your KUB Fiber account to your KUB utility account, please
+            log in using your KUB.org credentials.
+          </p>
+          <div class="d-flex flex-column justify-content-center my-4 mx-4">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <Nrg::TextField placeholder="Username" id="username" />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <Nrg::TextField placeholder="Password" id="password" />
+            </div>
+            <Button
+              type="button"
+              class="mt-4 mb-0 btn-lg btn-primary w-100"
+              {{on "click" this.login}}
+            >Login</Button>
+          </div>
         </div>
-    </:body>
-  </Card>
-  <Card class="g-col-6">
-    <:header>
-      <h2 class="text-center">No login</h2>
-    </:header>
-    <:body>
-      <p>
-        If you do not have a KUB website login, please sign up. Keeps the logins separate.
-      </p>
-          <div class="d-flex justify-content-center mb-4">
-          <Button type="button" class="mx-2 mt-2 btn-lg btn-primary" {{on "click" this.goToAddress}}>Go to address</Button>
+      </:body>
+    </Container.Card>
+    <Container.Card class="col-12 col-lg-5 mb-4 mb-md-0 mx-4">
+      <:header>
+        <p class="m-0 p-0 fw-semibold fs-2">New Fiber Login</p>
+      </:header>
+      <:body>
+        <div class="d-flex flex-column justify-content-between w-100 h-100">
+          <p class="m-0 p-0 fs-5">
+            To create a new KUB Fiber login, please enter your address with
+            active electric service from KUB. Please note that the Fiber account
+            will not be linked to the address's utility account.
+          </p>
+          <div class="d-flex flex-column justify-content-between my-4 mx-4">
+            <div class="mb-3">
+              <label for="address" class="form-label px-1">Service Address</label>
+              <Nrg::TextField placeholder="Address" id="address" />
+            </div>
+            <Button
+              type="button"
+              class="mt-4 mb-0 btn-lg btn-primary w-100"
+              {{on "click" this.goToAddress}}
+            >Lookup Address</Button>
+          </div>
         </div>
-    </:body>
-  </Card>
+      </:body>
+    </Container.Card>
+  </Mktg::CardContainer>
 </div>

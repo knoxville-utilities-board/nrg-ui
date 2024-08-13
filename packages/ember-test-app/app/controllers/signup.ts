@@ -9,10 +9,10 @@ export default class SignupController extends Controller {
   declare router: RouterService;
 
   @action login() {
-    this.router.transitionTo('login');
+    this.router.transitionTo('shopping.fiber');
   }
 
   @action goToAddress() {
-    this.router.transitionTo('address');
+    this.router.transitionTo('shopping.fiber');
   }
 }
