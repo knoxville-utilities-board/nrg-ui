@@ -8,7 +8,7 @@ import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 export default class extends Component {
   @tracked
-  class = 'col-6 justify-content-start';
+  class = 'col-12 col-md-6';
 
   @tracked
   title = 'Title';

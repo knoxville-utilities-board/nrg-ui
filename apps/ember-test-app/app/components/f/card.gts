@@ -17,7 +17,7 @@ export default class extends Component {
   hasHorizontalDivider = true;
 
   @tracked
-  class = 'col-6';
+  class = 'col-12 col-md-6';
 
   @action
   update(key: string, value: unknown) {
