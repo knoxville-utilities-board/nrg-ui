@@ -55,19 +55,15 @@ export default class extends Component {
             <RadioGroup
               class={{this.class}}
               @name={{this.name}}
-              @options={{this.options}}
               @binding={{bind this.model "property"}}
               @basic={{this.basic}}
               @disabled={{this.disabled}}
               @onChange={{fn log "The value changed to"}}
               as |Group|
             >
-              {{#each this.options as |choice|}}
-                <Group.Radio
-                  @option={{choice.option}}
-                  @label={{choice.label}}
-                />
-              {{/each}}
+              <Group.Radio @option="1" @label="One" />
+              <Group.Radio @option="2" @label="Two" />
+              <Group.Radio @option="3" @label="Three" />
             </RadioGroup>
           </:example>
           <:api as |Args|>

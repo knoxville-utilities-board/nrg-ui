@@ -14,7 +14,6 @@ export interface RadioGroupFieldSignature {
     name: string;
     basic?: boolean;
     disabled?: boolean;
-    onChange?: (value: string, ...args: unknown[]) => void;
   };
   Blocks: {
     default: [{ Radio: ComponentLike<RadioField> }];
@@ -29,7 +28,7 @@ export default class RadioGroupField extends BoundValue<
   change(updatedValue: Optional<string>) {
     if (updatedValue) {
       this.value = updatedValue;
-      this.args.onChange?.(updatedValue);
+      this.onChange?.(updatedValue);
     }
   }
 
@@ -48,7 +47,11 @@ export default class RadioGroupField extends BoundValue<
       {{yield
         (hash
           Radio=(component
-            RadioField name=@name disabled=@disabled onChange=this.change
+            RadioField
+            name=@name
+            disabled=@disabled
+            onChange=this.change
+            currentValue=this.value
           )
         )
       }}
@@ -61,7 +64,7 @@ export interface RadioFieldSignature {
   Args: {
     name: string;
     option?: string;
-    currentValue?: string;
+    currentValue?: string | null;
     label?: string;
     disabled?: boolean;
     onChange?: (value: string, ...args: unknown[]) => void;
@@ -98,7 +101,7 @@ class RadioField extends Component<RadioFieldSignature> {
         name={{@name}}
         checked={{this.checked}}
         value={{@option}}
-        {{on "input" this.change}}
+        {{on "change" this.change}}
         ...attributes
       />
       <label class="form-check-label" for={{this.id}}>
