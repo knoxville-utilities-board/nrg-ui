@@ -24,6 +24,7 @@ export default class CodeBlock extends Component {
       style="--bs-bg-opacity: 0; font-size: 0.8rem;"
       tabindex="0"
       {{onInsert this.highlight}}
+      ...attributes
     >
       <code></code>
     </pre>

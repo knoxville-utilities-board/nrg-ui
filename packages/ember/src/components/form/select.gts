@@ -1,11 +1,14 @@
 import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { get, action } from '@ember/object';
+import { service } from '@ember/service';
+import { isEqual } from '@ember/utils';
 import Component from '@glimmer/component';
 // @ts-expect-error Glimmer doesn't currently ship a type for the `cached` decorator
 // https://github.com/glimmerjs/glimmer.js/issues/408
 import { tracked, cached } from '@glimmer/tracking';
 // @ts-expect-error Ember keyboard doesn't currently ship a type for the `on-key` modifier
+// https://github.com/adopted-ember-addons/ember-keyboard/issues/464
 import onKey from 'ember-keyboard/modifiers/on-key';
 import { runTask } from 'ember-lifeline';
 
@@ -13,6 +16,7 @@ import BoundValue from './bound-value.ts';
 import onInsert from '../../modifiers/did-insert.ts';
 
 import type { Optional } from '../../types.d.ts';
+import type IntlService from 'ember-intl/services/intl';
 
 declare type SelectOption<T> = {
   label: string;
@@ -35,11 +39,17 @@ interface SelectItemSignature<T> {
 
 class SelectItem<T> extends Component<SelectItemSignature<T>> {
   get classList() {
-    let classes = ['dropdown-item'];
+    const classes = ['dropdown-item'];
 
     const useIndexActive = this.args.activeIndex != -1;
-    const isCurrentIndex = this.args.optionIndex === this.args.activeIndex;
-    const isCurrentValue = this.args.option.value === this.args.currentValue;
+    const isCurrentIndex = isEqual(
+      this.args.optionIndex,
+      this.args.activeIndex,
+    );
+    const isCurrentValue = isEqual(
+      this.args.option.value,
+      this.args.currentValue,
+    );
 
     if (useIndexActive && isCurrentIndex) {
       classes.push('active');
@@ -53,7 +63,7 @@ class SelectItem<T> extends Component<SelectItemSignature<T>> {
   }
 
   get isActive() {
-    return this.args.option.value === this.args.currentValue;
+    return isEqual(this.args.option.value, this.args.currentValue);
   }
 
   <template>
@@ -86,8 +96,6 @@ export interface SelectSignature<T> {
   Element: HTMLButtonElement;
 }
 
-const baseDefaultText = 'Select an Option'; // TODO i18n
-
 export default class Select<T> extends BoundValue<
   SelectSignature<T>,
   string | T
@@ -107,8 +115,11 @@ export default class Select<T> extends BoundValue<
   @tracked
   internalSearchBuffer = '';
 
+  @service
+  declare intl: IntlService;
+
   get classList() {
-    let classes = ['dropdown', 'form-control', 'text-start', 'focus-ring'];
+    const classes = ['dropdown', 'form-control', 'text-start', 'focus-ring'];
 
     if (this.scrollable) {
       classes.push('scrollable');
@@ -122,6 +133,7 @@ export default class Select<T> extends BoundValue<
   }
 
   get defaultText() {
+    const baseDefaultText = this.intl.t('nrg.select.baseDefaultText', {});
     return this.args.defaultText ?? baseDefaultText;
   }
 
@@ -213,7 +225,7 @@ export default class Select<T> extends BoundValue<
       return;
     }
     const childElements = Array.from(
-      document.querySelectorAll(`#${CSS.escape(this.menuId)} > li`),
+      this.menuElement?.querySelectorAll(`li`) ?? [],
     );
     const activeElement = childElements[this.activeItem];
     if (!activeElement) {

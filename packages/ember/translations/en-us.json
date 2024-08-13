@@ -52,6 +52,9 @@
         "match": "This field is invalid",
         "doesNotMatch": "This field is invalid"
       }
+    },
+    "select": {
+      "baseDefaultText": "Select an Option"
     }
   }
 }

@@ -137,17 +137,27 @@ export default class extends Component {
     </FreestyleSection>
 
     <div class="grid">
-      <div class="g-col-4 border p-3">
+      <div class="g-col-4">
         <h3>String Options</h3>
-        <CodeBlock @lang="json" @code={{this.stringOptionsSource}} />
+        <CodeBlock
+          class="border rounded p-3"
+          @lang="json"
+          @code={{this.stringOptionsSource}}
+        />
       </div>
-      <div class="g-col-4 border p-3">
+      <div class="g-col-4">
         <h3>Object Options</h3>
-        <CodeBlock @lang="json" @code={{this.objectOptionsSource}} />
+        <CodeBlock
+          class="border rounded p-3"
+          @lang="json"
+          @code={{this.objectOptionsSource}}
+        />
       </div>
-      <div class="g-col-4 border p-3">
+      <div class="g-col-4">
         <h3>Selected</h3>
-        {{this.selectValue}}
+        <div class="border rounded p-3">
+          {{this.selectValue}}
+        </div>
       </div>
     </div>
   </template>

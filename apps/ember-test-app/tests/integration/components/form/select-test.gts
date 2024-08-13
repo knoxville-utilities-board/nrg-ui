@@ -2,12 +2,14 @@ import { click, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import Select from '@nrg-ui/ember/components/form/select';
 import bind from '@nrg-ui/ember/helpers/bind';
+import { setupIntl } from 'ember-intl/test-support';
 import { triggerKeyDown } from 'ember-keyboard';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
 module('Integration | components | form/select', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks, 'en-us');
 
   class Model {
     @tracked
