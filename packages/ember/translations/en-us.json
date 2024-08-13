@@ -1,5 +1,8 @@
 {
   "nrg": {
+    "select": {
+      "defaultText": "Select an Option"
+    },
     "validation": {
       "confirmation": {
         "invalid": "This field does not match {label}"
@@ -52,9 +55,6 @@
         "match": "This field is invalid",
         "doesNotMatch": "This field is invalid"
       }
-    },
-    "select": {
-      "baseDefaultText": "Select an Option"
     }
   }
 }

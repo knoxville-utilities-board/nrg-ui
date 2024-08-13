@@ -42,10 +42,7 @@ class SelectItem<T> extends Component<SelectItemSignature<T>> {
     const classes = ['dropdown-item'];
 
     const useIndexActive = this.args.activeIndex != -1;
-    const isCurrentIndex = isEqual(
-      this.args.optionIndex,
-      this.args.activeIndex,
-    );
+    const isCurrentIndex = this.args.optionIndex === this.args.activeIndex;
     const isCurrentValue = isEqual(
       this.args.option.value,
       this.args.currentValue,
@@ -129,11 +126,11 @@ export default class Select<T> extends BoundValue<
   }
 
   get caretIcon() {
-    return this.isOpen ? 'bi-caret-up' : 'bi-caret-down-fill';
+    return this.isOpen ? 'bi-caret-up-fill' : 'bi-caret-down-fill';
   }
 
   get defaultText() {
-    const baseDefaultText = this.intl.t('nrg.select.baseDefaultText', {});
+    const baseDefaultText = this.intl.t('nrg.select.defaultText', {});
     return this.args.defaultText ?? baseDefaultText;
   }
 
@@ -268,13 +265,9 @@ export default class Select<T> extends BoundValue<
     );
     if (currentlySelectedIndex > -1) {
       this.activeItem = currentlySelectedIndex;
-      runTask(
-        this,
-        () => {
-          this.scrollActiveItemIntoView();
-        },
-        0,
-      );
+      runTask(this, () => {
+        this.scrollActiveItemIntoView();
+      });
     }
 
     this._isOpen = true;
