@@ -7,7 +7,7 @@ module.exports = function (environment) {
     rootURL: '/',
     locationType: 'history',
     EmberENV: {
-      EXTEND_PROTOTYPES: false,
+      EXTEND_PROTOTYPES: true,
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. EMBER_NATIVE_DECORATOR_SUPPORT: true
@@ -40,8 +40,14 @@ module.exports = function (environment) {
     ENV.APP.autoboot = false;
   }
 
+  if (environment === 'review') {
+    ENV.rootURL = process.env.rootURL || '/';
+    ENV.locationType = 'hash';
+  }
+
   if (environment === 'production') {
-    // here you can enable a production-specific feature
+    ENV.rootURL = '/nrg-ui';
+    ENV.locationType = 'hash';
   }
 
   return ENV;
