@@ -5,6 +5,7 @@
   "author": "",
   "scripts": {
     "build": "pnpm --filter '@nrg-ui/*' build",
+    "build-docs": "pnpm build && pnpm --filter 'ember-test-app' build",
     "format": "pnpm --filter '*' format",
     "gember": "pnpm --filter '@nrg-ui/ember' run generate",
     "gember:component": "pnpm --filter @nrg-ui/ember run generate component --class-based --typescript",
