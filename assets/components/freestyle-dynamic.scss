@@ -1,0 +1,14 @@
+.FreestyleDynamic {
+  &-input {
+    margin-bottom: 10px;
+
+    input[type='text'],
+    textarea {
+      display: block;
+    }
+  }
+
+  &-inputDescription {
+    display: block;
+  }
+}
