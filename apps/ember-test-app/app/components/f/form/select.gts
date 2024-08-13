@@ -1,11 +1,12 @@
-import Component from '@glimmer/component';
-import Select from '@nrg-ui/ember/components/form/select';
-import FreestyleSection from 'ember-freestyle/components/freestyle-section';
-import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import { fn } from '@ember/helper';
 import { action } from '@ember/object';
+import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import Select from '@nrg-ui/ember/components/form/select';
 import bind from '@nrg-ui/ember/helpers/bind';
+import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
+import FreestyleSection from 'ember-freestyle/components/freestyle-section';
+
 import CodeBlock from '../../code-block';
 
 export default class extends Component {
