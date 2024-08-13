@@ -3,7 +3,7 @@ import Icon from '@nrg-ui/ember/components/icon';
 import { setupRenderingTest } from 'ember-qunit';
 import { assert, module, test } from 'qunit';
 
-module('Integration | components | icon', function (hooks) {
+module('Integration | Component | icon', function (hooks) {
   setupRenderingTest(hooks);
 
   test('icon renders without circular background', async function () {

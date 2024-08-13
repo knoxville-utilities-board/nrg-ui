@@ -3,7 +3,7 @@ import Card from '@nrg-ui/ember/components/card';
 import { setupRenderingTest } from 'ember-qunit';
 import { assert, module, test } from 'qunit';
 
-module('Integration | components | card', function (hooks) {
+module('Integration | Component | card', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders the card with the correct content', async function () {

@@ -3,7 +3,7 @@ import FeatureList from '@nrg-ui/ember/components/mktg/feature-list';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
-module('Integration | components | mktg/feature-list', function (hooks) {
+module('Integration | Component | mktg/feature-list', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {

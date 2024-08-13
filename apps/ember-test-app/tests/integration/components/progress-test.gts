@@ -7,7 +7,7 @@ interface Context extends TestContext {
   element: HTMLElement;
 }
 
-module('Integration | components | progress', function (hooks) {
+module('Integration | Component | progress', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders (inline)', async function (this: Context, assert) {

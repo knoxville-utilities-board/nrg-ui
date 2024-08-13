@@ -3,7 +3,7 @@ import ServicePricing from '@nrg-ui/ember/components/mktg/service-pricing';
 import { setupRenderingTest } from 'ember-qunit';
 import { assert, module, test } from 'qunit';
 
-module('Integration | components | mktg/service-pricing', function (hooks) {
+module('Integration | Component | mktg/service-pricing', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function () {

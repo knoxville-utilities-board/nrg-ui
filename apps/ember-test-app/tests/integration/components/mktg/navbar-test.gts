@@ -4,7 +4,7 @@ import NavItem from '@nrg-ui/ember/components/nav-item';
 import { setupRenderingTest } from 'ember-qunit';
 import { assert, module, test } from 'qunit';
 
-module('Integration | components | mktg/navbar', function (hooks) {
+module('Integration | Component | mktg/navbar', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function () {

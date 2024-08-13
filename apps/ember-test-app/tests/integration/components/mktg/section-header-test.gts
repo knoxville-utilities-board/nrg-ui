@@ -3,7 +3,7 @@ import SectionHeader from '@nrg-ui/ember/components/mktg/section-header';
 import { setupRenderingTest } from 'ember-qunit';
 import { assert, module, test } from 'qunit';
 
-module('Integration | components | mktg/section-header', function (hooks) {
+module('Integration | Component | mktg/section-header', function (hooks) {
   setupRenderingTest(hooks);
 
   test('Section header renders', async function () {

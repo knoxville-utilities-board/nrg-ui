@@ -3,7 +3,7 @@ import LoadingIndicator from '@nrg-ui/ember/components/loading-indicator';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
-module('Integration | components | loading-indicator', function (hooks) {
+module('Integration | Component | loading-indicator', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {

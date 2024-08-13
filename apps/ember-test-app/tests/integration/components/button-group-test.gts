@@ -8,7 +8,7 @@ interface Context extends TestContext {
   clickHandler: (type: string, evt: MouseEvent) => void;
 }
 
-module('Integration | components | button-group', function (hooks) {
+module('Integration | Component | button-group', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (this: Context, assert) {

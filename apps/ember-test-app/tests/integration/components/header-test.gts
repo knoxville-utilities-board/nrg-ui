@@ -3,7 +3,7 @@ import Header from '@nrg-ui/ember/components/header';
 import { setupRenderingTest } from 'ember-qunit';
 import { assert, module, test } from 'qunit';
 
-module('Integration | components | header', function (hooks) {
+module('Integration | Component | header', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders content within the correct named blocks', async function () {
