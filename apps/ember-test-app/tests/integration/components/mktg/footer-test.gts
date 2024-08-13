@@ -3,7 +3,7 @@ import Footer from '@nrg-ui/ember/components/mktg/footer';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
-module('Integration | Component | footer', function (hooks) {
+module('Integration | Component | mktg/footer', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
