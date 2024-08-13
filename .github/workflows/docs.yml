@@ -37,6 +37,6 @@ jobs:
         run: pnpm run build-docs
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.6.3
+        uses: JamesIves/github-pages-deploy-action@v4.6.3
         with:
           folder: apps/ember-test-app/dist
