@@ -2,12 +2,10 @@ import { assert } from '@ember/debug';
 
 import BaseValidator from './base.ts';
 
-import type { Binding } from '../../types';
+import type { Binding, Primitive } from '../../types';
 import type { ValidateFnResponse } from '../types';
 
-type Primitive = string | number | boolean;
-
-declare type ExclusionOptions<T> = {
+export type ExclusionOptions<T> = {
   /**
    * An array of invalid values.
    */

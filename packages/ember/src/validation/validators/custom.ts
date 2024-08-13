@@ -18,7 +18,7 @@ declare type ValidateFn<T> = (
   context: Record<string, unknown>,
 ) => ValidateFnResponse;
 
-declare type CustomOptions<T> = {
+export type CustomOptions<T> = {
   /**
    * The function to be called to validate. It should return a boolean or a
    * response object.

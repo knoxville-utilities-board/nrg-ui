@@ -14,6 +14,7 @@ import type {
   TranslatableMessage,
   ValidateFnResponse,
   ValidationResult,
+  Validator,
 } from '../types.d.ts';
 
 export function isProxy(
@@ -34,7 +35,8 @@ export default abstract class BaseValidator<
   T,
   OptionsShape extends DerivedOptions = DerivedOptions,
   Context extends object = Record<string, unknown>,
-> {
+> implements Validator<T, OptionsShape, Context>
+{
   abstract validate(
     this: BaseValidator<T, OptionsShape, Context>,
     value: T,

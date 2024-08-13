@@ -6,7 +6,7 @@ import BaseValidator from './base.ts';
 import type { Binding } from '../../types';
 import type { TranslatableOption, ValidateFnResponse } from '../types';
 
-declare type ConfirmationOptions = {
+export type ConfirmationOptions = {
   /**
    * When building the error message, this will be used as the label for the field.
    * If not provided, the `on` property will be used.

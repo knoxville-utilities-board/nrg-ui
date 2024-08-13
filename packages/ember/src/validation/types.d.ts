@@ -45,3 +45,18 @@ export interface ValidationResult {
   isWarning?: boolean;
   message?: string;
 }
+
+export type ValidatorBuilder<T, OptionsShape, Context> = (
+  binding: Binding,
+  context: Context,
+) => Validator<T, OptionsShape, Context>;
+export interface Validator<T, OptionsShape, Context> {
+  validate(
+    this: BaseValidator<T, OptionsShape, Context>,
+    value: T,
+    options: OptionsShape,
+    context: Context,
+  ): ValidateFnResponse;
+
+  result: ValidationResult;
+}
