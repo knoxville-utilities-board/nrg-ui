@@ -8,6 +8,7 @@ export interface TextAreaSignature {
   Args: {
     basic?: boolean;
     disabled?: boolean;
+    id?: string;
     readonly?: boolean;
   };
 }
@@ -31,6 +32,7 @@ export default class TextArea extends BoundValue<TextAreaSignature, string> {
 
   <template>
     <textarea
+      id={{@id}}
       class={{this.classList}}
       disabled={{@disabled}}
       readonly={{@readonly}}

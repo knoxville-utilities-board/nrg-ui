@@ -77,12 +77,12 @@ class SelectItem<T> extends Component<SelectItemSignature<T>> {
 
 export interface SelectSignature<T> {
   Args: {
-    disabled?: boolean;
-    loading?: boolean;
-    scrollable?: boolean;
     defaultText?: string;
-    options: T[];
+    disabled?: boolean;
     displayPath?: string;
+    loading?: boolean;
+    options: T[];
+    scrollable?: boolean;
     serializationPath?: string | null;
   };
   Blocks: {

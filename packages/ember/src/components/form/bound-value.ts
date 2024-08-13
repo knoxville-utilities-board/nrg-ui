@@ -9,12 +9,13 @@ import type { Binding, Optional } from '../../';
 
 export type BoundValueSignature<Signature, Type> = {
   Args: {
-    binding: Binding;
+    binding?: Binding;
 
     defaultValue?: Type;
     useDefaultValue?: boolean;
 
     allowChange?: (newValue: Type, oldValue: Type) => boolean;
+    initBinding?: (binding: Binding) => void;
     onChange?: (value: Type, ...args: unknown[]) => void;
   };
 } & Signature;
@@ -30,10 +31,9 @@ export default class BoundValue<Signature, T> extends Component<
   ) {
     super(owner, args);
 
-    assert(
-      'You must provide a binding argument to BoundValue',
-      this.args.binding,
-    );
+    const { binding } = args;
+
+    assert('You must provide a binding argument to BoundValue', binding);
 
     const defaultValue = this.defaultValue;
     const initialValue = this.value;
@@ -46,14 +46,16 @@ export default class BoundValue<Signature, T> extends Component<
         this.onChange(defaultValue);
       });
     }
+
+    this.args.initBinding?.(binding);
   }
 
   get model() {
-    return this.args.binding.model;
+    return this.args.binding!.model;
   }
 
   get valuePath() {
-    return this.args.binding.valuePath;
+    return this.args.binding!.valuePath;
   }
 
   get value(): Optional<T> {

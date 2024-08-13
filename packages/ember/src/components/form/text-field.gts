@@ -8,6 +8,7 @@ export interface TextFieldSignature {
   Args: {
     basic?: boolean;
     disabled?: boolean;
+    id?: string;
     readonly?: boolean;
   };
 }
@@ -33,6 +34,7 @@ export default class TextField extends BoundValue<TextFieldSignature, string> {
     <input
       class={{this.classList}}
       disabled={{@disabled}}
+      id={{@id}}
       readonly={{@readonly}}
       type="text"
       value={{this.value}}
