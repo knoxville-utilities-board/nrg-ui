@@ -5,7 +5,7 @@ import { scheduleTask } from 'ember-lifeline';
 
 import { ensurePathExists } from '../../utils/ensure-path-exists.ts';
 
-import type { Binding, Optional } from '../../types.d.ts';
+import type { Binding, Optional } from '../../';
 
 export type BoundValueSignature<Signature, Type> = {
   Args: {

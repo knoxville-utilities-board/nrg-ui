@@ -3,7 +3,7 @@ import { isPresent } from '@ember/utils';
 
 import BaseValidator from './base.ts';
 
-import type { Binding } from '../../types';
+import type { Binding } from '../../';
 import type { ValidateFnResponse } from '../types';
 
 export type RangeOptions = {
@@ -28,14 +28,19 @@ export type RangeOptions = {
 };
 
 export default class RangeValidator<
+  Model extends object,
   Context extends object = Record<string, unknown>,
-> extends BaseValidator<number, RangeOptions, Context> {
+> extends BaseValidator<number, Model, RangeOptions, Context> {
   defaultOptions = {
     minInclusive: true,
     maxInclusive: true,
   };
 
-  constructor(binding: Binding, options: RangeOptions, context: Context) {
+  constructor(
+    binding: Binding<Model>,
+    options: RangeOptions,
+    context: Context,
+  ) {
     super(binding, options, context);
 
     assert(

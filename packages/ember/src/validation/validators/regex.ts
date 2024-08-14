@@ -3,7 +3,7 @@ import { isNone } from '@ember/utils';
 
 import BaseValidator from './base.ts';
 
-import type { Binding } from '../../types';
+import type { Binding } from '../..';
 import type { ValidateFnResponse } from '../types';
 
 export type RegexOptions = {
@@ -19,9 +19,14 @@ export type RegexOptions = {
 };
 
 export default class RegexValidator<
+  Model extends object = Record<string, unknown>,
   Context extends object = Record<string, unknown>,
-> extends BaseValidator<string, RegexOptions, Context> {
-  constructor(binding: Binding, options: RegexOptions, context: Context) {
+> extends BaseValidator<string, Model, RegexOptions, Context> {
+  constructor(
+    binding: Binding<Model>,
+    options: RegexOptions,
+    context: Context,
+  ) {
     super(binding, options, context);
 
     const { pattern } = options;

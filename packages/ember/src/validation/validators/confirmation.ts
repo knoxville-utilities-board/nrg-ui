@@ -3,7 +3,7 @@ import { isEqual, isPresent } from '@ember/utils';
 
 import BaseValidator from './base.ts';
 
-import type { Binding } from '../../types';
+import type { Binding } from '../../';
 import type { TranslatableOption, ValidateFnResponse } from '../types';
 
 export type ConfirmationOptions = {
@@ -18,13 +18,16 @@ export type ConfirmationOptions = {
   on: string;
 };
 
-export default class ConfirmationValidator extends BaseValidator<
+export default class ConfirmationValidator<
+  Model extends object,
+> extends BaseValidator<
   TranslatableOption,
+  Model,
   ConfirmationOptions,
   Record<string, TranslatableOption>
 > {
   constructor(
-    binding: Binding,
+    binding: Binding<Model>,
     options: ConfirmationOptions,
     context: Record<string, TranslatableOption>,
   ) {

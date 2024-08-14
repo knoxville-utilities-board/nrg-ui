@@ -58,8 +58,9 @@ export type NumberOptions = {
 declare type NumberLike = number | string | null | undefined;
 
 export default class NumberValidator<
+  Model extends object,
   Context extends object = Record<string, unknown>,
-> extends BaseValidator<NumberLike, NumberOptions, Context> {
+> extends BaseValidator<NumberLike, Model, NumberOptions, Context> {
   defaultOptions = {
     allowNone: true,
   };

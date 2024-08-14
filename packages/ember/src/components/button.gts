@@ -4,7 +4,7 @@ import Component from '@glimmer/component';
 import { and, not, or } from 'ember-truth-helpers';
 
 import type ButtonGroup from './button-group';
-import type { Icon } from '../types';
+import type { Icon } from '../';
 
 interface ButtonSignature {
   Element: HTMLButtonElement;
@@ -53,9 +53,6 @@ export default class ButtonComponent extends Component<ButtonSignature> {
 
   @action
   onClick(evt: MouseEvent) {
-    evt?.preventDefault();
-    evt?.stopPropagation();
-
     this.args.onClick?.(evt);
 
     this.args.group?.onClick(evt);

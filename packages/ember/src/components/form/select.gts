@@ -15,7 +15,7 @@ import { runTask } from 'ember-lifeline';
 import BoundValue from './bound-value.ts';
 import onInsert from '../../modifiers/did-insert.ts';
 
-import type { Optional } from '../../types.d.ts';
+import type { Optional } from '../../';
 import type IntlService from 'ember-intl/services/intl';
 
 declare type SelectOption<T> = {

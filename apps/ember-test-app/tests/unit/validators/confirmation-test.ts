@@ -10,7 +10,7 @@ import { setupTest } from 'ember-test-app/tests/helpers';
 import { module, test } from 'qunit';
 
 import type { TestContext as TC } from '@ember/test-helpers';
-import type { types } from '@nrg-ui/ember';
+import type { Binding } from '@nrg-ui/ember';
 
 class Model {
   constructor() {
@@ -26,7 +26,7 @@ class Model {
 }
 
 declare type TestContext = {
-  binding: types.Binding;
+  binding: Binding<Model>;
   model: Model;
 } & TC;
 

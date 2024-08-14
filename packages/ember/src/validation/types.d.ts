@@ -46,16 +46,16 @@ export interface ValidationResult {
   message?: string;
 }
 
-export type ValidatorBuilder<T, OptionsShape, Context> = (
-  binding: Binding,
+export type ValidatorBuilder<T, Model, OptionsShape, Context> = (
+  binding: Binding<Model>,
   context: Context,
-) => Validator<T, OptionsShape, Context>;
-export interface Validator<T, OptionsShape, Context> {
+) => Validator<T, Model, OptionsShape, Context>;
+export interface Validator<T, Model, OptionsShape, Context> {
   validate(
     this: BaseValidator<T, OptionsShape, Context>,
     value: T,
     options: OptionsShape,
-    context: Context,
+    context: Context | Model,
   ): ValidateFnResponse;
 
   result: ValidationResult;

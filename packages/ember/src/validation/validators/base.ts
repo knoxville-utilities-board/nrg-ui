@@ -7,7 +7,7 @@ import { getOwner } from '@ember/owner';
 // https://github.com/glimmerjs/glimmer.js/issues/408
 import { cached } from '@glimmer/tracking';
 
-import type { Binding } from '../../types';
+import type { Binding } from '../../';
 import type {
   DerivedOptions,
   Options,
@@ -33,27 +33,32 @@ export function unwrapProxy<T>(value: T): T {
 
 export default abstract class BaseValidator<
   T,
+  Model extends object = Record<string, unknown>,
   OptionsShape extends DerivedOptions = DerivedOptions,
   Context extends object = Record<string, unknown>,
-> implements Validator<T, OptionsShape, Context>
+> implements Validator<T, Model, OptionsShape, Context>
 {
   abstract validate(
-    this: BaseValidator<T, OptionsShape, Context>,
+    this: BaseValidator<T, Model, OptionsShape, Context>,
     value: T,
     options: OptionsShape,
-    context: Context,
+    context: Context | Model,
   ): ValidateFnResponse;
   defaultOptions: OptionsShape = {} as OptionsShape;
 
   readonly owner;
-  readonly binding;
+  readonly binding: Binding<Model>;
   readonly options: OptionsShape;
-  readonly context: Context;
+  readonly context: Context | Model;
 
-  constructor(binding: Binding, options: OptionsShape, context: Context) {
+  constructor(
+    binding: Binding<Model>,
+    options: OptionsShape,
+    context: Context,
+  ) {
     this.binding = binding;
     this.options = options;
-    this.context = context ?? (binding.model as Context);
+    this.context = context ?? binding.model;
 
     assert(
       'The `validate` method must be implemented by subclasses of BaseValidator',

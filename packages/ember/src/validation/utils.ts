@@ -9,7 +9,7 @@ import RangeValidator from './validators/range.ts';
 import RegexValidator from './validators/regex.ts';
 
 import type { TranslatableOption, ValidatorBuilder } from './types';
-import type { Binding } from '../types';
+import type { Binding } from '../';
 
 const Validators = {
   confirmation: ConfirmationValidator,
@@ -37,9 +37,9 @@ type ValidatorFnArgs<T extends ValidatorType = ValidatorType> = T extends T
 
 export function validator<V extends ValidatorType = ValidatorType>(
   ...[type, options]: ValidatorFnArgs<V>
-): ValidatorBuilder<unknown, OptionsOf<V>, ContextOf<V>> {
+): ValidatorBuilder<unknown, ContextOf<V>, OptionsOf<V>, ContextOf<V>> {
   if (type === 'confirmation') {
-    return (binding: Binding, context: ContextOf<V>) =>
+    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
       new ConfirmationValidator(
         binding,
         options,
@@ -47,35 +47,35 @@ export function validator<V extends ValidatorType = ValidatorType>(
       );
   }
   if (type === 'custom') {
-    return (binding: Binding, context: ContextOf<V>) =>
+    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
       new CustomValidator(binding, options, context);
   }
   if (type === 'exclusion') {
-    return (binding: Binding, context: ContextOf<V>) =>
+    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
       new ExclusionValidator(binding, options, context);
   }
   if (type === 'inclusion') {
-    return (binding: Binding, context: ContextOf<V>) =>
+    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
       new InclusionValidator(binding, options, context);
   }
   if (type === 'length') {
-    return (binding: Binding, context: ContextOf<V>) =>
+    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
       new LengthValidator(binding, options, context);
   }
   if (type === 'number') {
-    return (binding: Binding, context: ContextOf<V>) =>
+    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
       new NumberValidator(binding, options, context);
   }
   if (type === 'presence') {
-    return (binding: Binding, context: ContextOf<V>) =>
+    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
       new PresenceValidator(binding, options, context);
   }
   if (type === 'range') {
-    return (binding: Binding, context: ContextOf<V>) =>
+    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
       new RangeValidator(binding, options, context);
   }
   if (type === 'regex') {
-    return (binding: Binding, context: ContextOf<V>) =>
+    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
       new RegexValidator(binding, options, context);
   }
 
