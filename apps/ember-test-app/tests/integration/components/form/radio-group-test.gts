@@ -1,4 +1,4 @@
-import { render, click, find } from '@ember/test-helpers';
+import { render, click } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import RadioGroup from '@nrg-ui/ember/components/form/radio-group';
 import bind from '@nrg-ui/ember/helpers/bind';
