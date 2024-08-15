@@ -79,7 +79,10 @@ class RadioField extends Component<RadioFieldSignature> {
   }
 
   get checked() {
-    // do I need a null check here since TS makes option required?
+    if (this.args.option == null) {
+      return false;
+    }
+
     return this.args.option === this.args.currentValue;
   }
 
