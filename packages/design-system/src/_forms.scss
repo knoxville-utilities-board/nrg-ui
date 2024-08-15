@@ -1,0 +1,12 @@
+.form-control.dropdown {
+  & .dropdown-menu {
+    width: 100%;
+    margin-left: -0.75rem; // This value needs to be the inverse of the padding on the input
+    margin-top: 0.75rem;
+  }
+
+  &.scrollable > .dropdown-menu {
+    max-height: clamp(9rem, 50vh, 21rem);
+    overflow-y: auto;
+  }
+}
