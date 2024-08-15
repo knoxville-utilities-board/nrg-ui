@@ -3,20 +3,23 @@ import { hash } from '@ember/helper';
 import Promo from './promo.gts';
 import SectionHeader from './section-header.gts';
 
+import type { PromoSignature } from './promo.gts';
+import type { SectionHeaderSignature } from './section-header.gts';
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike } from '@glint/template';
 
-interface PromoContainerSignature {
+export interface PromoContainerSignature {
   Element: HTMLDivElement;
   Blocks: {
     default: [
       {
-        SectionHeader: ComponentLike<typeof SectionHeader>;
-        Promo: ComponentLike<typeof Promo>;
+        SectionHeader: ComponentLike<SectionHeaderSignature>;
+        Promo: ComponentLike<PromoSignature>;
       },
     ];
   };
 }
+
 const PromoContainer: TOC<PromoContainerSignature> = <template>
   <div class="container">
     <div class="row p-4 d-flex justify-content-center" ...attributes>

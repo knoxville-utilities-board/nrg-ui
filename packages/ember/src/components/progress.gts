@@ -30,7 +30,7 @@ interface ProgressSignature {
     title?: string;
   };
   Blocks: {
-    default?: [ComponentLike<Segment>];
+    default?: [ComponentLike<SegmentSignature>];
   };
 }
 

@@ -2,7 +2,7 @@ import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 
-interface CardSignature {
+export interface CardSignature {
   Element: HTMLDivElement;
   Args: {
     isClickable?: boolean;

@@ -16,7 +16,7 @@ export interface RadioGroupFieldSignature {
     name: string;
   };
   Blocks: {
-    default: [{ Radio: ComponentLike<RadioField> }];
+    default: [{ Radio: ComponentLike<RadioFieldSignature> }];
   };
 }
 

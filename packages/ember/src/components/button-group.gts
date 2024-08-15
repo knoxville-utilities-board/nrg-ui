@@ -4,14 +4,15 @@ import Component from '@glimmer/component';
 
 import Button from './button.gts';
 
+import type { ButtonSignature } from './button.gts';
 import type { ComponentLike } from '@glint/template';
 
-declare interface ButtonGroupSignature {
+export interface ButtonGroupSignature {
   Element: HTMLDivElement;
   Args: {
     disabled?: boolean;
     label?: string;
-    parent?: ButtonGroupComponent;
+    parent?: ButtonGroupType;
     toolbar?: boolean;
     vertical?: boolean;
     onClick?: (evt: MouseEvent) => unknown;
@@ -19,14 +20,21 @@ declare interface ButtonGroupSignature {
   Blocks: {
     default: [
       {
-        Button: ComponentLike<Button>;
-        SubGroup: ComponentLike<ButtonGroupComponent>;
+        Button: ComponentLike<ButtonSignature>;
+        SubGroup: ComponentLike<ButtonGroupSignature>;
       },
     ];
   };
 }
 
-export default class ButtonGroupComponent extends Component<ButtonGroupSignature> {
+export interface ButtonGroupType {
+  onClick: (evt: MouseEvent) => unknown;
+}
+
+export default class ButtonGroupComponent
+  extends Component<ButtonGroupSignature>
+  implements ButtonGroupType
+{
   get classList() {
     let classes = ['btn-group'];
 

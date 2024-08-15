@@ -27,7 +27,7 @@ interface MktgServicePricingSignature {
     selected?: boolean;
   };
   Blocks: {
-    default: [ComponentLike<typeof Addon>];
+    default: [ComponentLike<AddonSignature>];
   };
   Element: HTMLElement;
 }

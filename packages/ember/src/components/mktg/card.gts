@@ -2,7 +2,7 @@ import Card from '../card.gts';
 
 import type { TOC } from '@ember/component/template-only';
 
-interface CardSignature {
+export interface MktgCardSignature {
   Element: HTMLDivElement;
   Args: {
     title?: string;
@@ -19,7 +19,7 @@ interface CardSignature {
   };
 }
 
-const MktgCard: TOC<CardSignature> = <template>
+const MktgCard: TOC<MktgCardSignature> = <template>
   {{#if @horizontal}}
     <Card @hasBorder={{@hasBorder}} ...attributes>
       <:body>

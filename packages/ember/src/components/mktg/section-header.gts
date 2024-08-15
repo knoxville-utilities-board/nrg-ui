@@ -1,6 +1,6 @@
 import type { TOC } from '@ember/component/template-only';
 
-interface SectionHeaderSignature {
+export interface SectionHeaderSignature {
   Element: HTMLDivElement;
   Args: {
     subject?: string;

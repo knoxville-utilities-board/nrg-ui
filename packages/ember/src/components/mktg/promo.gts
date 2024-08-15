@@ -1,6 +1,6 @@
 import type { TOC } from '@ember/component/template-only';
 
-interface PromoSignature {
+export interface PromoSignature {
   Element: HTMLDivElement;
   Args: {
     productName?: string;

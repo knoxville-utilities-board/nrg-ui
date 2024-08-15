@@ -3,14 +3,14 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { and, not, or } from 'ember-truth-helpers';
 
-import type ButtonGroup from './button-group';
+import type { ButtonGroupType } from './button-group';
 import type { Icon } from '../';
 
-interface ButtonSignature {
+export interface ButtonSignature {
   Element: HTMLButtonElement;
   Args: {
     disabled?: boolean;
-    group?: ButtonGroup;
+    group?: ButtonGroupType;
     icon?: Icon;
     iconPosition?: 'right' | 'left';
     iconLabel?: string;
