@@ -177,6 +177,7 @@
       "./components/progress.js": "./dist/_app_/components/progress.js",
       "./helpers/bind.js": "./dist/_app_/helpers/bind.js",
       "./modifiers/did-insert.js": "./dist/_app_/modifiers/did-insert.js",
+      "./modifiers/on-update.js": "./dist/_app_/modifiers/on-update.js",
       "./services/responsive.js": "./dist/_app_/services/responsive.js"
     },
     "defaultBlueprint": "@nrg-ui-ember"
