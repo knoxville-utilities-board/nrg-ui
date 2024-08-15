@@ -91,8 +91,6 @@ module('Integration | components | form | radio-group', function (hooks) {
       </RadioGroup>
     </template>);
 
-    const checkbox = find('.form-check > input');
-
-    assert.true(checkbox.checked);
+    assert.dom('.form-check > input').isChecked();
   });
 });

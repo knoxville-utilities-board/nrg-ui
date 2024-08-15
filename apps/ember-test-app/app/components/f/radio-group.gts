@@ -48,7 +48,7 @@ export default class extends Component {
   }
 
   <template>
-    <FreestyleSection @name="Text Field" as |Section|>
+    <FreestyleSection @name="Radio Group" as |Section|>
       <Section.subsection @name="Basic">
         <FreestyleUsage>
           <:example>

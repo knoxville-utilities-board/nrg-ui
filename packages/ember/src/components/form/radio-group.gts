@@ -11,9 +11,9 @@ import type { ComponentLike } from '@glint/template';
 export interface RadioGroupFieldSignature {
   Element: HTMLDivElement;
   Args: {
-    name: string;
     basic?: boolean;
     disabled?: boolean;
+    name: string;
   };
   Blocks: {
     default: [{ Radio: ComponentLike<RadioField> }];
@@ -28,7 +28,7 @@ export default class RadioGroupField extends BoundValue<
   change(updatedValue: Optional<string>) {
     if (updatedValue) {
       this.value = updatedValue;
-      this.onChange?.(updatedValue);
+      this.onChange(updatedValue);
     }
   }
 
@@ -48,10 +48,10 @@ export default class RadioGroupField extends BoundValue<
         (hash
           Radio=(component
             RadioField
-            name=@name
-            disabled=@disabled
-            onChange=this.change
             currentValue=this.value
+            disabled=@disabled
+            name=@name
+            onChange=this.change
           )
         )
       }}
@@ -62,11 +62,11 @@ export default class RadioGroupField extends BoundValue<
 export interface RadioFieldSignature {
   Element: HTMLInputElement;
   Args: {
+    currentValue?: string | null;
+    disabled?: boolean;
+    label?: string;
     name: string;
     option?: string;
-    currentValue?: string | null;
-    label?: string;
-    disabled?: boolean;
     onChange?: (value: string, ...args: unknown[]) => void;
   };
 }
@@ -94,12 +94,12 @@ class RadioField extends Component<RadioFieldSignature> {
   <template>
     <div class="form-check">
       <input
+        checked={{this.checked}}
         class="form-check-input"
         disabled={{@disabled}}
         id={{this.id}}
-        type="radio"
         name={{@name}}
-        checked={{this.checked}}
+        type="radio"
         value={{@option}}
         {{on "change" this.change}}
         ...attributes
