@@ -10,7 +10,7 @@ import type { Optional } from '../../types.d.ts';
 
 export default class PhoneField extends TextField {
   @tracked
-  inputElement: Optional<HTMLInputElement> = null;
+  inputElement!: HTMLInputElement;
 
   @action
   onInsert(element: HTMLElement) {
@@ -18,8 +18,7 @@ export default class PhoneField extends TextField {
   }
 
   @action
-  change(evt: Event) {
-    const inputEvent = evt as InputEvent;
+  change(evt: InputEvent) {
     const target = evt.target as HTMLInputElement;
     const newValue = target?.value;
     const currentValue = this.displayValue;
@@ -35,7 +34,7 @@ export default class PhoneField extends TextField {
     if (isDeletingSpecialCharacter) {
       if (isBackspace) {
         let newCursorPosition = cursorPosition - 1;
-        if (/\D/.test(currentValue[newCursorPosition ?? 0] ?? '')) {
+        if (/\D/.test(currentValue[newCursorPosition] ?? '')) {
           newCursorPosition--;
         }
         this.inputElement?.setSelectionRange(
@@ -48,9 +47,9 @@ export default class PhoneField extends TextField {
         .replace(/\D/g, '');
       const afterCursor = newValue.substring(cursorPosition).replace(/\D/g, '');
       if (isBackspace) {
-        unformattedValue = `${beforeCursor.slice(0, -1)}${afterCursor}`;
+        unformattedValue = beforeCursor.slice(0, -1) + afterCursor;
       } else {
-        unformattedValue = `${beforeCursor}${afterCursor.slice(1)}`;
+        unformattedValue = beforeCursor + afterCursor.slice(1);
       }
     }
 

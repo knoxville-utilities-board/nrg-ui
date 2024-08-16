@@ -69,6 +69,7 @@ module('Integration | Component | form/phone-field', function (hooks) {
 
     await fillIn('input', '1-12a345(6)78_90 ');
     assert.dom('input').hasValue('+1 (123) 456-7890');
+    assert.strictEqual(model.value, '11234567890');
   });
 
   test('it reacts to changes in model', async function (assert) {
