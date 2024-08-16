@@ -5,8 +5,11 @@ import { runTask } from 'ember-lifeline';
 
 import TextField from './text-field.gts';
 import onInsert from '../../modifiers/did-insert.ts';
+import phoneFormats from '../../utils/phone-formats.ts';
 
-import type { Optional } from '../../types.d.ts';
+function isSpecialCharacter(char: string) {
+  return /\D/.test(char);
+}
 
 export default class PhoneField extends TextField {
   @tracked
@@ -20,21 +23,21 @@ export default class PhoneField extends TextField {
   @action
   change(evt: InputEvent) {
     const target = evt.target as HTMLInputElement;
-    const newValue = target?.value;
+    const newValue = target.value;
     const currentValue = this.displayValue;
-    const cursorPosition = target?.selectionStart ?? -1;
-    const isBackspace = inputEvent.inputType === 'deleteContentBackward';
-    const isDelete = inputEvent.inputType === 'deleteContentForward';
+    const cursorPosition = target.selectionStart ?? -1;
+    const isBackspace = evt.inputType === 'deleteContentBackward';
+    const isDelete = evt.inputType === 'deleteContentForward';
 
     let unformattedValue = newValue.replace(/\D/g, '');
     let characterUnderCursor = currentValue[cursorPosition ?? 0] ?? '';
-    const isNonDigitCharacter = /\D/.test(characterUnderCursor);
+    const isNonDigitCharacter = isSpecialCharacter(characterUnderCursor);
     const isDeletingSpecialCharacter =
       cursorPosition >= 0 && (isBackspace || isDelete) && isNonDigitCharacter;
     if (isDeletingSpecialCharacter) {
       if (isBackspace) {
         let newCursorPosition = cursorPosition - 1;
-        if (/\D/.test(currentValue[newCursorPosition] ?? '')) {
+        if (isSpecialCharacter(currentValue[newCursorPosition] ?? '')) {
           newCursorPosition--;
         }
         this.inputElement?.setSelectionRange(
@@ -57,34 +60,32 @@ export default class PhoneField extends TextField {
   }
 
   get displayValue() {
-    const localInput = /^(\d{3})(\d{0,4})$/g;
-    const withAreaCodeInput = /^(\d{0,3})(\d{3})(\d{4})$/g;
-    const withCountryCodeInput = /^(\d{0,3})(\d{3})(\d{3})(\d{4})$/g;
-
-    const localOutput = '$1-$2';
-    const withAreaCodeOutput = '($1) $2-$3';
-    const withCountryCodeOutput = '+$1 ($2) $3-$4';
-
     const unformattedValue = this.value?.replace(/\D/g, '') ?? '';
     let returnValue;
     if (unformattedValue.length <= 4) {
       returnValue = unformattedValue;
     } else if (unformattedValue.length <= 7) {
-      returnValue = unformattedValue.replace(localInput, localOutput);
+      returnValue = unformattedValue.replace(
+        phoneFormats.localInput,
+        phoneFormats.localOutput,
+      );
     } else if (unformattedValue.length <= 10) {
       returnValue = unformattedValue.replace(
-        withAreaCodeInput,
-        withAreaCodeOutput,
+        phoneFormats.withAreaCodeInput,
+        phoneFormats.withAreaCodeOutput,
       );
     } else {
       returnValue = unformattedValue
         .substring(0, 13)
-        .replace(withCountryCodeInput, withCountryCodeOutput);
+        .replace(
+          phoneFormats.withCountryCodeInput,
+          phoneFormats.withCountryCodeOutput,
+        );
     }
 
     // Adjust cursor to the same relative position as before formatting
-    const inputValue = this.inputElement?.value ?? '';
-    const cursor = this.inputElement?.selectionStart ?? inputValue.length;
+    const inputValue = this.inputElement.value;
+    const cursor = this.inputElement.selectionStart ?? inputValue.length;
     if (cursor !== null || inputValue.length) {
       const numbersBeforeCursor = inputValue
         .substring(0, cursor)
