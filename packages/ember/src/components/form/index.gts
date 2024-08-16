@@ -265,6 +265,7 @@ export default class Form extends Component<FormSignature> implements FormType {
           Field=(component Field disabled=@disabled form=this)
           SubmitButton=(component
             Button
+            _class="btn-primary"
             disabled=@disabled
             loading=this.loading
             text="Submit"

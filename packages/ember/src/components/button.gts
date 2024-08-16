@@ -9,6 +9,7 @@ import type { Icon } from '../';
 export interface ButtonSignature {
   Element: HTMLButtonElement;
   Args: {
+    _class?: string;
     disabled?: boolean;
     group?: ButtonGroupType;
     icon?: Icon;
@@ -27,6 +28,10 @@ export interface ButtonSignature {
 export default class ButtonComponent extends Component<ButtonSignature> {
   get classList() {
     let classes = ['btn'];
+
+    if (this.args._class) {
+      classes.push(this.args._class);
+    }
 
     if (this.args.disabled) {
       classes.push('disabled');
