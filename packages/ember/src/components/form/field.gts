@@ -40,7 +40,8 @@ export interface FieldSignature {
     default: [
       {
         RadioGroup: ComponentLike<RadioGroupFieldSignature>;
-        Select: ComponentLike<SelectSignature>;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        Select: ComponentLike<SelectSignature<any>>;
         Text: ComponentLike<TextSignature>;
         TextArea: ComponentLike<TextAreaSignature>;
         TextField: ComponentLike<TextFieldSignature>;
@@ -56,6 +57,9 @@ const Text: TOC<TextSignature> = <template>
 </template>;
 
 export default class Field extends Component<FieldSignature> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  TypedSelect = Select<any>;
+
   @tracked
   fieldId = crypto.randomUUID();
 
@@ -159,7 +163,7 @@ export default class Field extends Component<FieldSignature> {
           isInvalid=this.hasError
         )
         Select=(component
-          Select
+          this.TypedSelect
           describedBy=this.messageId
           disabled=@disabled
           id=this.fieldId
