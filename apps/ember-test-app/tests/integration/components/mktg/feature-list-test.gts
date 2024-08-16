@@ -25,6 +25,6 @@ module('Integration | Component | mktg/feature-list', function (hooks) {
     assert.dom('div p').exists('Feature list label renders');
     assert.dom('div div').hasClass('grid');
     assert.dom('div div p span').hasClass('bi-check2');
-    assert.dom('p.g-col-6').hasText('Feature 1');
+    assert.dom('p.g-col-lg-6').hasText('Feature 1');
   });
 });

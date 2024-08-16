@@ -38,7 +38,7 @@ export interface MktgFeatureListSignature {
 }
 
 const Feature: TOC<FeatureSignature> = <template>
-  <p class="g-col-12 g-col-md-6 {{@class}}" ...attributes>
+  <p class="g-col-12 {{@class}}" ...attributes>
     <span class="me-2 fw-bold bi {{@icon}}">{{@meta}}</span>{{@text}}
   </p>
 </template>;
@@ -54,9 +54,9 @@ export default class MktgFeatureList extends Component<MktgFeatureListSignature>
     } else if (this.responsive.isTabletScreen && columns !== 1) {
       return 'g-col-6';
     } else if (columns > 2) {
-      return `g-col-md-6 ${columnMap[columns]}` || 'g-col-6';
+      return `g-col-md-6 ${columnMap[columns]}` || 'g-col-md-6';
     }
-    return columnMap[columns] || 'g-col-6';
+    return columnMap[columns] || 'g-col-md-6';
   }
 
   <template>
