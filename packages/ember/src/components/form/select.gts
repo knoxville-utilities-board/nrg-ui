@@ -18,18 +18,19 @@ import onInsert from '../../modifiers/did-insert.ts';
 import type { Optional } from '../../';
 import type IntlService from 'ember-intl/services/intl';
 
-declare type SelectOption<T> = {
+// TODO: Come back and add a type generic when Glint stops complaining about it
+declare type SelectOption = {
   label: string;
-  value: string | T;
-  raw: T;
+  value: unknown;
+  raw: unknown;
 };
 
-interface SelectItemSignature<T> {
+interface SelectItemSignature {
   Args: {
     optionIndex: number;
     activeIndex: number;
-    currentValue: string | T;
-    option: SelectOption<T>;
+    currentValue: unknown;
+    option: SelectOption;
   };
   Blocks: {
     default: [];
@@ -37,7 +38,7 @@ interface SelectItemSignature<T> {
   Element: HTMLLIElement;
 }
 
-class SelectItem<T> extends Component<SelectItemSignature<T>> {
+class SelectItem extends Component<SelectItemSignature> {
   get classList() {
     const classes = ['dropdown-item'];
 
@@ -75,7 +76,7 @@ class SelectItem<T> extends Component<SelectItemSignature<T>> {
   </template>
 }
 
-export interface SelectSignature<T> {
+export interface SelectSignature {
   Args: {
     defaultText?: string;
     describedBy?: string;
@@ -84,22 +85,19 @@ export interface SelectSignature<T> {
     id?: string;
     isInvalid?: boolean;
     loading?: boolean;
-    options: T[];
+    options: unknown[];
     scrollable?: boolean;
     serializationPath?: string | null;
   };
   Blocks: {
-    display?: [T | undefined];
-    option?: [T | undefined];
+    display?: [unknown | undefined];
+    option?: [unknown | undefined];
     empty?: [];
   };
   Element: HTMLButtonElement;
 }
 
-export default class Select<T> extends BoundValue<
-  SelectSignature<T>,
-  string | T
-> {
+export default class Select extends BoundValue<SelectSignature, unknown> {
   @tracked
   _isOpen = false;
 
@@ -149,14 +147,14 @@ export default class Select<T> extends BoundValue<
     return this._isOpen && !this.disabled && !!this.internalOptions.length;
   }
 
-  get selected(): Optional<SelectOption<T>> {
+  get selected(): Optional<SelectOption> {
     const found = this.internalOptions.find(
       (option) => option.value === this.value,
     );
     return found || null;
   }
 
-  set selected(option: SelectOption<T>) {
+  set selected(option: SelectOption) {
     this.onChange(option.value);
   }
 
@@ -165,7 +163,7 @@ export default class Select<T> extends BoundValue<
   }
 
   @cached
-  get internalOptions(): SelectOption<T>[] {
+  get internalOptions(): SelectOption[] {
     if (!this.args.options) {
       return [];
     }
@@ -179,7 +177,7 @@ export default class Select<T> extends BoundValue<
       }
 
       const label = get(option, this.args.displayPath ?? 'label') as string;
-      let value: string | T = option;
+      let value: unknown = option;
       // null serializationPath results in value being the raw option
       if (this.args.serializationPath !== null) {
         value = get(option, this.args.serializationPath ?? 'value') as string;
@@ -239,7 +237,7 @@ export default class Select<T> extends BoundValue<
   }
 
   @action
-  onSelectInternal(option: SelectOption<T>, evt?: MouseEvent) {
+  onSelectInternal(option: SelectOption, evt?: MouseEvent) {
     evt?.preventDefault();
     evt?.stopPropagation();
     this.onBlur();

@@ -40,7 +40,7 @@ export interface FieldSignature {
     default: [
       {
         RadioGroup: ComponentLike<RadioGroupFieldSignature>;
-        Select: ComponentLike<SelectSignature<unknown>>;
+        Select: ComponentLike<SelectSignature>;
         Text: ComponentLike<TextSignature>;
         TextArea: ComponentLike<TextAreaSignature>;
         TextField: ComponentLike<TextFieldSignature>;
@@ -148,7 +148,6 @@ export default class Field extends Component<FieldSignature> {
         <span class="text-danger">*</span>
       {{/if}}
     </label>
-    {{! @glint-expect-error }}
     {{yield
       (hash
         RadioGroup=(component
