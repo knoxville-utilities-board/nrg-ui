@@ -1,7 +1,4 @@
-import { service } from '@ember/service';
 import Component from '@glimmer/component';
-
-import ResponsiveService from '../../services/responsive.ts';
 
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike } from '@glint/template';
@@ -44,21 +41,13 @@ const Feature: TOC<FeatureSignature> = <template>
 </template>;
 
 export default class MktgFeatureList extends Component<MktgFeatureListSignature> {
-  @service
-  declare responsive: ResponsiveService;
-
   get classList() {
     const { columns } = this.args;
-    if (this.responsive.isMobileDevice) {
+    if (columns === 1) {
       return 'g-col-12';
-    } else if (this.responsive.isTabletScreen && columns !== 1) {
-      return 'g-col-6';
-    } else if (columns > 2) {
-      return (
-        `g-col-12 g-col-md-6 ${columnMap[columns]}` || 'g-col-12 g-col-md-6'
-      );
+    } else {
+      return `g-col-12 g-col-md-6 ${columnMap[columns]}`;
     }
-    return columnMap[columns] || 'g-col-md-6';
   }
 
   <template>
