@@ -21,13 +21,14 @@ export default class PhoneField extends TextField {
   }
 
   @action
-  change(evt: InputEvent) {
+  change(evt: Event) {
+    const inputEvent = evt as InputEvent;
     const target = evt.target as HTMLInputElement;
     const newValue = target.value;
     const currentValue = this.displayValue;
     const cursorPosition = target.selectionStart ?? -1;
-    const isBackspace = evt.inputType === 'deleteContentBackward';
-    const isDelete = evt.inputType === 'deleteContentForward';
+    const isBackspace = inputEvent.inputType === 'deleteContentBackward';
+    const isDelete = inputEvent.inputType === 'deleteContentForward';
 
     let unformattedValue = newValue.replace(/\D/g, '');
     let characterUnderCursor = currentValue[cursorPosition ?? 0] ?? '';
@@ -84,8 +85,8 @@ export default class PhoneField extends TextField {
     }
 
     // Adjust cursor to the same relative position as before formatting
-    const inputValue = this.inputElement.value;
-    const cursor = this.inputElement.selectionStart ?? inputValue.length;
+    const inputValue = this.inputElement?.value ?? '';
+    const cursor = this.inputElement?.selectionStart ?? inputValue.length;
     if (cursor !== null || inputValue.length) {
       const numbersBeforeCursor = inputValue
         .substring(0, cursor)
