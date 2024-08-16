@@ -19,9 +19,41 @@ export default class PhoneField extends TextField {
 
   @action
   change(evt: Event) {
+    const inputEvent = evt as InputEvent;
     const target = evt.target as HTMLInputElement;
-    const value = target?.value;
-    const unformattedValue = value.replace(/\D/g, '');
+    const newValue = target?.value;
+    const currentValue = this.displayValue;
+    const cursorPosition = target?.selectionStart ?? -1;
+    const isBackspace = inputEvent.inputType === 'deleteContentBackward';
+    const isDelete = inputEvent.inputType === 'deleteContentForward';
+
+    let unformattedValue = newValue.replace(/\D/g, '');
+    let characterUnderCursor = currentValue[cursorPosition ?? 0] ?? '';
+    const isNonDigitCharacter = /\D/.test(characterUnderCursor);
+    const isDeletingSpecialCharacter =
+      cursorPosition >= 0 && (isBackspace || isDelete) && isNonDigitCharacter;
+    if (isDeletingSpecialCharacter) {
+      if (isBackspace) {
+        let newCursorPosition = cursorPosition - 1;
+        if (/\D/.test(currentValue[newCursorPosition ?? 0] ?? '')) {
+          newCursorPosition--;
+        }
+        this.inputElement?.setSelectionRange(
+          newCursorPosition,
+          newCursorPosition,
+        );
+      }
+      const beforeCursor = newValue
+        .substring(0, cursorPosition)
+        .replace(/\D/g, '');
+      const afterCursor = newValue.substring(cursorPosition).replace(/\D/g, '');
+      if (isBackspace) {
+        unformattedValue = `${beforeCursor.slice(0, -1)}${afterCursor}`;
+      } else {
+        unformattedValue = `${beforeCursor}${afterCursor.slice(1)}`;
+      }
+    }
+
     this.onChange(unformattedValue);
   }
 
