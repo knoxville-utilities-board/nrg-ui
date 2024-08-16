@@ -7,8 +7,10 @@ export interface TextFieldSignature {
   Element: HTMLInputElement;
   Args: {
     basic?: boolean;
+    describedBy?: string;
     disabled?: boolean;
     id?: string;
+    isInvalid?: boolean;
     readonly?: boolean;
   };
 }
@@ -19,6 +21,10 @@ export default class TextField extends BoundValue<TextFieldSignature, string> {
 
     if (this.args.basic) {
       classes[0] += '-plaintext';
+    }
+
+    if (this.args.isInvalid) {
+      classes.push('is-invalid');
     }
 
     return classes.join(' ');
@@ -32,6 +38,7 @@ export default class TextField extends BoundValue<TextFieldSignature, string> {
 
   <template>
     <input
+      aria-describedby={{@describedBy}}
       class={{this.classList}}
       disabled={{@disabled}}
       id={{@id}}

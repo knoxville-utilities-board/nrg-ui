@@ -78,8 +78,11 @@ class SelectItem<T> extends Component<SelectItemSignature<T>> {
 export interface SelectSignature<T> {
   Args: {
     defaultText?: string;
+    describedBy?: string;
     disabled?: boolean;
     displayPath?: string;
+    id?: string;
+    isInvalid?: boolean;
     loading?: boolean;
     options: T[];
     scrollable?: boolean;
@@ -120,6 +123,10 @@ export default class Select<T> extends BoundValue<
 
     if (this.scrollable) {
       classes.push('scrollable');
+    }
+
+    if (this.args.isInvalid) {
+      classes.push('is-invalid');
     }
 
     return classes.join(' ');
@@ -366,10 +373,12 @@ export default class Select<T> extends BoundValue<
   <template>
     <button
       class={{this.classList}}
+      id={{@id}}
       type="button"
       role="combobox"
       disabled={{this.disabled}}
       aria-controls={{this.menuId}}
+      aria-describedby={{@describedBy}}
       aria-expanded={{this._isOpen}}
       aria-haspopup="listbox"
       {{on "click" this.toggleSelect}}

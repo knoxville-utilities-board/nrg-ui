@@ -153,24 +153,36 @@ export default class Field extends Component<FieldSignature> {
       (hash
         RadioGroup=(component
           RadioGroup
+          describedBy=this.messageId
           disabled=@disabled
+          id=this.fieldId
           initBinding=this.initBinding
+          isInvalid=this.hasError
         )
         Select=(component
           Select
+          describedBy=this.messageId
           disabled=@disabled
+          id=this.fieldId
           initBinding=this.initBinding
+          isInvalid=this.hasError
         )
         Text=(component Text id=this.fieldId)
         TextArea=(component
           TextArea
+          describedBy=this.messageId
           disabled=@disabled
+          id=this.fieldId
           initBinding=this.initBinding
+          isInvalid=this.hasError
         )
         TextField=(component
           TextField
+          describedBy=this.messageId
           disabled=@disabled
+          id=this.fieldId
           initBinding=this.initBinding
+          isInvalid=this.hasError
         )
       )
     }}

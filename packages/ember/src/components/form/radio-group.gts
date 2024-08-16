@@ -12,7 +12,10 @@ export interface RadioGroupFieldSignature {
   Element: HTMLDivElement;
   Args: {
     basic?: boolean;
+    describedBy?: string;
     disabled?: boolean;
+    id?: string;
+    isInvalid?: boolean;
     name: string;
   };
   Blocks: {
@@ -39,17 +42,27 @@ export default class RadioGroupField extends BoundValue<
       classes[0] += '-plaintext';
     }
 
+    if (this.args.isInvalid) {
+      classes.push('is-invalid');
+    }
+
     return classes.join(' ');
   }
 
   <template>
-    <div class={{this.classList}} ...attributes>
+    <div
+      aria-describedby={{@describedBy}}
+      class={{this.classList}}
+      id={{@id}}
+      ...attributes
+    >
       {{yield
         (hash
           Radio=(component
             RadioField
             currentValue=this.value
             disabled=@disabled
+            isInvalid=@isInvalid
             name=@name
             onChange=this.change
           )
@@ -64,6 +77,7 @@ export interface RadioFieldSignature {
   Args: {
     currentValue?: string | null;
     disabled?: boolean;
+    isInvalid?: boolean;
     label?: string;
     name: string;
     option?: string;
@@ -76,6 +90,16 @@ class RadioField extends Component<RadioFieldSignature> {
   change(evt: Event) {
     const target = evt.target as HTMLInputElement;
     this.args.onChange?.(target?.value);
+  }
+
+  get classList() {
+    const classes = ['form-check-input'];
+
+    if (this.args.isInvalid) {
+      classes.push('is-invalid');
+    }
+
+    return classes.join(' ');
   }
 
   get checked() {
@@ -98,7 +122,7 @@ class RadioField extends Component<RadioFieldSignature> {
     <div class="form-check">
       <input
         checked={{this.checked}}
-        class="form-check-input"
+        class={{this.classList}}
         disabled={{@disabled}}
         id={{this.id}}
         name={{@name}}
