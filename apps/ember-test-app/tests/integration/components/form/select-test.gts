@@ -7,7 +7,7 @@ import { triggerKeyDown } from 'ember-keyboard';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
-module('Integration | components | form/select', function (hooks) {
+module('Integration | Component | form/select', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks, 'en-us');
 
