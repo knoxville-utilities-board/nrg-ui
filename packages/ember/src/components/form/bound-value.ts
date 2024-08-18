@@ -33,7 +33,10 @@ export default class BoundValue<Signature, T> extends Component<
 
     const { binding } = args;
 
-    assert('You must provide a binding argument to BoundValue', binding);
+    assert(
+      `You must provide a binding argument to ${this.constructor.name}`,
+      binding,
+    );
 
     const defaultValue = this.defaultValue;
     const initialValue = this.value;
