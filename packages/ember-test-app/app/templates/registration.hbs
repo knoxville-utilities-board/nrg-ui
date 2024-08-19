@@ -73,7 +73,7 @@
             'btn-primary'
           }}
           py-3 flex-fill text-white"
-        @disabled={{this.buttonDisabled}}
+        @disabled={{false}}
         {{on "click" this.changeRoute}}
       >{{if
           (eq this.currentRoute "registration.confirmation")

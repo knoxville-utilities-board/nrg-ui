@@ -17,7 +17,7 @@ export default class ApplicationController extends Controller {
 
   get existingBtnClass() {
     if (this.phoneNumberOption === 'existing') {
-      return 'btn-success text-white disabled';
+      return 'btn-success text-white';
     } else if (this.phoneNumberOption === 'new') {
       return 'btn-outline-success';
     }
@@ -26,7 +26,7 @@ export default class ApplicationController extends Controller {
 
   get newBtnClass() {
     if (this.phoneNumberOption === 'new') {
-      return 'btn-success text-white disabled';
+      return 'btn-success text-white';
     } else if (this.phoneNumberOption === 'existing') {
       return 'btn-outline-success';
     }
