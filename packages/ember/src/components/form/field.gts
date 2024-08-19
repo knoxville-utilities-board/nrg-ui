@@ -37,9 +37,8 @@ export interface FieldSignature {
     disabled?: boolean;
     form?: FormType;
     label?: string;
-    // TODO - Can we change "name"?
-    name?: string;
     required?: boolean;
+    validatorKey?: string;
   };
   Blocks: {
     default: [
@@ -103,7 +102,7 @@ export default class Field extends Component<FieldSignature> {
       return undefined;
     }
 
-    return form.isValidFor(this.name);
+    return form.isValidFor(this.validatorKey);
   }
 
   get hasError() {
@@ -117,11 +116,11 @@ export default class Field extends Component<FieldSignature> {
       return undefined;
     }
 
-    return form.errorFor(this.name);
+    return form.errorFor(this.validatorKey);
   }
 
-  get name() {
-    return this.args.name ?? this.binding.valuePath;
+  get validatorKey() {
+    return this.args.validatorKey ?? this.binding.valuePath;
   }
 
   get describedBy() {
@@ -146,7 +145,7 @@ export default class Field extends Component<FieldSignature> {
     if (!form) {
       return;
     }
-    form.registerBinding(binding, this.name);
+    form.registerBinding(binding, this.validatorKey);
   }
 
   @action
@@ -168,13 +167,16 @@ export default class Field extends Component<FieldSignature> {
         { presence: true },
         binding.model,
       );
-      this.requiredId = form.registerValidator(presenceValidator, this.name);
+      this.requiredId = form.registerValidator(
+        presenceValidator,
+        this.validatorKey,
+      );
     } else {
       if (!requiredId) {
         return;
       }
 
-      form.unregisterValidator(this.name, requiredId);
+      form.unregisterValidator(this.validatorKey, requiredId);
       this.requiredId = undefined;
     }
   }

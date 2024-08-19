@@ -12,6 +12,14 @@ import CodeBlock from '../code-block';
 
 const Validators = {
   select: validator('inclusion', { in: ['A', 'C'] }),
+  someOtherKey: validator('custom', {
+    validate(value) {
+      if (value !== 'foo') {
+        return 'Value must be "foo"';
+      }
+      return true;
+    },
+  }),
   textArea: [
     validator('custom', {
       validate(value) {
@@ -93,10 +101,9 @@ export default class extends Component {
       >
         <div class="mb-3">
           <Form.Field
-            {{! TODO Can we change "name"? }}
-            @name="textField"
             @label="Text Field"
             @required={{this.required}}
+            @validatorKey="someOtherKey"
             as |Field|
           >
             <Field.TextField @binding={{bind this.model "textField"}} />
@@ -106,17 +113,12 @@ export default class extends Component {
           </Form.Field>
         </div>
         <div class="mb-3">
-          <Form.Field @label="Text Area" @name="textArea" as |Field|>
+          <Form.Field @label="Text Area" as |Field|>
             <Field.TextArea @binding={{bind this.model "textArea"}} />
           </Form.Field>
         </div>
         <div class="mb-3">
-          <Form.Field
-            @label="Select"
-            @name="select"
-            @required={{this.required}}
-            as |Field|
-          >
+          <Form.Field @label="Select" @required={{this.required}} as |Field|>
             <Field.Select
               @binding={{bind this.model "select"}}
               @options={{array "A" "B" "C"}}
@@ -126,7 +128,6 @@ export default class extends Component {
         <div class="mb-3">
           <Form.Field
             @label="Radio Group"
-            @name="radio"
             @required={{this.required}}
             as |Field|
           >
