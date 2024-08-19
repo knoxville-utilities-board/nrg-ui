@@ -8,7 +8,7 @@ import Component from '@glimmer/component';
 import { cached, tracked } from '@glimmer/tracking';
 import { dropTask } from 'ember-concurrency';
 import perform from 'ember-concurrency/helpers/perform';
-import { TrackedMap } from 'tracked-built-ins';
+import { TrackedArray, TrackedMap } from 'tracked-built-ins';
 
 import Field from './field.gts';
 import { diff, uid } from '../../utils/index.ts';
@@ -168,7 +168,7 @@ export default class Form extends Component<FormSignature> implements FormType {
     const id = uid();
     name ??= validator.binding.valuePath;
     if (!this.staticValidations.has(name)) {
-      this.staticValidations.set(name, []);
+      this.staticValidations.set(name, new TrackedArray());
     }
     this.staticValidations.get(name)!.push({ id, v: validator });
 
