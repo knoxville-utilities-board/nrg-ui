@@ -3,6 +3,7 @@ import { array } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import Button from '@nrg-ui/ember/components/button';
 import Form from '@nrg-ui/ember/components/form';
 import bind from '@nrg-ui/ember/helpers/bind';
 import { validator } from '@nrg-ui/ember/validation';
@@ -73,6 +74,11 @@ export default class extends Component {
   }
 
   @action
+  toggleRequired() {
+    this.required = !this.required;
+  }
+
+  @action
   onSubmit() {
     alert('Form submitted');
   }
@@ -132,6 +138,11 @@ export default class extends Component {
           </Form.Field>
         </div>
         <Form.SubmitButton class="btn-primary mt-3" />
+        <Button
+          class="btn{{unless this.required '-outline'}}-secondary mt-3"
+          @text="Toggle Required"
+          @onClick={{this.toggleRequired}}
+        />
       </Form>
       <hr />
       <div class="grid">
