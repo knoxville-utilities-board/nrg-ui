@@ -1,8 +1,8 @@
-{{page-title "Shopping"}}
+{{page-title "Installation"}}
 <div class="m-0 row flex-fill">
   <Mktg::WorkflowTray id="scroll-vertical">
     <div class="col-12 d-flex flex-column align-items-center">
-      <div class="d-none d-md-flex fs-2 text-wrap mb-2">
+      <div class="d-none d-md-flex fs-2 text-wrap mb-2 col-10">
         <h2>Thank You For Your KUB Order
         </h2>
       </div>
@@ -136,6 +136,18 @@
                   type="button"
                 />
               </div>
+              {{#if this.dateSelected}}
+                <div class="my-3">
+                  <label for="specialInstructions" class="form-label">Please
+                    provide any special instruction needed for installation.</label>
+                  <textarea
+                    type="password"
+                    class="form-control"
+                    placeholder="Special Instructions (optional)"
+                    id="specialInstructions"
+                  />
+                </div>
+              {{/if}}
             </div>
           </:body>
         </Container.Card>

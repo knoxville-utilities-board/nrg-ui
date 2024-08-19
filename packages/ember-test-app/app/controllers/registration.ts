@@ -24,7 +24,7 @@ export default class RegistrationController extends Controller {
     if (this.currentRoute === 'registration.privacy') {
       return 'registration.confirmation';
     } else {
-      return 'confirmation';
+      return 'installation';
     }
   }
 
