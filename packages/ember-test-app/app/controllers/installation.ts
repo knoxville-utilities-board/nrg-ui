@@ -18,6 +18,6 @@ export default class ApplicationController extends Controller {
 
   @action
   confirmOrder() {
-    this.router.transitionTo('shopping');
+    this.router.transitionTo('confirmation');
   }
 }

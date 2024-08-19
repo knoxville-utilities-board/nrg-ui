@@ -13,7 +13,14 @@
           class="{{if (eq this.active 'user') 'border-2 border-primary'}}
             rounded-4"
         >
-          <:body><p class="fw-semibold fs-4 m-0 p-0">Username & Password</p></:body>
+          <:body>
+            <div class="d-flex w-100 justify-content-between">
+              <p class="fw-semibold fs-4 m-0 p-0">Username & Password</p>
+              {{#if (eq this.currentRoute "registration.confirmation")}}
+                <Icon @type="bi-check-lg" @color="success" />
+              {{/if}}
+            </div>
+          </:body>
         </Card>
       </LinkTo>
     </div>
@@ -26,7 +33,14 @@
           class="{{if (eq this.active 'billing') 'border-2 border-primary'}}
             rounded-4"
         >
-          <:body><p class="fw-semibold fs-4 m-0 p-0">Billing & Contact Info</p></:body>
+          <:body>
+            <div class="d-flex w-100 justify-content-between">
+              <p class="fw-semibold fs-4 m-0 p-0">Billing & Contact Info</p>
+              {{#if (eq this.currentRoute "registration.confirmation")}}
+                <Icon @type="bi-check-lg" @color="success" />
+              {{/if}}
+            </div>
+          </:body>
         </Card>
       </LinkTo>
     </div>
@@ -39,14 +53,26 @@
           class="{{if (eq this.active 'privacy') 'border-2 border-primary'}}
             rounded-4"
         >
-          <:body><p class="fw-semibold fs-4 m-0 p-0">Privacy & Security</p></:body>
+          <:body>
+            <div class="d-flex w-100 justify-content-between">
+              <p class="fw-semibold fs-4 m-0 p-0">Privacy & Security</p>
+              {{#if (eq this.currentRoute "registration.confirmation")}}
+                <Icon @type="bi-check-lg" @color="success" />
+              {{/if}}
+            </div>
+          </:body>
         </Card>
       </LinkTo>
     </div>
     <hr class="my-0" />
     <div class="d-flex">
       <Button
-        class="btn-primary py-3 flex-fill"
+        class="{{if
+            (eq this.currentRoute 'registration.confirmation')
+            'btn-success'
+            'btn-primary'
+          }}
+          py-3 flex-fill text-white"
         @disabled={{this.buttonDisabled}}
         {{on "click" this.changeRoute}}
       >{{if
