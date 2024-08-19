@@ -19,27 +19,27 @@ export default class RegistrationController extends Controller {
   get currentRoute() {
     return this.router.currentRouteName;
   }
+  routes = [
+    'registration.user',
+    'registration.billing',
+    'registration.privacy',
+    'registration.confirmation',
+    'installation',
+  ];
 
   get nextRoute() {
-    if (this.currentRoute === 'registration.privacy') {
-      return 'registration.confirmation';
-    } else {
-      return 'installation';
+    const currentIndex = this.routes.findIndex(
+      (route) => route === this.currentRoute,
+    );
+    if (currentIndex < this.routes.length - 1) {
+      const next = this.routes[currentIndex + 1];
+      return next;
     }
+    return '/';
   }
 
   @action
   changeRoute() {
     this.router.transitionTo(this.nextRoute);
-  }
-
-  get buttonDisabled() {
-    if (
-      this.currentRoute === 'registration.privacy' ||
-      this.currentRoute === 'registration.confirmation'
-    ) {
-      return false;
-    }
-    return true;
   }
 }

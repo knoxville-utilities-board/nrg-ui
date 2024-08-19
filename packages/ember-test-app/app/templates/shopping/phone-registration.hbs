@@ -10,7 +10,7 @@
       <div
         class="w-100 mt-4 row d-flex justify-self-center justify-content-center align-items-center"
       >
-        <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex">
+        <div class="col-12 col-md-6 mb-3 mb-md-0 d-flex p-0 p-md-2">
           <Button
             class="w-100 {{this.newBtnClass}}"
             @icon={{if (eq this.phoneNumberOption "new") "bi-check-lg"}}
@@ -21,7 +21,7 @@
             @onClick={{fn this.setPhoneNumberOption "new"}}
           />
         </div>
-        <div class="col-12 col-md-6 d-flex">
+        <div class="col-12 col-md-6 d-flex p-0">
           <Button
             class="w-100 {{this.existingBtnClass}} "
             @icon={{if (eq this.phoneNumberOption "existing") "bi-check-lg"}}

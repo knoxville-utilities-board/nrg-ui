@@ -7,12 +7,12 @@
     </:subheader>
   </Mktg::SectionHeader>
   <Mktg::CardContainer class="row d-flex justify-content-center" as |Container|>
-    <Container.MktgCard
+    <Container.Card
       class="col-12 col-lg-4 my-4 mb-md-0 mx-4"
       @hasBorder={{false}}
       @hasHorizontalDivider={{false}}
     >
-      <:start>
+      <:body>
         <p
           class="d-flex w-100 mb-2 p-0 fw-semibold fs-4 justify-self-start"
         >Write Down This Account Info</p>
@@ -24,14 +24,14 @@
           <p class="m-0 p-0 fw-semibold">Order Number:</p>
           <p class="mb-3 p-0">Provided via email</p>
         </div>
-      </:start>
-    </Container.MktgCard>
-    <Container.MktgCard
+      </:body>
+    </Container.Card>
+    <Container.Card
       class="col-12 col-lg-4 my-4 mb-md-0 mx-4"
       @hasBorder={{false}}
       @hasHorizontalDivider={{false}}
     >
-      <:start>
+      <:body>
         <p
           class="d-flex mb-2 p-0 fw-semibold fs-4 align-self-start"
         >Installation</p>
@@ -48,7 +48,7 @@
           <p class="m-0 p-0 fw-semibold">Email Us:</p>
           <p class="mb-3 p-0">orders@kub.org</p>
         </div>
-      </:start>
-    </Container.MktgCard>
+      </:body>
+    </Container.Card>
   </Mktg::CardContainer>
 </div>
