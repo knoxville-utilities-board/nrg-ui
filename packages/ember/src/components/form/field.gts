@@ -1,7 +1,9 @@
+import { registerDestructor } from '@ember/destroyable';
 import { hash } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { runTask } from 'ember-lifeline';
 
 import RadioGroup from './radio-group.gts';
 import Select from './select.gts';
@@ -16,11 +18,14 @@ import type { SelectSignature } from './select.gts';
 import type { TextAreaSignature } from './text-area.gts';
 import type { TextFieldSignature } from './text-field.gts';
 import type { Binding } from '../../';
-import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike } from '@glint/template';
 
 declare interface TextSignature {
   Element: HTMLDivElement;
+  Args: {
+    id?: string;
+    field: Field;
+  };
   Blocks: {
     default: [];
   };
@@ -50,21 +55,41 @@ export interface FieldSignature {
   };
 }
 
-const Text: TOC<TextSignature> = <template>
-  <div class="form-text" ...attributes>
-    {{yield}}
-  </div>
-</template>;
+class Text extends Component<TextSignature> {
+  constructor(owner: unknown, args: TextSignature['Args']) {
+    super(owner, args);
+
+    runTask(this, () => {
+      args.field.hasText = true;
+    });
+
+    registerDestructor(this, () => {
+      args.field.hasText = false;
+    });
+  }
+
+  <template>
+    <div class="form-text" id={{@id}} ...attributes>
+      {{yield}}
+    </div>
+  </template>
+}
 
 export default class Field extends Component<FieldSignature> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   TypedSelect = Select<any>;
 
   @tracked
+  hasText = false;
+
+  @tracked
   fieldId = crypto.randomUUID();
 
   @tracked
   messageId = crypto.randomUUID();
+
+  @tracked
+  textId = crypto.randomUUID();
 
   requiredId?: string;
 
@@ -97,6 +122,20 @@ export default class Field extends Component<FieldSignature> {
 
   get name() {
     return this.args.name ?? this.binding.valuePath;
+  }
+
+  get describedBy() {
+    const describedBy = [];
+
+    if (this.hasError) {
+      describedBy.push(this.messageId);
+    }
+
+    if (this.hasText) {
+      describedBy.push(this.textId);
+    }
+
+    return describedBy.join(' ');
   }
 
   @action
@@ -156,7 +195,7 @@ export default class Field extends Component<FieldSignature> {
       (hash
         RadioGroup=(component
           RadioGroup
-          describedBy=this.messageId
+          describedBy=this.describedBy
           disabled=@disabled
           id=this.fieldId
           initBinding=this.initBinding
@@ -164,16 +203,16 @@ export default class Field extends Component<FieldSignature> {
         )
         Select=(component
           this.TypedSelect
-          describedBy=this.messageId
+          describedBy=this.describedBy
           disabled=@disabled
           id=this.fieldId
           initBinding=this.initBinding
           isInvalid=this.hasError
         )
-        Text=(component Text id=this.fieldId)
+        Text=(component Text field=this id=this.textId)
         TextArea=(component
           TextArea
-          describedBy=this.messageId
+          describedBy=this.describedBy
           disabled=@disabled
           id=this.fieldId
           initBinding=this.initBinding
@@ -181,7 +220,7 @@ export default class Field extends Component<FieldSignature> {
         )
         TextField=(component
           TextField
-          describedBy=this.messageId
+          describedBy=this.describedBy
           disabled=@disabled
           id=this.fieldId
           initBinding=this.initBinding
