@@ -36,6 +36,7 @@ Router.map(function () {
   this.route('services');
   this.route('index', { path: '/' });
   this.route('signup');
+  this.route('confirm-address');
   this.route('login');
   this.route('address');
   this.route('confirmation');
