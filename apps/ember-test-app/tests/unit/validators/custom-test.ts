@@ -36,10 +36,11 @@ module('Unit | Validator | custom', function (hooks) {
     setOwner(this.model, this.owner);
   });
 
-  test('`on` option is required', function (this: TestContext, assert) {
+  test('`validate` option is required', function (this: TestContext, assert) {
     assert.expect(1);
 
     assert.throws(() => {
+      // @ts-expect-error Testing that the `validate` option is required
       const validator = new CustomValidator(this.binding, {}, this.model);
       const result = validator.result;
 
