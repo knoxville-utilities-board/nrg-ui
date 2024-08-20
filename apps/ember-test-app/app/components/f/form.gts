@@ -26,8 +26,10 @@ const Validators = {
         console.log('Validating: ' + value);
         return value !== 'foo';
       },
+      isWarning: true,
     }),
   ],
+  radio: [validator('exclusion', { in: ['A', 'B'], isWarning: true })],
 };
 
 class Model {
