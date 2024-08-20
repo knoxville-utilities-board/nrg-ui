@@ -20,31 +20,36 @@
         >
           <LinkTo class="z-1" @route="shopping.fiber-addons">View Addons</LinkTo>
           {{#if this.addonSelected}}
-            <Addon @label="Smart Gig" @price="$15/mo" />
+            <Addon
+              @label="Smart Gig"
+              @price={{if this.showBusinessProducts "$25/mo" "$15/mo"}}
+            />
           {{/if}}
         </Mktg::ServicePricing>
       </LinkTo>
-      <LinkTo
-        class="link-underline link-underline-opacity-0"
-        @route="shopping.tv"
-      >
-        <Mktg::ServicePricing
-          @label="TV"
-          @package={{this.tvPackage}}
-          @description={{this.tvDescription}}
-          @icon="bi-tv"
-          @selected={{this.tvSelected}}
-          @active={{if (eq this.activeTab "tv") true false}}
-          as |Addon|
+      {{#unless this.showBusinessProducts}}
+        <LinkTo
+          class="link-underline link-underline-opacity-0"
+          @route="shopping.tv"
         >
-          <LinkTo class="z-1" @route="shopping.tv-addons">View Addons</LinkTo>
-          {{#if this.tvAddons.length}}
-            {{#each this.tvAddons as |addon|}}
-              <Addon @label={{addon.label}} @price={{addon.price}} />
-            {{/each}}
-          {{/if}}
-        </Mktg::ServicePricing>
-      </LinkTo>
+          <Mktg::ServicePricing
+            @label="TV"
+            @package={{this.tvPackage}}
+            @description={{this.tvDescription}}
+            @icon="bi-tv"
+            @selected={{this.tvSelected}}
+            @active={{if (eq this.activeTab "tv") true false}}
+            as |Addon|
+          >
+            <LinkTo class="z-1" @route="shopping.tv-addons">View Addons</LinkTo>
+            {{#if this.tvAddons.length}}
+              {{#each this.tvAddons as |addon|}}
+                <Addon @label={{addon.label}} @price={{addon.price}} />
+              {{/each}}
+            {{/if}}
+          </Mktg::ServicePricing>
+        </LinkTo>
+      {{/unless}}
       <LinkTo
         class="link-underline link-underline-opacity-0"
         @route="shopping.phone"

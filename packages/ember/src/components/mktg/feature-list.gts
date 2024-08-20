@@ -1,16 +1,14 @@
 import Component from '@glimmer/component';
 import type { ComponentLike } from '@glint/template';
 import type { TOC } from '@ember/component/template-only';
-import { service } from '@ember/service';
-import ResponsiveService from '../../services/responsive.ts';
 
 const columnMap = {
-  1: 'g-col-md-12',
-  2: 'g-col-md-6',
-  3: 'g-col-md-4',
-  4: 'g-col-md-3',
-  6: 'g-col-md-2',
-  12: 'g-col-md-1',
+  1: 'g-col-lg-12',
+  2: 'g-col-lg-6',
+  3: 'g-col-lg-4',
+  4: 'g-col-lg-3',
+  6: 'g-col-lg-2',
+  12: 'g-col-lg-1',
 };
 
 interface FeatureSignature {
@@ -36,26 +34,24 @@ export interface MktgFeatureListSignature {
 }
 
 const Feature: TOC<FeatureSignature> = <template>
-  <p class="g-col-12 {{@class}}" ...attributes>
+  <p class="{{@class}}" ...attributes>
     <span class="me-2 fw-bold bi {{@icon}}">{{@meta}}</span>{{@text}}
   </p>
 </template>;
 
 export default class MktgFeatureList extends Component<MktgFeatureListSignature> {
-  @service declare responsive: ResponsiveService;
-
   get classList() {
     const { columns } = this.args;
-    if (this.responsive.isMobileDevice) {
+    if (columns === 1) {
       return 'g-col-12';
-    } else if (this.responsive.isTabletScreen && columns !== 1) {
-      return 'g-col-6';
+    } else {
+      return `g-col-12 g-col-md-6 ${columnMap[columns]}`;
     }
-    return columnMap[columns] || 'g-col-6';
   }
+
   <template>
     {{yield to="label"}}
-    <div class="grid">
+    <div class="grid mt-4 mb-2">
       {{yield (component Feature class=this.classList) to="features"}}
     </div>
   </template>

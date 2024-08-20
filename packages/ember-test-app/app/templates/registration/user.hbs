@@ -1,0 +1,38 @@
+<Mktg::CardContainer class="my-3 col-12 col-lg-9" as |Container|>
+  <Container.MktgCard
+    class="g-col-12 d-flex justify-content-start"
+    @hasBorder={{false}}
+    @title="Create a Username and Password"
+  >
+    <:start>
+      <p class="w-100">
+        Already have a KUB account?
+        <br />
+        <LinkTo @route="login">Sign in</LinkTo>
+      </p>
+    </:start>
+    <:end>
+      <div class="mb-3">
+        <div class="row">
+          <label for="username" class="form-label">Username</label>
+          <Nrg::TextField placeholder="Choose a username" id="username" />
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="row">
+          <label for="password" class="form-label">Password</label>
+          <Nrg::TextField placeholder="Choose a Password" id="password" />
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="row">
+          <label for="confirm-password" class="form-label">Confirm Password</label>
+          <Nrg::TextField
+            placeholder="Confirm Password"
+            id="confirm-password"
+          />
+        </div>
+      </div>
+    </:end>
+  </Container.MktgCard>
+</Mktg::CardContainer>

@@ -35,17 +35,36 @@ Router.map(function () {
   this.route('modifiers');
   this.route('services');
   this.route('index', { path: '/' });
+  this.route('signup');
+  this.route('login');
+  this.route('address');
+  this.route('confirmation');
+  this.route('confirmation-business');
+  this.route('installation');
   this.route('shopping', function () {
     this.route('fiber');
-    this.route('fiber-selected');
     this.route('fiber-addons');
+    this.route('fiber-selected');
+    this.route('fiber-business');
+    this.route('fiber-addons-business');
+    this.route('fiber-selected-business');
     this.route('phone');
     this.route('phone-addons');
     this.route('phone-registration');
+    this.route('phone-business');
+    this.route('phone-addons-business');
+    this.route('phone-registration-business');
     this.route('tv');
     this.route('tv-addons');
   });
-  this.route('installation', function () {
-    this.route('schedule');
+  this.route('registration', function () {
+    this.route('business');
+    this.route('user');
+    this.route('billing');
+    this.route('billing-business');
+    this.route('privacy');
+    this.route('privacy-business');
+    this.route('confirmation');
+    this.route('confirmation-business');
   });
 });

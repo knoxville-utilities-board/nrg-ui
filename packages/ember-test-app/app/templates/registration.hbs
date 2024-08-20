@@ -1,0 +1,84 @@
+{{page-title "User Registration"}}
+<div class="m-0 row flex-fill">
+  <Mktg::WorkflowTray>
+    <div class="d-none d-md-flex mx-2 fs-2">
+      <h2>Set Up Your KUB Account</h2>
+    </div>
+    <div class="my-3">
+      <LinkTo
+        class="link-underline link-underline-opacity-0"
+        @route="registration.user"
+      >
+        <Card
+          class="{{if (eq this.active 'user') 'border-2 border-primary'}}
+            rounded-4"
+        >
+          <:body>
+            <div class="d-flex w-100 justify-content-between">
+              <p class="fw-semibold fs-4 m-0 p-0">Username & Password</p>
+              {{#if (eq this.currentRoute "registration.confirmation")}}
+                <Icon @type="bi-check-lg" @color="success" />
+              {{/if}}
+            </div>
+          </:body>
+        </Card>
+      </LinkTo>
+    </div>
+    <div class="my-3">
+      <LinkTo
+        class="link-underline link-underline-opacity-0"
+        @route="registration.billing"
+      >
+        <Card
+          class="{{if (eq this.active 'billing') 'border-2 border-primary'}}
+            rounded-4"
+        >
+          <:body>
+            <div class="d-flex w-100 justify-content-between">
+              <p class="fw-semibold fs-4 m-0 p-0">Billing & Contact Info</p>
+              {{#if (eq this.currentRoute "registration.confirmation")}}
+                <Icon @type="bi-check-lg" @color="success" />
+              {{/if}}
+            </div>
+          </:body>
+        </Card>
+      </LinkTo>
+    </div>
+    <div class="my-3">
+      <LinkTo
+        class="link-underline link-underline-opacity-0"
+        @route="registration.privacy"
+      >
+        <Card
+          class="{{if (eq this.active 'privacy') 'border-2 border-primary'}}
+            rounded-4"
+        >
+          <:body>
+            <div class="d-flex w-100 justify-content-between">
+              <p class="fw-semibold fs-4 m-0 p-0">Privacy & Security</p>
+              {{#if (eq this.currentRoute "registration.confirmation")}}
+                <Icon @type="bi-check-lg" @color="success" />
+              {{/if}}
+            </div>
+          </:body>
+        </Card>
+      </LinkTo>
+    </div>
+    <hr class="my-0" />
+    <div class="d-flex">
+      <Button
+        class="{{this.navButtonClass}} py-3 flex-fill text-white"
+        @disabled={{false}}
+        {{on "click" this.changeRoute}}
+      >{{this.navButtonDisplay}}</Button>
+    </div>
+  </Mktg::WorkflowTray>
+  <div
+    class="scrollable-md bg-primary-subtle col-12 col-md-7 col-lg-8 order-1 order-md-2 d-flex flex-column align-items-center"
+  >
+    <div class="d-flex d-md-none mt-3 justify-self-center mx-2 fs-2">
+      <h2 class="m-0">Set Up Your KUB Account</h2>
+    </div>
+    {{outlet}}
+  </div>
+</div>

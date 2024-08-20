@@ -1,0 +1,87 @@
+<Mktg::CardContainer class="my-3 col-12 col-lg-9" as |Container|>
+  <Container.MktgCard
+    class="g-col-12"
+    @hasBorder={{false}}
+    @title="Set Up Your Security Code"
+    @subtitle="Create a security code with a minimum of 4 digits. You'll use this code to
+      verify your identity when you contact KUB."
+  >
+    <:start>
+      <div class="d-flex w-100 align-items-start flex-column">
+        <div class="mb-3">
+          <div class="row">
+            <label for="security-code" class="form-label">Security Code</label>
+            <Nrg::TextField placeholder="Security Code" id="security-code" />
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="row">
+            <label for="confirm-security-code" class="form-label">Confirm
+              Security Code</label>
+            <Nrg::TextField
+              placeholder="Confirm Security Code"
+              id="confirm-security-code"
+            />
+          </div>
+        </div>
+      </div>
+    </:start>
+    <:end>
+      <h4>Enter security questions</h4>
+      <p>
+        In the event of an emergency, we'll use these questions to verify your
+        identity.
+      </p>
+      <div class="mb-3">
+        <div class="row">
+          <label for="state" class="form-label">Security Question One</label>
+          <div class="dropdown p-0">
+            <button
+              class="btn border dropdown-toggle d-flex justify-content-between align-items-center w-100 m-0"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Select
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">TN</a></li>
+              <li><a class="dropdown-item" href="#">Is there anything else?</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="row">
+          <label for="answer1" class="form-label">Answer</label>
+          <Nrg::TextField placeholder="Answer" id="answer1" />
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="row">
+          <label for="state" class="form-label">Security Question Two</label>
+          <div class="dropdown p-0">
+            <button
+              class="btn border dropdown-toggle d-flex justify-content-between align-items-center w-100 m-0"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Select
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">TN</a></li>
+              <li><a class="dropdown-item" href="#">Is there anything else?</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="row">
+          <label for="answer2" class="form-label">Answer</label>
+          <Nrg::TextField placeholder="Answer" id="answer2" />
+        </div>
+      </div>
+    </:end>
+  </Container.MktgCard>
+</Mktg::CardContainer>

@@ -18,7 +18,7 @@ export default class ApplicationController extends Controller {
       label: 'KUB Fiber is available at 123 Main St',
       link: {
         text: 'Change Address',
-        route: 'index',
+        route: 'signup',
       },
     },
   ];
