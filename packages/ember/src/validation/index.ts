@@ -12,11 +12,8 @@ export { default as RegexValidator } from './validators/regex.ts';
 export { validator } from './utils.ts';
 
 export type {
+  BaseOptions,
   ComputedProperty,
-  DerivedOptions,
-  DerivedOptionValue,
-  Options,
-  OptionValue,
   TranslatableMessage,
   TranslatableOption,
   ValidateFnResponse,

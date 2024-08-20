@@ -9,8 +9,8 @@ import { cached } from '@glimmer/tracking';
 
 import type { Binding } from '../../';
 import type {
-  DerivedOptions,
-  Options,
+  BaseOptions,
+  Computable,
   TranslatableMessage,
   ValidateFnResponse,
   ValidationResult,
@@ -34,26 +34,27 @@ export function unwrapProxy<T>(value: T): T {
 export default abstract class BaseValidator<
   T,
   Model extends object = Record<string, unknown>,
-  OptionsShape extends DerivedOptions = DerivedOptions,
   Context extends object = Record<string, unknown>,
-> implements Validator<T, Model, OptionsShape, Context>
+  OptionsShape extends BaseOptions = BaseOptions,
+> implements Validator<T, Model, Context, OptionsShape>
 {
   abstract validate(
-    this: BaseValidator<T, Model, OptionsShape, Context>,
+    this: BaseValidator<T, Model, Context, OptionsShape>,
     value: T,
     options: OptionsShape,
     context: Context | Model,
   ): ValidateFnResponse;
-  defaultOptions: OptionsShape = {} as OptionsShape;
+  defaultOptions: Computable<Context, OptionsShape & BaseOptions> =
+    {} as OptionsShape;
 
   readonly owner;
   readonly binding: Binding<Model>;
-  readonly options: OptionsShape;
+  readonly options: Computable<Context, OptionsShape & BaseOptions>;
   readonly context: Context | Model;
 
   constructor(
     binding: Binding<Model>,
-    options: OptionsShape,
+    options: Computable<Context, OptionsShape & BaseOptions>,
     context: Context,
   ) {
     this.binding = binding;
@@ -120,6 +121,14 @@ export default abstract class BaseValidator<
         message,
       };
     }
+    if (options.key) {
+      const message = this.translateMessage({ key: options.key, ...options });
+      return {
+        isValid: false,
+        isWarning: options.isWarning ?? false,
+        message,
+      };
+    }
 
     return response;
   }
@@ -130,18 +139,34 @@ export default abstract class BaseValidator<
     return this.intl.t(key, options);
   }
 
-  computeOptions(options: Options<Context>): OptionsShape {
+  computeOptions(options: Computable<Context, OptionsShape>) {
     const { context, defaultOptions } = this;
-    const computed: Record<string, unknown> = {};
+    const computed = {} as OptionsShape;
 
-    for (const [key, value] of Object.entries(options)) {
+    for (const key of Object.keys(options)) {
+      const value = options[key as keyof OptionsShape];
       if (typeof value === 'function') {
-        computed[key] = value.apply(context);
+        computed[key as keyof OptionsShape] = value.apply(context);
       } else {
-        computed[key] = value;
+        computed[key as keyof OptionsShape] =
+          value as OptionsShape[keyof OptionsShape];
       }
     }
 
-    return { ...defaultOptions, ...computed } as OptionsShape;
+    for (const key of Object.keys(defaultOptions)) {
+      if (key in computed) {
+        continue;
+      }
+
+      const value = defaultOptions[key as keyof OptionsShape];
+      if (typeof value === 'function') {
+        computed[key as keyof OptionsShape] = value.apply(context);
+      } else {
+        computed[key as keyof OptionsShape] =
+          value as OptionsShape[keyof OptionsShape];
+      }
+    }
+
+    return { ...computed };
   }
 }

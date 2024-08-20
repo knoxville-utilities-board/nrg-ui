@@ -2,7 +2,7 @@ import { isEmpty, isNone } from '@ember/utils';
 
 import BaseValidator from './base.ts';
 
-import type { ValidateFnResponse } from '../types';
+import type { BaseOptions, ValidateFnResponse } from '../types';
 
 export type NumberOptions = {
   /**
@@ -53,14 +53,14 @@ export type NumberOptions = {
    * When set, the number must be exactly this value
    */
   is?: number;
-};
+} & BaseOptions;
 
 declare type NumberLike = number | string | null | undefined;
 
 export default class NumberValidator<
   Model extends object,
   Context extends object = Record<string, unknown>,
-> extends BaseValidator<NumberLike, Model, NumberOptions, Context> {
+> extends BaseValidator<NumberLike, Model, Context, NumberOptions> {
   defaultOptions = {
     allowNone: true,
   };

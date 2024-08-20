@@ -4,7 +4,12 @@ import { isEqual, isPresent } from '@ember/utils';
 import BaseValidator from './base.ts';
 
 import type { Binding } from '../../';
-import type { TranslatableOption, ValidateFnResponse } from '../types';
+import type {
+  BaseOptions,
+  Computable,
+  TranslatableOption,
+  ValidateFnResponse,
+} from '../types';
 
 export type ConfirmationOptions = {
   /**
@@ -16,20 +21,21 @@ export type ConfirmationOptions = {
    * The property name to compare the value against.
    */
   on: string;
-};
+} & BaseOptions;
 
 export default class ConfirmationValidator<
   Model extends object,
+  Context extends object = Record<string, TranslatableOption>,
 > extends BaseValidator<
   TranslatableOption,
   Model,
-  ConfirmationOptions,
-  Record<string, TranslatableOption>
+  Context,
+  ConfirmationOptions
 > {
   constructor(
     binding: Binding<Model>,
-    options: ConfirmationOptions,
-    context: Record<string, TranslatableOption>,
+    options: Computable<Context, ConfirmationOptions>,
+    context: Context,
   ) {
     super(binding, options, context);
 
@@ -44,11 +50,11 @@ export default class ConfirmationValidator<
   validate(
     value: TranslatableOption,
     options: ConfirmationOptions,
-    context: Record<string, TranslatableOption>,
+    context: Context,
   ): ValidateFnResponse {
     const { label, on } = options;
 
-    const expectedValue = context[on];
+    const expectedValue = (context as Record<string, TranslatableOption>)[on];
 
     if (isEqual(value, expectedValue)) {
       return true;

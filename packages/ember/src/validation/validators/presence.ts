@@ -4,7 +4,7 @@ import { isEmpty, isPresent } from '@ember/utils';
 import BaseValidator from './base.ts';
 
 import type { Binding } from '../../';
-import type { ValidateFnResponse } from '../types';
+import type { BaseOptions, Computable, ValidateFnResponse } from '../types';
 
 export type PresenceOptions = {
   /**
@@ -17,13 +17,13 @@ export type PresenceOptions = {
    * @default false
    */
   ignoreBlank?: boolean;
-};
+} & BaseOptions;
 
 export default class PresenceValidator<
   T,
   Model extends object,
   Context extends object = Record<string, unknown>,
-> extends BaseValidator<T, Model, PresenceOptions, Context> {
+> extends BaseValidator<T, Model, Context, PresenceOptions> {
   defaultOptions = {
     presence: true,
     ignoreBlank: false,
@@ -31,7 +31,7 @@ export default class PresenceValidator<
 
   constructor(
     binding: Binding<Model>,
-    options: PresenceOptions,
+    options: Computable<Context, PresenceOptions>,
     context: Context,
   ) {
     super(binding, options, context);

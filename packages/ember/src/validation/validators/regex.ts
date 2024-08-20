@@ -4,7 +4,7 @@ import { isNone } from '@ember/utils';
 import BaseValidator from './base.ts';
 
 import type { Binding } from '../..';
-import type { ValidateFnResponse } from '../types';
+import type { BaseOptions, Computable, ValidateFnResponse } from '../types';
 
 export type RegexOptions = {
   /**
@@ -16,15 +16,15 @@ export type RegexOptions = {
    * A regular expression pattern that the value must match.
    */
   pattern: RegExp | string;
-};
+} & BaseOptions;
 
 export default class RegexValidator<
   Model extends object = Record<string, unknown>,
   Context extends object = Record<string, unknown>,
-> extends BaseValidator<string, Model, RegexOptions, Context> {
+> extends BaseValidator<string, Model, Context, RegexOptions> {
   constructor(
     binding: Binding<Model>,
-    options: RegexOptions,
+    options: Computable<Context, RegexOptions>,
     context: Context,
   ) {
     super(binding, options, context);
@@ -35,11 +35,6 @@ export default class RegexValidator<
       'RegexValidator requires `pattern` to be provided',
       !isNone(pattern),
     );
-
-    assert(
-      'RegexValidator requires the pattern to be of type string or RegExp',
-      typeof pattern === 'string' || pattern instanceof RegExp,
-    );
   }
 
   validate(value: string, options: RegexOptions): ValidateFnResponse {
@@ -48,6 +43,11 @@ export default class RegexValidator<
     assert(
       'RegexValidator requires a pattern to be provided',
       !isNone(pattern),
+    );
+
+    assert(
+      'RegexValidator requires the pattern to be of type string or RegExp',
+      typeof pattern === 'string' || pattern instanceof RegExp,
     );
 
     const regex = typeof pattern === 'string' ? new RegExp(pattern) : pattern;
