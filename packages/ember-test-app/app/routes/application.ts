@@ -1,7 +1,6 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import type RouterService from '@ember/routing/router-service';
-import { tracked } from '@glimmer/tracking';
 
 import type EmberFreestyleService from 'ember-freestyle/services/ember-freestyle';
 
