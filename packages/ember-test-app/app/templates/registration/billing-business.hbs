@@ -1,0 +1,95 @@
+<Mktg::CardContainer class="my-3 col-12 col-lg-9" as |Container|>
+  <Container.MktgCard
+    class="g-col-12 d-flex justify-content-start"
+    @hasBorder={{false}}
+    @title="Billing & Contact Info"
+  >
+    <:end>
+      <div class="mb-3">
+        <div class="row">
+          <label for="first-name" class="form-label">Business Name</label>
+          <Nrg::TextField placeholder="First Name" id="first-name" />
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="row">
+          <label for="tax-number" class="form-label">Tax ID Number</label>
+          <Nrg::TextField placeholder="First Name" id="tax-number" />
+        </div>
+      </div>
+      <hr />
+      <div class="mb-3">
+        <div class="row">
+          <div class="form-check form-switch mx-1">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckChecked"
+              checked
+            />
+            <label class="form-check-label" for="flexSwitchCheckChecked">Billing
+              is the same as service location</label>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="row">
+          <label for="address" class="form-label">Address</label>
+          <Nrg::TextField placeholder="Address" id="address" />
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="row">
+          <label for="address2" class="form-label">Address Line 2</label>
+          <Nrg::TextField placeholder="Address Line 2" id="address2" />
+        </div>
+      </div>
+      <hr />
+      <div class="mb-3">
+        <div class="row">
+          <label for="city" class="form-label">City</label>
+          <Nrg::TextField placeholder="City" id="city" />
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="row">
+          <label for="state" class="form-label">State</label>
+          <div class="dropdown p-0">
+            <button
+              class="btn border dropdown-toggle d-flex justify-content-between align-items-center w-100 m-0"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Tennessee
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">TN</a></li>
+              <li><a class="dropdown-item" href="#">Is there anything else?</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="row">
+          <label for="zip" class="form-label">Zip</label>
+          <Nrg::TextField placeholder="Zip" id="zip" />
+        </div>
+      </div>
+      <hr />
+      <div class="mb-3">
+        <div class="row">
+          <label for="phone" class="form-label">Phone</label>
+          <Nrg::TextField placeholder="Phone" id="phone" />
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="row">
+          <label for="email" class="form-label">Email</label>
+          <Nrg::TextField placeholder="Email" id="email" />
+        </div>
+      </div>
+    </:end>
+  </Container.MktgCard>
+</Mktg::CardContainer>

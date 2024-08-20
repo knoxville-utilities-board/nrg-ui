@@ -67,19 +67,10 @@
     <hr class="my-0" />
     <div class="d-flex">
       <Button
-        class="{{if
-            (eq this.currentRoute 'registration.confirmation')
-            'btn-success'
-            'btn-primary'
-          }}
-          py-3 flex-fill text-white"
+        class="{{this.navButtonClass}} py-3 flex-fill text-white"
         @disabled={{false}}
         {{on "click" this.changeRoute}}
-      >{{if
-          (eq this.currentRoute "registration.confirmation")
-          "Confirm"
-          "Next"
-        }}</Button>
+      >{{this.navButtonDisplay}}</Button>
     </div>
   </Mktg::WorkflowTray>
   <div

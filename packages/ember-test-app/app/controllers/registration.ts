@@ -7,11 +7,14 @@ export default class RegistrationController extends Controller {
   @service declare router: RouterService;
 
   get active() {
-    if (this.currentRoute === 'registration.user') {
+    if (
+      this.currentRoute === 'registration.user' ||
+      this.currentRoute === 'registration.business'
+    ) {
       return 'user';
-    } else if (this.currentRoute === 'registration.billing') {
+    } else if (this.currentRoute.startsWith('registration.billing')) {
       return 'billing';
-    } else if (this.currentRoute === 'registration.privacy') {
+    } else if (this.currentRoute.startsWith('registration.privacy')) {
       return 'privacy';
     }
     return '';
@@ -19,6 +22,19 @@ export default class RegistrationController extends Controller {
   get currentRoute() {
     return this.router.currentRouteName;
   }
+
+  get businessRegistration() {
+    return this.currentRoute.endsWith('business');
+  }
+
+  businessRoutes = [
+    'registration.business',
+    'registration.billing-business',
+    'registration.privacy-business',
+    'registration.confirmation-business',
+    'installation',
+  ];
+
   routes = [
     'registration.user',
     'registration.billing',
@@ -28,14 +44,29 @@ export default class RegistrationController extends Controller {
   ];
 
   get nextRoute() {
-    const currentIndex = this.routes.findIndex(
+    const routeOptions = this.businessRegistration
+      ? this.businessRoutes
+      : this.routes;
+    const currentIndex = routeOptions.findIndex(
       (route) => route === this.currentRoute,
     );
-    if (currentIndex < this.routes.length - 1) {
-      const next = this.routes[currentIndex + 1];
+    if (currentIndex < routeOptions.length - 1) {
+      const next = routeOptions[currentIndex + 1];
       return next;
     }
     return '/';
+  }
+
+  get navButtonDisplay() {
+    return this.currentRoute.startsWith('registration.confirmation')
+      ? 'Confirm'
+      : 'Next';
+  }
+
+  get navButtonClass() {
+    return this.currentRoute.startsWith('registration.confirmation')
+      ? 'btn-success'
+      : 'btn-primary';
   }
 
   @action

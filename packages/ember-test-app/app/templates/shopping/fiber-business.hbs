@@ -1,0 +1,132 @@
+<Mktg::CardContainer class="my-3 col-12 col-lg-9" as |Container|>
+  <Container.MktgCard
+    class="g-col-12"
+    @hasBorder={{false}}
+    @title="Business Connect"
+    @subtitle="Internet for small businesses with a need fo essential and flexible services"
+  >
+    <:callout>
+      <p class="fw-bold fs-1 m-0 p-0">$85<span class="fs-5 mb-2">/mo</span></p>
+    </:callout>
+    <:end>
+      <Mktg::FeatureList class="mb-2 mb-md-4" @columns={{2}}>
+        <:label>
+          <p>Includes:</p>
+        </:label>
+        <:features as |Feature|>
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @icon="bi-check-lg"
+            @text="500 Mbps upload/download"
+          />
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @icon="bi-check-lg"
+            @text="Low Latency"
+          />
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @icon="bi-check-lg"
+            @text="Reliable Connection"
+          />
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @icon="bi-check-lg"
+            @text="Seamless streaming of 4k"
+          />
+        </:features>
+      </Mktg::FeatureList>
+      <Button
+        class="add-option bg-primary w-100 text-white mt-4"
+        @text="Add to Bundle"
+        @type="button"
+      />
+    </:end>
+  </Container.MktgCard>
+  <Container.MktgCard
+    class="g-col-12"
+    @hasBorder={{false}}
+    @title="The Gig At Work"
+    @subtitle="Access a gig at your business to fulfill all of your employee and customer needs"
+  >
+    <:callout>
+      <p class="fw-bold fs-1 m-0 p-0">$150<span class="fs-5 mb-2">/mo</span></p>
+    </:callout>
+    <:end>
+      <Mktg::FeatureList class="mb-2 mb-md-4" @columns={{2}}>
+        <:label>
+          <p>Includes:</p>
+        </:label>
+        <:features as |Feature|>
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @icon="bi-check-lg"
+            @text="1 Gbps upload/download"
+          />
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @icon="bi-check-lg"
+            @text="Extremely Low Latency Gaming"
+          />
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @icon="bi-check-lg"
+            @text="Reliable Connection"
+          />
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @icon="bi-check-lg"
+            @text="Seamless streaming of 4k"
+          />
+        </:features>
+      </Mktg::FeatureList>
+      <Button
+        class="bg-primary w-100 text-white mt-4"
+        @text="Add to Bundle"
+        @type="button"
+        @onClick={{this.clickHandler}}
+      />
+    </:end>
+  </Container.MktgCard>
+  <Container.MktgCard
+    class="g-col-12"
+    @hasBorder={{false}}
+    @title="Custom Connect Pro"
+    @subtitle="Our full business package tailored to your unique business needs"
+  >
+    <:end>
+      <Mktg::FeatureList @columns={{2}}>
+        <:label>
+          <p>Includes:</p>
+        </:label>
+        <:features as |Feature|>
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @icon="bi-check-lg"
+            @text="Dedicated service"
+          />
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @icon="bi-check-lg"
+            @text="Redundant feeds"
+          />
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @icon="bi-check-lg"
+            @text="Reliable Connection"
+          />
+          <Feature
+            class="mx-md-4 my-0 d-flex align-items-center"
+            @icon="bi-check-lg"
+            @text="Seamless streaming of 4k"
+          />
+        </:features>
+      </Mktg::FeatureList>
+      <Button
+        class="bg-primary w-100 text-white mt-4"
+        @text="Add to Bundle"
+        @type="button"
+      />
+    </:end>
+  </Container.MktgCard>
+</Mktg::CardContainer>

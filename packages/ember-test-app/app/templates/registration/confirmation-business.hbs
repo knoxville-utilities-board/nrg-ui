@@ -8,28 +8,14 @@
       <div>
         <Mktg::ServicePricing
           @label="Fiber"
-          @package="The Gig 2.5"
-          @description="$65/mo"
+          @package="The Gig At Work"
+          @description="$150/mo"
           @icon="bi-wifi"
           @selected={{true}}
           @active={{false}}
           as |Addon|
         >
-          <Addon @label="Smart Gig" @price="$15/mo" />
-        </Mktg::ServicePricing>
-        <Mktg::ServicePricing
-          @label="TV"
-          @package="Bronze"
-          @description="$107/mo"
-          @icon="bi-tv"
-          @selected={{true}}
-          @active={{false}}
-          as |Addon|
-        >
-          <Addon @label="FireStick" @price="$80" @quantity="2" />
-          <Addon @label="HBO" @price="$5.99/mo" />
-          <Addon @label="STARZ" @price="$4.99/mo" />
-          <Addon @label="Spanish Language Channels" @price="$4.99/mo" />
+          <Addon @label="Smart Gig" @price="$25/mo" />
         </Mktg::ServicePricing>
         <Mktg::ServicePricing
           @label="Phone"
@@ -38,16 +24,19 @@
           @icon="bi-telephone"
           @selected={{true}}
           @active={{false}}
-        />
+          as |Addon|
+        >
+          <Addon @label="Battery Backup" @price="$205" />
+        </Mktg::ServicePricing>
       </div>
       <div class="m-3">
         <div class="row justify-content-between my-2">
           <div class="col-auto">First Bill Including Fees</div>
-          <div class="col-auto">$411.97</div>
+          <div class="col-auto">$509</div>
         </div>
         <div class="row justify-content-between my-2">
           <div class="col-auto">Monthly Total</div>
-          <div class="col-auto">$331.97/mo</div>
+          <div class="col-auto">$304/mo</div>
         </div>
       </div>
     </:body>
@@ -65,7 +54,7 @@
             <label for="username" class="form-label">Username</label>
           </div>
           <div class="text-right">
-            johnDoe123
+            petStoreKnox
           </div>
         </div>
       </div>
@@ -84,30 +73,20 @@
       <div class="mb-3">
         <div class="d-flex flex-row justify-content-between w-100">
           <div>
-            <label for="username" class="form-label">First Name</label>
+            <label for="username" class="form-label">Business Name</label>
           </div>
           <div class="justify-content-end">
-            John
+            Knoxville Pet Store
           </div>
         </div>
       </div>
       <div class="mb-3">
         <div class="d-flex flex-row justify-content-between w-100">
           <div>
-            <label for="username" class="form-label">Middle</label>
+            <label for="username" class="form-label">Tax ID Number</label>
           </div>
-          <div class="text-right">
-            C
-          </div>
-        </div>
-      </div>
-      <div class="mb-3">
-        <div class="d-flex flex-row justify-content-between w-100">
-          <div>
-            <label for="username" class="form-label">Last Name</label>
-          </div>
-          <div class="text-right">
-            Doe
+          <div class="justify-content-end">
+            999 99 9999
           </div>
         </div>
       </div>
@@ -167,7 +146,7 @@
             <label for="username" class="form-label">Email</label>
           </div>
           <div class="text-right">
-            johnDoe@gmail.com
+            knoxpetstore@gmail.com
           </div>
         </div>
       </div>
