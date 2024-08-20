@@ -90,6 +90,11 @@ export default abstract class BaseValidator<
   get result(): ValidationResult {
     const { context, options, validate, value } = this;
     const computedOptions = this.computeOptions(options);
+
+    if (computedOptions.disabled) {
+      return { isValid: true };
+    }
+
     const response = validate.apply(this, [value, computedOptions, context]);
 
     return this.coalesceResponse(response, computedOptions);

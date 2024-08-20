@@ -15,6 +15,9 @@ import type { Binding } from '@nrg-ui/ember';
 class Model {
   @tracked
   field?: string | string[];
+
+  @tracked
+  disabled: boolean = false;
 }
 
 declare type TestContext = {
@@ -135,6 +138,39 @@ module('Unit | Validator | custom', function (hooks) {
       isValid: false,
       isWarning: false,
       message: 'This field is invalid: foo,bar',
+    });
+  });
+
+  test('disabled option works', async function (this: TestContext, assert) {
+    const validator = new CustomValidator(
+      this.binding,
+      {
+        validate() {
+          return false;
+        },
+        disabled() {
+          return this.disabled;
+        },
+      },
+      this.model,
+    );
+
+    this.model.field = ['foo', 'bar'];
+
+    let result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: false,
+      isWarning: false,
+      message: 'This field is invalid',
+    });
+
+    this.model.disabled = true;
+
+    result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: true,
     });
   });
 

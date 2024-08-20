@@ -55,6 +55,10 @@ export default class CustomValidator<
       options as CustomOptions<T, Context>,
     );
 
+    if (computedOptions.disabled) {
+      return { isValid: true };
+    }
+
     let response = (validate as ValidateFn<T, Context>).apply(context, [
       value,
       computedOptions,
