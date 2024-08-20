@@ -109,6 +109,10 @@ export default class Field extends Component<FieldSignature> {
     return typeof this.errorMessage === 'string';
   }
 
+  get hasWarning() {
+    return typeof this.warningMessage === 'string';
+  }
+
   get errorMessage() {
     const { form } = this.args;
 
@@ -119,6 +123,16 @@ export default class Field extends Component<FieldSignature> {
     return form.errorFor(this.validatorKey);
   }
 
+  get warningMessage() {
+    const { form } = this.args;
+
+    if (!form) {
+      return undefined;
+    }
+
+    return form.warningFor(this.validatorKey);
+  }
+
   get validatorKey() {
     return this.args.validatorKey ?? this.binding.valuePath;
   }
@@ -126,7 +140,7 @@ export default class Field extends Component<FieldSignature> {
   get describedBy() {
     const describedBy = [];
 
-    if (this.hasError) {
+    if (this.hasError || this.hasWarning) {
       describedBy.push(this.messageId);
     }
 
@@ -202,6 +216,7 @@ export default class Field extends Component<FieldSignature> {
           id=this.fieldId
           initBinding=this.initBinding
           isInvalid=this.hasError
+          isWarning=this.hasWarning
         )
         Select=(component
           this.TypedSelect
@@ -210,6 +225,7 @@ export default class Field extends Component<FieldSignature> {
           id=this.fieldId
           initBinding=this.initBinding
           isInvalid=this.hasError
+          isWarning=this.hasWarning
         )
         Text=(component Text field=this id=this.textId)
         TextArea=(component
@@ -219,6 +235,7 @@ export default class Field extends Component<FieldSignature> {
           id=this.fieldId
           initBinding=this.initBinding
           isInvalid=this.hasError
+          isWarning=this.hasWarning
         )
         TextField=(component
           TextField
@@ -227,12 +244,17 @@ export default class Field extends Component<FieldSignature> {
           id=this.fieldId
           initBinding=this.initBinding
           isInvalid=this.hasError
+          isWarning=this.hasWarning
         )
       )
     }}
     {{#if this.hasError}}
-      <div class="invalid-feedback" id={{this.messageId}}>
+      <div class="invalid-feedback" id={{this.describedBy}}>
         {{this.errorMessage}}
+      </div>
+    {{else if this.hasWarning}}
+      <div class="warning-feedback" id={{this.describedBy}}>
+        {{this.warningMessage}}
       </div>
     {{/if}}
   </template>

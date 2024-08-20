@@ -131,7 +131,9 @@ export default class Form extends Component<FormSignature> implements FormType {
     });
 
     const validations = Array.from(this.validations.values()).flat();
-    return validations.every((validator) => validator.v.result.isValid);
+    return validations
+      .filter((validator) => !validator.v.result.isWarning)
+      .every((validator) => validator.v.result.isValid);
   }
 
   submit = dropTask(async (event: SubmitEvent) => {
