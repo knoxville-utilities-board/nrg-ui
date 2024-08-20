@@ -28,14 +28,6 @@ export default class RadioGroupField extends BoundValue<
   RadioGroupFieldSignature,
   string
 > {
-  @action
-  change(updatedValue: Optional<string>) {
-    if (updatedValue) {
-      this.value = updatedValue;
-      this.onChange(updatedValue);
-    }
-  }
-
   get classList() {
     const classes = ['form-control'];
 
@@ -50,6 +42,18 @@ export default class RadioGroupField extends BoundValue<
     }
 
     return classes.join(' ');
+  }
+
+  get name() {
+    return this.args.name ?? crypto.randomUUID();
+  }
+
+  @action
+  change(updatedValue: Optional<string>) {
+    if (updatedValue) {
+      this.value = updatedValue;
+      this.onChange(updatedValue);
+    }
   }
 
   <template>
@@ -67,7 +71,7 @@ export default class RadioGroupField extends BoundValue<
             disabled=@disabled
             isInvalid=@isInvalid
             isWarning=@isWarning
-            name=@name
+            name=this.name
             onChange=this.change
           )
         )
