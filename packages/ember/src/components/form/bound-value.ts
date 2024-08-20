@@ -5,16 +5,17 @@ import { scheduleTask } from 'ember-lifeline';
 
 import { ensurePathExists } from '../../utils/ensure-path-exists.ts';
 
-import type { Binding, Optional } from '../../types.d.ts';
+import type { Binding, Optional } from '../../';
 
 export type BoundValueSignature<Signature, Type> = {
   Args: {
-    binding: Binding;
+    binding?: Binding;
 
     defaultValue?: Type;
     useDefaultValue?: boolean;
 
     allowChange?: (newValue: Type, oldValue: Type) => boolean;
+    initBinding?: (binding: Binding) => void;
     onChange?: (value: Type, ...args: unknown[]) => void;
   };
 } & Signature;
@@ -30,9 +31,11 @@ export default class BoundValue<Signature, T> extends Component<
   ) {
     super(owner, args);
 
+    const { binding } = args;
+
     assert(
-      'You must provide a binding argument to BoundValue',
-      this.args.binding,
+      `You must provide a binding argument to ${this.constructor.name}`,
+      binding,
     );
 
     const defaultValue = this.defaultValue;
@@ -46,14 +49,16 @@ export default class BoundValue<Signature, T> extends Component<
         this.onChange(defaultValue);
       });
     }
+
+    this.args.initBinding?.(binding);
   }
 
   get model() {
-    return this.args.binding.model;
+    return this.args.binding!.model;
   }
 
   get valuePath() {
-    return this.args.binding.valuePath;
+    return this.args.binding!.valuePath;
   }
 
   get value(): Optional<T> {

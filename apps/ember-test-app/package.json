@@ -124,6 +124,7 @@
     "edition": "octane"
   },
   "dependencies": {
+    "ember-concurrency": "^4.0.2",
     "ember-css-transitions": "^4.4.0"
   }
 }

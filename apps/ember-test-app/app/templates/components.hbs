@@ -1,71 +1,26 @@
 {{page-title "Components"}}
 <div class="row">
-  <div class="col-12 col-md-3 px-0">
-    <div class="p-4 sticky-top">
-      <div class="card mx-auto">
-        <div class="card-body">
-          <div class="list-group">
-            <LinkTo
-              @route="components.button"
-              class="list-group-item list-group-item-action"
-            >
-              Button
-            </LinkTo>
-            <LinkTo
-              @route="components.card"
-              class="list-group-item list-group-item-action"
-            >
-              Card
-            </LinkTo>
-            <LinkTo
-              @route="components.header"
-              class="list-group-item list-group-item-action"
-            >
-              Header
-            </LinkTo>
-            <LinkTo
-              @route="components.icon"
-              class="list-group-item list-group-item-action"
-            >
-              Icon
-            </LinkTo>
-            <LinkTo
-              @route="components.navbar"
-              class="list-group-item list-group-item-action"
-            >
-              Navbar
-            </LinkTo>
-            <LinkTo
-              @route="components.select"
-              class="list-group-item list-group-item-action"
-            >
-              Select
-            </LinkTo>
-            <LinkTo
-              @route="components.text-area"
-              class="list-group-item list-group-item-action"
-            >
-              Text Area
-            </LinkTo>
-            <LinkTo
-              @route="components.text-field"
-              class="list-group-item list-group-item-action"
-            >
-              Text Field
-            </LinkTo>
-            <LinkTo
-              @route="components.radio-group"
-              class="list-group-item list-group-item-action"
-            >
-              Radio Group
-            </LinkTo>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col p-4">
+  <Sidebar as |Sidebar|>
+    <Sidebar.Group @header="Components">
+      <:group as |Item|>
+        <Item @name="Button" @route="components.button" />
+        <Item @name="Card" @route="components.card" />
+        <Item @name="Header" @route="components.header" />
+        <Item @name="Icon" @route="components.icon" />
+        <Item @name="Navbar" @route="components.navbar" />
+      </:group>
+    </Sidebar.Group>
+    <Sidebar.Group @header="Forms">
+      <:group as |Item|>
+        <Item @name="Form" @route="components.form" />
+        <Item @name="Radio Group" @route="components.radio-group" />
+        <Item @name="Select" @route="components.select" />
+        <Item @name="Text Area" @route="components.text-area" />
+        <Item @name="Text Field" @route="components.text-field" />
+      </:group>
+    </Sidebar.Group>
+  </Sidebar>
+  <div class="col px-md-0 py-3">
     {{outlet}}
   </div>
 </div>

@@ -10,7 +10,7 @@ class Model {
   value: string = '';
 }
 
-module('Integration | components | form | radio-group', function (hooks) {
+module('Integration | Component | form/radio-group', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders a radio group', async function (assert) {

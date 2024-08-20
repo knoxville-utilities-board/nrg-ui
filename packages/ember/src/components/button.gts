@@ -3,14 +3,15 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { and, not, or } from 'ember-truth-helpers';
 
-import type ButtonGroup from './button-group';
-import type { Icon } from '../types';
+import type { ButtonGroupType } from './button-group';
+import type { Icon } from '../';
 
-interface ButtonSignature {
+export interface ButtonSignature {
   Element: HTMLButtonElement;
   Args: {
+    _class?: string;
     disabled?: boolean;
-    group?: ButtonGroup;
+    group?: ButtonGroupType;
     icon?: Icon;
     iconPosition?: 'right' | 'left';
     iconLabel?: string;
@@ -27,6 +28,10 @@ interface ButtonSignature {
 export default class ButtonComponent extends Component<ButtonSignature> {
   get classList() {
     let classes = ['btn'];
+
+    if (this.args._class) {
+      classes.push(this.args._class);
+    }
 
     if (this.args.disabled) {
       classes.push('disabled');
@@ -53,9 +58,6 @@ export default class ButtonComponent extends Component<ButtonSignature> {
 
   @action
   onClick(evt: MouseEvent) {
-    evt?.preventDefault();
-    evt?.stopPropagation();
-
     this.args.onClick?.(evt);
 
     this.args.group?.onClick(evt);

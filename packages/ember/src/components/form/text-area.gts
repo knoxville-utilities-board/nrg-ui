@@ -7,7 +7,10 @@ export interface TextAreaSignature {
   Element: HTMLTextAreaElement;
   Args: {
     basic?: boolean;
+    describedBy?: string;
     disabled?: boolean;
+    id?: string;
+    isInvalid?: boolean;
     readonly?: boolean;
   };
 }
@@ -18,6 +21,10 @@ export default class TextArea extends BoundValue<TextAreaSignature, string> {
 
     if (this.args.basic) {
       classes[0] += '-plaintext';
+    }
+
+    if (this.args.isInvalid) {
+      classes.push('is-invalid');
     }
 
     return classes.join(' ');
@@ -31,6 +38,8 @@ export default class TextArea extends BoundValue<TextAreaSignature, string> {
 
   <template>
     <textarea
+      aria-describedby={{@describedBy}}
+      id={{@id}}
       class={{this.classList}}
       disabled={{@disabled}}
       readonly={{@readonly}}

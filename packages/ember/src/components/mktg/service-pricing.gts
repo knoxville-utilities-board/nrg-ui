@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 
 import Icon from '../icon.gts';
 
-import type { Icon as IconType } from '../../types';
+import type { Icon as IconType } from '../../';
 import type { ComponentLike } from '@glint/template';
 
 interface AddonSignature {
@@ -27,7 +27,7 @@ interface MktgServicePricingSignature {
     selected?: boolean;
   };
   Blocks: {
-    default: [ComponentLike<typeof Addon>];
+    default: [ComponentLike<AddonSignature>];
   };
   Element: HTMLElement;
 }

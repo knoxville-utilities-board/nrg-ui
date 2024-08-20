@@ -15,7 +15,7 @@ import { runTask } from 'ember-lifeline';
 import BoundValue from './bound-value.ts';
 import onInsert from '../../modifiers/did-insert.ts';
 
-import type { Optional } from '../../types.d.ts';
+import type { Optional } from '../../';
 import type IntlService from 'ember-intl/services/intl';
 
 declare type SelectOption<T> = {
@@ -77,12 +77,15 @@ class SelectItem<T> extends Component<SelectItemSignature<T>> {
 
 export interface SelectSignature<T> {
   Args: {
-    disabled?: boolean;
-    loading?: boolean;
-    scrollable?: boolean;
     defaultText?: string;
-    options: T[];
+    describedBy?: string;
+    disabled?: boolean;
     displayPath?: string;
+    id?: string;
+    isInvalid?: boolean;
+    loading?: boolean;
+    options: T[];
+    scrollable?: boolean;
     serializationPath?: string | null;
   };
   Blocks: {
@@ -120,6 +123,10 @@ export default class Select<T> extends BoundValue<
 
     if (this.scrollable) {
       classes.push('scrollable');
+    }
+
+    if (this.args.isInvalid) {
+      classes.push('is-invalid');
     }
 
     return classes.join(' ');
@@ -366,10 +373,12 @@ export default class Select<T> extends BoundValue<
   <template>
     <button
       class={{this.classList}}
+      id={{@id}}
       type="button"
       role="combobox"
       disabled={{this.disabled}}
       aria-controls={{this.menuId}}
+      aria-describedby={{@describedBy}}
       aria-expanded={{this._isOpen}}
       aria-haspopup="listbox"
       {{on "click" this.toggleSelect}}

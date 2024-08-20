@@ -4,7 +4,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { cssTransition } from 'ember-css-transitions';
 
-import type { Icon } from '../types';
+import type { Icon } from '../';
 
 declare type AlertType =
   | 'primary'

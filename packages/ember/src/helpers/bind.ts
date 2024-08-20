@@ -1,6 +1,6 @@
 import Helper from '@ember/component/helper';
 
-import type { Binding } from '../types';
+import type { Binding } from '../';
 
 export function bind<Model extends object = Record<string, unknown>>(
   model: Model,

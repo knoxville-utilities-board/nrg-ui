@@ -2,7 +2,7 @@ import { assert } from '@ember/debug';
 
 import BaseValidator from './base.ts';
 
-import type { Binding, Primitive } from '../../types';
+import type { Binding, Primitive } from '../../';
 import type { ValidateFnResponse } from '../types';
 
 export type ExclusionOptions<T> = {
@@ -14,9 +14,14 @@ export type ExclusionOptions<T> = {
 
 export default class ExclusionValidator<
   T extends Primitive,
+  Model extends object,
   Context extends object = Record<string, unknown>,
-> extends BaseValidator<T, ExclusionOptions<T>, Context> {
-  constructor(bind: Binding, options: ExclusionOptions<T>, context: Context) {
+> extends BaseValidator<T, Model, ExclusionOptions<T>, Context> {
+  constructor(
+    bind: Binding<Model>,
+    options: ExclusionOptions<T>,
+    context: Context,
+  ) {
     super(bind, options, context);
 
     const { in: invalidValues } = options;

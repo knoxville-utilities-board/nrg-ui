@@ -12,7 +12,7 @@ const columnMap = {
   12: 'g-col-lg-1',
 };
 
-interface FeatureSignature {
+export interface FeatureSignature {
   Args: {
     icon?: string;
     text?: string;
@@ -25,7 +25,7 @@ interface FeatureSignature {
 export interface MktgFeatureListSignature {
   Element: HTMLDivElement;
   Blocks: {
-    features: [ComponentLike<typeof Feature>];
+    features: [ComponentLike<FeatureSignature>];
     label: [];
     default?: [];
   };

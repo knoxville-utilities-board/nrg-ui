@@ -5,7 +5,7 @@ import { cached } from '@glimmer/tracking';
 
 import BaseValidator from './base.ts';
 
-import type { Binding } from '../../types';
+import type { Binding } from '../../';
 import type {
   DerivedOptions,
   ValidateFnResponse,
@@ -28,10 +28,11 @@ export type CustomOptions<T> = {
 
 export default class CustomValidator<
   T,
+  Model extends object,
   Options extends CustomOptions<T> = CustomOptions<T>,
   Context extends object = Record<string, unknown>,
-> extends BaseValidator<T, Options, Context> {
-  constructor(binding: Binding, options: Options, context: Context) {
+> extends BaseValidator<T, Model, Options, Context> {
+  constructor(binding: Binding<Model>, options: Options, context: Context) {
     super(binding, options, context);
 
     const { validate } = options;
