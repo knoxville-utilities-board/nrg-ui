@@ -164,6 +164,7 @@
       "./components/form/bound-value.js": "./dist/_app_/components/form/bound-value.js",
       "./components/form/field.js": "./dist/_app_/components/form/field.js",
       "./components/form/index.js": "./dist/_app_/components/form/index.js",
+      "./components/form/phone-field.js": "./dist/_app_/components/form/phone-field.js",
       "./components/form/radio-group.js": "./dist/_app_/components/form/radio-group.js",
       "./components/form/select.js": "./dist/_app_/components/form/select.js",
       "./components/form/text-area.js": "./dist/_app_/components/form/text-area.js",

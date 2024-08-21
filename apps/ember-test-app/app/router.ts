@@ -20,10 +20,11 @@ Router.map(function () {
     this.route('header');
     this.route('icon');
     this.route('navbar');
+    this.route('phone-field');
+    this.route('radio-group');
     this.route('select');
     this.route('text-area');
     this.route('text-field');
-    this.route('radio-group');
   });
   this.route('helpers');
   this.route('mktg-components', function () {
