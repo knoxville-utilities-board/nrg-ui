@@ -14,7 +14,7 @@ export type Computable<Context, Options> = {
 
 export type ComputedProperty<Context, T> = T | ((this: Context) => T);
 
-export interface TranslatableMessage {
+export interface TranslatableMessage extends Partial<ValidationResult> {
   key: string;
   [option: string]: TranslatableOption;
 }

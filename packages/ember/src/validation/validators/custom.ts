@@ -65,10 +65,17 @@ export default class CustomValidator<
       context as Record<string, unknown>,
     ]);
 
-    response = this.coalesceResponse(response, computedOptions);
+    const stringValue = String(value);
+    response = this.coalesceResponse(response, {
+      ...computedOptions,
+      // @ts-expect-error `value` is not an option defined on `CustomOptions`,
+      // but it is a valid option for the `coalesceResponse` method (which is
+      // is used for translations)
+      value: stringValue,
+    });
     if (!response.isValid) {
       response.message ??= this.intl.t('nrg.validation.custom.invalid', {
-        value: String(value),
+        value: stringValue,
       });
 
       delete computedOptions.key;
