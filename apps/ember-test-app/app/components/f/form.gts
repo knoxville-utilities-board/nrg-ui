@@ -30,6 +30,11 @@ const Validators = {
     }),
   ],
   radio: [validator('exclusion', { in: ['A', 'B'], isWarning: true })],
+  phone: validator('length', {
+    max: 10,
+    isWarning: true,
+    message: 'Phone number cannot contain a country code',
+  }),
 };
 
 class Model {
@@ -41,6 +46,9 @@ class Model {
 
   @tracked
   select = '';
+
+  @tracked
+  phone = '';
 
   @tracked
   radio = '';
@@ -138,6 +146,11 @@ export default class extends Component {
               <Group.Radio @option="B" />
               <Group.Radio @option="C" />
             </Field.RadioGroup>
+          </Form.Field>
+        </div>
+        <div class="mb-3">
+          <Form.Field @label="Phone Number" @required={{true}} as |Field|>
+            <Field.Phone @binding={{bind this.model "phone"}} />
           </Form.Field>
         </div>
         <Form.SubmitButton class="btn-primary mt-3" />

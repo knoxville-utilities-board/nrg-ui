@@ -107,11 +107,13 @@ export default class PhoneField extends TextField {
 
   <template>
     <input
+      aria-describedby={{@describedBy}}
       class={{this.classList}}
       disabled={{@disabled}}
+      id={{@id}}
       readonly={{@readonly}}
-      type="tel"
       maxlength="19"
+      type="tel"
       value={{this.displayValue}}
       {{onInsert this.onInsert}}
       {{on "input" this.change}}

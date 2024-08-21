@@ -5,6 +5,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { runTask } from 'ember-lifeline';
 
+import PhoneField from './phone-field.gts';
 import RadioGroup from './radio-group.gts';
 import Select from './select.gts';
 import TextArea from './text-area.gts';
@@ -43,6 +44,7 @@ export interface FieldSignature {
   Blocks: {
     default: [
       {
+        Phone: ComponentLike<TextFieldSignature>;
         RadioGroup: ComponentLike<RadioGroupFieldSignature>;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         Select: ComponentLike<SelectSignature<any>>;
@@ -209,6 +211,15 @@ export default class Field extends Component<FieldSignature> {
     </label>
     {{yield
       (hash
+        Phone=(component
+          PhoneField
+          describedBy=this.describedBy
+          disabled=@disabled
+          id=this.fieldId
+          initBinding=this.initBinding
+          isInvalid=this.hasError
+          isWarning=this.hasWarning
+        )
         RadioGroup=(component
           RadioGroup
           describedBy=this.describedBy
