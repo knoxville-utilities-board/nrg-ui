@@ -250,7 +250,8 @@ export default class Form extends Component<FormSignature> implements FormType {
     }
 
     const warning = validators.find(
-      (validator) => validator.v.result.isWarning,
+      (validator) =>
+        !validator.v.result.isValid && validator.v.result.isWarning,
     );
 
     if (!warning) {
