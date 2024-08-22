@@ -1,0 +1,33 @@
+name: Require release-plan label
+on:
+  pull_request:
+    types: [opened, labeled, unlabeled, synchronize]
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: mheap/github-action-required-labels@v5
+        with:
+          mode: minimum
+          count: 1
+          labels: |
+            breaking
+            enhancement
+            bug
+            documentation
+            internal
+          add_comment: true
+          message: |
+            One of the following labels is required: `breaking`, `enhancement`, `bug`, `documentation`, `internal`.
+            Our PR naming convention can help determine the correct label.
+            `feat:` -> `enhancement`
+            `fix:` -> `bug`
+            `docs:` -> `documentation`
+            `test:` -> `internal`
+            `style:` -> `internal`
+            `chore:` -> `internal`
+            `refactor:` -> `enhancement` or `internal`
+
+            Any change that breaks backwards compatibility should also be labeled as `breaking`.
