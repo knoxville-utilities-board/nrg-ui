@@ -22,12 +22,14 @@ jobs:
           message: |
             One of the following labels is required: `breaking`, `enhancement`, `bug`, `documentation`, `internal`.
             Our PR naming convention can help determine the correct label.
+            Use the following as a loose guide:
             `feat:` -> `enhancement`
-            `fix:` -> `bug`
+            `refactor:` -> `enhancement` or `internal`
+            `fix:` -> `bug` or `internal`
             `docs:` -> `documentation`
             `test:` -> `internal`
             `style:` -> `internal`
             `chore:` -> `internal`
-            `refactor:` -> `enhancement` or `internal`
 
-            Any change that breaks backwards compatibility should also be labeled as `breaking`.
+            > [!IMPORTANT]
+            > Any change that breaks backwards compatibility should also be labeled as `breaking`.
