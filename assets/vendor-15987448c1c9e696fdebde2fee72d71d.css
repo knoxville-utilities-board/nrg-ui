@@ -1053,7 +1053,10 @@ button {
   border-radius: 0;
 }
 
-button:focus:not(:focus-visible) {
+button:focus:not(:focus-visible),
+button.form-control.is-warning:not(:focus-visible):focus:not([disabled]),
+button.form-check.is-warning:not(:focus-visible):focus:not([disabled]),
+button.form-check-input.is-warning:not(:focus-visible):focus:not([disabled]) {
   outline: 0;
 }
 
@@ -3169,7 +3172,13 @@ progress {
 .form-control[type=file]:not(:disabled):not([readonly]) {
   cursor: pointer;
 }
-.form-control:focus {
+.form-control:focus, input.form-control.is-warning:focus:not([disabled]),
+textarea.form-control.is-warning:focus:not([disabled]),
+select.form-control.form-select.is-warning:focus:not([disabled]),
+.form-control.is-warning:focus:not([disabled]),
+.form-control.form-check.is-warning:focus:not([disabled]),
+.form-control.form-check-input.is-warning:focus:not([disabled]),
+.form-control.is-warning:not([disabled]):focus {
   color: var(--bs-body-color);
   background-color: var(--bs-body-bg);
   border-color: #86b7fe;
@@ -3227,7 +3236,11 @@ progress {
   border: solid transparent;
   border-width: var(--bs-border-width) 0;
 }
-.form-control-plaintext:focus {
+.form-control-plaintext:focus,
+select.form-control-plaintext.form-select.is-warning:focus:not([disabled]),
+.form-control-plaintext.form-control.is-warning:focus:not([disabled]),
+.form-control-plaintext.form-check.is-warning:focus:not([disabled]),
+.form-control-plaintext.form-check-input.is-warning:focus:not([disabled]) {
   outline: 0;
 }
 .form-control-plaintext.form-control-sm, .form-control-plaintext.form-control-lg {
@@ -3316,7 +3329,11 @@ textarea.form-control-lg {
     transition: none;
   }
 }
-.form-select:focus {
+.form-select:focus,
+select.form-select.is-warning:focus:not([disabled]),
+.form-select.form-control.is-warning:focus:not([disabled]),
+.form-select.form-check.is-warning:focus:not([disabled]),
+.form-select.form-check-input.is-warning:focus:not([disabled]) {
   border-color: #86b7fe;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
@@ -3396,7 +3413,12 @@ textarea.form-control-lg {
 .form-check-input:active {
   filter: brightness(90%);
 }
-.form-check-input:focus {
+.form-check-input:focus,
+select.form-check-input.form-select.is-warning:focus:not([disabled]),
+.form-check-input.form-control.is-warning:focus:not([disabled]),
+.form-check-input.form-check.is-warning:focus:not([disabled]),
+.form-check-input.is-warning:focus:not([disabled]),
+.form-check-input.is-warning:not([disabled]):focus {
   border-color: #86b7fe;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
@@ -3443,7 +3465,8 @@ textarea.form-control-lg {
     transition: none;
   }
 }
-.form-switch .form-check-input:focus {
+.form-switch .form-check-input:focus,
+.form-switch .form-check-input.is-warning:focus:not([disabled]) {
   --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%2386b7fe'/%3e%3c/svg%3e");
 }
 .form-switch .form-check-input:checked {
@@ -3482,13 +3505,25 @@ textarea.form-control-lg {
   appearance: none;
   background-color: transparent;
 }
-.form-range:focus {
+.form-range:focus,
+select.form-range.form-select.is-warning:focus:not([disabled]),
+.form-range.form-control.is-warning:focus:not([disabled]),
+.form-range.form-check.is-warning:focus:not([disabled]),
+.form-range.form-check-input.is-warning:focus:not([disabled]) {
   outline: 0;
 }
-.form-range:focus::-webkit-slider-thumb {
+.form-range:focus::-webkit-slider-thumb,
+select.form-range.form-select.is-warning:focus:not([disabled])::-webkit-slider-thumb,
+.form-range.form-control.is-warning:focus:not([disabled])::-webkit-slider-thumb,
+.form-range.form-check.is-warning:focus:not([disabled])::-webkit-slider-thumb,
+.form-range.form-check-input.is-warning:focus:not([disabled])::-webkit-slider-thumb {
   box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
-.form-range:focus::-moz-range-thumb {
+.form-range:focus::-moz-range-thumb,
+select.form-range.form-select.is-warning:focus:not([disabled])::-moz-range-thumb,
+.form-range.form-control.is-warning:focus:not([disabled])::-moz-range-thumb,
+.form-range.form-check.is-warning:focus:not([disabled])::-moz-range-thumb,
+.form-range.form-check-input.is-warning:focus:not([disabled])::-moz-range-thumb {
   box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 .form-range::-moz-focus-outer {
@@ -3596,8 +3631,12 @@ textarea.form-control-lg {
 .form-floating > .form-control-plaintext::placeholder {
   color: transparent;
 }
-.form-floating > .form-control:focus, .form-floating > .form-control:not(:placeholder-shown),
+.form-floating > .form-control:focus,
+.form-floating > .form-control.is-warning:focus:not([disabled]), .form-floating > .form-control:not(:placeholder-shown),
 .form-floating > .form-control-plaintext:focus,
+.form-floating > select.form-control-plaintext.form-select.is-warning:focus:not([disabled]),
+.form-floating > .form-control-plaintext.form-check.is-warning:focus:not([disabled]),
+.form-floating > .form-control-plaintext.form-check-input.is-warning:focus:not([disabled]),
 .form-floating > .form-control-plaintext:not(:placeholder-shown) {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
@@ -3612,6 +3651,7 @@ textarea.form-control-lg {
   padding-bottom: 0.625rem;
 }
 .form-floating > .form-control:focus ~ label,
+.form-floating > .form-control.is-warning:focus:not([disabled]) ~ label,
 .form-floating > .form-control:not(:placeholder-shown) ~ label,
 .form-floating > .form-control-plaintext ~ label,
 .form-floating > .form-select ~ label {
@@ -3619,6 +3659,7 @@ textarea.form-control-lg {
   transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
 }
 .form-floating > .form-control:focus ~ label::after,
+.form-floating > .form-control.is-warning:focus:not([disabled]) ~ label::after,
 .form-floating > .form-control:not(:placeholder-shown) ~ label::after,
 .form-floating > .form-control-plaintext ~ label::after,
 .form-floating > .form-select ~ label::after {
@@ -3662,7 +3703,11 @@ textarea.form-control-lg {
   min-width: 0;
 }
 .input-group > .form-control:focus,
+.input-group > .form-control.is-warning:focus:not([disabled]),
 .input-group > .form-select:focus,
+.input-group > select.form-select.is-warning:focus:not([disabled]),
+.input-group > .form-select.form-check.is-warning:focus:not([disabled]),
+.input-group > .form-select.form-check-input.is-warning:focus:not([disabled]),
 .input-group > .form-floating:focus-within {
   z-index: 5;
 }
@@ -3670,7 +3715,11 @@ textarea.form-control-lg {
   position: relative;
   z-index: 2;
 }
-.input-group .btn:focus {
+.input-group .btn:focus,
+.input-group select.btn.form-select.is-warning:focus:not([disabled]),
+.input-group .btn.form-control.is-warning:focus:not([disabled]),
+.input-group .btn.form-check.is-warning:focus:not([disabled]),
+.input-group .btn.form-check-input.is-warning:focus:not([disabled]) {
   z-index: 5;
 }
 
@@ -3774,7 +3823,9 @@ textarea.form-control-lg {
   background-position: right calc(0.375em + 0.1875rem) center;
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
-.was-validated .form-control:valid:focus, .form-control.is-valid:focus {
+.was-validated .form-control:valid:focus,
+.was-validated .form-control.is-warning:valid:focus:not([disabled]), .form-control.is-valid:focus,
+.form-control.is-valid.is-warning:focus:not([disabled]) {
   border-color: var(--bs-form-valid-border-color);
   box-shadow: 0 0 0 0.25rem rgba(var(--bs-success-rgb), 0.25);
 }
@@ -3793,7 +3844,15 @@ textarea.form-control-lg {
   background-position: right 0.75rem center, center right 2.25rem;
   background-size: 16px 12px, calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
-.was-validated .form-select:valid:focus, .form-select.is-valid:focus {
+.was-validated .form-select:valid:focus,
+.was-validated select.form-select.is-warning:valid:focus:not([disabled]),
+.was-validated .form-select.form-control.is-warning:valid:focus:not([disabled]),
+.was-validated .form-select.form-check.is-warning:valid:focus:not([disabled]),
+.was-validated .form-select.form-check-input.is-warning:valid:focus:not([disabled]), .form-select.is-valid:focus,
+select.form-select.is-valid.is-warning:focus:not([disabled]),
+.form-select.is-valid.form-control.is-warning:focus:not([disabled]),
+.form-select.is-valid.form-check.is-warning:focus:not([disabled]),
+.form-select.is-valid.form-check-input.is-warning:focus:not([disabled]) {
   border-color: var(--bs-form-valid-border-color);
   box-shadow: 0 0 0 0.25rem rgba(var(--bs-success-rgb), 0.25);
 }
@@ -3808,7 +3867,9 @@ textarea.form-control-lg {
 .was-validated .form-check-input:valid:checked, .form-check-input.is-valid:checked {
   background-color: var(--bs-form-valid-color);
 }
-.was-validated .form-check-input:valid:focus, .form-check-input.is-valid:focus {
+.was-validated .form-check-input:valid:focus,
+.was-validated .form-check-input.is-warning:valid:focus:not([disabled]), .form-check-input.is-valid:focus,
+.form-check-input.is-valid.is-warning:focus:not([disabled]) {
   box-shadow: 0 0 0 0.25rem rgba(var(--bs-success-rgb), 0.25);
 }
 .was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label {
@@ -3819,15 +3880,18 @@ textarea.form-control-lg {
   margin-left: 0.5em;
 }
 
-.was-validated .input-group > .form-control:not(:focus):valid, .input-group > .form-control:not(:focus).is-valid,
-.was-validated .input-group > .form-select:not(:focus):valid,
-.input-group > .form-select:not(:focus).is-valid,
+.was-validated .input-group > .form-control:not(:focus):not(input.form-control.is-warning:focus:not([disabled])):not(textarea.form-control.is-warning:focus:not([disabled])):not(select.form-select.is-warning:focus:not([disabled])):not(.form-control.is-warning:focus:not([disabled])):not(.form-check.is-warning:focus:not([disabled])):not(.form-check-input.is-warning:focus:not([disabled])):not(.form-control.is-warning:not([disabled]):focus):not(.form-control.is-warning.form-check:not([disabled]):focus):not(.form-control.is-warning.form-check-input:not([disabled]):focus):not(.form-check.is-warning:not([disabled]):focus):not(.form-check.is-warning.form-check-input:not([disabled]):focus):not(.form-check-input.is-warning:not([disabled]):focus):valid, .input-group > .form-control:not(:focus):not(input.form-control.is-warning:focus:not([disabled])):not(textarea.form-control.is-warning:focus:not([disabled])):not(select.form-select.is-warning:focus:not([disabled])):not(.form-control.is-warning:focus:not([disabled])):not(.form-check.is-warning:focus:not([disabled])):not(.form-check-input.is-warning:focus:not([disabled])):not(.form-control.is-warning:not([disabled]):focus):not(.form-control.is-warning.form-check:not([disabled]):focus):not(.form-control.is-warning.form-check-input:not([disabled]):focus):not(.form-check.is-warning:not([disabled]):focus):not(.form-check.is-warning.form-check-input:not([disabled]):focus):not(.form-check-input.is-warning:not([disabled]):focus).is-valid,
+.was-validated .input-group > .form-select:not(:focus):not(input.form-control.is-warning:focus:not([disabled])):not(textarea.form-control.is-warning:focus:not([disabled])):not(select.form-select.is-warning:focus:not([disabled])):not(.form-control.is-warning:focus:not([disabled])):not(.form-check.is-warning:focus:not([disabled])):not(.form-check-input.is-warning:focus:not([disabled])):not(.form-control.is-warning:not([disabled]):focus):not(.form-control.is-warning.form-check:not([disabled]):focus):not(.form-control.is-warning.form-check-input:not([disabled]):focus):not(.form-check.is-warning:not([disabled]):focus):not(.form-check.is-warning.form-check-input:not([disabled]):focus):not(.form-check-input.is-warning:not([disabled]):focus):valid,
+.input-group > .form-select:not(:focus):not(input.form-control.is-warning:focus:not([disabled])):not(textarea.form-control.is-warning:focus:not([disabled])):not(select.form-select.is-warning:focus:not([disabled])):not(.form-control.is-warning:focus:not([disabled])):not(.form-check.is-warning:focus:not([disabled])):not(.form-check-input.is-warning:focus:not([disabled])):not(.form-control.is-warning:not([disabled]):focus):not(.form-control.is-warning.form-check:not([disabled]):focus):not(.form-control.is-warning.form-check-input:not([disabled]):focus):not(.form-check.is-warning:not([disabled]):focus):not(.form-check.is-warning.form-check-input:not([disabled]):focus):not(.form-check-input.is-warning:not([disabled]):focus).is-valid,
 .was-validated .input-group > .form-floating:not(:focus-within):valid,
 .input-group > .form-floating:not(:focus-within).is-valid {
   z-index: 3;
 }
 
-.invalid-feedback {
+.invalid-feedback, input:not([disabled]) ~ .warning-feedback,
+textarea:not([disabled]) ~ .warning-feedback,
+select:not([disabled]) ~ .warning-feedback,
+.form-control:not([disabled]) ~ .warning-feedback {
   display: none;
   width: 100%;
   margin-top: 0.25rem;
@@ -3849,14 +3913,85 @@ textarea.form-control-lg {
   border-radius: var(--bs-border-radius);
 }
 
-.was-validated :invalid ~ .invalid-feedback,
+.was-validated :invalid ~ .invalid-feedback, .was-validated :invalid ~ input:not([disabled]) ~ .warning-feedback, .was-validated input:not([disabled]) ~ :invalid ~ .warning-feedback, .was-validated input:not([disabled]):invalid ~ .warning-feedback,
+.was-validated :invalid ~ textarea:not([disabled]) ~ .warning-feedback,
+.was-validated textarea:not([disabled]) ~ :invalid ~ .warning-feedback,
+.was-validated textarea:not([disabled]):invalid ~ .warning-feedback,
+.was-validated :invalid ~ select:not([disabled]) ~ .warning-feedback,
+.was-validated select:not([disabled]) ~ :invalid ~ .warning-feedback,
+.was-validated select:not([disabled]):invalid ~ .warning-feedback,
+.was-validated :invalid ~ .form-control:not([disabled]) ~ .warning-feedback,
+.was-validated .form-control:not([disabled]) ~ :invalid ~ .warning-feedback,
+.was-validated .form-control:not([disabled]):invalid ~ .warning-feedback,
 .was-validated :invalid ~ .invalid-tooltip,
 .is-invalid ~ .invalid-feedback,
-.is-invalid ~ .invalid-tooltip {
+.form-control.is-warning:focus:not([disabled]) ~ .invalid-feedback,
+.form-check.is-warning:focus:not([disabled]) ~ .invalid-feedback,
+.form-check-input.is-warning:focus:not([disabled]) ~ .invalid-feedback,
+select.form-select.is-warning:not([disabled]) ~ .invalid-feedback,
+.form-control.is-warning:not([disabled]) ~ .invalid-feedback,
+.form-check.is-warning:not([disabled]) ~ .invalid-feedback,
+.form-check-input.is-warning:not([disabled]) ~ .invalid-feedback,
+.is-invalid ~ input:not([disabled]) ~ .warning-feedback,
+.form-check.is-warning:not([disabled]) ~ input:not([disabled]) ~ .warning-feedback,
+.form-check-input.is-warning:not([disabled]) ~ input:not([disabled]) ~ .warning-feedback,
+input:not([disabled]) ~ .is-invalid ~ .warning-feedback,
+input:not([disabled]) ~ .form-check.is-warning:not([disabled]) ~ .warning-feedback,
+input:not([disabled]) ~ .form-check-input.is-warning:not([disabled]) ~ .warning-feedback,
+input.is-invalid:not([disabled]) ~ .warning-feedback,
+input.form-check.is-warning:not([disabled]) ~ .warning-feedback,
+input.form-check-input.is-warning:not([disabled]) ~ .warning-feedback,
+.is-invalid ~ textarea:not([disabled]) ~ .warning-feedback,
+.form-check.is-warning:not([disabled]) ~ textarea:not([disabled]) ~ .warning-feedback,
+.form-check-input.is-warning:not([disabled]) ~ textarea:not([disabled]) ~ .warning-feedback,
+textarea:not([disabled]) ~ .is-invalid ~ .warning-feedback,
+textarea:not([disabled]) ~ .form-check.is-warning:not([disabled]) ~ .warning-feedback,
+textarea:not([disabled]) ~ .form-check-input.is-warning:not([disabled]) ~ .warning-feedback,
+textarea.is-invalid:not([disabled]) ~ .warning-feedback,
+textarea.form-check.is-warning:not([disabled]) ~ .warning-feedback,
+textarea.form-check-input.is-warning:not([disabled]) ~ .warning-feedback,
+.is-invalid ~ select:not([disabled]) ~ .warning-feedback,
+.form-check.is-warning:not([disabled]) ~ select:not([disabled]) ~ .warning-feedback,
+.form-check-input.is-warning:not([disabled]) ~ select:not([disabled]) ~ .warning-feedback,
+select:not([disabled]) ~ .is-invalid ~ .warning-feedback,
+select:not([disabled]) ~ .form-check.is-warning:not([disabled]) ~ .warning-feedback,
+select:not([disabled]) ~ .form-check-input.is-warning:not([disabled]) ~ .warning-feedback,
+select.is-invalid:not([disabled]) ~ .warning-feedback,
+select.form-select.is-warning:not([disabled]) ~ .warning-feedback,
+select.form-check.is-warning:not([disabled]) ~ .warning-feedback,
+select.form-check-input.is-warning:not([disabled]) ~ .warning-feedback,
+.is-invalid ~ .form-control:not([disabled]) ~ .warning-feedback,
+.form-check.is-warning:not([disabled]) ~ .form-control:not([disabled]) ~ .warning-feedback,
+.form-check-input.is-warning:not([disabled]) ~ .form-control:not([disabled]) ~ .warning-feedback,
+.form-control:not([disabled]) ~ .is-invalid ~ .warning-feedback,
+.form-control:not([disabled]) ~ .form-check.is-warning:not([disabled]) ~ .warning-feedback,
+.form-control:not([disabled]) ~ .form-check-input.is-warning:not([disabled]) ~ .warning-feedback,
+.form-control.is-invalid:not([disabled]) ~ .warning-feedback,
+.form-control.is-warning:not([disabled]):focus ~ .warning-feedback,
+.form-control.is-warning:not([disabled]) ~ .warning-feedback,
+.is-invalid ~ .invalid-tooltip,
+.form-control.is-warning:focus:not([disabled]) ~ .invalid-tooltip,
+.form-check.is-warning:focus:not([disabled]) ~ .invalid-tooltip,
+.form-check-input.is-warning:focus:not([disabled]) ~ .invalid-tooltip,
+select.form-select.is-warning:not([disabled]) ~ .invalid-tooltip,
+.form-control.is-warning:not([disabled]) ~ .invalid-tooltip,
+.form-check.is-warning:not([disabled]) ~ .invalid-tooltip,
+.form-check-input.is-warning:not([disabled]) ~ .invalid-tooltip {
   display: block;
 }
 
-.was-validated .form-control:invalid, .form-control.is-invalid {
+.was-validated .form-control:invalid, .form-control.is-invalid, input.form-control.is-warning:focus:not([disabled]),
+textarea.form-control.is-warning:focus:not([disabled]),
+.form-control.is-warning:focus:not([disabled]),
+.form-control.is-warning:not([disabled]):focus,
+.form-control.is-warning.form-check:not([disabled]):focus,
+.form-control.is-warning.form-check-input:not([disabled]):focus,
+.form-control.is-warning:not([disabled]):focus, input.form-control.is-warning:not([disabled]),
+textarea.form-control.is-warning:not([disabled]),
+select.form-control.form-select.is-warning:not([disabled]),
+.form-control.is-warning:not([disabled]),
+.form-control.form-check.is-warning:not([disabled]),
+.form-control.form-check-input.is-warning:not([disabled]) {
   border-color: var(--bs-form-invalid-border-color);
   padding-right: calc(1.5em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
@@ -3864,56 +3999,132 @@ textarea.form-control-lg {
   background-position: right calc(0.375em + 0.1875rem) center;
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
-.was-validated .form-control:invalid:focus, .form-control.is-invalid:focus {
+.was-validated .form-control:invalid:focus,
+.was-validated .form-control.is-warning:invalid:focus:not([disabled]), .form-control.is-invalid:focus,
+.form-control.is-invalid.is-warning:focus:not([disabled]), input.form-control.is-warning:focus:not([disabled]),
+textarea.form-control.is-warning:focus:not([disabled]),
+select.form-control.form-select.is-warning:focus:not([disabled]),
+.form-control.is-warning:focus:not([disabled]),
+.form-control.is-warning:not([disabled]):focus,
+.form-control.is-warning.form-check:not([disabled]):focus,
+.form-control.is-warning.form-check-input:not([disabled]):focus,
+.form-control.is-warning:not([disabled]):focus {
   border-color: var(--bs-form-invalid-border-color);
   box-shadow: 0 0 0 0.25rem rgba(var(--bs-danger-rgb), 0.25);
 }
 
-.was-validated textarea.form-control:invalid, textarea.form-control.is-invalid {
+.was-validated textarea.form-control:invalid, textarea.form-control.is-invalid,
+textarea.form-control.is-warning:focus:not([disabled]),
+textarea.form-control.is-warning:not([disabled]) {
   padding-right: calc(1.5em + 0.75rem);
   background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
 }
 
-.was-validated .form-select:invalid, .form-select.is-invalid {
+.was-validated .form-select:invalid, .form-select.is-invalid,
+select.form-select.is-warning:focus:not([disabled]),
+.form-select.form-control.is-warning:focus:not([disabled]),
+.form-select.form-check.is-warning:focus:not([disabled]),
+.form-select.form-check-input.is-warning:focus:not([disabled]),
+select.form-select.is-warning:not([disabled]),
+.form-select.form-control.is-warning:not([disabled]),
+.form-select.form-check.is-warning:not([disabled]),
+.form-select.form-check-input.is-warning:not([disabled]) {
   border-color: var(--bs-form-invalid-border-color);
 }
-.was-validated .form-select:invalid:not([multiple]):not([size]), .was-validated .form-select:invalid:not([multiple])[size="1"], .form-select.is-invalid:not([multiple]):not([size]), .form-select.is-invalid:not([multiple])[size="1"] {
+.was-validated .form-select:invalid:not([multiple]):not([size]), .was-validated .form-select:invalid:not([multiple])[size="1"], .form-select.is-invalid:not([multiple]):not([size]),
+select.form-select.is-warning:not([multiple]):not([size]):not([disabled]),
+.form-select.form-control.is-warning:not([multiple]):not([size]):not([disabled]),
+.form-select.form-check.is-warning:not([multiple]):not([size]):not([disabled]),
+.form-select.form-check-input.is-warning:not([multiple]):not([size]):not([disabled]), .form-select.is-invalid:not([multiple])[size="1"],
+select.form-select.is-warning:not([multiple])[size="1"]:not([disabled]),
+.form-select.form-control.is-warning:not([multiple])[size="1"]:not([disabled]),
+.form-select.form-check.is-warning:not([multiple])[size="1"]:not([disabled]),
+.form-select.form-check-input.is-warning:not([multiple])[size="1"]:not([disabled]) {
   --bs-form-select-bg-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
   padding-right: 4.125rem;
   background-position: right 0.75rem center, center right 2.25rem;
   background-size: 16px 12px, calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
-.was-validated .form-select:invalid:focus, .form-select.is-invalid:focus {
+.was-validated .form-select:invalid:focus, .form-select.is-invalid:focus,
+select.form-select.is-warning:focus:not([disabled]),
+.form-select.form-control.is-warning:focus:not([disabled]),
+.form-select.form-check.is-warning:focus:not([disabled]),
+.form-select.form-check-input.is-warning:focus:not([disabled]) {
   border-color: var(--bs-form-invalid-border-color);
   box-shadow: 0 0 0 0.25rem rgba(var(--bs-danger-rgb), 0.25);
 }
 
-.was-validated .form-control-color:invalid, .form-control-color.is-invalid {
+.was-validated .form-control-color:invalid, .form-control-color.is-invalid,
+.form-control-color.form-control.is-warning:focus:not([disabled]),
+.form-control-color.form-check.is-warning:focus:not([disabled]),
+.form-control-color.form-check-input.is-warning:focus:not([disabled]),
+select.form-control-color.form-select.is-warning:not([disabled]),
+.form-control-color.form-control.is-warning:not([disabled]),
+.form-control-color.form-check.is-warning:not([disabled]),
+.form-control-color.form-check-input.is-warning:not([disabled]) {
   width: calc(3rem + calc(1.5em + 0.75rem));
 }
 
-.was-validated .form-check-input:invalid, .form-check-input.is-invalid {
+.was-validated .form-check-input:invalid, .form-check-input.is-invalid,
+.form-check-input.form-control.is-warning:focus:not([disabled]),
+.form-check-input.form-check.is-warning:focus:not([disabled]),
+.form-check-input.is-warning:focus:not([disabled]),
+.form-check-input.is-warning:not([disabled]):focus,
+.form-check-input.is-warning:not([disabled]):focus,
+select.form-check-input.form-select.is-warning:not([disabled]),
+.form-check-input.form-control.is-warning:not([disabled]),
+.form-check-input.form-check.is-warning:not([disabled]),
+.form-check-input.is-warning:not([disabled]) {
   border-color: var(--bs-form-invalid-border-color);
 }
-.was-validated .form-check-input:invalid:checked, .form-check-input.is-invalid:checked {
+.was-validated .form-check-input:invalid:checked, .form-check-input.is-invalid:checked,
+.form-check-input.is-warning:checked:focus:not([disabled]),
+.form-check-input.is-warning:checked:not([disabled]) {
   background-color: var(--bs-form-invalid-color);
 }
-.was-validated .form-check-input:invalid:focus, .form-check-input.is-invalid:focus {
+.was-validated .form-check-input:invalid:focus,
+.was-validated .form-check-input.is-warning:invalid:focus:not([disabled]), .form-check-input.is-invalid:focus,
+.form-check-input.is-invalid.is-warning:focus:not([disabled]),
+select.form-check-input.form-select.is-warning:focus:not([disabled]),
+.form-check-input.form-control.is-warning:focus:not([disabled]),
+.form-check-input.form-check.is-warning:focus:not([disabled]),
+.form-check-input.is-warning:focus:not([disabled]),
+.form-check-input.is-warning:not([disabled]):focus,
+.form-check-input.is-warning:not([disabled]):focus {
   box-shadow: 0 0 0 0.25rem rgba(var(--bs-danger-rgb), 0.25);
 }
-.was-validated .form-check-input:invalid ~ .form-check-label, .form-check-input.is-invalid ~ .form-check-label {
+.was-validated .form-check-input:invalid ~ .form-check-label, .form-check-input.is-invalid ~ .form-check-label,
+.form-check-input.is-warning:focus:not([disabled]) ~ .form-check-label,
+.form-check-input.is-warning:not([disabled]) ~ .form-check-label {
   color: var(--bs-form-invalid-color);
 }
 
-.form-check-inline .form-check-input ~ .invalid-feedback {
+.form-check-inline .form-check-input ~ .invalid-feedback, .form-check-inline .form-check-input ~ input:not([disabled]) ~ .warning-feedback, .form-check-inline input:not([disabled]) ~ .form-check-input ~ .warning-feedback, .form-check-inline input.form-check-input:not([disabled]) ~ .warning-feedback,
+.form-check-inline .form-check-input ~ textarea:not([disabled]) ~ .warning-feedback,
+.form-check-inline textarea:not([disabled]) ~ .form-check-input ~ .warning-feedback,
+.form-check-inline textarea.form-check-input:not([disabled]) ~ .warning-feedback,
+.form-check-inline .form-check-input ~ select:not([disabled]) ~ .warning-feedback,
+.form-check-inline select:not([disabled]) ~ .form-check-input ~ .warning-feedback,
+.form-check-inline select.form-check-input:not([disabled]) ~ .warning-feedback,
+.form-check-inline .form-check-input ~ .form-control:not([disabled]) ~ .warning-feedback,
+.form-check-inline .form-control:not([disabled]) ~ .form-check-input ~ .warning-feedback,
+.form-check-inline .form-control.form-check-input:not([disabled]) ~ .warning-feedback {
   margin-left: 0.5em;
 }
 
-.was-validated .input-group > .form-control:not(:focus):invalid, .input-group > .form-control:not(:focus).is-invalid,
-.was-validated .input-group > .form-select:not(:focus):invalid,
-.input-group > .form-select:not(:focus).is-invalid,
+.was-validated .input-group > .form-control:not(:focus):not(input.form-control.is-warning:focus:not([disabled])):not(textarea.form-control.is-warning:focus:not([disabled])):not(select.form-select.is-warning:focus:not([disabled])):not(.form-control.is-warning:focus:not([disabled])):not(.form-check.is-warning:focus:not([disabled])):not(.form-check-input.is-warning:focus:not([disabled])):not(.form-control.is-warning:not([disabled]):focus):not(.form-control.is-warning.form-check:not([disabled]):focus):not(.form-control.is-warning.form-check-input:not([disabled]):focus):not(.form-check.is-warning:not([disabled]):focus):not(.form-check.is-warning.form-check-input:not([disabled]):focus):not(.form-check-input.is-warning:not([disabled]):focus):invalid, .input-group > .form-control:not(:focus):not(input.form-control.is-warning:focus:not([disabled])):not(textarea.form-control.is-warning:focus:not([disabled])):not(select.form-select.is-warning:focus:not([disabled])):not(.form-control.is-warning:focus:not([disabled])):not(.form-check.is-warning:focus:not([disabled])):not(.form-check-input.is-warning:focus:not([disabled])):not(.form-control.is-warning:not([disabled]):focus):not(.form-control.is-warning.form-check:not([disabled]):focus):not(.form-control.is-warning.form-check-input:not([disabled]):focus):not(.form-check.is-warning:not([disabled]):focus):not(.form-check.is-warning.form-check-input:not([disabled]):focus):not(.form-check-input.is-warning:not([disabled]):focus).is-invalid,
+.input-group > .form-control.is-warning:not(:focus):not(input.form-control.is-warning:focus:not([disabled])):not(textarea.form-control.is-warning:focus:not([disabled])):not(select.form-select.is-warning:focus:not([disabled])):not(.form-control.is-warning:focus:not([disabled])):not(.form-check.is-warning:focus:not([disabled])):not(.form-check-input.is-warning:focus:not([disabled])):not(.form-control.is-warning:not([disabled]):focus):not(.form-control.is-warning.form-check:not([disabled]):focus):not(.form-control.is-warning.form-check-input:not([disabled]):focus):not(.form-check.is-warning:not([disabled]):focus):not(.form-check.is-warning.form-check-input:not([disabled]):focus):not(.form-check-input.is-warning:not([disabled]):focus):not([disabled]),
+.was-validated .input-group > .form-select:not(:focus):not(input.form-control.is-warning:focus:not([disabled])):not(textarea.form-control.is-warning:focus:not([disabled])):not(select.form-select.is-warning:focus:not([disabled])):not(.form-control.is-warning:focus:not([disabled])):not(.form-check.is-warning:focus:not([disabled])):not(.form-check-input.is-warning:focus:not([disabled])):not(.form-control.is-warning:not([disabled]):focus):not(.form-control.is-warning.form-check:not([disabled]):focus):not(.form-control.is-warning.form-check-input:not([disabled]):focus):not(.form-check.is-warning:not([disabled]):focus):not(.form-check.is-warning.form-check-input:not([disabled]):focus):not(.form-check-input.is-warning:not([disabled]):focus):invalid,
+.input-group > .form-select:not(:focus):not(input.form-control.is-warning:focus:not([disabled])):not(textarea.form-control.is-warning:focus:not([disabled])):not(select.form-select.is-warning:focus:not([disabled])):not(.form-control.is-warning:focus:not([disabled])):not(.form-check.is-warning:focus:not([disabled])):not(.form-check-input.is-warning:focus:not([disabled])):not(.form-control.is-warning:not([disabled]):focus):not(.form-control.is-warning.form-check:not([disabled]):focus):not(.form-control.is-warning.form-check-input:not([disabled]):focus):not(.form-check.is-warning:not([disabled]):focus):not(.form-check.is-warning.form-check-input:not([disabled]):focus):not(.form-check-input.is-warning:not([disabled]):focus).is-invalid,
+.input-group > select.form-select.is-warning:not(:focus):not(input.form-control.is-warning:focus:not([disabled])):not(textarea.form-control.is-warning:focus:not([disabled])):not(select.form-select.is-warning:focus:not([disabled])):not(.form-control.is-warning:focus:not([disabled])):not(.form-check.is-warning:focus:not([disabled])):not(.form-check-input.is-warning:focus:not([disabled])):not(.form-control.is-warning:not([disabled]):focus):not(.form-control.is-warning.form-check:not([disabled]):focus):not(.form-control.is-warning.form-check-input:not([disabled]):focus):not(.form-check.is-warning:not([disabled]):focus):not(.form-check.is-warning.form-check-input:not([disabled]):focus):not(.form-check-input.is-warning:not([disabled]):focus):not([disabled]),
+.input-group > .form-select.form-check.is-warning:not(:focus):not(input.form-control.is-warning:focus:not([disabled])):not(textarea.form-control.is-warning:focus:not([disabled])):not(select.form-select.is-warning:focus:not([disabled])):not(.form-control.is-warning:focus:not([disabled])):not(.form-check.is-warning:focus:not([disabled])):not(.form-check-input.is-warning:focus:not([disabled])):not(.form-control.is-warning:not([disabled]):focus):not(.form-control.is-warning.form-check:not([disabled]):focus):not(.form-control.is-warning.form-check-input:not([disabled]):focus):not(.form-check.is-warning:not([disabled]):focus):not(.form-check.is-warning.form-check-input:not([disabled]):focus):not(.form-check-input.is-warning:not([disabled]):focus):not([disabled]),
+.input-group > .form-select.form-check-input.is-warning:not(:focus):not(input.form-control.is-warning:focus:not([disabled])):not(textarea.form-control.is-warning:focus:not([disabled])):not(select.form-select.is-warning:focus:not([disabled])):not(.form-control.is-warning:focus:not([disabled])):not(.form-check.is-warning:focus:not([disabled])):not(.form-check-input.is-warning:focus:not([disabled])):not(.form-control.is-warning:not([disabled]):focus):not(.form-control.is-warning.form-check:not([disabled]):focus):not(.form-control.is-warning.form-check-input:not([disabled]):focus):not(.form-check.is-warning:not([disabled]):focus):not(.form-check.is-warning.form-check-input:not([disabled]):focus):not(.form-check-input.is-warning:not([disabled]):focus):not([disabled]),
 .was-validated .input-group > .form-floating:not(:focus-within):invalid,
-.input-group > .form-floating:not(:focus-within).is-invalid {
+.input-group > .form-floating:not(:focus-within).is-invalid,
+.input-group > select.form-floating.form-select.is-warning:not(:focus-within):not([disabled]),
+.input-group > .form-floating.form-control.is-warning:not(:focus-within):not([disabled]),
+.input-group > .form-floating.form-check.is-warning:not(:focus-within):not([disabled]),
+.input-group > .form-floating.form-check-input.is-warning:not(:focus-within):not([disabled]) {
   z-index: 4;
 }
 
@@ -4609,7 +4820,11 @@ textarea.form-control-lg {
   border: 0;
   border-radius: var(--bs-dropdown-item-border-radius, 0);
 }
-.dropdown-item:hover, .dropdown-item:focus {
+.dropdown-item:hover, .dropdown-item:focus,
+select.dropdown-item.form-select.is-warning:focus:not([disabled]),
+.dropdown-item.form-control.is-warning:focus:not([disabled]),
+.dropdown-item.form-check.is-warning:focus:not([disabled]),
+.dropdown-item.form-check-input.is-warning:focus:not([disabled]) {
   color: var(--bs-dropdown-link-hover-color);
   background-color: var(--bs-dropdown-link-hover-bg);
 }
@@ -4671,14 +4886,30 @@ textarea.form-control-lg {
 }
 .btn-group > .btn-check:checked + .btn,
 .btn-group > .btn-check:focus + .btn,
+.btn-group > select.btn-check.form-select.is-warning:focus:not([disabled]) + .btn,
+.btn-group > .btn-check.form-control.is-warning:focus:not([disabled]) + .btn,
+.btn-group > .btn-check.form-check.is-warning:focus:not([disabled]) + .btn,
+.btn-group > .btn-check.form-check-input.is-warning:focus:not([disabled]) + .btn,
 .btn-group > .btn:hover,
 .btn-group > .btn:focus,
+.btn-group > select.btn.form-select.is-warning:focus:not([disabled]),
+.btn-group > .btn.form-control.is-warning:focus:not([disabled]),
+.btn-group > .btn.form-check.is-warning:focus:not([disabled]),
+.btn-group > .btn.form-check-input.is-warning:focus:not([disabled]),
 .btn-group > .btn:active,
 .btn-group > .btn.active,
 .btn-group-vertical > .btn-check:checked + .btn,
 .btn-group-vertical > .btn-check:focus + .btn,
+.btn-group-vertical > select.btn-check.form-select.is-warning:focus:not([disabled]) + .btn,
+.btn-group-vertical > .btn-check.form-control.is-warning:focus:not([disabled]) + .btn,
+.btn-group-vertical > .btn-check.form-check.is-warning:focus:not([disabled]) + .btn,
+.btn-group-vertical > .btn-check.form-check-input.is-warning:focus:not([disabled]) + .btn,
 .btn-group-vertical > .btn:hover,
 .btn-group-vertical > .btn:focus,
+.btn-group-vertical > select.btn.form-select.is-warning:focus:not([disabled]),
+.btn-group-vertical > .btn.form-control.is-warning:focus:not([disabled]),
+.btn-group-vertical > .btn.form-check.is-warning:focus:not([disabled]),
+.btn-group-vertical > .btn.form-check-input.is-warning:focus:not([disabled]),
 .btn-group-vertical > .btn:active,
 .btn-group-vertical > .btn.active {
   z-index: 1;
@@ -4788,7 +5019,11 @@ textarea.form-control-lg {
     transition: none;
   }
 }
-.nav-link:hover, .nav-link:focus {
+.nav-link:hover, .nav-link:focus,
+select.nav-link.form-select.is-warning:focus:not([disabled]),
+.nav-link.form-control.is-warning:focus:not([disabled]),
+.nav-link.form-check.is-warning:focus:not([disabled]),
+.nav-link.form-check-input.is-warning:focus:not([disabled]) {
   color: var(--bs-nav-link-hover-color);
 }
 .nav-link:focus-visible {
@@ -4817,7 +5052,11 @@ textarea.form-control-lg {
   border-top-left-radius: var(--bs-nav-tabs-border-radius);
   border-top-right-radius: var(--bs-nav-tabs-border-radius);
 }
-.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus,
+.nav-tabs select.nav-link.form-select.is-warning:focus:not([disabled]),
+.nav-tabs .nav-link.form-control.is-warning:focus:not([disabled]),
+.nav-tabs .nav-link.form-check.is-warning:focus:not([disabled]),
+.nav-tabs .nav-link.form-check-input.is-warning:focus:not([disabled]) {
   isolation: isolate;
   border-color: var(--bs-nav-tabs-link-hover-border-color);
 }
@@ -4858,7 +5097,11 @@ textarea.form-control-lg {
   padding-left: 0;
   border-bottom: var(--bs-nav-underline-border-width) solid transparent;
 }
-.nav-underline .nav-link:hover, .nav-underline .nav-link:focus {
+.nav-underline .nav-link:hover, .nav-underline .nav-link:focus,
+.nav-underline select.nav-link.form-select.is-warning:focus:not([disabled]),
+.nav-underline .nav-link.form-control.is-warning:focus:not([disabled]),
+.nav-underline .nav-link.form-check.is-warning:focus:not([disabled]),
+.nav-underline .nav-link.form-check-input.is-warning:focus:not([disabled]) {
   border-bottom-color: currentcolor;
 }
 .nav-underline .nav-link.active,
@@ -4942,7 +5185,11 @@ textarea.form-control-lg {
   text-decoration: none;
   white-space: nowrap;
 }
-.navbar-brand:hover, .navbar-brand:focus {
+.navbar-brand:hover, .navbar-brand:focus,
+select.navbar-brand.form-select.is-warning:focus:not([disabled]),
+.navbar-brand.form-control.is-warning:focus:not([disabled]),
+.navbar-brand.form-check.is-warning:focus:not([disabled]),
+.navbar-brand.form-check-input.is-warning:focus:not([disabled]) {
   color: var(--bs-navbar-brand-hover-color);
 }
 
@@ -4973,7 +5220,10 @@ textarea.form-control-lg {
 }
 .navbar-text a,
 .navbar-text a:hover,
-.navbar-text a:focus {
+.navbar-text a:focus,
+.navbar-text a.form-control.is-warning:focus:not([disabled]),
+.navbar-text a.form-check.is-warning:focus:not([disabled]),
+.navbar-text a.form-check-input.is-warning:focus:not([disabled]) {
   color: var(--bs-navbar-active-color);
 }
 
@@ -5001,7 +5251,11 @@ textarea.form-control-lg {
 .navbar-toggler:hover {
   text-decoration: none;
 }
-.navbar-toggler:focus {
+.navbar-toggler:focus,
+select.navbar-toggler.form-select.is-warning:focus:not([disabled]),
+.navbar-toggler.form-control.is-warning:focus:not([disabled]),
+.navbar-toggler.form-check.is-warning:focus:not([disabled]),
+.navbar-toggler.form-check-input.is-warning:focus:not([disabled]) {
   text-decoration: none;
   outline: 0;
   box-shadow: 0 0 0 var(--bs-navbar-toggler-focus-width);
@@ -5575,7 +5829,11 @@ textarea.form-control-lg {
 .accordion-button:hover {
   z-index: 2;
 }
-.accordion-button:focus {
+.accordion-button:focus,
+select.accordion-button.form-select.is-warning:focus:not([disabled]),
+.accordion-button.form-control.is-warning:focus:not([disabled]),
+.accordion-button.form-check.is-warning:focus:not([disabled]),
+.accordion-button.form-check-input.is-warning:focus:not([disabled]) {
   z-index: 3;
   outline: 0;
   box-shadow: var(--bs-accordion-btn-focus-box-shadow);
@@ -5716,7 +5974,11 @@ textarea.form-control-lg {
   background-color: var(--bs-pagination-hover-bg);
   border-color: var(--bs-pagination-hover-border-color);
 }
-.page-link:focus {
+.page-link:focus,
+select.page-link.form-select.is-warning:focus:not([disabled]),
+.page-link.form-control.is-warning:focus:not([disabled]),
+.page-link.form-check.is-warning:focus:not([disabled]),
+.page-link.form-check-input.is-warning:focus:not([disabled]) {
   z-index: 3;
   color: var(--bs-pagination-focus-color);
   background-color: var(--bs-pagination-focus-bg);
@@ -5985,7 +6247,11 @@ textarea.form-control-lg {
   color: var(--bs-list-group-action-color);
   text-align: inherit;
 }
-.list-group-item-action:hover, .list-group-item-action:focus {
+.list-group-item-action:hover, .list-group-item-action:focus,
+select.list-group-item-action.form-select.is-warning:focus:not([disabled]),
+.list-group-item-action.form-control.is-warning:focus:not([disabled]),
+.list-group-item-action.form-check.is-warning:focus:not([disabled]),
+.list-group-item-action.form-check-input.is-warning:focus:not([disabled]) {
   z-index: 1;
   color: var(--bs-list-group-action-hover-color);
   text-decoration: none;
@@ -6313,7 +6579,11 @@ textarea.form-control-lg {
   text-decoration: none;
   opacity: var(--bs-btn-close-hover-opacity);
 }
-.btn-close:focus {
+.btn-close:focus,
+select.btn-close.form-select.is-warning:focus:not([disabled]),
+.btn-close.form-control.is-warning:focus:not([disabled]),
+.btn-close.form-check.is-warning:focus:not([disabled]),
+.btn-close.form-check-input.is-warning:focus:not([disabled]) {
   outline: 0;
   box-shadow: var(--bs-btn-close-focus-shadow);
   opacity: var(--bs-btn-close-focus-opacity);
@@ -7043,8 +7313,16 @@ textarea.form-control-lg {
   }
 }
 .carousel-control-prev:hover, .carousel-control-prev:focus,
+select.carousel-control-prev.form-select.is-warning:focus:not([disabled]),
+.carousel-control-prev.form-control.is-warning:focus:not([disabled]),
+.carousel-control-prev.form-check.is-warning:focus:not([disabled]),
+.carousel-control-prev.form-check-input.is-warning:focus:not([disabled]),
 .carousel-control-next:hover,
-.carousel-control-next:focus {
+.carousel-control-next:focus,
+select.carousel-control-next.form-select.is-warning:focus:not([disabled]),
+.carousel-control-next.form-control.is-warning:focus:not([disabled]),
+.carousel-control-next.form-check.is-warning:focus:not([disabled]),
+.carousel-control-next.form-check-input.is-warning:focus:not([disabled]) {
   color: #fff;
   text-decoration: none;
   outline: 0;
@@ -7795,7 +8073,11 @@ textarea.form-control-lg {
   color: RGBA(var(--bs-primary-rgb), var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(var(--bs-primary-rgb), var(--bs-link-underline-opacity, 1)) !important;
 }
-.link-primary:hover, .link-primary:focus {
+.link-primary:hover, .link-primary:focus,
+select.link-primary.form-select.is-warning:focus:not([disabled]),
+.link-primary.form-control.is-warning:focus:not([disabled]),
+.link-primary.form-check.is-warning:focus:not([disabled]),
+.link-primary.form-check-input.is-warning:focus:not([disabled]) {
   color: RGBA(10, 88, 202, var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(10, 88, 202, var(--bs-link-underline-opacity, 1)) !important;
 }
@@ -7804,7 +8086,11 @@ textarea.form-control-lg {
   color: RGBA(var(--bs-secondary-rgb), var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(var(--bs-secondary-rgb), var(--bs-link-underline-opacity, 1)) !important;
 }
-.link-secondary:hover, .link-secondary:focus {
+.link-secondary:hover, .link-secondary:focus,
+select.link-secondary.form-select.is-warning:focus:not([disabled]),
+.link-secondary.form-control.is-warning:focus:not([disabled]),
+.link-secondary.form-check.is-warning:focus:not([disabled]),
+.link-secondary.form-check-input.is-warning:focus:not([disabled]) {
   color: RGBA(86, 94, 100, var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(86, 94, 100, var(--bs-link-underline-opacity, 1)) !important;
 }
@@ -7813,7 +8099,11 @@ textarea.form-control-lg {
   color: RGBA(var(--bs-success-rgb), var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(var(--bs-success-rgb), var(--bs-link-underline-opacity, 1)) !important;
 }
-.link-success:hover, .link-success:focus {
+.link-success:hover, .link-success:focus,
+select.link-success.form-select.is-warning:focus:not([disabled]),
+.link-success.form-control.is-warning:focus:not([disabled]),
+.link-success.form-check.is-warning:focus:not([disabled]),
+.link-success.form-check-input.is-warning:focus:not([disabled]) {
   color: RGBA(20, 108, 67, var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(20, 108, 67, var(--bs-link-underline-opacity, 1)) !important;
 }
@@ -7822,7 +8112,11 @@ textarea.form-control-lg {
   color: RGBA(var(--bs-info-rgb), var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(var(--bs-info-rgb), var(--bs-link-underline-opacity, 1)) !important;
 }
-.link-info:hover, .link-info:focus {
+.link-info:hover, .link-info:focus,
+select.link-info.form-select.is-warning:focus:not([disabled]),
+.link-info.form-control.is-warning:focus:not([disabled]),
+.link-info.form-check.is-warning:focus:not([disabled]),
+.link-info.form-check-input.is-warning:focus:not([disabled]) {
   color: RGBA(61, 213, 243, var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(61, 213, 243, var(--bs-link-underline-opacity, 1)) !important;
 }
@@ -7831,7 +8125,11 @@ textarea.form-control-lg {
   color: RGBA(var(--bs-warning-rgb), var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(var(--bs-warning-rgb), var(--bs-link-underline-opacity, 1)) !important;
 }
-.link-warning:hover, .link-warning:focus {
+.link-warning:hover, .link-warning:focus,
+select.link-warning.form-select.is-warning:focus:not([disabled]),
+.link-warning.form-control.is-warning:focus:not([disabled]),
+.link-warning.form-check.is-warning:focus:not([disabled]),
+.link-warning.form-check-input.is-warning:focus:not([disabled]) {
   color: RGBA(255, 205, 57, var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(255, 205, 57, var(--bs-link-underline-opacity, 1)) !important;
 }
@@ -7840,7 +8138,11 @@ textarea.form-control-lg {
   color: RGBA(var(--bs-danger-rgb), var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(var(--bs-danger-rgb), var(--bs-link-underline-opacity, 1)) !important;
 }
-.link-danger:hover, .link-danger:focus {
+.link-danger:hover, .link-danger:focus,
+select.link-danger.form-select.is-warning:focus:not([disabled]),
+.link-danger.form-control.is-warning:focus:not([disabled]),
+.link-danger.form-check.is-warning:focus:not([disabled]),
+.link-danger.form-check-input.is-warning:focus:not([disabled]) {
   color: RGBA(176, 42, 55, var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(176, 42, 55, var(--bs-link-underline-opacity, 1)) !important;
 }
@@ -7849,7 +8151,11 @@ textarea.form-control-lg {
   color: RGBA(var(--bs-light-rgb), var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(var(--bs-light-rgb), var(--bs-link-underline-opacity, 1)) !important;
 }
-.link-light:hover, .link-light:focus {
+.link-light:hover, .link-light:focus,
+select.link-light.form-select.is-warning:focus:not([disabled]),
+.link-light.form-control.is-warning:focus:not([disabled]),
+.link-light.form-check.is-warning:focus:not([disabled]),
+.link-light.form-check-input.is-warning:focus:not([disabled]) {
   color: RGBA(249, 250, 251, var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(249, 250, 251, var(--bs-link-underline-opacity, 1)) !important;
 }
@@ -7858,7 +8164,11 @@ textarea.form-control-lg {
   color: RGBA(var(--bs-dark-rgb), var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(var(--bs-dark-rgb), var(--bs-link-underline-opacity, 1)) !important;
 }
-.link-dark:hover, .link-dark:focus {
+.link-dark:hover, .link-dark:focus,
+select.link-dark.form-select.is-warning:focus:not([disabled]),
+.link-dark.form-control.is-warning:focus:not([disabled]),
+.link-dark.form-check.is-warning:focus:not([disabled]),
+.link-dark.form-check-input.is-warning:focus:not([disabled]) {
   color: RGBA(26, 30, 33, var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(26, 30, 33, var(--bs-link-underline-opacity, 1)) !important;
 }
@@ -7867,12 +8177,20 @@ textarea.form-control-lg {
   color: RGBA(var(--bs-emphasis-color-rgb), var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(var(--bs-emphasis-color-rgb), var(--bs-link-underline-opacity, 1)) !important;
 }
-.link-body-emphasis:hover, .link-body-emphasis:focus {
+.link-body-emphasis:hover, .link-body-emphasis:focus,
+select.link-body-emphasis.form-select.is-warning:focus:not([disabled]),
+.link-body-emphasis.form-control.is-warning:focus:not([disabled]),
+.link-body-emphasis.form-check.is-warning:focus:not([disabled]),
+.link-body-emphasis.form-check-input.is-warning:focus:not([disabled]) {
   color: RGBA(var(--bs-emphasis-color-rgb), var(--bs-link-opacity, 0.75)) !important;
   text-decoration-color: RGBA(var(--bs-emphasis-color-rgb), var(--bs-link-underline-opacity, 0.75)) !important;
 }
 
-.focus-ring:focus {
+.focus-ring:focus,
+select.focus-ring.form-select.is-warning:focus:not([disabled]),
+.focus-ring.form-control.is-warning:focus:not([disabled]),
+.focus-ring.form-check.is-warning:focus:not([disabled]),
+.focus-ring.form-check-input.is-warning:focus:not([disabled]) {
   outline: 0;
   box-shadow: var(--bs-focus-ring-x, 0) var(--bs-focus-ring-y, 0) var(--bs-focus-ring-blur, 0) var(--bs-focus-ring-width) var(--bs-focus-ring-color);
 }
@@ -8038,7 +8356,7 @@ textarea.form-control-lg {
 }
 
 .visually-hidden,
-.visually-hidden-focusable:not(:focus):not(:focus-within) {
+.visually-hidden-focusable:not(:focus):not(input.form-control.is-warning:focus:not([disabled])):not(textarea.form-control.is-warning:focus:not([disabled])):not(select.form-select.is-warning:focus:not([disabled])):not(.form-control.is-warning:focus:not([disabled])):not(.form-check.is-warning:focus:not([disabled])):not(.form-check-input.is-warning:focus:not([disabled])):not(.form-control.is-warning:not([disabled]):focus):not(.form-control.is-warning.form-check:not([disabled]):focus):not(.form-control.is-warning.form-check-input:not([disabled]):focus):not(.form-check.is-warning:not([disabled]):focus):not(.form-check.is-warning.form-check-input:not([disabled]):focus):not(.form-check-input.is-warning:not([disabled]):focus):not(:focus-within) {
   width: 1px !important;
   height: 1px !important;
   padding: 0 !important;
@@ -8049,7 +8367,7 @@ textarea.form-control-lg {
   border: 0 !important;
 }
 .visually-hidden:not(caption),
-.visually-hidden-focusable:not(:focus):not(:focus-within):not(caption) {
+.visually-hidden-focusable:not(:focus):not(input.form-control.is-warning:focus:not([disabled])):not(textarea.form-control.is-warning:focus:not([disabled])):not(select.form-select.is-warning:focus:not([disabled])):not(.form-control.is-warning:focus:not([disabled])):not(.form-check.is-warning:focus:not([disabled])):not(.form-check-input.is-warning:focus:not([disabled])):not(.form-control.is-warning:not([disabled]):focus):not(.form-control.is-warning.form-check:not([disabled]):focus):not(.form-control.is-warning.form-check-input:not([disabled]):focus):not(.form-check.is-warning:not([disabled]):focus):not(.form-check.is-warning.form-check-input:not([disabled]):focus):not(.form-check-input.is-warning:not([disabled]):focus):not(:focus-within):not(caption) {
   position: absolute !important;
 }
 
@@ -21082,6 +21400,74 @@ textarea.form-control-lg {
 .form-control.dropdown.scrollable > .dropdown-menu {
   max-height: clamp(9rem, 50vh, 21rem);
   overflow-y: auto;
+}
+
+/* I'm open to changing the color (it's the "orange" color from
+ * Fomantic) but I think it's a good idea to have a color that's
+ * different from the default "warning" color from Bootstrap.
+ * The default Bootstrap warning color is hard to read, and the
+ * "emphasis" variant is gross (see `text-warning-emphasis`):
+ * <https://getbootstrap.com/docs/5.3/utilities/colors/#colors>
+ */
+:root {
+  --bs-form-warning-rgb: 242, 113, 28;
+  --bs-form-warning-color: #f2711c;
+  --bs-form-warning-border-color: #f2711c;
+}
+
+input[disabled] ~ .warning-feedback,
+textarea[disabled] ~ .warning-feedback,
+select[disabled] ~ .warning-feedback,
+.form-control[disabled] ~ .warning-feedback {
+  display: none;
+}
+input:not([disabled]):not(input[type=checkbox]):not(input[type=radio]),
+textarea:not([disabled]):not(input[type=checkbox]):not(input[type=radio]),
+select:not([disabled]):not(input[type=checkbox]):not(input[type=radio]),
+.form-control:not([disabled]):not(input[type=checkbox]):not(input[type=radio]) {
+  background: none !important;
+  padding-right: revert !important;
+}
+input:not([disabled]) ~ .warning-feedback,
+textarea:not([disabled]) ~ .warning-feedback,
+select:not([disabled]) ~ .warning-feedback,
+.form-control:not([disabled]) ~ .warning-feedback {
+  color: var(--bs-form-warning-color);
+  display: block;
+}
+
+input.form-control.is-warning:not([disabled]),
+textarea.form-control.is-warning:not([disabled]),
+select.form-select.is-warning:not([disabled]),
+.form-control.is-warning:not([disabled]),
+.form-check.is-warning:not([disabled]),
+.form-check-input.is-warning:not([disabled]) {
+  border-color: var(--bs-form-warning-border-color);
+}
+input.form-control.is-warning:focus:not([disabled]),
+textarea.form-control.is-warning:focus:not([disabled]),
+select.form-select.is-warning:focus:not([disabled]),
+.form-control.is-warning:focus:not([disabled]),
+.form-control.is-warning:not([disabled]):focus,
+.form-control.is-warning.form-check:not([disabled]):focus,
+.form-control.is-warning.form-check-input:not([disabled]):focus,
+.form-control.is-warning:not([disabled]):focus,
+.form-check.is-warning:focus:not([disabled]),
+.form-check.is-warning:not([disabled]):focus,
+.form-check.is-warning.form-check-input:not([disabled]):focus,
+.form-check.is-warning:not([disabled]):focus,
+.form-check-input.is-warning:focus:not([disabled]),
+.form-check-input.is-warning:not([disabled]):focus,
+.form-check-input.is-warning:not([disabled]):focus {
+  border-color: var(--bs-form-warning-border-color);
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-form-warning-rgb), 0.25);
+}
+
+.form-check-input.is-warning:not([disabled]):checked:focus, .form-check-input.is-warning:not([disabled]):checked {
+  background-color: var(--bs-form-warning-color);
+}
+.form-check-input.is-warning:not([disabled]):focus ~ .form-check-label, .form-check-input.is-warning:not([disabled]) ~ .form-check-label {
+  color: var(--bs-form-warning-color);
 }
 
 /*# sourceMappingURL=main.css.map */
