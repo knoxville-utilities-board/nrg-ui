@@ -17,7 +17,7 @@ class Model {
 }
 
 type DummyOptions<T extends ValidateFnResponse> = BaseOptions & {
-  value?: T;
+  response?: T;
 };
 
 class DummyValidator<T extends ValidateFnResponse> extends BaseValidator<
@@ -31,7 +31,7 @@ class DummyValidator<T extends ValidateFnResponse> extends BaseValidator<
     value: T,
     options: DummyOptions<T>,
   ) {
-    return options.value ?? true;
+    return options.response ?? true;
   }
 }
 
@@ -122,7 +122,7 @@ module('Unit | Validator | base', function (hooks) {
     let validator: DummyValidator<boolean> = new DummyValidator(
       this.binding,
       {
-        value: true,
+        response: true,
       },
       this.model,
     );
@@ -138,7 +138,7 @@ module('Unit | Validator | base', function (hooks) {
     validator = new DummyValidator(
       this.binding,
       {
-        value: false,
+        response: false,
       },
       this.model,
     );
@@ -154,7 +154,7 @@ module('Unit | Validator | base', function (hooks) {
     validator = new DummyValidator(
       this.binding,
       {
-        value: false,
+        response: false,
         isWarning: true,
       },
       this.model,
@@ -174,7 +174,7 @@ module('Unit | Validator | base', function (hooks) {
     const validator = new DummyValidator(
       this.binding,
       {
-        value: errorMessage,
+        response: errorMessage,
       },
       this.model,
     );
@@ -193,7 +193,7 @@ module('Unit | Validator | base', function (hooks) {
     let validator = new DummyValidator(
       this.binding,
       {
-        value: false,
+        response: false,
         message: errorMessage,
       },
       this.model,
@@ -210,7 +210,7 @@ module('Unit | Validator | base', function (hooks) {
     validator = new DummyValidator(
       this.binding,
       {
-        value: false,
+        response: false,
         message: errorMessage,
         isWarning: true,
       },
@@ -230,7 +230,7 @@ module('Unit | Validator | base', function (hooks) {
     let validator = new DummyValidator(
       this.binding,
       {
-        value: {
+        response: {
           isValid: false,
           message: 'This is the response message',
         },
@@ -250,7 +250,7 @@ module('Unit | Validator | base', function (hooks) {
     validator = new DummyValidator(
       this.binding,
       {
-        value: {
+        response: {
           isValid: false,
           message: 'This is the response message',
         },
@@ -273,7 +273,7 @@ module('Unit | Validator | base', function (hooks) {
     let validator = new DummyValidator(
       this.binding,
       {
-        value: false,
+        response: false,
         key: 'greeting',
       },
       this.model,
@@ -290,7 +290,7 @@ module('Unit | Validator | base', function (hooks) {
     validator = new DummyValidator(
       this.binding,
       {
-        value: false,
+        response: false,
         message: 'Hello, world!',
         isWarning: true,
       },
@@ -314,7 +314,7 @@ module('Unit | Validator | base', function (hooks) {
     let validator = new DummyValidator(
       this.binding,
       {
-        value: {
+        response: {
           isValid: false,
           key: 'greeting',
         },
@@ -334,7 +334,7 @@ module('Unit | Validator | base', function (hooks) {
     validator = new DummyValidator(
       this.binding,
       {
-        value: {
+        response: {
           isValid: false,
           key: 'greeting',
         },
@@ -361,7 +361,7 @@ module('Unit | Validator | base', function (hooks) {
     let validator = new DummyValidator(
       this.binding,
       {
-        value: {
+        response: {
           isValid: false,
           message: 'This is the wrong message',
         },
@@ -381,7 +381,7 @@ module('Unit | Validator | base', function (hooks) {
     validator = new DummyValidator(
       this.binding,
       {
-        value: {
+        response: {
           isValid: false,
           message: 'This is the wrong message',
         },
@@ -404,7 +404,7 @@ module('Unit | Validator | base', function (hooks) {
     let validator = new DummyValidator(
       this.binding,
       {
-        value: {
+        response: {
           isValid: false,
           key: 'greeting',
         },
@@ -424,7 +424,7 @@ module('Unit | Validator | base', function (hooks) {
     validator = new DummyValidator(
       this.binding,
       {
-        value: {
+        response: {
           isValid: false,
           key: 'greeting',
         },
@@ -451,7 +451,7 @@ module('Unit | Validator | base', function (hooks) {
     let validator = new DummyValidator(
       this.binding,
       {
-        value: {
+        response: {
           isValid: false,
         },
         message: 'This is the wrong message',
@@ -471,7 +471,7 @@ module('Unit | Validator | base', function (hooks) {
     validator = new DummyValidator(
       this.binding,
       {
-        value: {
+        response: {
           isValid: false,
         },
         message: 'This is the wrong message',
@@ -498,7 +498,7 @@ module('Unit | Validator | base', function (hooks) {
     let validator = new DummyValidator(
       this.binding,
       {
-        value: {
+        response: {
           isValid: false,
           key: 'my.key',
           message: 'This is the wrong message',
@@ -518,7 +518,7 @@ module('Unit | Validator | base', function (hooks) {
     validator = new DummyValidator(
       this.binding,
       {
-        value: {
+        response: {
           isValid: false,
           key: 'my.key',
           message: 'This is the wrong message',
@@ -541,7 +541,7 @@ module('Unit | Validator | base', function (hooks) {
     const validator = new DummyValidator(
       this.binding,
       {
-        value: false,
+        response: false,
         message: 'This field is bad',
         disabled() {
           return this.disabled;
