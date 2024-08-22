@@ -9,6 +9,7 @@ This is intended to be used as a helper tool to generate a theme file from a set
 
 First, build your theme by editing the `src/custom-variables.scss` file.
 This file contains a list of variables that should be used to generate a theme.
+
 > This is not an exhaustive list of variables that can be used to customize the theme.
 > Bootstrap has many more variables that can be be found in `node_modules/bootstrap/scss/_variables.scss` under the `design-system` package.
 
