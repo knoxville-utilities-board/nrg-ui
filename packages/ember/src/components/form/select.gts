@@ -83,6 +83,7 @@ export interface SelectSignature<T> {
     displayPath?: string;
     id?: string;
     isInvalid?: boolean;
+    isWarning?: boolean;
     loading?: boolean;
     options: T[];
     scrollable?: boolean;
@@ -127,6 +128,8 @@ export default class Select<T> extends BoundValue<
 
     if (this.args.isInvalid) {
       classes.push('is-invalid');
+    } else if (this.args.isWarning) {
+      classes.push('is-warning');
     }
 
     return classes.join(' ');

@@ -16,6 +16,7 @@ export interface RadioGroupFieldSignature {
     disabled?: boolean;
     id?: string;
     isInvalid?: boolean;
+    isWarning?: boolean;
     name: string;
   };
   Blocks: {
@@ -27,14 +28,6 @@ export default class RadioGroupField extends BoundValue<
   RadioGroupFieldSignature,
   string
 > {
-  @action
-  change(updatedValue: Optional<string>) {
-    if (updatedValue) {
-      this.value = updatedValue;
-      this.onChange(updatedValue);
-    }
-  }
-
   get classList() {
     const classes = ['form-control'];
 
@@ -44,9 +37,23 @@ export default class RadioGroupField extends BoundValue<
 
     if (this.args.isInvalid) {
       classes.push('is-invalid');
+    } else if (this.args.isWarning) {
+      classes.push('is-warning');
     }
 
     return classes.join(' ');
+  }
+
+  get name() {
+    return this.args.name ?? crypto.randomUUID();
+  }
+
+  @action
+  change(updatedValue: Optional<string>) {
+    if (updatedValue) {
+      this.value = updatedValue;
+      this.onChange(updatedValue);
+    }
   }
 
   <template>
@@ -63,7 +70,8 @@ export default class RadioGroupField extends BoundValue<
             currentValue=this.value
             disabled=@disabled
             isInvalid=@isInvalid
-            name=@name
+            isWarning=@isWarning
+            name=this.name
             onChange=this.change
           )
         )
@@ -78,6 +86,7 @@ export interface RadioFieldSignature {
     currentValue?: string | null;
     disabled?: boolean;
     isInvalid?: boolean;
+    isWarning?: boolean;
     label?: string;
     name: string;
     option?: string;
@@ -97,6 +106,8 @@ class RadioField extends Component<RadioFieldSignature> {
 
     if (this.args.isInvalid) {
       classes.push('is-invalid');
+    } else if (this.args.isWarning) {
+      classes.push('is-warning');
     }
 
     return classes.join(' ');

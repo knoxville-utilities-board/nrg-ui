@@ -11,6 +11,7 @@ export interface TextAreaSignature {
     disabled?: boolean;
     id?: string;
     isInvalid?: boolean;
+    isWarning?: boolean;
     readonly?: boolean;
   };
 }
@@ -25,6 +26,8 @@ export default class TextArea extends BoundValue<TextAreaSignature, string> {
 
     if (this.args.isInvalid) {
       classes.push('is-invalid');
+    } else if (this.args.isWarning) {
+      classes.push('is-warning');
     }
 
     return classes.join(' ');

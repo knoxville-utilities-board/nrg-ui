@@ -37,7 +37,7 @@ type ValidatorFnArgs<T extends ValidatorType = ValidatorType> = T extends T
 
 export function validator<V extends ValidatorType = ValidatorType>(
   ...[type, options]: ValidatorFnArgs<V>
-): ValidatorBuilder<unknown, ContextOf<V>, OptionsOf<V>, ContextOf<V>> {
+): ValidatorBuilder<unknown, ContextOf<V>, ContextOf<V>, OptionsOf<V>> {
   if (type === 'confirmation') {
     return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
       new ConfirmationValidator(

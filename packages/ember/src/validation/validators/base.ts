@@ -9,8 +9,8 @@ import { cached } from '@glimmer/tracking';
 
 import type { Binding } from '../../';
 import type {
-  DerivedOptions,
-  Options,
+  BaseOptions,
+  Computable,
   TranslatableMessage,
   ValidateFnResponse,
   ValidationResult,
@@ -34,26 +34,27 @@ export function unwrapProxy<T>(value: T): T {
 export default abstract class BaseValidator<
   T,
   Model extends object = Record<string, unknown>,
-  OptionsShape extends DerivedOptions = DerivedOptions,
   Context extends object = Record<string, unknown>,
-> implements Validator<T, Model, OptionsShape, Context>
+  OptionsShape extends BaseOptions = BaseOptions,
+> implements Validator<T, Model, Context, OptionsShape>
 {
   abstract validate(
-    this: BaseValidator<T, Model, OptionsShape, Context>,
+    this: BaseValidator<T, Model, Context, OptionsShape>,
     value: T,
     options: OptionsShape,
     context: Context | Model,
   ): ValidateFnResponse;
-  defaultOptions: OptionsShape = {} as OptionsShape;
+  defaultOptions: Computable<Context, OptionsShape & BaseOptions> =
+    {} as OptionsShape;
 
   readonly owner;
   readonly binding: Binding<Model>;
-  readonly options: OptionsShape;
+  readonly options: Computable<Context, OptionsShape & BaseOptions>;
   readonly context: Context | Model;
 
   constructor(
     binding: Binding<Model>,
-    options: OptionsShape,
+    options: Computable<Context, OptionsShape & BaseOptions>,
     context: Context,
   ) {
     this.binding = binding;
@@ -61,8 +62,13 @@ export default abstract class BaseValidator<
     this.context = context ?? binding.model;
 
     assert(
-      'The `validate` method must be implemented by subclasses of BaseValidator',
-      this.validate,
+      `You must provide a binding argument to ${this.constructor.name}`,
+      binding,
+    );
+
+    assert(
+      'BaseValidator requires the `validate` function to be implemented by subclasses',
+      typeof this.validate === 'function',
     );
 
     const owner = getOwner(this.context);
@@ -89,6 +95,11 @@ export default abstract class BaseValidator<
   get result(): ValidationResult {
     const { context, options, validate, value } = this;
     const computedOptions = this.computeOptions(options);
+
+    if (computedOptions.disabled) {
+      return { isValid: true };
+    }
+
     const response = validate.apply(this, [value, computedOptions, context]);
 
     return this.coalesceResponse(response, computedOptions);
@@ -98,30 +109,46 @@ export default abstract class BaseValidator<
     response: ValidateFnResponse,
     options: OptionsShape,
   ): ValidationResult {
+    let isValid = false;
+    let isWarning = options.isWarning;
+    let message = options.message;
+
     if (typeof response === 'boolean') {
-      return {
-        isValid: response,
-        isWarning: options.isWarning ?? false,
-        message: options.message,
-      };
-    }
-    if (typeof response === 'string') {
-      return {
-        isValid: false,
-        isWarning: options.isWarning ?? false,
-        message: options.message ?? response,
-      };
-    }
-    if ('key' in response) {
-      const message = this.translateMessage(response);
-      return {
-        isValid: false,
-        isWarning: options.isWarning ?? false,
-        message,
-      };
+      isValid = response;
+    } else if (typeof response === 'string') {
+      message = response;
+    } else {
+      isValid = response.isValid ?? isValid;
+      isWarning ??= response.isWarning ?? isWarning;
     }
 
-    return response;
+    isWarning ??= false;
+
+    if (options.key) {
+      const translationOptions = { ...options };
+      if (typeof response === 'object') {
+        Object.assign(translationOptions, response);
+      }
+
+      message = this.translateMessage({
+        ...translationOptions,
+        key: options.key,
+      });
+    } else if (options.message) {
+      message = options.message;
+    } else if (typeof response === 'object') {
+      message = response.message;
+
+      if ('key' in response && response.key) {
+        message = this.translateMessage({ ...options, ...response });
+      }
+    }
+
+    if (isValid && !isWarning) {
+      message = undefined;
+    }
+
+    return { isValid, isWarning, message };
   }
 
   translateMessage(message: TranslatableMessage): string {
@@ -130,18 +157,42 @@ export default abstract class BaseValidator<
     return this.intl.t(key, options);
   }
 
-  computeOptions(options: Options<Context>): OptionsShape {
-    const { context, defaultOptions } = this;
-    const computed: Record<string, unknown> = {};
+  computeOptions(options: Computable<Context, OptionsShape>) {
+    const { defaultOptions } = this;
+    const computed = {} as OptionsShape;
 
-    for (const [key, value] of Object.entries(options)) {
-      if (typeof value === 'function') {
-        computed[key] = value.apply(context);
-      } else {
-        computed[key] = value;
-      }
+    for (const key of Object.keys(options)) {
+      computed[key as keyof OptionsShape] = this.compute(
+        options[key as keyof OptionsShape],
+      );
     }
 
-    return { ...defaultOptions, ...computed } as OptionsShape;
+    for (const key of Object.keys(defaultOptions)) {
+      if (key in computed) {
+        continue;
+      }
+
+      const willOverrideMessage = key === 'key' && 'message' in computed;
+      const willOverrideKey = key === 'message' && 'key' in computed;
+      if (willOverrideMessage || willOverrideKey) {
+        continue;
+      }
+
+      computed[key as keyof OptionsShape] = this.compute(
+        defaultOptions[key as keyof OptionsShape],
+      );
+    }
+
+    return { ...computed };
+  }
+
+  compute<K extends keyof OptionsShape>(
+    value: Computable<Context, OptionsShape>[K],
+  ): OptionsShape[K] {
+    if (typeof value === 'function') {
+      return value.apply(this.context);
+    }
+
+    return value as OptionsShape[K];
   }
 }

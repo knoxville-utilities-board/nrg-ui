@@ -26,11 +26,33 @@ const Validators = {
         console.log('Validating: ' + value);
         return value !== 'foo';
       },
+      isWarning: true,
+    }),
+  ],
+  radio: [validator('exclusion', { in: ['A', 'B'], isWarning: true })],
+  phone: [
+    validator('length', {
+      min: 10,
+      message: 'Phone number must contain a 3-digit area code',
+      disabled() {
+        return !this.requirePhoneLength;
+      },
+    }),
+    validator('length', {
+      max: 10,
+      isWarning: true,
+      message: 'Phone number cannot contain a country code',
+      disabled() {
+        return !this.requirePhoneLength;
+      },
     }),
   ],
 };
 
 class Model {
+  @tracked
+  requirePhoneLength = true;
+
   @tracked
   textField = '';
 
@@ -39,6 +61,9 @@ class Model {
 
   @tracked
   select = '';
+
+  @tracked
+  phone = '';
 
   @tracked
   radio = '';
@@ -84,6 +109,11 @@ export default class extends Component {
   @action
   toggleRequired() {
     this.required = !this.required;
+  }
+
+  @action
+  toggleRequirePhoneLength() {
+    this.model.requirePhoneLength = !this.model.requirePhoneLength;
   }
 
   @action
@@ -138,11 +168,28 @@ export default class extends Component {
             </Field.RadioGroup>
           </Form.Field>
         </div>
+        <div class="mb-3">
+          <Form.Field
+            @label="Phone Number"
+            @required={{this.required}}
+            as |Field|
+          >
+            <Field.Phone @binding={{bind this.model "phone"}} />
+          </Form.Field>
+        </div>
         <Form.SubmitButton class="btn-primary mt-3" />
         <Button
           class="btn{{unless this.required '-outline'}}-secondary mt-3"
           @text="Toggle Required"
           @onClick={{this.toggleRequired}}
+        />
+        <Button
+          class="btn{{unless
+              this.model.requirePhoneLength
+              '-outline'
+            }}-secondary mt-3"
+          @text="Toggle Phone Length"
+          @onClick={{this.toggleRequirePhoneLength}}
         />
       </Form>
       <hr />

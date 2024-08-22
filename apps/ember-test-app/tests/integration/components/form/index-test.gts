@@ -1,8 +1,10 @@
 import { setOwner } from '@ember/application';
+import { array } from '@ember/helper';
 import { click, fillIn, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import Form from '@nrg-ui/ember/components/form';
 import bind from '@nrg-ui/ember/helpers/bind';
+import { validator } from '@nrg-ui/ember/validation';
 import { setupIntl } from 'ember-intl/test-support';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
@@ -14,6 +16,13 @@ class Model {
   @tracked
   textArea: string = '';
 }
+
+const Validators = {
+  selectByAnotherProperty: validator('presence', {
+    presence: false,
+    isWarning: true,
+  }),
+};
 
 module('Integration | Component | form', function (hooks) {
   setupRenderingTest(hooks);
@@ -101,7 +110,7 @@ module('Integration | Component | form', function (hooks) {
   });
 
   test('validations work', async function (assert) {
-    assert.expect(12);
+    assert.expect(20);
 
     const model = this.model;
 
@@ -111,7 +120,7 @@ module('Integration | Component | form', function (hooks) {
     };
 
     await render(<template>
-      <Form @onSubmit={{actionHandler}} as |Form|>
+      <Form @validators={{Validators}} @onSubmit={{actionHandler}} as |Form|>
         <Form.Field @label="Text Field" @required={{true}} as |Field|>
           <Field.TextField @binding={{bind model "textField"}} />
         </Form.Field>
@@ -125,11 +134,43 @@ module('Integration | Component | form', function (hooks) {
             Here's some extra context for this field
           </Field.Text>
         </Form.Field>
+        <Form.Field
+          @label="Select"
+          @validatorKey="selectByAnotherProperty"
+          as |Field|
+        >
+          <Field.Select
+            @binding={{bind model "select"}}
+            @options={{array "A" "B" "C"}}
+          />
+        </Form.Field>
         <Form.SubmitButton />
       </Form>
     </template>);
 
-    await click('button');
+    // Select
+    const select = this.element.querySelector('label + button.dropdown');
+
+    assert
+      .dom(select)
+      .exists()
+      .hasAttribute('role', 'combobox')
+      .hasClass('form-control');
+
+    await click(select);
+    await click('button > .dropdown-menu > li:first-child');
+
+    const ariaId = select.getAttribute('aria-describedby');
+
+    assert.dom('button.dropdown').doesNotHaveClass('is-invalid');
+    assert
+      .dom('button.dropdown + div')
+      .exists()
+      .hasAttribute('id', ariaId)
+      .hasClass('warning-feedback')
+      .containsText('This field must be blank');
+
+    await click('button[type="submit"]');
 
     assert.false(didSubmit, 'Form should not submit when validations fail');
 
@@ -159,7 +200,7 @@ module('Integration | Component | form', function (hooks) {
       assert.ok(true, 'Form should submit');
     };
 
-    await click('button');
+    await click('button[type="submit"]');
 
     assert.true(didSubmit, 'Form should submit when validations pass');
   });

@@ -4,7 +4,7 @@ import { isEmpty, isNone } from '@ember/utils';
 import BaseValidator from './base.ts';
 
 import type { Binding } from '../../';
-import type { ValidateFnResponse } from '../types';
+import type { BaseOptions, Computable, ValidateFnResponse } from '../types';
 
 export type LengthOptions = {
   /**
@@ -22,13 +22,13 @@ export type LengthOptions = {
   is?: number;
   max?: number;
   min?: number;
-};
+} & BaseOptions;
 
 export default class LengthValidator<
   T extends ArrayLike<T>,
   Model extends object,
   Context extends object = Record<string, unknown>,
-> extends BaseValidator<T, Model, LengthOptions, Context> {
+> extends BaseValidator<T, Model, Context, LengthOptions> {
   defaultOptions = {
     allowNone: true,
     presence: true,
@@ -36,7 +36,7 @@ export default class LengthValidator<
 
   constructor(
     binding: Binding<Model>,
-    options: LengthOptions,
+    options: Computable<Context, LengthOptions>,
     context: Context,
   ) {
     super(binding, options, context);

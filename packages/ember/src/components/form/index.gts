@@ -22,12 +22,12 @@ import type { ComponentLike } from '@glint/template';
 
 type Wrapper = {
   id: string;
-  v: Validator<unknown, unknown, unknown, unknown>;
+  v: Validator<unknown, object, object, object>;
 };
-type ValidatorArray = ValidatorBuilder<unknown, unknown, unknown, unknown>[];
+type ValidatorArray = ValidatorBuilder<unknown, object, object, object>[];
 type ValidatorsObject = Record<
   string,
-  ValidatorBuilder<unknown, unknown, unknown, unknown> | ValidatorArray
+  ValidatorBuilder<unknown, object, object, object> | ValidatorArray
 >;
 
 export interface FormType {
@@ -38,7 +38,7 @@ export interface FormType {
   warningFor(name: string): string | undefined;
   registerBinding(binding: Binding, name?: string): void;
   registerValidator(
-    validator: Validator<unknown, unknown, unknown, unknown>,
+    validator: Validator<unknown, object, object, object>,
     name?: string,
   ): string;
   unregisterValidator(name: string, id: string): void;
@@ -131,7 +131,9 @@ export default class Form extends Component<FormSignature> implements FormType {
     });
 
     const validations = Array.from(this.validations.values()).flat();
-    return validations.every((validator) => validator.v.result.isValid);
+    return validations
+      .filter((validator) => !validator.v.result.isWarning)
+      .every((validator) => validator.v.result.isValid);
   }
 
   submit = dropTask(async (event: SubmitEvent) => {
@@ -162,7 +164,7 @@ export default class Form extends Component<FormSignature> implements FormType {
 
   @action
   registerValidator(
-    validator: Validator<unknown, unknown, unknown, unknown>,
+    validator: Validator<unknown, object, object, object>,
     name?: string,
   ): string {
     const id = uid();
@@ -248,7 +250,8 @@ export default class Form extends Component<FormSignature> implements FormType {
     }
 
     const warning = validators.find(
-      (validator) => validator.v.result.isWarning,
+      (validator) =>
+        !validator.v.result.isValid && validator.v.result.isWarning,
     );
 
     if (!warning) {

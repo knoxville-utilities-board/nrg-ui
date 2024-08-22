@@ -10,3 +10,78 @@
     overflow-y: auto;
   }
 }
+
+/* I'm open to changing the color (it's the "orange" color from
+ * Fomantic) but I think it's a good idea to have a color that's
+ * different from the default "warning" color from Bootstrap.
+ * The default Bootstrap warning color is hard to read, and the
+ * "emphasis" variant is gross (see `text-warning-emphasis`):
+ * <https://getbootstrap.com/docs/5.3/utilities/colors/#colors>
+ */
+$warning-custom: #f2711c;
+:root {
+  --bs-form-warning-rgb: 242, 113, 28;
+  --bs-form-warning-color: #f2711c;
+  --bs-form-warning-border-color: #f2711c;
+}
+
+input,
+textarea,
+select,
+.form-control {
+  &[disabled] {
+    & ~ .warning-feedback {
+      display: none;
+    }
+  }
+  &:not([disabled]) {
+    &:not(input[type="checkbox"]):not(input[type="radio"]) {
+      background: none !important;
+      padding-right: revert !important;
+    }
+
+    & ~ .warning-feedback {
+      @extend .invalid-feedback;
+      color: var(--bs-form-warning-color);
+      display: block;
+    }
+  }
+}
+
+input.form-control,
+textarea.form-control,
+select.form-select,
+.form-control,
+.form-check,
+.form-check-input {
+  &.is-warning:not([disabled]) {
+    @extend .is-invalid;
+
+    border-color: var(--bs-form-warning-border-color);
+  }
+
+  &.is-warning:focus:not([disabled]) {
+    @extend .is-invalid, :focus;
+
+    border-color: var(--bs-form-warning-border-color);
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-form-warning-rgb), 0.25);
+  }
+}
+
+.form-check-input.is-warning:not([disabled]) {
+  @extend .is-invalid;
+
+  &:checked {
+    &:focus,
+    & {
+      background-color: var(--bs-form-warning-color);
+    }
+  }
+
+  &:focus,
+  & {
+    & ~ .form-check-label {
+      color: var(--bs-form-warning-color);
+    }
+  }
+}
