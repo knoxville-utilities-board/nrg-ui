@@ -31,11 +31,8 @@ jobs:
       - name: Node Cache
         uses: actions/cache@v4
         with:
-          path: |
-            ~/.npm
-            ~/.cache/yarn
-            ~/.local/share/pnpm/store
-          key: node-${{ hashFiles('**/package-lock.json', '**/yarn.lock', '**/pnpm-lock.yaml') }}
+          path: ~/.local/share/pnpm/store
+          key: node-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             node-
           save-always: true

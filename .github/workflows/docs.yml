@@ -21,14 +21,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: pnpm
 
-      - name: Node Cache
+      - name: pnpm Cache
         uses: actions/cache@v3
         with:
-          path: |
-            ~/.local/share/pnpm/store
+          path: ~/.local/share/pnpm/store
           key: node-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            node-
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
