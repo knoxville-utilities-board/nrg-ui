@@ -8,7 +8,7 @@ import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 export default class extends Component {
   @tracked
-  class = 'bg-primary';
+  class = 'bg-body-secondary';
 
   @action
   update(key: string, value: unknown) {
@@ -20,16 +20,14 @@ export default class extends Component {
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
-            <div class="container-fluid">
-              <Footer>
-                <:left>
-                  Left section
-                </:left>
-                <:right>
-                  Right Section
-                </:right>
-              </Footer>
-            </div>
+            <Footer class={{this.class}}>
+              <:left>
+                Left section
+              </:left>
+              <:right>
+                Right Section
+              </:right>
+            </Footer>
           </:example>
           <:api as |Args|>
             <Args.String
@@ -39,7 +37,7 @@ export default class extends Component {
               @onInput={{fn this.update "class"}}
             />
             <Args.Yield
-              @description="Named yield block that renders content in the center of the footer"
+              @description="Named yield block that renders content in the left of the footer"
               @name="left"
             />
             <Args.Yield
