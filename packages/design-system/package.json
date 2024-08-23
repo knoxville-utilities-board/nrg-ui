@@ -12,6 +12,9 @@
     "sasstest": "sass --help",
     "watch:sass": "sass --load-path node_modules --watch src:dist"
   },
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "keywords": [],
   "author": "",
