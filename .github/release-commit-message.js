@@ -11,21 +11,21 @@ const packages = fs
   .filter((path) => fs.statSync(path).isDirectory());
 
 const updatedVersions = [];
-for (const package of packages) {
-  let packageJsonParsed;
+for (const pkg of packages) {
+  let packageJson;
   try {
-    const packageJson = fs.readFileSync(
-      path.join(package, 'package.json'),
+    const json = fs.readFileSync(
+      path.join(pkg, 'package.json'),
       'utf8',
     );
-    packageJsonParsed = JSON.parse(packageJson);
+    packageJson = JSON.parse(json);
   } catch (e) {
     continue;
   }
-  if (packageJsonParsed.private) {
+  if (packageJson.private) {
     continue;
   }
-  const name = packageJsonParsed.name;
+  const name = packageJson.name;
   const newVersion = releasePlanJson.solution[name]?.newVersion;
   if (newVersion) {
     updatedVersions.push(`${name}@${newVersion}`);
