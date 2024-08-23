@@ -86,6 +86,7 @@
     "@glint/environment-ember-loose": "^1.2.1",
     "@glint/environment-ember-template-imports": "^1.2.1",
     "@glint/template": "^1.2.1",
+    "@nrg-ui/css": "workspace:*",
     "@rollup/plugin-babel": "^6.0.4",
     "@tsconfig/ember": "^3.0.2",
     "@types/ember": "^4.0.10",
