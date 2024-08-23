@@ -201,17 +201,19 @@ export default class Field extends Component<FieldSignature> {
   }
 
   <template>
-    <label
-      class="form-label"
-      for={{this.fieldId}}
-      {{onUpdate this.setupValidator @required}}
-      ...attributes
-    >
-      {{@label}}
-      {{#if @required}}
-        <span class="text-danger">*</span>
-      {{/if}}
-    </label>
+    {{#if @label}}
+      <label
+        class="form-label"
+        for={{this.fieldId}}
+        {{onUpdate this.setupValidator @required}}
+        ...attributes
+      >
+        {{@label}}
+        {{#if @required}}
+          <span class="text-danger">*</span>
+        {{/if}}
+      </label>
+    {{/if}}
     {{yield
       (hash
         Checkbox=(component
