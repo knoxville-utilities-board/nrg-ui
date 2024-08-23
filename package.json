@@ -1,6 +1,9 @@
 {
   "private": true,
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/knoxville-utilities-board/nrg-ui.git"
+  },
   "license": "MIT",
   "author": "",
   "scripts": {
@@ -17,8 +20,8 @@
     "prepare": "pnpm build",
     "start": "concurrently 'pnpm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
     "start:addon": "pnpm --filter @nrg-ui/ember start --no-watch.clearScreen",
-    "start:test-app": "pnpm --filter ember-test-app start",
     "start:design-system": "pnpm --filter @nrg-ui/css start",
+    "start:test-app": "pnpm --filter ember-test-app start",
     "test": "pnpm --filter '*' test",
     "test:ember": "pnpm --filter '*' test:ember"
   },
@@ -26,7 +29,8 @@
     "@glint/core": "^1.2.1",
     "concurrently": "^8.2.0",
     "prettier": "^3.0.3",
-    "prettier-plugin-ember-template-tag": "^1.1.0"
+    "prettier-plugin-ember-template-tag": "^1.1.0",
+    "release-plan": "^0.9.2"
   },
   "pnpm": {
     "overrides": {
