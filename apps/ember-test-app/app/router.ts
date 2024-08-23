@@ -25,6 +25,7 @@ Router.map(function () {
     this.route('select');
     this.route('text-area');
     this.route('text-field');
+    this.route('footer');
   });
   this.route('helpers');
   this.route('mktg-components', function () {
