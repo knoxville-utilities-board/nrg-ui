@@ -102,7 +102,9 @@ jobs:
           title: ${{ steps.commit-message.outputs.COMMIT_MESSAGE }}
           token: ${{ secrets.RELEASE_PLAN_GH_TOKEN }}
           body: |
-            This PR is a preview of the release that [release-plan](https://github.com/embroider-build/release-plan) has prepared. To release you should just merge this PR 👍
+            Merging this PR will create a GitHub release and publish the package(s) to npm.
+
+            This is a preview of the release that [release-plan](https://github.com/embroider-build/release-plan) has prepared:
 
             -----------------------------------------
 
