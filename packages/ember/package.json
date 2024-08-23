@@ -86,7 +86,7 @@
     "@glint/environment-ember-loose": "^1.2.1",
     "@glint/environment-ember-template-imports": "^1.2.1",
     "@glint/template": "^1.2.1",
-    "@nrg-ui/css": "workspace:*",
+    "@nrg-ui/css": "workspace:^0",
     "@rollup/plugin-babel": "^6.0.4",
     "@tsconfig/ember": "^3.0.2",
     "@types/ember": "^4.0.10",
@@ -137,7 +137,7 @@
   "peerDependencies": {
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
-    "@nrg-ui/css": "workspace:*",
+    "@nrg-ui/css": "workspace:^0",
     "ember-auto-import": "^2.0.0",
     "ember-concurrency": "^4.0.2",
     "ember-css-transitions": "^4.4.0",

@@ -396,7 +396,7 @@ importers:
         specifier: ^1.2.1
         version: 1.4.0
       '@nrg-ui/css':
-        specifier: workspace:*
+        specifier: workspace:^0
         version: link:../design-system
       '@rollup/plugin-babel':
         specifier: ^6.0.4
