@@ -5,6 +5,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { runTask } from 'ember-lifeline';
 
+import Checkbox from './checkbox.gts';
 import PhoneField from './phone-field.gts';
 import RadioGroup from './radio-group.gts';
 import Select from './select.gts';
@@ -13,6 +14,7 @@ import TextField from './text-field.gts';
 import onUpdate from '../../modifiers/on-update.ts';
 import { PresenceValidator } from '../../validation/index.ts';
 
+import type { CheckboxSignature } from './checkbox.gts';
 import type { FormType } from './index.gts';
 import type { RadioGroupFieldSignature } from './radio-group.gts';
 import type { SelectSignature } from './select.gts';
@@ -44,6 +46,7 @@ export interface FieldSignature {
   Blocks: {
     default: [
       {
+        Checkbox: ComponentLike<CheckboxSignature>;
         Phone: ComponentLike<TextFieldSignature>;
         RadioGroup: ComponentLike<RadioGroupFieldSignature>;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -211,6 +214,15 @@ export default class Field extends Component<FieldSignature> {
     </label>
     {{yield
       (hash
+        Checkbox=(component
+          Checkbox
+          describedBy=this.describedBy
+          disabled=@disabled
+          id=this.fieldId
+          initBinding=this.initBinding
+          isInvalid=this.hasError
+          isWarning=this.hasWarning
+        )
         Phone=(component
           PhoneField
           describedBy=this.describedBy
