@@ -90,12 +90,16 @@ jobs:
         env:
           GITHUB_AUTH: ${{ secrets.RELEASE_PLAN_GH_TOKEN }}
 
+      - name: Generate commit message
+        run: node .github/release-commit-message.js >> "$GITHUB_OUTPUT"
+        id: commit-message
+
       - uses: peter-evans/create-pull-request@v6
         with:
-          commit-message: "Prepare Release using 'release-plan'"
+          commit-message: ${{ steps.commit-message.outputs.COMMIT_MESSAGE }}
           labels: 'internal'
           branch: release-preview
-          title: Prepare Release
+          title: ${{ steps.commit-message.outputs.COMMIT_MESSAGE }}
           body: |
             This PR is a preview of the release that [release-plan](https://github.com/embroider-build/release-plan) has prepared. To release you should just merge this PR 👍
 
