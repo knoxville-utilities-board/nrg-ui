@@ -334,9 +334,6 @@ importers:
       '@glimmer/tracking':
         specifier: ^1.1.2
         version: 1.1.2
-      '@nrg-ui/css':
-        specifier: workspace:*
-        version: link:../design-system
       decorator-transforms:
         specifier: ^1.0.1
         version: 1.2.1(@babel/core@7.25.2)
@@ -398,6 +395,9 @@ importers:
       '@glint/template':
         specifier: ^1.2.1
         version: 1.4.0
+      '@nrg-ui/css':
+        specifier: workspace:*
+        version: link:../design-system
       '@rollup/plugin-babel':
         specifier: ^6.0.4
         version: 6.0.4(@babel/core@7.25.2)(rollup@4.20.0)
