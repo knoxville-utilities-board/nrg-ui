@@ -5,19 +5,28 @@ const releasePlan = fs.readFileSync('.release-plan.json', 'utf8');
 const releasePlanJson = JSON.parse(releasePlan);
 
 const packageDirectory = 'packages';
-const packages = fs.readdirSync(packageDirectory)
-  .map(file => path.join(packageDirectory, file))
-  .filter(path => fs.statSync(path).isDirectory());
+const packages = fs
+  .readdirSync(packageDirectory)
+  .map((file) => path.join(packageDirectory, file))
+  .filter((path) => fs.statSync(path).isDirectory());
 
 const updatedVersions = [];
-for(const package of packages) {
-  const packageJson = fs.readFileSync(path.join(package, 'package.json'), 'utf8');
-  const packageJsonParsed = JSON.parse(packageJson);
+for (const package of packages) {
+  let packageJsonParsed;
+  try {
+    const packageJson = fs.readFileSync(
+      path.join(package, 'package.json'),
+      'utf8',
+    );
+    packageJsonParsed = JSON.parse(packageJson);
+  } catch (e) {
+    continue;
+  }
   if (packageJsonParsed.private) {
     continue;
   }
   const name = packageJsonParsed.name;
-  const newVersion = releasePlanJson.solution[name].newVersion;
+  const newVersion = releasePlanJson.solution[name]?.newVersion;
   if (newVersion) {
     updatedVersions.push(`${name}@${newVersion}`);
   }
