@@ -2,8 +2,9 @@ import { click, render, settled } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import Checkbox from '@nrg-ui/ember/components/form/checkbox';
 import bind from '@nrg-ui/ember/helpers/bind';
-import { setupRenderingTest } from 'ember-test-app/tests/helpers';
 import { module, test } from 'qunit';
+
+import { setupRenderingTest } from '../../../helpers';
 
 module('Integration | Component | form/checkbox', function (hooks) {
   setupRenderingTest(hooks);

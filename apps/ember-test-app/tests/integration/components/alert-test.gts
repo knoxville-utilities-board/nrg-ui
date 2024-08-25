@@ -7,8 +7,9 @@ import {
 } from '@ember/test-helpers';
 import Alert from '@nrg-ui/ember/components/alert';
 import { hbs } from 'ember-cli-htmlbars';
-import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
+
+import { setupRenderingTest } from '../../helpers';
 
 interface Context extends TestContext {
   dismissHandler: () => void;

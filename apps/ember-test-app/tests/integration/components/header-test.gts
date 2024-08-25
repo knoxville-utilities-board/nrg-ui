@@ -1,7 +1,8 @@
 import { render } from '@ember/test-helpers';
 import Header from '@nrg-ui/ember/components/header';
-import { setupRenderingTest } from 'ember-qunit';
 import { assert, module, test } from 'qunit';
+
+import { setupRenderingTest } from '../../helpers';
 
 module('Integration | Component | header', function (hooks) {
   setupRenderingTest(hooks);

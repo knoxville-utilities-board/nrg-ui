@@ -4,8 +4,9 @@ import Select from '@nrg-ui/ember/components/form/select';
 import bind from '@nrg-ui/ember/helpers/bind';
 import { setupIntl } from 'ember-intl/test-support';
 import { triggerKeyDown } from 'ember-keyboard';
-import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
+
+import { setupRenderingTest } from '../../../helpers';
 
 module('Integration | Component | form/select', function (hooks) {
   setupRenderingTest(hooks);

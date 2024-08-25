@@ -1,7 +1,8 @@
 import { find, render, type TestContext } from '@ember/test-helpers';
 import Progress from '@nrg-ui/ember/components/progress';
-import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
+
+import { setupRenderingTest } from '../../helpers';
 
 interface Context extends TestContext {
   element: HTMLElement;
