@@ -1,5 +1,12 @@
 {
   "nrg": {
+    "base": {
+      "close": "Close",
+      "loading": "Loading"
+    },
+    "navbar": {
+      "toggleContextMenu": "Toggle context menu"
+    },
     "select": {
       "defaultText": "Select an Option"
     },

@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { t } from 'ember-intl';
 
 import ResponsiveService from '../../services/responsive.ts';
 
@@ -55,7 +56,7 @@ export default class NavbarComponent extends Component<NavbarSignature> {
         class="navbar-toggler mx-5"
         type="button"
         aria-expanded={{this.menuOpen}}
-        aria-label="Toggle context menu"
+        aria-label={{t "nrg.navbar.toggleContextMenu"}}
         {{on "click" this.toggleMenu}}
       >
         <span class={{this.menuIcon}} />

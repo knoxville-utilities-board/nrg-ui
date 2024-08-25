@@ -7,6 +7,7 @@ import Component from '@glimmer/component';
 // @ts-expect-error Glimmer doesn't currently ship a type for the `cached` decorator
 // https://github.com/glimmerjs/glimmer.js/issues/408
 import { tracked, cached } from '@glimmer/tracking';
+import { t } from 'ember-intl';
 // @ts-expect-error Ember keyboard doesn't currently ship a type for the `on-key` modifier
 // https://github.com/adopted-ember-addons/ember-keyboard/issues/464
 import onKey from 'ember-keyboard/modifiers/on-key';
@@ -419,7 +420,9 @@ export default class Select<T> extends BoundValue<
           class="spinner-border spinner-border-sm float-end m-1"
           aria-hidden="true"
         ></span>
-        <span class="visually-hidden" role="status">Loading...</span>
+        <span class="visually-hidden" role="status">
+          {{t "nrg.base.loading"}}
+        </span>
       {{else}}
         <i class="bi {{this.caretIcon}} float-end m-1" />
       {{/if}}
