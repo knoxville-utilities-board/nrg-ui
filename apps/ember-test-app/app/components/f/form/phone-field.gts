@@ -2,12 +2,12 @@ import { fn } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import RadioGroup from '@nrg-ui/ember/components/form/radio-group';
+import PhoneField from '@nrg-ui/ember/components/form/phone-field';
 import bind from '@nrg-ui/ember/helpers/bind';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
-import CodeBlock from '../code-block';
+import CodeBlock from '../../code-block';
 
 // TypeScript doesn't recognize that this function is used in the template
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -27,20 +27,16 @@ export default class extends Component {
   model = new Model();
 
   @tracked
-  name = 'radio';
-
-  @tracked
-  options = [
-    { option: '1', label: 'One' },
-    { option: '2', label: 'Two' },
-    { option: '3', label: 'Three' },
-  ];
+  basic = false;
 
   @tracked
   disabled = false;
 
   @tracked
-  basic = false;
+  readonly = false;
+
+  @tracked
+  value = '';
 
   @action
   update(key: string, value: unknown) {
@@ -48,28 +44,23 @@ export default class extends Component {
   }
 
   <template>
-    <FreestyleSection @name="Radio Group" as |Section|>
+    <FreestyleSection @name="Phone Field" as |Section|>
       <Section.subsection @name="Basic">
         <FreestyleUsage>
           <:example>
-            <RadioGroup
+            <PhoneField
               class={{this.class}}
-              @name={{this.name}}
-              @binding={{bind this.model "property"}}
               @basic={{this.basic}}
+              @binding={{bind this.model "property"}}
               @disabled={{this.disabled}}
+              @readonly={{this.readonly}}
               @onChange={{fn log "The value changed to"}}
-              as |Group|
-            >
-              <Group.Radio @option="1" @label="One" />
-              <Group.Radio @option="2" @label="Two" />
-              <Group.Radio @option="3" @label="Three" />
-            </RadioGroup>
+            />
           </:example>
           <:api as |Args|>
             <Args.String
               @name="class"
-              @description="The class to apply to the group <div>. Note that this is not an argument but rather a class applied directly to the group"
+              @description="The class to apply to the button. Note that this is not an argument but rather a class applied directly to the button"
               @value={{this.class}}
               @onInput={{fn this.update "class"}}
               @options={{this.classOptions}}
@@ -80,12 +71,6 @@ export default class extends Component {
               @description="When true, the border will be removed"
               @value={{this.basic}}
               @onInput={{fn this.update "basic"}}
-            />
-            <Args.String
-              @name="name"
-              @description="the shared name used for the input value, must be unique for the group"
-              @value={{this.name}}
-              @onInput={{fn this.update "name"}}
             />
             <Args.String
               @name="binding"
@@ -99,6 +84,13 @@ export default class extends Component {
               @description="When true, the input will be disabled"
               @value={{this.disabled}}
               @onInput={{fn this.update "disabled"}}
+            />
+            <Args.Bool
+              @name="readonly"
+              @defaultValue={{false}}
+              @description="When true, the input will be readonly"
+              @value={{this.readonly}}
+              @onInput={{fn this.update "readonly"}}
             />
             <Args.Action
               @name="onChange"

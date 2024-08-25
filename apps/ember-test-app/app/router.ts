@@ -9,22 +9,22 @@ export default class Router extends EmberRouter {
 Router.map(function () {
   this.route('cards');
   this.route('faq');
-  this.route('form');
   this.route('marketing');
   this.route('promo');
   this.route('workflow-tray');
   this.route('components', function () {
     this.route('button');
     this.route('card');
-    this.route('form');
     this.route('header');
+    this.route('form', function () {
+      this.route('phone-field');
+      this.route('radio-group');
+      this.route('select');
+      this.route('text-area');
+      this.route('text-field');
+    });
     this.route('icon');
     this.route('navbar');
-    this.route('phone-field');
-    this.route('radio-group');
-    this.route('select');
-    this.route('text-area');
-    this.route('text-field');
     this.route('footer');
   });
   this.route('helpers');
