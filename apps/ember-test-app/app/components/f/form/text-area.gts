@@ -7,7 +7,7 @@ import bind from '@nrg-ui/ember/helpers/bind';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
-import CodeBlock from '../code-block';
+import CodeBlock from '../../code-block';
 
 // TypeScript doesn't recognize that this function is used in the template
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

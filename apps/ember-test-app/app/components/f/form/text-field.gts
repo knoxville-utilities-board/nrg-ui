@@ -2,12 +2,12 @@ import { fn } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import PhoneField from '@nrg-ui/ember/components/form/phone-field';
+import TextField from '@nrg-ui/ember/components/form/text-field';
 import bind from '@nrg-ui/ember/helpers/bind';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
-import CodeBlock from '../code-block';
+import CodeBlock from '../../code-block';
 
 // TypeScript doesn't recognize that this function is used in the template
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -44,11 +44,11 @@ export default class extends Component {
   }
 
   <template>
-    <FreestyleSection @name="Phone Field" as |Section|>
+    <FreestyleSection @name="Text Field" as |Section|>
       <Section.subsection @name="Basic">
         <FreestyleUsage>
           <:example>
-            <PhoneField
+            <TextField
               class={{this.class}}
               @basic={{this.basic}}
               @binding={{bind this.model "property"}}
@@ -60,7 +60,7 @@ export default class extends Component {
           <:api as |Args|>
             <Args.String
               @name="class"
-              @description="The class to apply to the button. Note that this is not an argument but rather a class applied directly to the button"
+              @description="The class to apply to the field. Note that this is not an argument but rather a class applied directly to the field"
               @value={{this.class}}
               @onInput={{fn this.update "class"}}
               @options={{this.classOptions}}

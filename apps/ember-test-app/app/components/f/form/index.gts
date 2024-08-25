@@ -8,7 +8,7 @@ import Form from '@nrg-ui/ember/components/form';
 import bind from '@nrg-ui/ember/helpers/bind';
 import { validator } from '@nrg-ui/ember/validation';
 
-import CodeBlock from '../code-block';
+import CodeBlock from '../../code-block';
 
 const Validators = {
   select: validator('inclusion', { in: ['A', 'C'] }),
