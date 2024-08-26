@@ -60,7 +60,7 @@ export default class extends Component {
           <:api as |Args|>
             <Args.String
               @name="class"
-              @description="The class to apply to the button. Note that this is not an argument but rather a class applied directly to the button"
+              @description="The class to apply to the input. Note that this is not an argument but rather a class applied directly to the input"
               @value={{this.class}}
               @onInput={{fn this.update "class"}}
               @options={{this.classOptions}}
