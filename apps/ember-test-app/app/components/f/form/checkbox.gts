@@ -61,7 +61,7 @@ export default class extends Component {
           <:api as |Args|>
             <Args.String
               @name="class"
-              @description="The class to apply to the group <div>. Note that this is not an argument but rather a class applied directly to the input"
+              @description="The class to apply to the group input. Note that this is not an argument but rather a class applied directly to the input"
               @value={{this.class}}
               @onInput={{fn this.update "class"}}
               @options={{this.classOptions}}
