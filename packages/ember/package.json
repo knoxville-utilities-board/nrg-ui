@@ -164,6 +164,7 @@
       "./components/card.js": "./dist/_app_/components/card.js",
       "./components/footer.js": "./dist/_app_/components/footer.js",
       "./components/form/bound-value.js": "./dist/_app_/components/form/bound-value.js",
+      "./components/form/checkbox.js": "./dist/_app_/components/form/checkbox.js",
       "./components/form/field.js": "./dist/_app_/components/form/field.js",
       "./components/form/index.js": "./dist/_app_/components/form/index.js",
       "./components/form/phone-field.js": "./dist/_app_/components/form/phone-field.js",

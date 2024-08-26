@@ -1,8 +1,8 @@
-import { fn } from '@ember/helper';
+import { array, fn } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import PhoneField from '@nrg-ui/ember/components/form/phone-field';
+import Checkbox from '@nrg-ui/ember/components/form/checkbox';
 import bind from '@nrg-ui/ember/helpers/bind';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
@@ -21,22 +21,22 @@ class Model {
 }
 
 export default class extends Component {
-  @tracked
-  class = '';
-
   model = new Model();
 
   @tracked
-  basic = false;
+  class = '';
 
   @tracked
   disabled = false;
 
   @tracked
-  readonly = false;
+  inline;
 
   @tracked
-  value = '';
+  label = 'Checkbox label';
+
+  @tracked
+  type = 'checkbox';
 
   @action
   update(key: string, value: unknown) {
@@ -44,35 +44,29 @@ export default class extends Component {
   }
 
   <template>
-    <FreestyleSection @name="Phone Field" as |Section|>
+    <FreestyleSection @name="Checkbox" as |Section|>
       <Section.subsection @name="Basic">
         <FreestyleUsage>
           <:example>
-            <PhoneField
+            <Checkbox
               class={{this.class}}
-              @basic={{this.basic}}
               @binding={{bind this.model "property"}}
               @disabled={{this.disabled}}
-              @readonly={{this.readonly}}
+              @inline={{this.inline}}
+              @label={{this.label}}
+              @type={{this.type}}
               @onChange={{fn log "The value changed to"}}
             />
           </:example>
           <:api as |Args|>
             <Args.String
               @name="class"
-              @description="The class to apply to the input. Note that this is not an argument but rather a class applied directly to the input"
+              @description="The class to apply to the group input. Note that this is not an argument but rather a class applied directly to the input"
               @value={{this.class}}
               @onInput={{fn this.update "class"}}
               @options={{this.classOptions}}
             />
             <Args.Bool
-              @name="basic"
-              @defaultValue={{false}}
-              @description="When true, the border will be removed"
-              @value={{this.basic}}
-              @onInput={{fn this.update "basic"}}
-            />
-            <Args.String
               @name="binding"
               @description="Create a two-way binding with the value"
               @value={{this.model.property}}
@@ -86,11 +80,25 @@ export default class extends Component {
               @onInput={{fn this.update "disabled"}}
             />
             <Args.Bool
-              @name="readonly"
+              @name="inline"
               @defaultValue={{false}}
-              @description="When true, the input will be readonly"
-              @value={{this.readonly}}
-              @onInput={{fn this.update "readonly"}}
+              @description="When true, the input will be displayed inline"
+              @value={{this.inline}}
+              @onInput={{fn this.update "inline"}}
+            />
+            <Args.String
+              @name="label"
+              @description="The label to display next to the checkbox"
+              @value={{this.label}}
+              @onInput={{fn this.update "label"}}
+            />
+            <Args.String
+              @defaultValue="checkbox"
+              @name="type"
+              @description="The type of checkbox to render"
+              @options={{array "checkbox" "switch"}}
+              @value={{this.type}}
+              @onInput={{fn this.update "type"}}
             />
             <Args.Action
               @name="onChange"
@@ -98,7 +106,7 @@ export default class extends Component {
             >
               <CodeBlock
                 @lang="typescript"
-                @code="(newValue: string) => unknown"
+                @code="(newValue: boolean) => unknown"
               />
             </Args.Action>
           </:api>
