@@ -12,10 +12,20 @@ export function bind<Model extends object = Record<string, unknown>>(
   };
 }
 
+type BindSignature<Model extends object = Record<string, unknown>> = {
+  Args: {
+    Positional: [Model, string];
+  };
+  Return: Binding<Model>;
+};
+
 export default class Bind<
   Model extends object = Record<string, unknown>,
-> extends Helper {
-  compute([model, valuePath]: [Model, string]) {
+> extends Helper<BindSignature<Model>> {
+  compute([
+    model,
+    valuePath,
+  ]: BindSignature<Model>['Args']['Positional']): Binding<Model> {
     return bind(model, valuePath);
   }
 }

@@ -14,7 +14,7 @@ module('Integration | Component | form/select', function (hooks) {
 
   class Model {
     @tracked
-    value: string = 'Hello, world!';
+    value: string | number = 'Hello, world!';
   }
 
   const stringOptions = ['Option 1', 'Option 2', 'Option 3'];
@@ -42,6 +42,7 @@ module('Integration | Component | form/select', function (hooks) {
   test('it renders when empty', async function (assert) {
     const model = new Model();
     await render(<template>
+      {{! @glint-expect-error - Testing absence of options }}
       <Select @binding={{bind model "value"}} />
     </template>);
     assert.dom('.selected-display').hasText('Select an Option');
@@ -50,6 +51,7 @@ module('Integration | Component | form/select', function (hooks) {
   test('it renders custom empty block', async function (assert) {
     const model = new Model();
     await render(<template>
+      {{! @glint-expect-error - Testing absence of options }}
       <Select @binding={{bind model "value"}}>
         <:empty>
           Custom Empty Block

@@ -9,7 +9,8 @@ import type { Binding, Optional } from '../../';
 
 export type BoundValueSignature<Signature, Type> = {
   Args: {
-    binding?: Binding;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    binding?: Binding<any>;
 
     defaultValue?: Type;
     useDefaultValue?: boolean;

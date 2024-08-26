@@ -1,0 +1,2336 @@
+
+> ember-test-app@0.0.0 lint:types /git/nrg-ui/apps/ember-test-app
+> glint
+
+[96mapp/templates/application.hbs[0m:[93m1[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'page-title'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"page-title"' can't be used to index type 'Globals'.
+    Property 'page-title' does not exist on type 'Globals'.
+
+[7m1[0m {{page-title "@nrg-ui/ember"}}
+[7m [0m [91m  ~~~~~~~~~~[0m
+
+[96mapp/templates/workflow-tray.hbs[0m:[93m2[0m:[93m1[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::Header'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::Header"' can't be used to index type 'Globals'.
+    Property 'Mktg::Header' does not exist on type 'Globals'.
+
+[7m  2[0m <Mktg::Header>
+[7m   [0m [91m~~~~~~~~~~~~~~[0m
+[7m  3[0m   <:brand>
+[7m   [0m [91m~~~~~~~~~~[0m
+[7m...[0m 
+[7m 20[0m   </:options>
+[7m   [0m [91m~~~~~~~~~~~~~[0m
+[7m 21[0m </Mktg::Header>
+[7m   [0m [91m~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/components.hbs[0m:[93m3[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Sidebar'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Sidebar"' can't be used to index type 'Globals'.
+    Property 'Sidebar' does not exist on type 'Globals'.
+
+[7m  3[0m   <Sidebar as |Sidebar|>
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m  4[0m     <Sidebar.Group @header="Components">
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 24[0m     </Sidebar.Group>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~[0m
+[7m 25[0m   </Sidebar>
+[7m   [0m [91m~~~~~~~~~~~~[0m
+
+[96mapp/templates/components/form/index.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Form'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Form"' can't be used to index type 'Globals'.
+    Property 'F::Form' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Form />
+[7m [0m [91m  ~~~~~~~~~~~[0m
+
+[96mapp/templates/mktg-components/faq.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Mktg::Faq'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Mktg::Faq"' can't be used to index type 'Globals'.
+    Property 'F::Mktg::Faq' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Mktg::Faq />
+[7m [0m [91m  ~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/components/card.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Card'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Card"' can't be used to index type 'Globals'.
+    Property 'F::Card' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Card />
+[7m [0m [91m  ~~~~~~~~~~~[0m
+
+[96mapp/templates/components/icon.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Icon'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Icon"' can't be used to index type 'Globals'.
+    Property 'F::Icon' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Icon />
+[7m [0m [91m  ~~~~~~~~~~~[0m
+
+[96mapp/templates/mktg-components/card.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Mktg::Card'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Mktg::Card"' can't be used to index type 'Globals'.
+    Property 'F::Mktg::Card' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Mktg::Card />
+[7m [0m [91m  ~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/mktg-components/promo.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Mktg::Promo'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Mktg::Promo"' can't be used to index type 'Globals'.
+    Property 'F::Mktg::Promo' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Mktg::Promo />
+[7m [0m [91m  ~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/promo.hbs[0m:[93m2[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::PromoContainer'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::PromoContainer"' can't be used to index type 'Globals'.
+    Property 'Mktg::PromoContainer' does not exist on type 'Globals'.
+
+[7m  2[0m   <Mktg::PromoContainer as |Container|>
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m  3[0m     <Container.Promo
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 36[0m     </Container.Promo>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 37[0m   </Mktg::PromoContainer>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/components/button.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Button'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Button"' can't be used to index type 'Globals'.
+    Property 'F::Button' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Button />
+[7m [0m [91m  ~~~~~~~~~~~~~[0m
+
+[96mapp/templates/components/footer.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Footer'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Footer"' can't be used to index type 'Globals'.
+    Property 'F::Footer' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Footer />
+[7m [0m [91m  ~~~~~~~~~~~~~[0m
+
+[96mapp/templates/components/header.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Header'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Header"' can't be used to index type 'Globals'.
+    Property 'F::Header' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Header />
+[7m [0m [91m  ~~~~~~~~~~~~~[0m
+
+[96mapp/templates/components/navbar.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Navbar'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Navbar"' can't be used to index type 'Globals'.
+    Property 'F::Navbar' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Navbar />
+[7m [0m [91m  ~~~~~~~~~~~~~[0m
+
+[96mapp/templates/components/form/select.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Form::Select'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Form::Select"' can't be used to index type 'Globals'.
+    Property 'F::Form::Select' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Form::Select />
+[7m [0m [91m  ~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/mktg-components/header.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Mktg::Header'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Mktg::Header"' can't be used to index type 'Globals'.
+    Property 'F::Mktg::Header' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Mktg::Header />
+[7m [0m [91m  ~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/components/form/checkbox.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Form::Checkbox'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Form::Checkbox"' can't be used to index type 'Globals'.
+    Property 'F::Form::Checkbox' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Form::Checkbox />
+[7m [0m [91m  ~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/components/form/text-area.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Form::TextArea'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Form::TextArea"' can't be used to index type 'Globals'.
+    Property 'F::Form::TextArea' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Form::TextArea />
+[7m [0m [91m  ~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/components/form/text-field.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Form::TextField'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Form::TextField"' can't be used to index type 'Globals'.
+    Property 'F::Form::TextField' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Form::TextField />
+[7m [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/components/form/phone-field.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Form::PhoneField'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Form::PhoneField"' can't be used to index type 'Globals'.
+    Property 'F::Form::PhoneField' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Form::PhoneField />
+[7m [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/components/form/radio-group.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Form::RadioGroup'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Form::RadioGroup"' can't be used to index type 'Globals'.
+    Property 'F::Form::RadioGroup' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Form::RadioGroup />
+[7m [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/marketing.hbs[0m:[93m3[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::Header'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::Header"' can't be used to index type 'Globals'.
+    Property 'Mktg::Header' does not exist on type 'Globals'.
+
+[7m  3[0m   <Mktg::Header>
+[7m   [0m [91m  ~~~~~~~~~~~~~~[0m
+[7m  4[0m     <:brand>
+[7m   [0m [91m~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 21[0m     </:options>
+[7m   [0m [91m~~~~~~~~~~~~~~~[0m
+[7m 22[0m   </Mktg::Header>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/mktg-components/card-container.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Mktg::CardContainer'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Mktg::CardContainer"' can't be used to index type 'Globals'.
+    Property 'F::Mktg::CardContainer' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Mktg::CardContainer />
+[7m [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/mktg-components/section-header.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Mktg::SectionHeader'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Mktg::SectionHeader"' can't be used to index type 'Globals'.
+    Property 'F::Mktg::SectionHeader' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Mktg::SectionHeader />
+[7m [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/mktg-components/promo-container.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'F::Mktg::PromoContainer'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"F::Mktg::PromoContainer"' can't be used to index type 'Globals'.
+    Property 'F::Mktg::PromoContainer' does not exist on type 'Globals'.
+
+[7m4[0m   <F::Mktg::PromoContainer />
+[7m [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/faq.hbs[0m:[93m5[0m:[93m7[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::SectionHeader'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::SectionHeader"' can't be used to index type 'Globals'.
+    Property 'Mktg::SectionHeader' does not exist on type 'Globals'.
+
+[7m  5[0m       <Mktg::SectionHeader
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~[0m
+[7m  6[0m         class="col-12 col-lg-6"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 16[0m         </:subheader>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 17[0m       </Mktg::SectionHeader>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/cards.hbs[0m:[93m4[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::CardContainer'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::CardContainer"' can't be used to index type 'Globals'.
+    Property 'Mktg::CardContainer' does not exist on type 'Globals'.
+
+[7m  4[0m   <Mktg::CardContainer style="--bs-gap: .5rem;" as |Container|>
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m  5[0m     <Container.Card
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 41[0m     </Container.Card>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 42[0m   </Mktg::CardContainer>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/workflow-tray.hbs[0m:[93m10[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Button'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Button"' can't be used to index type 'Globals'.
+    Property 'Button' does not exist on type 'Globals'.
+
+[7m10[0m     <Button class="btn-outline-light me-1 rounded-pill">Prev</Button>
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/marketing.hbs[0m:[93m11[0m:[93m7[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Button'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Button"' can't be used to index type 'Globals'.
+    Property 'Button' does not exist on type 'Globals'.
+
+[7m11[0m       <Button class="btn-outline-light me-1 rounded-pill">Prev</Button>
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/workflow-tray.hbs[0m:[93m11[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Button'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Button"' can't be used to index type 'Globals'.
+    Property 'Button' does not exist on type 'Globals'.
+
+[7m11[0m     <Button class="btn-outline-light me-1 rounded-pill">Next</Button>
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/code-block.gts[0m:[93m8[0m:[93m3[0m - [91merror[0m[90m TS7008: [0mMember 'freestyle' implicitly has an 'any' type.
+
+[7m8[0m   freestyle;
+[7m [0m [91m  ~~~~~~~~~[0m
+
+[96mtests/integration/components/form/select-test.gts[0m:[93m6[0m:[93m32[0m - [91merror[0m[90m TS2307: [0mCannot find module 'ember-keyboard' or its corresponding type declarations.
+
+[7m6[0m import { triggerKeyDown } from 'ember-keyboard';
+[7m [0m [91m                               ~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/marketing.hbs[0m:[93m12[0m:[93m7[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Button'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Button"' can't be used to index type 'Globals'.
+    Property 'Button' does not exist on type 'Globals'.
+
+[7m12[0m       <Button class="btn-outline-light me-1 rounded-pill">Next</Button>
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/code-block.gts[0m:[93m11[0m:[93m22[0m - [91merror[0m[90m TS2339: [0mProperty 'lang' does not exist on type 'Readonly<EmptyObject>'.
+
+[7m11[0m     return this.args.lang ?? 'handlebars';
+[7m  [0m [91m                     ~~~~[0m
+
+[96mapp/components/code-block.gts[0m:[93m16[0m:[93m5[0m - [91merror[0m[90m TS2531: [0mObject is possibly 'null'.
+
+[7m16[0m     el.querySelector('code').textContent = this.args.code;
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/faq.hbs[0m:[93m12[0m:[93m13[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Button'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Button"' can't be used to index type 'Globals'.
+    Property 'Button' does not exist on type 'Globals'.
+
+[7m12[0m             <Button type="button" class="mx-2 mt-2 btn btn-primary">Contact Us</Button>
+[7m  [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/icon-test.gts[0m:[93m12[0m:[93m27[0m - [91merror[0m[90m TS2322: [0mType '"icon"' is not assignable to type '"bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | "bi-123" | ... 2039 more ... | "bi-zoom-out"'.
+
+[7m12[0m       <Icon class="test" @type="icon" @color="primary" />
+[7m  [0m [91m                          ~~~~[0m
+
+  [96m../../packages/ember/declarations/components/icon.d.ts[0m:[93m8[0m:[93m9[0m
+    [7m8[0m         type: IconType;
+    [7m [0m [96m        ~~~~[0m
+    The expected type comes from property 'type' which is declared here on type 'NamedArgs<{ type: "bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | ... 2040 more ... | "bi-zoom-out"; backgroundColor?: SubtleColorType | ... 1 more ... | undefined; size?: "1" | ... 5 more ... | und...'
+
+[96mtests/integration/components/mktg/feature-list-test.gts[0m:[93m13[0m:[93m21[0m - [91merror[0m[90m TS2322: [0mType 'string' is not assignable to type '2 | 3 | 4 | 1 | 6 | 12'.
+
+[7m13[0m       <FeatureList @columns="2">
+[7m  [0m [91m                    ~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/mktg/feature-list.d.ts[0m:[93m28[0m:[93m9[0m
+    [7m28[0m         columns: keyof typeof columnMap;
+    [7m  [0m [96m        ~~~~~~~[0m
+    The expected type comes from property 'columns' which is declared here on type 'NamedArgs<{ columns: 2 | 3 | 4 | 1 | 6 | 12; }>'
+
+[96mapp/components/code-block.gts[0m:[93m16[0m:[93m54[0m - [91merror[0m[90m TS2339: [0mProperty 'code' does not exist on type 'Readonly<EmptyObject>'.
+
+[7m16[0m     el.querySelector('code').textContent = this.args.code;
+[7m  [0m [91m                                                     ~~~~[0m
+
+[96mtests/integration/components/mktg/card-container-test.gts[0m:[93m13[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Element'.
+
+[7m13[0m         <Container.Card class="first g-col-12 g-col-md-4" />
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/faq.hbs[0m:[93m13[0m:[93m13[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Button'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Button"' can't be used to index type 'Globals'.
+    Property 'Button' does not exist on type 'Globals'.
+
+[7m13[0m             <Button type="button" class="mx-2 mt-2 btn text-primary">Or call
+[7m  [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m14[0m               (865)111-2323</Button>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/header.gts[0m:[93m15[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type 'default'.
+  No index signature with a parameter of type 'string' was found on type 'default'.
+
+[7m15[0m     this[key] = value;
+[7m  [0m [91m    ~~~~~~~~~[0m
+
+[96mapp/components/f/footer.gts[0m:[93m15[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type 'default'.
+  No index signature with a parameter of type 'string' was found on type 'default'.
+
+[7m15[0m     this[key] = value;
+[7m  [0m [91m    ~~~~~~~~~[0m
+
+[96mtests/integration/components/mktg/card-container-test.gts[0m:[93m14[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Element'.
+
+[7m14[0m         <Container.Card class="second g-col-12 g-col-md-4" />
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/mktg/faq.gts[0m:[93m18[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type 'default'.
+  No index signature with a parameter of type 'string' was found on type 'default'.
+
+[7m18[0m     this[key] = value;
+[7m  [0m [91m    ~~~~~~~~~[0m
+
+[96mtests/integration/components/mktg/promo-container-test.gts[0m:[93m14[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Element'.
+
+[7m 14[0m         <Container.Promo class="promo" @productName="Product name">
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 15[0m           <:img>
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 23[0m           </:description>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 24[0m         </Container.Promo>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/mktg/header.gts[0m:[93m16[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type 'default'.
+  No index signature with a parameter of type 'string' was found on type 'default'.
+
+[7m16[0m     this[key] = value;
+[7m  [0m [91m    ~~~~~~~~~[0m
+
+[96mtests/integration/components/mktg/feature-list-test.gts[0m:[93m18[0m:[93m11[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; icon: string; text: string; }' is not assignable to parameter of type 'NamedArgs<{ icon?: string | undefined; text?: string | undefined; meta?: string | undefined; class: string; }>'.
+  Property 'class' is missing in type '{ [NamedArgs]: true; icon: string; text: string; }' but required in type '{ icon?: string | undefined; text?: string | undefined; meta?: string | undefined; class: string; }'.
+
+[7m18[0m           <Feature @icon="bi-check2" @text="Feature 1" />
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/mktg/feature-list.d.ts[0m:[93m16[0m:[93m9[0m
+    [7m16[0m         class: string;
+    [7m  [0m [96m        ~~~~~[0m
+    'class' is declared here.
+
+[96mapp/components/f/navbar.gts[0m:[93m18[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type 'default'.
+  No index signature with a parameter of type 'string' was found on type 'default'.
+
+[7m18[0m     this[key] = value;
+[7m  [0m [91m    ~~~~~~~~~[0m
+
+[96mapp/components/f/mktg/promo-container.gts[0m:[93m16[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type 'default'.
+  No index signature with a parameter of type 'string' was found on type 'default'.
+
+[7m16[0m     this[key] = value;
+[7m  [0m [91m    ~~~~~~~~~[0m
+
+[96mtests/integration/components/mktg/card-container-test.gts[0m:[93m15[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Element'.
+
+[7m15[0m         <Container.Card class="third g-col-12 g-col-md-4" />
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/mktg/card-container.gts[0m:[93m17[0m:[93m15[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Element'.
+
+[7m 17[0m               <Container.Card class="g-col-12 g-col-md-6">
+[7m   [0m [91m              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 18[0m                 <:header>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 23[0m                 </:body>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 24[0m               </Container.Card>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/radio-group-test.gts[0m:[93m21[0m:[93m28[0m - [91merror[0m[90m TS7006: [0mParameter 'value' implicitly has an 'any' type.
+
+[7m21[0m     const actionHandler = (value) => {
+[7m  [0m [91m                           ~~~~~[0m
+
+[96mtests/integration/components/form/text-area-test.gts[0m:[93m21[0m:[93m28[0m - [91merror[0m[90m TS7006: [0mParameter 'text' implicitly has an 'any' type.
+
+[7m21[0m     const actionHandler = (text) => {
+[7m  [0m [91m                           ~~~~[0m
+
+[96mtests/integration/components/form/text-field-test.gts[0m:[93m21[0m:[93m28[0m - [91merror[0m[90m TS7006: [0mParameter 'text' implicitly has an 'any' type.
+
+[7m21[0m     const actionHandler = (text) => {
+[7m  [0m [91m                           ~~~~[0m
+
+[96mapp/components/f/card.gts[0m:[93m24[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type 'default'.
+  No index signature with a parameter of type 'string' was found on type 'default'.
+
+[7m24[0m     this[key] = value;
+[7m  [0m [91m    ~~~~~~~~~[0m
+
+[96mapp/components/f/form/select.gts[0m:[93m23[0m:[93m3[0m - [91merror[0m[90m TS7008: [0mMember 'selectValue' implicitly has an 'any' type.
+
+[7m23[0m   selectValue;
+[7m  [0m [91m  ~~~~~~~~~~~[0m
+
+[96mtests/integration/components/mktg/feature-list-test.gts[0m:[93m19[0m:[93m11[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; icon: string; text: string; }' is not assignable to parameter of type 'NamedArgs<{ icon?: string | undefined; text?: string | undefined; meta?: string | undefined; class: string; }>'.
+  Property 'class' is missing in type '{ [NamedArgs]: true; icon: string; text: string; }' but required in type '{ icon?: string | undefined; text?: string | undefined; meta?: string | undefined; class: string; }'.
+
+[7m19[0m           <Feature @icon="bi-check2" @text="Feature 1" />
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/mktg/feature-list.d.ts[0m:[93m16[0m:[93m9[0m
+    [7m16[0m         class: string;
+    [7m  [0m [96m        ~~~~~[0m
+    'class' is declared here.
+
+[96mtests/integration/components/mktg/promo-container-test.gts[0m:[93m15[0m:[93m11[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"img"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'img' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m15[0m           <:img>
+[7m  [0m [91m          ~~~~~~[0m
+[7m16[0m             <img src="https://place-hold.it/700x700" alt="Placeholder" />
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m17[0m           </:img>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/mktg/section-header.gts[0m:[93m22[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type 'default'.
+  No index signature with a parameter of type 'string' was found on type 'default'.
+
+[7m22[0m     this[key] = value;
+[7m  [0m [91m    ~~~~~~~~~[0m
+
+[96mapp/components/f/mktg/promo.gts[0m:[93m22[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type 'default'.
+  No index signature with a parameter of type 'string' was found on type 'default'.
+
+[7m22[0m     this[key] = value;
+[7m  [0m [91m    ~~~~~~~~~[0m
+
+[96mapp/components/f/mktg/card-container.gts[0m:[93m18[0m:[93m17[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"header"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'header' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m18[0m                 <:header>
+[7m  [0m [91m                ~~~~~~~~~[0m
+[7m19[0m                   <p class="m-0">Header</p>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m20[0m                 </:header>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/faq.hbs[0m:[93m19[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::Faq'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::Faq"' can't be used to index type 'Globals'.
+    Property 'Mktg::Faq' does not exist on type 'Globals'.
+
+[7m 19[0m     <Mktg::Faq @defaultOpen={{true}} @question="How does a FAQ Component work?">
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 20[0m       <:answer>
+[7m   [0m [91m~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 24[0m       </:answer>
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+[7m 25[0m     </Mktg::Faq>
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/mktg/navbar-test.gts[0m:[93m19[0m:[93m23[0m - [91merror[0m[90m TS2493: [0mTuple type '[]' of length '0' has no element at index '0'.
+
+[7m19[0m         <:actions as |Button|>
+[7m  [0m [91m                      ~~~~~~[0m
+
+[96mtests/integration/components/mktg/feature-list-test.gts[0m:[93m20[0m:[93m11[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; icon: string; text: string; }' is not assignable to parameter of type 'NamedArgs<{ icon?: string | undefined; text?: string | undefined; meta?: string | undefined; class: string; }>'.
+  Property 'class' is missing in type '{ [NamedArgs]: true; icon: string; text: string; }' but required in type '{ icon?: string | undefined; text?: string | undefined; meta?: string | undefined; class: string; }'.
+
+[7m20[0m           <Feature @icon="bi-check2" @text="Feature 1" />
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/mktg/feature-list.d.ts[0m:[93m16[0m:[93m9[0m
+    [7m16[0m         class: string;
+    [7m  [0m [96m        ~~~~~[0m
+    'class' is declared here.
+
+[96mapp/components/code-block.gts[0m:[93m26[0m:[93m18[0m - [91merror[0m[90m TS2345: [0mArgument of type '(el: HTMLPreElement) => void' is not assignable to parameter of type '(el: HTMLElement, ...args: unknown[]) => unknown'.
+  Types of parameters 'el' and 'el' are incompatible.
+    Property 'width' is missing in type 'HTMLElement' but required in type 'HTMLPreElement'.
+
+[7m26[0m       {{onInsert this.highlight}}
+[7m  [0m [91m                 ~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/typescript@5.5.4/node_modules/typescript/lib/lib.dom.d.ts[0m:[93m12421[0m:[93m5[0m
+    [7m12421[0m     width: number;
+    [7m     [0m [96m    ~~~~~[0m
+    'width' is declared here.
+
+[96mapp/components/f/mktg/card.gts[0m:[93m33[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type 'default'.
+  No index signature with a parameter of type 'string' was found on type 'default'.
+
+[7m33[0m     this[key] = value;
+[7m  [0m [91m    ~~~~~~~~~[0m
+
+[96mtests/integration/components/mktg/promo-container-test.gts[0m:[93m18[0m:[93m11[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"header"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'header' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m18[0m           <:header>
+[7m  [0m [91m          ~~~~~~~~~[0m
+[7m19[0m             <p class="m-0 p-0">Header Text</p>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m20[0m           </:header>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/mktg/feature-list-test.gts[0m:[93m21[0m:[93m11[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; icon: string; text: string; }' is not assignable to parameter of type 'NamedArgs<{ icon?: string | undefined; text?: string | undefined; meta?: string | undefined; class: string; }>'.
+  Property 'class' is missing in type '{ [NamedArgs]: true; icon: string; text: string; }' but required in type '{ icon?: string | undefined; text?: string | undefined; meta?: string | undefined; class: string; }'.
+
+[7m21[0m           <Feature @icon="bi-check2" @text="Feature 1" />
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/mktg/feature-list.d.ts[0m:[93m16[0m:[93m9[0m
+    [7m16[0m         class: string;
+    [7m  [0m [96m        ~~~~~[0m
+    'class' is declared here.
+
+[96mapp/components/code-block.gts[0m:[93m27[0m:[93m7[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Element'.
+
+[7m27[0m       ...attributes
+[7m  [0m [91m      ~~~~~~~~~~~~~[0m
+[7m28[0m     >
+[7m  [0m [91m~~~~[0m
+
+[96mapp/templates/workflow-tray.hbs[0m:[93m23[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::WorkflowTray'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::WorkflowTray"' can't be used to index type 'Globals'.
+    Property 'Mktg::WorkflowTray' does not exist on type 'Globals'.
+
+[7m 23[0m   <Mktg::WorkflowTray>
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~~~[0m
+[7m 24[0m     <div class="mx-2">
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 75[0m     </div>
+[7m   [0m [91m~~~~~~~~~~[0m
+[7m 76[0m   </Mktg::WorkflowTray>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/mktg/card-container.gts[0m:[93m21[0m:[93m17[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"body"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'body' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m21[0m                 <:body>
+[7m  [0m [91m                ~~~~~~~[0m
+[7m22[0m                   <p class="m-0">Body</p>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m23[0m                 </:body>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/mktg/faq.gts[0m:[93m28[0m:[93m35[0m - [91merror[0m[90m TS2339: [0mProperty 'defaultOpen' does not exist on type 'default'.
+
+[7m28[0m               @defaultOpen={{this.defaultOpen}}
+[7m  [0m [91m                                  ~~~~~~~~~~~[0m
+
+[96mtests/integration/components/mktg/promo-container-test.gts[0m:[93m21[0m:[93m11[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"description"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'description' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m21[0m           <:description>
+[7m  [0m [91m          ~~~~~~~~~~~~~~[0m
+[7m22[0m             <p>Description</p>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m23[0m           </:description>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/radio-group-test.gts[0m:[93m32[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; option: string; }' is not assignable to parameter of type 'NamedArgs<{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }>'.
+  Property 'name' is missing in type '{ [NamedArgs]: true; option: string; }' but required in type '{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }'.
+
+[7m32[0m         <Group.Radio @option="1" />
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/form/radio-group.d.ts[0m:[93m34[0m:[93m9[0m
+    [7m34[0m         name: string;
+    [7m  [0m [96m        ~~~~[0m
+    'name' is declared here.
+
+[96mapp/templates/workflow-tray.hbs[0m:[93m28[0m:[93m7[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::ServicePricing'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::ServicePricing"' can't be used to index type 'Globals'.
+    Property 'Mktg::ServicePricing' does not exist on type 'Globals'.
+
+[7m 28[0m       <Mktg::ServicePricing
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 29[0m         @label="Fiber"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 37[0m         <Addon @label="Smart Gig" @price="$15/mo" />
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 38[0m       </Mktg::ServicePricing>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/checkbox.gts[0m:[93m33[0m:[93m3[0m - [91merror[0m[90m TS7008: [0mMember 'inline' implicitly has an 'any' type.
+
+[7m33[0m   inline;
+[7m  [0m [91m  ~~~~~~[0m
+
+[96mtests/integration/components/form/index-test.gts[0m:[93m33[0m:[93m10[0m - [91merror[0m[90m TS2339: [0mProperty 'model' does not exist on type 'TestContext'.
+
+[7m33[0m     this.model = new Model();
+[7m  [0m [91m         ~~~~~[0m
+
+[96mtests/integration/components/form/radio-group-test.gts[0m:[93m33[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; option: string; }' is not assignable to parameter of type 'NamedArgs<{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }>'.
+  Property 'name' is missing in type '{ [NamedArgs]: true; option: string; }' but required in type '{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }'.
+
+[7m33[0m         <Group.Radio @option="2" />
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/form/radio-group.d.ts[0m:[93m34[0m:[93m9[0m
+    [7m34[0m         name: string;
+    [7m  [0m [96m        ~~~~[0m
+    'name' is declared here.
+
+[96mapp/components/f/mktg/card-container.gts[0m:[93m25[0m:[93m15[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Element'.
+
+[7m 25[0m               <Container.MktgCard
+[7m   [0m [91m              ~~~~~~~~~~~~~~~~~~~[0m
+[7m 26[0m                 class="g-col-12 g-col-md-6"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 35[0m                 </:end>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 36[0m               </Container.MktgCard>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/phone-field-test.gts[0m:[93m27[0m:[93m7[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'key' does not exist in type 'InputEventInit'.
+
+[7m27[0m       key: 'Backspace',
+[7m  [0m [91m      ~~~[0m
+
+[96mapp/components/f/button.gts[0m:[93m45[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type 'default'.
+  No index signature with a parameter of type 'string' was found on type 'default'.
+
+[7m45[0m     this[key] = value;
+[7m  [0m [91m    ~~~~~~~~~[0m
+
+[96mtests/integration/components/form/index-test.gts[0m:[93m34[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'model' does not exist on type 'TestContext'.
+
+[7m34[0m     setOwner(this.model, this.owner);
+[7m  [0m [91m                  ~~~~~[0m
+
+[96mtests/integration/components/mktg/service-pricing-test.gts[0m:[93m29[0m:[93m28[0m - [91merror[0m[90m TS2554: [0mExpected 1 arguments, but got 0.
+
+[7m29[0m     await render(<template><ServicePricing /></template>);
+[7m  [0m [91m                           ~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@glint+environment-ember-template-imports@1.4.0_@glint+environment-ember-loose@1.4.0_@glimmer_gmrolcspfyiql5akb2eqmfdns4/node_modules/@glint/environment-ember-template-imports/-private/dsl/index.d.ts[0m:[93m24[0m:[93m5[0m
+    [7m24[0m ): (...args: Parameters<Instance[typeof Invoke]>) => ReturnType<Instance[typeof Invoke]>;
+    [7m  [0m [96m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    Arguments for the rest parameter 'args' were not provided.
+
+[96mapp/components/sidebar.gts[0m:[93m40[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type '"group"' is not assignable to parameter of type '"Group"'.
+
+[7m40[0m         {{yield (component GroupItem) to="group"}}
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/checkbox-test.gts[0m:[93m35[0m:[93m26[0m - [91merror[0m[90m TS2339: [0mProperty 'element' does not exist on type 'TestContext'.
+
+[7m35[0m     const labelId = this.element.querySelector('.form-check > input').id;
+[7m  [0m [91m                         ~~~~~~~[0m
+
+[96mapp/templates/faq.hbs[0m:[93m26[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::Faq'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::Faq"' can't be used to index type 'Globals'.
+    Property 'Mktg::Faq' does not exist on type 'Globals'.
+
+[7m 26[0m     <Mktg::Faq @question="Question?">
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 27[0m       <:answer>
+[7m   [0m [91m~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 29[0m       </:answer>
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+[7m 30[0m     </Mktg::Faq>
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/text-area.gts[0m:[93m43[0m:[93m15[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 2, '(obj: this, key: keyof this, value: UnwrapComputedPropertySetter<this[keyof this]>): UnwrapComputedPropertyGetter<this[keyof this]>', gave the following error.
+    Argument of type 'string' is not assignable to parameter of type 'keyof this'.
+      Type 'string' is not assignable to type '"isDestroyed" | "isDestroying" | "willDestroy" | unique symbol | unique symbol | "class" | "model" | "disabled" | "update" | "args" | "debugName" | "didInsertElement" | "didUpdate" | ... 4 more ... | "readonly"'.
+  Overload 2 of 2, '(obj: this, key: keyof this, value: this[keyof this]): this[keyof this]', gave the following error.
+    Argument of type 'string' is not assignable to parameter of type 'keyof this'.
+
+[7m43[0m     set(this, key, value);
+[7m  [0m [91m              ~~~[0m
+
+
+[96mapp/components/f/form/text-field.gts[0m:[93m43[0m:[93m15[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 2, '(obj: this, key: keyof this, value: UnwrapComputedPropertySetter<this[keyof this]>): UnwrapComputedPropertyGetter<this[keyof this]>', gave the following error.
+    Argument of type 'string' is not assignable to parameter of type 'keyof this'.
+      Type 'string' is not assignable to type '"isDestroyed" | "isDestroying" | "willDestroy" | unique symbol | unique symbol | "class" | "model" | "disabled" | "update" | "args" | "debugName" | "didInsertElement" | "didUpdate" | ... 4 more ... | "readonly"'.
+  Overload 2 of 2, '(obj: this, key: keyof this, value: this[keyof this]): this[keyof this]', gave the following error.
+    Argument of type 'string' is not assignable to parameter of type 'keyof this'.
+
+[7m43[0m     set(this, key, value);
+[7m  [0m [91m              ~~~[0m
+
+
+[96mapp/components/f/form/phone-field.gts[0m:[93m43[0m:[93m15[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 2, '(obj: this, key: keyof this, value: UnwrapComputedPropertySetter<this[keyof this]>): UnwrapComputedPropertyGetter<this[keyof this]>', gave the following error.
+    Argument of type 'string' is not assignable to parameter of type 'keyof this'.
+      Type 'string' is not assignable to type '"isDestroyed" | "isDestroying" | "willDestroy" | unique symbol | unique symbol | "class" | "model" | "disabled" | "update" | "args" | "debugName" | "didInsertElement" | "didUpdate" | ... 4 more ... | "readonly"'.
+  Overload 2 of 2, '(obj: this, key: keyof this, value: this[keyof this]): this[keyof this]', gave the following error.
+    Argument of type 'string' is not assignable to parameter of type 'keyof this'.
+
+[7m43[0m     set(this, key, value);
+[7m  [0m [91m              ~~~[0m
+
+
+[96mtests/integration/components/form/index-test.gts[0m:[93m38[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'model' does not exist on type 'TestContext'.
+
+[7m38[0m     const model = this.model;
+[7m  [0m [91m                       ~~~~~[0m
+
+[96mapp/components/f/form/checkbox.gts[0m:[93m43[0m:[93m15[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 2, '(obj: this, key: keyof this, value: UnwrapComputedPropertySetter<this[keyof this]>): UnwrapComputedPropertyGetter<this[keyof this]>', gave the following error.
+    Argument of type 'string' is not assignable to parameter of type 'keyof this'.
+      Type 'string' is not assignable to type '"isDestroyed" | "isDestroying" | "willDestroy" | unique symbol | unique symbol | "label" | "class" | "model" | "disabled" | "update" | "type" | "inline" | "args" | "debugName" | "didInsertElement" | "didUpdate" | "bounds" | "element"'.
+  Overload 2 of 2, '(obj: this, key: keyof this, value: this[keyof this]): this[keyof this]', gave the following error.
+    Argument of type 'string' is not assignable to parameter of type 'keyof this'.
+
+[7m43[0m     set(this, key, value);
+[7m  [0m [91m              ~~~[0m
+
+
+[96mtests/integration/components/icon-test.gts[0m:[93m30[0m:[93m27[0m - [91merror[0m[90m TS2322: [0mType '"icon"' is not assignable to type '"bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | "bi-123" | ... 2039 more ... | "bi-zoom-out"'.
+
+[7m30[0m       <Icon class="test" @type="icon" @color="warning" @circular={{true}} />
+[7m  [0m [91m                          ~~~~[0m
+
+  [96m../../packages/ember/declarations/components/icon.d.ts[0m:[93m8[0m:[93m9[0m
+    [7m8[0m         type: IconType;
+    [7m [0m [96m        ~~~~[0m
+    The expected type comes from property 'type' which is declared here on type 'NamedArgs<{ type: "bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | ... 2040 more ... | "bi-zoom-out"; backgroundColor?: SubtleColorType | ... 1 more ... | undefined; size?: "1" | ... 5 more ... | und...'
+
+[96mtests/integration/components/mktg/service-pricing-test.gts[0m:[93m33[0m:[93m28[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; active: true; }' is not assignable to parameter of type 'NamedArgs<{ icon: "bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | ... 2040 more ... | "bi-zoom-out"; ... 4 more ...; selected?: boolean | undefined; }>'.
+  Type '{ [NamedArgs]: true; active: true; }' is missing the following properties from type '{ icon: "bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | ... 2040 more ... | "bi-zoom-out"; ... 4 more ...; selected?: boolean | undefined; }': icon, label, description
+
+[7m33[0m     await render(<template><ServicePricing @active={{true}} /></template>);
+[7m  [0m [91m                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/card.gts[0m:[93m37[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'onClick' does not exist on type 'default'.
+
+[7m37[0m               @onClick={{this.onClick}}
+[7m  [0m [91m                              ~~~~~~~[0m
+
+[96mtests/integration/components/alert-test.gts[0m:[93m44[0m:[93m5[0m - [91merror[0m[90m TS2362: [0mThe left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+
+[7m 44[0m     await render(hbs`
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~[0m
+[7m 45[0m       <Alert
+[7m   [0m [91m~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 63[0m       .dom('div.alert > button')
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 64[0m       .hasAria('label', 'Close')
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/alert-test.gts[0m:[93m44[0m:[93m5[0m - [91merror[0m[90m TS2365: [0mOperator '>' cannot be applied to types 'number' and 'string'.
+
+[7m 44[0m     await render(hbs`
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~[0m
+[7m 45[0m       <Alert
+[7m   [0m [91m~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 94[0m });
+[7m   [0m [91m~~~[0m
+[7m 95[0m 
+[7m   [0m [91m[0m
+
+[96mapp/components/f/mktg/card-container.gts[0m:[93m30[0m:[93m17[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"callout"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'callout' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m30[0m                 <:callout>
+[7m  [0m [91m                ~~~~~~~~~~[0m
+[7m31[0m                   <p class="m-0 fw-semibold fs-2">Callout</p>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m32[0m                 </:callout>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/alert-test.gts[0m:[93m44[0m:[93m16[0m - [91merror[0m[90m TS2551: [0mProperty 'Alert' does not exist on type 'Globals'. Did you mean 'let'?
+
+[7m 44[0m     await render(hbs`
+[7m   [0m [91m               ~~~~~~[0m
+[7m 45[0m       <Alert
+[7m   [0m [91m~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 50[0m           Baz
+[7m   [0m [91m~~~~~~~~~~~~~[0m
+[7m 51[0m       </Alert>
+[7m   [0m [91m~[0m
+
+[96mtests/integration/components/form/index-test.gts[0m:[93m42[0m:[93m9[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"default"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'default' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m42[0m         <Form.Field @label="Text Field" @required={{true}} as |Field|>
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m43[0m           <Field.TextField @binding={{bind model "textField"}} />
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m44[0m         </Form.Field>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/navbar.gts[0m:[93m35[0m:[93m29[0m - [91merror[0m[90m TS2493: [0mTuple type '[]' of length '0' has no element at index '0'.
+
+[7m35[0m               <:actions as |Button|>
+[7m  [0m [91m                            ~~~~~~[0m
+
+[96mapp/templates/faq.hbs[0m:[93m31[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::Faq'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::Faq"' can't be used to index type 'Globals'.
+    Property 'Mktg::Faq' does not exist on type 'Globals'.
+
+[7m 31[0m     <Mktg::Faq @question="Question?">
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 32[0m       <:answer>
+[7m   [0m [91m~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 34[0m       </:answer>
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+[7m 35[0m     </Mktg::Faq>
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/radio-group.gts[0m:[93m47[0m:[93m15[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 2, '(obj: this, key: keyof this, value: UnwrapComputedPropertySetter<this[keyof this]>): UnwrapComputedPropertyGetter<this[keyof this]>', gave the following error.
+    Argument of type 'string' is not assignable to parameter of type 'keyof this'.
+      Type 'string' is not assignable to type '"isDestroyed" | "isDestroying" | "willDestroy" | unique symbol | unique symbol | "class" | "name" | "model" | "disabled" | "update" | "args" | "debugName" | "didInsertElement" | ... 4 more ... | "options"'.
+  Overload 2 of 2, '(obj: this, key: keyof this, value: this[keyof this]): this[keyof this]', gave the following error.
+    Argument of type 'string' is not assignable to parameter of type 'keyof this'.
+
+[7m47[0m     set(this, key, value);
+[7m  [0m [91m              ~~~[0m
+
+
+[96mapp/components/f/form/index.gts[0m:[93m38[0m:[93m22[0m - [91merror[0m[90m TS2339: [0mProperty 'requirePhoneLength' does not exist on type 'object'.
+
+[7m38[0m         return !this.requirePhoneLength;
+[7m  [0m [91m                     ~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/promo.hbs[0m:[93m31[0m:[93m9[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Button'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Button"' can't be used to index type 'Globals'.
+    Property 'Button' does not exist on type 'Globals'.
+
+[7m31[0m         <Button
+[7m  [0m [91m        ~~~~~~~[0m
+[7m32[0m           type="button"
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m33[0m           class="mt-2 btn bg-primary-subtle text-primary"
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m34[0m         >Learn More</Button>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/mktg/card-container.gts[0m:[93m33[0m:[93m17[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"end"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'end' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m33[0m                 <:end>
+[7m  [0m [91m                ~~~~~~[0m
+[7m34[0m                   <p class="m-0">End section</p>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m35[0m                 </:end>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/workflow-tray.hbs[0m:[93m39[0m:[93m7[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::ServicePricing'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::ServicePricing"' can't be used to index type 'Globals'.
+    Property 'Mktg::ServicePricing' does not exist on type 'Globals'.
+
+[7m 39[0m       <Mktg::ServicePricing
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 40[0m         @label="TV"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 51[0m         <Addon @label="Spanish Language Channels" @price="$4.99/mo" />
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 52[0m       </Mktg::ServicePricing>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/phone-field.gts[0m:[93m51[0m:[93m14[0m - [91merror[0m[90m TS2769: [0mThe given value does not appear to be usable as a component, modifier or helper.
+  No overload matches this call.
+    Overload 1 of 3, '(item: DirectInvokable): AnyFunction', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'DirectInvokable'.
+        Property '[InvokeDirect]' is missing in type 'typeof PhoneField' but required in type 'DirectInvokable'.
+    Overload 2 of 3, '(item: (abstract new () => InvokableInstance) | null | undefined): (...args: any[]) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'abstract new () => InvokableInstance'.
+        Property '[Invoke]' is missing in type 'PhoneField' but required in type 'InvokableInstance'.
+    Overload 3 of 3, '(item: ((...params: any) => any) | null | undefined): (...params: any) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type '(...params: any) => any'.
+        Type 'typeof PhoneField' provides no match for the signature '(...params: any): any'.
+
+[7m51[0m             <PhoneField
+[7m  [0m [91m             ~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@glint+template@1.4.0/node_modules/@glint/template/-private/integration.d.ts[0m:[93m19[0m:[93m70[0m
+    [7m19[0m export type DirectInvokable<T extends AnyFunction = AnyFunction> = { [InvokeDirect]: T };
+    [7m  [0m [96m                                                                     ~~~~~~~~~~~~~~[0m
+    '[InvokeDirect]' is declared here.
+  [96m../../node_modules/.pnpm/@glint+template@1.4.0/node_modules/@glint/template/-private/integration.d.ts[0m:[93m22[0m:[93m72[0m
+    [7m22[0m export type InvokableInstance<T extends AnyFunction = AnyFunction> = { [Invoke]: T };
+    [7m  [0m [96m                                                                       ~~~~~~~~[0m
+    '[Invoke]' is declared here.
+
+[96mtests/integration/components/alert-test.gts[0m:[93m51[0m:[93m9[0m - [91merror[0m[90m TS2363: [0mThe right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+
+[7m51[0m       </Alert>
+[7m  [0m [91m        ~~~~~[0m
+
+[96mapp/templates/faq.hbs[0m:[93m36[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::Faq'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::Faq"' can't be used to index type 'Globals'.
+    Property 'Mktg::Faq' does not exist on type 'Globals'.
+
+[7m 36[0m     <Mktg::Faq @question="Question?">
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 37[0m       <:answer>
+[7m   [0m [91m~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 39[0m       </:answer>
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+[7m 40[0m     </Mktg::Faq>
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/radio-group-test.gts[0m:[93m49[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; option: string; }' is not assignable to parameter of type 'NamedArgs<{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }>'.
+  Property 'name' is missing in type '{ [NamedArgs]: true; option: string; }' but required in type '{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }'.
+
+[7m49[0m         <Group.Radio @option="1" />
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/form/radio-group.d.ts[0m:[93m34[0m:[93m9[0m
+    [7m34[0m         name: string;
+    [7m  [0m [96m        ~~~~[0m
+    'name' is declared here.
+
+[96mtests/integration/components/form/index-test.gts[0m:[93m45[0m:[93m9[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"default"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'default' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m 45[0m         <Form.Field
+[7m   [0m [91m        ~~~~~~~~~~~[0m
+[7m 46[0m           @label="Text Area (with additional text)"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 53[0m           </Field.Text>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 54[0m         </Form.Field>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/select.gts[0m:[93m47[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type 'default'.
+  No index signature with a parameter of type 'string' was found on type 'default'.
+
+[7m47[0m     this[key] = value;
+[7m  [0m [91m    ~~~~~~~~~[0m
+
+[96mtests/integration/components/mktg/service-pricing-test.gts[0m:[93m40[0m:[93m7[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; label: string; description: string; active: true; selected: true; }' is not assignable to parameter of type 'NamedArgs<{ icon: "bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | ... 2040 more ... | "bi-zoom-out"; ... 4 more ...; selected?: boolean | undefined; }>'.
+  Property 'icon' is missing in type '{ [NamedArgs]: true; label: string; description: string; active: true; selected: true; }' but required in type '{ icon: "bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | ... 2040 more ... | "bi-zoom-out"; ... 4 more ...; selected?: boolean | undefined; }'.
+
+[7m 40[0m       <ServicePricing
+[7m   [0m [91m      ~~~~~~~~~~~~~~~[0m
+[7m 41[0m         @label="Service"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 44[0m         @selected={{true}}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 45[0m       />
+[7m   [0m [91m~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/mktg/service-pricing.d.ts[0m:[93m17[0m:[93m9[0m
+    [7m17[0m         icon: IconType;
+    [7m  [0m [96m        ~~~~[0m
+    'icon' is declared here.
+
+[96mtests/integration/components/form/radio-group-test.gts[0m:[93m50[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; option: string; }' is not assignable to parameter of type 'NamedArgs<{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }>'.
+  Property 'name' is missing in type '{ [NamedArgs]: true; option: string; }' but required in type '{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }'.
+
+[7m50[0m         <Group.Radio @option="2" />
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/form/radio-group.d.ts[0m:[93m34[0m:[93m9[0m
+    [7m34[0m         name: string;
+    [7m  [0m [96m        ~~~~[0m
+    'name' is declared here.
+
+[96mapp/components/f/icon.gts[0m:[93m66[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type 'default'.
+  No index signature with a parameter of type 'string' was found on type 'default'.
+
+[7m66[0m     this[key] = value;
+[7m  [0m [91m    ~~~~~~~~~[0m
+
+[96mapp/templates/cards.hbs[0m:[93m46[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::CardContainer'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::CardContainer"' can't be used to index type 'Globals'.
+    Property 'Mktg::CardContainer' does not exist on type 'Globals'.
+
+[7m 46[0m     <Mktg::CardContainer class="justify-content-center" as |Container|>
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 47[0m       <Container.MktgCard
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 83[0m       </Container.MktgCard>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 84[0m     </Mktg::CardContainer>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/button.gts[0m:[93m58[0m:[93m28[0m - [91merror[0m[90m TS2339: [0mProperty 'type' does not exist on type 'default'.
+
+[7m58[0m               @type={{this.type}}
+[7m  [0m [91m                           ~~~~[0m
+
+[96mapp/templates/faq.hbs[0m:[93m41[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::Faq'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::Faq"' can't be used to index type 'Globals'.
+    Property 'Mktg::Faq' does not exist on type 'Globals'.
+
+[7m 41[0m     <Mktg::Faq @question="Question?">
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 42[0m       <:answer>
+[7m   [0m [91m~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 44[0m       </:answer>
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+[7m 45[0m     </Mktg::Faq>
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/index.gts[0m:[93m46[0m:[93m22[0m - [91merror[0m[90m TS2339: [0mProperty 'requirePhoneLength' does not exist on type 'object'.
+
+[7m46[0m         return !this.requirePhoneLength;
+[7m  [0m [91m                     ~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/phone-field-test.gts[0m:[93m42[0m:[93m7[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'key' does not exist in type 'InputEventInit'.
+
+[7m42[0m       key: 'Delete',
+[7m  [0m [91m      ~~~[0m
+
+[96mapp/templates/promo.hbs[0m:[93m39[0m:[93m3[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::PromoContainer'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::PromoContainer"' can't be used to index type 'Globals'.
+    Property 'Mktg::PromoContainer' does not exist on type 'Globals'.
+
+[7m 39[0m   <Mktg::PromoContainer as |Container|>
+[7m   [0m [91m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 40[0m     <Container.SectionHeader
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m152[0m     </Container.Promo>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m153[0m   </Mktg::PromoContainer>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/checkbox.gts[0m:[93m57[0m:[93m16[0m - [91merror[0m[90m TS2322: [0mType 'string' is not assignable to type '"checkbox" | "switch" | undefined'.
+
+[7m57[0m               @type={{this.type}}
+[7m  [0m [91m               ~~~~[0m
+
+[96mapp/components/f/form/text-area.gts[0m:[93m57[0m:[93m30[0m - [91merror[0m[90m TS2769: [0mThe given value does not appear to be usable as a component, modifier or helper.
+  No overload matches this call.
+    Overload 1 of 9, '(update: Mut<string>, value: string): () => void', gave the following error.
+      Argument of type 'LogHelper' is not assignable to parameter of type 'Mut<string>'.
+    Overload 2 of 9, '(f: (a: string, value: Optional<string>, ...args: unknown[]) => void, a: string): (value: Optional<string>, ...args: unknown[]) => void', gave the following error.
+      Argument of type 'LogHelper' is not assignable to parameter of type '(a: string, value: Optional<string>, ...args: unknown[]) => void'.
+
+[7m57[0m               @onChange={{fn log "The value changed to"}}
+[7m  [0m [91m                             ~~~[0m
+
+
+[96mapp/components/f/form/text-field.gts[0m:[93m57[0m:[93m30[0m - [91merror[0m[90m TS2769: [0mThe given value does not appear to be usable as a component, modifier or helper.
+  No overload matches this call.
+    Overload 1 of 9, '(update: Mut<string>, value: string): () => void', gave the following error.
+      Argument of type 'LogHelper' is not assignable to parameter of type 'Mut<string>'.
+    Overload 2 of 9, '(f: (a: string, value: Optional<string>, ...args: unknown[]) => void, a: string): (value: Optional<string>, ...args: unknown[]) => void', gave the following error.
+      Argument of type 'LogHelper' is not assignable to parameter of type '(a: string, value: Optional<string>, ...args: unknown[]) => void'.
+
+[7m57[0m               @onChange={{fn log "The value changed to"}}
+[7m  [0m [91m                             ~~~[0m
+
+
+[96mapp/components/f/form/phone-field.gts[0m:[93m57[0m:[93m30[0m - [91merror[0m[90m TS2769: [0mThe given value does not appear to be usable as a component, modifier or helper.
+  No overload matches this call.
+    Overload 1 of 9, '(update: Mut<string>, value: string): () => void', gave the following error.
+      Argument of type 'LogHelper' is not assignable to parameter of type 'Mut<string>'.
+    Overload 2 of 9, '(f: (a: string, ...rest: unknown[]) => unknown, a: string): (...rest: unknown[]) => unknown', gave the following error.
+      Argument of type 'LogHelper' is not assignable to parameter of type '(a: string, ...rest: unknown[]) => unknown'.
+        Type 'LogHelper' provides no match for the signature '(a: string, ...rest: unknown[]): unknown'.
+
+[7m57[0m               @onChange={{fn log "The value changed to"}}
+[7m  [0m [91m                             ~~~[0m
+
+
+[96mtests/integration/components/mktg/navbar-test.gts[0m:[93m44[0m:[93m23[0m - [91merror[0m[90m TS2493: [0mTuple type '[]' of length '0' has no element at index '0'.
+
+[7m44[0m         <:actions as |Button|>
+[7m  [0m [91m                      ~~~~~~[0m
+
+[96mapp/components/f/mktg/promo-container.gts[0m:[93m35[0m:[93m15[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Element'.
+
+[7m 35[0m               <Container.SectionHeader
+[7m   [0m [91m              ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 36[0m                 @subject="Subject"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 51[0m                 </:subheader>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 52[0m               </Container.SectionHeader>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/checkbox.gts[0m:[93m58[0m:[93m30[0m - [91merror[0m[90m TS2769: [0mThe given value does not appear to be usable as a component, modifier or helper.
+  No overload matches this call.
+    Overload 1 of 9, '(update: Mut<string>, value: string): () => void', gave the following error.
+      Argument of type 'LogHelper' is not assignable to parameter of type 'Mut<string>'.
+    Overload 2 of 9, '(f: (a: string, value: Optional<boolean>, ...args: unknown[]) => void, a: string): (value: Optional<boolean>, ...args: unknown[]) => void', gave the following error.
+      Argument of type 'LogHelper' is not assignable to parameter of type '(a: string, value: Optional<boolean>, ...args: unknown[]) => void'.
+        Type 'LogHelper' provides no match for the signature '(a: string, value: Optional<boolean>, ...args: unknown[]): void'.
+
+[7m58[0m               @onChange={{fn log "The value changed to"}}
+[7m  [0m [91m                             ~~~[0m
+
+
+[96mtests/integration/components/icon-test.gts[0m:[93m45[0m:[93m27[0m - [91merror[0m[90m TS2322: [0mType '"icon"' is not assignable to type '"bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | "bi-123" | ... 2039 more ... | "bi-zoom-out"'.
+
+[7m45[0m       <Icon class="test" @type="icon" @color="primary" @size={{3}} />
+[7m  [0m [91m                          ~~~~[0m
+
+  [96m../../packages/ember/declarations/components/icon.d.ts[0m:[93m8[0m:[93m9[0m
+    [7m8[0m         type: IconType;
+    [7m [0m [96m        ~~~~[0m
+    The expected type comes from property 'type' which is declared here on type 'NamedArgs<{ type: "bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | ... 2040 more ... | "bi-zoom-out"; backgroundColor?: SubtleColorType | ... 1 more ... | undefined; size?: "1" | ... 5 more ... | und...'
+
+[96mtests/integration/components/icon-test.gts[0m:[93m45[0m:[93m57[0m - [91merror[0m[90m TS2322: [0mType 'number' is not assignable to type '"1" | "2" | "3" | "4" | "5" | "6" | undefined'.
+
+[7m45[0m       <Icon class="test" @type="icon" @color="primary" @size={{3}} />
+[7m  [0m [91m                                                        ~~~~[0m
+
+  [96m../../packages/ember/declarations/components/icon.d.ts[0m:[93m10[0m:[93m9[0m
+    [7m10[0m         size?: '1' | '2' | '3' | '4' | '5' | '6';
+    [7m  [0m [96m        ~~~~[0m
+    The expected type comes from property 'size' which is declared here on type 'NamedArgs<{ type: "bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | ... 2040 more ... | "bi-zoom-out"; backgroundColor?: SubtleColorType | ... 1 more ... | undefined; size?: "1" | ... 5 more ... | und...'
+
+[96mapp/components/f/form/radio-group.gts[0m:[93m61[0m:[93m30[0m - [91merror[0m[90m TS2769: [0mThe given value does not appear to be usable as a component, modifier or helper.
+  No overload matches this call.
+    Overload 1 of 9, '(update: Mut<string>, value: string): () => void', gave the following error.
+      Argument of type 'LogHelper' is not assignable to parameter of type 'Mut<string>'.
+    Overload 2 of 9, '(f: (a: string, value: Optional<string>, ...args: unknown[]) => void, a: string): (value: Optional<string>, ...args: unknown[]) => void', gave the following error.
+      Argument of type 'LogHelper' is not assignable to parameter of type '(a: string, value: Optional<string>, ...args: unknown[]) => void'.
+        Type 'LogHelper' provides no match for the signature '(a: string, value: Optional<string>, ...args: unknown[]): void'.
+
+[7m61[0m               @onChange={{fn log "The value changed to"}}
+[7m  [0m [91m                             ~~~[0m
+
+
+[96mtests/integration/components/form/radio-group-test.gts[0m:[93m61[0m:[93m28[0m - [91merror[0m[90m TS7006: [0mParameter 'value' implicitly has an 'any' type.
+
+[7m61[0m     const actionHandler = (value) => {
+[7m  [0m [91m                           ~~~~~[0m
+
+[96mtests/integration/components/progress-test.gts[0m:[93m48[0m:[93m7[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; stacked: true; }' is not assignable to parameter of type 'NamedArgs<{ animated?: boolean | undefined; hideLabel?: boolean | undefined; label?: string | undefined; progress: number; showLabel?: boolean | undefined; stacked?: boolean | undefined; striped?: boolean | undefined; title?: string | undefined; }>'.
+  Property 'progress' is missing in type '{ [NamedArgs]: true; stacked: true; }' but required in type '{ animated?: boolean | undefined; hideLabel?: boolean | undefined; label?: string | undefined; progress: number; showLabel?: boolean | undefined; stacked?: boolean | undefined; striped?: boolean | undefined; title?: string | undefined; }'.
+
+[7m48[0m       <Progress @stacked={{true}} as |Segment|>
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m49[0m         <Segment @progress={{40}} @striped={{true}} @animated={{true}} />
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m50[0m         <Segment class="bg-warning" @title="foo bar" @progress={{60}} />
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m51[0m       </Progress>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/progress.d.ts[0m:[93m21[0m:[93m9[0m
+    [7m21[0m         progress: number;
+    [7m  [0m [96m        ~~~~~~~~[0m
+    'progress' is declared here.
+
+[96mapp/components/f/icon.gts[0m:[93m77[0m:[93m16[0m - [91merror[0m[90m TS2322: [0mType 'string' is not assignable to type 'ColorType | undefined'.
+
+[7m77[0m               @color={{this.color}}
+[7m  [0m [91m               ~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/icon.d.ts[0m:[93m11[0m:[93m9[0m
+    [7m11[0m         color?: ColorType;
+    [7m  [0m [96m        ~~~~~[0m
+    The expected type comes from property 'color' which is declared here on type 'NamedArgs<{ type: "bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | ... 2040 more ... | "bi-zoom-out"; backgroundColor?: SubtleColorType | ... 1 more ... | undefined; size?: "1" | ... 5 more ... | und...'
+
+[96mapp/components/f/icon.gts[0m:[93m78[0m:[93m16[0m - [91merror[0m[90m TS2322: [0mType 'string' is not assignable to type '"bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | "bi-123" | ... 2039 more ... | "bi-zoom-out"'.
+
+[7m78[0m               @type={{this.type}}
+[7m  [0m [91m               ~~~~[0m
+
+  [96m../../packages/ember/declarations/components/icon.d.ts[0m:[93m8[0m:[93m9[0m
+    [7m8[0m         type: IconType;
+    [7m [0m [96m        ~~~~[0m
+    The expected type comes from property 'type' which is declared here on type 'NamedArgs<{ type: "bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | ... 2040 more ... | "bi-zoom-out"; backgroundColor?: SubtleColorType | ... 1 more ... | undefined; size?: "1" | ... 5 more ... | und...'
+
+[96mtests/integration/components/progress-test.gts[0m:[93m49[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; progress: number; striped: true; animated: true; }' is not assignable to parameter of type 'NamedArgs<{ animated?: boolean | undefined; hideLabel?: boolean | undefined; label?: string | undefined; multiple: boolean; progress?: number | undefined; striped?: boolean | undefined; title?: string | undefined; }>'.
+  Property 'multiple' is missing in type '{ [NamedArgs]: true; progress: number; striped: true; animated: true; }' but required in type '{ animated?: boolean | undefined; hideLabel?: boolean | undefined; label?: string | undefined; multiple: boolean; progress?: number | undefined; striped?: boolean | undefined; title?: string | undefined; }'.
+
+[7m49[0m         <Segment @progress={{40}} @striped={{true}} @animated={{true}} />
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/progress.d.ts[0m:[93m9[0m:[93m9[0m
+    [7m9[0m         multiple: boolean;
+    [7m [0m [96m        ~~~~~~~~[0m
+    'multiple' is declared here.
+
+[96mapp/components/f/form/radio-group.gts[0m:[93m64[0m:[93m15[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; option: string; label: string; }' is not assignable to parameter of type 'NamedArgs<{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }>'.
+  Property 'name' is missing in type '{ [NamedArgs]: true; option: string; label: string; }' but required in type '{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }'.
+
+[7m64[0m               <Group.Radio @option="1" @label="One" />
+[7m  [0m [91m              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/form/radio-group.d.ts[0m:[93m34[0m:[93m9[0m
+    [7m34[0m         name: string;
+    [7m  [0m [96m        ~~~~[0m
+    'name' is declared here.
+
+[96mapp/components/f/mktg/promo-container.gts[0m:[93m40[0m:[93m17[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"subheader"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'subheader' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m 40[0m                 <:subheader>
+[7m   [0m [91m                ~~~~~~~~~~~~[0m
+[7m 41[0m                   <p class="m-0">Here's some content to give context and
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 50[0m                   </div>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 51[0m                 </:subheader>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/workflow-tray.hbs[0m:[93m53[0m:[93m7[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::ServicePricing'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::ServicePricing"' can't be used to index type 'Globals'.
+    Property 'Mktg::ServicePricing' does not exist on type 'Globals'.
+
+[7m 53[0m       <Mktg::ServicePricing
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 54[0m         @label="Phone"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 59[0m         @active={{true}}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 60[0m       />
+[7m   [0m [91m~~~~~~~~[0m
+
+[96mapp/components/f/icon.gts[0m:[93m79[0m:[93m16[0m - [91merror[0m[90m TS2322: [0mType 'string' is not assignable to type '"1" | "2" | "3" | "4" | "5" | "6" | undefined'.
+
+[7m79[0m               @size={{this.size}}
+[7m  [0m [91m               ~~~~[0m
+
+  [96m../../packages/ember/declarations/components/icon.d.ts[0m:[93m10[0m:[93m9[0m
+    [7m10[0m         size?: '1' | '2' | '3' | '4' | '5' | '6';
+    [7m  [0m [96m        ~~~~[0m
+    The expected type comes from property 'size' which is declared here on type 'NamedArgs<{ type: "bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | ... 2040 more ... | "bi-zoom-out"; backgroundColor?: SubtleColorType | ... 1 more ... | undefined; size?: "1" | ... 5 more ... | und...'
+
+[96mtests/integration/components/form/phone-field-test.gts[0m:[93m56[0m:[93m8[0m - [91merror[0m[90m TS2769: [0mThe given value does not appear to be usable as a component, modifier or helper.
+  No overload matches this call.
+    Overload 1 of 3, '(item: DirectInvokable): AnyFunction', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'DirectInvokable'.
+    Overload 2 of 3, '(item: (abstract new () => InvokableInstance) | null | undefined): (...args: any[]) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'abstract new () => InvokableInstance'.
+    Overload 3 of 3, '(item: ((...params: any) => any) | null | undefined): (...params: any) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type '(...params: any) => any'.
+
+[7m56[0m       <PhoneField @binding={{bind model "value"}} />
+[7m  [0m [91m       ~~~~~~~~~~[0m
+
+
+[96mtests/integration/components/form/radio-group-test.gts[0m:[93m66[0m:[93m7[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; binding: Binding<Model>; onChange: (value: any) => void; }' is not assignable to parameter of type 'NamedArgs<{ binding?: Binding<any> | undefined; defaultValue?: Optional<string> | undefined; useDefaultValue?: boolean | undefined; allowChange?: ((newValue: Optional<string>, oldValue: Optional<...>) => boolean) | undefined; initBinding?: ((binding: Binding) => void) | undefined; onChange?: ((value: Optional<...>, ...'.
+  Property 'name' is missing in type '{ [NamedArgs]: true; binding: Binding<Model>; onChange: (value: any) => void; }' but required in type '{ basic?: boolean | undefined; describedBy?: string | undefined; disabled?: boolean | undefined; id?: string | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; name: string; }'.
+
+[7m 66[0m       <RadioGroup
+[7m   [0m [91m      ~~~~~~~~~~~[0m
+[7m 67[0m         @binding={{bind model "value"}}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 72[0m         <Group.Radio @option="2" />
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 73[0m       </RadioGroup>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/form/radio-group.d.ts[0m:[93m13[0m:[93m9[0m
+    [7m13[0m         name: string;
+    [7m  [0m [96m        ~~~~[0m
+    'name' is declared here.
+
+[96mtests/integration/components/mktg/service-pricing-test.gts[0m:[93m56[0m:[93m7[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; label: string; description: string; active: true; selected: false; }' is not assignable to parameter of type 'NamedArgs<{ icon: "bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | ... 2040 more ... | "bi-zoom-out"; ... 4 more ...; selected?: boolean | undefined; }>'.
+  Property 'icon' is missing in type '{ [NamedArgs]: true; label: string; description: string; active: true; selected: false; }' but required in type '{ icon: "bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | ... 2040 more ... | "bi-zoom-out"; ... 4 more ...; selected?: boolean | undefined; }'.
+
+[7m 56[0m       <ServicePricing
+[7m   [0m [91m      ~~~~~~~~~~~~~~~[0m
+[7m 57[0m         @label="Service"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 60[0m         @selected={{false}}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 61[0m       />
+[7m   [0m [91m~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/mktg/service-pricing.d.ts[0m:[93m17[0m:[93m9[0m
+    [7m17[0m         icon: IconType;
+    [7m  [0m [96m        ~~~~[0m
+    'icon' is declared here.
+
+[96mtests/integration/components/form/index-test.gts[0m:[93m62[0m:[93m22[0m - [91merror[0m[90m TS2339: [0mProperty 'element' does not exist on type 'TestContext'.
+
+[7m62[0m     let label = this.element.querySelector('label:has(+ input)');
+[7m  [0m [91m                     ~~~~~~~[0m
+
+[96mapp/components/f/form/radio-group.gts[0m:[93m65[0m:[93m15[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; option: string; label: string; }' is not assignable to parameter of type 'NamedArgs<{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }>'.
+  Property 'name' is missing in type '{ [NamedArgs]: true; option: string; label: string; }' but required in type '{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }'.
+
+[7m65[0m               <Group.Radio @option="2" @label="Two" />
+[7m  [0m [91m              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/form/radio-group.d.ts[0m:[93m34[0m:[93m9[0m
+    [7m34[0m         name: string;
+    [7m  [0m [96m        ~~~~[0m
+    'name' is declared here.
+
+[96mtests/integration/components/progress-test.gts[0m:[93m50[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; title: string; progress: number; }' is not assignable to parameter of type 'NamedArgs<{ animated?: boolean | undefined; hideLabel?: boolean | undefined; label?: string | undefined; multiple: boolean; progress?: number | undefined; striped?: boolean | undefined; title?: string | undefined; }>'.
+  Property 'multiple' is missing in type '{ [NamedArgs]: true; title: string; progress: number; }' but required in type '{ animated?: boolean | undefined; hideLabel?: boolean | undefined; label?: string | undefined; multiple: boolean; progress?: number | undefined; striped?: boolean | undefined; title?: string | undefined; }'.
+
+[7m50[0m         <Segment class="bg-warning" @title="foo bar" @progress={{60}} />
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/progress.d.ts[0m:[93m9[0m:[93m9[0m
+    [7m9[0m         multiple: boolean;
+    [7m [0m [96m        ~~~~~~~~[0m
+    'multiple' is declared here.
+
+[96mapp/components/f/form/radio-group.gts[0m:[93m66[0m:[93m15[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; option: string; label: string; }' is not assignable to parameter of type 'NamedArgs<{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }>'.
+  Property 'name' is missing in type '{ [NamedArgs]: true; option: string; label: string; }' but required in type '{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }'.
+
+[7m66[0m               <Group.Radio @option="3" @label="Three" />
+[7m  [0m [91m              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/form/radio-group.d.ts[0m:[93m34[0m:[93m9[0m
+    [7m34[0m         name: string;
+    [7m  [0m [96m        ~~~~[0m
+    'name' is declared here.
+
+[96mtests/integration/components/form/index-test.gts[0m:[93m63[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'element' does not exist on type 'TestContext'.
+
+[7m63[0m     const input = this.element.querySelector('label + input');
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96mtests/integration/components/form/radio-group-test.gts[0m:[93m71[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; option: string; }' is not assignable to parameter of type 'NamedArgs<{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }>'.
+  Property 'name' is missing in type '{ [NamedArgs]: true; option: string; }' but required in type '{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }'.
+
+[7m71[0m         <Group.Radio @option="1" />
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/form/radio-group.d.ts[0m:[93m34[0m:[93m9[0m
+    [7m34[0m         name: string;
+    [7m  [0m [96m        ~~~~[0m
+    'name' is declared here.
+
+[96mtests/integration/components/form/checkbox-test.gts[0m:[93m69[0m:[93m26[0m - [91merror[0m[90m TS2339: [0mProperty 'element' does not exist on type 'TestContext'.
+
+[7m69[0m     const labelId = this.element.querySelector('.form-check > input').id;
+[7m  [0m [91m                         ~~~~~~~[0m
+
+[96mtests/integration/components/form/radio-group-test.gts[0m:[93m72[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; option: string; }' is not assignable to parameter of type 'NamedArgs<{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }>'.
+  Property 'name' is missing in type '{ [NamedArgs]: true; option: string; }' but required in type '{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }'.
+
+[7m72[0m         <Group.Radio @option="2" />
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/form/radio-group.d.ts[0m:[93m34[0m:[93m9[0m
+    [7m34[0m         name: string;
+    [7m  [0m [96m        ~~~~[0m
+    'name' is declared here.
+
+[96mapp/components/f/form/text-field.gts[0m:[93m66[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'classOptions' does not exist on type 'default'.
+
+[7m66[0m               @options={{this.classOptions}}
+[7m  [0m [91m                              ~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/text-area.gts[0m:[93m66[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'classOptions' does not exist on type 'default'.
+
+[7m66[0m               @options={{this.classOptions}}
+[7m  [0m [91m                              ~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/phone-field.gts[0m:[93m66[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'classOptions' does not exist on type 'default'.
+
+[7m66[0m               @options={{this.classOptions}}
+[7m  [0m [91m                              ~~~~~~~~~~~~[0m
+
+[96mapp/templates/promo.hbs[0m:[93m51[0m:[93m11[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Button'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Button"' can't be used to index type 'Globals'.
+    Property 'Button' does not exist on type 'Globals'.
+
+[7m51[0m           <Button type="button" class="mx-2 mt-2 btn btn-primary">Contact Us</Button>
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/index.gts[0m:[93m78[0m:[93m34[0m - [91merror[0m[90m TS18048: [0m'desc' is possibly 'undefined'.
+
+[7m78[0m       const isValue = 'value' in desc;
+[7m  [0m [91m                                 ~~~~[0m
+
+[96mapp/components/f/form/checkbox.gts[0m:[93m67[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'classOptions' does not exist on type 'default'.
+
+[7m67[0m               @options={{this.classOptions}}
+[7m  [0m [91m                              ~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/index.gts[0m:[93m80[0m:[93m9[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+
+[7m80[0m         obj[key] = this[key];
+[7m  [0m [91m        ~~~~~~~~[0m
+
+[96mapp/templates/workflow-tray.hbs[0m:[93m64[0m:[93m53[0m - [91merror[0m[90m TS2345: [0mArgument of type 'void' is not assignable to parameter of type 'Element'.
+
+[7m64[0m       <div class="row justify-content-between my-2" ...attributes>
+[7m  [0m [91m                                                    ~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/phone-field-test.gts[0m:[93m66[0m:[93m8[0m - [91merror[0m[90m TS2769: [0mThe given value does not appear to be usable as a component, modifier or helper.
+  No overload matches this call.
+    Overload 1 of 3, '(item: DirectInvokable): AnyFunction', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'DirectInvokable'.
+    Overload 2 of 3, '(item: (abstract new () => InvokableInstance) | null | undefined): (...args: any[]) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'abstract new () => InvokableInstance'.
+    Overload 3 of 3, '(item: ((...params: any) => any) | null | undefined): (...params: any) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type '(...params: any) => any'.
+
+[7m66[0m       <PhoneField @binding={{bind model "value"}} />
+[7m  [0m [91m       ~~~~~~~~~~[0m
+
+
+[96mapp/components/f/form/index.gts[0m:[93m80[0m:[93m20[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Model'.
+  No index signature with a parameter of type 'string' was found on type 'Model'.
+
+[7m80[0m         obj[key] = this[key];
+[7m  [0m [91m                   ~~~~~~~~~[0m
+
+[96mapp/templates/promo.hbs[0m:[93m52[0m:[93m11[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Button'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Button"' can't be used to index type 'Globals'.
+    Property 'Button' does not exist on type 'Globals'.
+
+[7m52[0m           <Button type="button" class="mx-2 mt-2 btn text-primary">Or call
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m53[0m             (865)111-2323</Button>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/index.gts[0m:[93m84[0m:[93m39[0m - [91merror[0m[90m TS2550: [0mProperty 'entries' does not exist on type 'ObjectConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2017' or later.
+
+[7m84[0m     for (const [key, value] of Object.entries(this)) {
+[7m  [0m [91m                                      ~~~~~~~[0m
+
+[96mapp/components/f/form/index.gts[0m:[93m85[0m:[93m7[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+
+[7m85[0m       obj[key] = value;
+[7m  [0m [91m      ~~~~~~~~[0m
+
+[96mtests/integration/components/mktg/service-pricing-test.gts[0m:[93m72[0m:[93m7[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; label: string; description: string; active: false; selected: true; }' is not assignable to parameter of type 'NamedArgs<{ icon: "bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | ... 2040 more ... | "bi-zoom-out"; ... 4 more ...; selected?: boolean | undefined; }>'.
+  Property 'icon' is missing in type '{ [NamedArgs]: true; label: string; description: string; active: false; selected: true; }' but required in type '{ icon: "bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | ... 2040 more ... | "bi-zoom-out"; ... 4 more ...; selected?: boolean | undefined; }'.
+
+[7m 72[0m       <ServicePricing
+[7m   [0m [91m      ~~~~~~~~~~~~~~~[0m
+[7m 73[0m         @label="Service"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 76[0m         @selected={{true}}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 77[0m       />
+[7m   [0m [91m~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/mktg/service-pricing.d.ts[0m:[93m17[0m:[93m9[0m
+    [7m17[0m         icon: IconType;
+    [7m  [0m [96m        ~~~~[0m
+    'icon' is declared here.
+
+[96mtests/integration/components/alert-test.gts[0m:[93m95[0m:[93m1[0m - [91merror[0m[90m TS1160: [0mUnterminated template literal.
+
+[7m95[0m 
+[7m  [0m [91m[0m
+
+[96mapp/templates/workflow-tray.hbs[0m:[93m68[0m:[93m53[0m - [91merror[0m[90m TS2345: [0mArgument of type 'void' is not assignable to parameter of type 'Element'.
+
+[7m68[0m       <div class="row justify-content-between my-2" ...attributes>
+[7m  [0m [91m                                                    ~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/radio-group-test.gts[0m:[93m89[0m:[93m7[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; binding: Binding<Model>; }' is not assignable to parameter of type 'NamedArgs<{ binding?: Binding<any> | undefined; defaultValue?: Optional<string> | undefined; useDefaultValue?: boolean | undefined; allowChange?: ((newValue: Optional<string>, oldValue: Optional<...>) => boolean) | undefined; initBinding?: ((binding: Binding) => void) | undefined; onChange?: ((value: Optional<...>, ...'.
+  Property 'name' is missing in type '{ [NamedArgs]: true; binding: Binding<Model>; }' but required in type '{ basic?: boolean | undefined; describedBy?: string | undefined; disabled?: boolean | undefined; id?: string | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; name: string; }'.
+
+[7m89[0m       <RadioGroup @binding={{bind model "value"}} as |Group|>
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m90[0m         <Group.Radio @option="1" />
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m91[0m         <Group.Radio @option="2" />
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m92[0m       </RadioGroup>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/form/radio-group.d.ts[0m:[93m13[0m:[93m9[0m
+    [7m13[0m         name: string;
+    [7m  [0m [96m        ~~~~[0m
+    'name' is declared here.
+
+[96mtests/integration/components/form/index-test.gts[0m:[93m78[0m:[93m18[0m - [91merror[0m[90m TS2339: [0mProperty 'element' does not exist on type 'TestContext'.
+
+[7m78[0m     label = this.element.querySelector('label:has(+ textarea)');
+[7m  [0m [91m                 ~~~~~~~[0m
+
+[96mapp/components/f/form/radio-group.gts[0m:[93m75[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'classOptions' does not exist on type 'default'.
+
+[7m75[0m               @options={{this.classOptions}}
+[7m  [0m [91m                              ~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/index.gts[0m:[93m99[0m:[93m11[0m - [91merror[0m[90m TS2556: [0mA spread argument must either have a tuple type or be passed to a rest parameter.
+
+[7m99[0m     super(...arguments);
+[7m  [0m [91m          ~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/radio-group-test.gts[0m:[93m90[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; option: string; }' is not assignable to parameter of type 'NamedArgs<{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }>'.
+  Property 'name' is missing in type '{ [NamedArgs]: true; option: string; }' but required in type '{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }'.
+
+[7m90[0m         <Group.Radio @option="1" />
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/form/radio-group.d.ts[0m:[93m34[0m:[93m9[0m
+    [7m34[0m         name: string;
+    [7m  [0m [96m        ~~~~[0m
+    'name' is declared here.
+
+[96mapp/components/f/mktg/promo-container.gts[0m:[93m53[0m:[93m15[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Element'.
+
+[7m 53[0m               <Container.Promo
+[7m   [0m [91m              ~~~~~~~~~~~~~~~~[0m
+[7m 54[0m                 class="col-12 col-md-4"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 80[0m                 </:description>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 81[0m               </Container.Promo>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/index-test.gts[0m:[93m79[0m:[93m27[0m - [91merror[0m[90m TS2339: [0mProperty 'element' does not exist on type 'TestContext'.
+
+[7m79[0m     const textarea = this.element.querySelector('label + textarea');
+[7m  [0m [91m                          ~~~~~~~[0m
+
+[96mtests/integration/components/form/radio-group-test.gts[0m:[93m91[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; option: string; }' is not assignable to parameter of type 'NamedArgs<{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }>'.
+  Property 'name' is missing in type '{ [NamedArgs]: true; option: string; }' but required in type '{ currentValue?: string | null | undefined; disabled?: boolean | undefined; isInvalid?: boolean | undefined; isWarning?: boolean | undefined; label?: string | undefined; name: string; option?: string | undefined; onChange?: ((value: string, ...args: unknown[]) => void) | undefined; }'.
+
+[7m91[0m         <Group.Radio @option="2" />
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/form/radio-group.d.ts[0m:[93m34[0m:[93m9[0m
+    [7m34[0m         name: string;
+    [7m  [0m [96m        ~~~~[0m
+    'name' is declared here.
+
+[96mapp/templates/workflow-tray.hbs[0m:[93m74[0m:[93m7[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Button'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Button"' can't be used to index type 'Globals'.
+    Property 'Button' does not exist on type 'Globals'.
+
+[7m74[0m       <Button class="btn-primary py-3 flex-fill">Next</Button>
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/index-test.gts[0m:[93m80[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'element' does not exist on type 'TestContext'.
+
+[7m80[0m     const text = this.element.querySelector('label + textarea + div');
+[7m  [0m [91m                      ~~~~~~~[0m
+
+[96mapp/components/f/mktg/promo-container.gts[0m:[93m58[0m:[93m17[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"img"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'img' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m 58[0m                 <:img>
+[7m   [0m [91m                ~~~~~~[0m
+[7m 59[0m                   <img
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 63[0m                   />
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~[0m
+[7m 64[0m                 </:img>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/mktg/service-pricing-test.gts[0m:[93m88[0m:[93m7[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; label: string; description: string; active: false; selected: false; }' is not assignable to parameter of type 'NamedArgs<{ icon: "bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | ... 2040 more ... | "bi-zoom-out"; ... 4 more ...; selected?: boolean | undefined; }>'.
+  Property 'icon' is missing in type '{ [NamedArgs]: true; label: string; description: string; active: false; selected: false; }' but required in type '{ icon: "bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | ... 2040 more ... | "bi-zoom-out"; ... 4 more ...; selected?: boolean | undefined; }'.
+
+[7m 88[0m       <ServicePricing
+[7m   [0m [91m      ~~~~~~~~~~~~~~~[0m
+[7m 89[0m         @label="Service"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 92[0m         @selected={{false}}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 93[0m       />
+[7m   [0m [91m~~~~~~~~[0m
+
+  [96m../../packages/ember/declarations/components/mktg/service-pricing.d.ts[0m:[93m17[0m:[93m9[0m
+    [7m17[0m         icon: IconType;
+    [7m  [0m [96m        ~~~~[0m
+    'icon' is declared here.
+
+[96mtests/integration/components/form/phone-field-test.gts[0m:[93m86[0m:[93m8[0m - [91merror[0m[90m TS2769: [0mThe given value does not appear to be usable as a component, modifier or helper.
+  No overload matches this call.
+    Overload 1 of 3, '(item: DirectInvokable): AnyFunction', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'DirectInvokable'.
+    Overload 2 of 3, '(item: (abstract new () => InvokableInstance) | null | undefined): (...args: any[]) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'abstract new () => InvokableInstance'.
+    Overload 3 of 3, '(item: ((...params: any) => any) | null | undefined): (...params: any) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type '(...params: any) => any'.
+
+[7m86[0m       <PhoneField @binding={{bind model "value"}} />
+[7m  [0m [91m       ~~~~~~~~~~[0m
+
+
+[96mapp/templates/workflow-tray.hbs[0m:[93m81[0m:[93m1[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Footer'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Footer"' can't be used to index type 'Globals'.
+    Property 'Footer' does not exist on type 'Globals'.
+
+[7m 81[0m <Footer>
+[7m   [0m [91m~~~~~~~~[0m
+[7m 82[0m   <:right>
+[7m   [0m [91m~~~~~~~~~~[0m
+[7m...[0m 
+[7m 85[0m   </:right>
+[7m   [0m [91m~~~~~~~~~~~[0m
+[7m 86[0m </Footer>
+[7m   [0m [91m~~~~~~~~~[0m
+
+[96mtests/integration/components/button-group-test.gts[0m:[93m93[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Element'.
+
+[7m 93[0m         <Group.Button
+[7m   [0m [91m        ~~~~~~~~~~~~~[0m
+[7m 94[0m           class="btn-primary"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 96[0m           @onClick={{fn clickHandler "foo"}}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 97[0m         />
+[7m   [0m [91m~~~~~~~~~~[0m
+
+[96mapp/templates/cards.hbs[0m:[93m81[0m:[93m11[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Button'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Button"' can't be used to index type 'Globals'.
+    Property 'Button' does not exist on type 'Globals'.
+
+[7m81[0m           <Button @text="Add to Bundle" class="btn-primary w-100 mt-2" />
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/button.gts[0m:[93m93[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'type' does not exist on type 'default'.
+
+[7m93[0m               @value={{this.type}}
+[7m  [0m [91m                            ~~~~[0m
+
+[96mapp/components/f/mktg/promo-container.gts[0m:[93m65[0m:[93m17[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"description"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'description' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m 65[0m                 <:description>
+[7m   [0m [91m                ~~~~~~~~~~~~~~[0m
+[7m 66[0m                   <p>Here's why you should try this product and a description of
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 79[0m                   >Learn More</Button>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 80[0m                 </:description>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/index.gts[0m:[93m128[0m:[93m10[0m - [91merror[0m[90m TS2322: [0mType '{ select: ValidatorBuilder<unknown, object, object, Computable<object, InclusionOptions<Primitive>>>; someOtherKey: ValidatorBuilder<...>; textArea: ValidatorBuilder<...>[]; radio: ValidatorBuilder<...>[]; phone: ValidatorBuilder<...>[]; }' is not assignable to type 'ValidatorsObject'.
+  Property 'select' is incompatible with index signature.
+    Type 'ValidatorBuilder<unknown, object, object, Computable<object, InclusionOptions<Primitive>>>' is not assignable to type 'ValidatorBuilder<unknown, object, object, object> | ValidatorArray'.
+      Type 'ValidatorBuilder<unknown, object, object, Computable<object, InclusionOptions<Primitive>>>' is not assignable to type 'ValidatorBuilder<unknown, object, object, object>'.
+        Property 'in' is missing in type '{}' but required in type 'Computable<object, InclusionOptions<Primitive>>'.
+
+[7m128[0m         @validators={{Validators}}
+[7m   [0m [91m         ~~~~~~~~~~[0m
+
+[96mapp/templates/cards.hbs[0m:[93m86[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::CardContainer'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::CardContainer"' can't be used to index type 'Globals'.
+    Property 'Mktg::CardContainer' does not exist on type 'Globals'.
+
+[7m 86[0m     <Mktg::CardContainer class="justify-content-center" as |Container|>
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 87[0m       <Container.MktgCard
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m116[0m       </Container.MktgCard>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m117[0m     </Mktg::CardContainer>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/index.gts[0m:[93m133[0m:[93m11[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"default"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'default' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m133[0m           <Form.Field
+[7m   [0m [91m          ~~~~~~~~~~~[0m
+[7m134[0m             @label="Text Field"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m142[0m             </Field.Text>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m143[0m           </Form.Field>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/button-group-test.gts[0m:[93m103[0m:[93m11[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Element'.
+
+[7m103[0m           <SubGroup.Button
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~[0m
+[7m104[0m             class="btn-primary"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m106[0m             @onClick={{fn clickHandler "bar"}}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m107[0m           />
+[7m   [0m [91m~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/mktg/service-pricing-test.gts[0m:[93m104[0m:[93m7[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ [NamedArgs]: true; label: string; package: string; }' is not assignable to parameter of type 'NamedArgs<{ icon: "bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | ... 2040 more ... | "bi-zoom-out"; ... 4 more ...; selected?: boolean | undefined; }>'.
+  Type '{ [NamedArgs]: true; label: string; package: string; }' is missing the following properties from type '{ icon: "bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | ... 2040 more ... | "bi-zoom-out"; ... 4 more ...; selected?: boolean | undefined; }': icon, description
+
+[7m104[0m       <ServicePricing @label="Service" @package="Service Package" />
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/index-test.gts[0m:[93m103[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'element' does not exist on type 'TestContext'.
+
+[7m103[0m     const button = this.element.querySelector('button');
+[7m   [0m [91m                        ~~~~~~~[0m
+
+[96mapp/components/f/button.gts[0m:[93m106[0m:[93m16[0m - [91merror[0m[90m TS2322: [0mType 'string' is not assignable to type '"bi-arrow-right" | "bi-0-circle" | "bi-0-circle-fill" | "bi-0-square" | "bi-0-square-fill" | "bi-1-circle" | "bi-1-circle-fill" | "bi-1-square" | "bi-1-square-fill" | "bi-123" | ... 2040 more ... | undefined'.
+
+[7m106[0m               @icon={{this.icon}}
+[7m   [0m [91m               ~~~~[0m
+
+[96mtests/integration/components/form/phone-field-test.gts[0m:[93m103[0m:[93m8[0m - [91merror[0m[90m TS2769: [0mThe given value does not appear to be usable as a component, modifier or helper.
+  No overload matches this call.
+    Overload 1 of 3, '(item: DirectInvokable): AnyFunction', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'DirectInvokable'.
+    Overload 2 of 3, '(item: (abstract new () => InvokableInstance) | null | undefined): (...args: any[]) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'abstract new () => InvokableInstance'.
+    Overload 3 of 3, '(item: ((...params: any) => any) | null | undefined): (...params: any) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type '(...params: any) => any'.
+
+[7m103[0m       <PhoneField @binding={{bind model "value"}} />
+[7m   [0m [91m       ~~~~~~~~~~[0m
+
+
+[96mtests/integration/components/button-group-test.gts[0m:[93m108[0m:[93m11[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Element'.
+
+[7m108[0m           <SubGroup.Button
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~[0m
+[7m109[0m             class="btn-primary"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m111[0m             @onClick={{fn clickHandler "baz"}}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m112[0m           />
+[7m   [0m [91m~~~~~~~~~~~~[0m
+
+[96mapp/components/f/button.gts[0m:[93m108[0m:[93m16[0m - [91merror[0m[90m TS2322: [0mType 'string' is not assignable to type '"left" | "right" | undefined'.
+
+[7m108[0m               @iconPosition={{this.iconPosition}}
+[7m   [0m [91m               ~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/text-field.gts[0m:[93m99[0m:[93m15[0m - [91merror[0m[90m TS2554: [0mExpected 0 arguments, but got 1.
+
+[7m 99[0m               <CodeBlock
+[7m   [0m [91m              ~~~~~~~~~~[0m
+[7m100[0m                 @lang="typescript"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m101[0m                 @code="(newValue: string) => unknown"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m102[0m               />
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/phone-field.gts[0m:[93m99[0m:[93m15[0m - [91merror[0m[90m TS2554: [0mExpected 0 arguments, but got 1.
+
+[7m 99[0m               <CodeBlock
+[7m   [0m [91m              ~~~~~~~~~~[0m
+[7m100[0m                 @lang="typescript"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m101[0m                 @code="(newValue: string) => unknown"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m102[0m               />
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/text-area.gts[0m:[93m99[0m:[93m15[0m - [91merror[0m[90m TS2554: [0mExpected 0 arguments, but got 1.
+
+[7m 99[0m               <CodeBlock
+[7m   [0m [91m              ~~~~~~~~~~[0m
+[7m100[0m                 @lang="typescript"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m101[0m                 @code="(newValue: string) => unknown"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m102[0m               />
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/promo.hbs[0m:[93m86[0m:[93m9[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Button'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Button"' can't be used to index type 'Globals'.
+    Property 'Button' does not exist on type 'Globals'.
+
+[7m86[0m         <Button type="button" class="mt-2 btn btn-primary">Learn More</Button>
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/index-test.gts[0m:[93m116[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'model' does not exist on type 'TestContext'.
+
+[7m116[0m     const model = this.model;
+[7m   [0m [91m                       ~~~~~[0m
+
+[96mapp/components/f/form/index.gts[0m:[93m146[0m:[93m11[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"default"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'default' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m146[0m           <Form.Field @label="Text Area" as |Field|>
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m147[0m             <Field.TextArea @binding={{bind this.model "textArea"}} />
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m148[0m           </Form.Field>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/mktg/promo-container.gts[0m:[93m82[0m:[93m15[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Element'.
+
+[7m 82[0m               <Container.Promo
+[7m   [0m [91m              ~~~~~~~~~~~~~~~~[0m
+[7m 83[0m                 class="col-12 col-md-4"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m109[0m                 </:description>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m110[0m               </Container.Promo>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/phone-field-test.gts[0m:[93m115[0m:[93m8[0m - [91merror[0m[90m TS2769: [0mThe given value does not appear to be usable as a component, modifier or helper.
+  No overload matches this call.
+    Overload 1 of 3, '(item: DirectInvokable): AnyFunction', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'DirectInvokable'.
+    Overload 2 of 3, '(item: (abstract new () => InvokableInstance) | null | undefined): (...args: any[]) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'abstract new () => InvokableInstance'.
+    Overload 3 of 3, '(item: ((...params: any) => any) | null | undefined): (...params: any) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type '(...params: any) => any'.
+
+[7m115[0m       <PhoneField @binding={{bind model "value"}} />
+[7m   [0m [91m       ~~~~~~~~~~[0m
+
+
+[96mapp/components/f/form/radio-group.gts[0m:[93m107[0m:[93m15[0m - [91merror[0m[90m TS2554: [0mExpected 0 arguments, but got 1.
+
+[7m107[0m               <CodeBlock
+[7m   [0m [91m              ~~~~~~~~~~[0m
+[7m108[0m                 @lang="typescript"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m109[0m                 @code="(newValue: string) => unknown"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m110[0m               />
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/checkbox.gts[0m:[93m107[0m:[93m15[0m - [91merror[0m[90m TS2554: [0mExpected 0 arguments, but got 1.
+
+[7m107[0m               <CodeBlock
+[7m   [0m [91m              ~~~~~~~~~~[0m
+[7m108[0m                 @lang="typescript"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m109[0m                 @code="(newValue: boolean) => unknown"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m110[0m               />
+[7m   [0m [91m~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/index-test.gts[0m:[93m124[0m:[93m14[0m - [91merror[0m[90m TS2322: [0mType '{ selectByAnotherProperty: ValidatorBuilder<unknown, object, object, Computable<object, PresenceOptions>>; }' is not assignable to type 'ValidatorsObject'.
+  Property 'selectByAnotherProperty' is incompatible with index signature.
+    Type 'ValidatorBuilder<unknown, object, object, Computable<object, PresenceOptions>>' is not assignable to type 'ValidatorBuilder<unknown, object, object, object> | ValidatorArray'.
+      Type 'ValidatorBuilder<unknown, object, object, Computable<object, PresenceOptions>>' is not assignable to type 'ValidatorBuilder<unknown, object, object, object>'.
+        Property 'presence' is missing in type '{}' but required in type 'Computable<object, PresenceOptions>'.
+
+[7m124[0m       <Form @validators={{Validators}} @onSubmit={{actionHandler}} as |Form|>
+[7m   [0m [91m             ~~~~~~~~~~[0m
+
+[96mapp/components/f/form/index.gts[0m:[93m151[0m:[93m11[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"default"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'default' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m151[0m           <Form.Field @label="Select" @required={{this.required}} as |Field|>
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m152[0m             <Field.Select
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m155[0m             />
+[7m   [0m [91m~~~~~~~~~~~~~~[0m
+[7m156[0m           </Form.Field>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/index-test.gts[0m:[93m125[0m:[93m9[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"default"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'default' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m125[0m         <Form.Field @label="Text Field" @required={{true}} as |Field|>
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m126[0m           <Field.TextField @binding={{bind model "textField"}} />
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m127[0m         </Form.Field>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/mktg/promo-container.gts[0m:[93m87[0m:[93m17[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"img"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'img' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m 87[0m                 <:img>
+[7m   [0m [91m                ~~~~~~[0m
+[7m 88[0m                   <img
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 92[0m                   />
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~[0m
+[7m 93[0m                 </:img>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/index-test.gts[0m:[93m128[0m:[93m9[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"default"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'default' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m128[0m         <Form.Field
+[7m   [0m [91m        ~~~~~~~~~~~[0m
+[7m129[0m           @label="Text Area (with additional text)"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m136[0m           </Field.Text>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m137[0m         </Form.Field>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/mktg/promo-container.gts[0m:[93m94[0m:[93m17[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"description"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'description' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m 94[0m                 <:description>
+[7m   [0m [91m                ~~~~~~~~~~~~~~[0m
+[7m 95[0m                   <p>Here's why you should try this product and a description of
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m108[0m                   >Learn More</Button>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m109[0m                 </:description>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/phone-field-test.gts[0m:[93m127[0m:[93m8[0m - [91merror[0m[90m TS2769: [0mThe given value does not appear to be usable as a component, modifier or helper.
+  No overload matches this call.
+    Overload 1 of 3, '(item: DirectInvokable): AnyFunction', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'DirectInvokable'.
+    Overload 2 of 3, '(item: (abstract new () => InvokableInstance) | null | undefined): (...args: any[]) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'abstract new () => InvokableInstance'.
+    Overload 3 of 3, '(item: ((...params: any) => any) | null | undefined): (...params: any) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type '(...params: any) => any'.
+
+[7m127[0m       <PhoneField @binding={{bind model "value"}} />
+[7m   [0m [91m       ~~~~~~~~~~[0m
+
+
+[96mapp/components/f/form/index.gts[0m:[93m159[0m:[93m11[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"default"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'default' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m159[0m           <Form.Field
+[7m   [0m [91m          ~~~~~~~~~~~[0m
+[7m160[0m             @label="Radio Group"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m168[0m             </Field.RadioGroup>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m169[0m           </Form.Field>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/mktg/service-pricing-test.gts[0m:[93m137[0m:[93m46[0m - [91merror[0m[90m TS2322: [0mType 'string' is not assignable to type 'number'.
+
+[7m137[0m         <Addon @label="Addon" @price="$100" @quantity="2" />
+[7m   [0m [91m                                             ~~~~~~~~[0m
+
+[96mtests/integration/components/form/phone-field-test.gts[0m:[93m129[0m:[93m26[0m - [91merror[0m[90m TS2339: [0mProperty 'element' does not exist on type 'TestContext'.
+
+[7m129[0m     const element = this.element.querySelector('input') as HTMLInputElement;
+[7m   [0m [91m                         ~~~~~~~[0m
+
+[96mapp/templates/cards.hbs[0m:[93m114[0m:[93m11[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Button'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Button"' can't be used to index type 'Globals'.
+    Property 'Button' does not exist on type 'Globals'.
+
+[7m114[0m           <Button @text="Add to Bundle" class="btn-primary w-100 mt-2" />
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/index-test.gts[0m:[93m138[0m:[93m9[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"default"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'default' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m138[0m         <Form.Field
+[7m   [0m [91m        ~~~~~~~~~~~[0m
+[7m139[0m           @label="Select"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m146[0m           />
+[7m   [0m [91m~~~~~~~~~~~~[0m
+[7m147[0m         </Form.Field>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/cards.hbs[0m:[93m122[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::CardContainer'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::CardContainer"' can't be used to index type 'Globals'.
+    Property 'Mktg::CardContainer' does not exist on type 'Globals'.
+
+[7m122[0m     <Mktg::CardContainer as |Container|>
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m123[0m       <Container.MktgCard
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m157[0m       </Container.MktgCard>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m158[0m     </Mktg::CardContainer>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/index.gts[0m:[93m172[0m:[93m11[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"default"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'default' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m172[0m           <Form.Field
+[7m   [0m [91m          ~~~~~~~~~~~[0m
+[7m173[0m             @label="Phone Number"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m177[0m             <Field.Phone @binding={{bind this.model "phone"}} />
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m178[0m           </Form.Field>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/select.gts[0m:[93m142[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Element'.
+
+[7m142[0m         <CodeBlock
+[7m   [0m [91m        ~~~~~~~~~~[0m
+[7m143[0m           class="border rounded p-3"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m145[0m           @code={{this.stringOptionsSource}}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m146[0m         />
+[7m   [0m [91m~~~~~~~~~~[0m
+
+[96mapp/components/f/form/select.gts[0m:[93m142[0m:[93m9[0m - [91merror[0m[90m TS2554: [0mExpected 0 arguments, but got 1.
+
+[7m142[0m         <CodeBlock
+[7m   [0m [91m        ~~~~~~~~~~[0m
+[7m143[0m           class="border rounded p-3"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m145[0m           @code={{this.stringOptionsSource}}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m146[0m         />
+[7m   [0m [91m~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/index-test.gts[0m:[93m153[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'element' does not exist on type 'TestContext'.
+
+[7m153[0m     const select = this.element.querySelector('label + button.dropdown');
+[7m   [0m [91m                        ~~~~~~~[0m
+
+[96mapp/components/f/mktg/promo-container.gts[0m:[93m111[0m:[93m15[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Element'.
+
+[7m111[0m               <Container.Promo
+[7m   [0m [91m              ~~~~~~~~~~~~~~~~[0m
+[7m112[0m                 class="col-12 col-md-4"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m138[0m                 </:description>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m139[0m               </Container.Promo>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/index.gts[0m:[93m180[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Element'.
+
+[7m180[0m         <Form.SubmitButton class="btn-primary mt-3" />
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/promo.hbs[0m:[93m118[0m:[93m9[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Button'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Button"' can't be used to index type 'Globals'.
+    Property 'Button' does not exist on type 'Globals'.
+
+[7m118[0m         <Button type="button" class="mt-2 btn btn-primary">Learn More</Button>
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/select.gts[0m:[93m150[0m:[93m9[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Element'.
+
+[7m150[0m         <CodeBlock
+[7m   [0m [91m        ~~~~~~~~~~[0m
+[7m151[0m           class="border rounded p-3"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m153[0m           @code={{this.objectOptionsSource}}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m154[0m         />
+[7m   [0m [91m~~~~~~~~~~[0m
+
+[96mapp/components/f/form/select.gts[0m:[93m150[0m:[93m9[0m - [91merror[0m[90m TS2554: [0mExpected 0 arguments, but got 1.
+
+[7m150[0m         <CodeBlock
+[7m   [0m [91m        ~~~~~~~~~~[0m
+[7m151[0m           class="border rounded p-3"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m153[0m           @code={{this.objectOptionsSource}}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m154[0m         />
+[7m   [0m [91m~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/phone-field-test.gts[0m:[93m149[0m:[93m8[0m - [91merror[0m[90m TS2769: [0mThe given value does not appear to be usable as a component, modifier or helper.
+  No overload matches this call.
+    Overload 1 of 3, '(item: DirectInvokable): AnyFunction', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'DirectInvokable'.
+    Overload 2 of 3, '(item: (abstract new () => InvokableInstance) | null | undefined): (...args: any[]) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'abstract new () => InvokableInstance'.
+    Overload 3 of 3, '(item: ((...params: any) => any) | null | undefined): (...params: any) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type '(...params: any) => any'.
+
+[7m149[0m       <PhoneField @binding={{bind model "value"}} />
+[7m   [0m [91m       ~~~~~~~~~~[0m
+
+
+[96mapp/components/f/mktg/promo-container.gts[0m:[93m116[0m:[93m17[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"img"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'img' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m116[0m                 <:img>
+[7m   [0m [91m                ~~~~~~[0m
+[7m117[0m                   <img
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m121[0m                   />
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~[0m
+[7m122[0m                 </:img>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/phone-field-test.gts[0m:[93m151[0m:[93m26[0m - [91merror[0m[90m TS2339: [0mProperty 'element' does not exist on type 'TestContext'.
+
+[7m151[0m     const element = this.element.querySelector('input') as HTMLInputElement;
+[7m   [0m [91m                         ~~~~~~~[0m
+
+[96mapp/templates/cards.hbs[0m:[93m137[0m:[93m11[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Button'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Button"' can't be used to index type 'Globals'.
+    Property 'Button' does not exist on type 'Globals'.
+
+[7m137[0m           <Button
+[7m   [0m [91m          ~~~~~~~[0m
+[7m138[0m             @text="Get Started"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m139[0m             class="bg-primary text-white w-100 mt-2"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m140[0m           />
+[7m   [0m [91m~~~~~~~~~~~~[0m
+
+[96mapp/components/f/mktg/promo-container.gts[0m:[93m123[0m:[93m17[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type '"description"' can't be used to index type 'Required<FlattenBlockParams<{} | {}>>'.
+  Property 'description' does not exist on type 'Required<FlattenBlockParams<{} | {}>>'.
+
+[7m123[0m                 <:description>
+[7m   [0m [91m                ~~~~~~~~~~~~~~[0m
+[7m124[0m                   <p>Here's why you should try this product and a description of
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m137[0m                   >Learn More</Button>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m138[0m                 </:description>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/index.gts[0m:[93m199[0m:[93m11[0m - [91merror[0m[90m TS2345: [0mArgument of type 'unknown' is not assignable to parameter of type 'Element'.
+
+[7m199[0m           <CodeBlock
+[7m   [0m [91m          ~~~~~~~~~~[0m
+[7m200[0m             class="border rounded p-3"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m202[0m             @code={{this.modelAsJson}}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m203[0m           />
+[7m   [0m [91m~~~~~~~~~~~~[0m
+
+[96mapp/components/f/form/index.gts[0m:[93m199[0m:[93m11[0m - [91merror[0m[90m TS2554: [0mExpected 0 arguments, but got 1.
+
+[7m199[0m           <CodeBlock
+[7m   [0m [91m          ~~~~~~~~~~[0m
+[7m200[0m             class="border rounded p-3"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m202[0m             @code={{this.modelAsJson}}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m203[0m           />
+[7m   [0m [91m~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/phone-field-test.gts[0m:[93m175[0m:[93m8[0m - [91merror[0m[90m TS2769: [0mThe given value does not appear to be usable as a component, modifier or helper.
+  No overload matches this call.
+    Overload 1 of 3, '(item: DirectInvokable): AnyFunction', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'DirectInvokable'.
+    Overload 2 of 3, '(item: (abstract new () => InvokableInstance) | null | undefined): (...args: any[]) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'abstract new () => InvokableInstance'.
+    Overload 3 of 3, '(item: ((...params: any) => any) | null | undefined): (...params: any) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type '(...params: any) => any'.
+
+[7m175[0m       <PhoneField @binding={{bind model "value"}} />
+[7m   [0m [91m       ~~~~~~~~~~[0m
+
+
+[96mtests/integration/components/form/phone-field-test.gts[0m:[93m177[0m:[93m26[0m - [91merror[0m[90m TS2339: [0mProperty 'element' does not exist on type 'TestContext'.
+
+[7m177[0m     const element = this.element.querySelector('input') as HTMLInputElement;
+[7m   [0m [91m                         ~~~~~~~[0m
+
+[96mapp/templates/promo.hbs[0m:[93m150[0m:[93m9[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Button'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Button"' can't be used to index type 'Globals'.
+    Property 'Button' does not exist on type 'Globals'.
+
+[7m150[0m         <Button type="button" class="mt-2 btn btn-primary">Learn More</Button>
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/index-test.gts[0m:[93m200[0m:[93m10[0m - [91merror[0m[90m TS2339: [0mProperty 'actionHandler' does not exist on type 'TestContext'.
+
+[7m200[0m     this.actionHandler = () => {
+[7m   [0m [91m         ~~~~~~~~~~~~~[0m
+
+[96mapp/templates/marketing.hbs[0m:[93m202[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::ServicePricing'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::ServicePricing"' can't be used to index type 'Globals'.
+    Property 'Mktg::ServicePricing' does not exist on type 'Globals'.
+
+[7m202[0m     <Mktg::ServicePricing
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~[0m
+[7m203[0m       @label="Fiber"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m211[0m       <Addon @label="Smart Gig" @price="$15/mo" />
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m212[0m     </Mktg::ServicePricing>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/marketing.hbs[0m:[93m213[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::ServicePricing'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::ServicePricing"' can't be used to index type 'Globals'.
+    Property 'Mktg::ServicePricing' does not exist on type 'Globals'.
+
+[7m213[0m     <Mktg::ServicePricing
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~[0m
+[7m214[0m       @label="TV"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m225[0m       <Addon @label="Spanish Channels" @price="$4.99/mo" />
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m226[0m     </Mktg::ServicePricing>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mtests/integration/components/form/phone-field-test.gts[0m:[93m199[0m:[93m8[0m - [91merror[0m[90m TS2769: [0mThe given value does not appear to be usable as a component, modifier or helper.
+  No overload matches this call.
+    Overload 1 of 3, '(item: DirectInvokable): AnyFunction', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'DirectInvokable'.
+    Overload 2 of 3, '(item: (abstract new () => InvokableInstance) | null | undefined): (...args: any[]) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type 'abstract new () => InvokableInstance'.
+    Overload 3 of 3, '(item: ((...params: any) => any) | null | undefined): (...params: any) => any', gave the following error.
+      Argument of type 'typeof PhoneField' is not assignable to parameter of type '(...params: any) => any'.
+
+[7m199[0m       <PhoneField @binding={{bind model "value"}} />
+[7m   [0m [91m       ~~~~~~~~~~[0m
+
+
+[96mtests/integration/components/form/phone-field-test.gts[0m:[93m201[0m:[93m26[0m - [91merror[0m[90m TS2339: [0mProperty 'element' does not exist on type 'TestContext'.
+
+[7m201[0m     const element = this.element.querySelector('input') as HTMLInputElement;
+[7m   [0m [91m                         ~~~~~~~[0m
+
+[96mapp/templates/marketing.hbs[0m:[93m227[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::ServicePricing'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::ServicePricing"' can't be used to index type 'Globals'.
+    Property 'Mktg::ServicePricing' does not exist on type 'Globals'.
+
+[7m227[0m     <Mktg::ServicePricing
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~[0m
+[7m228[0m       @label="Phone"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m232[0m       @active={{true}}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m233[0m     />
+[7m   [0m [91m~~~~~~[0m
+
+[96mapp/templates/marketing.hbs[0m:[93m234[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::ServicePricing'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::ServicePricing"' can't be used to index type 'Globals'.
+    Property 'Mktg::ServicePricing' does not exist on type 'Globals'.
+
+[7m234[0m     <Mktg::ServicePricing
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~[0m
+[7m235[0m       @label="Fiber"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m240[0m       @active={{true}}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m241[0m     />
+[7m   [0m [91m~~~~~~[0m
+
+[96mapp/templates/marketing.hbs[0m:[93m242[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::ServicePricing'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::ServicePricing"' can't be used to index type 'Globals'.
+    Property 'Mktg::ServicePricing' does not exist on type 'Globals'.
+
+[7m242[0m     <Mktg::ServicePricing
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~[0m
+[7m243[0m       @label="TV"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m247[0m       @active={{false}}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m248[0m     />
+[7m   [0m [91m~~~~~~[0m
+
+[96mapp/templates/marketing.hbs[0m:[93m249[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::ServicePricing'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::ServicePricing"' can't be used to index type 'Globals'.
+    Property 'Mktg::ServicePricing' does not exist on type 'Globals'.
+
+[7m249[0m     <Mktg::ServicePricing
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~[0m
+[7m250[0m       @label="Phone"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m254[0m       @active={{false}}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m255[0m     />
+[7m   [0m [91m~~~~~~[0m
+
+[96mapp/templates/marketing.hbs[0m:[93m259[0m:[93m1[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Mktg::Footer'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Mktg::Footer"' can't be used to index type 'Globals'.
+    Property 'Mktg::Footer' does not exist on type 'Globals'.
+
+[7m259[0m <Mktg::Footer @hasDivider={{true}}>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m260[0m   <:nav>
+[7m   [0m [91m~~~~~~~~[0m
+[7m...[0m 
+[7m291[0m   </:legal>
+[7m   [0m [91m~~~~~~~~~~~[0m
+[7m292[0m </Mktg::Footer>
+[7m   [0m [91m~~~~~~~~~~~~~~~[0m
+
+[96mapp/templates/marketing.hbs[0m:[93m261[0m:[93m5[0m - [91merror[0m[90m TS7053: [0mUnknown name 'Button'. If this isn't a typo, you may be missing a registry entry for this value; see the Template Registry page in the Glint documentation for more details.
+  Element implicitly has an 'any' type because expression of type '"Button"' can't be used to index type 'Globals'.
+    Property 'Button' does not exist on type 'Globals'.
+
+[7m261[0m     <Button class="ms-2 rounded-pill btn-light">Get Started</Button>
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+/git/nrg-ui/apps/ember-test-app:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  ember-test-app@0.0.0 lint:types: `glint`
+Exit status 1
