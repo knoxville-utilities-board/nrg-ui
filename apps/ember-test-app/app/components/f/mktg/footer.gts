@@ -1,17 +1,30 @@
+import { fn } from '@ember/helper';
+import { action } from '@ember/object';
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import Button from '@nrg-ui/ember/components/button';
 import Footer from '@nrg-ui/ember/components/mktg/footer';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
-// eslint-disable-next-line ember/no-empty-glimmer-component-classes
 export default class extends Component {
+  @tracked
+  class = 'bg-primary';
+
+  @tracked
+  hasDivider = false;
+
+  @action
+  update(key: string, value: unknown) {
+    this[key] = value;
+  }
+
   <template>
     <FreestyleSection @name="Footer" as |Section|>
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
-            <Footer class={{this.class}}>
+            <Footer class={{this.class}} @hasDivider={{this.hasDivider}}>
               <:nav>
                 <Button class="ms-2 rounded-pill btn-light">Nav 1</Button>
                 <a
@@ -61,6 +74,37 @@ export default class extends Component {
               </:legal>
             </Footer>
           </:example>
+          <:api as |Args|>
+            <Args.String
+              @description="The class to apply to the footer. Note that this is not an argument but rather a class applied directly to the footer"
+              @name="class"
+              @value={{this.class}}
+              @onInput={{fn this.update "class"}}
+            />
+            <Args.Bool
+              @description="When true, the footer will render a divider between the top and bottom sections. Note that the default value is false"
+              @name="divider"
+              value={{this.hasDivider}}
+              @onInput={{fn this.update "hasDivider"}}
+              @defaultValue={{false}}
+            />
+            <Args.Yield
+              @description="Named yield block that renders navigational content in the top left of the footer"
+              @name="nav"
+            />
+            <Args.Yield
+              @description="Named yield block that renders social media links in the top right of the footer"
+              @name="social-media"
+            />
+            <Args.Yield
+              @description="Named yield block that renders brand content in the bottom left of the footer"
+              @name="brand"
+            />
+            <Args.Yield
+              @description="Named yield block that renders legal content in the bottom right of the footer"
+              @name="legal"
+            />
+          </:api>
         </FreestyleUsage>
       </Section.subsection>
     </FreestyleSection>
