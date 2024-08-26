@@ -52,7 +52,7 @@ export default class extends Component {
           </:example>
           <:api as |Args|>
             <Args.String
-              @description="The class to apply to the service pricing component. Note that this is not an argument but rather a class applied directly to the section header."
+              @description="The class to apply to the service pricing component. Note that this is not an argument but rather a class applied directly to the service pricing component."
               @name="class"
               @value={{this.class}}
               @onInput={{fn this.update "class"}}
