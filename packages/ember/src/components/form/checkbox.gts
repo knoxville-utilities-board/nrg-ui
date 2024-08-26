@@ -57,7 +57,7 @@ export default class FormCheckbox extends BoundValue<
   }
 
   get id() {
-    return this.args.id || this.internalId;
+    return this.args.id ?? this.internalId;
   }
 
   @action
