@@ -94,13 +94,20 @@ jobs:
         run: node .github/release-commit-message.js >> "$GITHUB_OUTPUT"
         id: commit-message
 
+      - name: Generate Access Token
+        uses: tibdex/github-app-token@v2
+        id: generate-token
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - uses: peter-evans/create-pull-request@v6
         with:
           commit-message: ${{ steps.commit-message.outputs.COMMIT_MESSAGE }}
           labels: 'internal'
           branch: release-preview
           title: ${{ steps.commit-message.outputs.COMMIT_MESSAGE }}
-          token: ${{ secrets.RELEASE_PLAN_GH_TOKEN }}
+          token: ${{ steps.generate-token.outputs.token }}
           body: |
             Merging this PR will create a GitHub release and publish the package(s) to npm.
 
