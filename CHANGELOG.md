@@ -1,5 +1,22 @@
 # Changelog
 
+## Release (2024-08-26)
+
+@nrg-ui/ember 0.2.0 (minor)
+
+#### :rocket: Enhancement
+* `ember-test-app`, `@nrg-ui/ember`
+  * [#100](https://github.com/knoxville-utilities-board/nrg-ui/pull/100) feat: Implement checkbox component ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/ember`
+  * [#98](https://github.com/knoxville-utilities-board/nrg-ui/pull/98) feat(blueprint): Install CSS library when addon is installed ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `ember-test-app`
+  * [#108](https://github.com/knoxville-utilities-board/nrg-ui/pull/108) chore: Move form component routes under "Components" ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-08-23)
 
 @nrg-ui/css 0.1.0 (minor)
