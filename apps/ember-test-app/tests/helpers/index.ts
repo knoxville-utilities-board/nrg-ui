@@ -1,3 +1,4 @@
+import { setupIntl } from 'ember-intl/test-support';
 import {
   setupApplicationTest as upstreamSetupApplicationTest,
   setupRenderingTest as upstreamSetupRenderingTest,
@@ -30,6 +31,7 @@ function setupApplicationTest(hooks: NestedHooks, options?: SetupTestOptions) {
 
 function setupRenderingTest(hooks: NestedHooks, options?: SetupTestOptions) {
   upstreamSetupRenderingTest(hooks, options);
+  setupIntl(hooks, 'en-us');
 
   // Additional setup for rendering tests can be done here.
 }

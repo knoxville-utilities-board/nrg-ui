@@ -2,8 +2,9 @@ import { fillIn, render, settled, click } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import PhoneField from '@nrg-ui/ember/components/form/phone-field';
 import bind from '@nrg-ui/ember/helpers/bind';
-import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
+
+import { setupRenderingTest } from '../../../helpers';
 
 class Model {
   @tracked

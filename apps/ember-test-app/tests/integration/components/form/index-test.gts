@@ -6,8 +6,9 @@ import Form from '@nrg-ui/ember/components/form';
 import bind from '@nrg-ui/ember/helpers/bind';
 import { validator } from '@nrg-ui/ember/validation';
 import { setupIntl } from 'ember-intl/test-support';
-import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
+
+import { setupRenderingTest } from '../../../helpers';
 
 class Model {
   @tracked

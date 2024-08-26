@@ -1,7 +1,8 @@
 import { render } from '@ember/test-helpers';
 import CardContainer from '@nrg-ui/ember/components/mktg/card-container';
-import { setupRenderingTest } from 'ember-qunit';
 import { assert, module, test } from 'qunit';
+
+import { setupRenderingTest } from '../../../helpers';
 
 module('Integration | Component | mktg/card-container', function (hooks) {
   setupRenderingTest(hooks);

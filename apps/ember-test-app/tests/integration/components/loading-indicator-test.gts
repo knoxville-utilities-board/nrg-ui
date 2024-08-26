@@ -1,7 +1,8 @@
 import { render } from '@ember/test-helpers';
 import LoadingIndicator from '@nrg-ui/ember/components/loading-indicator';
-import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
+
+import { setupRenderingTest } from '../../helpers';
 
 module('Integration | Component | loading-indicator', function (hooks) {
   setupRenderingTest(hooks);

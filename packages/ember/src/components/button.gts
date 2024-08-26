@@ -1,6 +1,7 @@
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
+import { t } from 'ember-intl';
 import { and, not, or } from 'ember-truth-helpers';
 
 import type { ButtonGroupType } from './button-group';
@@ -78,7 +79,7 @@ export default class ButtonComponent extends Component<ButtonSignature> {
           aria-hidden="true"
         ></span>
         <span class="visually-hidden" role="status">
-          Loading...
+          {{t "nrg.base.loading"}}
         </span>
       {{else}}
         {{#if (and this.hasIcon (not this.alignIconRight))}}

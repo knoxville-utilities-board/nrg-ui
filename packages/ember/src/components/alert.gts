@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { cssTransition } from 'ember-css-transitions';
+import { t } from 'ember-intl';
 
 import type { Icon } from '../';
 
@@ -88,7 +89,7 @@ export default class AlertComponent extends Component<AlertSignature> {
           <button
             type="button"
             class="btn-close"
-            aria-label="Close"
+            aria-label={{t "nrg.base.close"}}
             {{on "click" this.onDismiss}}
           ></button>
         {{/if}}

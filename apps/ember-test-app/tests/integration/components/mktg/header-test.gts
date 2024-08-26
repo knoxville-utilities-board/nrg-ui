@@ -1,8 +1,9 @@
 import { render } from '@ember/test-helpers';
 import Button from '@nrg-ui/ember/components/button';
 import Header from '@nrg-ui/ember/components/mktg/header';
-import { setupRenderingTest } from 'ember-qunit';
 import { assert, module, test } from 'qunit';
+
+import { setupRenderingTest } from '../../../helpers';
 
 module('Integration | Component | mktg/header', function (hooks) {
   setupRenderingTest(hooks);

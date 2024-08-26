@@ -1,7 +1,8 @@
 import { click, findAll, render, type TestContext } from '@ember/test-helpers';
 import Button from '@nrg-ui/ember/components/button';
-import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
+
+import { setupRenderingTest } from '../../helpers';
 
 interface Context extends TestContext {
   clickHandler: (evt: MouseEvent) => void;
@@ -101,7 +102,7 @@ module('Integration | Component | button', function (hooks) {
 
     assert
       .dom(ariaLabel)
-      .containsText('Loading...')
+      .containsText('Loading')
       .hasAttribute('role')
       .hasClass('visually-hidden');
 
