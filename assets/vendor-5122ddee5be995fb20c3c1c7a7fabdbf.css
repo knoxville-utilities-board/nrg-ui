@@ -21470,4 +21470,8 @@ select.form-select.is-warning:focus:not([disabled]),
   color: var(--bs-form-warning-color);
 }
 
+.form-check-label {
+  user-select: none;
+}
+
 /*# sourceMappingURL=main.css.map */
