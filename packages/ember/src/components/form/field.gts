@@ -213,6 +213,11 @@ export default class Field extends Component<FieldSignature> {
           <span class="text-danger">*</span>
         {{/if}}
       </label>
+    {{else}}
+      <div
+        class="d-none invisible"
+        {{onUpdate this.setupValidator @required}}
+      />
     {{/if}}
     {{yield
       (hash
@@ -224,6 +229,7 @@ export default class Field extends Component<FieldSignature> {
           initBinding=this.initBinding
           isInvalid=this.hasError
           isWarning=this.hasWarning
+          required=@required
         )
         Phone=(component
           PhoneField

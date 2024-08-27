@@ -13,6 +13,7 @@ export interface CheckboxSignature {
     isInvalid?: boolean;
     isWarning?: boolean;
     label?: string;
+    required?: boolean;
     type?: 'checkbox' | 'switch';
   };
   Blocks: {
@@ -82,6 +83,9 @@ export default class FormCheckbox extends BoundValue<
       />
       <label class="form-check-label" for={{this.id}}>
         {{@label}}
+        {{#if @required}}
+          <span class="text-danger">*</span>
+        {{/if}}
       </label>
     </div>
   </template>
