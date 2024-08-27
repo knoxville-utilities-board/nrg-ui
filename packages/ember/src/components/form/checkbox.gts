@@ -24,6 +24,8 @@ export default class FormCheckbox extends BoundValue<
   CheckboxSignature,
   boolean
 > {
+  internalId = crypto.randomUUID();
+
   get classList() {
     const classes = ['form-check-input'];
 
@@ -54,6 +56,10 @@ export default class FormCheckbox extends BoundValue<
     return this.args.type === 'switch';
   }
 
+  get id() {
+    return this.args.id ?? this.internalId;
+  }
+
   @action
   change(evt: Event) {
     const target = evt.target as HTMLInputElement;
@@ -67,14 +73,14 @@ export default class FormCheckbox extends BoundValue<
         checked={{this.value}}
         class={{this.classList}}
         disabled={{@disabled}}
-        id={{@id}}
+        id={{this.id}}
         role={{if this.isSwitch "switch" "checkbox"}}
         type="checkbox"
         value={{this.value}}
         {{on "change" this.change}}
         ...attributes
       />
-      <label class="form-check-label" for={{@id}}>
+      <label class="form-check-label" for={{this.id}}>
         {{@label}}
       </label>
     </div>
