@@ -68,6 +68,9 @@ class Model {
   @tracked
   radio = '';
 
+  @tracked
+  checkbox;
+
   toJSON() {
     const obj = {};
 
@@ -175,6 +178,17 @@ export default class extends Component {
             as |Field|
           >
             <Field.Phone @binding={{bind this.model "phone"}} />
+          </Form.Field>
+        </div>
+        <div class="mb-3">
+          <Form.Field @required={{this.required}} as |Field|>
+            <Field.Checkbox @binding={{bind this.model "checkbox"}}>
+              I agree to the
+              <a
+                class="link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
+                href="#"
+              >Privacy Policy</a>.
+            </Field.Checkbox>
           </Form.Field>
         </div>
         <Form.SubmitButton class="btn-primary mt-3" />

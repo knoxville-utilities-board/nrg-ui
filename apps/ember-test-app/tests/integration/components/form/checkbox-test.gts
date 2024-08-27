@@ -45,6 +45,33 @@ module('Integration | Component | form/checkbox', function (hooks) {
     assert.dom('.form-check > input').hasValue('true').isChecked();
   });
 
+  test('it renders (block)', async function (assert) {
+    const model = new Model();
+    await render(<template>
+      <Checkbox @binding={{bind model "value"}} @id="my-id">
+        <span>This is a checkbox</span>
+      </Checkbox>
+    </template>);
+
+    assert
+      .dom('.form-check > input')
+      .hasAttribute('role', 'checkbox')
+      .hasAttribute('type', 'checkbox')
+      .hasClass('form-check-input')
+      .hasValue('false')
+      .isNotChecked();
+
+    const labelId = this.element.querySelector('.form-check > input').id;
+
+    assert.dom('.form-check > label').hasAttribute('for', labelId);
+    assert.dom('.form-check > label > span').hasText('This is a checkbox');
+
+    model.value = true;
+    await settled();
+
+    assert.dom('.form-check > input').hasValue('true').isChecked();
+  });
+
   test('it renders (switch)', async function (assert) {
     const model = new Model();
     await render(<template>

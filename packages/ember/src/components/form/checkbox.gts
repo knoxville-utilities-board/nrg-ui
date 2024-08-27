@@ -82,7 +82,11 @@ export default class FormCheckbox extends BoundValue<
         ...attributes
       />
       <label class="form-check-label" for={{this.id}}>
-        {{@label}}
+        {{#if (has-block)}}
+          {{yield}}
+        {{else}}
+          {{@label}}
+        {{/if}}
         {{#if @required}}
           <span class="text-danger">*</span>
         {{/if}}
