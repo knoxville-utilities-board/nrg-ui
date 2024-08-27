@@ -5,6 +5,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { runTask } from 'ember-lifeline';
 
+import CheckboxGroup from './checkbox-group.gts';
 import Checkbox from './checkbox.gts';
 import PhoneField from './phone-field.gts';
 import RadioGroup from './radio-group.gts';
@@ -14,6 +15,7 @@ import TextField from './text-field.gts';
 import onUpdate from '../../modifiers/on-update.ts';
 import { PresenceValidator } from '../../validation/index.ts';
 
+import type { CheckboxGroupSignature } from './checkbox-group.gts';
 import type { CheckboxSignature } from './checkbox.gts';
 import type { FormType } from './index.gts';
 import type { RadioGroupFieldSignature } from './radio-group.gts';
@@ -47,6 +49,7 @@ export interface FieldSignature {
     default: [
       {
         Checkbox: ComponentLike<CheckboxSignature>;
+        CheckboxGroup: ComponentLike<CheckboxGroupSignature>;
         Phone: ComponentLike<TextFieldSignature>;
         RadioGroup: ComponentLike<RadioGroupFieldSignature>;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -98,7 +101,7 @@ export default class Field extends Component<FieldSignature> {
   requiredId?: string;
 
   @tracked
-  binding!: Binding;
+  binding!: Binding<object>;
 
   get isValid() {
     const { form } = this.args;
@@ -157,7 +160,7 @@ export default class Field extends Component<FieldSignature> {
   }
 
   @action
-  initBinding(binding: Binding) {
+  initBinding(binding: Binding<object>) {
     this.binding = binding;
 
     const { form } = this.args;
@@ -181,9 +184,15 @@ export default class Field extends Component<FieldSignature> {
         return;
       }
 
+      let key;
+
+      if (binding.model instanceof CheckboxGroup) {
+        key = 'nrg.validation.presence.listBlank';
+      }
+
       const presenceValidator = new PresenceValidator(
         binding,
-        { presence: true },
+        { presence: true, key },
         binding.model,
       );
       this.requiredId = form.registerValidator(
@@ -230,6 +239,15 @@ export default class Field extends Component<FieldSignature> {
           isInvalid=this.hasError
           isWarning=this.hasWarning
           required=@required
+        )
+        CheckboxGroup=(component
+          CheckboxGroup
+          describedBy=this.describedBy
+          disabled=@disabled
+          id=this.fieldId
+          onInitBinding=this.initBinding
+          isInvalid=this.hasError
+          isWarning=this.hasWarning
         )
         Phone=(component
           PhoneField

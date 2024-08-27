@@ -1,7 +1,11 @@
+import { registerDestructor } from '@ember/destroyable';
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 
 import BoundValue from './bound-value.ts';
+
+import type { BoundValueSignature } from './bound-value';
+import type { Optional } from '../../';
 
 export interface CheckboxSignature {
   Element: HTMLInputElement;
@@ -16,17 +20,30 @@ export interface CheckboxSignature {
     required?: boolean;
     reverse?: boolean;
     type?: 'checkbox' | 'switch';
+
+    onDestroy?: (checkbox: Checkbox) => void;
+    onInit?: (checkbox: Checkbox) => void;
   };
   Blocks: {
     default: [];
   };
 }
 
-export default class FormCheckbox extends BoundValue<
-  CheckboxSignature,
-  boolean
-> {
+export default class Checkbox extends BoundValue<CheckboxSignature, boolean> {
   internalId = crypto.randomUUID();
+
+  constructor(
+    owner: unknown,
+    args: BoundValueSignature<CheckboxSignature, Optional<boolean>>['Args'],
+  ) {
+    super(owner, args);
+
+    args.onInit?.(this);
+
+    registerDestructor(this, () => {
+      args.onDestroy?.(this);
+    });
+  }
 
   get classList() {
     const classes = ['form-check-input'];

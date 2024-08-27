@@ -49,7 +49,8 @@
       },
       "presence": {
         "blank": "This field cannot be blank",
-        "notBlank": "This field must be blank"
+        "notBlank": "This field must be blank",
+        "listBlank": "At least one option must be selected"
       },
       "range": {
         "greaterThan": "This field must be greater than {min, number}",
