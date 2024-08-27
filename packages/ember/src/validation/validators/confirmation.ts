@@ -18,6 +18,10 @@ export type ConfirmationOptions = {
    */
   label?: string;
   /**
+   * If `true`, the value must not match the value of the property specified by `on`.
+   */
+  inverse?: boolean;
+  /**
    * The property name to compare the value against.
    */
   on: string;
@@ -52,16 +56,26 @@ export default class ConfirmationValidator<
     options: ConfirmationOptions,
     context: Context,
   ): ValidateFnResponse {
-    const { label, on } = options;
+    const { label, inverse, on } = options;
 
     const expectedValue = (context as Record<string, TranslatableOption>)[on];
 
-    if (isEqual(value, expectedValue)) {
+    const matches = isEqual(value, expectedValue);
+    let key = 'nrg.validation.confirmation.invalid';
+
+    if (!inverse && matches) {
       return true;
     }
 
+    if (inverse) {
+      key = 'nrg.validation.confirmation.match';
+      if (!matches) {
+        return true;
+      }
+    }
+
     return {
-      key: 'nrg.validation.confirmation.invalid',
+      key,
       value,
       expectedValue,
       label: label ?? on,
