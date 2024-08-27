@@ -14,6 +14,7 @@ export interface CheckboxSignature {
     isWarning?: boolean;
     label?: string;
     required?: boolean;
+    reverse?: boolean;
     type?: 'checkbox' | 'switch';
   };
   Blocks: {
@@ -48,6 +49,10 @@ export default class FormCheckbox extends BoundValue<
 
     if (this.args.inline) {
       classList.push('form-check-inline');
+    }
+
+    if (this.args.reverse) {
+      classList.push('form-check-reverse');
     }
 
     return classList.join(' ');

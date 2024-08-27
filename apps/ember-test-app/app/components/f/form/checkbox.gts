@@ -36,6 +36,9 @@ export default class extends Component {
   label = 'Checkbox label';
 
   @tracked
+  reverse = false;
+
+  @tracked
   type = 'checkbox';
 
   @action
@@ -54,6 +57,7 @@ export default class extends Component {
               @disabled={{this.disabled}}
               @inline={{this.inline}}
               @label={{this.label}}
+              @reverse={{this.reverse}}
               @type={{this.type}}
               @onChange={{fn log "The value changed to"}}
             />
@@ -91,6 +95,13 @@ export default class extends Component {
               @description="The label to display next to the checkbox"
               @value={{this.label}}
               @onInput={{fn this.update "label"}}
+            />
+            <Args.Bool
+              @name="reverse"
+              @defaultValue={{false}}
+              @description="When true, the input will be displayed on the reverse side of the container"
+              @value={{this.reverse}}
+              @onInput={{fn this.update "reverse"}}
             />
             <Args.String
               @defaultValue="checkbox"
