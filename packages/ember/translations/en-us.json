@@ -18,6 +18,13 @@
       "custom": {
         "invalid": "This field is invalid"
       },
+      "email": {
+        "domain": {
+          "invalid": "This email must not be from one of the following domains: {domains}",
+          "valid": "This email must be from one of the following domains: {domains}"
+        },
+        "invalid": "This field must be a valid email address"
+      },
       "exclusion": {
         "in": "This field is not a valid value. Value cannot be: {in}"
       },
