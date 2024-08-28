@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { runTask } from 'ember-lifeline';
 
-import TextField from './text-field.gts';
+import InputField from './-private/input-field.ts';
 import onInsert from '../../modifiers/did-insert.ts';
 import phoneFormats from '../../utils/phone-formats.ts';
 
@@ -11,7 +11,7 @@ function isSpecialCharacter(char: string) {
   return /\D/.test(char);
 }
 
-export default class PhoneField extends TextField {
+export default class PhoneField extends InputField {
   @tracked
   inputElement!: HTMLInputElement;
 
