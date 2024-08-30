@@ -57,11 +57,10 @@ module('Unit | Validator | base', function (hooks) {
     assert.throws(() => {
       // @ts-expect-error TS disallows instantiating an abstract class
       const validator = new BaseValidator(this.binding, {}, this.model);
-      const result = validator.result;
 
       assert.notOk(
         true,
-        'Expected an error, but got a result instead: ' + result,
+        'Expected an error, but got a result instead: ' + validator.result,
       );
     }, new Error('Assertion Failed: BaseValidator requires the `validate` function to be implemented by subclasses'));
   });
@@ -72,11 +71,10 @@ module('Unit | Validator | base', function (hooks) {
     assert.throws(() => {
       // @ts-expect-error Testing that the `binding` option is required
       const validator = new DummyValidator(null, {}, this.model);
-      const result = validator.result;
 
       assert.notOk(
         true,
-        'Expected an error, but got a result instead: ' + result,
+        'Expected an error, but got a result instead: ' + validator.result,
       );
     }, new Error('Assertion Failed: You must provide a binding argument to DummyValidator'));
   });
@@ -87,20 +85,18 @@ module('Unit | Validator | base', function (hooks) {
     assert.throws(() => {
       setOwner(this.model, undefined as unknown as Owner);
       const validator = new DummyValidator(this.binding, {}, this.model);
-      const result = validator.result;
 
       assert.notOk(
         true,
-        'Expected an error, but got a result instead: ' + result,
+        'Expected an error, but got a result instead: ' + validator.result,
       );
     }, new Error('Assertion Failed: The `context` or `model` must be have an owner. Usually this means the `context` or `model` is an EmberObject or GlimmerComponent, but this can be manually set up with `setOwner`'));
 
     try {
       setOwner(this.model, this.owner);
       const validator = new DummyValidator(this.binding, {}, this.model);
-      const result = validator.result;
 
-      assert.true(result.isValid);
+      assert.true(validator.result.isValid);
     } catch (e) {
       assert.notOk(true, 'Expected no error, but got an error instead: ' + e);
     }
@@ -110,9 +106,8 @@ module('Unit | Validator | base', function (hooks) {
       setOwner(context, this.owner);
       setOwner(this.model, null as unknown as Owner);
       const validator = new DummyValidator(this.binding, {}, context);
-      const result = validator.result;
 
-      assert.true(result.isValid);
+      assert.true(validator.result.isValid);
     } catch (e) {
       assert.notOk(true, 'Expected no error, but got an error instead: ' + e);
     }
@@ -127,9 +122,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    let result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     validator = new DummyValidator(
       this.binding,
@@ -139,9 +132,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    result = validator.result;
-
-    assert.isInvalid(result);
+    assert.isInvalid(validator.result);
 
     validator = new DummyValidator(
       this.binding,
@@ -152,9 +143,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    result = validator.result;
-
-    assert.isWarning(result);
+    assert.isWarning(validator.result);
   });
 
   test('response can be a string', function (this: TestContext, assert) {
@@ -167,9 +156,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    const result = validator.result;
-
-    assert.isInvalid(result, errorMessage);
+    assert.isInvalid(validator.result, errorMessage);
   });
 
   test('response can include a message', function (this: TestContext, assert) {
@@ -183,9 +170,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    let result = validator.result;
-
-    assert.isInvalid(result, errorMessage);
+    assert.isInvalid(validator.result, errorMessage);
 
     validator = new DummyValidator(
       this.binding,
@@ -197,9 +182,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    result = validator.result;
-
-    assert.isWarning(result, errorMessage);
+    assert.isWarning(validator.result, errorMessage);
   });
 
   test('message from options supersedes response message', function (this: TestContext, assert) {
@@ -215,9 +198,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This is the options message');
+    assert.isInvalid(validator.result, 'This is the options message');
 
     validator = new DummyValidator(
       this.binding,
@@ -232,9 +213,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    result = validator.result;
-
-    assert.isWarning(result, 'This is the options message');
+    assert.isWarning(validator.result, 'This is the options message');
   });
 
   test('response can include a key', function (this: TestContext, assert) {
@@ -247,9 +226,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'Hello, world!');
+    assert.isInvalid(validator.result, 'Hello, world!');
 
     validator = new DummyValidator(
       this.binding,
@@ -261,9 +238,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    result = validator.result;
-
-    assert.isWarning(result, 'Hello, world!');
+    assert.isWarning(validator.result, 'Hello, world!');
   });
 
   test('key from options supersedes response key', async function (this: TestContext, assert) {
@@ -283,9 +258,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This is the correct message');
+    assert.isInvalid(validator.result, 'This is the correct message');
 
     validator = new DummyValidator(
       this.binding,
@@ -300,9 +273,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    result = validator.result;
-
-    assert.isWarning(result, 'This is the correct message');
+    assert.isWarning(validator.result, 'This is the correct message');
   });
 
   test('key from options supersedes response message', async function (this: TestContext, assert) {
@@ -322,9 +293,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This is the correct message');
+    assert.isInvalid(validator.result, 'This is the correct message');
 
     validator = new DummyValidator(
       this.binding,
@@ -339,9 +308,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    result = validator.result;
-
-    assert.isWarning(result, 'This is the correct message');
+    assert.isWarning(validator.result, 'This is the correct message');
   });
 
   test('message from options supersedes response key', async function (this: TestContext, assert) {
@@ -357,9 +324,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This is the correct message');
+    assert.isInvalid(validator.result, 'This is the correct message');
 
     validator = new DummyValidator(
       this.binding,
@@ -374,9 +339,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    result = validator.result;
-
-    assert.isWarning(result, 'This is the correct message');
+    assert.isWarning(validator.result, 'This is the correct message');
   });
 
   test('key from options supersedes options message', async function (this: TestContext, assert) {
@@ -396,9 +359,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This is the correct message');
+    assert.isInvalid(validator.result, 'This is the correct message');
 
     validator = new DummyValidator(
       this.binding,
@@ -413,9 +374,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    result = validator.result;
-
-    assert.isWarning(result, 'This is the correct message');
+    assert.isWarning(validator.result, 'This is the correct message');
   });
 
   test('key from response supersedes response message', async function (this: TestContext, assert) {
@@ -435,9 +394,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This is the correct message');
+    assert.isInvalid(validator.result, 'This is the correct message');
 
     validator = new DummyValidator(
       this.binding,
@@ -452,9 +409,7 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    result = validator.result;
-
-    assert.isWarning(result, 'This is the correct message');
+    assert.isWarning(validator.result, 'This is the correct message');
   });
 
   test('disabled option works', async function (this: TestContext, assert) {
@@ -470,14 +425,10 @@ module('Unit | Validator | base', function (hooks) {
       this.model,
     );
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This field is bad');
+    assert.isInvalid(validator.result, 'This field is bad');
 
     this.model.disabled = true;
 
-    result = validator.result;
-
-    assert.isDisabled(result);
+    assert.isDisabled(validator.result);
   });
 });

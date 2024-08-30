@@ -39,11 +39,10 @@ module('Unit | Validator | inclusion', function (hooks) {
     assert.throws(() => {
       // @ts-expect-error Testing that the `in` option is required
       const validator = new PresenceValidator(this.binding, {}, this);
-      const result = validator.result;
 
       assert.notOk(
         true,
-        'Expected an error, but got a result instead: ' + result,
+        'Expected an error, but got a result instead: ' + validator.result,
       );
     }, new Error('Assertion Failed: PresenceValidator requires `presence` to be provided'));
   });
@@ -54,36 +53,30 @@ module('Unit | Validator | inclusion', function (hooks) {
       { presence: true },
       this,
     );
-    let result = validator.result;
 
-    assert.isInvalid(result, 'This field cannot be blank');
+    assert.isInvalid(validator.result, 'This field cannot be blank');
 
     this.model.field = 'test';
-    result = validator.result;
 
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     this.model.field = ' ';
-    result = validator.result;
 
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     validator = new PresenceValidator(this.binding, { presence: false }, this);
 
     this.model.field = 'test';
-    result = validator.result;
 
-    assert.isInvalid(result, 'This field must be blank');
+    assert.isInvalid(validator.result, 'This field must be blank');
 
     this.model.field = ' ';
-    result = validator.result;
 
-    assert.isInvalid(result, 'This field must be blank');
+    assert.isInvalid(validator.result, 'This field must be blank');
 
     this.model.field = '';
-    result = validator.result;
 
-    assert.isValid(result);
+    assert.isValid(validator.result);
   });
 
   test('`ignoreBlank` option works', function (this: TestContext, assert) {
@@ -92,19 +85,16 @@ module('Unit | Validator | inclusion', function (hooks) {
       { ignoreBlank: true, presence: true },
       this,
     );
-    let result = validator.result;
 
-    assert.isInvalid(result, 'This field cannot be blank');
+    assert.isInvalid(validator.result, 'This field cannot be blank');
 
     this.model.field = ' ';
-    result = validator.result;
 
-    assert.isInvalid(result, 'This field cannot be blank');
+    assert.isInvalid(validator.result, 'This field cannot be blank');
 
     this.model.field = 'test';
-    result = validator.result;
 
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     validator = new PresenceValidator(
       this.binding,
@@ -112,19 +102,15 @@ module('Unit | Validator | inclusion', function (hooks) {
       this,
     );
 
-    result = validator.result;
-
-    assert.isInvalid(result, 'This field must be blank');
+    assert.isInvalid(validator.result, 'This field must be blank');
 
     this.model.field = ' ';
-    result = validator.result;
 
-    assert.isInvalid(result, 'This field must be blank');
+    assert.isInvalid(validator.result, 'This field must be blank');
 
     this.model.field = 'test';
-    result = validator.result;
 
-    assert.isInvalid(result, 'This field must be blank');
+    assert.isInvalid(validator.result, 'This field must be blank');
   });
 
   test('works with `validator` function', function (this: TestContext, assert) {
@@ -133,19 +119,16 @@ module('Unit | Validator | inclusion', function (hooks) {
       presence: true,
     });
     let validator = builder(this.binding, this.model);
-    let result = validator.result;
 
-    assert.isInvalid(result, 'This field cannot be blank');
+    assert.isInvalid(validator.result, 'This field cannot be blank');
 
     this.model.field = ' ';
-    result = validator.result;
 
-    assert.isInvalid(result, 'This field cannot be blank');
+    assert.isInvalid(validator.result, 'This field cannot be blank');
 
     this.model.field = 'test';
-    result = validator.result;
 
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     builder = buildValidator('presence', {
       ignoreBlank: false,
@@ -153,18 +136,14 @@ module('Unit | Validator | inclusion', function (hooks) {
     });
     validator = builder(this.binding, this.model);
 
-    result = validator.result;
-
-    assert.isInvalid(result, 'This field must be blank');
+    assert.isInvalid(validator.result, 'This field must be blank');
 
     this.model.field = ' ';
-    result = validator.result;
 
-    assert.isInvalid(result, 'This field must be blank');
+    assert.isInvalid(validator.result, 'This field must be blank');
 
     this.model.field = 'test';
-    result = validator.result;
 
-    assert.isInvalid(result, 'This field must be blank');
+    assert.isInvalid(validator.result, 'This field must be blank');
   });
 });

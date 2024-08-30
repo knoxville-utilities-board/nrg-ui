@@ -40,9 +40,7 @@ module('Unit | Validator | number', function (hooks) {
       this.model,
     );
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This field must be a number');
+    assert.isInvalid(validator.result, 'This field must be a number');
 
     validator = new NumberValidator(
       this.binding,
@@ -52,9 +50,7 @@ module('Unit | Validator | number', function (hooks) {
 
     this.model.field = '';
 
-    result = validator.result;
-
-    assert.isInvalid(result, 'This field must be a number');
+    assert.isInvalid(validator.result, 'This field must be a number');
 
     validator = new NumberValidator(
       this.binding,
@@ -62,9 +58,7 @@ module('Unit | Validator | number', function (hooks) {
       this.model,
     );
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
   });
 
   test('`allowNone` option works', function (this: TestContext, assert) {
@@ -74,9 +68,7 @@ module('Unit | Validator | number', function (hooks) {
       this.model,
     );
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This field must be a number');
+    assert.isInvalid(validator.result, 'This field must be a number');
 
     validator = new NumberValidator(
       this.binding,
@@ -85,9 +77,8 @@ module('Unit | Validator | number', function (hooks) {
     );
 
     this.model.field = null;
-    result = validator.result;
 
-    assert.isInvalid(result, 'This field must be a number');
+    assert.isInvalid(validator.result, 'This field must be a number');
 
     validator = new NumberValidator(
       this.binding,
@@ -96,9 +87,8 @@ module('Unit | Validator | number', function (hooks) {
     );
 
     this.model.field = null;
-    result = validator.result;
 
-    assert.isValid(result);
+    assert.isValid(validator.result);
   });
 
   test('`allowString` option works', function (this: TestContext, assert) {
@@ -110,9 +100,7 @@ module('Unit | Validator | number', function (hooks) {
 
     this.model.field = '5.4';
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This field must be a number');
+    assert.isInvalid(validator.result, 'This field must be a number');
 
     validator = new NumberValidator(
       this.binding,
@@ -120,9 +108,7 @@ module('Unit | Validator | number', function (hooks) {
       this.model,
     );
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
   });
 
   test('`integer` option works', function (this: TestContext, assert) {
@@ -134,15 +120,11 @@ module('Unit | Validator | number', function (hooks) {
 
     this.model.field = 17.5;
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This field must be an integer');
+    assert.isInvalid(validator.result, 'This field must be an integer');
 
     this.model.field = 17;
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     validator = new NumberValidator(
       this.binding,
@@ -152,15 +134,11 @@ module('Unit | Validator | number', function (hooks) {
 
     this.model.field = 17.5;
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     this.model.field = 17;
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
   });
 
   test('`positive` option works', function (this: TestContext, assert) {
@@ -172,15 +150,11 @@ module('Unit | Validator | number', function (hooks) {
 
     this.model.field = -17;
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This field must be a positive number');
+    assert.isInvalid(validator.result, 'This field must be a positive number');
 
     this.model.field = 17;
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     validator = new NumberValidator(
       this.binding,
@@ -190,15 +164,11 @@ module('Unit | Validator | number', function (hooks) {
 
     this.model.field = -17;
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     this.model.field = 17;
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
   });
 
   test('`negative` option works', function (this: TestContext, assert) {
@@ -210,15 +180,11 @@ module('Unit | Validator | number', function (hooks) {
 
     this.model.field = 17;
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This field must be a negative number');
+    assert.isInvalid(validator.result, 'This field must be a negative number');
 
     this.model.field = -17;
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     validator = new NumberValidator(
       this.binding,
@@ -228,15 +194,11 @@ module('Unit | Validator | number', function (hooks) {
 
     this.model.field = 17;
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     this.model.field = -17;
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
   });
 
   test('`even` option works', function (this: TestContext, assert) {
@@ -248,29 +210,21 @@ module('Unit | Validator | number', function (hooks) {
 
     this.model.field = 17;
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This field must be an even number');
+    assert.isInvalid(validator.result, 'This field must be an even number');
 
     this.model.field = 16;
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     validator = new NumberValidator(this.binding, { even: false }, this.model);
 
     this.model.field = 17;
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     this.model.field = 16;
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
   });
 
   test('`odd` option works', function (this: TestContext, assert) {
@@ -282,29 +236,21 @@ module('Unit | Validator | number', function (hooks) {
 
     this.model.field = 16;
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This field must be an odd number');
+    assert.isInvalid(validator.result, 'This field must be an odd number');
 
     this.model.field = 17;
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     validator = new NumberValidator(this.binding, { odd: false }, this.model);
 
     this.model.field = 16;
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     this.model.field = 17;
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
   });
 
   test('`multipleOf` option works', function (this: TestContext, assert) {
@@ -316,15 +262,11 @@ module('Unit | Validator | number', function (hooks) {
 
     this.model.field = 16;
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This field must be a multiple of 5');
+    assert.isInvalid(validator.result, 'This field must be a multiple of 5');
 
     this.model.field = 15;
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
   });
 
   test('`maxPrecision` option works', function (this: TestContext, assert) {
@@ -336,21 +278,18 @@ module('Unit | Validator | number', function (hooks) {
 
     this.model.field = 3.1415;
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This field must have at most 2 decimal places');
+    assert.isInvalid(
+      validator.result,
+      'This field must have at most 2 decimal places',
+    );
 
     this.model.field = 3.14;
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     this.model.field = 3;
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
   });
 
   test('works with `validator` function', function (this: TestContext, assert) {
@@ -359,14 +298,10 @@ module('Unit | Validator | number', function (hooks) {
 
     this.model.field = 16;
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This field must be a multiple of 5');
+    assert.isInvalid(validator.result, 'This field must be a multiple of 5');
 
     this.model.field = 15;
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
   });
 });

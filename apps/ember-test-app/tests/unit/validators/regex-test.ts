@@ -39,11 +39,10 @@ module('Unit | Validator | regex', function (hooks) {
     assert.throws(() => {
       // @ts-expect-error Testing that the `pattern` option is required
       const validator = new RegexValidator(this.binding, {}, this.model);
-      const result = validator.result;
 
       assert.notOk(
         true,
-        'Expected an error, but got a result instead: ' + result,
+        'Expected an error, but got a result instead: ' + validator.result,
       );
     }, new Error('Assertion Failed: RegexValidator requires `pattern` to be provided'));
 
@@ -54,11 +53,10 @@ module('Unit | Validator | regex', function (hooks) {
         { pattern: 42 },
         this.model,
       );
-      const result = validator.result;
 
       assert.notOk(
         true,
-        'Expected an error, but got a result instead: ' + result,
+        'Expected an error, but got a result instead: ' + validator.result,
       );
     }, new Error('Assertion Failed: RegexValidator requires the pattern to be of type string or RegExp'));
   });
@@ -71,14 +69,12 @@ module('Unit | Validator | regex', function (hooks) {
     );
 
     this.model.field = 'foo';
-    let result = validator.result;
 
-    assert.isInvalid(result, 'This field is invalid');
+    assert.isInvalid(validator.result, 'This field is invalid');
 
     this.model.field = 'Foo';
-    result = validator.result;
 
-    assert.isValid(result);
+    assert.isValid(validator.result);
   });
 
   test('`inverse` option works', function (this: TestContext, assert) {
@@ -89,14 +85,12 @@ module('Unit | Validator | regex', function (hooks) {
     );
 
     this.model.field = 'foo';
-    let result = validator.result;
 
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     this.model.field = 'Foo';
-    result = validator.result;
 
-    assert.isInvalid(result, 'This field is invalid');
+    assert.isInvalid(validator.result, 'This field is invalid');
   });
 
   test('works with `validator` function', function (this: TestContext, assert) {
@@ -104,13 +98,11 @@ module('Unit | Validator | regex', function (hooks) {
     const validator = builder(this.binding, this.model);
 
     this.model.field = 'foo';
-    let result = validator.result;
 
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     this.model.field = 'Foo';
-    result = validator.result;
 
-    assert.isInvalid(result, 'This field is invalid');
+    assert.isInvalid(validator.result, 'This field is invalid');
   });
 });

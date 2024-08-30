@@ -38,11 +38,10 @@ module('Unit | Validator | length', function (hooks) {
 
     assert.throws(() => {
       const validator = new LengthValidator(this.binding, {}, this.model);
-      const result = validator.result;
 
       assert.notOk(
         true,
-        'Expected an error, but got a result instead: ' + result,
+        'Expected an error, but got a result instead: ' + validator.result,
       );
     }, new Error('Assertion Failed: LengthValidator requires either `is`, `min`, `max`, or `between` to be provided'));
   });
@@ -55,9 +54,8 @@ module('Unit | Validator | length', function (hooks) {
     );
 
     this.model.field = [];
-    let result = validator.result;
 
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     validator = new LengthValidator(
       this.binding,
@@ -65,9 +63,7 @@ module('Unit | Validator | length', function (hooks) {
       this.model,
     );
 
-    result = validator.result;
-
-    assert.isInvalid(result, 'This field must have 5 values (has 0)');
+    assert.isInvalid(validator.result, 'This field must have 5 values (has 0)');
   });
 
   test('`allowNone` option works', function (this: TestContext, assert) {
@@ -77,9 +73,7 @@ module('Unit | Validator | length', function (hooks) {
       this.model,
     );
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This field is invalid');
+    assert.isInvalid(validator.result, 'This field is invalid');
 
     validator = new LengthValidator(
       this.binding,
@@ -87,9 +81,7 @@ module('Unit | Validator | length', function (hooks) {
       this.model,
     );
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
   });
 
   test('`is` option works', function (this: TestContext, assert) {
@@ -97,15 +89,14 @@ module('Unit | Validator | length', function (hooks) {
 
     this.model.field = Array.from(Array(10).keys());
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This field must have 5 values (has 10)');
+    assert.isInvalid(
+      validator.result,
+      'This field must have 5 values (has 10)',
+    );
 
     this.model.field = Array.from(Array(5).keys());
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
   });
 
   test('`min` option works', function (this: TestContext, assert) {
@@ -117,30 +108,25 @@ module('Unit | Validator | length', function (hooks) {
 
     this.model.field = Array.from(Array(5).keys());
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This field must have at least 10 values (has 5)');
+    assert.isInvalid(
+      validator.result,
+      'This field must have at least 10 values (has 5)',
+    );
 
     this.model.field = 'A'.repeat(5);
 
-    result = validator.result;
-
     assert.isInvalid(
-      result,
+      validator.result,
       'This field must be at least 10 characters (has 5)',
     );
 
     this.model.field = Array.from(Array(10).keys());
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     this.model.field = 'A'.repeat(10);
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
   });
 
   test('`max` option works', function (this: TestContext, assert) {
@@ -148,30 +134,25 @@ module('Unit | Validator | length', function (hooks) {
 
     this.model.field = Array.from(Array(10).keys());
 
-    let result = validator.result;
-
-    assert.isInvalid(result, 'This field must have at most 5 values (has 10)');
+    assert.isInvalid(
+      validator.result,
+      'This field must have at most 5 values (has 10)',
+    );
 
     this.model.field = 'A'.repeat(10);
 
-    result = validator.result;
-
     assert.isInvalid(
-      result,
+      validator.result,
       'This field must be at most 5 characters (has 10)',
     );
 
     this.model.field = Array.from(Array(5).keys());
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     this.model.field = 'A'.repeat(5);
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
   });
 
   test('`between` option works', function (this: TestContext, assert) {
@@ -183,51 +164,39 @@ module('Unit | Validator | length', function (hooks) {
 
     this.model.field = Array.from(Array(4).keys());
 
-    let result = validator.result;
-
     assert.isInvalid(
-      result,
+      validator.result,
       'This field must have between 5 and 10 values (has 4)',
     );
 
     this.model.field = 'A'.repeat(4);
 
-    result = validator.result;
-
     assert.isInvalid(
-      result,
+      validator.result,
       'This field must be between 5 and 10 characters (has 4)',
     );
 
     this.model.field = Array.from(Array(11).keys());
 
-    result = validator.result;
-
     assert.isInvalid(
-      result,
+      validator.result,
       'This field must have between 5 and 10 values (has 11)',
     );
 
     this.model.field = 'A'.repeat(11);
 
-    result = validator.result;
-
     assert.isInvalid(
-      result,
+      validator.result,
       'This field must be between 5 and 10 characters (has 11)',
     );
 
     this.model.field = Array.from(Array(5).keys());
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     this.model.field = 'A'.repeat(5);
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
   });
 
   test('works with `validator` function', function (this: TestContext, assert) {
@@ -238,50 +207,38 @@ module('Unit | Validator | length', function (hooks) {
 
     this.model.field = Array.from(Array(4).keys());
 
-    let result = validator.result;
-
     assert.isInvalid(
-      result,
+      validator.result,
       'This field must have between 5 and 10 values (has 4)',
     );
 
     this.model.field = 'A'.repeat(4);
 
-    result = validator.result;
-
     assert.isInvalid(
-      result,
+      validator.result,
       'This field must be between 5 and 10 characters (has 4)',
     );
 
     this.model.field = Array.from(Array(11).keys());
 
-    result = validator.result;
-
     assert.isInvalid(
-      result,
+      validator.result,
       'This field must have between 5 and 10 values (has 11)',
     );
 
     this.model.field = 'A'.repeat(11);
 
-    result = validator.result;
-
     assert.isInvalid(
-      result,
+      validator.result,
       'This field must be between 5 and 10 characters (has 11)',
     );
 
     this.model.field = Array.from(Array(5).keys());
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
 
     this.model.field = 'A'.repeat(5);
 
-    result = validator.result;
-
-    assert.isValid(result);
+    assert.isValid(validator.result);
   });
 });
