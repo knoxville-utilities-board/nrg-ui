@@ -81,6 +81,10 @@ export default class extends Component {
               @value={{this.class}}
               @onInput={{fn this.update "class"}}
             />
+            <Args.Yield
+              @description="Renders brand content in the bottom left"
+              @name="brand"
+            />
             <Args.Bool
               @description="When true, the footer will render a divider between the top and bottom sections. Note that the default value is false"
               @name="divider"
@@ -89,20 +93,16 @@ export default class extends Component {
               @defaultValue={{false}}
             />
             <Args.Yield
-              @description="Named yield block that renders navigational content in the top left of the footer"
+              @description="Renders legal content in the bottom right"
+              @name="legal"
+            />
+            <Args.Yield
+              @description="Renders navigational content in the top left"
               @name="nav"
             />
             <Args.Yield
-              @description="Named yield block that renders social media links in the top right of the footer"
+              @description="Renders social media links in the top right"
               @name="social-media"
-            />
-            <Args.Yield
-              @description="Named yield block that renders brand content in the bottom left of the footer"
-              @name="brand"
-            />
-            <Args.Yield
-              @description="Named yield block that renders legal content in the bottom right of the footer"
-              @name="legal"
             />
           </:api>
         </FreestyleUsage>
