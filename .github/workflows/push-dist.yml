@@ -42,7 +42,7 @@ jobs:
         with:
           branch: unstable-ember
           token: ${{ secrets.GITHUB_TOKEN }}
-          working-directory: 'packages/ember'
+          working-directory: 'packages/ember-core'
 
       - uses: kategengler/put-built-npm-package-contents-on-branch@v2.0.0
         with:
