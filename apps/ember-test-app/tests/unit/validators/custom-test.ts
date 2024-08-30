@@ -42,11 +42,10 @@ module('Unit | Validator | custom', function (hooks) {
     assert.throws(() => {
       // @ts-expect-error Testing that the `validate` option is required
       const validator = new CustomValidator(this.binding, {}, this.model);
-      const result = validator.result;
 
       assert.notOk(
         true,
-        'Expected an error, but got a result instead: ' + result,
+        'Expected an error, but got a result instead: ' + validator.result,
       );
     }, new Error('Assertion Failed: CustomValidator requires a `validate` function to be provided'));
   });
@@ -62,13 +61,7 @@ module('Unit | Validator | custom', function (hooks) {
       this.model,
     );
 
-    const result = validator.result;
-
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(validator.result);
   });
 
   test('response is bad when validation fails', function (this: TestContext, assert) {
@@ -86,13 +79,7 @@ module('Unit | Validator | custom', function (hooks) {
       this.model,
     );
 
-    const result = validator.result;
-
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: errorMessage,
-    });
+    assert.isInvalid(validator.result, errorMessage);
   });
 
   test('default error message when validation fails', function (this: TestContext, assert) {
@@ -106,13 +93,7 @@ module('Unit | Validator | custom', function (hooks) {
       this.model,
     );
 
-    const result = validator.result;
-
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field is invalid',
-    });
+    assert.isInvalid(validator.result, 'This field is invalid');
   });
 
   test('value is included in error message', async function (this: TestContext, assert) {
@@ -133,13 +114,7 @@ module('Unit | Validator | custom', function (hooks) {
 
     this.model.field = ['foo', 'bar'];
 
-    const result = validator.result;
-
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field is invalid: foo,bar',
-    });
+    assert.isInvalid(validator.result, 'This field is invalid: foo,bar');
   });
 
   test('disabled option works', async function (this: TestContext, assert) {
@@ -158,21 +133,11 @@ module('Unit | Validator | custom', function (hooks) {
 
     this.model.field = ['foo', 'bar'];
 
-    let result = validator.result;
-
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field is invalid',
-    });
+    assert.isInvalid(validator.result, 'This field is invalid');
 
     this.model.disabled = true;
 
-    result = validator.result;
-
-    assert.deepEqual(result, {
-      isValid: true,
-    });
+    assert.isDisabled(validator.result);
   });
 
   test('works with `validator` function', function (this: TestContext, assert) {
@@ -183,12 +148,6 @@ module('Unit | Validator | custom', function (hooks) {
     });
     const validator = builder(this.binding, this.model);
 
-    const result = validator.result;
-
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field is invalid',
-    });
+    assert.isInvalid(validator.result, 'This field is invalid');
   });
 });

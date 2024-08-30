@@ -39,11 +39,10 @@ module('Unit | Validator | exclusion', function (hooks) {
     assert.throws(() => {
       // @ts-expect-error Testing that the `in` option is required
       const validator = new ExclusionValidator(this.binding, {}, this);
-      const result = validator.result;
 
       assert.notOk(
         true,
-        'Expected an error, but got a result instead: ' + result,
+        'Expected an error, but got a result instead: ' + validator.result,
       );
     }, new Error('Assertion Failed: ExclusionValidator requires an array of invalid values to be provided'));
   });
@@ -57,13 +56,7 @@ module('Unit | Validator | exclusion', function (hooks) {
       this.model,
     );
 
-    const result = validator.result;
-
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(validator.result);
   });
 
   test('response is bad when validation fails', function (this: TestContext, assert) {
@@ -77,14 +70,10 @@ module('Unit | Validator | exclusion', function (hooks) {
 
     this.model.field = 'D';
 
-    const result = validator.result;
-
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message:
-        'This field is not a valid value. Value cannot be: A, B, C, and D',
-    });
+    assert.isInvalid(
+      validator.result,
+      'This field is not a valid value. Value cannot be: A, B, C, and D',
+    );
   });
 
   test('works with `validator` function', function (this: TestContext, assert) {
@@ -95,13 +84,9 @@ module('Unit | Validator | exclusion', function (hooks) {
 
     this.model.field = 'D';
 
-    const result = validator.result;
-
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message:
-        'This field is not a valid value. Value cannot be: A, B, C, and D',
-    });
+    assert.isInvalid(
+      validator.result,
+      'This field is not a valid value. Value cannot be: A, B, C, and D',
+    );
   });
 });
