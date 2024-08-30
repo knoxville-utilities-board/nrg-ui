@@ -11,10 +11,22 @@ export default class extends Component {
   class = 'col-6';
 
   @tracked
-  selected = true;
+  active = false;
 
   @tracked
-  active = false;
+  description = 'Description';
+
+  @tracked
+  icon = 'bi-telephone';
+
+  @tracked
+  label = 'Label';
+
+  @tracked
+  package = 'Package';
+
+  @tracked
+  selected = true;
 
   @action
   update(key: string, value: unknown) {
@@ -28,12 +40,12 @@ export default class extends Component {
           <:example>
             <ServicePricing
               class={{this.class}}
-              @label="Service"
-              @package="Package"
-              @description="Description"
-              @icon="bi-telephone"
-              @selected={{this.selected}}
               @active={{this.active}}
+              @description={{this.description}}
+              @icon={{this.icon}}
+              @label={{this.label}}
+              @package={{this.package}}
+              @selected={{this.selected}}
               as |Addon|
             >
               <Addon @label="Product 1" @price="$80" @quantity="2" />
@@ -43,11 +55,11 @@ export default class extends Component {
             </ServicePricing>
             <ServicePricing
               class={{this.class}}
-              @label="Phone"
+              @active={{this.active}}
               @description="Add (optional)"
               @icon="bi-tv"
+              @label="Phone"
               @selected={{this.selected}}
-              @active={{this.active}}
             />
           </:example>
           <:api as |Args|>
@@ -58,18 +70,42 @@ export default class extends Component {
               @onInput={{fn this.update "class"}}
             />
             <Args.Bool
+              @description=""
+              @name="active"
+              @value={{this.active}}
+              @onInput={{fn this.update "active"}}
+              @defaultValue={{false}}
+            />
+            <Args.String
+              @description="Renders the description in the top right (Typically used for pricing information)"
+              @name="description"
+              @value={{this.description}}
+              @onInput={{fn this.update "description"}}
+            />
+            <Args.String
+              @description="Renders a icon in the top left"
+              @name="icon"
+              @value={{this.icon}}
+              @onInput={{fn this.update "icon"}}
+            />
+            <Args.String
+              @description="Renders the label in the top left"
+              @name="label"
+              @value={{this.label}}
+              @onInput={{fn this.update "label"}}
+            />
+            <Args.String
+              @description="Renders the package name in the top left"
+              @name="package"
+              @value={{this.package}}
+              @onInput={{fn this.update "package"}}
+            />
+            <Args.Bool
               @description="When true, the service pricing component will be selected"
               @name="selected"
               @value={{this.selected}}
               @onInput={{fn this.update "selected"}}
               @defaultValue={{true}}
-            />
-            <Args.Bool
-              @description="When true, the service pricing component will be active"
-              @name="active"
-              @value={{this.active}}
-              @onInput={{fn this.update "active"}}
-              @defaultValue={{false}}
             />
           </:api>
         </FreestyleUsage>
