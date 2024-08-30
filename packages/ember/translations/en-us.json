@@ -46,6 +46,7 @@
         "negative": "This field must be a negative number",
         "even": "This field must be an even number",
         "odd": "This field must be an odd number",
+        "precision": "This field must have at most {precision} decimal places",
         "multipleOf": "This field must be a multiple of {multipleOf, number}"
       },
       "presence": {
