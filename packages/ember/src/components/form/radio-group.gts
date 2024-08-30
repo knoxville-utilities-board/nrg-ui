@@ -8,7 +8,7 @@ import BoundValue from './bound-value.ts';
 import type { Optional } from '../../';
 import type { ComponentLike } from '@glint/template';
 
-export interface RadioGroupFieldSignature {
+export interface RadioGroupSignature {
   Element: HTMLDivElement;
   Args: {
     basic?: boolean;
@@ -20,12 +20,12 @@ export interface RadioGroupFieldSignature {
     name: string;
   };
   Blocks: {
-    default: [{ Radio: ComponentLike<RadioFieldSignature> }];
+    default: [{ Radio: ComponentLike<RadioSignature> }];
   };
 }
 
-export default class RadioGroupField extends BoundValue<
-  RadioGroupFieldSignature,
+export default class RadioGroup extends BoundValue<
+  RadioGroupSignature,
   string
 > {
   get classList() {
@@ -66,7 +66,7 @@ export default class RadioGroupField extends BoundValue<
       {{yield
         (hash
           Radio=(component
-            RadioField
+            Radio
             currentValue=this.value
             disabled=@disabled
             isInvalid=@isInvalid
@@ -80,7 +80,7 @@ export default class RadioGroupField extends BoundValue<
   </template>
 }
 
-export interface RadioFieldSignature {
+export interface RadioSignature {
   Element: HTMLInputElement;
   Args: {
     currentValue?: string | null;
@@ -94,7 +94,7 @@ export interface RadioFieldSignature {
   };
 }
 
-class RadioField extends Component<RadioFieldSignature> {
+class Radio extends Component<RadioSignature> {
   @action
   change(evt: Event) {
     const target = evt.target as HTMLInputElement;

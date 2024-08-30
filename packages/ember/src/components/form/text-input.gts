@@ -4,9 +4,9 @@ import InputField from './-private/input-field.ts';
 
 import type { InputFieldSignature } from './-private/input-field.ts';
 
-export interface TextFieldSignature extends InputFieldSignature<object> {}
+export interface TextInputSignature extends InputFieldSignature<object> {}
 
-export default class TextField extends InputField {
+export default class TextInput extends InputField {
   <template>
     <input
       aria-describedby={{@describedBy}}
