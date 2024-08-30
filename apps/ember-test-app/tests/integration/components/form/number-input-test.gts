@@ -1,6 +1,6 @@
 import { blur, fillIn, focus, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import NumberField from '@nrg-ui/ember/components/form/number-field';
+import NumberInput from '@nrg-ui/ember/components/form/number-input';
 import bind from '@nrg-ui/ember/helpers/bind';
 import { module, test } from 'qunit';
 
@@ -11,7 +11,7 @@ class Model {
   value: number = 42;
 }
 
-module('Integration | Component | form/number-field', function (hooks) {
+module('Integration | Component | form/number-input', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
@@ -23,7 +23,7 @@ module('Integration | Component | form/number-field', function (hooks) {
     };
 
     await render(<template>
-      <NumberField
+      <NumberInput
         @binding={{bind model "value"}}
         @onChange={{actionHandler}}
       />
@@ -40,7 +40,7 @@ module('Integration | Component | form/number-field', function (hooks) {
     assert.dom('div > input').hasValue('36');
 
     await render(<template>
-      <NumberField
+      <NumberInput
         @binding={{bind model "value"}}
         @basic={{true}}
         @onChange={{actionHandler}}
@@ -63,7 +63,7 @@ module('Integration | Component | form/number-field', function (hooks) {
     };
 
     await render(<template>
-      <NumberField
+      <NumberInput
         @binding={{bind model "value"}}
         @onChange={{actionHandler}}
       />
@@ -85,7 +85,7 @@ module('Integration | Component | form/number-field', function (hooks) {
     assert.dom('div > input').hasValue('3600');
 
     await render(<template>
-      <NumberField
+      <NumberInput
         @binding={{bind model "value"}}
         @formatPrecision={{2}}
         @onChange={{actionHandler}}
@@ -108,7 +108,7 @@ module('Integration | Component | form/number-field', function (hooks) {
     };
 
     await render(<template>
-      <NumberField
+      <NumberInput
         @binding={{bind model "value"}}
         @format="currency"
         @onChange={{actionHandler}}
@@ -131,7 +131,7 @@ module('Integration | Component | form/number-field', function (hooks) {
     assert.dom('div > input').hasValue('3600');
 
     await render(<template>
-      <NumberField
+      <NumberInput
         @binding={{bind model "value"}}
         @format="currency"
         @formatPrecision={{6}}
@@ -155,7 +155,7 @@ module('Integration | Component | form/number-field', function (hooks) {
     };
 
     await render(<template>
-      <NumberField
+      <NumberInput
         @binding={{bind model "value"}}
         @format="percent"
         @onChange={{actionHandler}}
@@ -178,7 +178,7 @@ module('Integration | Component | form/number-field', function (hooks) {
     assert.dom('div > input').hasValue('36');
 
     await render(<template>
-      <NumberField
+      <NumberInput
         @binding={{bind model "value"}}
         @format="percent"
         @formatPrecision={{3}}
@@ -206,7 +206,7 @@ module('Integration | Component | form/number-field', function (hooks) {
     };
 
     await render(<template>
-      <NumberField
+      <NumberInput
         @binding={{bind model "value"}}
         @format={{format}}
         @onChange={{actionHandler}}
@@ -229,7 +229,7 @@ module('Integration | Component | form/number-field', function (hooks) {
     assert.dom('div > input').hasValue('36');
 
     await render(<template>
-      <NumberField
+      <NumberInput
         @binding={{bind model "value"}}
         @format={{format}}
         @formatPrecision={{3}}

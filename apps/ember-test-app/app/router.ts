@@ -19,11 +19,11 @@ Router.map(function () {
     this.route('form', function () {
       this.route('checkbox');
       this.route('checkbox-group');
-      this.route('phone-field');
+      this.route('phone-input');
       this.route('radio-group');
       this.route('select');
       this.route('text-area');
-      this.route('text-field');
+      this.route('text-input');
     });
     this.route('icon');
     this.route('navbar');

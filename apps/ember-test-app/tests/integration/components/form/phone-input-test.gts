@@ -1,6 +1,6 @@
 import { fillIn, render, settled, click } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import PhoneField from '@nrg-ui/ember/components/form/phone-field';
+import PhoneInput from '@nrg-ui/ember/components/form/phone-input';
 import bind from '@nrg-ui/ember/helpers/bind';
 import { module, test } from 'qunit';
 
@@ -46,14 +46,14 @@ async function simulateDelete(element: HTMLInputElement) {
   await settled();
 }
 
-module('Integration | Component | form/phone-field', function (hooks) {
+module('Integration | Component | form/phone-input', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
     const model = new Model();
 
     await render(<template>
-      <PhoneField @binding={{bind model "value"}} />
+      <PhoneInput @binding={{bind model "value"}} />
     </template>);
 
     assert.dom('input').hasAttribute('type', 'tel').hasClass('form-control');
@@ -63,7 +63,7 @@ module('Integration | Component | form/phone-field', function (hooks) {
     const model = new Model();
 
     await render(<template>
-      <PhoneField @binding={{bind model "value"}} />
+      <PhoneInput @binding={{bind model "value"}} />
     </template>);
 
     await fillIn('input', '11234567890');
@@ -83,7 +83,7 @@ module('Integration | Component | form/phone-field', function (hooks) {
     const model = new Model();
 
     await render(<template>
-      <PhoneField @binding={{bind model "value"}} />
+      <PhoneInput @binding={{bind model "value"}} />
     </template>);
 
     await fillIn('input', '+1 (123) 456-7890');
@@ -100,7 +100,7 @@ module('Integration | Component | form/phone-field', function (hooks) {
     const model = new Model();
 
     await render(<template>
-      <PhoneField @binding={{bind model "value"}} />
+      <PhoneInput @binding={{bind model "value"}} />
     </template>);
 
     await fillIn('input', '1-12a345(6)78_90 ');
@@ -112,7 +112,7 @@ module('Integration | Component | form/phone-field', function (hooks) {
     const model = new Model();
 
     await render(<template>
-      <PhoneField @binding={{bind model "value"}} />
+      <PhoneInput @binding={{bind model "value"}} />
     </template>);
     assert.dom('input').hasValue('');
     model.value = '11234567890';
@@ -124,7 +124,7 @@ module('Integration | Component | form/phone-field', function (hooks) {
     const model = new Model();
     model.value = '11234567890';
     await render(<template>
-      <PhoneField @binding={{bind model "value"}} />
+      <PhoneInput @binding={{bind model "value"}} />
     </template>);
     const element = this.element.querySelector('input') as HTMLInputElement;
     await clickAt(element, element.value.length);
@@ -146,7 +146,7 @@ module('Integration | Component | form/phone-field', function (hooks) {
     const model = new Model();
     model.value = '1234567890123';
     await render(<template>
-      <PhoneField @binding={{bind model "value"}} />
+      <PhoneInput @binding={{bind model "value"}} />
     </template>);
     const element = this.element.querySelector('input') as HTMLInputElement;
     await clickAt(element, 0);
@@ -172,7 +172,7 @@ module('Integration | Component | form/phone-field', function (hooks) {
     const model = new Model();
     model.value = '1234567890123';
     await render(<template>
-      <PhoneField @binding={{bind model "value"}} />
+      <PhoneInput @binding={{bind model "value"}} />
     </template>);
     const element = this.element.querySelector('input') as HTMLInputElement;
     await clickAt(element, 11);
@@ -196,7 +196,7 @@ module('Integration | Component | form/phone-field', function (hooks) {
     const model = new Model();
     model.value = '1234567890123';
     await render(<template>
-      <PhoneField @binding={{bind model "value"}} />
+      <PhoneInput @binding={{bind model "value"}} />
     </template>);
     const element = this.element.querySelector('input') as HTMLInputElement;
     await clickAt(element, 4);

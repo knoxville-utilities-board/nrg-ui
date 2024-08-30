@@ -74,7 +74,7 @@ class Model {
   number;
 
   @tracked
-  textField = '';
+  text = '';
 
   @tracked
   textArea = '';
@@ -157,12 +157,12 @@ export default class extends Component {
       >
         <div class="mb-3">
           <Form.Field
-            @label="Text Field"
+            @label="Text Input"
             @required={{this.required}}
             @validatorKey="someOtherKey"
             as |Field|
           >
-            <Field.TextField @binding={{bind this.model "textField"}} />
+            <Field.TextInput @binding={{bind this.model "text"}} />
             <Field.Text>
               Some additional context can be added underneath an input.
             </Field.Text>
@@ -200,7 +200,7 @@ export default class extends Component {
             @required={{this.required}}
             as |Field|
           >
-            <Field.Phone @binding={{bind this.model "phone"}} />
+            <Field.PhoneInput @binding={{bind this.model "phone"}} />
           </Form.Field>
         </div>
         <div class="mb-3">
@@ -228,7 +228,7 @@ export default class extends Component {
         </div>
         <div class="mb-3">
           <Form.Field @label="Number" @required={{this.required}} as |Field|>
-            <Field.NumberField
+            <Field.NumberInput
               @binding={{bind this.model "number"}}
               @format="currency"
               @formatPrecision={{3}}

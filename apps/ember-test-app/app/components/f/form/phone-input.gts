@@ -2,7 +2,7 @@ import { fn } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import PhoneField from '@nrg-ui/ember/components/form/phone-field';
+import PhoneInput from '@nrg-ui/ember/components/form/phone-input';
 import bind from '@nrg-ui/ember/helpers/bind';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
@@ -44,11 +44,11 @@ export default class extends Component {
   }
 
   <template>
-    <FreestyleSection @name="Phone Field" as |Section|>
+    <FreestyleSection @name="Phone Input" as |Section|>
       <Section.subsection @name="Basic">
         <FreestyleUsage>
           <:example>
-            <PhoneField
+            <PhoneInput
               class={{this.class}}
               @basic={{this.basic}}
               @binding={{bind this.model "property"}}
