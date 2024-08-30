@@ -12,6 +12,8 @@ import {
   areaCodeOutput,
   countryCodeInput,
   countryCodeOutput,
+  invalidInput,
+  invalidOutput,
 } from '../../utils/phone.ts';
 
 import type { Optional } from '../../';
@@ -24,21 +26,20 @@ export interface PhoneInputSignature {
 
 const defaultFormat = (value: string) => {
   const unformattedValue = value.replace(/\D/g, '');
-  let returnValue;
+
   if (unformattedValue.length <= 7) {
-    returnValue = unformattedValue.replace(
-      exchangeCodeInput,
-      exchangeCodeOutput,
-    );
-  } else if (unformattedValue.length <= 10) {
-    returnValue = unformattedValue.replace(areaCodeInput, areaCodeOutput);
-  } else {
-    returnValue = unformattedValue
-      .substring(0, 13)
-      .replace(countryCodeInput, countryCodeOutput);
+    return unformattedValue.replace(exchangeCodeInput, exchangeCodeOutput);
   }
 
-  return returnValue;
+  if (unformattedValue.length <= 10) {
+    return unformattedValue.replace(areaCodeInput, areaCodeOutput);
+  }
+
+  if (unformattedValue.length <= 13) {
+    return unformattedValue.replace(countryCodeInput, countryCodeOutput);
+  }
+
+  return unformattedValue.replace(invalidInput, invalidOutput);
 };
 
 export default class PhoneField extends InputField<PhoneInputSignature> {

@@ -31,6 +31,12 @@ module('Integration | Component | form/phone-input', function (hooks) {
       <PhoneInput @binding={{bind model "value"}} />
     </template>);
 
+    await fillIn('input', '1111234567890123456789');
+    await blur('input');
+
+    assert.dom('input').hasValue('+111 (123) 456-7890 "123456789"');
+    assert.strictEqual(model.value, '1111234567890123456789');
+
     await fillIn('input', '11234567890');
     await blur('input');
 
@@ -66,6 +72,12 @@ module('Integration | Component | form/phone-input', function (hooks) {
     await render(<template>
       <PhoneInput @binding={{bind model "value"}} @format={{format}} />
     </template>);
+
+    await fillIn('input', '1111234567890123456789');
+    await blur('input');
+
+    assert.dom('input').hasValue('1 111234567890123456789');
+    assert.strictEqual(model.value, '1111234567890123456789');
 
     await fillIn('input', '11234567890');
     await blur('input');
