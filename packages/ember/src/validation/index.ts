@@ -1,6 +1,7 @@
 export { default as BaseValidator } from './validators/base.ts';
 export { default as ConfirmationValidator } from './validators/confirmation.ts';
 export { default as CustomValidator } from './validators/custom.ts';
+export { default as EmailValidator } from './validators/email.ts';
 export { default as ExclusionValidator } from './validators/exclusion.ts';
 export { default as InclusionValidator } from './validators/inclusion.ts';
 export { default as LengthValidator } from './validators/length.ts';
@@ -23,6 +24,7 @@ export type {
 
 export type { ConfirmationOptions } from './validators/confirmation.ts';
 export type { CustomOptions } from './validators/custom.ts';
+export type { EmailOptions } from './validators/email.ts';
 export type { ExclusionOptions } from './validators/exclusion.ts';
 export type { InclusionOptions } from './validators/inclusion.ts';
 export type { LengthOptions } from './validators/length.ts';

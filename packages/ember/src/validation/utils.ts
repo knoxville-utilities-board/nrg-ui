@@ -1,5 +1,6 @@
 import ConfirmationValidator from './validators/confirmation.ts';
 import CustomValidator from './validators/custom.ts';
+import EmailValidator from './validators/email.ts';
 import ExclusionValidator from './validators/exclusion.ts';
 import InclusionValidator from './validators/inclusion.ts';
 import LengthValidator from './validators/length.ts';
@@ -15,6 +16,7 @@ import type { Binding } from '../';
 const Validators = {
   confirmation: ConfirmationValidator,
   custom: CustomValidator,
+  email: EmailValidator,
   exclusion: ExclusionValidator,
   inclusion: InclusionValidator,
   length: LengthValidator,
@@ -51,6 +53,10 @@ export function validator<V extends ValidatorType = ValidatorType>(
   if (type === 'custom') {
     return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
       new CustomValidator(binding, options, context);
+  }
+  if (type === 'email') {
+    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
+      new EmailValidator(binding, options, context);
   }
   if (type === 'exclusion') {
     return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
