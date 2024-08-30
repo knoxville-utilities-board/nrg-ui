@@ -42,11 +42,7 @@ module('Unit | Validator | number', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be a number',
-    });
+    assert.isInvalid(result, 'This field must be a number');
 
     validator = new NumberValidator(
       this.binding,
@@ -58,11 +54,7 @@ module('Unit | Validator | number', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be a number',
-    });
+    assert.isInvalid(result, 'This field must be a number');
 
     validator = new NumberValidator(
       this.binding,
@@ -72,11 +64,7 @@ module('Unit | Validator | number', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('`allowNone` option works', function (this: TestContext, assert) {
@@ -88,11 +76,7 @@ module('Unit | Validator | number', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be a number',
-    });
+    assert.isInvalid(result, 'This field must be a number');
 
     validator = new NumberValidator(
       this.binding,
@@ -103,11 +87,7 @@ module('Unit | Validator | number', function (hooks) {
     this.model.field = null;
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be a number',
-    });
+    assert.isInvalid(result, 'This field must be a number');
 
     validator = new NumberValidator(
       this.binding,
@@ -118,11 +98,7 @@ module('Unit | Validator | number', function (hooks) {
     this.model.field = null;
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('`allowString` option works', function (this: TestContext, assert) {
@@ -136,11 +112,7 @@ module('Unit | Validator | number', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be a number',
-    });
+    assert.isInvalid(result, 'This field must be a number');
 
     validator = new NumberValidator(
       this.binding,
@@ -150,11 +122,7 @@ module('Unit | Validator | number', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('`integer` option works', function (this: TestContext, assert) {
@@ -168,21 +136,13 @@ module('Unit | Validator | number', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be an integer',
-    });
+    assert.isInvalid(result, 'This field must be an integer');
 
     this.model.field = 17;
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     validator = new NumberValidator(
       this.binding,
@@ -194,21 +154,13 @@ module('Unit | Validator | number', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     this.model.field = 17;
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('`positive` option works', function (this: TestContext, assert) {
@@ -222,21 +174,13 @@ module('Unit | Validator | number', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be a positive number',
-    });
+    assert.isInvalid(result, 'This field must be a positive number');
 
     this.model.field = 17;
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     validator = new NumberValidator(
       this.binding,
@@ -248,21 +192,13 @@ module('Unit | Validator | number', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     this.model.field = 17;
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('`negative` option works', function (this: TestContext, assert) {
@@ -276,21 +212,13 @@ module('Unit | Validator | number', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be a negative number',
-    });
+    assert.isInvalid(result, 'This field must be a negative number');
 
     this.model.field = -17;
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     validator = new NumberValidator(
       this.binding,
@@ -302,21 +230,13 @@ module('Unit | Validator | number', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     this.model.field = -17;
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('`even` option works', function (this: TestContext, assert) {
@@ -330,21 +250,13 @@ module('Unit | Validator | number', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be an even number',
-    });
+    assert.isInvalid(result, 'This field must be an even number');
 
     this.model.field = 16;
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     validator = new NumberValidator(this.binding, { even: false }, this.model);
 
@@ -352,21 +264,13 @@ module('Unit | Validator | number', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     this.model.field = 16;
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('`odd` option works', function (this: TestContext, assert) {
@@ -380,21 +284,13 @@ module('Unit | Validator | number', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be an odd number',
-    });
+    assert.isInvalid(result, 'This field must be an odd number');
 
     this.model.field = 17;
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     validator = new NumberValidator(this.binding, { odd: false }, this.model);
 
@@ -402,21 +298,13 @@ module('Unit | Validator | number', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     this.model.field = 17;
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('`multipleOf` option works', function (this: TestContext, assert) {
@@ -430,21 +318,13 @@ module('Unit | Validator | number', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be a multiple of 5',
-    });
+    assert.isInvalid(result, 'This field must be a multiple of 5');
 
     this.model.field = 15;
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('`maxPrecision` option works', function (this: TestContext, assert) {
@@ -458,31 +338,19 @@ module('Unit | Validator | number', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must have at most 2 decimal places',
-    });
+    assert.isInvalid(result, 'This field must have at most 2 decimal places');
 
     this.model.field = 3.14;
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     this.model.field = 3;
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('works with `validator` function', function (this: TestContext, assert) {
@@ -493,20 +361,12 @@ module('Unit | Validator | number', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be a multiple of 5',
-    });
+    assert.isInvalid(result, 'This field must be a multiple of 5');
 
     this.model.field = 15;
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 });

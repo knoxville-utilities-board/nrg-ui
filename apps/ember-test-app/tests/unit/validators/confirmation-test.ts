@@ -65,11 +65,7 @@ module('Unit | Validator | confirmation', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     validator = new ConfirmationValidator(
       this.binding,
@@ -80,11 +76,7 @@ module('Unit | Validator | confirmation', function (hooks) {
     this.model.passwordConfirmation = 'different';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('response is bad when validation fails', function (this: TestContext, assert) {
@@ -98,11 +90,7 @@ module('Unit | Validator | confirmation', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field does not match passwordConfirmation',
-    });
+    assert.isInvalid(result, 'This field does not match passwordConfirmation');
 
     validator = new ConfirmationValidator(
       this.binding,
@@ -112,11 +100,7 @@ module('Unit | Validator | confirmation', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field does not match Confirm Password',
-    });
+    assert.isInvalid(result, 'This field does not match Confirm Password');
 
     validator = new ConfirmationValidator(
       this.binding,
@@ -127,11 +111,7 @@ module('Unit | Validator | confirmation', function (hooks) {
     this.model.passwordConfirmation = 'password';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field cannot match passwordConfirmation',
-    });
+    assert.isInvalid(result, 'This field cannot match passwordConfirmation');
 
     validator = new ConfirmationValidator(
       this.binding,
@@ -141,11 +121,7 @@ module('Unit | Validator | confirmation', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field cannot match Confirm Password',
-    });
+    assert.isInvalid(result, 'This field cannot match Confirm Password');
   });
 
   test('works with `validator` function', function (this: TestContext, assert) {
@@ -158,11 +134,7 @@ module('Unit | Validator | confirmation', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field does not match passwordConfirmation',
-    });
+    assert.isInvalid(result, 'This field does not match passwordConfirmation');
 
     builder = buildValidator('confirmation', {
       on: 'passwordConfirmation',
@@ -172,10 +144,6 @@ module('Unit | Validator | confirmation', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field does not match Confirm Password',
-    });
+    assert.isInvalid(result, 'This field does not match Confirm Password');
   });
 });

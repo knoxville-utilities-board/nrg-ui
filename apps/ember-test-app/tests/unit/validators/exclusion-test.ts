@@ -59,11 +59,7 @@ module('Unit | Validator | exclusion', function (hooks) {
 
     const result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('response is bad when validation fails', function (this: TestContext, assert) {
@@ -79,12 +75,10 @@ module('Unit | Validator | exclusion', function (hooks) {
 
     const result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message:
-        'This field is not a valid value. Value cannot be: A, B, C, and D',
-    });
+    assert.isInvalid(
+      result,
+      'This field is not a valid value. Value cannot be: A, B, C, and D',
+    );
   });
 
   test('works with `validator` function', function (this: TestContext, assert) {
@@ -97,11 +91,9 @@ module('Unit | Validator | exclusion', function (hooks) {
 
     const result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message:
-        'This field is not a valid value. Value cannot be: A, B, C, and D',
-    });
+    assert.isInvalid(
+      result,
+      'This field is not a valid value. Value cannot be: A, B, C, and D',
+    );
   });
 });

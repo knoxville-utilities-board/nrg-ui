@@ -39,20 +39,12 @@ module('Unit | Validator | email', function (hooks) {
     this.model.field = 'foo';
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be a valid email address',
-    });
+    assert.isInvalid(result, 'This field must be a valid email address');
 
     this.model.field = 'foo@bar.com';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('`invalidDomains` option works', function (this: TestContext, assert) {
@@ -65,21 +57,15 @@ module('Unit | Validator | email', function (hooks) {
     this.model.field = 'foo@bar.com';
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     this.model.field = 'foo@kub.org';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message:
-        'This email must not be from one of the following domains: kub.org',
-    });
+    assert.isInvalid(
+      result,
+      'This email must not be from one of the following domains: kub.org',
+    );
   });
 
   test('`validDomains` option works', function (this: TestContext, assert) {
@@ -92,20 +78,15 @@ module('Unit | Validator | email', function (hooks) {
     this.model.field = 'foo@kub.org';
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     this.model.field = 'foo@bar.com';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This email must be from one of the following domains: kub.org',
-    });
+    assert.isInvalid(
+      result,
+      'This email must be from one of the following domains: kub.org',
+    );
   });
 
   test('works with `validator` function', function (this: TestContext, assert) {
@@ -115,19 +96,11 @@ module('Unit | Validator | email', function (hooks) {
     this.model.field = 'foo@bar.com';
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     this.model.field = 'foo';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be a valid email address',
-    });
+    assert.isInvalid(result, 'This field must be a valid email address');
   });
 });

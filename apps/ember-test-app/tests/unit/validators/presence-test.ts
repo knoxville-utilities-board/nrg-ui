@@ -56,58 +56,34 @@ module('Unit | Validator | inclusion', function (hooks) {
     );
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field cannot be blank',
-    });
+    assert.isInvalid(result, 'This field cannot be blank');
 
     this.model.field = 'test';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     this.model.field = ' ';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     validator = new PresenceValidator(this.binding, { presence: false }, this);
 
     this.model.field = 'test';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be blank',
-    });
+    assert.isInvalid(result, 'This field must be blank');
 
     this.model.field = ' ';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be blank',
-    });
+    assert.isInvalid(result, 'This field must be blank');
 
     this.model.field = '';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('`ignoreBlank` option works', function (this: TestContext, assert) {
@@ -118,29 +94,17 @@ module('Unit | Validator | inclusion', function (hooks) {
     );
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field cannot be blank',
-    });
+    assert.isInvalid(result, 'This field cannot be blank');
 
     this.model.field = ' ';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field cannot be blank',
-    });
+    assert.isInvalid(result, 'This field cannot be blank');
 
     this.model.field = 'test';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     validator = new PresenceValidator(
       this.binding,
@@ -150,29 +114,17 @@ module('Unit | Validator | inclusion', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be blank',
-    });
+    assert.isInvalid(result, 'This field must be blank');
 
     this.model.field = ' ';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be blank',
-    });
+    assert.isInvalid(result, 'This field must be blank');
 
     this.model.field = 'test';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be blank',
-    });
+    assert.isInvalid(result, 'This field must be blank');
   });
 
   test('works with `validator` function', function (this: TestContext, assert) {
@@ -183,29 +135,17 @@ module('Unit | Validator | inclusion', function (hooks) {
     let validator = builder(this.binding, this.model);
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field cannot be blank',
-    });
+    assert.isInvalid(result, 'This field cannot be blank');
 
     this.model.field = ' ';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field cannot be blank',
-    });
+    assert.isInvalid(result, 'This field cannot be blank');
 
     this.model.field = 'test';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     builder = buildValidator('presence', {
       ignoreBlank: false,
@@ -215,28 +155,16 @@ module('Unit | Validator | inclusion', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be blank',
-    });
+    assert.isInvalid(result, 'This field must be blank');
 
     this.model.field = ' ';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be blank',
-    });
+    assert.isInvalid(result, 'This field must be blank');
 
     this.model.field = 'test';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be blank',
-    });
+    assert.isInvalid(result, 'This field must be blank');
   });
 });

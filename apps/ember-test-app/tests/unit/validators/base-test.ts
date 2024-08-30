@@ -129,11 +129,7 @@ module('Unit | Validator | base', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     validator = new DummyValidator(
       this.binding,
@@ -145,11 +141,7 @@ module('Unit | Validator | base', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isInvalid(result);
 
     validator = new DummyValidator(
       this.binding,
@@ -162,11 +154,7 @@ module('Unit | Validator | base', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: true,
-      message: undefined,
-    });
+    assert.isWarning(result);
   });
 
   test('response can be a string', function (this: TestContext, assert) {
@@ -181,11 +169,7 @@ module('Unit | Validator | base', function (hooks) {
 
     const result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: errorMessage,
-    });
+    assert.isInvalid(result, errorMessage);
   });
 
   test('response can include a message', function (this: TestContext, assert) {
@@ -201,11 +185,7 @@ module('Unit | Validator | base', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: errorMessage,
-    });
+    assert.isInvalid(result, errorMessage);
 
     validator = new DummyValidator(
       this.binding,
@@ -219,11 +199,7 @@ module('Unit | Validator | base', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: true,
-      message: errorMessage,
-    });
+    assert.isWarning(result, errorMessage);
   });
 
   test('message from options supersedes response message', function (this: TestContext, assert) {
@@ -241,11 +217,7 @@ module('Unit | Validator | base', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This is the options message',
-    });
+    assert.isInvalid(result, 'This is the options message');
 
     validator = new DummyValidator(
       this.binding,
@@ -262,11 +234,7 @@ module('Unit | Validator | base', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: true,
-      message: 'This is the options message',
-    });
+    assert.isWarning(result, 'This is the options message');
   });
 
   test('response can include a key', function (this: TestContext, assert) {
@@ -281,11 +249,7 @@ module('Unit | Validator | base', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'Hello, world!',
-    });
+    assert.isInvalid(result, 'Hello, world!');
 
     validator = new DummyValidator(
       this.binding,
@@ -299,11 +263,7 @@ module('Unit | Validator | base', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: true,
-      message: 'Hello, world!',
-    });
+    assert.isWarning(result, 'Hello, world!');
   });
 
   test('key from options supersedes response key', async function (this: TestContext, assert) {
@@ -325,11 +285,7 @@ module('Unit | Validator | base', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This is the correct message',
-    });
+    assert.isInvalid(result, 'This is the correct message');
 
     validator = new DummyValidator(
       this.binding,
@@ -346,11 +302,7 @@ module('Unit | Validator | base', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: true,
-      message: 'This is the correct message',
-    });
+    assert.isWarning(result, 'This is the correct message');
   });
 
   test('key from options supersedes response message', async function (this: TestContext, assert) {
@@ -372,11 +324,7 @@ module('Unit | Validator | base', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This is the correct message',
-    });
+    assert.isInvalid(result, 'This is the correct message');
 
     validator = new DummyValidator(
       this.binding,
@@ -393,11 +341,7 @@ module('Unit | Validator | base', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: true,
-      message: 'This is the correct message',
-    });
+    assert.isWarning(result, 'This is the correct message');
   });
 
   test('message from options supersedes response key', async function (this: TestContext, assert) {
@@ -415,11 +359,7 @@ module('Unit | Validator | base', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This is the correct message',
-    });
+    assert.isInvalid(result, 'This is the correct message');
 
     validator = new DummyValidator(
       this.binding,
@@ -436,11 +376,7 @@ module('Unit | Validator | base', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: true,
-      message: 'This is the correct message',
-    });
+    assert.isWarning(result, 'This is the correct message');
   });
 
   test('key from options supersedes options message', async function (this: TestContext, assert) {
@@ -462,11 +398,7 @@ module('Unit | Validator | base', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This is the correct message',
-    });
+    assert.isInvalid(result, 'This is the correct message');
 
     validator = new DummyValidator(
       this.binding,
@@ -483,11 +415,7 @@ module('Unit | Validator | base', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: true,
-      message: 'This is the correct message',
-    });
+    assert.isWarning(result, 'This is the correct message');
   });
 
   test('key from response supersedes response message', async function (this: TestContext, assert) {
@@ -509,11 +437,7 @@ module('Unit | Validator | base', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This is the correct message',
-    });
+    assert.isInvalid(result, 'This is the correct message');
 
     validator = new DummyValidator(
       this.binding,
@@ -530,11 +454,7 @@ module('Unit | Validator | base', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: true,
-      message: 'This is the correct message',
-    });
+    assert.isWarning(result, 'This is the correct message');
   });
 
   test('disabled option works', async function (this: TestContext, assert) {
@@ -552,18 +472,12 @@ module('Unit | Validator | base', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field is bad',
-    });
+    assert.isInvalid(result, 'This field is bad');
 
     this.model.disabled = true;
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-    });
+    assert.isDisabled(result);
   });
 });

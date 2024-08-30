@@ -64,11 +64,7 @@ module('Unit | Validator | custom', function (hooks) {
 
     const result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('response is bad when validation fails', function (this: TestContext, assert) {
@@ -88,11 +84,7 @@ module('Unit | Validator | custom', function (hooks) {
 
     const result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: errorMessage,
-    });
+    assert.isInvalid(result, errorMessage);
   });
 
   test('default error message when validation fails', function (this: TestContext, assert) {
@@ -108,11 +100,7 @@ module('Unit | Validator | custom', function (hooks) {
 
     const result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field is invalid',
-    });
+    assert.isInvalid(result, 'This field is invalid');
   });
 
   test('value is included in error message', async function (this: TestContext, assert) {
@@ -135,11 +123,7 @@ module('Unit | Validator | custom', function (hooks) {
 
     const result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field is invalid: foo,bar',
-    });
+    assert.isInvalid(result, 'This field is invalid: foo,bar');
   });
 
   test('disabled option works', async function (this: TestContext, assert) {
@@ -160,19 +144,13 @@ module('Unit | Validator | custom', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field is invalid',
-    });
+    assert.isInvalid(result, 'This field is invalid');
 
     this.model.disabled = true;
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-    });
+    assert.isDisabled(result);
   });
 
   test('works with `validator` function', function (this: TestContext, assert) {
@@ -185,10 +163,6 @@ module('Unit | Validator | custom', function (hooks) {
 
     const result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field is invalid',
-    });
+    assert.isInvalid(result, 'This field is invalid');
   });
 });

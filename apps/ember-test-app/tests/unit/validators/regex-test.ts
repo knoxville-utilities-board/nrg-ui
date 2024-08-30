@@ -73,20 +73,12 @@ module('Unit | Validator | regex', function (hooks) {
     this.model.field = 'foo';
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field is invalid',
-    });
+    assert.isInvalid(result, 'This field is invalid');
 
     this.model.field = 'Foo';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('`inverse` option works', function (this: TestContext, assert) {
@@ -99,20 +91,12 @@ module('Unit | Validator | regex', function (hooks) {
     this.model.field = 'foo';
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     this.model.field = 'Foo';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field is invalid',
-    });
+    assert.isInvalid(result, 'This field is invalid');
   });
 
   test('works with `validator` function', function (this: TestContext, assert) {
@@ -122,19 +106,11 @@ module('Unit | Validator | regex', function (hooks) {
     this.model.field = 'foo';
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     this.model.field = 'Foo';
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field is invalid',
-    });
+    assert.isInvalid(result, 'This field is invalid');
   });
 });

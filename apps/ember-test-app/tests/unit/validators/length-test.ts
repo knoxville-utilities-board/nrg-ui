@@ -57,11 +57,7 @@ module('Unit | Validator | length', function (hooks) {
     this.model.field = [];
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     validator = new LengthValidator(
       this.binding,
@@ -71,11 +67,7 @@ module('Unit | Validator | length', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must have 5 values (has 0)',
-    });
+    assert.isInvalid(result, 'This field must have 5 values (has 0)');
   });
 
   test('`allowNone` option works', function (this: TestContext, assert) {
@@ -87,11 +79,7 @@ module('Unit | Validator | length', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field is invalid',
-    });
+    assert.isInvalid(result, 'This field must have 5 values (has 0)');
 
     validator = new LengthValidator(
       this.binding,
@@ -101,11 +89,7 @@ module('Unit | Validator | length', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('`is` option works', function (this: TestContext, assert) {
@@ -115,21 +99,13 @@ module('Unit | Validator | length', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must have 5 values (has 10)',
-    });
+    assert.isInvalid(result, 'This field must have 5 values (has 10)');
 
     this.model.field = Array.from(Array(5).keys());
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('`min` option works', function (this: TestContext, assert) {
@@ -143,41 +119,28 @@ module('Unit | Validator | length', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must have at least 10 values (has 5)',
-    });
+    assert.isInvalid(result, 'This field must have at least 10 values (has 5)');
 
     this.model.field = 'A'.repeat(5);
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be at least 10 characters (has 5)',
-    });
+    assert.isInvalid(
+      result,
+      'This field must be at least 10 characters (has 5)',
+    );
 
     this.model.field = Array.from(Array(10).keys());
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     this.model.field = 'A'.repeat(10);
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('`max` option works', function (this: TestContext, assert) {
@@ -187,41 +150,28 @@ module('Unit | Validator | length', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must have at most 5 values (has 10)',
-    });
+    assert.isInvalid(result, 'This field must have at most 5 values (has 10)');
 
     this.model.field = 'A'.repeat(10);
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be at most 5 characters (has 10)',
-    });
+    assert.isInvalid(
+      result,
+      'This field must be at most 5 characters (has 10)',
+    );
 
     this.model.field = Array.from(Array(5).keys());
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     this.model.field = 'A'.repeat(5);
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('`between` option works', function (this: TestContext, assert) {
@@ -235,61 +185,49 @@ module('Unit | Validator | length', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must have between 5 and 10 values (has 4)',
-    });
+    assert.isInvalid(
+      result,
+      'This field must have between 5 and 10 values (has 4)',
+    );
 
     this.model.field = 'A'.repeat(4);
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be between 5 and 10 characters (has 4)',
-    });
+    assert.isInvalid(
+      result,
+      'This field must be between 5 and 10 characters (has 4)',
+    );
 
     this.model.field = Array.from(Array(11).keys());
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must have between 5 and 10 values (has 11)',
-    });
+    assert.isInvalid(
+      result,
+      'This field must have between 5 and 10 values (has 11)',
+    );
 
     this.model.field = 'A'.repeat(11);
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be between 5 and 10 characters (has 11)',
-    });
+    assert.isInvalid(
+      result,
+      'This field must be between 5 and 10 characters (has 11)',
+    );
 
     this.model.field = Array.from(Array(5).keys());
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     this.model.field = 'A'.repeat(5);
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 
   test('works with `validator` function', function (this: TestContext, assert) {
@@ -302,60 +240,48 @@ module('Unit | Validator | length', function (hooks) {
 
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must have between 5 and 10 values (has 4)',
-    });
+    assert.isInvalid(
+      result,
+      'This field must have between 5 and 10 values (has 4)',
+    );
 
     this.model.field = 'A'.repeat(4);
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be between 5 and 10 characters (has 4)',
-    });
+    assert.isInvalid(
+      result,
+      'This field must be between 5 and 10 characters (has 4)',
+    );
 
     this.model.field = Array.from(Array(11).keys());
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must have between 5 and 10 values (has 11)',
-    });
+    assert.isInvalid(
+      result,
+      'This field must have between 5 and 10 values (has 11)',
+    );
 
     this.model.field = 'A'.repeat(11);
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be between 5 and 10 characters (has 11)',
-    });
+    assert.isInvalid(
+      result,
+      'This field must be between 5 and 10 characters (has 11)',
+    );
 
     this.model.field = Array.from(Array(5).keys());
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     this.model.field = 'A'.repeat(5);
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
   });
 });

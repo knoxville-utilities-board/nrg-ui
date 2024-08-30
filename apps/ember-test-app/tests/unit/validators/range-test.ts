@@ -53,11 +53,7 @@ module('Unit | Validator | range', function (hooks) {
     this.model.field = NaN;
     const result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be a number',
-    });
+    assert.isInvalid(result, 'This field must be a number');
   });
 
   test('`min` option works', function (this: TestContext, assert) {
@@ -66,20 +62,12 @@ module('Unit | Validator | range', function (hooks) {
     this.model.field = 15;
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be greater than or equal to 16',
-    });
+    assert.isInvalid(result, 'This field must be greater than or equal to 16');
 
     this.model.field = 16;
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     validator = new RangeValidator(
       this.binding,
@@ -91,11 +79,7 @@ module('Unit | Validator | range', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be greater than 16',
-    });
+    assert.isInvalid(result, 'This field must be greater than 16');
   });
 
   test('`max` option works', function (this: TestContext, assert) {
@@ -104,20 +88,12 @@ module('Unit | Validator | range', function (hooks) {
     this.model.field = 17;
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be less than or equal to 16',
-    });
+    assert.isInvalid(result, 'This field must be less than or equal to 16');
 
     this.model.field = 16;
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     validator = new RangeValidator(
       this.binding,
@@ -129,11 +105,7 @@ module('Unit | Validator | range', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be less than 16',
-    });
+    assert.isInvalid(result, 'This field must be less than 16');
   });
 
   test('works with `validator` function', function (this: TestContext, assert) {
@@ -145,20 +117,12 @@ module('Unit | Validator | range', function (hooks) {
     this.model.field = 17;
     let result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be less than or equal to 16',
-    });
+    assert.isInvalid(result, 'This field must be less than or equal to 16');
 
     this.model.field = 16;
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: true,
-      isWarning: false,
-      message: undefined,
-    });
+    assert.isValid(result);
 
     builder = buildValidator('range', {
       max: 16,
@@ -170,10 +134,6 @@ module('Unit | Validator | range', function (hooks) {
 
     result = validator.result;
 
-    assert.deepEqual(result, {
-      isValid: false,
-      isWarning: false,
-      message: 'This field must be less than 16',
-    });
+    assert.isInvalid(result, 'This field must be less than 16');
   });
 });
