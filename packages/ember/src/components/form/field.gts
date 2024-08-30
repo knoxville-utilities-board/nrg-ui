@@ -7,6 +7,7 @@ import { runTask } from 'ember-lifeline';
 
 import CheckboxGroup from './checkbox-group.gts';
 import Checkbox from './checkbox.gts';
+import NumberField from './number-field.gts';
 import PhoneField from './phone-field.gts';
 import RadioGroup from './radio-group.gts';
 import Select from './select.gts';
@@ -18,6 +19,7 @@ import { PresenceValidator } from '../../validation/index.ts';
 import type { CheckboxGroupSignature } from './checkbox-group.gts';
 import type { CheckboxSignature } from './checkbox.gts';
 import type { FormType } from './index.gts';
+import type { NumberFieldSignature } from './number-field.gts';
 import type { RadioGroupFieldSignature } from './radio-group.gts';
 import type { SelectSignature } from './select.gts';
 import type { TextAreaSignature } from './text-area.gts';
@@ -50,6 +52,7 @@ export interface FieldSignature {
       {
         Checkbox: ComponentLike<CheckboxSignature>;
         CheckboxGroup: ComponentLike<CheckboxGroupSignature>;
+        NumberField: ComponentLike<NumberFieldSignature>;
         Phone: ComponentLike<TextFieldSignature>;
         RadioGroup: ComponentLike<RadioGroupFieldSignature>;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -246,6 +249,15 @@ export default class Field extends Component<FieldSignature> {
           disabled=@disabled
           id=this.fieldId
           onInitBinding=this.initBinding
+          isInvalid=this.hasError
+          isWarning=this.hasWarning
+        )
+        NumberField=(component
+          NumberField
+          describedBy=this.describedBy
+          disabled=@disabled
+          id=this.fieldId
+          initBinding=this.initBinding
           isInvalid=this.hasError
           isWarning=this.hasWarning
         )
