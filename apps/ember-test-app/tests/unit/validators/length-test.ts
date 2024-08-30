@@ -79,7 +79,7 @@ module('Unit | Validator | length', function (hooks) {
 
     let result = validator.result;
 
-    assert.isInvalid(result, 'This field must have 5 values (has 0)');
+    assert.isInvalid(result, 'This field is invalid');
 
     validator = new LengthValidator(
       this.binding,
