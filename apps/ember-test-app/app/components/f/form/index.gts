@@ -57,11 +57,21 @@ const Validators = {
       isWarning: true,
     }),
   ],
+  number: [
+    validator('number', {
+      allowBlank: true,
+      allowDecimals: true,
+      maxPrecision: 2,
+    }),
+  ],
 };
 
 class Model {
   @tracked
   requirePhoneLength = true;
+
+  @tracked
+  number;
 
   @tracked
   textField = '';
@@ -214,6 +224,15 @@ export default class extends Component {
                 @label="Option C"
               />
             </Field.CheckboxGroup>
+          </Form.Field>
+        </div>
+        <div class="mb-3">
+          <Form.Field @label="Number" @required={{this.required}} as |Field|>
+            <Field.NumberField
+              @binding={{bind this.model "number"}}
+              @format="currency"
+              @formatPrecision={{3}}
+            />
           </Form.Field>
         </div>
         <div class="mb-3">

@@ -53,6 +53,10 @@ export type NumberOptions = {
    * When set, the number must be exactly this value
    */
   is?: number;
+  /**
+   * When set, the number of decimal places must be less than or equal to this value
+   */
+  maxPrecision?: number;
 } & BaseOptions;
 
 declare type NumberLike = number | string | null | undefined;
@@ -121,6 +125,14 @@ export default class NumberValidator<
       return { key: 'nrg.validation.number.isValue', isValue };
     }
 
+    const maxPrecision = options['maxPrecision'];
+    if (maxPrecision !== undefined && !hasMaxPrecision(value, maxPrecision)) {
+      return {
+        key: 'nrg.validation.number.precision',
+        precision: maxPrecision,
+      };
+    }
+
     return true;
   }
 }
@@ -131,3 +143,8 @@ const isEven = (value: number) => value % 2 === 0;
 const isOdd = (value: number) => value % 2 !== 0;
 const isMultipleOf = (value: number, multiple: number) =>
   value % multiple === 0;
+
+const hasMaxPrecision = (value: number, maxPrecision: number): boolean => {
+  const [, decimal] = value.toString().split('.');
+  return decimal ? decimal.length <= maxPrecision : true;
+};

@@ -1,44 +1,12 @@
 import { on } from '@ember/modifier';
-import { action } from '@ember/object';
 
-import BoundValue from './bound-value.ts';
+import InputField from './-private/input-field.ts';
 
-export interface TextFieldSignature {
-  Element: HTMLInputElement;
-  Args: {
-    basic?: boolean;
-    describedBy?: string;
-    disabled?: boolean;
-    id?: string;
-    isInvalid?: boolean;
-    isWarning?: boolean;
-    readonly?: boolean;
-  };
-}
+import type { InputFieldSignature } from './-private/input-field.ts';
 
-export default class TextField extends BoundValue<TextFieldSignature, string> {
-  get classList() {
-    const classes = ['form-control'];
+export interface TextFieldSignature extends InputFieldSignature<object> {}
 
-    if (this.args.basic) {
-      classes[0] += '-plaintext';
-    }
-
-    if (this.args.isInvalid) {
-      classes.push('is-invalid');
-    } else if (this.args.isWarning) {
-      classes.push('is-warning');
-    }
-
-    return classes.join(' ');
-  }
-
-  @action
-  change(evt: Event) {
-    const target = evt.target as HTMLInputElement;
-    this.onChange(target?.value);
-  }
-
+export default class TextField extends InputField {
   <template>
     <input
       aria-describedby={{@describedBy}}

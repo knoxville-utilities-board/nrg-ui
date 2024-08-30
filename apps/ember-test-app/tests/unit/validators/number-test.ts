@@ -447,6 +447,44 @@ module('Unit | Validator | number', function (hooks) {
     });
   });
 
+  test('`maxPrecision` option works', function (this: TestContext, assert) {
+    const validator = new NumberValidator(
+      this.binding,
+      { maxPrecision: 2 },
+      this.model,
+    );
+
+    this.model.field = 3.1415;
+
+    let result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: false,
+      isWarning: false,
+      message: 'This field must have at most 2 decimal places',
+    });
+
+    this.model.field = 3.14;
+
+    result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: true,
+      isWarning: false,
+      message: undefined,
+    });
+
+    this.model.field = 3;
+
+    result = validator.result;
+
+    assert.deepEqual(result, {
+      isValid: true,
+      isWarning: false,
+      message: undefined,
+    });
+  });
+
   test('works with `validator` function', function (this: TestContext, assert) {
     const builder = buildValidator('number', { multipleOf: 5 });
     const validator = builder(this.binding, this.model);
