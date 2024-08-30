@@ -1,7 +1,7 @@
 /** A phone number with a 1-4 digit line number */
 export const lineNumberInput = /^(\d{1,4})$/;
 
-/** A phone number with a 1-4 digit exchange code */
+/** A phone number with a 1-3 digit exchange code */
 export const exchangeCodeInput = /^(\d{1,3})(\d{4})$/;
 
 /** A phone number with a 1-3 digit area code */

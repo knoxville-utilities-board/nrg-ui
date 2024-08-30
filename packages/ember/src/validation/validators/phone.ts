@@ -119,18 +119,18 @@ export default class PhoneValidator<
     const { countryCode, validCountryCodes, invalidCountryCodes } = options;
     const cc = getCountryCode(value);
 
-    if (countryCode !== 'allow' || validCountryCodes || invalidCountryCodes) {
-      if (cc && countryCode === 'disallow') {
-        return {
-          key: 'nrg.validation.phone.countryCode.notAllowed',
-          value,
-        };
-      } else if (!cc && countryCode === 'require') {
-        return {
-          key: 'nrg.validation.phone.countryCode.required',
-          value,
-        };
-      }
+    if (cc && countryCode === 'disallow') {
+      return {
+        key: 'nrg.validation.phone.countryCode.notAllowed',
+        value,
+      };
+    }
+
+    if (!cc && countryCode === 'require') {
+      return {
+        key: 'nrg.validation.phone.countryCode.required',
+        value,
+      };
     }
 
     if (cc && validCountryCodes && !validCountryCodes.includes(cc)) {
@@ -157,18 +157,16 @@ export default class PhoneValidator<
 
     const ac = getAreaCode(value);
 
-    if (areaCode !== 'allow') {
-      if (ac && areaCode === 'disallow') {
-        return {
-          key: 'nrg.validation.phone.areaCode.notAllowed',
-          value,
-        };
-      } else if (!ac && areaCode === 'require') {
-        return {
-          key: 'nrg.validation.phone.areaCode.required',
-          value,
-        };
-      }
+    if (ac && areaCode === 'disallow') {
+      return {
+        key: 'nrg.validation.phone.areaCode.notAllowed',
+        value,
+      };
+    } else if (!ac && areaCode === 'require') {
+      return {
+        key: 'nrg.validation.phone.areaCode.required',
+        value,
+      };
     }
 
     if (ac && validAreaCodes && !validAreaCodes.includes(ac)) {
