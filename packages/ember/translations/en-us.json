@@ -48,6 +48,25 @@
         "odd": "This field must be an odd number",
         "multipleOf": "This field must be a multiple of {multipleOf, number}"
       },
+      "phone": {
+        "areaCode": {
+          "invalid": "This phone number must not include one of the following area codes: {areaCodes}",
+          "notAllowed": "This phone number must not include an area code",
+          "required": "This phone number must include an area code",
+          "valid": "This phone number must include a valid area code: {areaCodes}"
+        },
+        "countryCode": {
+          "invalid": "This phone number must not include one of the following country codes: {countryCodes}",
+          "notAllowed": "This phone number must not include a country code",
+          "required": "This phone number must include a country code",
+          "valid": "This phone number must include a valid country code: {countryCodes}"
+        },
+        "exchangeCode": {
+          "invalid": "This phone number must not include one of the following exchange codes: {exchangeCodes}",
+          "valid": "This phone number must include a valid exchange code: {exchangeCodes}"
+        },
+        "invalid": "This field must be a valid phone number"
+      },
       "presence": {
         "blank": "This field cannot be blank",
         "notBlank": "This field must be blank",

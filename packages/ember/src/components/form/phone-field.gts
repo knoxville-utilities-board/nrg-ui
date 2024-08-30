@@ -5,7 +5,14 @@ import { runTask } from 'ember-lifeline';
 
 import TextField from './text-field.gts';
 import onInsert from '../../modifiers/did-insert.ts';
-import phoneFormats from '../../utils/phone-formats.ts';
+import {
+  exchangeCodeInput,
+  exchangeCodeOutput,
+  areaCodeInput,
+  areaCodeOutput,
+  countryCodeInput,
+  countryCodeOutput,
+} from '../../utils/phone.ts';
 
 function isSpecialCharacter(char: string) {
   return /\D/.test(char);
@@ -67,21 +74,15 @@ export default class PhoneField extends TextField {
       returnValue = unformattedValue;
     } else if (unformattedValue.length <= 7) {
       returnValue = unformattedValue.replace(
-        phoneFormats.localInput,
-        phoneFormats.localOutput,
+        exchangeCodeInput,
+        exchangeCodeOutput,
       );
     } else if (unformattedValue.length <= 10) {
-      returnValue = unformattedValue.replace(
-        phoneFormats.withAreaCodeInput,
-        phoneFormats.withAreaCodeOutput,
-      );
+      returnValue = unformattedValue.replace(areaCodeInput, areaCodeOutput);
     } else {
       returnValue = unformattedValue
         .substring(0, 13)
-        .replace(
-          phoneFormats.withCountryCodeInput,
-          phoneFormats.withCountryCodeOutput,
-        );
+        .replace(countryCodeInput, countryCodeOutput);
     }
 
     // Adjust cursor to the same relative position as before formatting
