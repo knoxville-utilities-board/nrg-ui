@@ -81,7 +81,6 @@ export default class PhoneField extends InputField<PhoneInputSignature> {
       disabled={{@disabled}}
       id={{@id}}
       readonly={{@readonly}}
-      maxlength="19"
       type="tel"
       value={{this.displayValue}}
       {{on "input" this.change}}
