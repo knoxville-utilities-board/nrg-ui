@@ -10,6 +10,9 @@ export const areaCodeInput = /^(\d{1,3})(\d{3})(\d{4})$/;
 /** A phone number with a 1-3 digit country code */
 export const countryCodeInput = /^(\d{1,3})(\d{3})(\d{3})(\d{4})$/;
 
+/** Any phone number longer than 13 digits */
+export const invalidInput = /^(\d{3})(\d{3})(\d{3})(\d{4})(\d+)$/;
+
 /** Format a 4 digit phone number */
 export const lineNumberOutput = '$1';
 
@@ -21,6 +24,9 @@ export const areaCodeOutput = '($1) $2-$3';
 
 /** Format an 11 to 13 digit phone number */
 export const countryCodeOutput = '+$1 ($2) $3-$4';
+
+/** Format a phone number with an invalid length (over 13 digits) */
+export const invalidOutput = '+$1 ($2) $3-$4 "$5"';
 
 export function hasLineNumber(value: string): boolean {
   return lineNumberInput.test(value);

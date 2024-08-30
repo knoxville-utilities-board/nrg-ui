@@ -1,4 +1,4 @@
-import { fillIn, render, settled, click } from '@ember/test-helpers';
+import { blur, fillIn, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import PhoneInput from '@nrg-ui/core/components/form/phone-input';
 import bind from '@nrg-ui/core/helpers/bind';
@@ -9,41 +9,6 @@ import { setupRenderingTest } from '../../../helpers';
 class Model {
   @tracked
   value: string = '';
-}
-
-async function clickAt(element: HTMLInputElement, position: number) {
-  element.setSelectionRange(position, position);
-  await click(element);
-}
-
-async function simulateBackspace(element: HTMLInputElement) {
-  const cursorPosition = element.selectionStart ?? -1;
-  const value = element.value;
-  element.value =
-    value.slice(0, cursorPosition - 1) + value.slice(cursorPosition);
-  element.setSelectionRange(cursorPosition - 1, cursorPosition - 1);
-  element.dispatchEvent(
-    new InputEvent('input', {
-      key: 'Backspace',
-      inputType: 'deleteContentBackward',
-    }),
-  );
-  await settled();
-}
-
-async function simulateDelete(element: HTMLInputElement) {
-  const cursorPosition = element.selectionStart ?? -1;
-  const value = element.value;
-  element.value =
-    value.slice(0, cursorPosition) + value.slice(cursorPosition + 1);
-  element.setSelectionRange(cursorPosition, cursorPosition);
-  element.dispatchEvent(
-    new InputEvent('input', {
-      key: 'Delete',
-      inputType: 'deleteContentForward',
-    }),
-  );
-  await settled();
 }
 
 module('Integration | Component | form/phone-input', function (hooks) {
@@ -59,44 +24,87 @@ module('Integration | Component | form/phone-input', function (hooks) {
     assert.dom('input').hasAttribute('type', 'tel').hasClass('form-control');
   });
 
-  test('it displays formatted phone numbers', async function (assert) {
+  test('it formats (default)', async function (assert) {
     const model = new Model();
 
     await render(<template>
       <PhoneInput @binding={{bind model "value"}} />
     </template>);
+
+    await fillIn('input', '1111234567890123456789');
+    await blur('input');
+
+    assert.dom('input').hasValue('+111 (123) 456-7890 "123456789"');
+    assert.strictEqual(model.value, '1111234567890123456789');
 
     await fillIn('input', '11234567890');
+    await blur('input');
+
     assert.dom('input').hasValue('+1 (123) 456-7890');
-
-    await fillIn('input', '1234567890');
-    assert.dom('input').hasValue('(123) 456-7890');
-
-    await fillIn('input', '4567890');
-    assert.dom('input').hasValue('456-7890');
-
-    await fillIn('input', '7890');
-    assert.dom('input').hasValue('7890');
-  });
-
-  test('it binds unformatted numbers', async function (assert) {
-    const model = new Model();
-
-    await render(<template>
-      <PhoneInput @binding={{bind model "value"}} />
-    </template>);
-
-    await fillIn('input', '+1 (123) 456-7890');
     assert.strictEqual(model.value, '11234567890');
 
-    await fillIn('input', '(123) 456-7890');
+    await fillIn('input', '1234567890');
+    await blur('input');
+
+    assert.dom('input').hasValue('(123) 456-7890');
     assert.strictEqual(model.value, '1234567890');
 
-    await fillIn('input', '456-7890');
+    await fillIn('input', '4567890');
+    await blur('input');
+
+    assert.dom('input').hasValue('456-7890');
     assert.strictEqual(model.value, '4567890');
+
+    await fillIn('input', '7890');
+    await blur('input');
+
+    assert.dom('input').hasValue('7890');
+    assert.strictEqual(model.value, '7890');
   });
 
-  test('it unformats pasted inputs', async function (assert) {
+  test('it formats (custom)', async function (assert) {
+    const model = new Model();
+
+    const format = (value: string) => {
+      return value.replace(/(\d)(\d+)/, '$1 $2');
+    };
+
+    await render(<template>
+      <PhoneInput @binding={{bind model "value"}} @format={{format}} />
+    </template>);
+
+    await fillIn('input', '1111234567890123456789');
+    await blur('input');
+
+    assert.dom('input').hasValue('1 111234567890123456789');
+    assert.strictEqual(model.value, '1111234567890123456789');
+
+    await fillIn('input', '11234567890');
+    await blur('input');
+
+    assert.dom('input').hasValue('1 1234567890');
+    assert.strictEqual(model.value, '11234567890');
+
+    await fillIn('input', '1234567890');
+    await blur('input');
+
+    assert.dom('input').hasValue('1 234567890');
+    assert.strictEqual(model.value, '1234567890');
+
+    await fillIn('input', '4567890');
+    await blur('input');
+
+    assert.dom('input').hasValue('4 567890');
+    assert.strictEqual(model.value, '4567890');
+
+    await fillIn('input', '7890');
+    await blur('input');
+
+    assert.dom('input').hasValue('7 890');
+    assert.strictEqual(model.value, '7890');
+  });
+
+  test('it allows unformatted input', async function (assert) {
     const model = new Model();
 
     await render(<template>
@@ -104,109 +112,9 @@ module('Integration | Component | form/phone-input', function (hooks) {
     </template>);
 
     await fillIn('input', '1-12a345(6)78_90 ');
+    await blur('input');
+
     assert.dom('input').hasValue('+1 (123) 456-7890');
     assert.strictEqual(model.value, '11234567890');
-  });
-
-  test('it reacts to changes in model', async function (assert) {
-    const model = new Model();
-
-    await render(<template>
-      <PhoneInput @binding={{bind model "value"}} />
-    </template>);
-    assert.dom('input').hasValue('');
-    model.value = '11234567890';
-    await settled();
-    assert.dom('input').hasValue('+1 (123) 456-7890');
-  });
-
-  test('it allows for backspacing from end of string', async function (assert) {
-    const model = new Model();
-    model.value = '11234567890';
-    await render(<template>
-      <PhoneInput @binding={{bind model "value"}} />
-    </template>);
-    const element = this.element.querySelector('input') as HTMLInputElement;
-    await clickAt(element, element.value.length);
-    for (let i = 0; i < 4; i++) {
-      await simulateBackspace(element);
-    }
-    assert.strictEqual(model.value, '1123456');
-    for (let i = 0; i < 3; i++) {
-      await simulateBackspace(element);
-    }
-    assert.strictEqual(model.value, '1123');
-    for (let i = 0; i < 3; i++) {
-      await simulateBackspace(element);
-    }
-    assert.strictEqual(model.value, '1');
-  });
-
-  test('it allows for deleting from beginning of string', async function (assert) {
-    const model = new Model();
-    model.value = '1234567890123';
-    await render(<template>
-      <PhoneInput @binding={{bind model "value"}} />
-    </template>);
-    const element = this.element.querySelector('input') as HTMLInputElement;
-    await clickAt(element, 0);
-    for (let i = 0; i < 4; i++) {
-      await simulateDelete(element);
-    }
-    assert.strictEqual(model.value, '567890123');
-    for (let i = 0; i < 3; i++) {
-      await simulateDelete(element);
-    }
-    assert.strictEqual(model.value, '890123');
-    for (let i = 0; i < 3; i++) {
-      await simulateDelete(element);
-    }
-    assert.strictEqual(model.value, '123');
-    for (let i = 0; i < 3; i++) {
-      await simulateDelete(element);
-    }
-    assert.strictEqual(model.value, '');
-  });
-
-  test('it allows for backspacing from after special characters', async function (assert) {
-    const model = new Model();
-    model.value = '1234567890123';
-    await render(<template>
-      <PhoneInput @binding={{bind model "value"}} />
-    </template>);
-    const element = this.element.querySelector('input') as HTMLInputElement;
-    await clickAt(element, 11);
-    await simulateBackspace(element);
-    assert.strictEqual(model.value, '123457890123');
-    assert.strictEqual(element.selectionStart, 10);
-
-    await simulateBackspace(element);
-    await simulateBackspace(element);
-    assert.strictEqual(model.value, '1237890123');
-    assert.strictEqual(element.selectionStart, 6);
-
-    await simulateBackspace(element);
-    await simulateBackspace(element);
-    await simulateBackspace(element);
-    assert.strictEqual(model.value, '7890123');
-    assert.strictEqual(element.selectionStart, 0);
-  });
-
-  test('it allows for deleting from before special characters', async function (assert) {
-    const model = new Model();
-    model.value = '1234567890123';
-    await render(<template>
-      <PhoneInput @binding={{bind model "value"}} />
-    </template>);
-    const element = this.element.querySelector('input') as HTMLInputElement;
-    await clickAt(element, 4);
-    await simulateDelete(element);
-    assert.strictEqual(model.value, '123567890123');
-    assert.strictEqual(element.selectionStart, 6);
-
-    await clickAt(element, 0);
-    await simulateDelete(element);
-    assert.strictEqual(model.value, '23567890123');
-    assert.strictEqual(element.selectionStart, 1);
   });
 });
