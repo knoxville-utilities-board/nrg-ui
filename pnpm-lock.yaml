@@ -66,12 +66,12 @@ importers:
       '@glint/template':
         specifier: ^1.4.0
         version: 1.4.0
+      '@nrg-ui/core':
+        specifier: workspace:*
+        version: link:../../packages/ember-core
       '@nrg-ui/css':
         specifier: workspace:*
         version: link:../../packages/design-system
-      '@nrg-ui/ember':
-        specifier: workspace:*
-        version: link:../../packages/ember
       '@tsconfig/ember':
         specifier: ^3.0.8
         version: 3.0.8
@@ -323,7 +323,7 @@ importers:
         specifier: ^1.54.8
         version: 1.77.8
 
-  packages/ember:
+  packages/ember-core:
     dependencies:
       '@embroider/addon-shim':
         specifier: ^1.8.7

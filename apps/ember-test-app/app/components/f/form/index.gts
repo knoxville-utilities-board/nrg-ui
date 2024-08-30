@@ -3,10 +3,10 @@ import { array } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import Button from '@nrg-ui/ember/components/button';
-import Form from '@nrg-ui/ember/components/form';
-import bind from '@nrg-ui/ember/helpers/bind';
-import { validator } from '@nrg-ui/ember/validation';
+import Button from '@nrg-ui/core/components/button';
+import Form from '@nrg-ui/core/components/form';
+import bind from '@nrg-ui/core/helpers/bind';
+import { validator } from '@nrg-ui/core/validation';
 import { tracked as autoTrack } from 'tracked-built-ins';
 
 import CodeBlock from '../../code-block';

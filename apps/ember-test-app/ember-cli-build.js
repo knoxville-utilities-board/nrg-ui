@@ -9,7 +9,7 @@ module.exports = function (defaults) {
     },
     'ember-cli-babel': { enableTypeScriptTransform: true },
     autoImport: {
-      watchDependencies: ['@nrg-ui/ember', '@nrg-ui/css'],
+      watchDependencies: ['@nrg-ui/core', '@nrg-ui/css'],
     },
     '@embroider/macros': {
       setConfig: {

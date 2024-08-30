@@ -1,4 +1,4 @@
-# @nrg-ui/ember
+# @nrg-ui/core
 
 Opinionated UI addon based on how KUB scaffolds web applications
 
@@ -10,7 +10,7 @@ Opinionated UI addon based on how KUB scaffolds web applications
 ## Installation
 
 ```sh
-ember install @nrg-ui/ember
+ember install @nrg-ui/core
 ```
 
 ## Usage

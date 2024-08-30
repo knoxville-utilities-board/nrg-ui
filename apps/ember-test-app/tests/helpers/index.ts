@@ -6,7 +6,7 @@ import {
   type SetupTestOptions,
 } from 'ember-qunit';
 
-import type { ValidateFnResponse } from '@nrg-ui/ember/validation/types';
+import type { ValidateFnResponse } from '@nrg-ui/core/validation/types';
 
 declare global {
   interface Assert {

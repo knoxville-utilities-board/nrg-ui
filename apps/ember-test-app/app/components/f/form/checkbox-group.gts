@@ -2,8 +2,8 @@ import { array, fn } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import CheckboxGroup from '@nrg-ui/ember/components/form/checkbox-group';
-import bind from '@nrg-ui/ember/helpers/bind';
+import CheckboxGroup from '@nrg-ui/core/components/form/checkbox-group';
+import bind from '@nrg-ui/core/helpers/bind';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 

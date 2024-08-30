@@ -1,5 +1,5 @@
 import { render } from '@ember/test-helpers';
-import Card from '@nrg-ui/ember/components/mktg/card';
+import Card from '@nrg-ui/core/components/mktg/card';
 import { assert, module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';

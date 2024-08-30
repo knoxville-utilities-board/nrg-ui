@@ -1,5 +1,5 @@
 import { render } from '@ember/test-helpers';
-import PromoContainer from '@nrg-ui/ember/components/mktg/promo-container';
+import PromoContainer from '@nrg-ui/core/components/mktg/promo-container';
 import { assert, module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';

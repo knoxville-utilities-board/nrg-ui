@@ -1,5 +1,5 @@
 import { click, findAll, render, type TestContext } from '@ember/test-helpers';
-import Button from '@nrg-ui/ember/components/button';
+import Button from '@nrg-ui/core/components/button';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../helpers';

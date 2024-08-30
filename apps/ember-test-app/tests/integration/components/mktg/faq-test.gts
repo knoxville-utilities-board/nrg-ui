@@ -1,5 +1,5 @@
 import { click, render } from '@ember/test-helpers';
-import Faq from '@nrg-ui/ember/components/mktg/faq';
+import Faq from '@nrg-ui/core/components/mktg/faq';
 import { assert, module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';

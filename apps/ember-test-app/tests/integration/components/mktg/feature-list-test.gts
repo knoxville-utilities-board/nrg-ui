@@ -1,5 +1,5 @@
 import { render } from '@ember/test-helpers';
-import FeatureList from '@nrg-ui/ember/components/mktg/feature-list';
+import FeatureList from '@nrg-ui/core/components/mktg/feature-list';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';

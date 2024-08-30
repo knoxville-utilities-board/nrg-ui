@@ -1,6 +1,6 @@
 import { click, render } from '@ember/test-helpers';
-import Navbar from '@nrg-ui/ember/components/mktg/navbar';
-import NavItem from '@nrg-ui/ember/components/nav-item';
+import Navbar from '@nrg-ui/core/components/mktg/navbar';
+import NavItem from '@nrg-ui/core/components/nav-item';
 import { assert, module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';

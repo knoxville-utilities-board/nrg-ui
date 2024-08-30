@@ -1,16 +1,16 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
-import { bind } from '@nrg-ui/ember/helpers/bind';
+import { bind } from '@nrg-ui/core/helpers/bind';
 import {
   validator as buildValidator,
   NumberValidator,
-} from '@nrg-ui/ember/validation';
+} from '@nrg-ui/core/validation';
 import { setupIntl } from 'ember-intl/test-support';
 import { setupTest } from 'ember-test-app/tests/helpers';
 import { module, test } from 'qunit';
 
 import type { TestContext as TC } from '@ember/test-helpers';
-import type { Binding } from '@nrg-ui/ember';
+import type { Binding } from '@nrg-ui/core';
 
 class Model {
   @tracked

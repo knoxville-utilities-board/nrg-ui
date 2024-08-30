@@ -1,6 +1,6 @@
 import { render } from '@ember/test-helpers';
-import Button from '@nrg-ui/ember/components/button';
-import Header from '@nrg-ui/ember/components/mktg/header';
+import Button from '@nrg-ui/core/components/button';
+import Header from '@nrg-ui/core/components/mktg/header';
 import { assert, module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
