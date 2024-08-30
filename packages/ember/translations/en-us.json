@@ -12,7 +12,8 @@
     },
     "validation": {
       "confirmation": {
-        "invalid": "This field does not match {label}"
+        "invalid": "This field does not match {label}",
+        "match": "This field cannot match {label}"
       },
       "custom": {
         "invalid": "This field is invalid"
