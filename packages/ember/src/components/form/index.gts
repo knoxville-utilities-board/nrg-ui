@@ -36,7 +36,7 @@ export interface FormType {
   isValidFor(name: string): boolean;
   errorFor(name: string): string | undefined;
   warningFor(name: string): string | undefined;
-  registerBinding(binding: Binding, name?: string): void;
+  registerBinding(binding: Binding<object>, name?: string): void;
   registerValidator(
     validator: Validator<unknown, object, object, object>,
     name?: string,

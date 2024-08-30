@@ -7,6 +7,7 @@ import Button from '@nrg-ui/ember/components/button';
 import Form from '@nrg-ui/ember/components/form';
 import bind from '@nrg-ui/ember/helpers/bind';
 import { validator } from '@nrg-ui/ember/validation';
+import { tracked as autoTrack } from 'tracked-built-ins';
 
 import CodeBlock from '../../code-block';
 
@@ -47,6 +48,15 @@ const Validators = {
       },
     }),
   ],
+  checkboxGroup: [
+    validator('custom', {
+      validate(value) {
+        return !value.includes('cg0');
+      },
+      message: 'The first checkbox is not allowed',
+      isWarning: true,
+    }),
+  ],
 };
 
 class Model {
@@ -67,6 +77,12 @@ class Model {
 
   @tracked
   radio = '';
+
+  @tracked
+  checkbox;
+
+  @tracked
+  checkboxGroup = autoTrack(new Array(3));
 
   toJSON() {
     const obj = {};
@@ -175,6 +191,40 @@ export default class extends Component {
             as |Field|
           >
             <Field.Phone @binding={{bind this.model "phone"}} />
+          </Form.Field>
+        </div>
+        <div class="mb-3">
+          <Form.Field
+            @label="Checkbox Group"
+            @required={{this.required}}
+            @validatorKey="checkboxGroup"
+            as |Field|
+          >
+            <Field.CheckboxGroup as |Item|>
+              <Item
+                @binding={{bind this.model "checkboxGroup.0"}}
+                @label="Option A"
+              />
+              <Item
+                @binding={{bind this.model "checkboxGroup.1"}}
+                @label="Option B"
+              />
+              <Item
+                @binding={{bind this.model "checkboxGroup.2"}}
+                @label="Option C"
+              />
+            </Field.CheckboxGroup>
+          </Form.Field>
+        </div>
+        <div class="mb-3">
+          <Form.Field @required={{this.required}} as |Field|>
+            <Field.Checkbox @binding={{bind this.model "checkbox"}}>
+              I agree to the
+              <a
+                class="link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
+                href="#"
+              >Privacy Policy</a>.
+            </Field.Checkbox>
           </Form.Field>
         </div>
         <Form.SubmitButton class="btn-primary mt-3" />

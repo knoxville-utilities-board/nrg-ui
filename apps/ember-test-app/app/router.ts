@@ -18,6 +18,7 @@ Router.map(function () {
     this.route('header');
     this.route('form', function () {
       this.route('checkbox');
+      this.route('checkbox-group');
       this.route('phone-field');
       this.route('radio-group');
       this.route('select');
