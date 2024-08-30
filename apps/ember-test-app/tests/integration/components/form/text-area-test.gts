@@ -1,7 +1,7 @@
 import { fillIn, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import TextArea from '@nrg-ui/ember/components/form/text-area';
-import bind from '@nrg-ui/ember/helpers/bind';
+import TextArea from '@nrg-ui/core/components/form/text-area';
+import bind from '@nrg-ui/core/helpers/bind';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';

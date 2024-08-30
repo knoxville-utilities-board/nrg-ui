@@ -1,7 +1,7 @@
 import { click, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import Select from '@nrg-ui/ember/components/form/select';
-import bind from '@nrg-ui/ember/helpers/bind';
+import Select from '@nrg-ui/core/components/form/select';
+import bind from '@nrg-ui/core/helpers/bind';
 import { setupIntl } from 'ember-intl/test-support';
 import { triggerKeyDown } from 'ember-keyboard';
 import { module, test } from 'qunit';

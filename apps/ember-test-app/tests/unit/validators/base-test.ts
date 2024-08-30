@@ -1,15 +1,15 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
-import { bind } from '@nrg-ui/ember/helpers/bind';
-import { BaseValidator } from '@nrg-ui/ember/validation';
+import { bind } from '@nrg-ui/core/helpers/bind';
+import { BaseValidator } from '@nrg-ui/core/validation';
 import { addTranslations, setupIntl } from 'ember-intl/test-support';
 import { setupTest } from 'ember-test-app/tests/helpers';
 import { module, test } from 'qunit';
 
 import type Owner from '@ember/owner';
 import type { TestContext as TC } from '@ember/test-helpers';
-import type { Binding } from '@nrg-ui/ember';
-import type { BaseOptions, ValidateFnResponse } from '@nrg-ui/ember/validation';
+import type { Binding } from '@nrg-ui/core';
+import type { BaseOptions, ValidateFnResponse } from '@nrg-ui/core/validation';
 
 class Model {
   @tracked

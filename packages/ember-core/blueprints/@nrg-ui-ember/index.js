@@ -18,7 +18,7 @@ const BUILD_CHUNK = `  app.import('node_modules/@nrg-ui/css/dist/main.css');
 
 module.exports = {
   description:
-    'The default blueprint for @nrg-ui/ember. This runs when you run `ember install @nrg-ui/ember` in your project.',
+    'The default blueprint for @nrg-ui/core. This runs when you run `ember install @nrg-ui/core` in your project.',
 
   async afterInstall() {
     await this.addPackagesToProject([{ name: '@nrg-ui/css' }]);

@@ -1,4 +1,4 @@
-import Button from '@nrg-ui/ember/components/button';
+import Button from '@nrg-ui/core/components/button';
 
 export default interface Registry {
   Button: typeof Button;

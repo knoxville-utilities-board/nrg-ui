@@ -1,5 +1,5 @@
 import { render } from '@ember/test-helpers';
-import SectionHeader from '@nrg-ui/ember/components/mktg/section-header';
+import SectionHeader from '@nrg-ui/core/components/mktg/section-header';
 import { assert, module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';

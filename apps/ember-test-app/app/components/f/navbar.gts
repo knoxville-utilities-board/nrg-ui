@@ -1,8 +1,8 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import Navbar from '@nrg-ui/ember/components/mktg/navbar';
-import NavItem from '@nrg-ui/ember/components/nav-item';
+import Navbar from '@nrg-ui/core/components/mktg/navbar';
+import NavItem from '@nrg-ui/core/components/nav-item';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 

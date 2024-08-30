@@ -1,6 +1,6 @@
 import { fn } from '@ember/helper';
 import { click, render, type TestContext } from '@ember/test-helpers';
-import ButtonGroup from '@nrg-ui/ember/components/button-group';
+import ButtonGroup from '@nrg-ui/core/components/button-group';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../helpers';

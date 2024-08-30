@@ -1,5 +1,5 @@
 import { render } from '@ember/test-helpers';
-import Footer from '@nrg-ui/ember/components/mktg/footer';
+import Footer from '@nrg-ui/core/components/mktg/footer';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';

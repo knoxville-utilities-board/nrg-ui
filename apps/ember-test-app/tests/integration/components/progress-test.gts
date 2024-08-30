@@ -1,5 +1,5 @@
 import { find, render, type TestContext } from '@ember/test-helpers';
-import Progress from '@nrg-ui/ember/components/progress';
+import Progress from '@nrg-ui/core/components/progress';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../helpers';

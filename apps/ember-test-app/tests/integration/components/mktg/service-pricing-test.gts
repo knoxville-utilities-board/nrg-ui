@@ -1,5 +1,5 @@
 import { render } from '@ember/test-helpers';
-import ServicePricing from '@nrg-ui/ember/components/mktg/service-pricing';
+import ServicePricing from '@nrg-ui/core/components/mktg/service-pricing';
 import { assert, module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';

@@ -2,8 +2,8 @@ import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import Button from '@nrg-ui/ember/components/button';
-import Promo from '@nrg-ui/ember/components/mktg/promo';
+import Button from '@nrg-ui/core/components/button';
+import Promo from '@nrg-ui/core/components/mktg/promo';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 

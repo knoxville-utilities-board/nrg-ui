@@ -1,5 +1,5 @@
 import { render } from '@ember/test-helpers';
-import WorkflowTray from '@nrg-ui/ember/components/mktg/workflow-tray';
+import WorkflowTray from '@nrg-ui/core/components/mktg/workflow-tray';
 import { assert, module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
