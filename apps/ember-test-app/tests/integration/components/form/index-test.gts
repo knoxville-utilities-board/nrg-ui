@@ -12,7 +12,7 @@ import { setupRenderingTest } from '../../../helpers';
 
 class Model {
   @tracked
-  textField: string = '';
+  textInput: string = '';
 
   @tracked
   textArea: string = '';
@@ -39,8 +39,8 @@ module('Integration | Component | form', function (hooks) {
 
     await render(<template>
       <Form as |Form|>
-        <Form.Field @label="Text Field" @required={{true}} as |Field|>
-          <Field.TextField @binding={{bind model "textField"}} />
+        <Form.Field @label="Text Input" @required={{true}} as |Field|>
+          <Field.TextInput @binding={{bind model "textInput"}} />
         </Form.Field>
         <Form.Field
           @label="Text Area (with additional text)"
@@ -58,11 +58,11 @@ module('Integration | Component | form', function (hooks) {
 
     assert.dom('form').exists();
 
-    // Text field
+    // Text input
     let label = this.element.querySelector('label:has(+ input)');
     const input = this.element.querySelector('label + input');
 
-    assert.dom(label).hasClass('form-label').containsText('Text Field');
+    assert.dom(label).hasClass('form-label').containsText('Text Input');
     assert.dom('span', label).exists().hasClass('text-danger').hasText('*');
 
     let labelId = label.getAttribute('for');
@@ -122,8 +122,8 @@ module('Integration | Component | form', function (hooks) {
 
     await render(<template>
       <Form @validators={{Validators}} @onSubmit={{actionHandler}} as |Form|>
-        <Form.Field @label="Text Field" @required={{true}} as |Field|>
-          <Field.TextField @binding={{bind model "textField"}} />
+        <Form.Field @label="Text Input" @required={{true}} as |Field|>
+          <Field.TextInput @binding={{bind model "textInput"}} />
         </Form.Field>
         <Form.Field
           @label="Text Area (with additional text)"

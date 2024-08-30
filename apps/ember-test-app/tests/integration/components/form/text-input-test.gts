@@ -1,6 +1,6 @@
 import { fillIn, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import TextField from '@nrg-ui/ember/components/form/text-field';
+import TextInput from '@nrg-ui/ember/components/form/text-input';
 import bind from '@nrg-ui/ember/helpers/bind';
 import { module, test } from 'qunit';
 
@@ -11,7 +11,7 @@ class Model {
   value: string = 'Hello, world!';
 }
 
-module('Integration | Component | form/text-field', function (hooks) {
+module('Integration | Component | form/text-input', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders (inline)', async function (assert) {
@@ -23,7 +23,7 @@ module('Integration | Component | form/text-field', function (hooks) {
     };
 
     await render(<template>
-      <TextField @binding={{bind model "value"}} @onChange={{actionHandler}} />
+      <TextInput @binding={{bind model "value"}} @onChange={{actionHandler}} />
     </template>);
 
     assert
@@ -37,7 +37,7 @@ module('Integration | Component | form/text-field', function (hooks) {
     assert.dom('div > input').hasValue('Foo bar');
 
     await render(<template>
-      <TextField
+      <TextInput
         @binding={{bind model "value"}}
         @basic={{true}}
         @onChange={{actionHandler}}

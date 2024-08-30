@@ -12,7 +12,7 @@ import InputField from './-private/input-field.ts';
 import type { Optional } from '../../';
 import type { IntlService } from 'ember-intl';
 
-export interface NumberFieldSignature {
+export interface NumberInputSignature {
   Args: {
     allowBlank?: boolean;
     allowDecimals?: boolean;
@@ -26,8 +26,8 @@ export interface NumberFieldSignature {
   };
 }
 
-export default class NumberField extends InputField<
-  NumberFieldSignature,
+export default class NumberInput extends InputField<
+  NumberInputSignature,
   number
 > {
   @tracked

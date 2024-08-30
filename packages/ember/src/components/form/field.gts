@@ -7,23 +7,23 @@ import { runTask } from 'ember-lifeline';
 
 import CheckboxGroup from './checkbox-group.gts';
 import Checkbox from './checkbox.gts';
-import NumberField from './number-field.gts';
-import PhoneField from './phone-field.gts';
+import NumberInput from './number-input.gts';
+import PhoneInput from './phone-input.gts';
 import RadioGroup from './radio-group.gts';
 import Select from './select.gts';
 import TextArea from './text-area.gts';
-import TextField from './text-field.gts';
+import TextInput from './text-input.gts';
 import onUpdate from '../../modifiers/on-update.ts';
 import { PresenceValidator } from '../../validation/index.ts';
 
 import type { CheckboxGroupSignature } from './checkbox-group.gts';
 import type { CheckboxSignature } from './checkbox.gts';
 import type { FormType } from './index.gts';
-import type { NumberFieldSignature } from './number-field.gts';
-import type { RadioGroupFieldSignature } from './radio-group.gts';
+import type { NumberInputSignature } from './number-input.gts';
+import type { RadioGroupSignature } from './radio-group.gts';
 import type { SelectSignature } from './select.gts';
 import type { TextAreaSignature } from './text-area.gts';
-import type { TextFieldSignature } from './text-field.gts';
+import type { TextInputSignature } from './text-input.gts';
 import type { Binding } from '../../';
 import type { ComponentLike } from '@glint/template';
 
@@ -52,14 +52,14 @@ export interface FieldSignature {
       {
         Checkbox: ComponentLike<CheckboxSignature>;
         CheckboxGroup: ComponentLike<CheckboxGroupSignature>;
-        NumberField: ComponentLike<NumberFieldSignature>;
-        Phone: ComponentLike<TextFieldSignature>;
-        RadioGroup: ComponentLike<RadioGroupFieldSignature>;
+        NumberInput: ComponentLike<NumberInputSignature>;
+        PhoneInput: ComponentLike<TextInputSignature>;
+        RadioGroup: ComponentLike<RadioGroupSignature>;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         Select: ComponentLike<SelectSignature<any>>;
         Text: ComponentLike<TextSignature>;
         TextArea: ComponentLike<TextAreaSignature>;
-        TextField: ComponentLike<TextFieldSignature>;
+        TextInput: ComponentLike<TextInputSignature>;
       },
     ];
   };
@@ -252,8 +252,8 @@ export default class Field extends Component<FieldSignature> {
           isInvalid=this.hasError
           isWarning=this.hasWarning
         )
-        NumberField=(component
-          NumberField
+        NumberInput=(component
+          NumberInput
           describedBy=this.describedBy
           disabled=@disabled
           id=this.fieldId
@@ -261,8 +261,8 @@ export default class Field extends Component<FieldSignature> {
           isInvalid=this.hasError
           isWarning=this.hasWarning
         )
-        Phone=(component
-          PhoneField
+        PhoneInput=(component
+          PhoneInput
           describedBy=this.describedBy
           disabled=@disabled
           id=this.fieldId
@@ -298,8 +298,8 @@ export default class Field extends Component<FieldSignature> {
           isInvalid=this.hasError
           isWarning=this.hasWarning
         )
-        TextField=(component
-          TextField
+        TextInput=(component
+          TextInput
           describedBy=this.describedBy
           disabled=@disabled
           id=this.fieldId
