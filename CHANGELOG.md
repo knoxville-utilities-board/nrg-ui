@@ -1,5 +1,50 @@
 # Changelog
 
+## Release (2024-08-30)
+
+@nrg-ui/css 0.1.1 (patch)
+@nrg-ui/core 0.2.0 (minor)
+
+#### :rocket: Enhancement
+* `ember-test-app`, `@nrg-ui/core`
+  * [#131](https://github.com/knoxville-utilities-board/nrg-ui/pull/131) refactor(phone): Format on blur instead of on type ([@TSenter](https://github.com/TSenter))
+  * [#130](https://github.com/knoxville-utilities-board/nrg-ui/pull/130) refactor: Move `@nrg-ui/ember` package to `@nrg-ui/core` ([@TSenter](https://github.com/TSenter))
+* `ember-test-app`
+  * [#127](https://github.com/knoxville-utilities-board/nrg-ui/pull/127) feat: Add email validator ([@TSenter](https://github.com/TSenter))
+  * [#126](https://github.com/knoxville-utilities-board/nrg-ui/pull/126) feat: Add number field ([@TSenter](https://github.com/TSenter))
+  * [#118](https://github.com/knoxville-utilities-board/nrg-ui/pull/118) feat: Add phone validator ([@TSenter](https://github.com/TSenter))
+  * [#116](https://github.com/knoxville-utilities-board/nrg-ui/pull/116) feat: Create checkbox-group component ([@TSenter](https://github.com/TSenter))
+  * [#117](https://github.com/knoxville-utilities-board/nrg-ui/pull/117) feat(confirmation): Add `inverse` option ([@TSenter](https://github.com/TSenter))
+  * [#100](https://github.com/knoxville-utilities-board/nrg-ui/pull/100) feat: Implement checkbox component ([@TSenter](https://github.com/TSenter))
+* Other
+  * [#98](https://github.com/knoxville-utilities-board/nrg-ui/pull/98) feat(blueprint): Install CSS library when addon is installed ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`
+  * [#113](https://github.com/knoxville-utilities-board/nrg-ui/pull/113) fix: Ensure checkbox label is always clickable ([@KeithClinard](https://github.com/KeithClinard))
+
+#### :memo: Documentation
+* `ember-test-app`
+  * [#119](https://github.com/knoxville-utilities-board/nrg-ui/pull/119) docs: Implement freestyle docs for service pricing ([@Trishu-Patel](https://github.com/Trishu-Patel))
+  * [#116](https://github.com/knoxville-utilities-board/nrg-ui/pull/116) feat: Create checkbox-group component ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `ember-test-app`, `@nrg-ui/core`
+  * [#130](https://github.com/knoxville-utilities-board/nrg-ui/pull/130) refactor: Move `@nrg-ui/ember` package to `@nrg-ui/core` ([@TSenter](https://github.com/TSenter))
+* `ember-test-app`
+  * [#129](https://github.com/knoxville-utilities-board/nrg-ui/pull/129) refactor: Rename -Field components to -Input ([@TSenter](https://github.com/TSenter))
+  * [#128](https://github.com/knoxville-utilities-board/nrg-ui/pull/128) chore(tests): Add helpers for testing validations ([@TSenter](https://github.com/TSenter))
+  * [#109](https://github.com/knoxville-utilities-board/nrg-ui/pull/109) chore: Enable no-bare-strings for improved i18n ([@TSenter](https://github.com/TSenter))
+  * [#108](https://github.com/knoxville-utilities-board/nrg-ui/pull/108) chore: Move form component routes under "Components" ([@TSenter](https://github.com/TSenter))
+* Other
+  * [#115](https://github.com/knoxville-utilities-board/nrg-ui/pull/115) chore(ci): Open release plan PR in draft ([@TSenter](https://github.com/TSenter))
+  * [#111](https://github.com/knoxville-utilities-board/nrg-ui/pull/111) chore: Use bot account to open release PR ([@KeithClinard](https://github.com/KeithClinard))
+
+#### Committers: 3
+- Keith ([@KeithClinard](https://github.com/KeithClinard))
+- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-08-23)
 
 @nrg-ui/css 0.1.0 (minor)
