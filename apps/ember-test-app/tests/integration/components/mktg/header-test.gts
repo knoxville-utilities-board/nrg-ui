@@ -10,7 +10,7 @@ module('Integration | Component | mktg/header', function (hooks) {
 
   test('it renders', async function () {
     await render(<template>
-      <Header>
+      <Header @dropSection={{true}}>
         <:brand>
           <img src="https://imageplaceholder.net/50" alt="Icon" />
         </:brand>

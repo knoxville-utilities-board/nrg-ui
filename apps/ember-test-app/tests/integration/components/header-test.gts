@@ -44,7 +44,7 @@ module('Integration | Component | header', function (hooks) {
         'Content is rendered in correct block with correct text',
       );
     assert
-      .dom('.d-flex.flex-row.mt-2.mx-2.text-nowrap p')
+      .dom('.d-flex.flex-row.text-nowrap p')
       .hasText(
         'mobile drop section content',
         'Content is rendered in correct block with correct text',
