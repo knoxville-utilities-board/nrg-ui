@@ -2,8 +2,8 @@ import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import Button from '@nrg-ui/ember/components/button';
-import Footer from '@nrg-ui/ember/components/mktg/footer';
+import Button from '@nrg-ui/core/components/button';
+import Footer from '@nrg-ui/core/components/mktg/footer';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
@@ -81,16 +81,16 @@ export default class extends Component {
               @value={{this.class}}
               @onInput={{fn this.update "class"}}
             />
-            <Args.Yield
-              @description="Renders brand content in the bottom left"
-              @name="brand"
-            />
             <Args.Bool
               @description="When true, the footer will render a divider between the top and bottom sections. Note that the default value is false"
-              @name="divider"
+              @name="hasdivider"
               value={{this.hasDivider}}
               @onInput={{fn this.update "hasDivider"}}
               @defaultValue={{false}}
+            />
+            <Args.Yield
+              @description="Renders brand content in the bottom left"
+              @name="brand"
             />
             <Args.Yield
               @description="Renders legal content in the bottom right"
