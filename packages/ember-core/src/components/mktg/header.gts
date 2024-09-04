@@ -4,6 +4,9 @@ import type { TOC } from '@ember/component/template-only';
 
 interface HeaderSignature {
   Element: HTMLDivElement;
+  Args: {
+    dropSection: boolean;
+  };
   Blocks: {
     brand: [];
     title: [];
@@ -37,9 +40,11 @@ const Header: TOC<HeaderSignature> = <template>
       </div>
     </:right>
     <:mobile-drop-section>
-      <div class="d-flex flex-row mt-2 mx-2 text-nowrap">
-        {{yield to="options"}}
-      </div>
+      {{#if @dropSection}}
+        <div class="d-flex flex-row mt-2 mx-2 text-nowrap">
+          {{yield to="options"}}
+        </div>
+      {{/if}}
     </:mobile-drop-section>
   </HeaderComponent>
 </template>;

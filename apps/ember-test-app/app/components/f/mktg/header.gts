@@ -11,6 +11,9 @@ export default class extends Component {
   @tracked
   class = 'bg-primary';
 
+  @tracked
+  dropSection = false;
+
   @action
   update(key: string, value: unknown) {
     this[key] = value;
@@ -21,7 +24,7 @@ export default class extends Component {
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
-            <Header class={{this.class}}>
+            <Header class={{this.class}} @dropSection={{this.dropSection}}>
               <:brand>
                 <img src="https://imageplaceholder.net/50" alt="Icon" />
               </:brand>
@@ -49,6 +52,14 @@ export default class extends Component {
               @name="class"
               @value={{this.class}}
               @onInput={{fn this.update "class"}}
+            />
+            <Args.Bool
+              @defaultValue="false"
+              @description="When true, the options block renders below the title on small screens."
+              @name="dropSection"
+              @type="Bool"
+              @value={{this.dropSection}}
+              @onInput={{fn this.update "dropSection"}}
             />
             <Args.Yield
               @description="Named yield block to render branding content such as icons"
