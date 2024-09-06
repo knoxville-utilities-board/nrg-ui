@@ -28,6 +28,7 @@ Router.map(function () {
     this.route('icon');
     this.route('navbar');
     this.route('footer');
+    this.route('modal');
   });
   this.route('helpers');
   this.route('mktg-components', function () {
