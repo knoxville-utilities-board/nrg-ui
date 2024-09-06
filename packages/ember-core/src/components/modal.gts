@@ -7,6 +7,7 @@ import { tracked } from '@glimmer/tracking';
 import onInsert from '@nrg-ui/core/modifiers/did-insert';
 import onUpdate from '@nrg-ui/core/modifiers/on-update';
 import ModalService from '@nrg-ui/core/services/modal';
+import { t } from 'ember-intl';
 
 export interface ModalSignature {
   Element: HTMLDialogElement;
@@ -144,12 +145,12 @@ export default class ModalComponent extends Component<ModalSignature> {
               type="button"
               class="btn-close"
               {{on "click" this.onDismiss}}
-              aria-label="Close"
+              aria-label={{t "nrg.base.close"}}
             ></button>
           {{/if}}
         </div>
         <div class="modal-body">
-          {{yield to="default"}}
+          {{yield}}
         </div>
         <div class="modal-footer">
           {{yield to="footer"}}
