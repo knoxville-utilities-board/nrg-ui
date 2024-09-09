@@ -36,6 +36,7 @@ export { default as LoadingIndicator } from './components/loading-indicator.gts'
 export { default as Modal } from './components/modal.gts';
 export { default as NavItem } from './components/nav-item.gts';
 export { default as Progress } from './components/progress.gts';
+export { default as Toaster } from './components/toaster.gts';
 
 /* Helpers */
 export { bind, default as Bind } from './helpers/bind.ts';
@@ -92,6 +93,7 @@ export type {
   ProgressSignature,
   SegmentSignature as ProgressSegmentSignature,
 } from './components/progress.gts';
+export type { ToasterSignature } from './components/toaster.gts';
 
 export type Binding<Model extends object = Record<string, unknown>> = {
   model: Model;
