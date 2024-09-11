@@ -2,6 +2,11 @@
   "name": "@nrg-ui/css",
   "version": "0.1.1",
   "description": "",
+  "repository": {
+    "directory": "packages/design-system",
+    "type": "git",
+    "url": "https://github.com/knoxville-utilities-board/nrg-ui.git"
+  },
   "main": "index.js",
   "scripts": {
     "build:icons": "node src/build-icons",
