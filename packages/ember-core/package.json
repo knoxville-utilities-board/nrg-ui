@@ -5,7 +5,11 @@
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": {
+    "directory": "packages/ember-core",
+    "type": "git",
+    "url": "https://github.com/knoxville-utilities-board/nrg-ui.git"
+  },
   "license": "MIT",
   "author": "",
   "exports": {
