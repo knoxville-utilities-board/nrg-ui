@@ -33,7 +33,9 @@ export default class extends Component {
       class="btn btn-primary"
       type="button"
       {{on "click" (fn this.update "modal1Open" true)}}
-    >Open Modal 1</button>
+    >
+      Open Modal 1
+    </button>
     <Modal
       @isOpen={{this.modal1Open}}
       @onDismiss={{fn this.update "modal1Open" false}}
@@ -43,7 +45,7 @@ export default class extends Component {
       </:header>
       <:default>
         <p>Modal Content</p>
-        <div class="container p-0 p-md-3">
+        <div class="container">
           <h4>Billing &amp; Contact Information</h4>
           <hr class="my-4" />
 
@@ -93,10 +95,10 @@ export default class extends Component {
       </:footer>
     </Modal>
     <Modal
-      @isOpen={{this.modal2Open}}
-      @onDismiss={{fn this.update "modal2Open" false}}
       @dismissable={{false}}
+      @isOpen={{this.modal2Open}}
       @position="flyout-left"
+      @onDismiss={{fn this.update "modal2Open" false}}
     >
       <:header>
         Modal 2
@@ -116,8 +118,8 @@ export default class extends Component {
     </Modal>
     <Modal
       @isOpen={{this.modal3Open}}
-      @onDismiss={{fn this.update "modal3Open" false}}
       @position="flyout-right"
+      @onDismiss={{fn this.update "modal3Open" false}}
     >
       <:default>
         <p>Modal 3 content</p>

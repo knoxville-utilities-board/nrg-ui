@@ -14,7 +14,7 @@ module('Unit | Service | modal', function (hooks) {
 
     service.openModal(modalId1);
 
-    assert.ok(
+    assert.true(
       service.modalIds.includes(modalId1),
       'Modal id should be added to modalIds',
     );

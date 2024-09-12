@@ -14,8 +14,8 @@ export interface ModalSignature {
   Args: {
     isOpen: boolean;
     hasBackdrop?: boolean;
-    dismissable?: boolean;
-    position?: 'centered' | 'flyout-left' | 'flyout-right';
+    dismissible?: boolean;
+    position?: 'center' | 'left' | 'right';
     onDismiss: () => void;
   };
   Blocks: {
@@ -53,20 +53,16 @@ export default class ModalComponent extends Component<ModalSignature> {
   }
 
   get classList() {
-    const classes = [];
+    const classes = [this.position];
     if (!this.isActive) {
       classes.push('inactive');
     }
-    classes.push(this.position);
     return classes.join(' ');
   }
 
-  get isOpen() {
-    return this.args.isOpen;
-  }
 
-  get isDismissable() {
-    return this.args.dismissable ?? true;
+  get isDismissible() {
+    return this.args.dismissible ?? true;
   }
 
   get hasBackdrop() {
@@ -126,8 +122,8 @@ export default class ModalComponent extends Component<ModalSignature> {
 
   <template>
     <dialog
-      id={{this.dialogId}}
       class={{this.classList}}
+      id={{this.dialogId}}
       {{on "cancel" this.onDismiss}}
       {{on "close" this.onClose}}
       {{onInsert this.onInsert}}
@@ -142,10 +138,10 @@ export default class ModalComponent extends Component<ModalSignature> {
           </h5>
           {{#if this.isDismissable}}
             <button
-              type="button"
-              class="btn-close"
-              {{on "click" this.onDismiss}}
               aria-label={{t "nrg.base.close"}}
+              class="btn-close"
+              type="button"
+              {{on "click" this.onDismiss}}
             ></button>
           {{/if}}
         </div>
