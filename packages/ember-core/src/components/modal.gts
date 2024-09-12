@@ -25,7 +25,7 @@ export interface ModalSignature {
   };
 }
 
-export default class ModalComponent extends Component<ModalSignature> {
+export default class Modal extends Component<ModalSignature> {
   @service('modal')
   declare modalService: ModalService;
 
@@ -38,7 +38,7 @@ export default class ModalComponent extends Component<ModalSignature> {
   constructor(owner: unknown, args: ModalSignature['Args']) {
     super(owner, args);
     registerDestructor(this, () => {
-      if (this.isOpen) {
+      if (this.args.isOpen) {
         this.closeModal();
       }
     });
@@ -49,17 +49,16 @@ export default class ModalComponent extends Component<ModalSignature> {
   }
 
   get position() {
-    return this.args.position ?? 'centered';
+    return this.args.position ?? 'center';
   }
 
   get classList() {
-    const classes = [this.position];
+    const classes = [this.position] as string[];
     if (!this.isActive) {
       classes.push('inactive');
     }
     return classes.join(' ');
   }
-
 
   get isDismissible() {
     return this.args.dismissible ?? true;
@@ -73,7 +72,7 @@ export default class ModalComponent extends Component<ModalSignature> {
   onDismiss(evt?: Event) {
     evt?.preventDefault();
     evt?.stopPropagation();
-    if (!this.isDismissable) {
+    if (!this.isDismissible) {
       return;
     }
     this.args.onDismiss?.();
@@ -81,8 +80,12 @@ export default class ModalComponent extends Component<ModalSignature> {
 
   @action
   onClose() {
-    if (this.isOpen && !this.isDismissable) {
-      this.openModal();
+    if (!this.args.isOpen) {
+      return;
+    }
+    this.openModal();
+    if (this.isDismissible) {
+      this.onDismiss();
     }
   }
 
@@ -90,14 +93,14 @@ export default class ModalComponent extends Component<ModalSignature> {
   onInsert(element: HTMLElement) {
     const dialog = element as HTMLDialogElement;
     this.dialogElement = dialog;
-    if (this.isOpen) {
+    if (this.args.isOpen) {
       this.openModal();
     }
   }
 
   @action
   onUpdate() {
-    if (this.isOpen) {
+    if (this.args.isOpen) {
       this.openModal();
     } else {
       this.closeModal();
@@ -127,7 +130,7 @@ export default class ModalComponent extends Component<ModalSignature> {
       {{on "cancel" this.onDismiss}}
       {{on "close" this.onClose}}
       {{onInsert this.onInsert}}
-      {{onUpdate this.onUpdate this.isOpen}}
+      {{onUpdate this.onUpdate this.args.isOpen}}
       ...attributes
     >
       <div class="modal-content">
@@ -136,7 +139,7 @@ export default class ModalComponent extends Component<ModalSignature> {
           <h5 class="modal-title">
             {{yield to="header"}}
           </h5>
-          {{#if this.isDismissable}}
+          {{#if this.isDismissible}}
             <button
               aria-label={{t "nrg.base.close"}}
               class="btn-close"

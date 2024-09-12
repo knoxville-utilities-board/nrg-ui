@@ -25,10 +25,10 @@ Router.map(function () {
       this.route('text-area');
       this.route('text-input');
     });
-    this.route('icon');
-    this.route('navbar');
     this.route('footer');
+    this.route('icon');
     this.route('modal');
+    this.route('navbar');
   });
   this.route('helpers');
   this.route('mktg-components', function () {

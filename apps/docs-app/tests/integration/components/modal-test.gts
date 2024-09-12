@@ -17,7 +17,7 @@ module('Integration | Component | modal', function (hooks) {
     assert.dom('.modal-footer').exists();
   });
 
-  test('close button displays on dismissable', async function (assert) {
+  test('close button displays on dismissible', async function (assert) {
     assert.expect(2);
 
     const onDismiss = () => {
@@ -25,16 +25,16 @@ module('Integration | Component | modal', function (hooks) {
     };
 
     await render(<template>
-      <Modal @isOpen={{true}} @onDismiss={{onDismiss}} @dismissable={{true}} />
+      <Modal @isOpen={{true}} @onDismiss={{onDismiss}} @dismissible={{true}} />
     </template>);
 
     assert.dom('.btn-close').exists();
     await click('.btn-close');
   });
 
-  test('close button does not display when not dismissable', async function (assert) {
+  test('close button does not display when not dismissible', async function (assert) {
     await render(<template>
-      <Modal @isOpen={{true}} @dismissable={{false}} />
+      <Modal @isOpen={{true}} @dismissible={{false}} />
     </template>);
 
     assert.dom('.btn-close').doesNotExist();

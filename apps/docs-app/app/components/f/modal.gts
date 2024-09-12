@@ -5,16 +5,38 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import ServicePricing from '@nrg-ui/core/components/mktg/service-pricing';
 import Modal from '@nrg-ui/core/components/modal';
+import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
+import FreestyleSection from 'ember-freestyle/components/freestyle-section';
+
+import CodeBlock from '../code-block';
 
 export default class extends Component {
   @tracked
-  modal1Open = false;
+  isOpen = false;
 
   @tracked
   modal2Open = false;
 
   @tracked
-  modal3Open = false;
+  dismissible = false;
+
+  @tracked
+  hasBackdrop = true;
+
+  @tracked
+  position = 'center';
+
+  get modal2Position() {
+    if (this.position === 'left') {
+      return 'right';
+    }
+    if (this.position === 'right') {
+      return 'left';
+    }
+    return this.position;
+  }
+
+  positionOptions = ['center', 'left', 'right'];
 
   @action
   update(key: string, value: unknown) {
@@ -22,117 +44,153 @@ export default class extends Component {
   }
 
   @action
-  closeAllModals() {
-    this.modal1Open = false;
-    this.modal2Open = false;
-    this.modal3Open = false;
+  closeModal() {
+    this.isOpen = false;
   }
 
   <template>
-    <button
-      class="btn btn-primary"
-      type="button"
-      {{on "click" (fn this.update "modal1Open" true)}}
-    >
-      Open Modal 1
-    </button>
-    <Modal
-      @isOpen={{this.modal1Open}}
-      @onDismiss={{fn this.update "modal1Open" false}}
-    >
-      <:header>
-        Modal 1
-      </:header>
-      <:default>
-        <p>Modal Content</p>
-        <div class="container">
-          <h4>Billing &amp; Contact Information</h4>
-          <hr class="my-4" />
+    <FreestyleSection @name="Modal" as |Section|>
+      <Section.subsection @name="Basics">
+        <FreestyleUsage>
+          <:example>
+            <Modal
+              @dismissible={{this.dismissible}}
+              @hasBackdrop={{this.hasBackdrop}}
+              @isOpen={{this.isOpen}}
+              @position={{this.position}}
+              @onDismiss={{fn this.update "isOpen" false}}
+            >
+              <:header>
+                Modal 1
+              </:header>
+              <:default>
+                <p>Modal Content</p>
+                <div class="container">
+                  <h4>Billing &amp; Contact Information</h4>
+                  <hr class="my-4" />
 
-          <ServicePricing
-            @label="Fiber"
-            @package="The Gig"
-            @description="$65/mo"
-            @icon="bi-wifi"
-            @selected={{true}}
-            @active={{false}}
-            as |Addon|
-          >
-            <Addon @label="Smart Gig" @price="$15/mo" />
-          </ServicePricing>
-          <ServicePricing
-            @label="TV"
-            @package="Silver"
-            @description="$107/mo"
-            @icon="bi-tv"
-            @selected={{true}}
-            @active={{false}}
-            as |Addon|
-          >
-            <Addon @label="FireStick" @price="$80" @quantity="2" />
-            <Addon @label="HBO" @price="$5.99/mo" />
-            <Addon @label="STARZ" @price="$4.99/mo" />
-            <Addon @label="Spanish Channels" @price="$4.99/mo" />
-          </ServicePricing>
-          <ServicePricing
-            @label="Phone"
-            @description="$129/mo"
-            @icon="bi-telephone"
-            @selected={{true}}
-            @active={{true}}
-          />
-        </div>
+                  <ServicePricing
+                    @label="Fiber"
+                    @package="The Gig"
+                    @description="$65/mo"
+                    @icon="bi-wifi"
+                    @selected={{true}}
+                    @active={{false}}
+                    as |Addon|
+                  >
+                    <Addon @label="Smart Gig" @price="$15/mo" />
+                  </ServicePricing>
+                  <ServicePricing
+                    @label="TV"
+                    @package="Silver"
+                    @description="$107/mo"
+                    @icon="bi-tv"
+                    @selected={{true}}
+                    @active={{false}}
+                    as |Addon|
+                  >
+                    <Addon @label="FireStick" @price="$80" @quantity="2" />
+                    <Addon @label="HBO" @price="$5.99/mo" />
+                    <Addon @label="STARZ" @price="$4.99/mo" />
+                    <Addon @label="Spanish Channels" @price="$4.99/mo" />
+                  </ServicePricing>
+                  <ServicePricing
+                    @label="Phone"
+                    @description="$129/mo"
+                    @icon="bi-telephone"
+                    @selected={{true}}
+                    @active={{true}}
+                  />
+                </div>
 
-      </:default>
-      <:footer>
-        <button
-          type="button"
-          class="btn btn-primary"
-          {{on "click" (fn this.update "modal2Open" true)}}
-        >
-          Open Modal 2
-        </button>
-      </:footer>
-    </Modal>
-    <Modal
-      @dismissable={{false}}
-      @isOpen={{this.modal2Open}}
-      @position="flyout-left"
-      @onDismiss={{fn this.update "modal2Open" false}}
-    >
-      <:header>
-        Modal 2
-      </:header>
-      <:default>
-        <p>Modal 2 content</p>
-      </:default>
-      <:footer>
-        <button
-          type="button"
-          class="btn btn-primary"
-          {{on "click" (fn this.update "modal3Open" true)}}
-        >
-          Open Modal 3
-        </button>
-      </:footer>
-    </Modal>
-    <Modal
-      @isOpen={{this.modal3Open}}
-      @position="flyout-right"
-      @onDismiss={{fn this.update "modal3Open" false}}
-    >
-      <:default>
-        <p>Modal 3 content</p>
-      </:default>
-      <:footer>
-        <button
-          type="button"
-          class="btn btn-primary"
-          {{on "click" this.closeAllModals}}
-        >
-          Close All Modals
-        </button>
-      </:footer>
-    </Modal>
+              </:default>
+              <:footer>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  {{on "click" (fn this.update "isOpen" false)}}
+                >
+                  Close this modal
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  {{on "click" (fn this.update "modal2Open" true)}}
+                >
+                  Open Modal 2
+                </button>
+              </:footer>
+            </Modal>
+
+            <Modal
+              @dismissible={{this.dismissible}}
+              @hasBackdrop={{this.hasBackdrop}}
+              @isOpen={{this.modal2Open}}
+              @position={{this.modal2Position}}
+              @onDismiss={{fn this.update "modal2Open" false}}
+            >
+              <ServicePricing
+                @label="TV"
+                @package="Silver"
+                @description="$107/mo"
+                @icon="bi-tv"
+                @selected={{true}}
+                @active={{false}}
+                as |Addon|
+              >
+                <Addon @label="FireStick" @price="$80" @quantity="2" />
+                <Addon @label="HBO" @price="$5.99/mo" />
+                <Addon @label="STARZ" @price="$4.99/mo" />
+                <Addon @label="Spanish Channels" @price="$4.99/mo" />
+              </ServicePricing>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                {{on "click" (fn this.update "modal2Open" false)}}
+              >
+                Close this modal
+              </button>
+            </Modal>
+          </:example>
+          <:api as |Args|>
+            <Args.Bool
+              @defaultValue={{false}}
+              @description="When true, the modal will open."
+              @name="isOpen"
+              @value={{this.isOpen}}
+              @onInput={{fn this.update "isOpen"}}
+            />
+            <Args.Bool
+              @defaultValue={{false}}
+              @description="When true, an 'X' button will be displayed in the top-right corner of the modal and the 'Esc' key will both fire the onDismiss action."
+              @name="dismissible"
+              @value={{this.dismissible}}
+              @onInput={{fn this.update "dismissible"}}
+            />
+            <Args.Bool
+              @defaultValue={{true}}
+              @description="When true, a darkened backdrop will appear behind the modal preventing interaction with the application."
+              @name="hasBackdrop"
+              @value={{this.hasBackdrop}}
+              @onInput={{fn this.update "hasBackdrop"}}
+            />
+            <Args.String
+              @defaultValue="center"
+              @description="Changes the position of the modal on the screen."
+              @name="position"
+              @value={{this.position}}
+              @options={{this.positionOptions}}
+              @onInput={{fn this.update "position"}}
+            />
+            <Args.Action
+              @name="onDismiss"
+              @description="This action will be called when the 'X' button is clicked on a dismissible modal. It is the responsibility of the parent component to change the isOpen property in response."
+            >
+              <CodeBlock @lang="typescript" @code="() => unknown" />
+            </Args.Action>
+          </:api>
+        </FreestyleUsage>
+      </Section.subsection>
+    </FreestyleSection>
   </template>
 }
