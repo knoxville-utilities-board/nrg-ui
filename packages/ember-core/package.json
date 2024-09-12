@@ -217,6 +217,7 @@
       "./helpers/index.js": "./dist/_app_/helpers/index.js",
       "./modifiers/did-insert.js": "./dist/_app_/modifiers/did-insert.js",
       "./modifiers/index.js": "./dist/_app_/modifiers/index.js",
+      "./modifiers/on-click-outside.js": "./dist/_app_/modifiers/on-click-outside.js",
       "./modifiers/on-update.js": "./dist/_app_/modifiers/on-update.js",
       "./services/modal.js": "./dist/_app_/services/modal.js",
       "./services/responsive.js": "./dist/_app_/services/responsive.js",
