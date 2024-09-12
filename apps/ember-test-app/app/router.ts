@@ -34,6 +34,7 @@ Router.map(function () {
     this.route('card');
     this.route('card-container');
     this.route('faq');
+    this.route('footer');
     this.route('header');
     this.route('promo');
     this.route('promo-container');
