@@ -83,7 +83,7 @@ export default class extends Component {
             />
             <Args.Bool
               @description="When true, the footer will render a divider between the top and bottom sections. Note that the default value is false"
-              @name="hasdivider"
+              @name="hasDivider"
               value={{this.hasDivider}}
               @onInput={{fn this.update "hasDivider"}}
               @defaultValue={{false}}
