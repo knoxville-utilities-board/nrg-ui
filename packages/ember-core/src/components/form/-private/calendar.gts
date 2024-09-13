@@ -61,11 +61,11 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
   @tracked
   isSelectingMinutes = false;
 
-  constructor() {
-    super(...arguments);
-    if (this.args.type === 'datetime' || this.args.type === 'date') {
+  constructor(owner: unknown, args: DatetimeCalendarSignature['Args']) {
+    super(owner, args);
+    if (args.type === 'datetime' || args.type === 'date') {
       this.isSelectingDays = true;
-    } else if (this.args.type === 'time') {
+    } else if (args.type === 'time') {
       this.isSelectingHours = true;
     }
   }
@@ -78,11 +78,15 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     const now = dayjs();
 
     if (now.isBefore(this.args.minDate)) {
-      return this.args.minDate;
+      return this.args.minDate as Date;
     } else if (now.isAfter(this.args.maxDate)) {
-      return this.args.maxDate;
+      return this.args.maxDate as Date;
     }
     return now;
+  }
+
+  get hasValue() {
+    return Boolean(this.args.value);
   }
 
   get selectedDayIndex() {
@@ -123,7 +127,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       return false;
     }
     const now = dayjs();
-    const userDisabled = this.args.isDateDisabled?.(now);
+    const userDisabled = this.args.isDateDisabled?.(now.toDate());
     const afterMaxDate = now.isAfter(this.args.maxDate, 'date');
     const beforeMinDate = now.isBefore(this.args.minDate, 'date');
     return !userDisabled && !afterMaxDate && !beforeMinDate;
@@ -136,8 +140,8 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       year: this.selectedYearIndex,
     });
     if (this.isSelectingYears) {
-      const firstYear = this.years[0][0].year;
-      const lastYear = this.years[4][1].year;
+      const firstYear = this.years[0]?.[0]?.year;
+      const lastYear = this.years[4]?.[1]?.year;
       return `${firstYear} - ${lastYear}`;
     }
     let format = 'MMMM YYYY';
@@ -149,7 +153,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     return calendar.format(format);
   }
 
-  get minutes() {
+  get minutes(): Cell[][] {
     let calendar = dayjs({
       hour: this.selectedHourIndex,
       day: this.selectedDayIndex,
@@ -161,9 +165,9 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       const row = [];
       for (let j = 0; j < 3; j++) {
         const minute = calendar.minute();
-        const disabled = this.isDateDisabled(calendar, 'minute');
+        const disabled = this.isDateDisabled(calendar.toDate(), 'minute');
         const selected =
-          !disabled && this.args.value && this.selectedMinuteIndex === minute;
+          !disabled && this.hasValue && this.selectedMinuteIndex === minute;
         row.push({
           display: calendar.format('LT'),
           minute,
@@ -177,7 +181,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     return rows;
   }
 
-  get hours() {
+  get hours(): Cell[][] {
     let calendar = dayjs({
       day: this.selectedDayIndex,
       month: this.selectedMonthIndex,
@@ -188,9 +192,9 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       const row = [];
       for (let j = 0; j < 4; j++) {
         const hour = calendar.hour();
-        const disabled = this.isDateDisabled(calendar, 'hour');
+        const disabled = this.isDateDisabled(calendar.toDate(), 'hour');
         const selected =
-          !disabled && this.args.value && this.selectedHourIndex === hour;
+          !disabled && this.hasValue && this.selectedHourIndex === hour;
         row.push({
           display: calendar.format('LT'),
           hour,
@@ -204,7 +208,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     return rows;
   }
 
-  get days() {
+  get days(): Cell[][] {
     const today = dayjs();
     const weeks = [];
     let calendar = dayjs({
@@ -220,9 +224,9 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
         const isDifferentMonth = month !== this.selectedMonthIndex;
         const dateIsToday = calendar.isSame(today, 'date');
         const disabled =
-          this.isDateDisabled(calendar, 'date') || isDifferentMonth;
+          this.isDateDisabled(calendar.toDate(), 'date') || isDifferentMonth;
         const selected =
-          !disabled && this.args.value && this.selectedDayIndex === date;
+          !disabled && this.hasValue && this.selectedDayIndex === date;
 
         week.push({
           customClass: (dateIsToday && 'today') || '',
@@ -241,7 +245,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     return weeks;
   }
 
-  get months() {
+  get months(): Cell[][] {
     const rows = [];
     let calendar = dayjs({
       year: this.selectedYearIndex,
@@ -250,9 +254,9 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       const row = [];
       for (let j = 0; j < 3; j++) {
         const month = calendar.month();
-        const disabled = this.isDateDisabled(calendar, 'month');
+        const disabled = this.isDateDisabled(calendar.toDate(), 'month');
         const selected =
-          !disabled && this.args.value && this.selectedMonthIndex === month;
+          !disabled && this.hasValue && this.selectedMonthIndex === month;
         row.push({
           display: calendar.format('MMM'),
           month,
@@ -267,7 +271,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     return rows;
   }
 
-  get years() {
+  get years(): Cell[][] {
     const rows = [];
     const remainder = this.selectedYearIndex % 10;
     const beginYear = this.selectedYearIndex - remainder;
@@ -280,9 +284,9 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
         const calendar = dayjs({
           year,
         });
-        const disabled = this.isDateDisabled(calendar, 'year');
+        const disabled = this.isDateDisabled(calendar.toDate(), 'year');
         const selected =
-          !disabled && this.args.value && this.selectedYearIndex === year;
+          !disabled && this.hasValue && this.selectedYearIndex === year;
         row.push({
           display: year,
           year,
@@ -297,9 +301,9 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
   }
 
   get table() {
-    let columnHeaders = DAY_HEADERS;
+    let columnHeaders: string[] | null = DAY_HEADERS;
     let columnCountClass = 'seven';
-    let rows = this.days;
+    let rows: Cell[][] = this.days;
     if (this.isSelectingMonths) {
       columnHeaders = null;
       columnCountClass = 'three';
@@ -328,7 +332,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     return this.args.allowMinuteSelection !== false;
   }
 
-  isBeyondDateRange(date, precision) {
+  isBeyondDateRange(date: Date | Dayjs, precision: OpUnitType) {
     date = dayjs(date);
     let valid = true;
     if (this.args.minDate) {
@@ -340,29 +344,28 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     return !valid;
   }
 
-  isDateDisabled(date, precision) {
+  isDateDisabled(date: Date, precision: OpUnitType) {
     const userDisabled = this.args.isDateDisabled?.(date, precision);
     const isBeyondDateRange = this.isBeyondDateRange(date, precision);
     return userDisabled || isBeyondDateRange;
   }
 
-  manipulateDate(operation, dateTransformation, evt) {
-    if (evt) {
-      evt.preventDefault();
-      evt.stopPropagation();
-    }
+  manipulateDate(
+    operation: 'add' | 'subtract' | 'set',
+    dateTransformation: TransformData,
+  ) {
     let date = dayjs({
       day: this.selectedDayIndex,
       month: this.selectedMonthIndex,
       year: this.selectedYearIndex,
-      hour: this.selectedHourIndex,
-      minute: this.selectedMinuteIndex,
+      hour: this.selectedHourIndex ?? 0,
+      minute: this.selectedMinuteIndex ?? 0,
     });
     const currentDate = date.clone();
 
     date = date[operation](dateTransformation);
 
-    let precision = null;
+    let precision: OpUnitType | undefined = undefined;
 
     if (this.isSelectingDays) {
       precision = 'day';
@@ -376,7 +379,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       precision = 'minute';
     }
 
-    const userDisabled = this.args.isDateDisabled?.(date, precision);
+    const userDisabled = this.args.isDateDisabled?.(date.toDate(), precision);
     if (userDisabled) {
       this.onSelect(currentDate.toDate());
       return;
@@ -402,16 +405,16 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
 
   selectDate() {
     const value = dayjs({
-      hour: this.selectedHourIndex,
-      minute: this.selectedMinuteIndex,
-      day: this.selectedDayIndex,
-      month: this.selectedMonthIndex,
       year: this.selectedYearIndex,
+      month: this.selectedMonthIndex,
+      day: this.selectedDayIndex,
+      hour: this.selectedHourIndex ?? 0,
+      minute: this.selectedMinuteIndex ?? 0,
     });
     this.onSelect(value.toDate());
   }
 
-  onSelect(date) {
+  onSelect(date: Date) {
     this.args.onSelect?.(date);
   }
 
@@ -420,76 +423,90 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
   }
 
   @action
-  moveLeft(evt) {
-    if (this.isSelectingDays) {
-      this.manipulateDate('subtract', { day: 1 }, evt);
-    } else if (this.isSelectingMonths) {
-      this.manipulateDate('subtract', { month: 1 }, evt);
-    } else if (this.isSelectingYears) {
-      this.manipulateDate('subtract', { year: 1 }, evt);
-    } else if (this.isSelectingMinutes) {
-      this.manipulateDate('subtract', { minute: MINUTE_INTERVAL }, evt);
-    } else if (this.isSelectingHours) {
-      this.manipulateDate('subtract', { hour: 1 }, evt);
-    }
-  }
-
-  @action
-  moveRight(evt) {
-    if (this.isSelectingDays) {
-      this.manipulateDate('add', { day: 1 }, evt);
-    } else if (this.isSelectingMonths) {
-      this.manipulateDate('add', { month: 1 }, evt);
-    } else if (this.isSelectingYears) {
-      this.manipulateDate('add', { year: 1 }, evt);
-    } else if (this.isSelectingMinutes) {
-      this.manipulateDate('add', { minute: MINUTE_INTERVAL }, evt);
-    } else if (this.isSelectingHours) {
-      this.manipulateDate('add', { hour: 1 }, evt);
-    }
-  }
-
-  @action
-  moveUp(evt) {
-    if (this.isSelectingDays) {
-      this.manipulateDate('subtract', { week: 1 }, evt);
-    } else if (this.isSelectingMonths) {
-      this.manipulateDate('subtract', { month: 3 }, evt);
-    } else if (this.isSelectingYears) {
-      this.manipulateDate('subtract', { year: 2 }, evt);
-    } else if (this.isSelectingMinutes) {
-      this.manipulateDate('subtract', { minute: MINUTE_INTERVAL * 3 }, evt);
-    } else if (this.isSelectingHours) {
-      this.manipulateDate('subtract', { hour: 4 }, evt);
-    }
-  }
-
-  @action
-  moveDown(evt) {
-    if (this.isSelectingDays) {
-      this.manipulateDate('add', { week: 1 }, evt);
-    } else if (this.isSelectingMonths) {
-      this.manipulateDate('add', { month: 3 }, evt);
-    } else if (this.isSelectingYears) {
-      this.manipulateDate('add', { year: 2 }, evt);
-    } else if (this.isSelectingMinutes) {
-      this.manipulateDate('add', { minute: MINUTE_INTERVAL * 3 }, evt);
-    } else if (this.isSelectingHours) {
-      this.manipulateDate('add', { hour: 4 }, evt);
-    }
-  }
-
-  @action
-  onEnter(evt) {
+  moveLeft(evt: Event) {
     evt.preventDefault();
     evt.stopPropagation();
+
+    if (this.isSelectingDays) {
+      this.manipulateDate('subtract', { day: 1 });
+    } else if (this.isSelectingMonths) {
+      this.manipulateDate('subtract', { month: 1 });
+    } else if (this.isSelectingYears) {
+      this.manipulateDate('subtract', { year: 1 });
+    } else if (this.isSelectingMinutes) {
+      this.manipulateDate('subtract', { minute: MINUTE_INTERVAL });
+    } else if (this.isSelectingHours) {
+      this.manipulateDate('subtract', { hour: 1 });
+    }
+  }
+
+  @action
+  moveRight(evt: Event) {
+    evt.preventDefault();
+    evt.stopPropagation();
+
+    if (this.isSelectingDays) {
+      this.manipulateDate('add', { day: 1 });
+    } else if (this.isSelectingMonths) {
+      this.manipulateDate('add', { month: 1 });
+    } else if (this.isSelectingYears) {
+      this.manipulateDate('add', { year: 1 });
+    } else if (this.isSelectingMinutes) {
+      this.manipulateDate('add', { minute: MINUTE_INTERVAL });
+    } else if (this.isSelectingHours) {
+      this.manipulateDate('add', { hour: 1 });
+    }
+  }
+
+  @action
+  moveUp(evt: Event) {
+    evt.preventDefault();
+    evt.stopPropagation();
+
+    if (this.isSelectingDays) {
+      this.manipulateDate('subtract', { week: 1 });
+    } else if (this.isSelectingMonths) {
+      this.manipulateDate('subtract', { month: 3 });
+    } else if (this.isSelectingYears) {
+      this.manipulateDate('subtract', { year: 2 });
+    } else if (this.isSelectingMinutes) {
+      this.manipulateDate('subtract', { minute: MINUTE_INTERVAL * 3 });
+    } else if (this.isSelectingHours) {
+      this.manipulateDate('subtract', { hour: 4 });
+    }
+  }
+
+  @action
+  moveDown(evt: Event) {
+    evt.preventDefault();
+    evt.stopPropagation();
+
+    if (this.isSelectingDays) {
+      this.manipulateDate('add', { week: 1 });
+    } else if (this.isSelectingMonths) {
+      this.manipulateDate('add', { month: 3 });
+    } else if (this.isSelectingYears) {
+      this.manipulateDate('add', { year: 2 });
+    } else if (this.isSelectingMinutes) {
+      this.manipulateDate('add', { minute: MINUTE_INTERVAL * 3 });
+    } else if (this.isSelectingHours) {
+      this.manipulateDate('add', { hour: 4 });
+    }
+  }
+
+  @action
+  onEnter(evt: Event) {
+    evt.preventDefault();
+    evt.stopPropagation();
+
     this.goToNextWorkFlowStep();
   }
 
   @action
-  onEscape(evt) {
+  onEscape(evt: Event) {
     evt.preventDefault();
     evt.stopPropagation();
+
     this.close();
   }
 
@@ -503,7 +520,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
   }
 
   @action
-  clickCell(cell, evt) {
+  clickCell(cell: TransformData, evt: Event) {
     evt.preventDefault();
     evt.stopPropagation();
 
@@ -606,13 +623,13 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
   <template>
     <div
       tabindex="-1"
-      class="ui popup calendar bottom left transition active visible {{@class}}"
-      {{on-key "ArrowUp" this.moveUp}}
-      {{on-key "ArrowDown" this.moveDown}}
-      {{on-key "ArrowLeft" this.moveLeft}}
-      {{on-key "ArrowRight" this.moveRight}}
-      {{on-key "Enter" this.onEnter}}
-      {{on-key "Escape" this.onEscape}}
+      class="ui popup calendar bottom left transition active visible"
+      {{onKey "ArrowUp" this.moveUp}}
+      {{onKey "ArrowDown" this.moveDown}}
+      {{onKey "ArrowLeft" this.moveLeft}}
+      {{onKey "ArrowRight" this.moveRight}}
+      {{onKey "Enter" this.onEnter}}
+      {{onKey "Escape" this.onEscape}}
       ...attributes
     >
       <table
@@ -621,7 +638,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
           column day"
       >
         <thead>
-          {{#if (not-eq @type "time")}}
+          {{#if (notEq @type "time")}}
             <tr class="header">
               <th colspan="7">
                 <span role="button" {{on "click" this.onHeaderDisplayClick}}>

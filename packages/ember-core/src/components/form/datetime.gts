@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import DatetimeCalendar from './-private/calendar.gts';
 import BoundValue from './bound-value.ts';
 import TextInput from './text-input.gts';
+import { bind } from '../../helpers/bind.ts';
 import onClickOutside from '../../modifiers/on-click-outside.ts';
 
 import type { IconType } from '../../';
@@ -64,9 +65,9 @@ export default class Datetime extends BoundValue<
   }
 
   get icon() {
-    let icon = 'calendar';
+    let icon: IconType = 'bi-calendar-fill';
     if (this.type === 'time') {
-      icon = 'clock';
+      icon = 'bi-clock-fill';
     }
     return icon;
   }
@@ -99,7 +100,7 @@ export default class Datetime extends BoundValue<
     this.onDateSelect(newValue.toDate());
   }
 
-  getDefaultValue() {
+  getDefaultValue = function () {
     return new Date();
   }
 
@@ -109,7 +110,7 @@ export default class Datetime extends BoundValue<
   }
 
   @action
-  onFocus(evt) {
+  onFocus(evt: FocusEvent) {
     evt.preventDefault();
     evt.stopPropagation();
 
@@ -119,11 +120,14 @@ export default class Datetime extends BoundValue<
 
     this.isFocused = true;
 
-    evt.currentTarget?.querySelector('.ui.popup.calendar')?.focus();
+    const target = evt.currentTarget as HTMLElement;
+    const focusTarget = target.querySelector('input') as HTMLInputElement;
+
+    focusTarget?.focus();
   }
 
   @action
-  onDateSelect(value) {
+  onDateSelect(value: Date) {
     this.onChange(value);
   }
 
@@ -132,54 +136,46 @@ export default class Datetime extends BoundValue<
       class="ui calendar {{@class}}"
       role="button"
       {{on "click" this.onFocus}}
-      {{on-click-outside this.onBlur}}
+      {{onClickOutside this.onBlur}}
       ...attributes
     >
       {{#if (has-block)}}
-        <div class="wrapper">
-          {{yield}}
-          {{#if this.isFocused}}
-            <NrgDatetime::Calendar
-              @minDate={{@minDate}}
-              @maxDate={{@maxDate}}
-              @type={{this.type}}
-              @value={{this.value}}
-              @showNowShortcut={{this.showNowShortcut}}
-              @isDateDisabled={{@isDateDisabled}}
-              @allowMinuteSelection={{@allowMinuteSelection}}
-              @readonly={{@readonly}}
-              @onSelect={{this.onDateSelect}}
-              @onClose={{this.onBlur}}
-            />
-          {{/if}}
-        </div>
+        {{yield}}
+        {{#if this.isFocused}}
+          <DatetimeCalendar
+            @minDate={{@minDate}}
+            @maxDate={{@maxDate}}
+            @type={{this.type}}
+            @value={{this.value}}
+            @showNowShortcut={{this.showNowShortcut}}
+            @isDateDisabled={{@isDateDisabled}}
+            @allowMinuteSelection={{@allowMinuteSelection}}
+            @onSelect={{this.onDateSelect}}
+            @onClose={{this.onBlur}}
+          />
+        {{/if}}
       {{else}}
-        <NrgTextField
-          @focusId={{@focusId}}
-          @placeholder={{@placeholder}}
-          class="left icon"
+        {{#if this.isFocused}}
+          <DatetimeCalendar
+            @minDate={{@minDate}}
+            @maxDate={{@maxDate}}
+            @type={{this.type}}
+            @value={{this.value}}
+            @showNowShortcut={{this.showNowShortcut}}
+            @isDateDisabled={{@isDateDisabled}}
+            @allowMinuteSelection={{@allowMinuteSelection}}
+            @onSelect={{this.onDateSelect}}
+            @onClose={{this.onBlur}}
+          />
+        {{/if}}
+        <TextInput
+          class="border-start-0 ps-0"
+          placeholder={{@placeholder}}
+          {{! @glint-expect-error - Types are hard. The model/valuePath style doesn't play well with types}}
+          @binding={{bind this "displayValue"}}
           @disabled={{@disabled}}
           @readonly={{@readonly}}
-          @model={{this}}
-          @valuePath="displayValue"
-          as |view|
-        >
-          {{#if this.isFocused}}
-            <NrgDatetime::Calendar
-              @minDate={{@minDate}}
-              @maxDate={{@maxDate}}
-              @type={{this.type}}
-              @value={{this.value}}
-              @showNowShortcut={{this.showNowShortcut}}
-              @isDateDisabled={{@isDateDisabled}}
-              @allowMinuteSelection={{@allowMinuteSelection}}
-              @onSelect={{this.onDateSelect}}
-              @onClose={{this.onBlur}}
-            />
-          {{/if}}
-          <NrgIcon @icon={{this.icon}} />
-          <view.input />
-        </NrgTextField>
+        />
       {{/if}}
     </div>
   </template>
