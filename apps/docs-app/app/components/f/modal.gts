@@ -11,6 +11,8 @@ import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 import CodeBlock from '../code-block';
 
 export default class extends Component {
+  positionOptions = ['center', 'left', 'right'];
+
   @tracked
   isOpen = false;
 
@@ -35,8 +37,6 @@ export default class extends Component {
     }
     return this.position;
   }
-
-  positionOptions = ['center', 'left', 'right'];
 
   @action
   update(key: string, value: unknown) {
