@@ -10,7 +10,7 @@
   "main": "index.js",
   "scripts": {
     "build:icons": "node src/build-icons",
-    "build:sass": "sass --load-path node_modules src:dist",
+    "build:sass": "sass --load-path node_modules src:dist --no-source-map",
     "start": "concurrently pnpm:build:icons pnpm:*:sass",
     "build": "concurrently 'pnpm:build:*' --prefix-colors cyan,magenta,yellow",
     "format": "prettier --write .",
