@@ -64,9 +64,9 @@ export default class FormDatetime extends BoundValue<
   }
 
   get icon() {
-    let icon = 'calendar';
+    let icon: IconType = 'bi-calendar-fill';
     if (this.type === 'time') {
-      icon = 'clock';
+      icon = 'bi-clock-fill';
     }
     return icon;
   }
@@ -99,9 +99,9 @@ export default class FormDatetime extends BoundValue<
     this.onDateSelect(newValue.toDate());
   }
 
-  getDefaultValue() {
+  getDefaultValue = function () {
     return new Date();
-  }
+  };
 
   @action
   onBlur() {
@@ -109,7 +109,7 @@ export default class FormDatetime extends BoundValue<
   }
 
   @action
-  onFocus(evt) {
+  onFocus(evt: FocusEvent) {
     evt.preventDefault();
     evt.stopPropagation();
 
@@ -123,7 +123,7 @@ export default class FormDatetime extends BoundValue<
   }
 
   @action
-  onDateSelect(value) {
+  onDateSelect(value: Date) {
     this.onChange(value);
   }
 
@@ -132,54 +132,45 @@ export default class FormDatetime extends BoundValue<
       class="ui calendar {{@class}}"
       role="button"
       {{on "click" this.onFocus}}
-      {{on-click-outside this.onBlur}}
+      {{onClickOutside this.onBlur}}
       ...attributes
     >
       {{#if (has-block)}}
-        <div class="wrapper">
-          {{yield}}
-          {{#if this.isFocused}}
-            <NrgDatetime::Calendar
-              @minDate={{@minDate}}
-              @maxDate={{@maxDate}}
-              @type={{this.type}}
-              @value={{this.value}}
-              @showNowShortcut={{this.showNowShortcut}}
-              @isDateDisabled={{@isDateDisabled}}
-              @allowMinuteSelection={{@allowMinuteSelection}}
-              @readonly={{@readonly}}
-              @onSelect={{this.onDateSelect}}
-              @onClose={{this.onBlur}}
-            />
-          {{/if}}
-        </div>
+        {{yield}}
+        {{#if this.isFocused}}
+          <DatetimeCalendar
+            @minDate={{@minDate}}
+            @maxDate={{@maxDate}}
+            @type={{this.type}}
+            @value={{this.value}}
+            @showNowShortcut={{this.showNowShortcut}}
+            @isDateDisabled={{@isDateDisabled}}
+            @allowMinuteSelection={{@allowMinuteSelection}}
+            @onSelect={{this.onDateSelect}}
+            @onClose={{this.onBlur}}
+          />
+        {{/if}}
       {{else}}
-        <NrgTextField
-          @focusId={{@focusId}}
-          @placeholder={{@placeholder}}
-          class="left icon"
+        {{#if this.isFocused}}
+          <DatetimeCalendar
+            @minDate={{@minDate}}
+            @maxDate={{@maxDate}}
+            @type={{this.type}}
+            @value={{this.value}}
+            @showNowShortcut={{this.showNowShortcut}}
+            @isDateDisabled={{@isDateDisabled}}
+            @allowMinuteSelection={{@allowMinuteSelection}}
+            @onSelect={{this.onDateSelect}}
+            @onClose={{this.onBlur}}
+          />
+        {{/if}}
+        <TextInput
+          class="border-start-0 ps-0"
+          placeholder={{@placeholder}}
+          @binding={{@binding}}
           @disabled={{@disabled}}
           @readonly={{@readonly}}
-          @model={{this}}
-          @valuePath="displayValue"
-          as |view|
-        >
-          {{#if this.isFocused}}
-            <NrgDatetime::Calendar
-              @minDate={{@minDate}}
-              @maxDate={{@maxDate}}
-              @type={{this.type}}
-              @value={{this.value}}
-              @showNowShortcut={{this.showNowShortcut}}
-              @isDateDisabled={{@isDateDisabled}}
-              @allowMinuteSelection={{@allowMinuteSelection}}
-              @onSelect={{this.onDateSelect}}
-              @onClose={{this.onBlur}}
-            />
-          {{/if}}
-          <NrgIcon @icon={{this.icon}} />
-          <view.input />
-        </NrgTextField>
+        />
       {{/if}}
     </div>
   </template>
