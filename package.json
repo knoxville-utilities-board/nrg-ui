@@ -21,7 +21,7 @@
     "start": "concurrently 'pnpm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
     "start:addon": "pnpm --filter @nrg-ui/core start --no-watch.clearScreen",
     "start:design-system": "pnpm --filter @nrg-ui/css start",
-    "start:test-app": "pnpm --filter ember-test-app start",
+    "start:test-app": "pnpm --filter test-app start",
     "test": "pnpm --filter '*' test",
     "test:ember": "pnpm --filter '*' test:ember"
   },
