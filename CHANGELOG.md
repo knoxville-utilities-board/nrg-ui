@@ -1,5 +1,31 @@
 # Changelog
 
+## Release (2024-09-13)
+
+@nrg-ui/css 0.1.2 (patch)
+@nrg-ui/core 0.3.0 (minor)
+
+#### :rocket: Enhancement
+* `ember-test-app`, `@nrg-ui/core`
+  * [#134](https://github.com/knoxville-utilities-board/nrg-ui/pull/134) feat: Add dropSection param to prevent excess padding when not present ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+#### :memo: Documentation
+* `ember-test-app`
+  * [#120](https://github.com/knoxville-utilities-board/nrg-ui/pull/120) docs: Implement freestyle docs for marketing footer ([@Trishu-Patel](https://github.com/Trishu-Patel))
+
+#### :house: Internal
+* `@nrg-ui/css`
+  * [#139](https://github.com/knoxville-utilities-board/nrg-ui/pull/139) chore(design-system): Don't ship with CSS source maps ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#137](https://github.com/knoxville-utilities-board/nrg-ui/pull/137) feat: Add repository to package.json files ([@TSenter](https://github.com/TSenter))
+* Other
+  * [#132](https://github.com/knoxville-utilities-board/nrg-ui/pull/132) chore(ci): Update directory name ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 3
+- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))
+- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-08-30)
 
 @nrg-ui/css 0.1.1 (patch)
