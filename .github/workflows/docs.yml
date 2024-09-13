@@ -39,4 +39,4 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.6.3
         with:
-          folder: apps/ember-test-app/dist
+          folder: apps/docs-app/dist

@@ -1,0 +1,47 @@
+{{page-title "FAQs"}}
+<main data-theme="marketing" class="bg-primary-subtle vh-100 text-primary">
+  <div class="container p-5">
+    <div class="row">
+      <Mktg::SectionHeader
+        class="col-12 col-lg-6"
+        @title="We're here to answer all of your questions!"
+        @subject="FAQs"
+      >
+        <:subheader>
+          <div class="d-flex justify-content-center mb-4">
+            <Button type="button" class="mx-2 mt-2 btn btn-primary">Contact Us</Button>
+            <Button type="button" class="mx-2 mt-2 btn text-primary">Or call
+              (865)111-2323</Button>
+          </div>
+        </:subheader>
+      </Mktg::SectionHeader>
+    </div>
+    <Mktg::Faq @defaultOpen={{true}} @question="How does a FAQ Component work?">
+      <:answer>
+        <p>Once you click the icon in the upper right corner, this answer will
+          appear. Pass values into the Open, Question, and Answer parameters,
+          and voila! Pretty neat!</p>
+      </:answer>
+    </Mktg::Faq>
+    <Mktg::Faq @question="Question?">
+      <:answer>
+        <p>Answer</p>
+      </:answer>
+    </Mktg::Faq>
+    <Mktg::Faq @question="Question?">
+      <:answer>
+        <p>Answer</p>
+      </:answer>
+    </Mktg::Faq>
+    <Mktg::Faq @question="Question?">
+      <:answer>
+        <p>Answer</p>
+      </:answer>
+    </Mktg::Faq>
+    <Mktg::Faq @question="Question?">
+      <:answer>
+        <p>Answer</p>
+      </:answer>
+    </Mktg::Faq>
+  </div>
+</main>
