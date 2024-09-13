@@ -101,7 +101,7 @@ export type { Icon as IconType } from './icons.ts';
 export type Optional<T> = T | null;
 export type Primitive = string | number | boolean | null | undefined;
 
-import Modal from '@nrg-ui/core/components/modal';
+import Modal from '@nrg-ui/core/services/modal';
 declare module '@ember/service' {
   interface Registry {
     modal: Modal;

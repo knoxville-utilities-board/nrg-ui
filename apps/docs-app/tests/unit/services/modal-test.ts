@@ -1,4 +1,3 @@
-import ModalService from '@nrg-ui/core/services/modal';
 import { setupTest } from 'ember-test-app/tests/helpers';
 import { module, test } from 'qunit';
 
@@ -10,7 +9,7 @@ module('Unit | Service | modal', function (hooks) {
   setupTest(hooks);
 
   test('openModal adds modal id to modalIds', function (assert) {
-    const service = this.owner.lookup('service:modal') as ModalService;
+    const service = this.owner.lookup('service:modal');
 
     service.openModal(modalId1);
 
@@ -38,7 +37,7 @@ module('Unit | Service | modal', function (hooks) {
   });
 
   test('closeModal removes modal id from modalIds', function (assert) {
-    const service = this.owner.lookup('service:modal') as ModalService;
+    const service = this.owner.lookup('service:modal');
 
     service.openModal(modalId1);
     assert.strictEqual(
@@ -52,7 +51,7 @@ module('Unit | Service | modal', function (hooks) {
   });
 
   test('closeModal does not break when modalId is not present', function (assert) {
-    const service = this.owner.lookup('service:modal') as ModalService;
+    const service = this.owner.lookup('service:modal');
 
     assert.strictEqual(service.modalIds.length, 0, 'No modals should be open');
     service.closeModal(modalId1);
@@ -60,7 +59,7 @@ module('Unit | Service | modal', function (hooks) {
   });
 
   test('multiple modals can be opened and closed', function (assert) {
-    const service = this.owner.lookup('service:modal') as ModalService;
+    const service = this.owner.lookup('service:modal');
 
     service.openModal(modalId1);
     service.openModal(modalId2);

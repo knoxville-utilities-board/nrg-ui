@@ -9,7 +9,25 @@ module('Integration | Component | modal', function (hooks) {
 
   test('it renders', async function (assert) {
     await render(<template><Modal /></template>);
+    assert.dom('dialog').exists();
+    assert.dom('.modal-content').exists();
+    assert.dom('.modal-header').doesNotExist();
+    assert.dom('.modal-body').exists();
+    assert.dom('.modal-footer').doesNotExist();
 
+    await render(<template>
+      <Modal>
+        <:header>
+          <div>Header</div>
+        </:header>
+        <:default>
+          <div>Body</div>
+        </:default>
+        <:footer>
+          <div>Footer</div>
+        </:footer>
+      </Modal>
+    </template>);
     assert.dom('dialog').exists();
     assert.dom('.modal-content').exists();
     assert.dom('.modal-header').exists();

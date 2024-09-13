@@ -130,7 +130,7 @@ export default class Modal extends Component<ModalSignature> {
       {{on "cancel" this.onDismiss}}
       {{on "close" this.onClose}}
       {{onInsert this.onInsert}}
-      {{onUpdate this.onUpdate this.args.isOpen}}
+      {{onUpdate this.onUpdate @isOpen}}
       ...attributes
     >
       <div class="modal-content">
