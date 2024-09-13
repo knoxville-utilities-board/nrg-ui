@@ -2,20 +2,20 @@
   "solution": {
     "@nrg-ui/css": {
       "impact": "patch",
-      "oldVersion": "0.1.0",
-      "newVersion": "0.1.1",
+      "oldVersion": "0.1.1",
+      "newVersion": "0.1.2",
       "constraints": [
         {
           "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./packages/design-system/package.json"
     },
     "@nrg-ui/core": {
       "impact": "minor",
-      "oldVersion": "0.1.0",
-      "newVersion": "0.2.0",
+      "oldVersion": "0.2.0",
+      "newVersion": "0.3.0",
       "constraints": [
         {
           "impact": "minor",
@@ -29,5 +29,5 @@
       "pkgJSONPath": "./packages/ember-core/package.json"
     }
   },
-  "description": "## Release (2024-08-30)\n\n@nrg-ui/css 0.1.1 (patch)\n@nrg-ui/core 0.2.0 (minor)\n\n#### :rocket: Enhancement\n* `ember-test-app`, `@nrg-ui/core`\n  * [#131](https://github.com/knoxville-utilities-board/nrg-ui/pull/131) refactor(phone): Format on blur instead of on type ([@TSenter](https://github.com/TSenter))\n  * [#130](https://github.com/knoxville-utilities-board/nrg-ui/pull/130) refactor: Move `@nrg-ui/ember` package to `@nrg-ui/core` ([@TSenter](https://github.com/TSenter))\n* `ember-test-app`\n  * [#127](https://github.com/knoxville-utilities-board/nrg-ui/pull/127) feat: Add email validator ([@TSenter](https://github.com/TSenter))\n  * [#126](https://github.com/knoxville-utilities-board/nrg-ui/pull/126) feat: Add number field ([@TSenter](https://github.com/TSenter))\n  * [#118](https://github.com/knoxville-utilities-board/nrg-ui/pull/118) feat: Add phone validator ([@TSenter](https://github.com/TSenter))\n  * [#116](https://github.com/knoxville-utilities-board/nrg-ui/pull/116) feat: Create checkbox-group component ([@TSenter](https://github.com/TSenter))\n  * [#117](https://github.com/knoxville-utilities-board/nrg-ui/pull/117) feat(confirmation): Add `inverse` option ([@TSenter](https://github.com/TSenter))\n  * [#100](https://github.com/knoxville-utilities-board/nrg-ui/pull/100) feat: Implement checkbox component ([@TSenter](https://github.com/TSenter))\n* Other\n  * [#98](https://github.com/knoxville-utilities-board/nrg-ui/pull/98) feat(blueprint): Install CSS library when addon is installed ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`\n  * [#113](https://github.com/knoxville-utilities-board/nrg-ui/pull/113) fix: Ensure checkbox label is always clickable ([@KeithClinard](https://github.com/KeithClinard))\n\n#### :memo: Documentation\n* `ember-test-app`\n  * [#119](https://github.com/knoxville-utilities-board/nrg-ui/pull/119) docs: Implement freestyle docs for service pricing ([@Trishu-Patel](https://github.com/Trishu-Patel))\n  * [#116](https://github.com/knoxville-utilities-board/nrg-ui/pull/116) feat: Create checkbox-group component ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `ember-test-app`, `@nrg-ui/core`\n  * [#130](https://github.com/knoxville-utilities-board/nrg-ui/pull/130) refactor: Move `@nrg-ui/ember` package to `@nrg-ui/core` ([@TSenter](https://github.com/TSenter))\n* `ember-test-app`\n  * [#129](https://github.com/knoxville-utilities-board/nrg-ui/pull/129) refactor: Rename -Field components to -Input ([@TSenter](https://github.com/TSenter))\n  * [#128](https://github.com/knoxville-utilities-board/nrg-ui/pull/128) chore(tests): Add helpers for testing validations ([@TSenter](https://github.com/TSenter))\n  * [#109](https://github.com/knoxville-utilities-board/nrg-ui/pull/109) chore: Enable no-bare-strings for improved i18n ([@TSenter](https://github.com/TSenter))\n  * [#108](https://github.com/knoxville-utilities-board/nrg-ui/pull/108) chore: Move form component routes under \"Components\" ([@TSenter](https://github.com/TSenter))\n* Other\n  * [#115](https://github.com/knoxville-utilities-board/nrg-ui/pull/115) chore(ci): Open release plan PR in draft ([@TSenter](https://github.com/TSenter))\n  * [#111](https://github.com/knoxville-utilities-board/nrg-ui/pull/111) chore: Use bot account to open release PR ([@KeithClinard](https://github.com/KeithClinard))\n\n#### Committers: 3\n- Keith ([@KeithClinard](https://github.com/KeithClinard))\n- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2024-09-13)\n\n@nrg-ui/css 0.1.2 (patch)\n@nrg-ui/core 0.3.0 (minor)\n\n#### :rocket: Enhancement\n* `ember-test-app`, `@nrg-ui/core`\n  * [#134](https://github.com/knoxville-utilities-board/nrg-ui/pull/134) feat: Add dropSection param to prevent excess padding when not present ([@ChesneyJulian](https://github.com/ChesneyJulian))\n\n#### :memo: Documentation\n* `ember-test-app`\n  * [#120](https://github.com/knoxville-utilities-board/nrg-ui/pull/120) docs: Implement freestyle docs for marketing footer ([@Trishu-Patel](https://github.com/Trishu-Patel))\n\n#### :house: Internal\n* `@nrg-ui/css`\n  * [#139](https://github.com/knoxville-utilities-board/nrg-ui/pull/139) chore(design-system): Don't ship with CSS source maps ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#137](https://github.com/knoxville-utilities-board/nrg-ui/pull/137) feat: Add repository to package.json files ([@TSenter](https://github.com/TSenter))\n* Other\n  * [#132](https://github.com/knoxville-utilities-board/nrg-ui/pull/132) chore(ci): Update directory name ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 3\n- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))\n- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
