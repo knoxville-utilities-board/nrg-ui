@@ -91,8 +91,6 @@ export default class extends Component {
                   >
                     <Addon @label="FireStick" @price="$80" @quantity="2" />
                     <Addon @label="HBO" @price="$5.99/mo" />
-                    <Addon @label="STARZ" @price="$4.99/mo" />
-                    <Addon @label="Spanish Channels" @price="$4.99/mo" />
                   </ServicePricing>
                   <ServicePricing
                     @label="Phone"
