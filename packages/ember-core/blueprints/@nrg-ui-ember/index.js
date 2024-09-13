@@ -30,5 +30,8 @@ module.exports = {
     await this.insertIntoFile('ember-cli-build.js', BUILD_CHUNK, {
       before: / {2}return app.toTree\(\);/g,
     });
+    await this.insertIntoFile('ember-cli-build.js', BUILD_CHUNK, {
+      before: / {2}const \{ Webpack \} = require\('@embroider\/webpack'\);/g,
+    });
   },
 };
