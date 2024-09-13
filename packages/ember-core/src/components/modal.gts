@@ -134,26 +134,29 @@ export default class Modal extends Component<ModalSignature> {
       ...attributes
     >
       <div class="modal-content">
-
-        <div class="modal-header">
-          <h5 class="modal-title">
-            {{yield to="header"}}
-          </h5>
-          {{#if this.isDismissible}}
-            <button
-              aria-label={{t "nrg.base.close"}}
-              class="btn-close"
-              type="button"
-              {{on "click" this.onDismiss}}
-            ></button>
-          {{/if}}
-        </div>
+        {{#if this.isDismissible}}
+          <button
+            aria-label={{t "nrg.base.close"}}
+            class="btn-close"
+            type="button"
+            {{on "click" this.onDismiss}}
+          ></button>
+        {{/if}}
+        {{#if (has-block "header")}}
+          <div class="modal-header">
+            <h5 class="modal-title">
+              {{yield to="header"}}
+            </h5>
+          </div>
+        {{/if}}
         <div class="modal-body">
           {{yield}}
         </div>
-        <div class="modal-footer">
-          {{yield to="footer"}}
-        </div>
+        {{#if (has-block "footer")}}
+          <div class="modal-footer">
+            {{yield to="footer"}}
+          </div>
+        {{/if}}
       </div>
     </dialog>
   </template>
