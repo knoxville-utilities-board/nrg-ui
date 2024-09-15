@@ -22,6 +22,7 @@
     "start:addon": "pnpm --filter @nrg-ui/core start --no-watch.clearScreen",
     "start:design-system": "pnpm --filter @nrg-ui/css start",
     "start:docs-app": "pnpm --filter docs-app start",
+    "start:test-app": "pnpm --filter test-app start --port 4201",
     "test": "pnpm --filter '*' test",
     "test:ember": "pnpm --filter '*' test:ember"
   },
