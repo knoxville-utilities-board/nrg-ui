@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import DatetimeCalendar from './-private/calendar.gts';
 import BoundValue from './bound-value.ts';
 import TextInput from './text-input.gts';
+import { bind } from '../../helpers/bind.ts';
 import onClickOutside from '../../modifiers/on-click-outside.ts';
 
 import type { Icon as IconType } from '../../';
@@ -147,7 +148,8 @@ export default class FormDatetime extends BoundValue<
         <TextInput
           class="border-start-0"
           placeholder={{@placeholder}}
-          @binding={{@binding}}
+          {{! @glint-expect-error - Types are hard. The model/valuePath style doesn't play well with types}}
+          @binding={{bind this "displayValue"}}
           @disabled={{@disabled}}
           @readonly={{@readonly}}
         />

@@ -5,5 +5,8 @@ module.exports = {
   rules: {
     'no-bare-strings': true,
     'require-valid-named-block-naming-format': 'kebab-case',
+    'require-presentational-children': {
+      additionalNonSemanticTags: ['i', 'TextInput', 'DatetimeCalendar'],
+    }
   },
 };

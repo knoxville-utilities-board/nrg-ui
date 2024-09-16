@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import dayjs from 'dayjs';
+import { t } from 'ember-intl';
 // @ts-expect-error Ember keyboard doesn't currently ship a type for the `on-key` modifier
 // https://github.com/adopted-ember-addons/ember-keyboard/issues/464
 import onKey from 'ember-keyboard/modifiers/on-key';
@@ -626,33 +627,30 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       {{onKey "Escape" this.onEscape}}
       ...attributes
     >
-      <table class="table table-borderless calendar column day mb-0">
-        <thead>
+      <table class="table table-borderless calendar mb-0">
+        <thead class="table-light">
           {{#if (notEq @type "time")}}
-            <tr>
+            <tr class="header">
               <th colspan="7">
-                <span
-                  class="link"
-                  role="button"
-                  {{on "click" this.onHeaderDisplayClick}}
-                >
+                <span role="button" {{on "click" this.onHeaderDisplayClick}}>
                   {{this.headerDisplay}}
                 </span>
                 <span
+                  aria-label={{t "nrg.base.previous"}}
                   class="float-start"
                   role="button"
                   {{on "click" this.onPrevious}}
                 >
-                  <i class="bi-chevron-left"></i>
+                  <i class="bi-chevron-left" role="img"></i>
                 </span>
                 <span
+                  aria-label={{t "nrg.base.next"}}
                   class="float-end"
                   role="button"
                   {{on "click" this.onNext}}
                 >
                   <i class="bi-chevron-right"></i>
                 </span>
-
               </th>
             </tr>
           {{/if}}
@@ -669,8 +667,8 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
             <tr>
               {{#each row as |cell|}}
                 <td
-                  class="link cell
-                    {{if cell.disabled 'table-secondary'}}
+                  class="cell
+                    {{if cell.disabled 'disabled'}}
                     {{if cell.selected 'active focus'}}
                     {{cell.customClass}}"
                   role="button"
@@ -681,11 +679,13 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
               {{/each}}
             </tr>
           {{/each}}
+        </tbody>
+        <tfoot class="table-light">
           {{#if this.showNowShortcut}}
             <tr>
               <td
                 colspan="7"
-                class="today link"
+                class="today cell"
                 role="button"
                 {{on "click" this.setToNow}}
               >
@@ -693,7 +693,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
               </td>
             </tr>
           {{/if}}
-        </tbody>
+        </tfoot>
       </table>
     </div>
   </template>

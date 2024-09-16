@@ -8,6 +8,6 @@ export default class extends Component {
   value;
 
   <template>
-    <Datetime @binding={{bind this "value"}} />
+    <Datetime class="mt-3" @binding={{bind this "value"}} @type="datetime" />
   </template>
 }
