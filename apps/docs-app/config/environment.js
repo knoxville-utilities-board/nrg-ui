@@ -46,7 +46,7 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-    ENV.rootURL = '/nrg-ui';
+    ENV.rootURL = '/nrg-ui/';
     ENV.locationType = 'hash';
   }
 
