@@ -8,7 +8,7 @@
   "author": "",
   "scripts": {
     "build": "pnpm --filter '@nrg-ui/*' build",
-    "build-docs": "pnpm --filter 'ember-test-app' build",
+    "build-docs": "pnpm --filter 'docs-app' build",
     "format": "pnpm --filter '*' format",
     "gember": "pnpm --filter '@nrg-ui/core' run generate",
     "gember:component": "pnpm --filter @nrg-ui/core run generate component --class-based --typescript",
@@ -18,10 +18,11 @@
     "lint": "pnpm --filter '*' lint",
     "lint:fix": "pnpm --filter '*' lint:fix",
     "prepare": "pnpm build",
-    "start": "concurrently 'pnpm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
+    "start": "concurrently 'pnpm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow,green",
     "start:addon": "pnpm --filter @nrg-ui/core start --no-watch.clearScreen",
     "start:design-system": "pnpm --filter @nrg-ui/css start",
-    "start:test-app": "pnpm --filter ember-test-app start",
+    "start:docs-app": "pnpm --filter docs-app start",
+    "start:test-app": "pnpm --filter test-app start --port 4201",
     "test": "pnpm --filter '*' test",
     "test:ember": "pnpm --filter '*' test:ember"
   },
