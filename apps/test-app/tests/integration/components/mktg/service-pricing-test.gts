@@ -99,14 +99,14 @@ module('Integration | Component | mktg/service-pricing', function (hooks) {
       .hasClass('fw-normal');
   });
 
-  test('it can render a service package', async function () {
+  test('it can render a service product', async function () {
     await render(<template>
-      <ServicePricing @label="Service" @package="Service Package" />
+      <ServicePricing @label="Service" @product="Service Product" />
     </template>);
 
     assert
       .dom('div div:nth-child(1) div:nth-child(2)')
-      .hasText('Service: Service Package');
+      .hasText('Service: Service Product');
   });
 
   test('it can render an addon', async function () {

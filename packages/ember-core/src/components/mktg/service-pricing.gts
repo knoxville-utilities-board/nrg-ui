@@ -21,7 +21,7 @@ interface MktgServicePricingSignature {
   Args: {
     icon: IconType;
     label: string;
-    package?: string;
+    product?: string;
     description: string;
     active?: boolean;
     selected?: boolean;
@@ -65,8 +65,8 @@ export default class MktgServicePricing extends Component<MktgServicePricingSign
   }
 
   get label() {
-    if (this.args.package) {
-      return `${this.args.label}: ${this.args.package}`;
+    if (this.args.product) {
+      return `${this.args.label}: ${this.args.product}`;
     }
 
     return this.args.label;

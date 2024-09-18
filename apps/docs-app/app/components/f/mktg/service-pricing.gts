@@ -23,7 +23,7 @@ export default class extends Component {
   label = 'Label';
 
   @tracked
-  package = 'Package';
+  product = 'Product';
 
   @tracked
   selected = true;
@@ -44,7 +44,7 @@ export default class extends Component {
               @description={{this.description}}
               @icon={{this.icon}}
               @label={{this.label}}
-              @package={{this.package}}
+              @product={{this.product}}
               @selected={{this.selected}}
               as |Addon|
             >
@@ -95,10 +95,10 @@ export default class extends Component {
               @onInput={{fn this.update "label"}}
             />
             <Args.String
-              @description="Renders the package name in the top left"
-              @name="package"
-              @value={{this.package}}
-              @onInput={{fn this.update "package"}}
+              @description="Renders the product name in the top left"
+              @name="product"
+              @value={{this.product}}
+              @onInput={{fn this.update "product"}}
             />
             <Args.Bool
               @description="When true, the service pricing component will be selected"
