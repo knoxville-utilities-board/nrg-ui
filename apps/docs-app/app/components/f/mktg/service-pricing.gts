@@ -49,9 +49,9 @@ export default class extends Component {
               as |Addon|
             >
               <Addon @label="Product 1" @price="$80" @quantity="2" />
-              <Addon @label="Product 2" @price="$5.99/mo" />
-              <Addon @label="Product 3" @price="$4.99/mo" />
-              <Addon @label="Product 4" @price="$4.99/mo" />
+              <Addon @label="Product 2" @price="$5.99" @priceLabel="/mo" />
+              <Addon @label="Product 3" @price="$4.99" @priceLabel="/mo" />
+              <Addon @label="Product 4" @price="$4.99" @priceLabel="/mo" />
             </ServicePricing>
             <ServicePricing
               class={{this.class}}

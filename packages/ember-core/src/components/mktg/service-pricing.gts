@@ -9,6 +9,7 @@ interface AddonSignature {
   Args: {
     label?: string;
     price?: string;
+    priceLabel?: string;
     quantity?: number;
   };
   Blocks: {
@@ -47,7 +48,7 @@ class Addon extends Component<AddonSignature> {
         {{this.label}}
       </div>
       <div class="col-auto text-end">
-        {{@price}}
+        {{@price}}{{@priceLabel}}
       </div>
     </div>
   </template>
