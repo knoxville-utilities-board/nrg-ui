@@ -1,26 +1,22 @@
 {
   "solution": {
     "@nrg-ui/css": {
-      "impact": "patch",
-      "oldVersion": "0.1.1",
-      "newVersion": "0.1.2",
+      "impact": "minor",
+      "oldVersion": "0.1.2",
+      "newVersion": "0.2.0",
       "constraints": [
         {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
         }
       ],
       "pkgJSONPath": "./packages/design-system/package.json"
     },
     "@nrg-ui/core": {
-      "impact": "minor",
-      "oldVersion": "0.2.0",
-      "newVersion": "0.3.0",
+      "impact": "patch",
+      "oldVersion": "0.3.0",
+      "newVersion": "0.3.1",
       "constraints": [
-        {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        },
         {
           "impact": "patch",
           "reason": "Appears in changelog section :house: Internal"
@@ -29,5 +25,5 @@
       "pkgJSONPath": "./packages/ember-core/package.json"
     }
   },
-  "description": "## Release (2024-09-13)\n\n@nrg-ui/css 0.1.2 (patch)\n@nrg-ui/core 0.3.0 (minor)\n\n#### :rocket: Enhancement\n* `ember-test-app`, `@nrg-ui/core`\n  * [#134](https://github.com/knoxville-utilities-board/nrg-ui/pull/134) feat: Add dropSection param to prevent excess padding when not present ([@ChesneyJulian](https://github.com/ChesneyJulian))\n\n#### :memo: Documentation\n* `ember-test-app`\n  * [#120](https://github.com/knoxville-utilities-board/nrg-ui/pull/120) docs: Implement freestyle docs for marketing footer ([@Trishu-Patel](https://github.com/Trishu-Patel))\n\n#### :house: Internal\n* `@nrg-ui/css`\n  * [#139](https://github.com/knoxville-utilities-board/nrg-ui/pull/139) chore(design-system): Don't ship with CSS source maps ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#137](https://github.com/knoxville-utilities-board/nrg-ui/pull/137) feat: Add repository to package.json files ([@TSenter](https://github.com/TSenter))\n* Other\n  * [#132](https://github.com/knoxville-utilities-board/nrg-ui/pull/132) chore(ci): Update directory name ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 3\n- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))\n- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2024-09-19)\n\n@nrg-ui/css 0.2.0 (minor)\n@nrg-ui/core 0.3.1 (patch)\n\n#### :rocket: Enhancement\n* `@nrg-ui/css`\n  * [#148](https://github.com/knoxville-utilities-board/nrg-ui/pull/148) feat(css): Enable negative margins ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* `docs-app`\n  * [#142](https://github.com/knoxville-utilities-board/nrg-ui/pull/142) chore: Update rootURL for docs app ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `docs-app`, `test-app`, `@nrg-ui/core`\n  * [#144](https://github.com/knoxville-utilities-board/nrg-ui/pull/144) refactor: Update service pricing component parameter name ([@lnicely](https://github.com/lnicely))\n  * [#138](https://github.com/knoxville-utilities-board/nrg-ui/pull/138) chore: Use Embroider for docs app ([@TSenter](https://github.com/TSenter))\n* `docs-app`\n  * [#142](https://github.com/knoxville-utilities-board/nrg-ui/pull/142) chore: Update rootURL for docs app ([@TSenter](https://github.com/TSenter))\n* `test-app`\n  * [#141](https://github.com/knoxville-utilities-board/nrg-ui/pull/141) chore: Add link to test page ([@KeithClinard](https://github.com/KeithClinard))\n\n#### Committers: 3\n- Keith ([@KeithClinard](https://github.com/KeithClinard))\n- Lucas ([@lnicely](https://github.com/lnicely))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
