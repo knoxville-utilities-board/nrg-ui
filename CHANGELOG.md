@@ -1,5 +1,32 @@
 # Changelog
 
+## Release (2024-09-19)
+
+@nrg-ui/css 0.2.0 (minor)
+@nrg-ui/core 0.3.1 (patch)
+
+#### :rocket: Enhancement
+* `@nrg-ui/css`
+  * [#148](https://github.com/knoxville-utilities-board/nrg-ui/pull/148) feat(css): Enable negative margins ([@TSenter](https://github.com/TSenter))
+
+#### :memo: Documentation
+* `docs-app`
+  * [#142](https://github.com/knoxville-utilities-board/nrg-ui/pull/142) chore: Update rootURL for docs app ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `docs-app`, `test-app`, `@nrg-ui/core`
+  * [#144](https://github.com/knoxville-utilities-board/nrg-ui/pull/144) refactor: Update service pricing component parameter name ([@lnicely](https://github.com/lnicely))
+  * [#138](https://github.com/knoxville-utilities-board/nrg-ui/pull/138) chore: Use Embroider for docs app ([@TSenter](https://github.com/TSenter))
+* `docs-app`
+  * [#142](https://github.com/knoxville-utilities-board/nrg-ui/pull/142) chore: Update rootURL for docs app ([@TSenter](https://github.com/TSenter))
+* `test-app`
+  * [#141](https://github.com/knoxville-utilities-board/nrg-ui/pull/141) chore: Add link to test page ([@KeithClinard](https://github.com/KeithClinard))
+
+#### Committers: 3
+- Keith ([@KeithClinard](https://github.com/KeithClinard))
+- Lucas ([@lnicely](https://github.com/lnicely))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-09-13)
 
 @nrg-ui/css 0.1.2 (patch)
