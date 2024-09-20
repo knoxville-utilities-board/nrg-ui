@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2024-09-20)
+
+@nrg-ui/core 0.3.2 (patch)
+
+#### :house: Internal
+* `@nrg-ui/core`
+  * [#149](https://github.com/knoxville-utilities-board/nrg-ui/pull/149) style(header): Remove padding from header container ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-09-19)
 
 @nrg-ui/css 0.2.0 (minor)
