@@ -107,7 +107,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     const value = this.currentValue;
     const hasTime = this.args.type === 'datetime' || this.args.type === 'time';
     if (!hasTime) {
-      return null;
+      return undefined;
     }
     return dayjs(value).hour();
   }
@@ -116,7 +116,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     const value = this.currentValue;
     const hasTime = this.args.type === 'datetime' || this.args.type === 'time';
     if (!hasTime) {
-      return null;
+      return undefined;
     }
     return dayjs(value).minute();
   }
@@ -154,7 +154,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
 
   get minutes(): Cell[][] {
     let calendar = dayjs({
-      hour: this.selectedHourIndex ?? 0,
+      hour: this.selectedHourIndex,
       day: this.selectedDayIndex,
       month: this.selectedMonthIndex,
       year: this.selectedYearIndex,
@@ -352,8 +352,8 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       day: this.selectedDayIndex,
       month: this.selectedMonthIndex,
       year: this.selectedYearIndex,
-      hour: this.selectedHourIndex ?? 0,
-      minute: this.selectedMinuteIndex ?? 0,
+      hour: this.selectedHourIndex,
+      minute: this.selectedMinuteIndex,
     });
     const currentDate = date.clone();
 
@@ -402,8 +402,8 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       year: this.selectedYearIndex,
       month: this.selectedMonthIndex,
       day: this.selectedDayIndex,
-      hour: this.selectedHourIndex ?? 0,
-      minute: this.selectedMinuteIndex ?? 0,
+      hour: this.selectedHourIndex,
+      minute: this.selectedMinuteIndex,
     });
     this.onSelect(value.toDate());
   }
