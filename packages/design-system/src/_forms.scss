@@ -91,16 +91,16 @@ select.form-select,
 }
 
 /* Datetime calendar */
-.time {
+.calendar {
+  @extend .text-center;
 
-  & > .cell {
+  & .cell {
     max-width: min-content;
     background-color: var(--bs-body-bg);
-    outline: 1px solid var(--bs-border-color);
-    // border-collapse: collapse;
+    // outline: 1px solid var(--bs-border-color);
 
     &:hover {
-      background-color: var(--bs-tertiary-bg);
+      background-color: var(--bs-secondary-bg);
       // color: white;
     }
   }

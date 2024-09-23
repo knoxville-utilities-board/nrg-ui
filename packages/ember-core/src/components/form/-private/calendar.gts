@@ -617,6 +617,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     <div
       tabindex="-1"
       class="position-absolute border mt-5 z-3"
+      role="dialog"
       {{onKey "ArrowUp" this.moveUp}}
       {{onKey "ArrowDown" this.moveDown}}
       {{onKey "ArrowLeft" this.moveLeft}}
@@ -625,11 +626,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       {{onKey "Escape" this.onEscape}}
       ...attributes
     >
-      <table
-        class="table table-bordered text-center
-          {{this.table.columnCountClass}}
-          column day mb-0"
-      >
+      <table class="table table-borderless calendar column day mb-0">
         <thead>
           {{#if (notEq @type "time")}}
             <tr>
@@ -638,16 +635,18 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
                   class="link"
                   role="button"
                   {{on "click" this.onHeaderDisplayClick}}
-                >{{this.headerDisplay}}</span>
+                >
+                  {{this.headerDisplay}}
+                </span>
                 <span
-                  class="prev link"
+                  class="float-start"
                   role="button"
                   {{on "click" this.onPrevious}}
                 >
                   <i class="bi-chevron-left"></i>
                 </span>
                 <span
-                  class="next link"
+                  class="float-end"
                   role="button"
                   {{on "click" this.onNext}}
                 >
@@ -670,8 +669,8 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
             <tr>
               {{#each row as |cell|}}
                 <td
-                  class="link
-                    {{if cell.disabled 'adjacent disabled'}}
+                  class="link cell
+                    {{if cell.disabled 'table-secondary'}}
                     {{if cell.selected 'active focus'}}
                     {{cell.customClass}}"
                   role="button"
