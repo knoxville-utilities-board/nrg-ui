@@ -143,41 +143,27 @@ export default class FormDatetime extends BoundValue<
       <span class="input-group-text">
         <i class="{{this.icon}} text-secondary" />
       </span>
-      {{#if (has-block)}}
-        {{yield}}
-        {{#if this.isFocused}}
-          <DatetimeCalendar
-            @minDate={{@minDate}}
-            @maxDate={{@maxDate}}
-            @type={{this.type}}
-            @value={{this.value}}
-            @showNowShortcut={{this.showNowShortcut}}
-            @isDateDisabled={{@isDateDisabled}}
-            @allowMinuteSelection={{@allowMinuteSelection}}
-            @onSelect={{this.onDateSelect}}
-            @onClose={{this.onBlur}}
-          />
-        {{/if}}
-      {{else}}
-        {{#if this.isFocused}}
-          <DatetimeCalendar
-            @minDate={{@minDate}}
-            @maxDate={{@maxDate}}
-            @type={{this.type}}
-            @value={{this.value}}
-            @showNowShortcut={{this.showNowShortcut}}
-            @isDateDisabled={{@isDateDisabled}}
-            @allowMinuteSelection={{@allowMinuteSelection}}
-            @onSelect={{this.onDateSelect}}
-            @onClose={{this.onBlur}}
-          />
-        {{/if}}
+      {{#unless (has-block)}}
         <TextInput
           class="border-start-0"
           placeholder={{@placeholder}}
           @binding={{@binding}}
           @disabled={{@disabled}}
           @readonly={{@readonly}}
+        />
+      {{/unless}}
+      {{yield}}
+      {{#if this.isFocused}}
+        <DatetimeCalendar
+          @minDate={{@minDate}}
+          @maxDate={{@maxDate}}
+          @type={{this.type}}
+          @value={{this.value}}
+          @showNowShortcut={{this.showNowShortcut}}
+          @isDateDisabled={{@isDateDisabled}}
+          @allowMinuteSelection={{@allowMinuteSelection}}
+          @onSelect={{this.onDateSelect}}
+          @onClose={{this.onBlur}}
         />
       {{/if}}
     </div>
