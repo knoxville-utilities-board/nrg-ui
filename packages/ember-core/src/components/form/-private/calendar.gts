@@ -649,14 +649,14 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
                   role="button"
                   {{on "click" this.onPrevious}}
                 >
-                  <i class="chevron left icon"></i>
+                  <i class="bi-chevron-left"></i>
                 </span>
                 <span
                   class="next link"
                   role="button"
                   {{on "click" this.onNext}}
                 >
-                  <i class="chevron right icon"></i>
+                  <i class="bi-chevron-right"></i>
                 </span>
               </th>
             </tr>
