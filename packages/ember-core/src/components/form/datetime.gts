@@ -140,7 +140,7 @@ export default class FormDatetime extends BoundValue<
       {{onClickOutside this.onBlur}}
       ...attributes
     >
-      <span class="input-group-text bg-transparent border-end-0">
+      <span class="input-group-text">
         <i class="{{this.icon}} text-secondary" />
       </span>
       {{#if (has-block)}}
@@ -173,7 +173,7 @@ export default class FormDatetime extends BoundValue<
           />
         {{/if}}
         <TextInput
-          class="border-start-0 ps-0"
+          class="border-start-0"
           placeholder={{@placeholder}}
           @binding={{@binding}}
           @disabled={{@disabled}}
