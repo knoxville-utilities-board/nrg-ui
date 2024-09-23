@@ -623,7 +623,8 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
   <template>
     <div
       tabindex="-1"
-      class="ui popup calendar bottom left transition active visible"
+      class="position-absolute border mt-5 z-3"
+      role="dialog"
       {{onKey "ArrowUp" this.moveUp}}
       {{onKey "ArrowDown" this.moveDown}}
       {{onKey "ArrowLeft" this.moveLeft}}
@@ -632,12 +633,8 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       {{onKey "Escape" this.onEscape}}
       ...attributes
     >
-      <table
-        class="ui celled center aligned unstackable table
-          {{this.table.columnCountClass}}
-          column day"
-      >
-        <thead>
+      <table class="table table-borderless calendar mb-0">
+        <thead class="table-light">
           {{#if (notEq @type "time")}}
             <tr class="header">
               <th colspan="7">
@@ -645,14 +642,14 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
                   {{this.headerDisplay}}
                 </span>
                 <span
-                  class="prev link"
+                  class="float-start"
                   role="button"
                   {{on "click" this.onPrevious}}
                 >
                   <i class="bi-chevron-left"></i>
                 </span>
                 <span
-                  class="next link"
+                  class="float-end"
                   role="button"
                   {{on "click" this.onNext}}
                 >
@@ -674,8 +671,8 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
             <tr>
               {{#each row as |cell|}}
                 <td
-                  class="link
-                    {{if cell.disabled 'adjacent disabled'}}
+                  class="cell
+                    {{if cell.disabled 'disabled'}}
                     {{if cell.selected 'active focus'}}
                     {{cell.customClass}}"
                   role="button"
@@ -686,11 +683,13 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
               {{/each}}
             </tr>
           {{/each}}
+        </tbody>
+        <tfoot class="table-light">
           {{#if this.showNowShortcut}}
             <tr>
               <td
                 colspan="7"
-                class="today link"
+                class="today cell"
                 role="button"
                 {{on "click" this.setToNow}}
               >
@@ -698,7 +697,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
               </td>
             </tr>
           {{/if}}
-        </tbody>
+        </tfoot>
       </table>
     </div>
   </template>

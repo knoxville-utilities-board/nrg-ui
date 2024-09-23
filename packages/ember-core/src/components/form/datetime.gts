@@ -133,12 +133,15 @@ export default class Datetime extends BoundValue<
 
   <template>
     <div
-      class="ui calendar {{@class}}"
+      class="calendar input-group"
       role="button"
       {{on "click" this.onFocus}}
       {{onClickOutside this.onBlur}}
       ...attributes
     >
+      <span class="input-group-text">
+        <i class="{{this.icon}} text-secondary" />
+      </span>
       {{#if (has-block)}}
         {{yield}}
         {{#if this.isFocused}}
@@ -169,7 +172,7 @@ export default class Datetime extends BoundValue<
           />
         {{/if}}
         <TextInput
-          class="border-start-0 ps-0"
+          class="border-start-0 rounded-end"
           placeholder={{@placeholder}}
           {{! @glint-expect-error - Types are hard. The model/valuePath style doesn't play well with types}}
           @binding={{bind this "displayValue"}}
