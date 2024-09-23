@@ -119,7 +119,12 @@ export default class FormDatetime extends BoundValue<
 
     this.isFocused = true;
 
-    evt.currentTarget?.querySelector('.ui.popup.calendar')?.focus();
+    const target = evt.currentTarget as HTMLElement;
+    const focusTarget = target.querySelector(
+      '.ui.popup.calendar',
+    ) as HTMLElement | null;
+
+    focusTarget?.focus();
   }
 
   @action
