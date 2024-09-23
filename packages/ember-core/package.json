@@ -184,6 +184,7 @@
       "./components/form/bound-value.js": "./dist/_app_/components/form/bound-value.js",
       "./components/form/checkbox-group.js": "./dist/_app_/components/form/checkbox-group.js",
       "./components/form/checkbox.js": "./dist/_app_/components/form/checkbox.js",
+      "./components/form/datetime.js": "./dist/_app_/components/form/datetime.js",
       "./components/form/field.js": "./dist/_app_/components/form/field.js",
       "./components/form/index.js": "./dist/_app_/components/form/index.js",
       "./components/form/number-input.js": "./dist/_app_/components/form/number-input.js",

@@ -103,3 +103,19 @@ form button[type="submit"] {
 input::placeholder {
   opacity: 0.75;
 }
+
+/* Datetime calendar */
+.time {
+
+  & > .cell {
+    max-width: min-content;
+    background-color: var(--bs-white);
+    outline: 1px solid var(--bs-border-color);
+    // border-collapse: collapse;
+
+    &:hover {
+      background-color: var(--bs-tertiary-bg);
+      // color: white;
+    }
+  }
+}
