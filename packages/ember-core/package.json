@@ -215,6 +215,7 @@
       "./components/toaster.js": "./dist/_app_/components/toaster.js",
       "./helpers/bind.js": "./dist/_app_/helpers/bind.js",
       "./helpers/index.js": "./dist/_app_/helpers/index.js",
+      "./initializers/dayjs-plugins.js": "./dist/_app_/initializers/dayjs-plugins.js",
       "./modifiers/did-insert.js": "./dist/_app_/modifiers/did-insert.js",
       "./modifiers/index.js": "./dist/_app_/modifiers/index.js",
       "./modifiers/on-click-outside.js": "./dist/_app_/modifiers/on-click-outside.js",

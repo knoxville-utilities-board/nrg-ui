@@ -31,6 +31,7 @@ export default {
       [
         'components/**/*.js',
         'helpers/**/*.js',
+        'initializers/**/*.js',
         'modifiers/**/*.js',
         'services/**/*.js',
         'utils/**/*.js',
