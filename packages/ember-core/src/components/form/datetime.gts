@@ -23,6 +23,7 @@ export interface DatetimeSignature {
     disabled?: boolean;
     maxDate?: Date;
     minDate?: Date;
+    parseFormat?: string | string[];
     placeholder?: string;
     readonly?: boolean;
     showNowShortcut?: boolean;
@@ -47,6 +48,9 @@ export default class Datetime extends BoundValue<
 > {
   @tracked
   isFocused = false;
+
+  @tracked
+  inputValue = '';
 
   get dateFormat() {
     return this.args.dateFormat ?? defaultDateFormat;
@@ -82,6 +86,9 @@ export default class Datetime extends BoundValue<
   }
 
   get displayValue() {
+    if (this.isFocused && this.inputValue) {
+      return this.inputValue;
+    }
     if (!this.value) {
       return '';
     }
@@ -89,6 +96,10 @@ export default class Datetime extends BoundValue<
   }
 
   set displayValue(value) {
+    if (this.isFocused) {
+      this.inputValue = value;
+      return;
+    }
     const newValue = dayjs(value, this.displayFormat);
     if (!newValue.isValid()) {
       return;
@@ -100,13 +111,32 @@ export default class Datetime extends BoundValue<
     this.onDateSelect(newValue.toDate());
   }
 
+  get parseFormats() {
+    if (this.args.parseFormat) {
+      return this.args.parseFormat;
+    }
+    return [this.displayFormat];
+  }
+
   getDefaultValue = function () {
     return new Date();
   }
 
   @action
   onBlur() {
+    const { inputValue } = this;
     this.isFocused = false;
+    if (inputValue) {
+      let newValue = dayjs(inputValue, this.parseFormats);
+      if (!newValue.isValid()) {
+        newValue = dayjs(inputValue);
+      }
+      if (newValue.isValid()) {
+        this.onDateSelect(newValue.toDate());
+      }
+
+      this.inputValue = '';
+    }
   }
 
   @action
