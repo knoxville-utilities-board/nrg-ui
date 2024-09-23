@@ -134,12 +134,15 @@ export default class FormDatetime extends BoundValue<
 
   <template>
     <div
-      class="ui calendar {{@class}}"
+      class="ui calendar input-group"
       role="button"
       {{on "click" this.onFocus}}
       {{onClickOutside this.onBlur}}
       ...attributes
     >
+      <span class="input-group-text bg-transparent border-end-0">
+        <i class="{{this.icon}} text-secondary" />
+      </span>
       {{#if (has-block)}}
         {{yield}}
         {{#if this.isFocused}}

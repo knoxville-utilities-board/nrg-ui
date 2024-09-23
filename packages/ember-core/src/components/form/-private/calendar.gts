@@ -616,7 +616,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
   <template>
     <div
       tabindex="-1"
-      class="ui popup calendar bottom left transition active visible"
+      class="position-absolute border mt-5"
       {{onKey "ArrowUp" this.moveUp}}
       {{onKey "ArrowDown" this.moveDown}}
       {{onKey "ArrowLeft" this.moveLeft}}
@@ -626,9 +626,9 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       ...attributes
     >
       <table
-        class="ui celled center aligned unstackable table
+        class="table table-bordered text-center
           {{this.table.columnCountClass}}
-          column day"
+          column day mb-0"
       >
         <thead>
           {{#if (notEq @type "time")}}
