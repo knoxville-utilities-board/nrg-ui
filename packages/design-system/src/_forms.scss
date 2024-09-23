@@ -89,3 +89,19 @@ select.form-select,
 .form-check-label {
   user-select: none;
 }
+
+/* Datetime calendar */
+.time {
+
+  & > .cell {
+    max-width: min-content;
+    background-color: var(--bs-body-bg);
+    outline: 1px solid var(--bs-border-color);
+    // border-collapse: collapse;
+
+    &:hover {
+      background-color: var(--bs-tertiary-bg);
+      // color: white;
+    }
+  }
+}
