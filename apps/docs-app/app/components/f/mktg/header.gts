@@ -9,7 +9,7 @@ import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 export default class extends Component {
   @tracked
-  class = 'bg-primary';
+  class = 'text-primary';
 
   @tracked
   dropSection = false;
@@ -32,12 +32,8 @@ export default class extends Component {
                 <p class="m-0">Title</p>
               </:title>
               <:nav>
-                <Button
-                  class="btn-outline-light me-1 rounded-pill"
-                >Prev</Button>
-                <Button
-                  class="btn-outline-light me-1 rounded-pill"
-                >Next</Button>
+                <Button class="btn-outline-primary me-1">Prev</Button>
+                <Button class="btn-primary me-1">Next</Button>
               </:nav>
               <:options>
                 <p class="my-0 me-2 fw-bold">Option 1</p>

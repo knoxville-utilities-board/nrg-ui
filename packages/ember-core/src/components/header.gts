@@ -13,7 +13,7 @@ interface HeaderSignature {
 const HeaderComponent: TOC<HeaderSignature> = <template>
   <div class="container-fluid gx-0">
     <div
-      class="row row-cols-12 bg-primary text-light p-1 align-items-center justify-content-evenly"
+      class="row row-cols-12 p-1 align-items-center justify-content-evenly"
       ...attributes
     >
       <div class="col d-flex justify-content-start">
