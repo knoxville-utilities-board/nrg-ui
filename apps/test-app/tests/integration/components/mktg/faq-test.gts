@@ -17,7 +17,7 @@ module('Integration | Component | mktg/faq', function (hooks) {
     </template>);
 
     assert
-      .dom('.d-flex.flex-column.p-2.m-2.bg-white.rounded.test')
+      .dom('.d-flex.flex-column.p-2.m-2.rounded.test')
       .exists('FAQ renders with passed attributes');
 
     assert
