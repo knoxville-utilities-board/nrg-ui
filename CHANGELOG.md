@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2024-09-24)
+
+@nrg-ui/core 0.4.0 (minor)
+
+#### :rocket: Enhancement
+* `docs-app`, `test-app`, `@nrg-ui/core`
+  * [#151](https://github.com/knoxville-utilities-board/nrg-ui/pull/151) refactor: Remove primary blue background from headers ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+#### Committers: 1
+- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
 ## Release (2024-09-20)
 
 @nrg-ui/core 0.3.2 (patch)
