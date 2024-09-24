@@ -43,7 +43,7 @@ export default class Icon extends Component<IconSignature> {
       return this.args.backgroundColor;
     }
     if (!this.args.color) {
-      return 'bg-transparent';
+      return 'transparent';
     }
     return `${this.args.color}-subtle`;
   }

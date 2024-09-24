@@ -44,7 +44,7 @@ class FooterSection extends Component<FooterSectionSignature> {
 }
 
 const MarketingFooterComponent: TOC<MarketingFooterSignature> = <template>
-  <footer class="bg-primary text-light mt-auto p-2" ...attributes>
+  <footer class="mt-auto p-2" ...attributes>
     <div class="container pt-0 mb-4">
       <div
         class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center"
