@@ -47,7 +47,7 @@ export default class NavbarComponent extends Component<NavbarSignature> {
   // TODO: --bs-navbar-toggler-focus-width: 0;
 
   <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary" ...attributes>
+    <nav class="navbar navbar-expand-lg" ...attributes>
       {{yield to="brand"}}
       {{#if this.responsive.isMobileDevice}}
         {{yield to="actions"}}
