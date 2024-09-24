@@ -2,6 +2,22 @@
 
 ## Release (2024-09-24)
 
+@nrg-ui/css 0.3.0 (minor)
+@nrg-ui/core 0.4.1 (patch)
+
+#### :rocket: Enhancement
+* `@nrg-ui/css`
+  * [#155](https://github.com/knoxville-utilities-board/nrg-ui/pull/155) feat: Add additional color variants for buttons ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `@nrg-ui/core`
+  * [#153](https://github.com/knoxville-utilities-board/nrg-ui/pull/153) chore: Remove extra div from headers ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
+## Release (2024-09-24)
+
 @nrg-ui/core 0.4.0 (minor)
 
 #### :rocket: Enhancement
