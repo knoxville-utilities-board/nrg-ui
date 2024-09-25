@@ -1,22 +1,17 @@
 {
   "solution": {
     "@nrg-ui/css": {
-      "impact": "minor",
-      "oldVersion": "0.2.0",
-      "newVersion": "0.3.0",
-      "constraints": [
-        {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        }
-      ],
-      "pkgJSONPath": "./packages/design-system/package.json"
+      "oldVersion": "0.3.0"
     },
     "@nrg-ui/core": {
       "impact": "patch",
-      "oldVersion": "0.4.0",
-      "newVersion": "0.4.1",
+      "oldVersion": "0.4.1",
+      "newVersion": "0.4.2",
       "constraints": [
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
+        },
         {
           "impact": "patch",
           "reason": "Appears in changelog section :house: Internal"
@@ -25,5 +20,5 @@
       "pkgJSONPath": "./packages/ember-core/package.json"
     }
   },
-  "description": "## Release (2024-09-24)\n\n@nrg-ui/css 0.3.0 (minor)\n@nrg-ui/core 0.4.1 (patch)\n\n#### :rocket: Enhancement\n* `@nrg-ui/css`\n  * [#155](https://github.com/knoxville-utilities-board/nrg-ui/pull/155) feat: Add additional color variants for buttons ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/core`\n  * [#153](https://github.com/knoxville-utilities-board/nrg-ui/pull/153) chore: Remove extra div from headers ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2024-09-25)\n\n@nrg-ui/core 0.4.2 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#156](https://github.com/knoxville-utilities-board/nrg-ui/pull/156) fix: Remove default styling wherever it could be overriden ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/core`\n  * [#159](https://github.com/knoxville-utilities-board/nrg-ui/pull/159) fix(header): Only render center block if used ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
