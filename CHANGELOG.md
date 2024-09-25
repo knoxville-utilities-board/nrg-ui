@@ -1,5 +1,20 @@
 # Changelog
 
+## Release (2024-09-25)
+
+@nrg-ui/core 0.4.2 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#156](https://github.com/knoxville-utilities-board/nrg-ui/pull/156) fix: Remove default styling wherever it could be overriden ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `@nrg-ui/core`
+  * [#159](https://github.com/knoxville-utilities-board/nrg-ui/pull/159) fix(header): Only render center block if used ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-09-24)
 
 @nrg-ui/css 0.3.0 (minor)
