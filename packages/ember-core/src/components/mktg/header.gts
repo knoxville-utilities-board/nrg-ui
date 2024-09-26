@@ -2,7 +2,7 @@ import HeaderComponent from '../header.gts';
 
 import type { TOC } from '@ember/component/template-only';
 
-interface HeaderSignature {
+export interface MktgHeaderSignature {
   Element: HTMLDivElement;
   Args: {
     dropSection: boolean;
@@ -15,7 +15,7 @@ interface HeaderSignature {
   };
 }
 
-const Header: TOC<HeaderSignature> = <template>
+const Header: TOC<MktgHeaderSignature> = <template>
   <HeaderComponent ...attributes>
     <:left>
       {{yield to="brand"}}

@@ -1,6 +1,6 @@
 import type { TOC } from '@ember/component/template-only';
 
-export interface SectionHeaderSignature {
+export interface MktgSectionHeaderSignature {
   Element: HTMLDivElement;
   Args: {
     subject?: string;
@@ -11,7 +11,7 @@ export interface SectionHeaderSignature {
   };
 }
 
-const SectionHeader: TOC<SectionHeaderSignature> = <template>
+const SectionHeader: TOC<MktgSectionHeaderSignature> = <template>
   <div class="col-12 d-flex flex-column align-items-center">
     <div class="text-center" ...attributes>
       <p class="text-uppercase p-0 m-0 fw-semibold">{{@subject}}</p>

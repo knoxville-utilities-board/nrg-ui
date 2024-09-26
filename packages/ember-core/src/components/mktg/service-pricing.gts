@@ -5,7 +5,7 @@ import Icon from '../icon.gts';
 import type { Icon as IconType } from '../../';
 import type { ComponentLike } from '@glint/template';
 
-interface AddonSignature {
+export interface AddonSignature {
   Args: {
     label?: string;
     price?: string;
@@ -17,7 +17,7 @@ interface AddonSignature {
   Element: HTMLElement;
 }
 
-interface MktgServicePricingSignature {
+export interface MktgServicePricingSignature {
   Args: {
     icon: IconType;
     label: string;

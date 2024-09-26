@@ -44,7 +44,7 @@ export interface FormType {
   unregisterValidator(name: string, id: string): void;
 }
 
-declare interface FormSignature {
+export interface FormSignature {
   Element: HTMLFormElement;
   Args: {
     didValidate?: boolean;

@@ -1,6 +1,6 @@
 import type { TOC } from '@ember/component/template-only';
 
-interface MktgWorkflowTraySignature {
+export interface MktgWorkflowTraySignature {
   Blocks: {
     default: [];
   };

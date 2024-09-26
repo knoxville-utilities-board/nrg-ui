@@ -1,6 +1,6 @@
 import type { TOC } from '@ember/component/template-only';
 
-interface HeaderSignature {
+export interface HeaderSignature {
   Element: HTMLDivElement;
   Blocks: {
     left: [];

@@ -4,7 +4,7 @@ import Component from '@glimmer/component';
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike } from '@glint/template';
 
-interface SegmentSignature {
+export interface SegmentSignature {
   Element: HTMLDivElement;
   Args: {
     animated?: boolean;
@@ -17,7 +17,7 @@ interface SegmentSignature {
   };
 }
 
-interface ProgressSignature {
+export interface ProgressSignature {
   Element: HTMLDivElement;
   Args: {
     animated?: boolean;

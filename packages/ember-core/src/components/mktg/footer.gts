@@ -13,7 +13,7 @@ interface FooterSectionSignature {
   };
 }
 
-interface MarketingFooterSignature {
+export interface MktgFooterSignature {
   Element: HTMLElement;
   Args: {
     hasDivider?: boolean;
@@ -43,7 +43,7 @@ class FooterSection extends Component<FooterSectionSignature> {
   </template>
 }
 
-const MarketingFooterComponent: TOC<MarketingFooterSignature> = <template>
+const MarketingFooterComponent: TOC<MktgFooterSignature> = <template>
   <footer class="mt-auto p-2" ...attributes>
     <div class="container pt-0 mb-4">
       <div

@@ -17,7 +17,7 @@ declare type AlertType =
   | 'light'
   | 'dark';
 
-interface AlertSignature {
+export interface AlertSignature {
   Element: HTMLDivElement | null;
   Args: {
     dismissible?: boolean;
