@@ -5,7 +5,7 @@ import { tracked } from '@glimmer/tracking';
 import { cssTransition } from 'ember-css-transitions';
 import { t } from 'ember-intl';
 
-import type { Icon } from '../';
+import type { IconType } from '../';
 
 declare type AlertType =
   | 'primary'
@@ -17,11 +17,11 @@ declare type AlertType =
   | 'light'
   | 'dark';
 
-interface AlertSignature {
+export interface AlertSignature {
   Element: HTMLDivElement | null;
   Args: {
     dismissible?: boolean;
-    icon?: Icon;
+    icon?: IconType;
     text?: string;
     type?: AlertType;
     onDismiss?: () => unknown;

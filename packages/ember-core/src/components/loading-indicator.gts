@@ -4,7 +4,7 @@ import Component from '@glimmer/component';
 export const typeBorder = 'border';
 export const typeGrow = 'grow';
 
-interface LoadingIndicatorSignature {
+export interface LoadingIndicatorSignature {
   Element: HTMLDivElement;
   Args: {
     label?: string;

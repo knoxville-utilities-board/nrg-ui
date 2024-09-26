@@ -22,7 +22,7 @@ declare type ColorType =
   | 'light'
   | 'dark';
 
-interface IconSignature {
+export interface IconSignature {
   Element: HTMLDivElement;
   Args: {
     type: IconType;

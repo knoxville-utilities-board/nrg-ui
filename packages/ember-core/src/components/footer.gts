@@ -1,6 +1,6 @@
 import type { TOC } from '@ember/component/template-only';
 
-interface FooterSignature {
+export interface FooterSignature {
   Element: HTMLElement;
   Blocks: {
     left?: [];

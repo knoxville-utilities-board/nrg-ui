@@ -5,7 +5,7 @@ import { t } from 'ember-intl';
 import { and, not, or } from 'ember-truth-helpers';
 
 import type { ButtonGroupType } from './button-group';
-import type { Icon } from '../';
+import type { IconType } from '../';
 
 export interface ButtonSignature {
   Element: HTMLButtonElement;
@@ -13,7 +13,7 @@ export interface ButtonSignature {
     _class?: string;
     disabled?: boolean;
     group?: ButtonGroupType;
-    icon?: Icon;
+    icon?: IconType;
     iconPosition?: 'right' | 'left';
     iconLabel?: string;
     loading?: boolean;

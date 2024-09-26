@@ -7,7 +7,7 @@ import { t } from 'ember-intl';
 
 import ResponsiveService from '../../services/responsive.ts';
 
-export interface NavbarSignature {
+export interface MktgNavbarSignature {
   Element: HTMLElement;
   Blocks: {
     default: [];
@@ -16,7 +16,7 @@ export interface NavbarSignature {
   };
 }
 
-export default class NavbarComponent extends Component<NavbarSignature> {
+export default class NavbarComponent extends Component<MktgNavbarSignature> {
   @tracked
   isMenuOpen = false;
 

@@ -1,6 +1,6 @@
 import type { TOC } from '@ember/component/template-only';
 
-export interface PromoSignature {
+export interface MktgPromoSignature {
   Element: HTMLDivElement;
   Args: {
     productName?: string;
@@ -13,7 +13,7 @@ export interface PromoSignature {
   };
 }
 
-const Promo: TOC<PromoSignature> = <template>
+const Promo: TOC<MktgPromoSignature> = <template>
   {{#if @vertical}}
     <div ...attributes>
       <div class="d-flex justify-content-center mb-5">

@@ -12,7 +12,7 @@ const columnMap = {
   12: 'g-col-lg-1',
 };
 
-export interface FeatureSignature {
+export interface MktgFeatureSignature {
   Args: {
     icon?: string;
     text?: string;
@@ -25,7 +25,7 @@ export interface FeatureSignature {
 export interface MktgFeatureListSignature {
   Element: HTMLDivElement;
   Blocks: {
-    features: [ComponentLike<FeatureSignature>];
+    features: [ComponentLike<MktgFeatureSignature>];
     label: [];
     default?: [];
   };
@@ -34,7 +34,7 @@ export interface MktgFeatureListSignature {
   };
 }
 
-const Feature: TOC<FeatureSignature> = <template>
+const Feature: TOC<MktgFeatureSignature> = <template>
   <p class="{{@class}}" ...attributes>
     <span class="me-2 fw-bold bi {{@icon}}">{{@meta}}</span>{{@text}}
   </p>
