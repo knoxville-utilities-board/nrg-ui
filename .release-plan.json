@@ -1,24 +1,20 @@
 {
   "solution": {
     "@nrg-ui/css": {
-      "oldVersion": "0.3.0"
-    },
-    "@nrg-ui/core": {
       "impact": "patch",
-      "oldVersion": "0.4.1",
-      "newVersion": "0.4.2",
+      "oldVersion": "0.3.0",
+      "newVersion": "0.3.1",
       "constraints": [
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
         }
       ],
-      "pkgJSONPath": "./packages/ember-core/package.json"
+      "pkgJSONPath": "./packages/design-system/package.json"
+    },
+    "@nrg-ui/core": {
+      "oldVersion": "0.4.2"
     }
   },
-  "description": "## Release (2024-09-25)\n\n@nrg-ui/core 0.4.2 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#156](https://github.com/knoxville-utilities-board/nrg-ui/pull/156) fix: Remove default styling wherever it could be overriden ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/core`\n  * [#159](https://github.com/knoxville-utilities-board/nrg-ui/pull/159) fix(header): Only render center block if used ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2024-09-26)\n\n@nrg-ui/css 0.3.1 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`\n  * [#160](https://github.com/knoxville-utilities-board/nrg-ui/pull/160) style(input): Allow background while removing icon ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
