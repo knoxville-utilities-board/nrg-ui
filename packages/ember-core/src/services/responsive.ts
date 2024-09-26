@@ -4,6 +4,7 @@ import isMobile, { type isMobileResult } from 'ismobilejs';
 
 // TODO: Make this better
 import type { MediaService } from '../../unpublished-development-types';
+import type Owner from '@ember/owner';
 
 export default class Responsive extends Service {
   @service
@@ -12,8 +13,8 @@ export default class Responsive extends Service {
   @tracked
   declare isMobile: isMobileResult;
 
-  constructor() {
-    super();
+  constructor(owner: Owner) {
+    super(owner);
     this.isMobile = isMobile();
   }
 
