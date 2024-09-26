@@ -22,9 +22,21 @@
       "default": "./dist/*.js"
     },
     "./addon-main.js": "./addon-main.cjs",
+    "./components": {
+      "types": "./declarations/components/index.d.ts",
+      "default": "./dist/components/index.js"
+    },
     "./components/form": {
       "types": "./declarations/components/form/index.d.ts",
       "default": "./dist/components/form/index.js"
+    },
+    "./helpers": {
+      "types": "./declarations/helpers/index.d.ts",
+      "default": "./dist/helpers/index.js"
+    },
+    "./modifiers": {
+      "types": "./declarations/modifiers/index.d.ts",
+      "default": "./dist/modifiers/index.js"
     },
     "./utils": {
       "types": "./declarations/utils/index.d.ts",
@@ -180,6 +192,7 @@
       "./components/form/text-input.js": "./dist/_app_/components/form/text-input.js",
       "./components/header.js": "./dist/_app_/components/header.js",
       "./components/icon.js": "./dist/_app_/components/icon.js",
+      "./components/index.js": "./dist/_app_/components/index.js",
       "./components/loading-indicator.js": "./dist/_app_/components/loading-indicator.js",
       "./components/mktg/card-container.js": "./dist/_app_/components/mktg/card-container.js",
       "./components/mktg/card.js": "./dist/_app_/components/mktg/card.js",
@@ -196,7 +209,9 @@
       "./components/nav-item.js": "./dist/_app_/components/nav-item.js",
       "./components/progress.js": "./dist/_app_/components/progress.js",
       "./helpers/bind.js": "./dist/_app_/helpers/bind.js",
+      "./helpers/index.js": "./dist/_app_/helpers/index.js",
       "./modifiers/did-insert.js": "./dist/_app_/modifiers/did-insert.js",
+      "./modifiers/index.js": "./dist/_app_/modifiers/index.js",
       "./modifiers/on-update.js": "./dist/_app_/modifiers/on-update.js",
       "./services/responsive.js": "./dist/_app_/services/responsive.js"
     },
