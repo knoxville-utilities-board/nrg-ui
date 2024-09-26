@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2024-09-26)
+
+@nrg-ui/css 0.3.1 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`
+  * [#160](https://github.com/knoxville-utilities-board/nrg-ui/pull/160) style(input): Allow background while removing icon ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-09-25)
 
 @nrg-ui/core 0.4.2 (patch)
