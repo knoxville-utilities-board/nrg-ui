@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2024-09-27)
+
+@nrg-ui/core 0.5.1 (patch)
+
+#### :house: Internal
+* `test-app`, `@nrg-ui/core`
+  * [#165](https://github.com/knoxville-utilities-board/nrg-ui/pull/165) refactor(presence): Set ignoreBlank option default to true ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+#### Committers: 1
+- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
 ## Release (2024-09-26)
 
 @nrg-ui/core 0.5.0 (minor)
