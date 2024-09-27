@@ -2,6 +2,21 @@
 
 ## Release (2024-09-26)
 
+@nrg-ui/core 0.5.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#164](https://github.com/knoxville-utilities-board/nrg-ui/pull/164) feat: Add exports for all modules at index ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#162](https://github.com/knoxville-utilities-board/nrg-ui/pull/162) fix(responsive): Pass `owner` to superclass constructor ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
+## Release (2024-09-26)
+
 @nrg-ui/css 0.3.1 (patch)
 
 #### :bug: Bug Fix
