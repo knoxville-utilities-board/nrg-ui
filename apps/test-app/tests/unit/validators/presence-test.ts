@@ -62,7 +62,7 @@ module('Unit | Validator | inclusion', function (hooks) {
 
     this.model.field = ' ';
 
-    assert.isValid(validator.result);
+    assert.isInvalid(validator.result, 'This field cannot be blank');
 
     validator = new PresenceValidator(this.binding, { presence: false }, this);
 
@@ -72,7 +72,7 @@ module('Unit | Validator | inclusion', function (hooks) {
 
     this.model.field = ' ';
 
-    assert.isInvalid(validator.result, 'This field must be blank');
+    assert.isValid(validator.result);
 
     this.model.field = '';
 
