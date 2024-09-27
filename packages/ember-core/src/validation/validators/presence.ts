@@ -14,7 +14,7 @@ export type PresenceOptions = {
   presence: boolean;
   /**
    * Allow empty strings to be considered blank
-   * @default false
+   * @default true
    */
   ignoreBlank?: boolean;
 } & BaseOptions;
