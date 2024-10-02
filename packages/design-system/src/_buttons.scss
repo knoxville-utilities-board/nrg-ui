@@ -9,3 +9,7 @@
     @include button-outline-variant($value);
   }
 }
+
+.btn.loading > .content {
+  visibility: hidden;
+}

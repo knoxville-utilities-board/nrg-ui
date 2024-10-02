@@ -34,9 +34,17 @@ export default class ButtonComponent extends Component<ButtonSignature> {
       classes.push(this.args._class);
     }
 
+    if (this.args.loading) {
+      classes.push('loading');
+    }
+
     if (this.args.disabled) {
       classes.push('disabled');
     }
+
+    classes.push(
+      'position-relative d-flex justify-content-center align-items-center',
+    );
 
     return classes.join(' ');
   }
@@ -75,24 +83,25 @@ export default class ButtonComponent extends Component<ButtonSignature> {
     >
       {{#if @loading}}
         <span
-          class="spinner-border spinner-border-sm"
+          class="spinner-border spinner-border-sm position-absolute"
           aria-hidden="true"
         ></span>
         <span class="visually-hidden" role="status">
           {{t "nrg.base.loading"}}
         </span>
-      {{else}}
-        {{#if (and this.hasIcon (not this.alignIconRight))}}
-          <i class="me-1 {{@icon}}" aria-label={{@iconLabel}}></i>
-        {{/if}}
+      {{/if}}
+      {{#if (and this.hasIcon (not this.alignIconRight))}}
+        <i class="me-1 {{@icon}}" aria-label={{@iconLabel}}></i>
+      {{/if}}
+      <span class="content">
         {{#if (has-block)}}
           {{yield}}
         {{else}}
           {{@text}}
         {{/if}}
-        {{#if (and this.hasIcon this.alignIconRight)}}
-          <i class="ms-1 {{@icon}}" aria-label={{@iconLabel}}></i>
-        {{/if}}
+      </span>
+      {{#if (and this.hasIcon this.alignIconRight)}}
+        <i class="ms-1 {{@icon}}" aria-label={{@iconLabel}}></i>
       {{/if}}
     </button>
   </template>
