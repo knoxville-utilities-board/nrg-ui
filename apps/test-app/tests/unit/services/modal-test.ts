@@ -1,5 +1,5 @@
-import { setupTest } from 'ember-test-app/tests/helpers';
 import { module, test } from 'qunit';
+import { setupTest } from 'test-app/tests/helpers';
 
 const modalId1 = 'modal1';
 const modalId2 = 'modal2';
