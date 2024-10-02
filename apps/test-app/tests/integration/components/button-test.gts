@@ -45,7 +45,7 @@ module('Integration | Component | button', function (hooks) {
       .hasAttribute('type', 'button')
       .hasClass('btn');
 
-    assert.dom('button > div').containsText('Inner content');
+    assert.dom('button > .content > div').containsText('Inner content');
 
     await click('button');
   });
