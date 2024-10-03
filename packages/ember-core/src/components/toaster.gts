@@ -1,9 +1,11 @@
 import { fn } from '@ember/helper';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import Alert from './alert.gts';
-import type ToastService from '../services/toast.ts';
 import { not } from 'ember-truth-helpers';
+
+import Alert from './alert.gts';
+
+import type ToastService from '../services/toast.ts';
 
 export interface ToasterSignature {
   Element: HTMLDivElement;
