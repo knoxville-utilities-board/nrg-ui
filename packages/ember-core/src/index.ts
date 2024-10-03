@@ -26,13 +26,14 @@ export { default as MktgWorkflowTray } from './components/mktg/workflow-tray.gts
 
 /* Components - Core */
 export { default as Alert } from './components/alert.gts';
-export { default as ButtonGroup } from './components/button-group.gts';
 export { default as Button } from './components/button.gts';
+export { default as ButtonGroup } from './components/button-group.gts';
 export { default as Card } from './components/card.gts';
 export { default as Footer } from './components/footer.gts';
 export { default as Header } from './components/header.gts';
 export { default as Icon } from './components/icon.gts';
 export { default as LoadingIndicator } from './components/loading-indicator.gts';
+export { default as Modal } from './components/modal.gts';
 export { default as NavItem } from './components/nav-item.gts';
 export { default as Progress } from './components/progress.gts';
 
@@ -85,6 +86,7 @@ export type { FooterSignature } from './components/footer.gts';
 export type { HeaderSignature } from './components/header.gts';
 export type { IconSignature } from './components/icon.gts';
 export type { LoadingIndicatorSignature } from './components/loading-indicator.gts';
+export type { ModalSignature } from './components/modal.gts';
 export type { NavItemSignature } from './components/nav-item.gts';
 export type {
   ProgressSignature,
@@ -98,3 +100,10 @@ export type Binding<Model extends object = Record<string, unknown>> = {
 export type { Icon as IconType } from './icons.ts';
 export type Optional<T> = T | null;
 export type Primitive = string | number | boolean | null | undefined;
+
+import type Modal from './services/modal.ts';
+declare module '@ember/service' {
+  interface Registry {
+    modal: Modal;
+  }
+}
