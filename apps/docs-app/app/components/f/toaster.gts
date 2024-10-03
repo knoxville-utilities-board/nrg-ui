@@ -14,7 +14,7 @@ export default class extends Component {
   toast!: ToastService;
 
   @tracked
-  fixed = false;
+  fixed = true;
 
   @action
   update(key: string, value: unknown) {
