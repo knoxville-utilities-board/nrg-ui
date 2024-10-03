@@ -7,7 +7,7 @@ import { TrackedArray } from 'tracked-built-ins';
 
 import type { EmberRunTimer } from '@ember/runloop/types';
 
-type FlashOptions = {
+type ToastOptions = {
   message?: string;
   type?: 'success' | 'info' | 'warning' | 'danger';
   sticky?: boolean;
@@ -15,12 +15,12 @@ type FlashOptions = {
   timeoutReference?: EmberRunTimer;
 };
 
-export default class FlashMessage extends Service {
+export default class Toast extends Service {
   @tracked
-  queue: Array<FlashOptions> = new TrackedArray();
+  queue: Array<ToastOptions> = new TrackedArray();
 
   @action
-  info(message: string, options: FlashOptions) {
+  info(message: string, options: ToastOptions) {
     this.add({
       message,
       type: 'info',
@@ -29,7 +29,7 @@ export default class FlashMessage extends Service {
   }
 
   @action
-  success(message: string, options: FlashOptions) {
+  success(message: string, options: ToastOptions) {
     this.add({
       message,
       type: 'success',
@@ -38,7 +38,7 @@ export default class FlashMessage extends Service {
   }
 
   @action
-  warning(message: string, options: FlashOptions) {
+  warning(message: string, options: ToastOptions) {
     this.add({
       message,
       type: 'warning',
@@ -47,7 +47,7 @@ export default class FlashMessage extends Service {
   }
 
   @action
-  danger(message: string, options: FlashOptions) {
+  danger(message: string, options: ToastOptions) {
     this.add({
       message,
       type: 'danger',
@@ -56,7 +56,7 @@ export default class FlashMessage extends Service {
   }
 
   @action
-  add(options: FlashOptions) {
+  add(options: ToastOptions) {
     if (isBlank(options.timeout) && options.sticky !== true) {
       options.timeout = 5000;
     }
@@ -76,7 +76,7 @@ export default class FlashMessage extends Service {
   }
 
   @action
-  remove(message: FlashOptions) {
+  remove(message: ToastOptions) {
     message.timeoutReference && cancelTask(this, message.timeoutReference);
     const index = this.queue.indexOf(message);
     if (index !== -1) {

@@ -25,9 +25,9 @@ module('Integration | Component | toaster', function (hooks) {
     assert.dom('.toaster').doesNotHaveClass('fixed');
   });
 
-  test('it displays flash messages', async function (assert) {
-    const flashMessages = this.owner.lookup('service:flash-messages');
-    flashMessages.queue.push({
+  test('it displays toasts', async function (assert) {
+    const toast = this.owner.lookup('service:toast');
+    toast.queue.push({
       message: 'Test message',
       type: 'info',
       sticky: true,

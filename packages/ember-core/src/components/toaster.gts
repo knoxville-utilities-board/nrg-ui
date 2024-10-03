@@ -2,7 +2,7 @@ import { fn } from '@ember/helper';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import Alert from '@nrg-ui/core/components/alert';
-import FlashMessageService from '@nrg-ui/core/services/flash-messages';
+import ToastService from '@nrg-ui/core/services/toast';
 import { not } from 'ember-truth-helpers';
 
 export interface ToasterSignature {
@@ -14,7 +14,7 @@ export interface ToasterSignature {
 
 export default class ToasterComponent extends Component<ToasterSignature> {
   @service
-  flashMessages!: FlashMessageService;
+  toast!: ToastService;
 
   get fixed() {
     return this.args.fixed ?? true;
@@ -32,11 +32,11 @@ export default class ToasterComponent extends Component<ToasterSignature> {
 
   <template>
     <div class={{this.classList}}>
-      {{#each this.flashMessages.queue as |toast|}}
+      {{#each this.toast.queue as |toast|}}
         <Alert
           @type={{toast.type}}
           @dismissible={{not toast.sticky}}
-          @onDismiss={{fn this.flashMessages.remove toast}}
+          @onDismiss={{fn this.toast.remove toast}}
         >
           {{toast.message}}
         </Alert>
