@@ -4,9 +4,9 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import onInsert from '@nrg-ui/core/modifiers/did-insert';
-import onUpdate from '@nrg-ui/core/modifiers/on-update';
-import ModalService from '@nrg-ui/core/services/modal';
+import onInsert from '../modifiers/did-insert.ts';
+import onUpdate from '../modifiers/on-update.ts';
+import type ModalService from '../services/modal.ts';
 import { t } from 'ember-intl';
 
 export interface ModalSignature {

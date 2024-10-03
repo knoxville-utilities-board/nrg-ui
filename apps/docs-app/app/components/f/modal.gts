@@ -159,7 +159,7 @@ export default class extends Component {
               @onInput={{fn this.update "isOpen"}}
             />
             <Args.Bool
-              @defaultValue={{false}}
+              @defaultValue={{true}}
               @description="When true, an 'X' button will be displayed in the top-right corner of the modal and the 'Esc' key will both fire the onDismiss action."
               @name="dismissible"
               @value={{this.dismissible}}
