@@ -54,7 +54,7 @@ export default class Modal extends Component<ModalSignature> {
   }
 
   get classList() {
-    const classes = [this.position] as string[];
+    const classes = ['border-0', 'rounded-3', this.position];
     if (!this.isActive) {
       classes.push('inactive');
     }
