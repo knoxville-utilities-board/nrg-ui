@@ -1,5 +1,29 @@
 # Changelog
 
+## Release (2024-10-03)
+
+@nrg-ui/css 0.4.0 (minor)
+@nrg-ui/core 0.6.0 (minor)
+
+#### :rocket: Enhancement
+* `docs-app`, `test-app`, `@nrg-ui/css`, `@nrg-ui/core`
+  * [#135](https://github.com/knoxville-utilities-board/nrg-ui/pull/135) feat: Add modal component ([@KeithClinard](https://github.com/KeithClinard))
+
+#### :bug: Bug Fix
+* `docs-app`, `test-app`, `@nrg-ui/css`, `@nrg-ui/core`
+  * [#168](https://github.com/knoxville-utilities-board/nrg-ui/pull/168) fix(button): Preserve size with loading state ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `theme-generator`
+  * [#171](https://github.com/knoxville-utilities-board/nrg-ui/pull/171) fix: Export non-redeclared variables in theme generation ([@KeithClinard](https://github.com/KeithClinard))
+* `@nrg-ui/core`
+  * [#170](https://github.com/knoxville-utilities-board/nrg-ui/pull/170) fix: Center icon inside flex box ([@bnhkubpublic](https://github.com/bnhkubpublic))
+
+#### Committers: 3
+- Brian ([@bnhkubpublic](https://github.com/bnhkubpublic))
+- Keith ([@KeithClinard](https://github.com/KeithClinard))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-09-27)
 
 @nrg-ui/core 0.5.1 (patch)
