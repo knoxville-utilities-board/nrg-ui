@@ -1,8 +1,8 @@
 import { fn } from '@ember/helper';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import Alert from '@nrg-ui/core/components/alert';
-import ToastService from '@nrg-ui/core/services/toast';
+import Alert from '../components/alert';
+import type ToastService from '../services/toast';
 import { not } from 'ember-truth-helpers';
 
 export interface ToasterSignature {

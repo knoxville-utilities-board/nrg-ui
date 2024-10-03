@@ -5,7 +5,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import Button from '@nrg-ui/core/components/button';
 import Toaster from '@nrg-ui/core/components/toaster';
-import ToastService from '@nrg-ui/core/services/toast';
+import type ToastService from '@nrg-ui/core/services/toast';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
