@@ -27,7 +27,7 @@ module('Integration | Component | toaster', function (hooks) {
 
   test('it displays flash messages', async function (assert) {
     const flashMessages = this.owner.lookup('service:flash-messages');
-    flashMessages.queue.pushObject({
+    flashMessages.queue.push({
       message: 'Test message',
       type: 'info',
       sticky: true,

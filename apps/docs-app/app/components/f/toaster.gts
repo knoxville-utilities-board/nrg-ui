@@ -38,11 +38,12 @@ export default class extends Component {
   }
 
   <template>
-    <Button @onClick={{this.createToast}} class="btn-primary">Create Toasts</Button>
     <FreestyleSection @name="Toaster" as |Section|>
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
+            <Button @onClick={{this.createToast}} class="btn-primary">Create
+              Toasts</Button>
             <Toaster @fixed={{this.fixed}} />
           </:example>
           <:api as |Args|>
