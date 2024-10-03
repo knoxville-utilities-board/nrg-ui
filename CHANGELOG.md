@@ -2,6 +2,18 @@
 
 ## Release (2024-10-03)
 
+@nrg-ui/css 0.5.0 (minor)
+@nrg-ui/core 0.7.0 (minor)
+
+#### :rocket: Enhancement
+* `docs-app`, `test-app`, `@nrg-ui/css`, `@nrg-ui/core`
+  * [#136](https://github.com/knoxville-utilities-board/nrg-ui/pull/136) feat: Add toast component ([@KeithClinard](https://github.com/KeithClinard))
+
+#### Committers: 1
+- Keith ([@KeithClinard](https://github.com/KeithClinard))
+
+## Release (2024-10-03)
+
 @nrg-ui/css 0.4.0 (minor)
 @nrg-ui/core 0.6.0 (minor)
 
