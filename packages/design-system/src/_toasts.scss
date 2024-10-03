@@ -1,0 +1,10 @@
+.toaster {
+  width: min(400px, 100vw);
+}
+
+.toaster.fixed {
+  top: 1em;
+  right: 1em;
+  position: fixed;
+  z-index: 5000;
+}

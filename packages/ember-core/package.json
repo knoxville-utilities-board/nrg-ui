@@ -209,13 +209,15 @@
       "./components/modal.js": "./dist/_app_/components/modal.js",
       "./components/nav-item.js": "./dist/_app_/components/nav-item.js",
       "./components/progress.js": "./dist/_app_/components/progress.js",
+      "./components/toaster.js": "./dist/_app_/components/toaster.js",
       "./helpers/bind.js": "./dist/_app_/helpers/bind.js",
       "./helpers/index.js": "./dist/_app_/helpers/index.js",
       "./modifiers/did-insert.js": "./dist/_app_/modifiers/did-insert.js",
       "./modifiers/index.js": "./dist/_app_/modifiers/index.js",
       "./modifiers/on-update.js": "./dist/_app_/modifiers/on-update.js",
       "./services/modal.js": "./dist/_app_/services/modal.js",
-      "./services/responsive.js": "./dist/_app_/services/responsive.js"
+      "./services/responsive.js": "./dist/_app_/services/responsive.js",
+      "./services/toast.js": "./dist/_app_/services/toast.js"
     },
     "defaultBlueprint": "@nrg-ui-ember"
   }
