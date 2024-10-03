@@ -20,7 +20,7 @@ csstree.walk(ast, {
     if (node.type !== 'Declaration') {
       return;
     }
-    if (node.property.startsWith('--') && !node.value.value.includes('var(')) {
+    if (node.property.startsWith('--')) {
       return;
     }
     list.remove(item);
