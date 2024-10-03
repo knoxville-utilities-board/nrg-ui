@@ -2,40 +2,28 @@
   "solution": {
     "@nrg-ui/css": {
       "impact": "minor",
-      "oldVersion": "0.3.1",
-      "newVersion": "0.4.0",
+      "oldVersion": "0.4.0",
+      "newVersion": "0.5.0",
       "constraints": [
         {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./packages/design-system/package.json"
     },
     "@nrg-ui/core": {
       "impact": "minor",
-      "oldVersion": "0.5.1",
-      "newVersion": "0.6.0",
+      "oldVersion": "0.6.0",
+      "newVersion": "0.7.0",
       "constraints": [
         {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
     }
   },
-  "description": "## Release (2024-10-03)\n\n@nrg-ui/css 0.4.0 (minor)\n@nrg-ui/core 0.6.0 (minor)\n\n#### :rocket: Enhancement\n* `docs-app`, `test-app`, `@nrg-ui/css`, `@nrg-ui/core`\n  * [#135](https://github.com/knoxville-utilities-board/nrg-ui/pull/135) feat: Add modal component ([@KeithClinard](https://github.com/KeithClinard))\n\n#### :bug: Bug Fix\n* `docs-app`, `test-app`, `@nrg-ui/css`, `@nrg-ui/core`\n  * [#168](https://github.com/knoxville-utilities-board/nrg-ui/pull/168) fix(button): Preserve size with loading state ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `theme-generator`\n  * [#171](https://github.com/knoxville-utilities-board/nrg-ui/pull/171) fix: Export non-redeclared variables in theme generation ([@KeithClinard](https://github.com/KeithClinard))\n* `@nrg-ui/core`\n  * [#170](https://github.com/knoxville-utilities-board/nrg-ui/pull/170) fix: Center icon inside flex box ([@bnhkubpublic](https://github.com/bnhkubpublic))\n\n#### Committers: 3\n- Brian ([@bnhkubpublic](https://github.com/bnhkubpublic))\n- Keith ([@KeithClinard](https://github.com/KeithClinard))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2024-10-03)\n\n@nrg-ui/css 0.5.0 (minor)\n@nrg-ui/core 0.7.0 (minor)\n\n#### :rocket: Enhancement\n* `docs-app`, `test-app`, `@nrg-ui/css`, `@nrg-ui/core`\n  * [#136](https://github.com/knoxville-utilities-board/nrg-ui/pull/136) feat: Add toast component ([@KeithClinard](https://github.com/KeithClinard))\n\n#### Committers: 1\n- Keith ([@KeithClinard](https://github.com/KeithClinard))\n"
 }
