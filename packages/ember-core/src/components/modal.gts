@@ -4,16 +4,17 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { t } from 'ember-intl';
+
 import onInsert from '../modifiers/did-insert.ts';
 import onUpdate from '../modifiers/on-update.ts';
+
 import type ModalService from '../services/modal.ts';
-import { t } from 'ember-intl';
 
 export interface ModalSignature {
   Element: HTMLDialogElement;
   Args: {
     isOpen: boolean;
-    hasBackdrop?: boolean;
     dismissible?: boolean;
     position?: 'center' | 'left' | 'right';
     onDismiss: () => void;
@@ -64,10 +65,6 @@ export default class Modal extends Component<ModalSignature> {
     return this.args.dismissible ?? true;
   }
 
-  get hasBackdrop() {
-    return this.args.hasBackdrop ?? true;
-  }
-
   @action
   onDismiss(evt?: Event) {
     evt?.preventDefault();
@@ -109,12 +106,8 @@ export default class Modal extends Component<ModalSignature> {
 
   @action
   openModal() {
-    if (this.hasBackdrop) {
-      this.dialogElement.showModal();
-      this.modalService.openModal(this.dialogId);
-    } else {
-      this.dialogElement.show();
-    }
+    this.dialogElement.showModal();
+    this.modalService.openModal(this.dialogId);
   }
 
   @action

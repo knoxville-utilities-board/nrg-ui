@@ -23,9 +23,6 @@ export default class extends Component {
   dismissible = false;
 
   @tracked
-  hasBackdrop = true;
-
-  @tracked
   position = 'center';
 
   get modal2Position() {
@@ -55,7 +52,6 @@ export default class extends Component {
           <:example>
             <Modal
               @dismissible={{this.dismissible}}
-              @hasBackdrop={{this.hasBackdrop}}
               @isOpen={{this.isOpen}}
               @position={{this.position}}
               @onDismiss={{fn this.update "isOpen" false}}
@@ -122,7 +118,6 @@ export default class extends Component {
 
             <Modal
               @dismissible={{this.dismissible}}
-              @hasBackdrop={{this.hasBackdrop}}
               @isOpen={{this.modal2Open}}
               @position={{this.modal2Position}}
               @onDismiss={{fn this.update "modal2Open" false}}
@@ -164,13 +159,6 @@ export default class extends Component {
               @name="dismissible"
               @value={{this.dismissible}}
               @onInput={{fn this.update "dismissible"}}
-            />
-            <Args.Bool
-              @defaultValue={{true}}
-              @description="When true, a darkened backdrop will appear behind the modal preventing interaction with the application."
-              @name="hasBackdrop"
-              @value={{this.hasBackdrop}}
-              @onInput={{fn this.update "hasBackdrop"}}
             />
             <Args.String
               @defaultValue="center"
