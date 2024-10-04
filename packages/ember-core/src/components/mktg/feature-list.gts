@@ -15,6 +15,7 @@ const columnMap = {
 export interface MktgFeatureSignature {
   Args: {
     icon?: string;
+    alphaNumeric?: boolean;
     text?: string;
     meta?: string;
     class: string;
