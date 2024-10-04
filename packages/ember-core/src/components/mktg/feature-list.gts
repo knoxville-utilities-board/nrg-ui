@@ -15,7 +15,6 @@ const columnMap = {
 export interface MktgFeatureSignature {
   Args: {
     icon?: string;
-    alphaNumeric?: boolean;
     text?: string;
     meta?: string;
     class: string;
@@ -36,15 +35,9 @@ export interface MktgFeatureListSignature {
 }
 
 const Feature: TOC<MktgFeatureSignature> = <template>
-  {{#if @alphaNumeric}}
-    <p class="{{@class}}" ...attributes>
-      <span class="me-2 fw-bold bi {{@icon}}">{{@meta}}</span>{{@text}}
-    </p>
-  {{else}}
-    <p class="{{@class}}" ...attributes>
-      <span class="me-2 mt-1 fw-bold bi {{@icon}}">{{@meta}}</span>{{@text}}
-    </p>
-  {{/if}}
+  <p class="align-items-baseline {{@class}}" ...attributes>
+    <span class="me-2 fw-bold bi {{@icon}}">{{@meta}}</span>{{@text}}
+  </p>
 </template>;
 
 export default class MktgFeatureList extends Component<MktgFeatureListSignature> {
