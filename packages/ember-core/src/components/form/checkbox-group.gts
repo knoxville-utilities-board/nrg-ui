@@ -46,7 +46,7 @@ export default class CheckboxGroup extends Component<CheckboxGroupSignature> {
   }
 
   get classList() {
-    const classList = ['form-control'];
+    const classList = ['form-control', 'form-check-group'];
 
     if (this.args.basic) {
       classList[0] += '-plaintext';

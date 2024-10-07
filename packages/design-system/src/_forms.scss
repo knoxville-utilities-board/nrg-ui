@@ -89,3 +89,13 @@ select.form-select,
 .form-check-label {
   user-select: none;
 }
+
+.form-label,
+.form-check,
+form button[type="submit"] {
+  margin-top: 1em;
+}
+
+.form-check-group .form-check {
+  margin-top: 0;
+}
