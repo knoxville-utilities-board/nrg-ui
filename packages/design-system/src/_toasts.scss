@@ -1,10 +1,12 @@
 .toaster {
-  width: min(400px, 100vw);
+  width: 400px;
 }
 
 .toaster.fixed {
-  top: 1em;
-  right: 1em;
+  padding: 1em;
+  max-width: calc(100vw - 1em);
+  top: 0;
+  right: 0;
   position: fixed;
   z-index: 5000;
 }

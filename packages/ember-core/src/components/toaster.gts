@@ -1,7 +1,6 @@
 import { fn } from '@ember/helper';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import { not } from 'ember-truth-helpers';
 
 import Alert from './alert.gts';
 
@@ -37,7 +36,7 @@ export default class ToasterComponent extends Component<ToasterSignature> {
       {{#each this.toast.queue as |toast|}}
         <Alert
           @type={{toast.type}}
-          @dismissible={{not toast.sticky}}
+          @dismissible={{true}}
           @onDismiss={{fn this.toast.remove toast}}
         >
           {{toast.message}}

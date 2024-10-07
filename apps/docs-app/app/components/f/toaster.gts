@@ -38,6 +38,22 @@ export default class extends Component {
     });
   }
 
+  @action
+  createStickyToast() {
+    this.toast.info('This is a sticky info message', {
+      sticky: true,
+    });
+    this.toast.success('This is a sticky success message', {
+      sticky: true,
+    });
+    this.toast.warning('This is a sticky warning message', {
+      sticky: true,
+    });
+    this.toast.danger('This is a sticky danger message', {
+      sticky: true,
+    });
+  }
+
   <template>
     <FreestyleSection @name="Toaster" as |Section|>
       <Section.subsection @name="Basics">
@@ -45,6 +61,9 @@ export default class extends Component {
           <:example>
             <Button @onClick={{this.createToast}} class="btn-primary">
               Create Toasts
+            </Button>
+            <Button @onClick={{this.createStickyToast}} class="btn-primary">
+              Create Sticky Toasts
             </Button>
             <Toaster @fixed={{this.fixed}} />
           </:example>
