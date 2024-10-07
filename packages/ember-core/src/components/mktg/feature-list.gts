@@ -35,8 +35,8 @@ export interface MktgFeatureListSignature {
 }
 
 const Feature: TOC<MktgFeatureSignature> = <template>
-  <p class="{{@class}}" ...attributes>
-    <span class="me-2 mt-1 fw-bold bi {{@icon}}">{{@meta}}</span>{{@text}}
+  <p class="align-items-baseline {{@class}}" ...attributes>
+    <span class="me-2 fw-bold bi {{@icon}}">{{@meta}}</span>{{@text}}
   </p>
 </template>;
 
