@@ -29,7 +29,7 @@ export default class RadioGroup extends BoundValue<
   string
 > {
   get classList() {
-    const classes = ['form-control'];
+    const classes = ['form-control', 'form-check-group'];
 
     if (this.args.basic) {
       classes[0] += '-plaintext';
