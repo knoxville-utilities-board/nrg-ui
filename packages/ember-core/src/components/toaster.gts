@@ -33,7 +33,7 @@ export default class ToasterComponent extends Component<ToasterSignature> {
   }
 
   <template>
-    <div class={{this.classList}}>
+    <div class={{this.classList}} ...attributes>
       {{#each this.toast.queue as |toast|}}
         <Alert
           @type={{toast.type}}
