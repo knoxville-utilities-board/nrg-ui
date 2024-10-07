@@ -155,98 +155,78 @@ export default class extends Component {
         @onSubmit={{this.onSubmit}}
         as |Form|
       >
-        <div class="mb-3">
-          <Form.Field
-            @label="Text Input"
-            @required={{this.required}}
-            @validatorKey="someOtherKey"
-            as |Field|
-          >
-            <Field.TextInput @binding={{bind this.model "text"}} />
-            <Field.Text>
-              Some additional context can be added underneath an input.
-            </Field.Text>
-          </Form.Field>
-        </div>
-        <div class="mb-3">
-          <Form.Field @label="Text Area" as |Field|>
-            <Field.TextArea @binding={{bind this.model "textArea"}} />
-          </Form.Field>
-        </div>
-        <div class="mb-3">
-          <Form.Field @label="Select" @required={{this.required}} as |Field|>
-            <Field.Select
-              @binding={{bind this.model "select"}}
-              @options={{array "A" "B" "C"}}
+        <Form.Field
+          @label="Text Input"
+          @required={{this.required}}
+          @validatorKey="someOtherKey"
+          as |Field|
+        >
+          <Field.TextInput @binding={{bind this.model "text"}} />
+          <Field.Text>
+            Some additional context can be added underneath an input.
+          </Field.Text>
+        </Form.Field>
+        <Form.Field @label="Text Area" as |Field|>
+          <Field.TextArea @binding={{bind this.model "textArea"}} />
+        </Form.Field>
+        <Form.Field @label="Select" @required={{this.required}} as |Field|>
+          <Field.Select
+            @binding={{bind this.model "select"}}
+            @options={{array "A" "B" "C"}}
+          />
+        </Form.Field>
+        <Form.Field @label="Radio Group" @required={{this.required}} as |Field|>
+          <Field.RadioGroup @binding={{bind this.model "radio"}} as |Group|>
+            <Group.Radio @option="A" />
+            <Group.Radio @option="B" />
+            <Group.Radio @option="C" />
+          </Field.RadioGroup>
+        </Form.Field>
+        <Form.Field
+          @label="Phone Number"
+          @required={{this.required}}
+          as |Field|
+        >
+          <Field.PhoneInput @binding={{bind this.model "phone"}} />
+        </Form.Field>
+        <Form.Field
+          @label="Checkbox Group"
+          @required={{this.required}}
+          @validatorKey="checkboxGroup"
+          as |Field|
+        >
+          <Field.CheckboxGroup as |Item|>
+            <Item
+              @binding={{bind this.model "checkboxGroup.0"}}
+              @label="Option A"
             />
-          </Form.Field>
-        </div>
-        <div class="mb-3">
-          <Form.Field
-            @label="Radio Group"
-            @required={{this.required}}
-            as |Field|
-          >
-            <Field.RadioGroup @binding={{bind this.model "radio"}} as |Group|>
-              <Group.Radio @option="A" />
-              <Group.Radio @option="B" />
-              <Group.Radio @option="C" />
-            </Field.RadioGroup>
-          </Form.Field>
-        </div>
-        <div class="mb-3">
-          <Form.Field
-            @label="Phone Number"
-            @required={{this.required}}
-            as |Field|
-          >
-            <Field.PhoneInput @binding={{bind this.model "phone"}} />
-          </Form.Field>
-        </div>
-        <div class="mb-3">
-          <Form.Field
-            @label="Checkbox Group"
-            @required={{this.required}}
-            @validatorKey="checkboxGroup"
-            as |Field|
-          >
-            <Field.CheckboxGroup as |Item|>
-              <Item
-                @binding={{bind this.model "checkboxGroup.0"}}
-                @label="Option A"
-              />
-              <Item
-                @binding={{bind this.model "checkboxGroup.1"}}
-                @label="Option B"
-              />
-              <Item
-                @binding={{bind this.model "checkboxGroup.2"}}
-                @label="Option C"
-              />
-            </Field.CheckboxGroup>
-          </Form.Field>
-        </div>
-        <div class="mb-3">
-          <Form.Field @label="Number" @required={{this.required}} as |Field|>
-            <Field.NumberInput
-              @binding={{bind this.model "number"}}
-              @format="currency"
-              @formatPrecision={{3}}
+            <Item
+              @binding={{bind this.model "checkboxGroup.1"}}
+              @label="Option B"
             />
-          </Form.Field>
-        </div>
-        <div class="mb-3">
-          <Form.Field @required={{this.required}} as |Field|>
-            <Field.Checkbox @binding={{bind this.model "checkbox"}}>
-              I agree to the
-              <a
-                class="link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
-                href="#"
-              >Privacy Policy</a>.
-            </Field.Checkbox>
-          </Form.Field>
-        </div>
-        <Form.SubmitButton class="btn-primary mt-3" />
+            <Item
+              @binding={{bind this.model "checkboxGroup.2"}}
+              @label="Option C"
+            />
+          </Field.CheckboxGroup>
+        </Form.Field>
+        <Form.Field @label="Number" @required={{this.required}} as |Field|>
+          <Field.NumberInput
+            @binding={{bind this.model "number"}}
+            @format="currency"
+            @formatPrecision={{3}}
+          />
+        </Form.Field>
+        <Form.Field @required={{this.required}} as |Field|>
+          <Field.Checkbox @binding={{bind this.model "checkbox"}}>
+            I agree to the
+            <a
+              class="link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
+              href="#"
+            >Privacy Policy</a>.
+          </Field.Checkbox>
+        </Form.Field>
+        <Form.SubmitButton class="btn-primary" />
         <Button
           class="btn{{unless this.required '-outline'}}-secondary mt-3"
           @text="Toggle Required"
