@@ -1,5 +1,29 @@
 # Changelog
 
+## Release (2024-10-08)
+
+@nrg-ui/css 0.6.0 (minor)
+@nrg-ui/core 0.8.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/css`
+  * [#176](https://github.com/knoxville-utilities-board/nrg-ui/pull/176) feat: Add styling for placeholder opacity ([@lnicely](https://github.com/lnicely))
+* `docs-app`, `@nrg-ui/css`, `@nrg-ui/core`
+  * [#178](https://github.com/knoxville-utilities-board/nrg-ui/pull/178) feat: Add margins to form fields ([@KeithClinard](https://github.com/KeithClinard))
+  * [#177](https://github.com/knoxville-utilities-board/nrg-ui/pull/177) feat: Improved styling for fixed toaster ([@KeithClinard](https://github.com/KeithClinard))
+* `@nrg-ui/core`
+  * [#175](https://github.com/knoxville-utilities-board/nrg-ui/pull/175) feat: Add spread attributes to toaster ([@Trishu-Patel](https://github.com/Trishu-Patel))
+
+#### :house: Internal
+* `@nrg-ui/core`
+  * [#174](https://github.com/knoxville-utilities-board/nrg-ui/pull/174) fix: Change icon spacing based on type ([@bnhkubpublic](https://github.com/bnhkubpublic))
+
+#### Committers: 4
+- Brian ([@bnhkubpublic](https://github.com/bnhkubpublic))
+- Keith ([@KeithClinard](https://github.com/KeithClinard))
+- Lucas ([@lnicely](https://github.com/lnicely))
+- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))
+
 ## Release (2024-10-03)
 
 @nrg-ui/css 0.5.0 (minor)
