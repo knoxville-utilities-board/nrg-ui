@@ -1,5 +1,5 @@
-import type BaseValidator from './validators/base.ts';
 import type { Binding } from '../index.ts';
+import type BaseValidator from './validators/base.ts';
 
 export type BaseOptions = {
   disabled?: boolean;
