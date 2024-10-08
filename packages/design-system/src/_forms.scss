@@ -35,7 +35,7 @@ select,
     }
   }
   &:not([disabled]) {
-    &:not(input[type="checkbox"]):not(input[type="radio"]) {
+    &:not(input[type='checkbox']):not(input[type='radio']) {
       background: revert !important;
       padding-right: revert !important;
     }
@@ -98,4 +98,8 @@ form button[type="submit"] {
 
 .form-check-group .form-check {
   margin-top: 0;
+}
+
+input::placeholder {
+  opacity: 0.75;
 }
