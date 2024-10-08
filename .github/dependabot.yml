@@ -1,0 +1,28 @@
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'America/New_York'
+    labels:
+      - 'dependencies'
+      - 'internal'
+    groups:
+      security:
+        patterns:
+          - '*'
+        applies-to: security-updates
+        update-types:
+          - 'patch'
+          - 'minor'
+          - 'major'
+      version:
+        patterns:
+          - '*'
+        applies-to: version-updates
+        update-types:
+          - 'patch'
+          - 'minor'
