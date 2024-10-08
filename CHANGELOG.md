@@ -2,6 +2,17 @@
 
 ## Release (2024-10-08)
 
+@nrg-ui/css 0.7.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/css`
+  * [#179](https://github.com/knoxville-utilities-board/nrg-ui/pull/179) feat: Add color variants to text ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
+## Release (2024-10-08)
+
 @nrg-ui/css 0.6.0 (minor)
 @nrg-ui/core 0.8.0 (minor)
 
