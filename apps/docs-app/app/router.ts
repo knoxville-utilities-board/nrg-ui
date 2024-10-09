@@ -12,6 +12,7 @@ Router.map(function () {
   this.route('marketing');
   this.route('promo');
   this.route('workflow-tray');
+  this.route('theme');
   this.route('components', function () {
     this.route('button');
     this.route('card');
