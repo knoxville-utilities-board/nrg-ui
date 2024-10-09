@@ -43,6 +43,7 @@ export default class extends Component {
   checkboxGroup = autoTrack(new Array(3));
 
   <template>
+    {{! template-lint-disable no-inline-styles  }}
     <div
       data-theme="marketing"
       id="application"
