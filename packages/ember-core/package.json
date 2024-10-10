@@ -220,6 +220,6 @@
       "./services/responsive.js": "./dist/_app_/services/responsive.js",
       "./services/toast.js": "./dist/_app_/services/toast.js"
     },
-    "defaultBlueprint": "@nrg-ui-ember"
+    "defaultBlueprint": "@nrg-ui-core"
   }
 }
