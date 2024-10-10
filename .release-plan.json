@@ -1,20 +1,33 @@
 {
   "solution": {
     "@nrg-ui/css": {
-      "impact": "minor",
-      "oldVersion": "0.6.0",
-      "newVersion": "0.7.0",
+      "impact": "patch",
+      "oldVersion": "0.7.0",
+      "newVersion": "0.7.1",
       "constraints": [
         {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./packages/design-system/package.json"
     },
     "@nrg-ui/core": {
-      "oldVersion": "0.8.0"
+      "impact": "minor",
+      "oldVersion": "0.8.0",
+      "newVersion": "0.9.0",
+      "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./packages/ember-core/package.json"
     }
   },
-  "description": "## Release (2024-10-08)\n\n@nrg-ui/css 0.7.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/css`\n  * [#179](https://github.com/knoxville-utilities-board/nrg-ui/pull/179) feat: Add color variants to text ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2024-10-10)\n\n@nrg-ui/css 0.7.1 (patch)\n@nrg-ui/core 0.9.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#195](https://github.com/knoxville-utilities-board/nrg-ui/pull/195) feat: Implement not found component ([@ChesneyJulian](https://github.com/ChesneyJulian))\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`\n  * [#193](https://github.com/knoxville-utilities-board/nrg-ui/pull/193) fix(select): Remove validation icon and allow background color ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `docs-app`, `test-app`, `@nrg-ui/core`\n  * [#191](https://github.com/knoxville-utilities-board/nrg-ui/pull/191) chore: Update eslint import and fix linting ([@KeithClinard](https://github.com/KeithClinard))\n* Other\n  * [#189](https://github.com/knoxville-utilities-board/nrg-ui/pull/189) chore(dependabot): Ignore major version updates ([@TSenter](https://github.com/TSenter))\n  * [#182](https://github.com/knoxville-utilities-board/nrg-ui/pull/182) chore(security): Create Dependabot config file ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 3\n- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))\n- Keith ([@KeithClinard](https://github.com/KeithClinard))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
