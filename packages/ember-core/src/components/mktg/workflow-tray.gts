@@ -9,7 +9,7 @@ export interface MktgWorkflowTraySignature {
 
 const MktgWorkflowTray: TOC<MktgWorkflowTraySignature> = <template>
   <div
-    class="col-12 col-md-5 col-lg-4 py-2 py-md-5 px-4 px-md-3 order-2 order-md-1"
+    class="col-12 col-md-5 col-lg-4 py-0 py-md-5 px-4 px-md-3 order-2 order-md-1 bg-body"
     ...attributes
   >
     <div class="m-2">
