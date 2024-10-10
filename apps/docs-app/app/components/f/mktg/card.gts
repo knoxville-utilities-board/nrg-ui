@@ -2,7 +2,7 @@ import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import Card from '@nrg-ui/core/components/mktg/card';
+import { MktgCard } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
@@ -38,7 +38,7 @@ export default class extends Component {
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
-            <Card
+            <MktgCard
               class={{this.class}}
               @hasBorder={{this.hasBorder}}
               @hasHorizontalDivider={{this.hasHorizontalDivider}}
@@ -56,7 +56,7 @@ export default class extends Component {
               <:end>
                 <p class="m-0">End section</p>
               </:end>
-            </Card>
+            </MktgCard>
           </:example>
           <:api as |Args|>
             <Args.String

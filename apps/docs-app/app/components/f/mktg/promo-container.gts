@@ -2,8 +2,7 @@ import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import Button from '@nrg-ui/core/components/button';
-import PromoContainer from '@nrg-ui/core/components/mktg/promo-container';
+import { Button, MktgPromoContainer } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
@@ -31,7 +30,7 @@ export default class extends Component {
               notation.</p>
           </:description>
           <:example>
-            <PromoContainer class={{this.class}} as |Container|>
+            <MktgPromoContainer class={{this.class}} as |Container|>
               <Container.SectionHeader
                 @subject="Subject"
                 @title="Section Title"
@@ -137,7 +136,7 @@ export default class extends Component {
                   >Learn More</Button>
                 </:description>
               </Container.Promo>
-            </PromoContainer>
+            </MktgPromoContainer>
           </:example>
           <:api as |Args|>
             <Args.String

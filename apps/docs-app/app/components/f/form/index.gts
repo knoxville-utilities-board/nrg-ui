@@ -3,9 +3,7 @@ import { array } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import Button from '@nrg-ui/core/components/button';
-import Form from '@nrg-ui/core/components/form';
-import bind from '@nrg-ui/core/helpers/bind';
+import { bind, Button, Form } from '@nrg-ui/core';
 import { validator } from '@nrg-ui/core/validation';
 import { tracked as autoTrack } from 'tracked-built-ins';
 

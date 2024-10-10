@@ -2,8 +2,7 @@ import { fn } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import TextInput from '@nrg-ui/core/components/form/text-input';
-import bind from '@nrg-ui/core/helpers/bind';
+import { bind, TextInput } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 

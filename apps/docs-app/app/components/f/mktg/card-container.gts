@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import CardContainer from '@nrg-ui/core/components/mktg/card-container';
+import { MktgCardContainer } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
@@ -13,7 +13,7 @@ export default class extends Component {
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
-            <CardContainer as |Container|>
+            <MktgCardContainer as |Container|>
               <Container.Card class="g-col-12 g-col-md-6">
                 <:header>
                   <p class="m-0">Header</p>
@@ -34,7 +34,7 @@ export default class extends Component {
                   <p class="m-0">End section</p>
                 </:end>
               </Container.MktgCard>
-            </CardContainer>
+            </MktgCardContainer>
           </:example>
           <:description>
             <p>This component acts as a container for the base card and the

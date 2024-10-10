@@ -2,7 +2,7 @@ import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import Faq from '@nrg-ui/core/components/mktg/faq';
+import { MktgFaq } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
@@ -23,7 +23,7 @@ export default class extends Component {
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
-            <Faq
+            <MktgFaq
               class={{this.class}}
               @defaultOpen={{this.defaultOpen}}
               @question={{this.question}}
@@ -31,7 +31,7 @@ export default class extends Component {
               <:answer>
                 <p>Your answer goes here</p>
               </:answer>
-            </Faq>
+            </MktgFaq>
           </:example>
           <:api as |Args|>
             <Args.String

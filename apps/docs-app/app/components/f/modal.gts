@@ -3,8 +3,7 @@ import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import ServicePricing from '@nrg-ui/core/components/mktg/service-pricing';
-import Modal from '@nrg-ui/core/components/modal';
+import { Modal, MktgServicePricing } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
@@ -65,7 +64,7 @@ export default class extends Component {
                   <h4>Billing &amp; Contact Information</h4>
                   <hr class="my-4" />
 
-                  <ServicePricing
+                  <MktgServicePricing
                     @label="Fiber"
                     @package="The Gig"
                     @description="$65/mo"
@@ -75,8 +74,8 @@ export default class extends Component {
                     as |Addon|
                   >
                     <Addon @label="Smart Gig" @price="$15/mo" />
-                  </ServicePricing>
-                  <ServicePricing
+                  </MktgServicePricing>
+                  <MktgServicePricing
                     @label="TV"
                     @package="Silver"
                     @description="$107/mo"
@@ -87,8 +86,8 @@ export default class extends Component {
                   >
                     <Addon @label="FireStick" @price="$80" @quantity="2" />
                     <Addon @label="HBO" @price="$5.99/mo" />
-                  </ServicePricing>
-                  <ServicePricing
+                  </MktgServicePricing>
+                  <MktgServicePricing
                     @label="Phone"
                     @description="$129/mo"
                     @icon="bi-telephone"
@@ -122,7 +121,7 @@ export default class extends Component {
               @position={{this.modal2Position}}
               @onDismiss={{fn this.update "modal2Open" false}}
             >
-              <ServicePricing
+              <MktgServicePricing
                 @label="TV"
                 @package="Silver"
                 @description="$107/mo"
@@ -135,7 +134,7 @@ export default class extends Component {
                 <Addon @label="HBO" @price="$5.99/mo" />
                 <Addon @label="STARZ" @price="$4.99/mo" />
                 <Addon @label="Spanish Channels" @price="$4.99/mo" />
-              </ServicePricing>
+              </MktgServicePricing>
               <button
                 type="button"
                 class="btn btn-secondary"

@@ -1,8 +1,7 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import Navbar from '@nrg-ui/core/components/mktg/navbar';
-import NavItem from '@nrg-ui/core/components/nav-item';
+import { MktgNavbar, NavItem } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
@@ -23,7 +22,7 @@ export default class extends Component {
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
-            <Navbar>
+            <MktgNavbar>
               <:brand>
                 <a class="navbar-brand mx-5" href="https://www.kub.org">
                   <img
@@ -42,7 +41,7 @@ export default class extends Component {
                 <NavItem @url="#" @label="Home" />
                 <NavItem @url="#" @label="Products" />
               </:default>
-            </Navbar>
+            </MktgNavbar>
           </:example>
         </FreestyleUsage>
       </Section.subsection>
