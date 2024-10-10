@@ -24,12 +24,20 @@ module.exports = {
     await this.removePackagesFromProject([{ name: 'ember-welcome-page' }]);
     await this.addPackagesToProject([{ name: '@nrg-ui/css' }]);
 
+    // Dummy/test apps in addons that might use Embroider
     await this.insertIntoFile('ember-cli-build.js', BUILD_CHUNK, {
       before:
         / {2}const { maybeEmbroider } = require\('@embroider\/test-setup'\);/g,
     });
+
+    // Apps using the classic build system
     await this.insertIntoFile('ember-cli-build.js', BUILD_CHUNK, {
       before: / {2}return app.toTree\(\);/g,
+    });
+
+    // Apps using Embroider as the build system
+    await this.insertIntoFile('ember-cli-build.js', BUILD_CHUNK, {
+      before: / {2}const \{ Webpack \} = require\('@embroider\/webpack'\);/g,
     });
   },
 
