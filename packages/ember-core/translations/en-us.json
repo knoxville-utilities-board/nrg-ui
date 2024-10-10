@@ -7,7 +7,7 @@
     "navbar": {
       "toggleContextMenu": "Toggle context menu"
     },
-    "not-found": {
+    "page-not-found": {
       "title": "Page Not Found",
       "message": "The page you requested could not be found."
     },
