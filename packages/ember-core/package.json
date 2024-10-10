@@ -208,7 +208,7 @@
       "./components/mktg/workflow-tray.js": "./dist/_app_/components/mktg/workflow-tray.js",
       "./components/modal.js": "./dist/_app_/components/modal.js",
       "./components/nav-item.js": "./dist/_app_/components/nav-item.js",
-      "./components/not-found.js": "./dist/_app_/components/not-found.js",
+      "./components/page-not-found.js": "./dist/_app_/components/page-not-found.js",
       "./components/progress.js": "./dist/_app_/components/progress.js",
       "./components/toaster.js": "./dist/_app_/components/toaster.js",
       "./helpers/bind.js": "./dist/_app_/helpers/bind.js",
