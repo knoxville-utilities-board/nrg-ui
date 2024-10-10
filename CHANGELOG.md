@@ -2,6 +2,27 @@
 
 ## Release (2024-10-10)
 
+@nrg-ui/core 0.10.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#204](https://github.com/knoxville-utilities-board/nrg-ui/pull/204) chore: Move styling from workflowtray into library ([@lnicely](https://github.com/lnicely))
+  * [#200](https://github.com/knoxville-utilities-board/nrg-ui/pull/200) feat: Port styling from marketing header component into library ([@lnicely](https://github.com/lnicely))
+
+#### :bug: Bug Fix
+* `docs-app`, `test-app`, `@nrg-ui/core`
+  * [#201](https://github.com/knoxville-utilities-board/nrg-ui/pull/201) fix(button): Use inline-flex to prevent line wrapping ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `docs-app`, `test-app`, `@nrg-ui/core`
+  * [#201](https://github.com/knoxville-utilities-board/nrg-ui/pull/201) fix(button): Use inline-flex to prevent line wrapping ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Lucas ([@lnicely](https://github.com/lnicely))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
+## Release (2024-10-10)
+
 @nrg-ui/css 0.7.1 (patch)
 @nrg-ui/core 0.9.0 (minor)
 
