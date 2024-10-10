@@ -31,4 +31,10 @@ module.exports = {
       before: / {2}return app.toTree\(\);/g,
     });
   },
+
+  /* The blueprint base verifies that an entity name is passed to the
+   * blueprint. This is not necessary for this blueprint, so we want
+   * to bypass it.
+   */
+  normalizeEntityName() {},
 };
