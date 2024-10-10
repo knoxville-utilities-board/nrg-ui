@@ -35,6 +35,7 @@ export { default as Icon } from './components/icon.gts';
 export { default as LoadingIndicator } from './components/loading-indicator.gts';
 export { default as Modal } from './components/modal.gts';
 export { default as NavItem } from './components/nav-item.gts';
+export { default as PageNotFound } from './components/page-not-found.gts';
 export { default as Progress } from './components/progress.gts';
 export { default as Toaster } from './components/toaster.gts';
 

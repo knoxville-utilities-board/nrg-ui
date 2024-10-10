@@ -7,6 +7,10 @@
     "navbar": {
       "toggleContextMenu": "Toggle context menu"
     },
+    "page-not-found": {
+      "title": "Page Not Found",
+      "message": "The page you requested could not be found."
+    },
     "select": {
       "defaultText": "Select an Option"
     },
