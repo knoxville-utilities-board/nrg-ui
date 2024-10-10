@@ -5,7 +5,7 @@ import {
   waitUntil,
   type TestContext,
 } from '@ember/test-helpers';
-import Alert from '@nrg-ui/core/components/alert';
+import { Alert } from '@nrg-ui/core';
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 

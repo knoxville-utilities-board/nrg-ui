@@ -1,5 +1,5 @@
 import { click, render } from '@ember/test-helpers';
-import Faq from '@nrg-ui/core/components/mktg/faq';
+import { MktgFaq } from '@nrg-ui/core';
 import { assert, module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
@@ -9,11 +9,11 @@ module('Integration | Component | mktg/faq', function (hooks) {
 
   test('faq renders', async function () {
     await render(<template>
-      <Faq class="test" @question="Question">
+      <MktgFaq class="test" @question="Question">
         <:answer>
           <p>Answer</p>
         </:answer>
-      </Faq>
+      </MktgFaq>
     </template>);
 
     assert
@@ -47,11 +47,11 @@ module('Integration | Component | mktg/faq', function (hooks) {
       .hasClass('bi-dash', 'Icon switches to dash after clicking button');
 
     await render(<template>
-      <Faq @defaultOpen={{true}} @question="Question">
+      <MktgFaq @defaultOpen={{true}} @question="Question">
         <:answer>
           <p>Answer</p>
         </:answer>
-      </Faq>
+      </MktgFaq>
     </template>);
 
     assert

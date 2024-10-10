@@ -1,5 +1,5 @@
 import { render } from '@ember/test-helpers';
-import PromoContainer from '@nrg-ui/core/components/mktg/promo-container';
+import { MktgPromoContainer } from '@nrg-ui/core';
 import { assert, module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
@@ -9,7 +9,7 @@ module('Integration | Component | mktg/promo-container', function (hooks) {
 
   test('Promo container renders', async function () {
     await render(<template>
-      <PromoContainer class="promo-container" as |Container|>
+      <MktgPromoContainer class="promo-container" as |Container|>
         <Container.SectionHeader @title="Title" @subject="Subject" />
         <Container.Promo class="promo" @productName="Product name">
           <:img>
@@ -22,7 +22,7 @@ module('Integration | Component | mktg/promo-container', function (hooks) {
             <p>Description</p>
           </:description>
         </Container.Promo>
-      </PromoContainer>
+      </MktgPromoContainer>
     </template>);
 
     assert

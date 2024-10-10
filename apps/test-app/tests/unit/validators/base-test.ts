@@ -1,6 +1,6 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
-import { bind } from '@nrg-ui/core/helpers/bind';
+import { bind } from '@nrg-ui/core';
 import { BaseValidator } from '@nrg-ui/core/validation';
 import { addTranslations, setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';

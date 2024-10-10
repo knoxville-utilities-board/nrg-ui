@@ -1,7 +1,6 @@
 import { render, click } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import RadioGroup from '@nrg-ui/core/components/form/radio-group';
-import bind from '@nrg-ui/core/helpers/bind';
+import { Bind as bind, RadioGroup } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';

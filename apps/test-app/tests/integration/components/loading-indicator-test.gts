@@ -1,5 +1,5 @@
 import { render } from '@ember/test-helpers';
-import LoadingIndicator from '@nrg-ui/core/components/loading-indicator';
+import { LoadingIndicator } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../helpers';
