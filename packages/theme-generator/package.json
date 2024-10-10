@@ -18,7 +18,7 @@
   "license": "ISC",
   "devDependencies": {
     "css-tree": "2.3.1",
-    "sass": "^1.54.8",
+    "sass": "^1.79.4",
     "prettier": "^2.4.1"
   }
 }
