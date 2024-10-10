@@ -21,6 +21,7 @@ module.exports = {
     'The default blueprint for @nrg-ui/core. This runs when you run `ember install @nrg-ui/core` in your project.',
 
   async afterInstall() {
+    await this.removePackagesFromProject([{ name: 'ember-welcome-page' }]);
     await this.addPackagesToProject([{ name: '@nrg-ui/css' }]);
 
     await this.insertIntoFile('ember-cli-build.js', BUILD_CHUNK, {
