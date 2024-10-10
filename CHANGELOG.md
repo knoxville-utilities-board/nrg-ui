@@ -1,5 +1,30 @@
 # Changelog
 
+## Release (2024-10-10)
+
+@nrg-ui/css 0.7.1 (patch)
+@nrg-ui/core 0.9.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#195](https://github.com/knoxville-utilities-board/nrg-ui/pull/195) feat: Implement not found component ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`
+  * [#193](https://github.com/knoxville-utilities-board/nrg-ui/pull/193) fix(select): Remove validation icon and allow background color ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `docs-app`, `test-app`, `@nrg-ui/core`
+  * [#191](https://github.com/knoxville-utilities-board/nrg-ui/pull/191) chore: Update eslint import and fix linting ([@KeithClinard](https://github.com/KeithClinard))
+* Other
+  * [#189](https://github.com/knoxville-utilities-board/nrg-ui/pull/189) chore(dependabot): Ignore major version updates ([@TSenter](https://github.com/TSenter))
+  * [#182](https://github.com/knoxville-utilities-board/nrg-ui/pull/182) chore(security): Create Dependabot config file ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 3
+- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))
+- Keith ([@KeithClinard](https://github.com/KeithClinard))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-10-08)
 
 @nrg-ui/css 0.7.0 (minor)
