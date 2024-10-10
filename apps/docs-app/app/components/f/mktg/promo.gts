@@ -2,8 +2,7 @@ import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import Button from '@nrg-ui/core/components/button';
-import Promo from '@nrg-ui/core/components/mktg/promo';
+import { Button, MktgPromo } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
@@ -26,7 +25,7 @@ export default class extends Component {
       <Section.subsection @name="Horizontal Promo">
         <FreestyleUsage>
           <:example>
-            <Promo class={{this.class}} @productName={{this.productName}}>
+            <MktgPromo class={{this.class}} @productName={{this.productName}}>
               <:img>
                 <img
                   src="https://place-hold.it/500x500"
@@ -52,7 +51,7 @@ export default class extends Component {
                   class="mt-2 btn bg-primary-subtle text-primary"
                 >Learn More</Button>
               </:description>
-            </Promo>
+            </MktgPromo>
           </:example>
           <:api as |Args|>
             <Args.String
@@ -87,7 +86,7 @@ export default class extends Component {
       <Section.subsection @name="Vertical Promo">
         <FreestyleUsage>
           <:example>
-            <Promo
+            <MktgPromo
               class={{this.verticalClass}}
               @productName={{this.productName}}
               @vertical={{true}}
@@ -114,7 +113,7 @@ export default class extends Component {
                   class="mt-2 btn bg-primary-subtle text-primary"
                 >Learn More</Button>
               </:description>
-            </Promo>
+            </MktgPromo>
           </:example>
           <:api as |Args|>
             <Args.String

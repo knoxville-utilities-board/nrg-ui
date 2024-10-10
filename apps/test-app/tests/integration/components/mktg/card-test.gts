@@ -1,5 +1,5 @@
 import { render } from '@ember/test-helpers';
-import Card from '@nrg-ui/core/components/mktg/card';
+import { MktgCard } from '@nrg-ui/core';
 import { assert, module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
@@ -9,7 +9,7 @@ module('Integration | Component | mktg/card', function (hooks) {
 
   test('card correctly renders vertical as default', async function () {
     await render(<template>
-      <Card class="g-col-12" @title="Title" @subtitle="Subtitle">
+      <MktgCard class="g-col-12" @title="Title" @subtitle="Subtitle">
         <:callout>
           <p>Callout</p>
         </:callout>
@@ -21,7 +21,7 @@ module('Integration | Component | mktg/card', function (hooks) {
         <:end>
           <p>End section content</p>
         </:end>
-      </Card>
+      </MktgCard>
     </template>);
 
     assert
@@ -71,7 +71,7 @@ module('Integration | Component | mktg/card', function (hooks) {
       );
 
     await render(<template>
-      <Card
+      <MktgCard
         class="g-col-12"
         @title="Title"
         @subtitle="Subtitle"
@@ -88,7 +88,7 @@ module('Integration | Component | mktg/card', function (hooks) {
         <:end>
           <p>End section content</p>
         </:end>
-      </Card>
+      </MktgCard>
     </template>);
 
     assert
@@ -114,7 +114,7 @@ module('Integration | Component | mktg/card', function (hooks) {
 
   test('card correctly renders horizontal when @horizontal is true', async function () {
     await render(<template>
-      <Card
+      <MktgCard
         class="g-col-12"
         @title="Title"
         @subtitle="Subtitle"
@@ -131,7 +131,7 @@ module('Integration | Component | mktg/card', function (hooks) {
         <:end>
           <p>End section content</p>
         </:end>
-      </Card>
+      </MktgCard>
     </template>);
 
     assert.notOk(
@@ -166,7 +166,7 @@ module('Integration | Component | mktg/card', function (hooks) {
 
   test('Card passes hasBorder param correctly', async function () {
     await render(<template>
-      <Card
+      <MktgCard
         class="g-col-12"
         @title="Title"
         @subtitle="Subtitle"
@@ -183,7 +183,7 @@ module('Integration | Component | mktg/card', function (hooks) {
         <:end>
           <p>End section content</p>
         </:end>
-      </Card>
+      </MktgCard>
     </template>);
     assert
       .dom('.card')

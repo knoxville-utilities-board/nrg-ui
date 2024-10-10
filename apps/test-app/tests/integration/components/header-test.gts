@@ -1,5 +1,5 @@
 import { render } from '@ember/test-helpers';
-import Header from '@nrg-ui/core/components/header';
+import { Header } from '@nrg-ui/core';
 import { assert, module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../helpers';

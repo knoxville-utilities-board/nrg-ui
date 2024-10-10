@@ -1,6 +1,5 @@
 import { render } from '@ember/test-helpers';
-import Button from '@nrg-ui/core/components/button';
-import Header from '@nrg-ui/core/components/mktg/header';
+import { Button, MktgHeader } from '@nrg-ui/core';
 import { assert, module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
@@ -10,7 +9,7 @@ module('Integration | Component | mktg/header', function (hooks) {
 
   test('it renders', async function () {
     await render(<template>
-      <Header @dropSection={{true}}>
+      <MktgHeader @dropSection={{true}}>
         <:brand>
           <img src="https://imageplaceholder.net/50" alt="Icon" />
         </:brand>
@@ -24,7 +23,7 @@ module('Integration | Component | mktg/header', function (hooks) {
         <:options>
           <p class="my-0 me-2 fw-bold">Options content</p>
         </:options>
-      </Header>
+      </MktgHeader>
     </template>);
 
     assert.dom('div div img').exists('Brand renders content');

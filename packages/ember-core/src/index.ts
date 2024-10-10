@@ -4,6 +4,7 @@ export { default as CheckboxGroup } from './components/form/checkbox-group.gts';
 export { default as Checkbox } from './components/form/checkbox.gts';
 export { default as Field } from './components/form/field.gts';
 export { default as Form } from './components/form/index.gts';
+export { default as NumberInput } from './components/form/number-input.gts';
 export { default as PhoneInput } from './components/form/phone-input.gts';
 export { default as RadioGroup } from './components/form/radio-group.gts';
 export { default as Select } from './components/form/select.gts';

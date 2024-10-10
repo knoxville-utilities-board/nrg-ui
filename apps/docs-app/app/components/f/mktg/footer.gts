@@ -2,8 +2,7 @@ import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import Button from '@nrg-ui/core/components/button';
-import Footer from '@nrg-ui/core/components/mktg/footer';
+import { Button, MktgFooter } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
@@ -24,7 +23,7 @@ export default class extends Component {
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
-            <Footer class={{this.class}} @hasDivider={{this.hasDivider}}>
+            <MktgFooter class={{this.class}} @hasDivider={{this.hasDivider}}>
               <:nav>
                 <Button class="ms-2 rounded-pill btn-light">Nav 1</Button>
                 <a
@@ -72,7 +71,7 @@ export default class extends Component {
                 <a href="" class="text-light">Legal 1</a>
                 <a href="" class="text-light">Legal 2</a>
               </:legal>
-            </Footer>
+            </MktgFooter>
           </:example>
           <:api as |Args|>
             <Args.String

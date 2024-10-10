@@ -1,5 +1,5 @@
 import { render } from '@ember/test-helpers';
-import CardContainer from '@nrg-ui/core/components/mktg/card-container';
+import { MktgCardContainer } from '@nrg-ui/core';
 import { assert, module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
@@ -9,11 +9,11 @@ module('Integration | Component | mktg/card-container', function (hooks) {
 
   test('it renders', async function () {
     await render(<template>
-      <CardContainer class="bg-info rounded" as |Container|>
+      <MktgCardContainer class="bg-info rounded" as |Container|>
         <Container.Card class="first g-col-12 g-col-md-4" />
         <Container.Card class="second g-col-12 g-col-md-4" />
         <Container.Card class="third g-col-12 g-col-md-4" />
-      </CardContainer>
+      </MktgCardContainer>
     </template>);
 
     assert.dom('.grid.p-2').exists('Card container renders');

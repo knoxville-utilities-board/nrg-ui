@@ -1,5 +1,5 @@
 import { render } from '@ember/test-helpers';
-import FeatureList from '@nrg-ui/core/components/mktg/feature-list';
+import { MktgFeatureList } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
@@ -10,7 +10,7 @@ module('Integration | Component | mktg/feature-list', function (hooks) {
   test('it renders', async function (assert) {
     assert.expect(4);
     await render(<template>
-      <FeatureList @columns="2">
+      <MktgFeatureList @columns="2">
         <:label>
           <p class="mt-2">Includes:</p>
         </:label>
@@ -20,7 +20,7 @@ module('Integration | Component | mktg/feature-list', function (hooks) {
           <Feature @icon="bi-check2" @text="Feature 1" />
           <Feature @icon="bi-check2" @text="Feature 1" />
         </:features>
-      </FeatureList>
+      </MktgFeatureList>
     </template>);
 
     assert.dom('div p').exists('Feature list label renders');

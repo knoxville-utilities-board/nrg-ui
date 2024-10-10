@@ -1,5 +1,5 @@
 import { render } from '@ember/test-helpers';
-import Footer from '@nrg-ui/core/components/mktg/footer';
+import { MktgFooter } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
@@ -8,24 +8,24 @@ module('Integration | Component | mktg/footer', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(<template><Footer /></template>);
+    await render(<template><MktgFooter /></template>);
 
     assert.dom('footer').exists();
   });
 
   test('it contains a horizontal line', async function (assert) {
-    await render(<template><Footer @hasDivider={{true}} /></template>);
+    await render(<template><MktgFooter @hasDivider={{true}} /></template>);
 
     assert.dom('footer div hr').exists();
   });
 
   test('it contains a navigation bar', async function (assert) {
     await render(<template>
-      <Footer>
+      <MktgFooter>
         <:nav>
           Nav Test
         </:nav>
-      </Footer>
+      </MktgFooter>
     </template>);
 
     assert
@@ -36,11 +36,11 @@ module('Integration | Component | mktg/footer', function (hooks) {
 
   test('it contains social media links', async function (assert) {
     await render(<template>
-      <Footer>
+      <MktgFooter>
         <:social-media>
           Social Media Test
         </:social-media>
-      </Footer>
+      </MktgFooter>
     </template>);
 
     assert
@@ -52,11 +52,11 @@ module('Integration | Component | mktg/footer', function (hooks) {
 
   test('it contains a brand section', async function (assert) {
     await render(<template>
-      <Footer>
+      <MktgFooter>
         <:brand>
           Brand Test
         </:brand>
-      </Footer>
+      </MktgFooter>
     </template>);
 
     assert
@@ -67,11 +67,11 @@ module('Integration | Component | mktg/footer', function (hooks) {
 
   test('it contains a legal section', async function (assert) {
     await render(<template>
-      <Footer>
+      <MktgFooter>
         <:legal>
           Legal Test
         </:legal>
-      </Footer>
+      </MktgFooter>
     </template>);
 
     assert
@@ -83,7 +83,7 @@ module('Integration | Component | mktg/footer', function (hooks) {
 
   test('it contains all sections', async function (assert) {
     await render(<template>
-      <Footer>
+      <MktgFooter>
         <:nav>
           Nav Test
         </:nav>
@@ -96,7 +96,7 @@ module('Integration | Component | mktg/footer', function (hooks) {
         <:legal>
           Legal Test
         </:legal>
-      </Footer>
+      </MktgFooter>
     </template>);
 
     assert

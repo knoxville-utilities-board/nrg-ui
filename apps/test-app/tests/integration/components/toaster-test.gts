@@ -1,5 +1,5 @@
 import { render } from '@ember/test-helpers';
-import Toaster from '@nrg-ui/core/components/toaster';
+import { Toaster } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../helpers';

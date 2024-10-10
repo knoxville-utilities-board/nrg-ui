@@ -1,5 +1,5 @@
 import { render } from '@ember/test-helpers';
-import SectionHeader from '@nrg-ui/core/components/mktg/section-header';
+import { MktgSectionHeader } from '@nrg-ui/core';
 import { assert, module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
@@ -9,11 +9,15 @@ module('Integration | Component | mktg/section-header', function (hooks) {
 
   test('Section header renders', async function () {
     await render(<template>
-      <SectionHeader class="section-header" @title="Title" @subject="Subject">
+      <MktgSectionHeader
+        class="section-header"
+        @title="Title"
+        @subject="Subject"
+      >
         <:subheader>
           <p>subheader</p>
         </:subheader>
-      </SectionHeader>,
+      </MktgSectionHeader>,
     </template>);
 
     assert

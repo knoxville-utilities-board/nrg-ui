@@ -2,7 +2,7 @@ import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import ServicePricing from '@nrg-ui/ember/components/mktg/service-pricing';
+import { MktgServicePricing } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
@@ -38,7 +38,7 @@ export default class extends Component {
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
-            <ServicePricing
+            <MktgServicePricing
               class={{this.class}}
               @active={{this.active}}
               @description={{this.description}}
@@ -52,8 +52,8 @@ export default class extends Component {
               <Addon @label="Product 2" @price="$5.99/mo" />
               <Addon @label="Product 3" @price="$4.99/mo" />
               <Addon @label="Product 4" @price="$4.99/mo" />
-            </ServicePricing>
-            <ServicePricing
+            </MktgServicePricing>
+            <MktgServicePricing
               class={{this.class}}
               @active={{this.active}}
               @description="Add (optional)"

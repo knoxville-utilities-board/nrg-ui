@@ -1,5 +1,5 @@
 import { render } from '@ember/test-helpers';
-import ServicePricing from '@nrg-ui/core/components/mktg/service-pricing';
+import { MktgServicePricing } from '@nrg-ui/core';
 import { assert, module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
@@ -9,7 +9,7 @@ module('Integration | Component | mktg/service-pricing', function (hooks) {
 
   test('it renders', async function () {
     await render(<template>
-      <ServicePricing
+      <MktgServicePricing
         @label="Service"
         @description="Description"
         @icon="bi-emoji-smile"
@@ -26,18 +26,18 @@ module('Integration | Component | mktg/service-pricing', function (hooks) {
   });
 
   test('it has different color border when active', async function () {
-    await render(<template><ServicePricing /></template>);
+    await render(<template><MktgServicePricing /></template>);
 
     assert.dom('div').doesNotHaveClass('border-primary');
 
-    await render(<template><ServicePricing @active={{true}} /></template>);
+    await render(<template><MktgServicePricing @active={{true}} /></template>);
 
     assert.dom('div').hasClass('border-primary');
   });
 
   test('it can change the status of the  description', async function () {
     await render(<template>
-      <ServicePricing
+      <MktgServicePricing
         @label="Service"
         @description="Description"
         @active={{true}}
@@ -53,7 +53,7 @@ module('Integration | Component | mktg/service-pricing', function (hooks) {
       .hasNoClass('text-decoration-underline text-light-emphasis');
 
     await render(<template>
-      <ServicePricing
+      <MktgServicePricing
         @label="Service"
         @description="Description"
         @active={{true}}
@@ -69,7 +69,7 @@ module('Integration | Component | mktg/service-pricing', function (hooks) {
       .hasNoClass('text-decoration-underline text-light-emphasis');
 
     await render(<template>
-      <ServicePricing
+      <MktgServicePricing
         @label="Service"
         @description="Description"
         @active={{false}}
@@ -85,7 +85,7 @@ module('Integration | Component | mktg/service-pricing', function (hooks) {
       .hasNoClass('text-decoration-underline text-light-emphasis');
 
     await render(<template>
-      <ServicePricing
+      <MktgServicePricing
         @label="Service"
         @description="Description"
         @active={{false}}
@@ -101,7 +101,7 @@ module('Integration | Component | mktg/service-pricing', function (hooks) {
 
   test('it can render a service product', async function () {
     await render(<template>
-      <ServicePricing @label="Service" @product="Service Product" />
+      <MktgServicePricing @label="Service" @product="Service Product" />
     </template>);
 
     assert
@@ -111,14 +111,14 @@ module('Integration | Component | mktg/service-pricing', function (hooks) {
 
   test('it can render an addon', async function () {
     await render(<template>
-      <ServicePricing
+      <MktgServicePricing
         @label="Service"
         @description="Description"
         @icon="bi-emoji-smile"
         as |Addon|
       >
         <Addon @label="Addon" @price="$100" />
-      </ServicePricing>
+      </MktgServicePricing>
     </template>);
 
     assert.dom('div div:nth-child(2) div:nth-child(1)').hasText('Addon');
@@ -128,14 +128,14 @@ module('Integration | Component | mktg/service-pricing', function (hooks) {
 
   test('it can render an addon with a quantity', async function () {
     await render(<template>
-      <ServicePricing
+      <MktgServicePricing
         @label="Service"
         @description="Description"
         @icon="bi-emoji-smile"
         as |Addon|
       >
         <Addon @label="Addon" @price="$100" @quantity="2" />
-      </ServicePricing>
+      </MktgServicePricing>
     </template>);
 
     assert

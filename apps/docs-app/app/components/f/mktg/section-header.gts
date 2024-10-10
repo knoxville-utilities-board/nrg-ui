@@ -2,8 +2,7 @@ import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import Button from '@nrg-ui/core/components/button';
-import SectionHeader from '@nrg-ui/core/components/mktg/section-header';
+import { Button, MktgSectionHeader } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
@@ -27,7 +26,7 @@ export default class extends Component {
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
-            <SectionHeader
+            <MktgSectionHeader
               @subject="Subject"
               @title="Section Title"
               class={{this.class}}
@@ -44,7 +43,7 @@ export default class extends Component {
                     call (865)111-2323</Button>
                 </div>
               </:subheader>
-            </SectionHeader>
+            </MktgSectionHeader>
           </:example>
           <:api as |Args|>
             <Args.String

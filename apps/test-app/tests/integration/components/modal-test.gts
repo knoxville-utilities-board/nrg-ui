@@ -1,5 +1,5 @@
 import { click, render } from '@ember/test-helpers';
-import Modal from '@nrg-ui/core/components/modal';
+import { Modal } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../helpers';

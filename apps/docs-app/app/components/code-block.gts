@@ -1,7 +1,7 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import onInsert from '@nrg-ui/core/modifiers/did-insert';
+import { didInsert } from '@nrg-ui/core';
 
 export default class CodeBlock extends Component {
   @service('ember-freestyle')
@@ -23,7 +23,7 @@ export default class CodeBlock extends Component {
       {{! template-lint-disable no-inline-styles }}
       style="--bs-bg-opacity: 0; font-size: 0.8rem;"
       tabindex="0"
-      {{onInsert this.highlight}}
+      {{didInsert this.highlight}}
       ...attributes
     >
       <code></code>

@@ -1,5 +1,5 @@
 import { render, find } from '@ember/test-helpers';
-import Promo from '@nrg-ui/core/components/mktg/promo';
+import { MktgPromo } from '@nrg-ui/core';
 import { assert, module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
@@ -9,7 +9,7 @@ module('Integration | Component | mktg/promo', function (hooks) {
 
   test('Promo component renders', async function () {
     await render(<template>
-      <Promo class="promo" @productName="Product name">
+      <MktgPromo class="promo" @productName="Product name">
         <:img>
           <img src="https://place-hold.it/700x700" alt="Placeholder" />
         </:img>
@@ -19,7 +19,7 @@ module('Integration | Component | mktg/promo', function (hooks) {
         <:description>
           <p>Description</p>
         </:description>
-      </Promo>
+      </MktgPromo>
     </template>);
 
     assert.dom('.row.promo').exists('Promo renders default horizontal');
@@ -50,7 +50,7 @@ module('Integration | Component | mktg/promo', function (hooks) {
     );
 
     await render(<template>
-      <Promo class="promo" @vertical={{true}} @productName="Product name">
+      <MktgPromo class="promo" @vertical={{true}} @productName="Product name">
         <:img>
           <img src="https://place-hold.it/700x700" alt="Placeholder" />
         </:img>
@@ -60,7 +60,7 @@ module('Integration | Component | mktg/promo', function (hooks) {
         <:description>
           <p>Description</p>
         </:description>
-      </Promo>
+      </MktgPromo>
     </template>);
 
     assert.dom('.promo').exists('Promo renders vertical when param is true');
