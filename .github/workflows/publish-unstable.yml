@@ -3,7 +3,7 @@
 #
 # This workflow brings back that capability by placing the compiled assets on a "dist" branch
 # (configurable via the "branch" option below)
-name: Push dist
+name: Publish (unstable)
 
 on:
   push:
