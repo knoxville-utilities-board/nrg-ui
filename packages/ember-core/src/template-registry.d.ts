@@ -1,4 +1,4 @@
-import Button from '@nrg-ui/core/components/button';
+import { Button } from '@nrg-ui/core';
 
 export default interface Registry {
   Button: typeof Button;
