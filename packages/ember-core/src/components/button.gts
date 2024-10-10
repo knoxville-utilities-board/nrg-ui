@@ -43,7 +43,7 @@ export default class ButtonComponent extends Component<ButtonSignature> {
     }
 
     classes.push(
-      'position-relative d-flex justify-content-center align-items-center',
+      'position-relative d-inline-flex justify-content-center align-items-center',
     );
 
     return classes.join(' ');
