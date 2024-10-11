@@ -5,16 +5,7 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 import InputField from './-private/input-field.ts';
-import {
-  exchangeCodeInput,
-  exchangeCodeOutput,
-  areaCodeInput,
-  areaCodeOutput,
-  countryCodeInput,
-  countryCodeOutput,
-  invalidInput,
-  invalidOutput,
-} from '../../utils/phone.ts';
+import { format as defaultFormat } from '../../utils/phone.ts';
 
 import type { Optional } from '../../';
 
@@ -23,24 +14,6 @@ export interface PhoneInputSignature {
     format?: ((value: Optional<string>) => string) | false;
   };
 }
-
-const defaultFormat = (value: string) => {
-  const unformattedValue = value.replace(/\D/g, '');
-
-  if (unformattedValue.length <= 7) {
-    return unformattedValue.replace(exchangeCodeInput, exchangeCodeOutput);
-  }
-
-  if (unformattedValue.length <= 10) {
-    return unformattedValue.replace(areaCodeInput, areaCodeOutput);
-  }
-
-  if (unformattedValue.length <= 13) {
-    return unformattedValue.replace(countryCodeInput, countryCodeOutput);
-  }
-
-  return unformattedValue.replace(invalidInput, invalidOutput);
-};
 
 export default class PhoneField extends InputField<PhoneInputSignature> {
   @tracked

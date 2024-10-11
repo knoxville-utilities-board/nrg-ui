@@ -33,6 +33,7 @@ export default {
         'helpers/**/*.js',
         'modifiers/**/*.js',
         'services/**/*.js',
+        'utils/**/*.js',
       ],
       {
         exclude: ['**/-*.js', '**/-**/*.js'],

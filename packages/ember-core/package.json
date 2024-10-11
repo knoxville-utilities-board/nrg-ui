@@ -218,7 +218,11 @@
       "./modifiers/on-update.js": "./dist/_app_/modifiers/on-update.js",
       "./services/modal.js": "./dist/_app_/services/modal.js",
       "./services/responsive.js": "./dist/_app_/services/responsive.js",
-      "./services/toast.js": "./dist/_app_/services/toast.js"
+      "./services/toast.js": "./dist/_app_/services/toast.js",
+      "./utils/email.js": "./dist/_app_/utils/email.js",
+      "./utils/ensure-path-exists.js": "./dist/_app_/utils/ensure-path-exists.js",
+      "./utils/index.js": "./dist/_app_/utils/index.js",
+      "./utils/phone.js": "./dist/_app_/utils/phone.js"
     },
     "defaultBlueprint": "@nrg-ui-core"
   }

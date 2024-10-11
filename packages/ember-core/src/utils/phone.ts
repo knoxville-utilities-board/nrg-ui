@@ -33,7 +33,7 @@ export function hasLineNumber(value: string): boolean {
 }
 
 export function getLineNumber(value: string): string {
-  return /(\d{1,4})$/.exec(value)?.[1] ?? '';
+  return lineNumberInput.exec(value)?.[1] ?? '';
 }
 
 export function hasExchangeCode(value: string): boolean {
@@ -41,7 +41,7 @@ export function hasExchangeCode(value: string): boolean {
 }
 
 export function getExchangeCode(value: string): string {
-  return /(\d{1,3})(?:\d{4})$/.exec(value)?.[1] ?? '';
+  return exchangeCodeInput.exec(value)?.[1] ?? '';
 }
 
 export function hasAreaCode(value: string): boolean {
@@ -49,7 +49,7 @@ export function hasAreaCode(value: string): boolean {
 }
 
 export function getAreaCode(value: string): string {
-  return /(\d{1,3})(?:\d{3})(?:\d{4})$/.exec(value)?.[1] ?? '';
+  return areaCodeInput.exec(value)?.[1] ?? '';
 }
 
 export function hasCountryCode(value: string): boolean {
@@ -57,7 +57,25 @@ export function hasCountryCode(value: string): boolean {
 }
 
 export function getCountryCode(value: string): string {
-  return /(\d{1,3})(?:\d{3})(?:\d{3})(?:\d{4})$/.exec(value)?.[1] ?? '';
+  return countryCodeInput.exec(value)?.[1] ?? '';
+}
+
+export function format(value: string) {
+  const unformattedValue = value.replace(/\D/g, '');
+
+  if (unformattedValue.length <= 7) {
+    return unformattedValue.replace(exchangeCodeInput, exchangeCodeOutput);
+  }
+
+  if (unformattedValue.length <= 10) {
+    return unformattedValue.replace(areaCodeInput, areaCodeOutput);
+  }
+
+  if (unformattedValue.length <= 13) {
+    return unformattedValue.replace(countryCodeInput, countryCodeOutput);
+  }
+
+  return unformattedValue.replace(invalidInput, invalidOutput);
 }
 
 export default {
@@ -69,4 +87,13 @@ export default {
   exchangeCodeOutput,
   areaCodeOutput,
   countryCodeOutput,
+  hasLineNumber,
+  getLineNumber,
+  hasExchangeCode,
+  getExchangeCode,
+  hasAreaCode,
+  getAreaCode,
+  hasCountryCode,
+  getCountryCode,
+  format,
 };
