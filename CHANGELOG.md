@@ -1,5 +1,27 @@
 # Changelog
 
+## Release (2024-10-11)
+
+@nrg-ui/core 0.11.0 (minor)
+
+#### :rocket: Enhancement
+* `test-app`, `@nrg-ui/core`
+  * [#210](https://github.com/knoxville-utilities-board/nrg-ui/pull/210) feat: Update and extract phone formatter ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`
+  * [#209](https://github.com/knoxville-utilities-board/nrg-ui/pull/209) feat: Update installation blueprint ([@TSenter](https://github.com/TSenter))
+  * [#205](https://github.com/knoxville-utilities-board/nrg-ui/pull/205) feat: Add border bottom to marketing header ([@lnicely](https://github.com/lnicely))
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#209](https://github.com/knoxville-utilities-board/nrg-ui/pull/209) feat: Update installation blueprint ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* [#197](https://github.com/knoxville-utilities-board/nrg-ui/pull/197) chore(ci): Rename `push-dist` workflow to `publish-unstable` ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Lucas ([@lnicely](https://github.com/lnicely))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-10-10)
 
 @nrg-ui/core 0.10.0 (minor)
