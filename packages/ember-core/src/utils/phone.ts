@@ -87,5 +87,13 @@ export default {
   exchangeCodeOutput,
   areaCodeOutput,
   countryCodeOutput,
+  hasLineNumber,
+  getLineNumber,
+  hasExchangeCode,
+  getExchangeCode,
+  hasAreaCode,
+  getAreaCode,
+  hasCountryCode,
+  getCountryCode,
   format,
 };
