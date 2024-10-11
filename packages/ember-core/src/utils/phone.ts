@@ -60,6 +60,24 @@ export function getCountryCode(value: string): string {
   return /(\d{1,3})(?:\d{3})(?:\d{3})(?:\d{4})$/.exec(value)?.[1] ?? '';
 }
 
+export function format(value: string) {
+  const unformattedValue = value.replace(/\D/g, '');
+
+  if (unformattedValue.length <= 7) {
+    return unformattedValue.replace(exchangeCodeInput, exchangeCodeOutput);
+  }
+
+  if (unformattedValue.length <= 10) {
+    return unformattedValue.replace(areaCodeInput, areaCodeOutput);
+  }
+
+  if (unformattedValue.length <= 13) {
+    return unformattedValue.replace(countryCodeInput, countryCodeOutput);
+  }
+
+  return unformattedValue.replace(invalidInput, invalidOutput);
+}
+
 export default {
   lineNumberInput,
   exchangeCodeInput,
@@ -69,4 +87,5 @@ export default {
   exchangeCodeOutput,
   areaCodeOutput,
   countryCodeOutput,
+  format,
 };
