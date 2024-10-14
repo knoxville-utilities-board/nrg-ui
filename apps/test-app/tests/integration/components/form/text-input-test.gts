@@ -1,4 +1,4 @@
-import { fillIn, render } from '@ember/test-helpers';
+import { fillIn, render, triggerEvent } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import { Bind as bind, TextInput } from '@nrg-ui/core';
 import { module, test } from 'qunit';
@@ -13,7 +13,7 @@ class Model {
 module('Integration | Component | form/text-input', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders (inline)', async function (assert) {
+  test('it renders', async function (assert) {
     assert.expect(6);
     const model = new Model();
 
@@ -44,5 +44,38 @@ module('Integration | Component | form/text-input', function (hooks) {
     </template>);
 
     assert.dom('div > input').hasClass('form-control-plaintext');
+  });
+
+  test('it uses a custom format', async function (assert) {
+    const model = new Model();
+
+    const format = (value) => value.toUpperCase();
+
+    await render(<template>
+      <TextInput @binding={{bind model "value"}} @format={{format}} />
+    </template>);
+
+    assert
+      .dom('input')
+      .hasAttribute('type', 'text')
+      .hasClass('form-control')
+      .hasValue('HELLO, WORLD!');
+
+    await triggerEvent('div > input', 'focus');
+
+    assert.dom('input').hasValue('Hello, world!');
+
+    await triggerEvent('div > input', 'blur');
+    await fillIn('div > input', 'Foo bar');
+
+    assert.dom('div > input').hasValue('Foo bar');
+
+    await triggerEvent('div > input', 'focus');
+
+    assert.dom('input').hasValue('Foo bar');
+
+    await triggerEvent('div > input', 'blur');
+
+    assert.dom('input').hasValue('FOO BAR');
   });
 });
