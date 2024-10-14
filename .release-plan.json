@@ -4,17 +4,17 @@
       "oldVersion": "0.7.1"
     },
     "@nrg-ui/core": {
-      "impact": "minor",
-      "oldVersion": "0.11.0",
-      "newVersion": "0.12.0",
+      "impact": "patch",
+      "oldVersion": "0.12.0",
+      "newVersion": "0.12.1",
       "constraints": [
         {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
     }
   },
-  "description": "## Release (2024-10-14)\n\n@nrg-ui/core 0.12.0 (minor)\n\n#### :rocket: Enhancement\n* `test-app`, `@nrg-ui/core`\n  * [#213](https://github.com/knoxville-utilities-board/nrg-ui/pull/213) feat(text-input): Allow custom formatting ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2024-10-14)\n\n@nrg-ui/core 0.12.1 (patch)\n\n#### :house: Internal\n* `test-app`, `@nrg-ui/core`\n  * [#212](https://github.com/knoxville-utilities-board/nrg-ui/pull/212) refactor: Remove extraneous padding on cards ([@ChesneyJulian](https://github.com/ChesneyJulian))\n\n#### Committers: 1\n- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))\n"
 }

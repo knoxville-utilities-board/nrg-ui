@@ -2,6 +2,17 @@
 
 ## Release (2024-10-14)
 
+@nrg-ui/core 0.12.1 (patch)
+
+#### :house: Internal
+* `test-app`, `@nrg-ui/core`
+  * [#212](https://github.com/knoxville-utilities-board/nrg-ui/pull/212) refactor: Remove extraneous padding on cards ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+#### Committers: 1
+- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+## Release (2024-10-14)
+
 @nrg-ui/core 0.12.0 (minor)
 
 #### :rocket: Enhancement
