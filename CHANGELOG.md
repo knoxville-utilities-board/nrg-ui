@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2024-10-14)
+
+@nrg-ui/core 0.12.0 (minor)
+
+#### :rocket: Enhancement
+* `test-app`, `@nrg-ui/core`
+  * [#213](https://github.com/knoxville-utilities-board/nrg-ui/pull/213) feat(text-input): Allow custom formatting ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-10-11)
 
 @nrg-ui/core 0.11.0 (minor)
