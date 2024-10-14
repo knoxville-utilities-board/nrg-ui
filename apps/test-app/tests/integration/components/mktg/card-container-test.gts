@@ -16,7 +16,7 @@ module('Integration | Component | mktg/card-container', function (hooks) {
       </MktgCardContainer>
     </template>);
 
-    assert.dom('.grid.p-2').exists('Card container renders');
+    assert.dom('.grid').exists('Card container renders');
     assert
       .dom('div div.card')
       .exists({ count: 3 }, 'Three content cards render');

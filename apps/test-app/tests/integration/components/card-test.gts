@@ -19,7 +19,7 @@ module('Integration | Component | card', function (hooks) {
       </Card>
     </template>);
 
-    assert.dom('.card.p-4.shadow-sm').exists('Card is rendered');
+    assert.dom('.card').exists('Card is rendered');
     assert
       .dom('.border-0')
       .doesNotExist('Border renders if hasBorder is not present');
@@ -40,7 +40,7 @@ module('Integration | Component | card', function (hooks) {
       </Card>
     </template>);
     assert
-      .dom('.card.p-4.shadow-sm.border-0')
+      .dom('.card.border-0')
       .exists('Card has class of border-0 if hasBorder is false');
   });
 });
