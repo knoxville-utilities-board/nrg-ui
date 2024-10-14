@@ -1,14 +1,16 @@
 import { array } from '@ember/helper';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import Button from '@nrg-ui/core/components/button';
-import Footer from '@nrg-ui/core/components/footer';
-import Form from '@nrg-ui/core/components/form';
-import Icon from '@nrg-ui/core/components/icon';
-import CardContainer from '@nrg-ui/core/components/mktg/card-container';
-import Header from '@nrg-ui/core/components/mktg/header';
-import SectionHeader from '@nrg-ui/core/components/mktg/section-header';
-import bind from '@nrg-ui/core/helpers/bind';
+import {
+  bind,
+  Button,
+  Footer,
+  Form,
+  Icon,
+  MktgCardContainer,
+  MktgHeader,
+  MktgSectionHeader
+} from '@nrg-ui/core';
 import { tracked as autoTrack } from 'tracked-built-ins';
 
 export default class extends Component {
