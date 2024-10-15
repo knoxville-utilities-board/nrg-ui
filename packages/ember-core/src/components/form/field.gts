@@ -152,6 +152,12 @@ export default class Field extends Component<FieldSignature> {
     const describedBy = [];
 
     if (this.hasError || this.hasWarning) {
+      const invalidElement = document.querySelector('.is-invalid');
+
+      const invalidLabel = document.querySelector(
+        `.form-label[for="${invalidElement?.id}"]`,
+      );
+      invalidLabel?.scrollIntoView();
       describedBy.push(this.messageId);
     }
 
