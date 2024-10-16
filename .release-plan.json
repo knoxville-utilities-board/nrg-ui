@@ -4,17 +4,17 @@
       "oldVersion": "0.7.1"
     },
     "@nrg-ui/core": {
-      "impact": "patch",
-      "oldVersion": "0.12.0",
-      "newVersion": "0.12.1",
+      "impact": "minor",
+      "oldVersion": "0.12.1",
+      "newVersion": "0.13.0",
       "constraints": [
         {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
     }
   },
-  "description": "## Release (2024-10-14)\n\n@nrg-ui/core 0.12.1 (patch)\n\n#### :house: Internal\n* `test-app`, `@nrg-ui/core`\n  * [#212](https://github.com/knoxville-utilities-board/nrg-ui/pull/212) refactor: Remove extraneous padding on cards ([@ChesneyJulian](https://github.com/ChesneyJulian))\n\n#### Committers: 1\n- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))\n"
+  "description": "## Release (2024-10-16)\n\n@nrg-ui/core 0.13.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#218](https://github.com/knoxville-utilities-board/nrg-ui/pull/218) feat(form): Scroll to first invalid field by default ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* `docs-app`, `test-app`\n  * [#194](https://github.com/knoxville-utilities-board/nrg-ui/pull/194) feat: Add theme page ([@KeithClinard](https://github.com/KeithClinard))\n\n#### Committers: 2\n- Keith ([@KeithClinard](https://github.com/KeithClinard))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
