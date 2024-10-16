@@ -9,7 +9,7 @@ import {
   Icon,
   MktgCardContainer,
   MktgHeader,
-  MktgSectionHeader
+  MktgSectionHeader,
 } from '@nrg-ui/core';
 import { tracked as autoTrack } from 'tracked-built-ins';
 
@@ -51,7 +51,7 @@ export default class extends Component {
       id="application"
       class="d-flex flex-column vh-100"
     >
-      <Header class="gx-0 sticky-header">
+      <MktgHeader class="gx-0 sticky-header">
         <:brand>
           <span style="height:75px;width:105px"></span>
         </:brand>
@@ -65,15 +65,15 @@ export default class extends Component {
         </:nav>
         <:options>
         </:options>
-      </Header>
+      </MktgHeader>
       <main class="d-flex flex-fill">
         <div class="container-fluid flex-fill p-4 overflow-auto">
-          <SectionHeader
+          <MktgSectionHeader
             class="my-2 my-md-4"
             @title="Confirm Your Service Address"
             data-test-page-title
           />
-          <CardContainer
+          <MktgCardContainer
             class="row d-flex justify-content-center"
             as |Container|
           >
@@ -237,7 +237,7 @@ export default class extends Component {
                 </Form>
               </:body>
             </Container.Card>
-          </CardContainer>
+          </MktgCardContainer>
         </div>
       </main>
       <Footer class="w-100 border-top-0 bg-body-secondary footer">
