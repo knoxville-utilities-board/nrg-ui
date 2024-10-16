@@ -8,9 +8,12 @@ import Component from '@glimmer/component';
 import { cached, tracked } from '@glimmer/tracking';
 import { dropTask } from 'ember-concurrency';
 import perform from 'ember-concurrency/helpers/perform';
+import { runTask } from 'ember-lifeline';
 import { TrackedArray, TrackedMap } from 'tracked-built-ins';
 
 import Field from './field.gts';
+import onInsert from '../../modifiers/did-insert.ts';
+import { scrollTo } from '../../utils/dom.ts';
 import { diff, uid } from '../../utils/index.ts';
 import Button from '../button.gts';
 
@@ -50,6 +53,7 @@ export interface FormSignature {
     didValidate?: boolean;
     disabled?: boolean;
     loading?: boolean;
+    preventScroll?: boolean;
     validators?: ValidatorsObject;
 
     willValidate?: (event: SubmitEvent) => unknown;
@@ -68,6 +72,9 @@ export interface FormSignature {
 export default class Form extends Component<FormSignature> implements FormType {
   @tracked
   _didValidate = false;
+
+  @tracked
+  element!: HTMLElement;
 
   staticValidations: Map<string, Wrapper[]>;
   bindings: Map<string, Binding>;
@@ -144,6 +151,22 @@ export default class Form extends Component<FormSignature> implements FormType {
 
     if (!this.isValid) {
       this._didValidate = true;
+      if (!this.args.preventScroll) {
+        runTask(this, () => {
+          const invalidField = this.element.querySelector(
+            '.is-invalid',
+          ) as HTMLElement;
+
+          const label = this.element.querySelector(
+            `[for="${invalidField?.id}"]`,
+          ) as HTMLElement | null;
+
+          const fieldY = invalidField?.getBoundingClientRect().top ?? 0;
+          const labelY = label?.getBoundingClientRect().top ?? Infinity;
+
+          scrollTo(fieldY < labelY ? invalidField : label!);
+        });
+      }
       return;
     }
 
@@ -190,6 +213,11 @@ export default class Form extends Component<FormSignature> implements FormType {
     }
 
     validations.splice(index, 1);
+  }
+
+  @action
+  setElement(element: HTMLElement) {
+    this.element = element;
   }
 
   checkValidations() {
@@ -262,7 +290,11 @@ export default class Form extends Component<FormSignature> implements FormType {
   }
 
   <template>
-    <form {{on "submit" (perform this.submit)}} ...attributes>
+    <form
+      {{on "submit" (perform this.submit)}}
+      {{onInsert this.setElement}}
+      ...attributes
+    >
       {{yield
         (hash
           Field=(component Field disabled=@disabled form=this)
