@@ -1,5 +1,21 @@
 # Changelog
 
+## Release (2024-10-16)
+
+@nrg-ui/core 0.13.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#218](https://github.com/knoxville-utilities-board/nrg-ui/pull/218) feat(form): Scroll to first invalid field by default ([@TSenter](https://github.com/TSenter))
+
+#### :memo: Documentation
+* `docs-app`, `test-app`
+  * [#194](https://github.com/knoxville-utilities-board/nrg-ui/pull/194) feat: Add theme page ([@KeithClinard](https://github.com/KeithClinard))
+
+#### Committers: 2
+- Keith ([@KeithClinard](https://github.com/KeithClinard))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-10-14)
 
 @nrg-ui/core 0.12.1 (patch)
