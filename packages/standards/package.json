@@ -19,6 +19,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc --build",
+    "build:watch": "tsc --build --watch",
     "prepare": "pnpm build",
     "test": "echo 'The @nrg-ui/standards package does not have tests'"
   },
