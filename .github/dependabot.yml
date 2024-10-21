@@ -29,3 +29,5 @@ updates:
     ignore:
       - dependency-name: '*'
         update-types: ["version-update:semver-major"]
+      - dependency-name: 'ember-source'
+        update-types: ["version-update:semver-minor"]
