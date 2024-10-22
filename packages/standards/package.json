@@ -16,6 +16,9 @@
     "package.json"
   ],
   "main": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "type": "module",
   "scripts": {
     "build": "tsc --build",
