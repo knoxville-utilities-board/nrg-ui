@@ -28,7 +28,7 @@ export interface ButtonSignature {
 
 export default class ButtonComponent extends Component<ButtonSignature> {
   get classList() {
-    let classes = ['btn'];
+    const classes = ['btn'];
 
     if (this.args._class) {
       classes.push(this.args._class);

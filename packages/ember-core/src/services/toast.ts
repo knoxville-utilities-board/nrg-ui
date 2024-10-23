@@ -77,7 +77,9 @@ export default class Toast extends Service {
 
   @action
   remove(message: ToastOptions) {
-    message.timeoutReference && cancelTask(this, message.timeoutReference);
+    if (message.timeoutReference) {
+      cancelTask(this, message.timeoutReference);
+    }
     const index = this.queue.indexOf(message);
     if (index !== -1) {
       this.queue.splice(index, 1);
