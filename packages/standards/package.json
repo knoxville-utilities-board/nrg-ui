@@ -31,6 +31,7 @@
     "execa": "^9.3.0"
   },
   "devDependencies": {
+    "@types/eslint": "^9.6.1",
     "@types/node": "^22.7.6",
     "eslint": "^9.13.0",
     "eslint-plugin-decorator-position": "^5.0.2",
