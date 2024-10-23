@@ -361,6 +361,50 @@ export class Config {
       return objects;
     },
 
+    tests: async (rules?: Linter.RulesRecord): Promise<Linter.Config[]> => {
+      const objects: Linter.Config[] = [];
+      const fileTypes = ['js'];
+
+      if (this.hasTemplateImports) {
+        fileTypes.push('gjs');
+      }
+
+      if (this.hasTypescript) {
+        fileTypes.push('ts');
+
+        if (this.hasTemplateImports) {
+          fileTypes.push('gts');
+        }
+      }
+
+      if (this.hasDependency('eslint-plugin-qunit', 'tests')) {
+        const qunitPlugin = await load('eslint-plugin-qunit');
+
+        objects.push({
+          name: '@nrg-ui/lint/tests/base',
+          files: [`tests/**/*-test.{${fileTypes.join()}}`],
+          plugins: {
+            qunit: qunitPlugin,
+          },
+          rules: {
+            'qunit/require-expect': ['error', 'except-simple'],
+          },
+        });
+      }
+
+      if (rules) {
+        objects.push({
+          name: '@nrg-ui/lint/tests/custom',
+          files: [`tests/**/*-test.{${fileTypes.join()}}`],
+          rules: {
+            ...rules,
+          },
+        });
+      }
+
+      return objects;
+    },
+
     custom: async (
       name: string,
       options: Partial<Linter.Config>,
