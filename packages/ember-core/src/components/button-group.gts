@@ -36,7 +36,7 @@ export default class ButtonGroupComponent
   implements ButtonGroupType
 {
   get classList() {
-    let classes = ['btn-group'];
+    const classes = ['btn-group'];
 
     if (this.args.disabled) {
       classes.push('disabled');

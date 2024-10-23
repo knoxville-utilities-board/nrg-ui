@@ -6,7 +6,6 @@ export interface CardSignature {
   Element: HTMLDivElement;
   Args: {
     isClickable?: boolean;
-    // eslint-disable-next-line no-unused-vars
     onClick?: (evt: MouseEvent) => unknown;
     hasBorder?: boolean;
     hasHorizontalDivider?: boolean;

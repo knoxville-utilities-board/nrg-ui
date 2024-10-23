@@ -28,7 +28,7 @@ export default class FaqComponent extends Component<MktgFaqSignature> {
   }
 
   get classList() {
-    let classes = ['collapse'];
+    const classes = ['collapse'];
     if (this.isMenuOpen) {
       classes.push('show');
     }

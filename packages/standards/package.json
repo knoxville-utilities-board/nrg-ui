@@ -1,0 +1,41 @@
+{
+  "name": "@nrg-ui/standards",
+  "version": "0.0.0",
+  "description": "Composable standards for NRG UI packages",
+  "keywords": [],
+  "repository": {
+    "directory": "packages/standards",
+    "type": "git",
+    "url": "https://github.com/knoxville-utilities-board/nrg-ui.git"
+  },
+  "license": "MIT",
+  "author": "",
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
+  "main": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc --build",
+    "build:watch": "tsc --build --watch",
+    "prepare": "pnpm build",
+    "test": "echo 'The @nrg-ui/standards package does not have tests'"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "execa": "^9.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.6",
+    "eslint": "^9.13.0",
+    "eslint-plugin-decorator-position": "^5.0.2",
+    "eslint-plugin-import": "^2.31.0",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.11.0"
+  }
+}

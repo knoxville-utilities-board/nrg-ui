@@ -13,6 +13,8 @@ import RegexValidator from './validators/regex.ts';
 import type { TranslatableOption, ValidatorBuilder } from './types';
 import type { Binding } from '../';
 
+// It's a lot easier to work with a map of validators
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Validators = {
   confirmation: ConfirmationValidator,
   custom: CustomValidator,

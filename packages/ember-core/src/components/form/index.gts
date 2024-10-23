@@ -104,11 +104,13 @@ export default class Form extends Component<FormSignature> implements FormType {
     const { bindings } = this;
     const builtValidations = new Map<string, Wrapper[]>();
 
-    for (let [key, value] of this.staticValidations) {
+    for (const [key, value] of this.staticValidations) {
       builtValidations.set(key, value);
     }
 
-    for (let [key, value] of Object.entries(validators)) {
+    for (const entry of Object.entries(validators)) {
+      const [key] = entry;
+      let value = entry[1];
       const binding = bindings.get(key);
       if (!binding) {
         warn(`No binding found for validator '${key}'`, false, {
