@@ -1,4 +1,5 @@
 'use strict';
+/* eslint-disable @typescript-eslint/no-require-imports */
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const fs = require('fs');
@@ -7,27 +8,27 @@ const path = require('path');
 module.exports = async function (defaults) {
   const { readPackageUpSync } = await import('read-package-up');
 
-  let app = new EmberApp(defaults, {
+  const app = new EmberApp(defaults, {
     minifyCSS: {
       enabled: false,
     },
     'ember-cli-babel': { enableTypeScriptTransform: true },
     trees: {
       app: (() => {
-        let sideWatch = require('@embroider/broccoli-side-watch');
+        const sideWatch = require('@embroider/broccoli-side-watch');
 
-        let paths = ['@nrg-ui/core', '@nrg-ui/css'].map((libraryName) => {
-          let entry = require.resolve(libraryName);
-          let { packageJson, path: packageJsonPath } = readPackageUpSync({
+        const paths = ['@nrg-ui/core', '@nrg-ui/css'].map((libraryName) => {
+          const entry = require.resolve(libraryName);
+          const { packageJson, path: packageJsonPath } = readPackageUpSync({
             cwd: entry,
           });
-          let packagePath = path.dirname(packageJsonPath);
+          const packagePath = path.dirname(packageJsonPath);
 
           console.debug(
             `Side-watching ${libraryName} from ${packagePath}, which started in ${entry}`,
           );
 
-          let toWatch = packageJson.files
+          const toWatch = packageJson.files
             .map((f) => path.join(packagePath, f))
             .filter((p) => {
               if (!fs.existsSync(p)) return false;

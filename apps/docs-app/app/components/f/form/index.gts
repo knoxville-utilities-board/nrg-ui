@@ -119,8 +119,8 @@ export default class extends Component {
   @tracked
   required = true;
 
-  constructor() {
-    super(...arguments);
+  constructor(...args: unknown[]) {
+    super(...args);
     this.model = new Model();
 
     setOwner(this.model, getOwner(this));
