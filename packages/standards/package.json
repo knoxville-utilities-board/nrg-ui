@@ -28,10 +28,10 @@
   },
   "dependencies": {
     "chalk": "^5.3.0",
-    "execa": "^9.3.0"
+    "execa": "^9.4.1"
   },
   "devDependencies": {
-    "@types/node": "^22.7.6",
+    "@types/node": "^22.7.9",
     "eslint": "^9.13.0",
     "eslint-plugin-decorator-position": "^5.0.2",
     "eslint-plugin-import": "^2.31.0",
