@@ -4,6 +4,8 @@ import { join } from 'path';
 import { missing, warn, error } from '../logging.js';
 import { load, getDependenciesFromPackage } from '../utils.js';
 
+import type { Linter } from 'eslint';
+
 export const defaultIgnores = ['node_modules/', 'dist/', 'vendor/', 'assets/'];
 
 export class Config {
@@ -59,8 +61,8 @@ export class Config {
     return true;
   }
 
-  rules: BuilderNamespace = {
-    ignore: (files: string[] = []): ConfigurationObject[] => {
+  rules = {
+    ignore: (files: string[] = []): Linter.Config[] => {
       const globs = new Set<string>(files.concat(defaultIgnores));
 
       if (this.hasTypescript) {
@@ -75,8 +77,8 @@ export class Config {
       ];
     },
 
-    base: async (): Promise<ConfigurationObject[]> => {
-      const objects: ConfigurationObject[] = [];
+    base: async (): Promise<Linter.Config[]> => {
+      const objects: Linter.Config[] = [];
 
       if (this.hasDependency('eslint-plugin-import', 'base')) {
         const importPlugin = await load('eslint-plugin-import');
@@ -131,8 +133,8 @@ export class Config {
       return objects;
     },
 
-    ember: async (): Promise<ConfigurationObject[]> => {
-      const objects: ConfigurationObject[] = [];
+    ember: async (): Promise<Linter.Config[]> => {
+      const objects: Linter.Config[] = [];
 
       if (this.hasDependency('eslint-plugin-ember', 'ember')) {
         const emberRecommended = await load(
@@ -145,10 +147,8 @@ export class Config {
       return objects;
     },
 
-    js: async (
-      rules?: Record<string, RuleOptions>,
-    ): Promise<ConfigurationObject[]> => {
-      const objects: ConfigurationObject[] = [];
+    js: async (rules?: Linter.RulesRecord): Promise<Linter.Config[]> => {
+      const objects: Linter.Config[] = [];
       const fileTypes = ['js'];
       let root = '';
 
@@ -197,10 +197,8 @@ export class Config {
       return objects;
     },
 
-    ts: async (
-      rules?: Record<string, RuleOptions>,
-    ): Promise<ConfigurationObject[]> => {
-      const objects: ConfigurationObject[] = [];
+    ts: async (rules?: Linter.RulesRecord): Promise<Linter.Config[]> => {
+      const objects: Linter.Config[] = [];
       const fileTypes = ['ts'];
 
       if (!this.hasDependencies(['typescript', 'typescript-eslint'], 'ts')) {
@@ -236,10 +234,8 @@ export class Config {
       return objects;
     },
 
-    gjs: async (
-      rules?: Record<string, RuleOptions>,
-    ): Promise<ConfigurationObject[]> => {
-      const objects: ConfigurationObject[] = [];
+    gjs: async (rules?: Linter.RulesRecord): Promise<Linter.Config[]> => {
+      const objects: Linter.Config[] = [];
 
       if (
         !this.hasDependencies(
@@ -281,10 +277,8 @@ export class Config {
       ];
     },
 
-    gts: async (
-      rules?: Record<string, RuleOptions>,
-    ): Promise<ConfigurationObject[]> => {
-      const objects: ConfigurationObject[] = [];
+    gts: async (rules?: Linter.RulesRecord): Promise<Linter.Config[]> => {
+      const objects: Linter.Config[] = [];
 
       if (
         !this.hasDependencies(['ember-template-imports', 'typescript'], 'gts')
@@ -327,9 +321,9 @@ export class Config {
 
     scripts: async (
       globs: string[],
-      rules: Record<string, RuleOptions> = {},
-    ): Promise<ConfigurationObject[]> => {
-      const objects: ConfigurationObject[] = [];
+      rules: Linter.RulesRecord = {},
+    ): Promise<Linter.Config[]> => {
+      const objects: Linter.Config[] = [];
 
       if (!globs?.length) {
         warn('No globs provided for `.rules.scripts()`');
@@ -367,10 +361,54 @@ export class Config {
       return objects;
     },
 
+    tests: async (rules?: Linter.RulesRecord): Promise<Linter.Config[]> => {
+      const objects: Linter.Config[] = [];
+      const fileTypes = ['js'];
+
+      if (this.hasTemplateImports) {
+        fileTypes.push('gjs');
+      }
+
+      if (this.hasTypescript) {
+        fileTypes.push('ts');
+
+        if (this.hasTemplateImports) {
+          fileTypes.push('gts');
+        }
+      }
+
+      if (this.hasDependency('eslint-plugin-qunit', 'tests')) {
+        const qunitPlugin = await load('eslint-plugin-qunit');
+
+        objects.push({
+          name: '@nrg-ui/lint/tests/base',
+          files: [`tests/**/*-test.{${fileTypes.join()}}`],
+          plugins: {
+            qunit: qunitPlugin,
+          },
+          rules: {
+            'qunit/require-expect': ['error', 'except-simple'],
+          },
+        });
+      }
+
+      if (rules) {
+        objects.push({
+          name: '@nrg-ui/lint/tests/custom',
+          files: [`tests/**/*-test.{${fileTypes.join()}}`],
+          rules: {
+            ...rules,
+          },
+        });
+      }
+
+      return objects;
+    },
+
     custom: async (
       name: string,
-      options: ConfigurationOptions,
-    ): Promise<ConfigurationObject[]> => {
+      options: Partial<Linter.Config>,
+    ): Promise<Linter.Config[]> => {
       if (!name) {
         error('No name provided for `.rules.custom()`');
       }

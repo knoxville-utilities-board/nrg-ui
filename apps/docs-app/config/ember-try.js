@@ -1,4 +1,5 @@
 'use strict';
+/* eslint-disable @typescript-eslint/no-require-imports */
 
 const { embroiderSafe, embroiderOptimized } = require('@embroider/test-setup');
 const getChannelURL = require('ember-source-channel-url');
