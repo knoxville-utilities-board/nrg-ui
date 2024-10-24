@@ -1,0 +1,32 @@
+import ConfirmationValidator from './validators/confirmation.ts';
+import CustomValidator from './validators/custom.ts';
+import EmailValidator from './validators/email.ts';
+import ExclusionValidator from './validators/exclusion.ts';
+import InclusionValidator from './validators/inclusion.ts';
+import LengthValidator from './validators/length.ts';
+import NumberValidator from './validators/number.ts';
+import PhoneValidator from './validators/phone.ts';
+import PresenceValidator from './validators/presence.ts';
+import RangeValidator from './validators/range.ts';
+import RegexValidator from './validators/regex.ts';
+import type { ValidatorBuilder } from './types';
+declare const Validators: {
+    confirmation: typeof ConfirmationValidator;
+    custom: typeof CustomValidator;
+    email: typeof EmailValidator;
+    exclusion: typeof ExclusionValidator;
+    inclusion: typeof InclusionValidator;
+    length: typeof LengthValidator;
+    number: typeof NumberValidator;
+    phone: typeof PhoneValidator;
+    presence: typeof PresenceValidator;
+    range: typeof RangeValidator;
+    regex: typeof RegexValidator;
+};
+type ValidatorType = keyof typeof Validators;
+declare type OptionsOf<T extends ValidatorType> = ConstructorParameters<(typeof Validators)[T]>[1];
+declare type ContextOf<T extends ValidatorType> = ConstructorParameters<(typeof Validators)[T]>[2];
+type ValidatorFnArgs<T extends ValidatorType = ValidatorType> = T extends T ? [type: T, values: OptionsOf<T>] : never;
+export declare function validator<V extends ValidatorType = ValidatorType>(...[type, options]: ValidatorFnArgs<V>): ValidatorBuilder<unknown, ContextOf<V>, ContextOf<V>, OptionsOf<V>>;
+export {};
+//# sourceMappingURL=utils.d.ts.map
