@@ -2,7 +2,7 @@ import { action } from '@ember/object';
 import Service from '@ember/service';
 import { isBlank } from '@ember/utils';
 import { tracked } from '@glimmer/tracking';
-import { runTask, cancelTask } from 'ember-lifeline';
+import { cancelTask, runTask } from 'ember-lifeline';
 import { TrackedArray } from 'tracked-built-ins';
 
 import type { EmberRunTimer } from '@ember/runloop/types';

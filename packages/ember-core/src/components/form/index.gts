@@ -19,7 +19,7 @@ import Button from '../button.gts';
 
 import type { FieldSignature } from './field.gts';
 import type { Binding } from '../../index.ts';
-import type { ValidatorBuilder, Validator } from '../../validation/types';
+import type { Validator, ValidatorBuilder } from '../../validation/types';
 import type { ButtonSignature } from '../button.gts';
 import type { ComponentLike } from '@glint/template';
 
