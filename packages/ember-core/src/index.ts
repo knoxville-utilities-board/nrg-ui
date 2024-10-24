@@ -75,8 +75,8 @@ export type { MktgPromoContainerSignature } from './components/mktg/promo-contai
 export type { MktgPromoSignature } from './components/mktg/promo.gts';
 export type { MktgSectionHeaderSignature } from './components/mktg/section-header.gts';
 export type {
-  MktgServicePricingSignature,
   AddonSignature as MktgServicePricingAddonSignature,
+  MktgServicePricingSignature,
 } from './components/mktg/service-pricing.gts';
 export type { MktgWorkflowTraySignature } from './components/mktg/workflow-tray.gts';
 

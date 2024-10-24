@@ -2,7 +2,6 @@ import { array } from '@ember/helper';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import {
-  bind,
   Button,
   Footer,
   Form,
@@ -10,6 +9,7 @@ import {
   MktgCardContainer,
   MktgHeader,
   MktgSectionHeader,
+  bind,
 } from '@nrg-ui/core';
 import { tracked as autoTrack } from 'tracked-built-ins';
 

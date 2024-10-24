@@ -1,12 +1,12 @@
 import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
-import { get, action } from '@ember/object';
+import { action, get } from '@ember/object';
 import { service } from '@ember/service';
 import { isEqual } from '@ember/utils';
 import Component from '@glimmer/component';
 // @ts-expect-error Glimmer doesn't currently ship a type for the `cached` decorator
 // https://github.com/glimmerjs/glimmer.js/issues/408
-import { tracked, cached } from '@glimmer/tracking';
+import { cached, tracked } from '@glimmer/tracking';
 import { t } from 'ember-intl';
 // @ts-expect-error Ember keyboard doesn't currently ship a type for the `on-key` modifier
 // https://github.com/adopted-ember-addons/ember-keyboard/issues/464
