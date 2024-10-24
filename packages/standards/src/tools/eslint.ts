@@ -1,8 +1,8 @@
 import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 
-import { missing, warn, error } from '../logging.js';
-import { load, getDependenciesFromPackage } from '../utils.js';
+import { error, missing, warn } from '../logging.js';
+import { getDependenciesFromPackage, load } from '../utils.js';
 
 import type { Linter } from 'eslint';
 
@@ -102,6 +102,7 @@ export class Config {
                   order: 'asc',
                   orderImportKind: 'asc',
                 },
+                named: true,
               },
             ],
           },
