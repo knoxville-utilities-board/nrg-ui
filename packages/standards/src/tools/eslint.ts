@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 
-import { error, missing, warn } from '../logging.js';
+import logger from '../logging.js';
 import { getDependenciesFromPackage, load } from '../utils.js';
 
 import type { Linter } from 'eslint';
@@ -44,7 +44,7 @@ export class Config {
 
   hasDependency(dep: string, message?: string) {
     if (!this.#deps.has(dep)) {
-      missing(dep, `.rules.${message}()`);
+      logger.missing(dep, `.rules.${message}()`);
       return false;
     }
 
@@ -327,7 +327,7 @@ export class Config {
       const objects: Linter.Config[] = [];
 
       if (!globs?.length) {
-        warn('No globs provided for `.rules.scripts()`');
+        logger.warn('No globs provided for `.rules.scripts()`');
 
         return objects;
       }
@@ -411,10 +411,10 @@ export class Config {
       options: Partial<Linter.Config>,
     ): Promise<Linter.Config[]> => {
       if (!name) {
-        error('No name provided for `.rules.custom()`');
+        logger.error('No name provided for `.rules.custom()`');
       }
 
-      warn(
+      logger.warn(
         `Custom configurations are not recommended. It might be better to merge with other configurations: ${name}`,
       );
 

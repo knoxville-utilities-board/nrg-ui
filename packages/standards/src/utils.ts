@@ -1,14 +1,15 @@
 import { readFileSync } from 'fs';
 
-import { missingRequired } from './logging.js';
+import logger from './logging.js';
 
 export async function load(dep: string) {
   try {
     const module = await import(dep);
 
     return module.default;
-  } catch {
-    missingRequired(dep);
+  } catch (e) {
+    logger.debug(e);
+    logger.missingRequired(dep);
   }
 }
 
