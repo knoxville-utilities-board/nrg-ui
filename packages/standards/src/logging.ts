@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import { exit } from 'process';
 
-export const prefix = chalk.blue('[@nrg-ui/lint] ');
+export const prefix = chalk.blue('[@nrg-ui/standards] ');
 const orange = chalk.hex('#FF8200');
 
 export function missing(dep: string, location?: string) {
