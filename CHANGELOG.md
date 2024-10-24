@@ -1,5 +1,27 @@
 # Changelog
 
+## Release (2024-10-24)
+
+@nrg-ui/core 0.14.0 (minor)
+@nrg-ui/standards 0.1.0 (minor)
+
+#### :rocket: Enhancement
+* `docs-app`, `@nrg-ui/standards`
+  * [#226](https://github.com/knoxville-utilities-board/nrg-ui/pull/226) feat(docs-app): Use new standards library ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`, `@nrg-ui/standards`
+  * [#225](https://github.com/knoxville-utilities-board/nrg-ui/pull/225) feat: Create new package for enforceable standards ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `docs-app`, `@nrg-ui/standards`
+  * [#226](https://github.com/knoxville-utilities-board/nrg-ui/pull/226) feat(docs-app): Use new standards library ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`, `@nrg-ui/standards`
+  * [#225](https://github.com/knoxville-utilities-board/nrg-ui/pull/225) feat: Create new package for enforceable standards ([@TSenter](https://github.com/TSenter))
+* Other
+  * [#220](https://github.com/knoxville-utilities-board/nrg-ui/pull/220) feat(dependabot): Ignore minor Ember.js versions ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-10-16)
 
 @nrg-ui/core 0.13.0 (minor)
