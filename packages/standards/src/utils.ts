@@ -1,3 +1,4 @@
+import { ExecaError, execa } from 'execa';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
@@ -47,6 +48,28 @@ export function getDependenciesFromPackage(
   };
 
   return dependencies;
+}
+
+export async function format(...files: string[]) {
+  files = files.map((file) => resolve(file));
+
+  logger.debug(`Formatting ${files.join(', ')}`);
+
+  const args = ['--write', ...files];
+
+  const command = `prettier --write ${files.map((a) => "'" + a + "'").join(' ')}`;
+
+  try {
+    await execa('prettier', args);
+  } catch (e) {
+    logger.debug(e);
+    let errorMessage = 'Command failed';
+    if (e instanceof ExecaError) {
+      errorMessage += ` with exit code [${e.exitCode ?? 'unknown'}]`;
+    }
+    errorMessage += `: ${command}`;
+    logger.error(errorMessage);
+  }
 }
 
 export async function merge<T>(
