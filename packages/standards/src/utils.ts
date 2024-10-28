@@ -1,26 +1,75 @@
+import { ExecaError, execa } from 'execa';
 import { readFileSync } from 'fs';
+import { resolve } from 'path';
 
-import { missingRequired } from './logging.js';
+import logger from './logging.js';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Package = Record<string, any>;
 
 export async function load(dep: string) {
   try {
     const module = await import(dep);
 
     return module.default;
-  } catch {
-    missingRequired(dep);
+  } catch (e) {
+    logger.debug(e);
+    logger.missingRequired(dep);
   }
 }
 
-export function getDependenciesFromPackage(
-  path: string,
-): Record<string, string> {
+const pkgCache = new Map<string, Package>();
+
+export function getPackageFile(
+  path: string = 'package.json',
+  ignoreCache: boolean = false,
+): Package {
+  path = resolve(path);
+
+  if (pkgCache.has(path) && !ignoreCache) {
+    return pkgCache.get(path)!;
+  }
+
   const packageJson = JSON.parse(readFileSync(path, 'utf-8'));
 
-  return {
-    ...packageJson?.dependencies,
-    ...packageJson?.devDependencies,
+  pkgCache.set(path, packageJson);
+
+  return packageJson;
+}
+
+export function getDependenciesFromPackage(
+  path: string = 'package.json',
+): Record<string, string> {
+  const pkg = getPackageFile(path);
+
+  const dependencies = {
+    ...pkg.dependencies,
+    ...pkg.devDependencies,
   };
+
+  return dependencies;
+}
+
+export async function format(...files: string[]) {
+  files = files.map((file) => resolve(file));
+
+  logger.debug(`Formatting ${files.join(', ')}`);
+
+  const args = ['--write', ...files];
+
+  const command = `prettier --write ${files.map((a) => "'" + a + "'").join(' ')}`;
+
+  try {
+    await execa('prettier', args);
+  } catch (e) {
+    logger.debug(e);
+    let errorMessage = 'Command failed';
+    if (e instanceof ExecaError) {
+      errorMessage += ` with exit code [${e.exitCode ?? 'unknown'}]`;
+    }
+    errorMessage += `: ${command}`;
+    logger.error(errorMessage);
+  }
 }
 
 export async function merge<T>(
