@@ -14,7 +14,10 @@ export default function (themeFilePath) {
   const dirname = fileURLToPath(new URL('.', import.meta.url));
   const designSystemDirectory = path.join(
     process.cwd(),
-    'node_modules/@nrg-ui/css/src'
+    'node_modules',
+    '@nrg-ui',
+    'css',
+    'src',
   );
   const nodeModules = path.join(dirname, '../', 'node_modules');
 

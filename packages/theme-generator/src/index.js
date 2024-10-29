@@ -10,8 +10,8 @@ import { stripRoot, stripNonRoot } from './split-theme.js';
 
 function getNrgDirectory() {
   const workingDirectory = process.cwd();
-  var nrgDirectory = path.join(workingDirectory, '.nrg');
-  var nrgDirectoryIsPresent = fs.statSync(nrgDirectory).isDirectory();
+  const nrgDirectory = path.join(workingDirectory, '.nrg');
+  const nrgDirectoryIsPresent = fs.statSync(nrgDirectory).isDirectory();
   if (!nrgDirectoryIsPresent) {
     throw new Error('No `.nrg` directory found');
   }
@@ -20,8 +20,7 @@ function getNrgDirectory() {
 
 function getThemeFiles(nrgDirectory) {
   const files = fs.readdirSync(nrgDirectory);
-  const themeFiles = files.filter((file) => file.endsWith('.scss'));
-  return themeFiles;
+  return files.filter((file) => file.endsWith('.scss'));
 }
 
 export default async function run() {
@@ -45,7 +44,8 @@ export default async function run() {
       const commentedCore = `/* stylelint-disable */\n/* Generated using @nrg-ui/theme-generator */\n${prettifiedCore}`;
       const coreFilePath = path.join(
         process.cwd(),
-        'app/styles',
+        'app',
+        'styles',
         'nrg-core.css'
       );
       fs.writeFileSync(coreFilePath, commentedCore);
@@ -61,7 +61,8 @@ export default async function run() {
     const outputFileName = `${themeName}.css`;
     const outputFilePath = path.join(
       process.cwd(),
-      'app/styles',
+      'app',
+      'styles',
       outputFileName
     );
     fs.writeFileSync(outputFilePath, commentedTheme);
