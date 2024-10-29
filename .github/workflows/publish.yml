@@ -54,14 +54,14 @@ jobs:
         with:
           version: 9
 
-      - name: pnpm Cache
-        uses: actions/cache@v4
+      - name: Restore dependency cache
+        id: cache
+        uses: actions/cache/restore@v4
         with:
           path: ~/.local/share/pnpm/store
           key: node-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             node-
-          save-always: true
 
       - run: pnpm install --frozen-lockfile
 
@@ -70,3 +70,12 @@ jobs:
         env:
           GITHUB_AUTH: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Save dependency cache
+        uses: actions/cache/save@v4
+        if: always() && steps.cache.outputs.cache-hit != 'true'
+        with:
+          path: ~/.local/share/pnpm/store
+          key: node-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            node-

@@ -22,8 +22,9 @@ jobs:
         with:
           node-version: 18
 
-      - name: pnpm Cache
-        uses: actions/cache@v3
+      - name: Restore dependency cache
+        id: cache
+        uses: actions/cache/restore@v4
         with:
           path: ~/.local/share/pnpm/store
           key: node-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -40,3 +41,12 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.6.3
         with:
           folder: apps/docs-app/dist
+
+      - name: Save dependency cache
+        uses: actions/cache/save@v4
+        if: always() && steps.cache.outputs.cache-hit != 'true'
+        with:
+          path: ~/.local/share/pnpm/store
+          key: node-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            node-
