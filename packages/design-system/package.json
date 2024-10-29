@@ -18,7 +18,8 @@
     "watch:sass": "sass --load-path node_modules --watch src:dist"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "type": "module",
   "keywords": [],
