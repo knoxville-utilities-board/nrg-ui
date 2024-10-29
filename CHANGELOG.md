@@ -1,5 +1,36 @@
 # Changelog
 
+## Release (2024-10-29)
+
+@nrg-ui/css 0.8.0 (minor)
+@nrg-ui/core 0.14.0 (minor)
+@nrg-ui/standards 0.1.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/css`
+  * [#235](https://github.com/knoxville-utilities-board/nrg-ui/pull/235) feat: Ship scss with design system ([@KeithClinard](https://github.com/KeithClinard))
+* `@nrg-ui/standards`
+  * [#232](https://github.com/knoxville-utilities-board/nrg-ui/pull/232) feat: Implement basic CLI for standards ([@TSenter](https://github.com/TSenter))
+* `docs-app`, `@nrg-ui/core`, `@nrg-ui/standards`
+  * [#231](https://github.com/knoxville-utilities-board/nrg-ui/pull/231) feat: Require named imports be alphabetical ([@TSenter](https://github.com/TSenter))
+* `docs-app`, `@nrg-ui/standards`
+  * [#226](https://github.com/knoxville-utilities-board/nrg-ui/pull/226) feat(docs-app): Use new standards library ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`, `@nrg-ui/standards`
+  * [#225](https://github.com/knoxville-utilities-board/nrg-ui/pull/225) feat: Create new package for enforceable standards ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* Other
+  * [#237](https://github.com/knoxville-utilities-board/nrg-ui/pull/237) chore(ci): Always save dependency cache ([@TSenter](https://github.com/TSenter))
+  * [#220](https://github.com/knoxville-utilities-board/nrg-ui/pull/220) feat(dependabot): Ignore minor Ember.js versions ([@TSenter](https://github.com/TSenter))
+* `docs-app`, `@nrg-ui/standards`
+  * [#226](https://github.com/knoxville-utilities-board/nrg-ui/pull/226) feat(docs-app): Use new standards library ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`, `@nrg-ui/standards`
+  * [#225](https://github.com/knoxville-utilities-board/nrg-ui/pull/225) feat: Create new package for enforceable standards ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Keith ([@KeithClinard](https://github.com/KeithClinard))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-10-16)
 
 @nrg-ui/core 0.13.0 (minor)

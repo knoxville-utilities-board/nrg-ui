@@ -1,20 +1,49 @@
 {
   "solution": {
     "@nrg-ui/css": {
-      "oldVersion": "0.7.1"
-    },
-    "@nrg-ui/core": {
       "impact": "minor",
-      "oldVersion": "0.12.1",
-      "newVersion": "0.13.0",
+      "oldVersion": "0.7.1",
+      "newVersion": "0.8.0",
       "constraints": [
         {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
         }
       ],
+      "pkgJSONPath": "./packages/design-system/package.json"
+    },
+    "@nrg-ui/core": {
+      "impact": "minor",
+      "oldVersion": "0.13.0",
+      "newVersion": "0.14.0",
+      "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
       "pkgJSONPath": "./packages/ember-core/package.json"
+    },
+    "@nrg-ui/standards": {
+      "impact": "minor",
+      "oldVersion": "0.0.0",
+      "newVersion": "0.1.0",
+      "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./packages/standards/package.json"
     }
   },
-  "description": "## Release (2024-10-16)\n\n@nrg-ui/core 0.13.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#218](https://github.com/knoxville-utilities-board/nrg-ui/pull/218) feat(form): Scroll to first invalid field by default ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* `docs-app`, `test-app`\n  * [#194](https://github.com/knoxville-utilities-board/nrg-ui/pull/194) feat: Add theme page ([@KeithClinard](https://github.com/KeithClinard))\n\n#### Committers: 2\n- Keith ([@KeithClinard](https://github.com/KeithClinard))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2024-10-29)\n\n@nrg-ui/css 0.8.0 (minor)\n@nrg-ui/core 0.14.0 (minor)\n@nrg-ui/standards 0.1.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/css`\n  * [#235](https://github.com/knoxville-utilities-board/nrg-ui/pull/235) feat: Ship scss with design system ([@KeithClinard](https://github.com/KeithClinard))\n* `@nrg-ui/standards`\n  * [#232](https://github.com/knoxville-utilities-board/nrg-ui/pull/232) feat: Implement basic CLI for standards ([@TSenter](https://github.com/TSenter))\n* `docs-app`, `@nrg-ui/core`, `@nrg-ui/standards`\n  * [#231](https://github.com/knoxville-utilities-board/nrg-ui/pull/231) feat: Require named imports be alphabetical ([@TSenter](https://github.com/TSenter))\n* `docs-app`, `@nrg-ui/standards`\n  * [#226](https://github.com/knoxville-utilities-board/nrg-ui/pull/226) feat(docs-app): Use new standards library ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/core`, `@nrg-ui/standards`\n  * [#225](https://github.com/knoxville-utilities-board/nrg-ui/pull/225) feat: Create new package for enforceable standards ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* Other\n  * [#237](https://github.com/knoxville-utilities-board/nrg-ui/pull/237) chore(ci): Always save dependency cache ([@TSenter](https://github.com/TSenter))\n  * [#220](https://github.com/knoxville-utilities-board/nrg-ui/pull/220) feat(dependabot): Ignore minor Ember.js versions ([@TSenter](https://github.com/TSenter))\n* `docs-app`, `@nrg-ui/standards`\n  * [#226](https://github.com/knoxville-utilities-board/nrg-ui/pull/226) feat(docs-app): Use new standards library ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/core`, `@nrg-ui/standards`\n  * [#225](https://github.com/knoxville-utilities-board/nrg-ui/pull/225) feat: Create new package for enforceable standards ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Keith ([@KeithClinard](https://github.com/KeithClinard))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
