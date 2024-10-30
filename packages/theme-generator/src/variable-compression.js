@@ -1,12 +1,7 @@
 import * as csstree from 'css-tree';
-import fs from 'fs';
-import path from 'path';
-
-const inputPath = path.resolve(process.cwd(), 'dist/theme.css');
-const rawCss = fs.readFileSync(inputPath, 'utf8');
-const ast = csstree.parse(rawCss);
 
 const rootVariables = {};
+
 function findMatchingRootValues(value) {
   const matching = [];
   for (const [rootKey, rootValue] of Object.entries(rootVariables)) {
@@ -84,44 +79,42 @@ function isRootNode(node) {
   );
 }
 
-let inRootNode = false;
-csstree.walk(ast, {
-  enter: (node, item, list) => {
-    if (isRootNode(node)) {
-      inRootNode = true;
-    }
-    if (node.type !== 'Declaration') {
-      return;
-    }
-    if (!node.property.startsWith('--')) {
-      return;
-    }
-    if (node.value.value.includes('var(')) {
-      return;
-    }
-    const prop = node.property;
-    const value = node.value.value.trim();
-    if (inRootNode) {
-      rootVariables[prop] = value;
-      return;
-    } else {
-      const replacement = findRootVariableReplacement(node);
-      if (replacement) {
-        node.value.value = `var(${replacement})`;
+export default function (inputCSS) {
+  const ast = csstree.parse(inputCSS);
+
+  let inRootNode = false;
+  csstree.walk(ast, {
+    enter: (node, item, list) => {
+      if (isRootNode(node)) {
+        inRootNode = true;
       }
-    }
-  },
-  leave: (node, item, list) => {
-    if (isRootNode(node)) {
-      inRootNode = false;
-    }
-  },
-});
+      if (node.type !== 'Declaration') {
+        return;
+      }
+      if (!node.property.startsWith('--')) {
+        return;
+      }
+      if (node.value.value.includes('var(')) {
+        return;
+      }
+      const prop = node.property;
+      const value = node.value.value.trim();
+      if (inRootNode) {
+        rootVariables[prop] = value;
+        return;
+      } else {
+        const replacement = findRootVariableReplacement(node);
+        if (replacement) {
+          node.value.value = `var(${replacement})`;
+        }
+      }
+    },
+    leave: (node, item, list) => {
+      if (isRootNode(node)) {
+        inRootNode = false;
+      }
+    },
+  });
 
-const outputCSS = csstree.generate(ast);
-
-if (!fs.existsSync('dist')) {
-  fs.mkdirSync('dist');
+  return csstree.generate(ast);
 }
-
-fs.writeFileSync('dist/theme-deduplicated.css', outputCSS);

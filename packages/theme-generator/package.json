@@ -1,24 +1,29 @@
 {
-  "private": true,
-  "name": "theme-generator",
+  "name": "@nrg-ui/theme-generator",
   "version": "0.0.0",
-  "description": "",
-  "main": "src/extract-theme.js",
+  "description": "Theme generator for @nrg-ui/css",
+  "main": "./src/index.js",
   "type": "module",
-  "scripts": {
-    "build:sass": "sass --load-path ../design-system/node_modules --load-path ../design-system/src src:tmp",
-    "build:theme": "node src/extract-theme.js",
-    "build:compress": "node src/variable-compression.js",
-    "build:format": "prettier --write dist",
-    "build": "pnpm run build:sass && pnpm run build:theme && pnpm run build:compress && pnpm run build:format",
-    "format": "prettier --write ."
+  "bin": {
+    "nrg-theme-generator": "./bin/nrg-theme-generator.js"
   },
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "package.json"
+  ],
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "5.3.3",
+    "bootstrap-icons": "^1.11.3",
     "css-tree": "2.3.1",
+    "prettier": "^2.4.1",
     "sass": "^1.54.8",
-    "prettier": "^2.4.1"
+    "semver": "^7.6.3"
   }
 }
