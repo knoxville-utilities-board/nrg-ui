@@ -34,7 +34,7 @@ export default async function () {
     throw new Error(`'@nrg-ui/css' not found in package.json`);
   }
 
-  const minAcceptableVersion = '0.8.0';
+  const minAcceptableVersion = '0.9.0';
   try {
     const nrgVersionObject = coerce(nrgVersion);
     const versionObject = coerce(minAcceptableVersion);

@@ -1,12 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 import installNrgCss from './install-nrg-css.js';
-import compileCSS from './compile-css.js';
+import compileCSS, { compileBase } from './compile-css.js';
 import extractVariables from './extract-variables.js';
 import variableCompression from './variable-compression.js';
 import prettify from './prettify.js';
 import cleanup from './cleanup.js';
-import { stripRoot, stripNonRoot } from './split-theme.js';
+import treeDiff from './tree-diff.js';
+
+const CSS_COMMENT_HEADER = `/* stylelint-disable */\n/* Generated using @nrg-ui/theme-generator */\n`;
 
 function getNrgDirectory() {
   const workingDirectory = process.cwd();
@@ -27,36 +29,39 @@ export default async function run() {
   const nrgDirectory = getNrgDirectory();
   const themeFiles = getThemeFiles(nrgDirectory);
   await installNrgCss();
+  const rawNrgCSS = fs.readFileSync(
+    path.join(
+      process.cwd(),
+      'node_modules',
+      '@nrg-ui',
+      'css',
+      'dist',
+      'main.css'
+    ),
+    'utf-8'
+  );
 
-  let coreGenerated = false;
+  const baseCSS = variableCompression(extractVariables(compileBase()));
+  const diffedCore = treeDiff(baseCSS, rawNrgCSS);
+  const prettifiedCore = prettify(cleanup(diffedCore, 'core'));
+  const coreFilePath = path.join(
+    process.cwd(),
+    'app',
+    'styles',
+    'nrg-core.css'
+  );
+  fs.writeFileSync(coreFilePath, `${CSS_COMMENT_HEADER}${prettifiedCore}`);
+  console.log(`Generated nrg-core.css`);
+
   for (const themeFile of themeFiles) {
     const themeFilePath = path.join(nrgDirectory, themeFile);
     const themeName = themeFile.replace('.scss', '');
 
-    const compiledCSS = compileCSS(themeFilePath);
-    const extractedTheme = extractVariables(compiledCSS);
-    const compressedTheme = variableCompression(extractedTheme);
-
-    if (!coreGenerated) {
-      const coreTheme = stripRoot(compressedTheme);
-      const cleanedCore = cleanup(coreTheme, 'core');
-      const prettifiedCore = prettify(cleanedCore);
-      const commentedCore = `/* stylelint-disable */\n/* Generated using @nrg-ui/theme-generator */\n${prettifiedCore}`;
-      const coreFilePath = path.join(
-        process.cwd(),
-        'app',
-        'styles',
-        'nrg-core.css'
-      );
-      fs.writeFileSync(coreFilePath, commentedCore);
-      console.log(`Generated nrg-core.css`);
-      coreGenerated = true;
-    }
-
-    const rootOnlyTheme = stripNonRoot(compressedTheme);
-    const cleanedTheme = cleanup(rootOnlyTheme, themeName);
-    const prettifiedTheme = prettify(cleanedTheme);
-    const commentedTheme = `/* stylelint-disable */\n/* Generated using @nrg-ui/theme-generator */\n${prettifiedTheme}`;
+    const compressedTheme = variableCompression(
+      extractVariables(compileCSS(themeFilePath))
+    );
+    const diffedTheme = treeDiff(treeDiff(compressedTheme, rawNrgCSS), baseCSS);
+    const prettifiedTheme = prettify(cleanup(diffedTheme, themeName));
 
     const outputFileName = `${themeName}.css`;
     const outputFilePath = path.join(
@@ -65,7 +70,7 @@ export default async function run() {
       'styles',
       outputFileName
     );
-    fs.writeFileSync(outputFilePath, commentedTheme);
+    fs.writeFileSync(outputFilePath, `${CSS_COMMENT_HEADER}${prettifiedTheme}`);
     console.log(`Generated ${outputFileName}`);
   }
 }

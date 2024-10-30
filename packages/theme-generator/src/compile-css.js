@@ -28,3 +28,24 @@ export default function (themeFilePath) {
 
   return result.css;
 }
+
+export function compileBase() {
+  const fullTheme = `@import "main";`;
+
+  const dirname = fileURLToPath(new URL('.', import.meta.url));
+  const designSystemDirectory = path.join(
+    process.cwd(),
+    'node_modules',
+    '@nrg-ui',
+    'css',
+    'src',
+  );
+  const nodeModules = path.join(dirname, '../', 'node_modules');
+
+  const result = sass.compileString(fullTheme, {
+    quietDeps: true,
+    loadPaths: [path.join(nodeModules), path.join(designSystemDirectory)],
+  });
+
+  return result.css;
+}
