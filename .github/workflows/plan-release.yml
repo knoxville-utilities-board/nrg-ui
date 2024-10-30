@@ -124,5 +124,3 @@ jobs:
         with:
           path: ~/.local/share/pnpm/store
           key: node-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            node-
