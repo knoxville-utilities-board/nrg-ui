@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import dayjs from 'dayjs';
+import { t } from 'ember-intl';
 // @ts-expect-error Ember keyboard doesn't currently ship a type for the `on-key` modifier
 // https://github.com/adopted-ember-addons/ember-keyboard/issues/464
 import onKey from 'ember-keyboard/modifiers/on-key';
@@ -642,13 +643,15 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
                   {{this.headerDisplay}}
                 </span>
                 <span
+                  aria-label={{t "nrg.base.previous"}}
                   class="float-start"
                   role="button"
                   {{on "click" this.onPrevious}}
                 >
-                  <i class="bi-chevron-left"></i>
+                  <i class="bi-chevron-left" role="img"></i>
                 </span>
                 <span
+                  aria-label={{t "nrg.base.next"}}
                   class="float-end"
                   role="button"
                   {{on "click" this.onNext}}

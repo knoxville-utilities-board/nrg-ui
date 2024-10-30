@@ -2,7 +2,9 @@
   "nrg": {
     "base": {
       "close": "Close",
-      "loading": "Loading"
+      "loading": "Loading",
+      "next": "Next",
+      "previous": "Previous"
     },
     "navbar": {
       "toggleContextMenu": "Toggle context menu"
