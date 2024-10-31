@@ -1,29 +1,11 @@
 import * as csstree from 'css-tree';
 
-export default function (toDiffInput, baseCSS) {
-  const toDiffAst = csstree.parse(toDiffInput);
+export default function (inputCSS, baseCSS) {
+  const inputAst = csstree.parse(inputCSS);
   const baseAst = csstree.parse(baseCSS);
 
-  const toDiffDeclarations = [];
-
+  // Gather a list of fully qualified declarations from the base CSS
   let nodeParents = [];
-  csstree.walk(toDiffAst, {
-    enter: (node) => {
-      if (node.type !== 'Declaration') {
-        nodeParents.push(node);
-        return;
-      }
-
-      toDiffDeclarations.push(serializeNode(node, nodeParents));
-    },
-    leave: (node) => {
-      if (node.type !== 'Declaration') {
-        nodeParents.pop();
-      }
-    },
-  });
-
-  nodeParents = [];
   const baseDeclarations = [];
   csstree.walk(baseAst, {
     enter: (node) => {
@@ -41,19 +23,26 @@ export default function (toDiffInput, baseCSS) {
     },
   });
 
-  const diffDeclarations = toDiffDeclarations.filter((declaration) => {
-    return !baseDeclarations.includes(declaration);
-  });
-
   nodeParents = [];
-  csstree.walk(toDiffAst, {
+  csstree.walk(inputAst, {
     enter: (node, item, list) => {
+      // Also strip extraneous comments and charset declarations
+      if (
+        node.type == 'Comment' ||
+        (node.type == 'Atrule' && node.name == 'charset')
+      ) {
+        list.remove(item);
+        return;
+      }
+
       if (node.type !== 'Declaration') {
         nodeParents.push(node);
         return;
       }
+
+      // Strip declarations from the toDiff CSS that are present in the base CSS
       const stringDeclaration = serializeNode(node, nodeParents);
-      if (!diffDeclarations.includes(stringDeclaration)) {
+      if (baseDeclarations.includes(stringDeclaration)) {
         list.remove(item);
       }
     },
@@ -67,7 +56,7 @@ export default function (toDiffInput, baseCSS) {
     },
   });
 
-  return csstree.generate(toDiffAst);
+  return csstree.generate(inputAst);
 }
 
 function serializeNode(declaration, parents) {
@@ -79,7 +68,10 @@ function serializeNode(declaration, parents) {
     if (parent.type === 'Block') {
       serialized.push('{');
     }
-    if ((parent.type === 'Rule' || parent.type === 'Atrule') && parent.prelude) {
+    if (
+      (parent.type === 'Rule' || parent.type === 'Atrule') &&
+      parent.prelude
+    ) {
       const objectRule = csstree.toPlainObject(parent.prelude);
       serialized.push(renderKey(objectRule));
     }

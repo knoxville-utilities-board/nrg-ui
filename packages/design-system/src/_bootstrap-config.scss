@@ -2,18 +2,6 @@ $enable-cssgrid: true;
 $enable-dark-mode: false;
 $enable-negative-margins: true;
 
-// Ensure that the following variables are distinct colors
-//   from the default Bootstrap color variables
-// This ensures the theme generator can properly compress variable definitions
-$primary:       #0e6ffe !default;
-$secondary:     #6d767e !default;
-$success:       #1a8755 !default;
-$info:          #0ecbf1 !default;
-$warning:       #ffc208 !default;
-$danger:        #dd3646 !default;
-$light:         #f9fafb !default;
-$dark:          #202428 !default;
-
 // Configuration
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";

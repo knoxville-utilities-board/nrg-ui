@@ -1,76 +1,79 @@
+import chalk from 'chalk';
+import cleanup from './cleanup.js';
+import compileCSS from './compile-css.js';
 import fs from 'fs';
 import path from 'path';
-import installNrgCss from './install-nrg-css.js';
-import compileCSS, { compileBase } from './compile-css.js';
-import extractVariables from './extract-variables.js';
-import variableCompression from './variable-compression.js';
 import prettify from './prettify.js';
-import cleanup from './cleanup.js';
 import treeDiff from './tree-diff.js';
+import readThemes from './read-themes.js';
+import {
+  installNrgCss,
+  checkNodeVersion,
+  ensureNrgDirectoryExists,
+} from './dependencies.js';
 
-const CSS_COMMENT_HEADER = `/* stylelint-disable */\n/* Generated using @nrg-ui/theme-generator */\n`;
-
-function getNrgDirectory() {
+function getFileHelper() {
   const workingDirectory = process.cwd();
+  const targetNodeModules = path.join(workingDirectory, 'node_modules');
+  const thisNodeModules = path.join(import.meta.dirname, '../', 'node_modules');
   const nrgDirectory = path.join(workingDirectory, '.nrg');
-  const nrgDirectoryIsPresent = fs.statSync(nrgDirectory).isDirectory();
-  if (!nrgDirectoryIsPresent) {
-    throw new Error('No `.nrg` directory found');
-  }
-  return nrgDirectory;
-}
+  const nrgCss = path.join(
+    targetNodeModules,
+    '@nrg-ui',
+    'css',
+    'dist',
+    'main.css'
+  );
+  const nrgScssDirectory = path.join(
+    targetNodeModules,
+    '@nrg-ui',
+    'css',
+    'src'
+  );
+  const themeOutputDirectory = path.join(workingDirectory, 'app', 'styles');
 
-function getThemeFiles(nrgDirectory) {
-  const files = fs.readdirSync(nrgDirectory);
-  return files.filter((file) => file.endsWith('.scss'));
+  return {
+    workingDirectory,
+    targetNodeModules,
+    thisNodeModules,
+    nrgDirectory,
+    nrgCss,
+    nrgScssDirectory,
+    themeOutputDirectory,
+  };
 }
 
 export default async function run() {
-  const nrgDirectory = getNrgDirectory();
-  const themeFiles = getThemeFiles(nrgDirectory);
+  console.log(
+    chalk.green('Checking dependencies and ensuring NRG CSS is installed')
+  );
+  checkNodeVersion();
+
+  const fileHelper = getFileHelper();
+  ensureNrgDirectoryExists(fileHelper);
   await installNrgCss();
-  const rawNrgCSS = fs.readFileSync(
-    path.join(
-      process.cwd(),
-      'node_modules',
-      '@nrg-ui',
-      'css',
-      'dist',
-      'main.css'
-    ),
-    'utf-8'
-  );
 
-  const baseCSS = variableCompression(extractVariables(compileBase()));
-  const diffedCore = treeDiff(baseCSS, rawNrgCSS);
-  const prettifiedCore = prettify(cleanup(diffedCore, 'core'));
-  const coreFilePath = path.join(
-    process.cwd(),
-    'app',
-    'styles',
-    'nrg-core.css'
-  );
-  fs.writeFileSync(coreFilePath, `${CSS_COMMENT_HEADER}${prettifiedCore}`);
-  console.log(`Generated nrg-core.css`);
+  console.log(chalk.green('Gathering theme files'));
+  const rawNrgCSS = fs.readFileSync(fileHelper.nrgCss, 'utf-8');
+  const themes = readThemes(fileHelper);
 
-  for (const themeFile of themeFiles) {
-    const themeFilePath = path.join(nrgDirectory, themeFile);
-    const themeName = themeFile.replace('.scss', '');
+  for (const theme of themes) {
+    console.log(chalk.green(`${theme.name}`));
 
-    const compressedTheme = variableCompression(
-      extractVariables(compileCSS(themeFilePath))
+    console.log(chalk.green(`  Compiling scss`));
+    const compiledTheme = compileCSS(theme.contents, fileHelper);
+
+    console.log(chalk.green(`  Generating diff from NRG`));
+    const diffedTheme = treeDiff(compiledTheme, rawNrgCSS);
+
+    console.log(chalk.green(`  Writing output`));
+    const prettifiedTheme = prettify(cleanup(diffedTheme));
+
+    const cssCommentHeader = `/* stylelint-disable */\n/* Generated using @nrg-ui/theme-generator */\n`;
+    fs.writeFileSync(
+      path.join(fileHelper.themeOutputDirectory, theme.outputName),
+      `${cssCommentHeader}${prettifiedTheme}`
     );
-    const diffedTheme = treeDiff(treeDiff(compressedTheme, rawNrgCSS), baseCSS);
-    const prettifiedTheme = prettify(cleanup(diffedTheme, themeName));
-
-    const outputFileName = `${themeName}.css`;
-    const outputFilePath = path.join(
-      process.cwd(),
-      'app',
-      'styles',
-      outputFileName
-    );
-    fs.writeFileSync(outputFilePath, `${CSS_COMMENT_HEADER}${prettifiedTheme}`);
-    console.log(`Generated ${outputFileName}`);
   }
+  console.log(chalk.green('Done'));
 }
