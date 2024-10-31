@@ -42,10 +42,9 @@ export interface DatetimeSignature {
   };
 }
 
-export default class Datetime extends BoundValue<
-  DatetimeSignature,
-  Date
-> {
+export default class Datetime extends BoundValue<DatetimeSignature, Date> {
+  self: Record<'displayValue', string> = this;
+
   @tracked
   isFocused = false;
 
@@ -176,8 +175,7 @@ export default class Datetime extends BoundValue<
         <TextInput
           class="border-start-0 rounded-end"
           placeholder={{@placeholder}}
-          {{! @glint-expect-error - Types are hard. The model/valuePath style doesn't play well with types}}
-          @binding={{bind this "displayValue"}}
+          @binding={{bind this.self "displayValue"}}
           @disabled={{@disabled}}
           @readonly={{@readonly}}
         />
