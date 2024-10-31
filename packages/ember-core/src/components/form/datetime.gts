@@ -118,7 +118,7 @@ export default class Datetime extends BoundValue<
     return [this.displayFormat];
   }
 
-  getDefaultValue = function () {
+  getDefaultValue() {
     return new Date();
   }
 
