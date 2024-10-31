@@ -30,6 +30,13 @@ export interface DatetimeSignature {
     timeFormat?: string;
     type?: 'datetime' | 'date' | 'time';
 
+    // Required by form fields
+    basic?: boolean;
+    describedBy?: string;
+    id?: string;
+    isInvalid?: boolean;
+    isWarning?: boolean;
+
     _class?: string;
 
     isDateDisabled?: (date: Date, precision?: OpUnitType) => boolean;
@@ -168,15 +175,22 @@ export default class Datetime extends BoundValue<DatetimeSignature, Date> {
       {{onClickOutside this.onBlur}}
       ...attributes
     >
-      <span class="input-group-text">
-        <i class="{{this.icon}} text-secondary" />
-      </span>
+      {{#unless @basic}}
+        <span class="input-group-text">
+          <i class="{{this.icon}} text-secondary" />
+        </span>
+      {{/unless}}
       {{#unless (has-block)}}
         <TextInput
+          aria-describedby={{@describedBy}}
           class="border-start-0 rounded-end"
+          id={{@id}}
           placeholder={{@placeholder}}
+          @basic={{@basic}}
           @binding={{bind this.self "displayValue"}}
           @disabled={{@disabled}}
+          @isInvalid={{@isInvalid}}
+          @isWarning={{@isWarning}}
           @readonly={{@readonly}}
         />
       {{/unless}}
