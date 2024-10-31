@@ -2,6 +2,7 @@
 export { default as BoundValue } from './form/bound-value.ts';
 export { default as CheckboxGroup } from './form/checkbox-group.gts';
 export { default as Checkbox } from './form/checkbox.gts';
+export { default as Datetime } from './form/datetime.gts';
 export { default as Field } from './form/field.gts';
 export { default as Form } from './form/index.gts';
 export { default as PhoneInput } from './form/phone-input.gts';
