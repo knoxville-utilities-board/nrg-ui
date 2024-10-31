@@ -40,6 +40,7 @@ export { default as NavItem } from './components/nav-item.gts';
 export { default as PageNotFound } from './components/page-not-found.gts';
 export { default as Progress } from './components/progress.gts';
 export { default as Toaster } from './components/toaster.gts';
+export { default as ThemeSwitcher } from './components/theme-switcher.gts';
 
 /* Helpers */
 export { bind, default as Bind } from './helpers/bind.ts';
@@ -98,6 +99,7 @@ export type {
   SegmentSignature as ProgressSegmentSignature,
 } from './components/progress.gts';
 export type { ToasterSignature } from './components/toaster.gts';
+export type { ThemeSwitcherSignature } from './components/theme-switcher.gts';
 
 export type Binding<Model extends object = Record<string, unknown>> = {
   model: Model;
@@ -106,10 +108,13 @@ export type Binding<Model extends object = Record<string, unknown>> = {
 export type { Icon as IconType } from './icons.ts';
 export type Optional<T> = T | null;
 export type Primitive = string | number | boolean | null | undefined;
+export type Theme = 'light' | 'dark' | 'auto';
 
 import type Modal from './services/modal.ts';
+import type ThemeService from './services/theme.ts';
 declare module '@ember/service' {
   interface Registry {
     modal: Modal;
+    theme: ThemeService;
   }
 }
