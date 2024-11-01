@@ -32,6 +32,7 @@ Router.map(function () {
     this.route('modal');
     this.route('navbar');
     this.route('toaster');
+    this.route('theme-switcher');
   });
   this.route('helpers');
   this.route('mktg-components', function () {

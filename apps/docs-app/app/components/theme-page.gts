@@ -9,6 +9,7 @@ import {
   MktgCardContainer,
   MktgHeader,
   MktgSectionHeader,
+  ThemeSwitcher,
   bind,
 } from '@nrg-ui/core';
 import { tracked as autoTrack } from 'tracked-built-ins';
@@ -62,6 +63,7 @@ export default class extends Component {
         </:title>
         <:nav>
           <div id="header-nav" class="d-flex flex-row"></div>
+          <ThemeSwitcher />
         </:nav>
         <:options>
         </:options>
