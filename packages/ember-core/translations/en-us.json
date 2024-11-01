@@ -2,6 +2,11 @@
   "nrg": {
     "base": {
       "close": "Close",
+      "datetime": {
+        "date": "Today",
+        "datetime": "Now",
+        "time": "Now"
+      },
       "loading": "Loading",
       "next": "Next",
       "previous": "Previous"
