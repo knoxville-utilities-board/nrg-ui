@@ -18,6 +18,7 @@ Router.map(function () {
     this.route('card');
     this.route('header');
     this.route('form', function () {
+      this.route('autocomplete')
       this.route('checkbox');
       this.route('checkbox-group');
       this.route('datetime');

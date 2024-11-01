@@ -188,6 +188,7 @@
       "./components/button.js": "./dist/_app_/components/button.js",
       "./components/card.js": "./dist/_app_/components/card.js",
       "./components/footer.js": "./dist/_app_/components/footer.js",
+      "./components/form/autocomplete.js": "./dist/_app_/components/form/autocomplete.js",
       "./components/form/-private/calendar.js": "./dist/_app_/components/form/-private/calendar.js",
       "./components/form/-private/input-field.js": "./dist/_app_/components/form/-private/input-field.js",
       "./components/form/bound-value.js": "./dist/_app_/components/form/bound-value.js",
