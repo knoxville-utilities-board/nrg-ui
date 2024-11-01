@@ -624,7 +624,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
   <template>
     <div
       tabindex="-1"
-      class="position-absolute border mt-5 z-3"
+      class="position-absolute overflow-hidden rounded border mt-5 z-3"
       role="dialog"
       {{onKey "ArrowUp" this.moveUp}}
       {{onKey "ArrowDown" this.moveDown}}
