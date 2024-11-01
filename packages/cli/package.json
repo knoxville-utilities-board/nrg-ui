@@ -1,10 +1,10 @@
 {
-  "name": "@nrg-ui/standards",
-  "version": "0.1.0",
-  "description": "Composable standards for NRG UI packages",
+  "name": "@nrg-ui/cli",
+  "version": "0.0.0",
+  "description": "Tools for building quality CLI apps for NRG UI",
   "keywords": [],
   "repository": {
-    "directory": "packages/standards",
+    "directory": "packages/cli",
     "type": "git",
     "url": "https://github.com/knoxville-utilities-board/nrg-ui.git"
   },
@@ -16,21 +16,21 @@
     "package.json"
   ],
   "main": "./dist/index.js",
-  "bin": {
-    "nrg-standards": "./bin/nrg-standards"
-  },
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./dist/index.js",
+    "./*": {
+      "types": "./declarations/*.d.ts",
+      "default": "./dist/*.js"
+    }
   },
   "type": "module",
   "scripts": {
     "build": "tsc --build",
     "build:watch": "tsc --build --watch",
     "prepare": "pnpm build",
-    "test": "echo 'The @nrg-ui/standards package does not have tests'"
+    "test": "echo 'The @nrg-ui/cli package does not have tests'"
   },
   "dependencies": {
-    "@nrg-ui/cli": "workspace:*",
     "chalk": "^5.3.0",
     "execa": "^9.3.0",
     "find-up": "^7.0.0",

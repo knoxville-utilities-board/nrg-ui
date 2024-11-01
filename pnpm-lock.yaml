@@ -591,6 +591,52 @@ importers:
         specifier: ^5.94.0
         version: 5.94.0
 
+  packages/cli:
+    dependencies:
+      chalk:
+        specifier: ^5.3.0
+        version: 5.3.0
+      execa:
+        specifier: ^9.3.0
+        version: 9.3.0
+      find-up:
+        specifier: ^7.0.0
+        version: 7.0.0
+      semver:
+        specifier: ^7.6.3
+        version: 7.6.3
+      yargs:
+        specifier: ^17.7.2
+        version: 17.7.2
+    devDependencies:
+      '@types/eslint':
+        specifier: ^9.6.1
+        version: 9.6.1
+      '@types/node':
+        specifier: ^22.7.6
+        version: 22.7.6
+      '@types/semver':
+        specifier: ^7.5.8
+        version: 7.5.8
+      '@types/yargs':
+        specifier: ^17.0.33
+        version: 17.0.33
+      eslint:
+        specifier: ^9.13.0
+        version: 9.13.0(jiti@1.21.6)
+      eslint-plugin-decorator-position:
+        specifier: ^5.0.2
+        version: 5.0.2(@babel/eslint-parser@7.25.9(@babel/core@7.25.2)(eslint@9.13.0(jiti@1.21.6)))(eslint@9.13.0(jiti@1.21.6))
+      eslint-plugin-import:
+        specifier: ^2.31.0
+        version: 2.31.0(@typescript-eslint/parser@8.11.0(eslint@9.13.0(jiti@1.21.6))(typescript@5.6.3))(eslint-import-resolver-webpack@0.13.8)(eslint@9.13.0(jiti@1.21.6))
+      typescript:
+        specifier: ^5.6.3
+        version: 5.6.3
+      typescript-eslint:
+        specifier: ^8.11.0
+        version: 8.11.0(eslint@9.13.0(jiti@1.21.6))(typescript@5.6.3)
+
   packages/design-system:
     dependencies:
       prettier:
@@ -826,6 +872,9 @@ importers:
 
   packages/standards:
     dependencies:
+      '@nrg-ui/cli':
+        specifier: workspace:*
+        version: link:../cli
       chalk:
         specifier: ^5.3.0
         version: 5.3.0
