@@ -1,4 +1,5 @@
 /* Forms */
+export { default as Autocomplete } from './form/autocomplete.gts'
 export { default as BoundValue } from './form/bound-value.ts';
 export { default as CheckboxGroup } from './form/checkbox-group.gts';
 export { default as Checkbox } from './form/checkbox.gts';

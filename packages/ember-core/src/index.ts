@@ -1,4 +1,5 @@
 /* Components - Forms */
+export { default as Autocomplete } from './components/form/autocomplete.gts'
 export { default as BoundValue } from './components/form/bound-value.ts';
 export { default as CheckboxGroup } from './components/form/checkbox-group.gts';
 export { default as Checkbox } from './components/form/checkbox.gts';
@@ -52,6 +53,7 @@ export { default as onInsert } from './modifiers/on-insert.ts';
 export { default as onUpdate } from './modifiers/on-update.ts';
 
 /* Types - Components - Forms */
+export type { AutocompleteSignature } from './components/form/autocomplete.gts';
 export type { BoundValueSignature } from './components/form/bound-value.ts';
 export type { CheckboxGroupSignature } from './components/form/checkbox-group.gts';
 export type { CheckboxSignature } from './components/form/checkbox.gts';
