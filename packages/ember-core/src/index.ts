@@ -2,6 +2,7 @@
 export { default as BoundValue } from './components/form/bound-value.ts';
 export { default as CheckboxGroup } from './components/form/checkbox-group.gts';
 export { default as Checkbox } from './components/form/checkbox.gts';
+export { default as Datetime } from './components/form/datetime.gts';
 export { default as Field } from './components/form/field.gts';
 export { default as Form } from './components/form/index.gts';
 export { default as NumberInput } from './components/form/number-input.gts';
@@ -51,6 +52,7 @@ export { default as onUpdate } from './modifiers/on-update.ts';
 export type { BoundValueSignature } from './components/form/bound-value.ts';
 export type { CheckboxGroupSignature } from './components/form/checkbox-group.gts';
 export type { CheckboxSignature } from './components/form/checkbox.gts';
+export type { DatetimeSignature } from './components/form/datetime.gts';
 export type { FieldSignature } from './components/form/field.gts';
 export type { FormSignature } from './components/form/index.gts';
 export type { NumberInputSignature } from './components/form/number-input.gts';

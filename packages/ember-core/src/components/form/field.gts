@@ -7,6 +7,7 @@ import { runTask } from 'ember-lifeline';
 
 import CheckboxGroup from './checkbox-group.gts';
 import Checkbox from './checkbox.gts';
+import Datetime from './datetime.gts';
 import NumberInput from './number-input.gts';
 import PhoneInput from './phone-input.gts';
 import RadioGroup from './radio-group.gts';
@@ -18,6 +19,7 @@ import { PresenceValidator } from '../../validation/index.ts';
 
 import type { CheckboxGroupSignature } from './checkbox-group.gts';
 import type { CheckboxSignature } from './checkbox.gts';
+import type { DatetimeSignature } from './datetime.gts';
 import type { FormType } from './index.gts';
 import type { NumberInputSignature } from './number-input.gts';
 import type { RadioGroupSignature } from './radio-group.gts';
@@ -52,6 +54,7 @@ export interface FieldSignature {
       {
         Checkbox: ComponentLike<CheckboxSignature>;
         CheckboxGroup: ComponentLike<CheckboxGroupSignature>;
+        Datetime: ComponentLike<DatetimeSignature>;
         NumberInput: ComponentLike<NumberInputSignature>;
         PhoneInput: ComponentLike<TextInputSignature>;
         RadioGroup: ComponentLike<RadioGroupSignature>;
@@ -249,6 +252,15 @@ export default class Field extends Component<FieldSignature> {
           disabled=@disabled
           id=this.fieldId
           onInitBinding=this.initBinding
+          isInvalid=this.hasError
+          isWarning=this.hasWarning
+        )
+        Datetime=(component
+          Datetime
+          describedBy=this.describedBy
+          disabled=@disabled
+          id=this.fieldId
+          initBinding=this.initBinding
           isInvalid=this.hasError
           isWarning=this.hasWarning
         )

@@ -23,8 +23,6 @@ export type BoundValueSignature<Signature, Type> = {
 export default class BoundValue<Signature, T> extends Component<
   BoundValueSignature<Signature, Optional<T>>
 > {
-  declare getDefaultValue: (() => Optional<T>) | undefined;
-
   constructor(
     owner: unknown,
     args: BoundValueSignature<Signature, Optional<T>>['Args'],
@@ -86,6 +84,10 @@ export default class BoundValue<Signature, T> extends Component<
       return this.args.allowChange;
     }
     return () => true;
+  }
+
+  getDefaultValue(): Optional<T> {
+    return null;
   }
 
   @action
