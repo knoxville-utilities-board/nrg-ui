@@ -1,5 +1,5 @@
 import Service from '@ember/service';
-import { click, findAll, render, type TestContext } from '@ember/test-helpers';
+import { click, render, type TestContext } from '@ember/test-helpers';
 import { ThemeSwitcher } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 import { tracked } from 'tracked-built-ins';

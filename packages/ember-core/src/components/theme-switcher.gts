@@ -49,8 +49,8 @@ export default class ThemeSwitcherComponent extends Component<ThemeSwitcherSigna
 
   <template>
     <span
-      class="cursor-pointer py-2 px-3"
       role="button"
+      class="cursor-pointer py-2 px-3"
       {{on "click" this.cycle}}
       ...attributes
     >
