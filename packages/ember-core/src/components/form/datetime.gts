@@ -40,9 +40,6 @@ export interface DatetimeSignature {
     _class?: string;
 
     isDateDisabled?: (date: Date, precision?: OpUnitType) => boolean;
-
-    onClose?: () => void;
-    onSelect?: (date: Date) => void;
   };
   Blocks: {
     default: [];
