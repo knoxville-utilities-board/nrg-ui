@@ -10,6 +10,18 @@ export default class ThemeService extends Service {
 
   loaded: boolean = false;
 
+  get preferredTheme() {
+    const { theme } = this;
+
+    if (theme === 'auto') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light';
+    }
+
+    return theme;
+  }
+
   load() {
     if (this.loaded) {
       return;
@@ -29,13 +41,6 @@ export default class ThemeService extends Service {
     this.theme = theme;
     localStorage.setItem('nrg-theme', theme);
 
-    const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)')
-      .matches
-      ? 'dark'
-      : 'light';
-
-    const domValue = theme === 'auto' ? preferredTheme : theme;
-
-    document.body.setAttribute('data-bs-theme', domValue);
+    document.body.setAttribute('data-bs-theme', this.preferredTheme);
   }
 }
