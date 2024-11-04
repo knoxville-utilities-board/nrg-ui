@@ -1,52 +1,125 @@
+import { fn } from '@ember/helper';
+import { on } from '@ember/modifier';
+import { action } from '@ember/object';
 import Component from '@glimmer/component';
-import { eq } from 'ember-truth-helpers';
+import { tracked } from '@glimmer/tracking';
 
-export interface AutocompleteSignature {
+import InputField from './-private/input-field.ts';
+
+import type { Optional } from '../../';
+
+
+interface AutocompleteItemSignature {
   Args: {
-    loading?: boolean;
-    searchIconPosition?: 'left' | 'right';
+    value: string;
+    index: number;
+    activeIndex: number;
   };
-  Blocks: {
-    default: [];
-  };
-  Element: null;
+  Element: HTMLLIElement;
 }
 
-export default class FormAutocomplete extends Component<AutocompleteSignature> {
-  get classList() {
-    const classes = ['input-group', 'd-flex', 'align-items-center'];
+class AutocompleteItem extends Component<AutocompleteItemSignature> {
+  @tracked
+  active = true;
 
-    return classes.join(' ');
-  }
-
-  get searchIconPosition() {
-    return this.args.searchIconPosition;
+  get isActiveIndex() {
+    return this.args.activeIndex === this.args.index;
   }
 
   <template>
-    <div class={{this.classList}}>
-      {{#if (eq this.searchIconPosition 'left')}}
-        <span class="input-group-text bg-transparent border-end-0">
-          {{#if @loading}}
-            <span class="spinner-border spinner-border-sm m-1" />
-          {{else}}
-            <i class="bi bi-search m-1" />
-          {{/if}}
+    <li class="dropdown-item {{if this.isActiveIndex "active"}}" role="option" ...attributes>{{this.args.value}}</li>
+  </template>
+}
+
+export interface AutocompleteSignature {
+  format?: ((value: Optional<string>) => string) | false;
+}
+
+export default class Autocomplete extends InputField<AutocompleteSignature> {
+  @tracked
+  isFocused = false;
+
+  @tracked
+  items = ["Apple", "Pear", "Orange", "Banana", "Grape", "Strawberry"];
+
+  @tracked
+  activeIndex= -1;
+
+  @tracked
+  isItemGettingSelected = false;
+
+  get displayValue() {
+    const { isFocused, value } = this;
+
+    if (isFocused || !value) {
+      return value;
+    }
+
+    return value;
+  }
+
+  toggleFocus(focus: boolean) {
+    this.isFocused = focus;
+  }
+
+  @action
+  selectItem(item: string, index: number, evt: Event) {
+    evt.preventDefault();
+    evt.stopPropagation();
+
+    this.value = item;
+    this.activeIndex = index;
+
+    this.isFocused = false;
+  }
+
+  @action
+  onFocus() {
+    this.isFocused = true;
+  }
+
+  @action
+  onBlur(evt: Event) {
+    evt.preventDefault();
+    evt.stopPropagation();
+
+    console.log(evt)
+    this.isFocused = false;
+  }
+
+  <template>
+    <div>
+      <div class="input-group">
+        <input
+          aria-describedby={{@describedBy}}
+          id={{@id}}
+          class="{{this.classList}} border-end-0"
+          disabled={{@disabled}}
+          readonly={{@readonly}}
+          type="text"
+          value={{this.displayValue}}
+          {{on "input" this.change}}
+          {{on "focus" this.onFocus}}
+          {{!-- {{on "blur" this.onBlur}} --}}
+          ...attributes
+        />
+        <span class="input-group-text bg-transparent border-start-0" >
+          <i class="bi bi-search"/>
         </span>
-      {{/if}}
-      <input type="text" class="form-control
-        {{if (eq this.searchIconPosition 'left') 'border-start-0'}}
-        {{if (eq this.searchIconPosition 'right') 'border-end-0'}}
-      " >
-      {{#if (eq this.searchIconPosition 'right')}}
-        <span class="input-group-text bg-transparent border-start-0">
-          {{#if @loading}}
-            <span class="spinner-border spinner-border-sm m-1" />
-          {{else}}
-            <i class="bi bi-search m-1" />
-          {{/if}}
-        </span>
-      {{/if}}
+      </div>
+      <ul
+        class="dropdown-menu mt-1 {{if this.isFocused 'show'}}"
+        role="listbox"
+        >
+          {{#each this.items as |item index|}}
+            <AutocompleteItem
+              @value={{item}}
+              @index={{index}}
+              @activeIndex={{this.activeIndex}}
+              {{on "click" (fn this.selectItem item index)}}
+            />
+          {{/each}}
+      </ul>
     </div>
   </template>
 }
