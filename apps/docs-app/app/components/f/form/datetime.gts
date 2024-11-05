@@ -81,6 +81,34 @@ export default class extends Component {
             />
           </:example>
           <:api as |Args|>
+            <Args.String
+              @name="type"
+              @defaultValue="date"
+              @description="The type of input to render"
+              @options={{array "date" "datetime" "time"}}
+              @value={{this.type}}
+              @onInput={{fn this.update "type"}}
+            />
+            <Args.String
+              @name="dateFormat"
+              @defaultValue="LL"
+              @description="If provided, the date portion of the value will be formatted with this pattern"
+              @value={{this.dateFormat}}
+              @onInput={{fn this.update "dateFormat"}}
+            />
+            <Args.String
+              @name="timeFormat"
+              @defaultValue="LT"
+              @description="If provided, the time portion of the value will be formatted with this pattern"
+              @value={{this.timeFormat}}
+              @onInput={{fn this.update "timeFormat"}}
+            />
+            <Args.Array
+              @name="parseFormat"
+              @description="When provided, no dates before this point can be selected"
+              @items={{this.parseFormat}}
+              @type="String"
+            />
             <Args.Bool
               @name="allowMinuteSelection"
               @defaultValue={{true}}
@@ -93,13 +121,6 @@ export default class extends Component {
               @description="Whether to render the basic version of the input"
               @value={{this.basic}}
               @onInput={{fn this.update "basic"}}
-            />
-            <Args.String
-              @name="dateFormat"
-              @defaultValue="LL"
-              @description="If provided, the date portion of the value will be formatted with this pattern"
-              @value={{this.dateFormat}}
-              @onInput={{fn this.update "dateFormat"}}
             />
             <Args.Bool
               @name="disabled"
@@ -127,12 +148,6 @@ export default class extends Component {
               {{! template-lint-disable require-input-label }}
               <input type="date" {{on "change" (fn this.update "minDate")}} />
             </Args.Base>
-            <Args.Array
-              @name="parseFormat"
-              @description="When provided, no dates before this point can be selected"
-              @items={{this.parseFormat}}
-              @type="String"
-            />
             <Args.String
               @name="placeholder"
               @description="The placeholder text"
@@ -151,21 +166,6 @@ export default class extends Component {
               @description="Whether to show a 'Now' button to select the current date and time"
               @value={{this.showNowShortcut}}
               @onInput={{fn this.update "showNowShortcut"}}
-            />
-            <Args.String
-              @name="timeFormat"
-              @defaultValue="LT"
-              @description="If provided, the time portion of the value will be formatted with this pattern"
-              @value={{this.timeFormat}}
-              @onInput={{fn this.update "timeFormat"}}
-            />
-            <Args.String
-              @name="type"
-              @defaultValue="date"
-              @description="The type of input to render"
-              @options={{array "date" "datetime" "time"}}
-              @value={{this.type}}
-              @onInput={{fn this.update "type"}}
             />
             <Args.Action
               @name="isDateDisabled"
