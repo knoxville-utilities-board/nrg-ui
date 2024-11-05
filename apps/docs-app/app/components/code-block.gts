@@ -1,11 +1,25 @@
+import { registerDestructor } from '@ember/destroyable';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { didInsert } from '@nrg-ui/core';
 
+import type ThemeService from '../services/theme';
+
 export default class CodeBlock extends Component {
   @service('ember-freestyle')
   freestyle;
+
+  @service
+  declare theme: ThemeService;
+
+  constructor(owner: unknown, args: object) {
+    super(owner, args);
+
+    registerDestructor(this, () => {
+      this.theme.codeBlocks.delete(this);
+    });
+  }
 
   get lang() {
     return this.args.lang ?? 'handlebars';
@@ -13,6 +27,10 @@ export default class CodeBlock extends Component {
 
   @action
   highlight(el: HTMLPreElement) {
+    if (!this.theme.codeBlocks.has(this)) {
+      this.theme.codeBlocks.set(this, el);
+    }
+
     el.querySelector('code').textContent = this.args.code;
     this.freestyle.highlight(el);
   }

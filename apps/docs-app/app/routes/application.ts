@@ -5,7 +5,10 @@ import type ThemeService from '@nrg-ui/core/services/theme';
 import type EmberFreestyleService from 'ember-freestyle/services/ember-freestyle';
 import type { IntlService } from 'ember-intl';
 
-const syntaxHighlightingTheme = 'github';
+export const syntaxThemes = {
+  light: 'github',
+  dark: 'github-dark',
+};
 
 export default class ApplicationRoute extends Route {
   @service('ember-freestyle')
@@ -24,8 +27,10 @@ export default class ApplicationRoute extends Route {
     };
     await this.freestyle.ensureHljs();
     await this.freestyle.ensureHljsLanguage('typescript');
-    this.freestyle.ensureHljsTheme(syntaxHighlightingTheme);
-    this.freestyle.defaultTheme = syntaxHighlightingTheme;
+
+    const displayTheme = syntaxThemes[this.theme.preferredTheme];
+    this.freestyle.ensureHljsTheme(displayTheme);
+    this.freestyle.defaultTheme = displayTheme;
 
     this.intl.setLocale(['en-us']);
   }
