@@ -1,4 +1,4 @@
-import { fn } from '@ember/helper';
+import { concat, fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
@@ -8,7 +8,7 @@ import { t } from 'ember-intl';
 // @ts-expect-error Ember keyboard doesn't currently ship a type for the `on-key` modifier
 // https://github.com/adopted-ember-addons/ember-keyboard/issues/464
 import onKey from 'ember-keyboard/modifiers/on-key';
-import { eq, notEq } from 'ember-truth-helpers';
+import { notEq } from 'ember-truth-helpers';
 
 import type { Dayjs, OpUnitType } from 'dayjs';
 
@@ -696,7 +696,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
                 role="button"
                 {{on "click" this.setToNow}}
               >
-                {{if (eq @type "date") "Today" "Now"}}
+                {{t (concat "nrg.base.datetime." @type)}}
               </td>
             </tr>
           {{/if}}
