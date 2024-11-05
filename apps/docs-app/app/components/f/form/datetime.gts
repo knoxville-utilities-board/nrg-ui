@@ -143,7 +143,7 @@ export default class extends Component {
               @name="readonly"
               @description="Whether the input is readonly"
               @value={{this.readonly}}
-              @onInput={{fn this.update "placeholder"}}
+              @onInput={{fn this.update "readonly"}}
             />
             <Args.Bool
               @name="showNowShortcut"
