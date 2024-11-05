@@ -13,7 +13,6 @@ export default class ThemeService extends BaseService {
 
   setTheme = (theme) => {
     const previousTheme = this.preferredTheme;
-    debugger;
 
     super.setTheme(theme);
     theme = this.preferredTheme;
