@@ -34,7 +34,7 @@ module('Integration | Component | mktg/card', function (hooks) {
       );
     assert
       .dom(
-        '.card .card-header .d-flex.flex-column.justify-content-start.align-items-center.bg-white.mb-2',
+        '.card .card-header .d-flex.flex-column.justify-content-start.align-items-center.bg-body.mb-2',
       )
       .exists('Card renders vertically if no @horizontal is passed');
     assert

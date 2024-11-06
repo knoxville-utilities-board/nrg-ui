@@ -37,7 +37,7 @@ export default class CodeBlock extends Component {
 
   <template>
     <pre
-      class="mb-0 d-flex align-items-center bg-white {{this.lang}}"
+      class="mb-0 d-flex align-items-center bg-body {{this.lang}}"
       {{! template-lint-disable no-inline-styles }}
       style="--bs-bg-opacity: 0; font-size: 0.8rem;"
       tabindex="0"

@@ -8,7 +8,7 @@ import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 export default class extends Component {
   @tracked
-  class = 'bg-white';
+  class = 'bg-body';
 
   @action
   update(key: string, value: unknown) {
