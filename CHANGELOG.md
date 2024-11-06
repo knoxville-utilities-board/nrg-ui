@@ -1,5 +1,35 @@
 # Changelog
 
+## Release (2024-11-06)
+
+@nrg-ui/css 0.9.0 (minor)
+@nrg-ui/core 0.15.0 (minor)
+@nrg-ui/theme-generator 0.1.0 (minor)
+
+#### :rocket: Enhancement
+* `docs-app`, `test-app`, `@nrg-ui/core`
+  * [#250](https://github.com/knoxville-utilities-board/nrg-ui/pull/250) feat: Improved dark mode support ([@KeithClinard](https://github.com/KeithClinard))
+* `docs-app`, `test-app`, `@nrg-ui/css`, `@nrg-ui/core`
+  * [#245](https://github.com/knoxville-utilities-board/nrg-ui/pull/245) feat: Add dark mode support and theme switching ([@KeithClinard](https://github.com/KeithClinard))
+  * [#243](https://github.com/knoxville-utilities-board/nrg-ui/pull/243) feat: Create datetime component for forms ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/css`, `@nrg-ui/theme-generator`
+  * [#241](https://github.com/knoxville-utilities-board/nrg-ui/pull/241) feat(theme-generator): Generate diff from base css ([@KeithClinard](https://github.com/KeithClinard))
+* `@nrg-ui/theme-generator`
+  * [#234](https://github.com/knoxville-utilities-board/nrg-ui/pull/234) feat: Add theme generator cli ([@KeithClinard](https://github.com/KeithClinard))
+
+#### :memo: Documentation
+* `docs-app`, `@nrg-ui/core`
+  * [#247](https://github.com/knoxville-utilities-board/nrg-ui/pull/247) docs(datetime): Add full documentation ([@TSenter](https://github.com/TSenter))
+  * [#248](https://github.com/knoxville-utilities-board/nrg-ui/pull/248) feat(docs): Update code highlighting when theme changes ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* [#244](https://github.com/knoxville-utilities-board/nrg-ui/pull/244) chore(ci): Run all actions on Node.js 20 ([@TSenter](https://github.com/TSenter))
+* [#240](https://github.com/knoxville-utilities-board/nrg-ui/pull/240) chore(ci): Remove extraneous workflow inputs ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Keith ([@KeithClinard](https://github.com/KeithClinard))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-10-29)
 
 @nrg-ui/css 0.8.0 (minor)
