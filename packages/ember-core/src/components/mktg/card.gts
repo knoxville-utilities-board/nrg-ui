@@ -53,7 +53,7 @@ const MktgCard: TOC<MktgCardSignature> = <template>
     >
       <:header>
         <div
-          class="d-flex flex-column justify-content-start align-items-center bg-white mb-2"
+          class="d-flex flex-column justify-content-start align-items-center bg-body mb-2"
         >
           {{#if @leftAlignCallout}}
             <div class="d-flex flex-column justify-content-start w-100 m-0">

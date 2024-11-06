@@ -12,7 +12,7 @@ export interface PageNotFoundSignature {
 }
 
 const PageNotFound: TOC<PageNotFoundSignature> = <template>
-  <div class="p-5 d-flex flex-column bg-white" ...attributes>
+  <div class="p-5 d-flex flex-column bg-body" ...attributes>
     <p class="fw-bold fs-1 m-0">
       {{t "nrg.page-not-found.title"}}
     </p>

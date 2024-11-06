@@ -23,6 +23,7 @@ export default class ThemeService extends BaseService {
 
     // Install new theme
     this.freestyle.ensureHljsTheme(syntaxThemes[theme]);
+    this.freestyle.defaultTheme = syntaxThemes[theme];
 
     // Remove previous theme
     document.querySelector(`[data-hljs-theme=${syntaxThemes[previousTheme]}]`)?.remove();

@@ -43,7 +43,7 @@ export default class Card extends Component<CardSignature> {
     >
       {{#if (has-block "header")}}
         {{#if this.hasHorizontalDivider}}
-          <div class="card-header bg-white">
+          <div class="card-header bg-body">
             {{yield to="header"}}
           </div>
         {{else}}
