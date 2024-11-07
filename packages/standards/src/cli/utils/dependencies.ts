@@ -81,16 +81,41 @@ export function getVersion(dep: string): string | undefined {
 }
 
 export async function installMany(deps: { [dep: string]: string | undefined }) {
-  const results = await Promise.allSettled(
-    Object.entries(deps).map(([dep, version]) => install(dep, version)),
-  );
+  const depEntries = Object.entries(deps);
 
-  const failed = results.filter((r) => r.status === 'rejected');
+  if (!deps.length) {
+    logger.debug('No dependency specified, installing all dependencies');
 
-  if (failed.length) {
-    failed.forEach((r) => logger.debug(r.reason));
-    logger.error('Some dependencies failed to install');
+    await run('install', '--ignore-scripts');
+    return;
   }
+
+  const args = depEntries.map(([dep, version]) => {
+    const currentVersion = getVersion(dep)!;
+    if (version && satisfies(currentVersion, version)) {
+      logger.debug(
+        `Dependency '${dep}' satisfies the minimum version ${version}`,
+      );
+      return;
+    }
+
+    if (!version) {
+      logger.debug(`No version specified for '${dep}', installing latest`);
+      version = 'latest';
+    }
+
+    const arg = `${dep}@${version}`;
+
+    logger.info(`Installing '${arg}'`);
+
+    return arg;
+  }).filter(Boolean) as string[];
+
+  // Yarn uses `--dev` while npm and pnpm use `--save-dev`
+  await run('add', '--ignore-scripts', ...args, '-D');
+
+  // Refresh cached package.json
+  getPackageFile('package.json', true);
 }
 
 export async function install(dep?: string, version?: string) {
