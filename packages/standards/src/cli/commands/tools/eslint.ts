@@ -6,6 +6,7 @@ import {
   getDependenciesFromPackage,
   getPackageFile,
 } from '../../../utils.js';
+import { getVersion } from '../../index.js';
 import {
   compatibility,
   hasDependency,
@@ -40,6 +41,14 @@ async function ensureInstallation() {
   logger.debug('Checking dependencies in package.json');
 
   const dependencies = getDependenciesFromPackage();
+
+  const hasThisPackage = '@nrg-ui/standards' in dependencies;
+  if (!hasThisPackage) {
+    logger.debug('`@nrg-ui/standards` not found in package.json, installing...');
+
+    await install(`@nrg-ui/standards@^${getVersion()}`);
+  }
+
   const hasEslint = 'eslint' in dependencies;
 
   if (!hasEslint) {
