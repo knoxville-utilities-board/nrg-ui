@@ -1,21 +1,15 @@
 {
   "solution": {
     "@nrg-ui/css": {
-      "impact": "minor",
-      "oldVersion": "0.8.0",
-      "newVersion": "0.9.0",
-      "constraints": [
-        {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        }
-      ],
-      "pkgJSONPath": "./packages/design-system/package.json"
+      "oldVersion": "0.9.0"
     },
     "@nrg-ui/core": {
+      "oldVersion": "0.15.0"
+    },
+    "@nrg-ui/standards": {
       "impact": "minor",
-      "oldVersion": "0.14.0",
-      "newVersion": "0.15.0",
+      "oldVersion": "0.1.0",
+      "newVersion": "0.2.0",
       "constraints": [
         {
           "impact": "minor",
@@ -23,26 +17,14 @@
         },
         {
           "impact": "patch",
-          "reason": "Appears in changelog section :memo: Documentation"
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
-      "pkgJSONPath": "./packages/ember-core/package.json"
-    },
-    "@nrg-ui/standards": {
-      "oldVersion": "0.1.0"
+      "pkgJSONPath": "./packages/standards/package.json"
     },
     "@nrg-ui/theme-generator": {
-      "impact": "minor",
-      "oldVersion": "0.0.0",
-      "newVersion": "0.1.0",
-      "constraints": [
-        {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        }
-      ],
-      "pkgJSONPath": "./packages/theme-generator/package.json"
+      "oldVersion": "0.1.0"
     }
   },
-  "description": "## Release (2024-11-06)\n\n@nrg-ui/css 0.9.0 (minor)\n@nrg-ui/core 0.15.0 (minor)\n@nrg-ui/theme-generator 0.1.0 (minor)\n\n#### :rocket: Enhancement\n* `docs-app`, `test-app`, `@nrg-ui/core`\n  * [#250](https://github.com/knoxville-utilities-board/nrg-ui/pull/250) feat: Improved dark mode support ([@KeithClinard](https://github.com/KeithClinard))\n* `docs-app`, `test-app`, `@nrg-ui/css`, `@nrg-ui/core`\n  * [#245](https://github.com/knoxville-utilities-board/nrg-ui/pull/245) feat: Add dark mode support and theme switching ([@KeithClinard](https://github.com/KeithClinard))\n  * [#243](https://github.com/knoxville-utilities-board/nrg-ui/pull/243) feat: Create datetime component for forms ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/css`, `@nrg-ui/theme-generator`\n  * [#241](https://github.com/knoxville-utilities-board/nrg-ui/pull/241) feat(theme-generator): Generate diff from base css ([@KeithClinard](https://github.com/KeithClinard))\n* `@nrg-ui/theme-generator`\n  * [#234](https://github.com/knoxville-utilities-board/nrg-ui/pull/234) feat: Add theme generator cli ([@KeithClinard](https://github.com/KeithClinard))\n\n#### :memo: Documentation\n* `docs-app`, `@nrg-ui/core`\n  * [#247](https://github.com/knoxville-utilities-board/nrg-ui/pull/247) docs(datetime): Add full documentation ([@TSenter](https://github.com/TSenter))\n  * [#248](https://github.com/knoxville-utilities-board/nrg-ui/pull/248) feat(docs): Update code highlighting when theme changes ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* [#244](https://github.com/knoxville-utilities-board/nrg-ui/pull/244) chore(ci): Run all actions on Node.js 20 ([@TSenter](https://github.com/TSenter))\n* [#240](https://github.com/knoxville-utilities-board/nrg-ui/pull/240) chore(ci): Remove extraneous workflow inputs ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Keith ([@KeithClinard](https://github.com/KeithClinard))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2024-11-07)\n\n@nrg-ui/standards 0.2.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/standards`\n  * [#254](https://github.com/knoxville-utilities-board/nrg-ui/pull/254) feat(standards): Use @babel/eslint-parser for JS ([@TSenter](https://github.com/TSenter))\n  * [#251](https://github.com/knoxville-utilities-board/nrg-ui/pull/251) feat(standards): Install library when migrating ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/standards`\n  * [#252](https://github.com/knoxville-utilities-board/nrg-ui/pull/252) fix(standards): Install multiple dependencies in single command ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
