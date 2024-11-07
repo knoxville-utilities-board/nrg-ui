@@ -13,8 +13,8 @@ importers:
   .:
     devDependencies:
       '@glint/core':
-        specifier: ^1.2.1
-        version: 1.4.0(typescript@5.6.3)
+        specifier: ^1.5.0
+        version: 1.5.0(typescript@5.6.3)
       concurrently:
         specifier: ^8.2.0
         version: 8.2.2
@@ -674,8 +674,8 @@ importers:
         specifier: ^4.1.0
         version: 4.3.1(@glint/template@1.4.0)(rollup@4.23.0)
       '@glint/core':
-        specifier: ^1.2.1
-        version: 1.4.0(typescript@5.6.3)
+        specifier: ^1.5.0
+        version: 1.5.0(typescript@5.6.3)
       '@glint/environment-ember-loose':
         specifier: ^1.2.1
         version: 1.4.0(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(@types/ember__array@4.0.10(@babel/core@7.25.2))(@types/ember__component@4.0.22(@babel/core@7.25.2))(@types/ember__controller@4.0.12(@babel/core@7.25.2))(@types/ember__object@4.0.12(@babel/core@7.25.2))(@types/ember__routing@4.0.22(@babel/core@7.25.2))(ember-cli-htmlbars@6.3.0)(ember-modifier@4.2.0(@babel/core@7.25.2)(ember-source@5.9.0(@babel/core@7.25.2)(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.94.0)))
@@ -1997,8 +1997,8 @@ packages:
   '@glimmer/wire-format@0.92.3':
     resolution: {integrity: sha512-gFz81Q9+V7Xs0X8mSq6y8qacHm0dPaGJo2/Bfcsdow1hLOKNgTCLr4XeDBhRML8f6I6Gk9ugH4QDxyIOXOpC4w==}
 
-  '@glint/core@1.4.0':
-    resolution: {integrity: sha512-nq27a/1R6kc3lsuciz8z9IZO1NQCbNkEBxf5KJI7AUrnps6RzQzmq3pmwO24zQYmFcH4sqpod8fleNIpg8YEqg==}
+  '@glint/core@1.5.0':
+    resolution: {integrity: sha512-oo6ZDwX2S0Qqjai/CJH72LHg1U6rvzH1IyiFlWofaFiu/nSg04CDWZuJNPC3r47jz1+SaSI+mVMUaKJznzxzzQ==}
     hasBin: true
     peerDependencies:
       typescript: '>=4.8.0'
@@ -10521,7 +10521,7 @@ snapshots:
       '@glimmer/interfaces': 0.92.3
       '@glimmer/util': 0.92.3
 
-  '@glint/core@1.4.0(typescript@5.6.3)':
+  '@glint/core@1.5.0(typescript@5.6.3)':
     dependencies:
       '@glimmer/syntax': 0.84.3
       escape-string-regexp: 4.0.0
@@ -11016,26 +11016,6 @@ snapshots:
       - '@babel/core'
       - supports-color
 
-  '@types/ember@4.0.11':
-    dependencies:
-      '@types/ember__application': 4.0.11(@babel/core@7.25.2)
-      '@types/ember__array': 4.0.10(@babel/core@7.25.2)
-      '@types/ember__component': 4.0.22(@babel/core@7.25.2)
-      '@types/ember__controller': 4.0.12(@babel/core@7.25.2)
-      '@types/ember__debug': 4.0.8(@babel/core@7.25.2)
-      '@types/ember__engine': 4.0.11(@babel/core@7.25.2)
-      '@types/ember__error': 4.0.6
-      '@types/ember__object': 4.0.12(@babel/core@7.25.2)
-      '@types/ember__polyfills': 4.0.6
-      '@types/ember__routing': 4.0.22(@babel/core@7.25.2)
-      '@types/ember__runloop': 4.0.10
-      '@types/ember__service': 4.0.9(@babel/core@7.25.2)
-      '@types/ember__string': 3.16.3
-      '@types/ember__template': 4.0.7
-      '@types/ember__test': 4.0.6(@babel/core@7.25.2)
-      '@types/ember__utils': 4.0.7
-      '@types/rsvp': 4.0.9
-
   '@types/ember@4.0.11(@babel/core@7.25.2)':
     dependencies:
       '@types/ember__application': 4.0.11(@babel/core@7.25.2)
@@ -11062,7 +11042,7 @@ snapshots:
   '@types/ember__application@4.0.11(@babel/core@7.25.2)':
     dependencies:
       '@glimmer/component': 1.1.2(@babel/core@7.25.2)
-      '@types/ember': 4.0.11
+      '@types/ember': 4.0.11(@babel/core@7.25.2)
       '@types/ember__engine': 4.0.11(@babel/core@7.25.2)
       '@types/ember__object': 4.0.12(@babel/core@7.25.2)
       '@types/ember__owner': 4.0.9
@@ -11153,10 +11133,6 @@ snapshots:
       - '@babel/core'
       - supports-color
 
-  '@types/ember__runloop@4.0.10':
-    dependencies:
-      '@types/ember': 4.0.11
-
   '@types/ember__runloop@4.0.10(@babel/core@7.25.2)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.25.2)
@@ -11183,10 +11159,6 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-
-  '@types/ember__utils@4.0.7':
-    dependencies:
-      '@types/ember': 4.0.11
 
   '@types/ember__utils@4.0.7(@babel/core@7.25.2)':
     dependencies:
@@ -14505,7 +14477,7 @@ snapshots:
       array.prototype.find: 2.2.3
       debug: 3.2.7
       enhanced-resolve: 0.9.1
-      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.6.3))(eslint-import-resolver-webpack@0.13.8)(eslint@8.57.0)
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.11.0(eslint@9.13.0(jiti@1.21.6))(typescript@5.6.3))(eslint-import-resolver-webpack@0.13.8)(eslint@9.13.0(jiti@1.21.6))
       find-root: 1.1.0
       hasown: 2.0.2
       interpret: 1.4.0
