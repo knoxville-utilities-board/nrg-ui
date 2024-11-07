@@ -83,7 +83,7 @@ export function getVersion(dep: string): string | undefined {
 export async function installMany(deps: { [dep: string]: string | undefined }) {
   const depEntries = Object.entries(deps);
 
-  if (!deps.length) {
+  if (!depEntries.length) {
     logger.debug('No dependency specified, installing all dependencies');
 
     await run('install', '--ignore-scripts');
