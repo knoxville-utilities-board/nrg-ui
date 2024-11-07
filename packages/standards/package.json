@@ -26,6 +26,9 @@
   "scripts": {
     "build": "tsc --build",
     "build:watch": "tsc --build --watch",
+    "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
     "prepare": "pnpm build",
     "test": "echo 'The @nrg-ui/standards package does not have tests'"
   },
