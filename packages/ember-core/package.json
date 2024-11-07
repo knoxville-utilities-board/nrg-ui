@@ -83,9 +83,9 @@
     "test": "echo 'A v2 addon does not have tests, run tests in test-app'"
   },
   "dependencies": {
-    "@embroider/addon-shim": "^1.8.7",
+    "@embroider/addon-shim": "^1.9.0",
     "decorator-transforms": "^1.0.1",
-    "ember-css-transitions": "^4.4.0",
+    "ember-css-transitions": "^4.4.1",
     "ember-intl": "^7.0.4",
     "ember-keyboard": "^8.2.1",
     "ember-lifeline": "^7.0.0",
@@ -93,12 +93,12 @@
     "ismobilejs": "^1.1.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.6",
+    "@babel/core": "^7.26.0",
     "@babel/plugin-transform-typescript": "^7.23.6",
     "@babel/runtime": "^7.17.0",
     "@bertdeblock/gember": "^0.4.0",
-    "@embroider/addon-dev": "^4.1.0",
-    "@glint/core": "^1.2.1",
+    "@embroider/addon-dev": "^4.3.1",
+    "@glint/core": "^1.5.0",
     "@glint/environment-ember-loose": "^1.2.1",
     "@glint/environment-ember-template-imports": "^1.2.1",
     "@glint/template": "^1.2.1",

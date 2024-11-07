@@ -27,12 +27,12 @@
     "test:ember": "ember test"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.7",
+    "@babel/core": "^7.26.0",
     "@ember/optional-features": "^2.1.0",
     "@ember/string": "^3.1.1",
     "@ember/test-helpers": "^3.3.0",
-    "@embroider/macros": "^1.16.5",
-    "@embroider/test-setup": "^3.0.1",
+    "@embroider/macros": "^1.16.9",
+    "@embroider/test-setup": "^3.0.3",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "@glint/environment-ember-loose": "^1.4.0",
@@ -73,7 +73,7 @@
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^8.2.2",
     "dayjs": "^1.11.13",
-    "ember-auto-import": "^2.7.3",
+    "ember-auto-import": "^2.10.0",
     "ember-cli": "~5.9.0",
     "ember-cli-app-version": "^6.0.1",
     "ember-cli-babel": "^8.2.0",
@@ -125,6 +125,6 @@
   },
   "dependencies": {
     "ember-concurrency": "^4.0.2",
-    "ember-css-transitions": "^4.4.0"
+    "ember-css-transitions": "^4.4.1"
   }
 }

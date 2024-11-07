@@ -26,16 +26,16 @@
     "test": "echo 'The docs-app does not have tests, run tests in test-app'"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.7",
+    "@babel/core": "^7.26.0",
     "@ember/optional-features": "^2.1.0",
     "@ember/string": "^3.1.1",
     "@ember/test-helpers": "^3.3.0",
     "@embroider/broccoli-side-watch": "0.0.2-unstable.9372659",
-    "@embroider/compat": "^3.6.1",
-    "@embroider/core": "^3.4.15",
-    "@embroider/macros": "^1.16.5",
-    "@embroider/test-setup": "^3.0.1",
-    "@embroider/webpack": "^4.0.5",
+    "@embroider/compat": "^3.7.0",
+    "@embroider/core": "^3.4.19",
+    "@embroider/macros": "^1.16.9",
+    "@embroider/test-setup": "^3.0.3",
+    "@embroider/webpack": "^4.0.8",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "@glint/environment-ember-loose": "^1.4.0",
@@ -74,7 +74,7 @@
     "@types/rsvp": "^4.0.9",
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^8.2.2",
-    "ember-auto-import": "^2.7.3",
+    "ember-auto-import": "^2.10.0",
     "ember-cli": "~5.9.0",
     "ember-cli-app-version": "^6.0.1",
     "ember-cli-babel": "^8.2.0",
@@ -128,6 +128,6 @@
   },
   "dependencies": {
     "ember-concurrency": "^4.0.2",
-    "ember-css-transitions": "^4.4.0"
+    "ember-css-transitions": "^4.4.1"
   }
 }
