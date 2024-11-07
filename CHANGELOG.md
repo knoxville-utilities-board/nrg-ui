@@ -1,5 +1,21 @@
 # Changelog
 
+## Release (2024-11-07)
+
+@nrg-ui/standards 0.2.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/standards`
+  * [#254](https://github.com/knoxville-utilities-board/nrg-ui/pull/254) feat(standards): Use @babel/eslint-parser for JS ([@TSenter](https://github.com/TSenter))
+  * [#251](https://github.com/knoxville-utilities-board/nrg-ui/pull/251) feat(standards): Install library when migrating ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/standards`
+  * [#252](https://github.com/knoxville-utilities-board/nrg-ui/pull/252) fix(standards): Install multiple dependencies in single command ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-11-06)
 
 @nrg-ui/css 0.9.0 (minor)
