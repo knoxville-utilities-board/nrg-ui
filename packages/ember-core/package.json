@@ -101,7 +101,7 @@
     "@glint/core": "^1.5.0",
     "@glint/environment-ember-loose": "^1.5.0",
     "@glint/environment-ember-template-imports": "^1.2.1",
-    "@glint/template": "^1.2.1",
+    "@glint/template": "^1.5.0",
     "@nrg-ui/css": "workspace:^0",
     "@nrg-ui/standards": "workspace:^",
     "@rollup/plugin-babel": "^6.0.4",
