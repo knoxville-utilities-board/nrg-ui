@@ -23,12 +23,16 @@ export function checkNodeVersion() {
   }
 }
 
-export async function run() {
-  checkNodeVersion();
-
+export function getVersion() {
   const pkg = JSON.parse(
     readFileSync(join(import.meta.dirname, '../../package.json'), 'utf-8'),
   );
+
+  return pkg.version;
+}
+
+export async function run() {
+  checkNodeVersion();
 
   await yargs(hideBin(process.argv))
     .option('log-level', {
@@ -42,7 +46,7 @@ export async function run() {
     .demandCommand(1, '')
     .help()
     .group(['log-level', 'help', 'version'], 'Global:')
-    .version(pkg.version)
+    .version(getVersion())
     .strict()
     .parse();
 }
