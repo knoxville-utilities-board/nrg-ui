@@ -4,21 +4,12 @@
       "oldVersion": "0.9.0"
     },
     "@nrg-ui/core": {
-      "impact": "patch",
-      "oldVersion": "0.15.0",
-      "newVersion": "0.15.1",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./packages/ember-core/package.json"
+      "oldVersion": "0.15.1"
     },
     "@nrg-ui/standards": {
       "impact": "patch",
-      "oldVersion": "0.2.0",
-      "newVersion": "0.2.1",
+      "oldVersion": "0.2.1",
+      "newVersion": "0.2.2",
       "constraints": [
         {
           "impact": "patch",
@@ -31,5 +22,5 @@
       "oldVersion": "0.1.0"
     }
   },
-  "description": "## Release (2024-11-07)\n\n@nrg-ui/core 0.15.1 (patch)\n@nrg-ui/standards 0.2.1 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/standards`\n  * [#255](https://github.com/knoxville-utilities-board/nrg-ui/pull/255) fix(standards): Specify version correctly when installing package ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `docs-app`, `test-app`, `@nrg-ui/core`\n  * [#260](https://github.com/knoxville-utilities-board/nrg-ui/pull/260) chore: Upgrade dependencies ([@TSenter](https://github.com/TSenter))\n  * [#256](https://github.com/knoxville-utilities-board/nrg-ui/pull/256) chore: Upgrade dependencies ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2024-11-07)\n\n@nrg-ui/standards 0.2.2 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/standards`\n  * [#262](https://github.com/knoxville-utilities-board/nrg-ui/pull/262) fix(standards): Check for dependencies when installing many ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }

@@ -2,6 +2,17 @@
 
 ## Release (2024-11-07)
 
+@nrg-ui/standards 0.2.2 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/standards`
+  * [#262](https://github.com/knoxville-utilities-board/nrg-ui/pull/262) fix(standards): Check for dependencies when installing many ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
+## Release (2024-11-07)
+
 @nrg-ui/core 0.15.1 (patch)
 @nrg-ui/standards 0.2.1 (patch)
 
