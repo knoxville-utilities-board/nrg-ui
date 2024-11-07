@@ -44,7 +44,9 @@ export class Config {
 
   hasDependency(dep: string, message?: string) {
     if (!this.#deps.has(dep)) {
-      logger.missing(dep, `.rules.${message}()`);
+      if (message) {
+        logger.missing(dep, `.rules.${message}()`);
+      }
       return false;
     }
 
