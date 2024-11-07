@@ -130,7 +130,7 @@
     "babel-plugin-ember-template-compilation": "^2.2.1",
     "concurrently": "^8.2.2",
     "dayjs": "^1.11.13",
-    "ember-cli": "~5.8.0",
+    "ember-cli": "~5.8.1",
     "ember-concurrency": "^4.0.2",
     "ember-template-imports": "^4.1.1",
     "ember-template-lint": "^5.13.0",
