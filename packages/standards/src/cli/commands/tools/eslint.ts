@@ -46,7 +46,7 @@ async function ensureInstallation() {
   if (!hasThisPackage) {
     logger.debug('`@nrg-ui/standards` not found in package.json, installing...');
 
-    await install(`@nrg-ui/standards@^${getVersion()}`);
+    await install('@nrg-ui/standards', `^${getVersion()}`);
   }
 
   const hasEslint = 'eslint' in dependencies;
