@@ -165,12 +165,26 @@ export class Config {
 
       const files = [`${root}**/*.{${fileTypes.join()}}`];
 
+      if (this.hasDependency('babel-eslint')) {
+        logger.error(
+          `Using deprecated parser: 'babel-eslint'. Consider switching to '@babel/eslint-parser'`,
+        );
+      }
+
+      let defaultParser: Linter.Parser | undefined;
+      if (this.hasDependency('@babel/eslint-parser')) {
+        defaultParser = (await load('@babel/eslint-parser')) as Linter.Parser;
+      }
+
       if (this.hasDependency('eslint-plugin-import', 'js')) {
         const importPlugin = await load('eslint-plugin-import');
 
         objects.push({
           name: '@nrg-ui/standards/eslint/js/import',
           files,
+          languageOptions: {
+            parser: defaultParser,
+          },
           plugins: {
             import: importPlugin,
           },
