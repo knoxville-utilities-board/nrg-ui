@@ -2,6 +2,23 @@
 
 ## Release (2024-11-07)
 
+@nrg-ui/core 0.15.1 (patch)
+@nrg-ui/standards 0.2.1 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/standards`
+  * [#255](https://github.com/knoxville-utilities-board/nrg-ui/pull/255) fix(standards): Specify version correctly when installing package ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `docs-app`, `test-app`, `@nrg-ui/core`
+  * [#260](https://github.com/knoxville-utilities-board/nrg-ui/pull/260) chore: Upgrade dependencies ([@TSenter](https://github.com/TSenter))
+  * [#256](https://github.com/knoxville-utilities-board/nrg-ui/pull/256) chore: Upgrade dependencies ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
+## Release (2024-11-07)
+
 @nrg-ui/standards 0.2.0 (minor)
 
 #### :rocket: Enhancement
