@@ -4,23 +4,23 @@
       "oldVersion": "0.9.0"
     },
     "@nrg-ui/core": {
-      "oldVersion": "0.15.1"
-    },
-    "@nrg-ui/standards": {
-      "impact": "patch",
-      "oldVersion": "0.2.2",
-      "newVersion": "0.2.3",
+      "impact": "minor",
+      "oldVersion": "0.15.1",
+      "newVersion": "0.16.0",
       "constraints": [
         {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
         }
       ],
-      "pkgJSONPath": "./packages/standards/package.json"
+      "pkgJSONPath": "./packages/ember-core/package.json"
+    },
+    "@nrg-ui/standards": {
+      "oldVersion": "0.2.3"
     },
     "@nrg-ui/theme-generator": {
       "oldVersion": "0.1.0"
     }
   },
-  "description": "## Release (2024-11-08)\n\n@nrg-ui/standards 0.2.3 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/standards`\n  * [#264](https://github.com/knoxville-utilities-board/nrg-ui/pull/264) fix(standards): Configure Babel parser ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2024-11-08)\n\n@nrg-ui/core 0.16.0 (minor)\n\n#### :rocket: Enhancement\n* `test-app`, `@nrg-ui/core`\n  * [#267](https://github.com/knoxville-utilities-board/nrg-ui/pull/267) feat: Theme switcher only switches light and dark ([@KeithClinard](https://github.com/KeithClinard))\n\n#### Committers: 1\n- Keith ([@KeithClinard](https://github.com/KeithClinard))\n"
 }

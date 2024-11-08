@@ -2,6 +2,17 @@
 
 ## Release (2024-11-08)
 
+@nrg-ui/core 0.16.0 (minor)
+
+#### :rocket: Enhancement
+* `test-app`, `@nrg-ui/core`
+  * [#267](https://github.com/knoxville-utilities-board/nrg-ui/pull/267) feat: Theme switcher only switches light and dark ([@KeithClinard](https://github.com/KeithClinard))
+
+#### Committers: 1
+- Keith ([@KeithClinard](https://github.com/KeithClinard))
+
+## Release (2024-11-08)
+
 @nrg-ui/standards 0.2.3 (patch)
 
 #### :bug: Bug Fix
