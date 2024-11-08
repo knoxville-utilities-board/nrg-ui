@@ -8,8 +8,8 @@
     },
     "@nrg-ui/standards": {
       "impact": "patch",
-      "oldVersion": "0.2.1",
-      "newVersion": "0.2.2",
+      "oldVersion": "0.2.2",
+      "newVersion": "0.2.3",
       "constraints": [
         {
           "impact": "patch",
@@ -22,5 +22,5 @@
       "oldVersion": "0.1.0"
     }
   },
-  "description": "## Release (2024-11-07)\n\n@nrg-ui/standards 0.2.2 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/standards`\n  * [#262](https://github.com/knoxville-utilities-board/nrg-ui/pull/262) fix(standards): Check for dependencies when installing many ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2024-11-08)\n\n@nrg-ui/standards 0.2.3 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/standards`\n  * [#264](https://github.com/knoxville-utilities-board/nrg-ui/pull/264) fix(standards): Configure Babel parser ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
