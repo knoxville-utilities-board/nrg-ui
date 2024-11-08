@@ -90,7 +90,6 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
     evt.preventDefault();
     evt.stopPropagation();
 
-    console.log(evt)
     this.isFocused = false;
   }
 
@@ -100,7 +99,7 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
         <input
           aria-describedby={{@describedBy}}
           id={{@id}}
-          class="{{this.classList}} border-end-0"
+          class="{{this.classList}}"
           disabled={{this.disabled}}
           readonly={{@readonly}}
           type="text"
@@ -110,17 +109,19 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
           {{on "blur" this.onBlur}}
           ...attributes
         />
-        <span class="input-group-text border-start-0 {{if this.disabled 'bg-body-secondary' 'bg-transparent'}}">
+        {{!-- <span class="input-group-text border-start-0 {{if this.disabled 'bg-body-secondary' 'bg-transparent'}}">
           {{#if @loading}}
             <span class="spinner-border spinner-border-sm"/>
           {{else}}
             <i class="bi bi-search"/>
           {{/if}}
-        </span>
+        </span> --}}
       </div>
-      <ul
-        class="dropdown-menu mt-1 {{if this.isFocused 'show'}}"
-        role="listbox"
+
+      <div class="dropdown">
+        <ul
+          class="dropdown-menu mt-1 w-100 {{if this.isFocused 'show'}}"
+          role="listbox"
         >
           {{#each this.items as |item index|}}
             <AutocompleteItem
@@ -130,7 +131,9 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
               {{on "click" (fn this.selectItem item index)}}
             />
           {{/each}}
-      </ul>
+        </ul>
+      </div>
+
     </div>
   </template>
 }
