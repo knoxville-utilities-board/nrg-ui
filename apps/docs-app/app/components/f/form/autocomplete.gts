@@ -32,6 +32,9 @@ export default class extends Component {
   disabled = false;
 
   @tracked
+  disabled = false;
+
+  @tracked
   readonly = false;
 
   @tracked
@@ -52,6 +55,7 @@ export default class extends Component {
               @basic={{this.basic}}
               @binding={{bind this.model "property"}}
               @disabled={{this.disabled}}
+              @loading={{this.loading}}
               @readonly={{this.readonly}}
               @onChange={{fn log "The value changed to"}}
             />
@@ -83,6 +87,13 @@ export default class extends Component {
               @description="When true, the input will be disabled"
               @value={{this.disabled}}
               @onInput={{fn this.update "disabled"}}
+            />
+            <Args.Bool
+              @name="loading"
+              @defaultValue={{false}}
+              @description="When true, the text will be replaced with a loading spinner"
+              @value={{this.loading}}
+              @onInput={{fn this.update "loading"}}
             />
             <Args.Bool
               @name="readonly"
