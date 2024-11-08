@@ -8,6 +8,17 @@ import type { Linter } from 'eslint';
 
 export const defaultIgnores = ['node_modules/', 'dist/', 'vendor/', 'assets/'];
 
+const esmParserOptions: Linter.ParserOptions = {
+  ecmaFeatures: { modules: true },
+  ecmaVersion: 'latest',
+  requireConfigFile: false,
+  babelOptions: {
+    plugins: [
+      ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: true }],
+    ],
+  },
+};
+
 export class Config {
   readonly #deps: Map<string, string>;
 
@@ -82,11 +93,26 @@ export class Config {
     base: async (): Promise<Linter.Config[]> => {
       const objects: Linter.Config[] = [];
 
+      if (this.hasDependency('babel-eslint')) {
+        logger.error(
+          `Using deprecated parser: 'babel-eslint'. Consider switching to '@babel/eslint-parser'`,
+        );
+      }
+
+      let defaultParser: Linter.Parser | undefined;
+      if (this.hasDependency('@babel/eslint-parser')) {
+        defaultParser = (await load('@babel/eslint-parser')) as Linter.Parser;
+      }
+
       if (this.hasDependency('eslint-plugin-import', 'base')) {
         const importPlugin = await load('eslint-plugin-import');
 
         objects.push({
           name: '@nrg-ui/standards/eslint/base/import',
+          languageOptions: {
+            parser: defaultParser,
+            parserOptions: esmParserOptions,
+          },
           plugins: {
             import: importPlugin,
           },
@@ -118,6 +144,10 @@ export class Config {
 
         objects.push({
           name: '@nrg-ui/standards/eslint/base/decorator-position',
+          languageOptions: {
+            parser: defaultParser,
+            parserOptions: esmParserOptions,
+          },
           plugins: {
             'decorator-position': decoratorPositionPlugin,
           },
