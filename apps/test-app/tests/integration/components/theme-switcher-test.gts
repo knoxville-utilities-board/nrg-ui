@@ -14,12 +14,16 @@ class MockThemeService extends Service {
   @tracked
   theme = 'auto';
 
+  @tracked
+  preferredTheme = 'light';
+
   load() {
     // do nothing
   }
 
   setTheme(theme: string) {
     this.theme = theme;
+    this.preferredTheme = theme;
   }
 }
 
@@ -38,12 +42,15 @@ module('Integration | Component | theme-switcher', function (hooks) {
 
   test('it cycles themes when clicked', async function (this: Context, assert) {
     await render(<template><ThemeSwitcher /></template>);
-    assert.dom('i').hasClass('bi-circle-half', 'Initial theme is auto');
+    assert.dom('i').hasClass('bi-circle-half', 'Initial theme is auto (light)');
 
     await click(`span[role='button']`);
     assert
       .dom('i')
-      .hasClass('bi-moon-stars-fill', 'Switches to dark theme after auto');
+      .hasClass(
+        'bi-moon-stars-fill',
+        'Switches to dark theme after auto (light)',
+      );
 
     await click(`span[role='button']`);
     assert
@@ -53,6 +60,9 @@ module('Integration | Component | theme-switcher', function (hooks) {
     await click(`span[role='button']`);
     assert
       .dom('i')
-      .hasClass('bi-circle-half', 'Switches back to auto theme after light');
+      .hasClass(
+        'bi-moon-stars-fill',
+        'Switches back to dark theme after light',
+      );
   });
 });
