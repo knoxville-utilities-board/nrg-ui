@@ -8,7 +8,6 @@ import InputField from './-private/input-field.ts';
 
 import type { Optional } from '../../';
 
-
 interface AutocompleteItemSignature {
   Args: {
     value: string;
@@ -32,7 +31,11 @@ class AutocompleteItem extends Component<AutocompleteItemSignature> {
 }
 
 export interface AutocompleteSignature {
-  format?: ((value: Optional<string>) => string) | false;
+  Args: {
+    format?: ((value: Optional<string>) => string) | false;
+    loading: boolean;
+  };
+  Element: HTMLInputElement;
 }
 
 export default class Autocomplete extends InputField<AutocompleteSignature> {
@@ -56,6 +59,10 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
     }
 
     return value;
+  }
+
+  get disabled() {
+    return this.args.disabled || this.args.loading;
   }
 
   toggleFocus(focus: boolean) {
@@ -94,17 +101,21 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
           aria-describedby={{@describedBy}}
           id={{@id}}
           class="{{this.classList}} border-end-0"
-          disabled={{@disabled}}
+          disabled={{this.disabled}}
           readonly={{@readonly}}
           type="text"
           value={{this.displayValue}}
           {{on "input" this.change}}
           {{on "focus" this.onFocus}}
-          {{!-- {{on "blur" this.onBlur}} --}}
+          {{on "blur" this.onBlur}}
           ...attributes
         />
-        <span class="input-group-text bg-transparent border-start-0" >
-          <i class="bi bi-search"/>
+        <span class="input-group-text border-start-0 {{if this.disabled 'bg-body-secondary' 'bg-transparent'}}">
+          {{#if @loading}}
+            <span class="spinner-border spinner-border-sm"/>
+          {{else}}
+            <i class="bi bi-search"/>
+          {{/if}}
         </span>
       </div>
       <ul
