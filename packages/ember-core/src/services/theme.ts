@@ -8,19 +8,10 @@ export default class ThemeService extends Service {
   @tracked
   theme!: Theme;
 
+  @tracked
+  preferredTheme!: 'light' | 'dark';
+
   loaded: boolean = false;
-
-  get preferredTheme() {
-    const { theme } = this;
-
-    if (theme === 'auto') {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
-    }
-
-    return theme;
-  }
 
   load() {
     if (this.loaded) {
@@ -41,6 +32,14 @@ export default class ThemeService extends Service {
     this.theme = theme;
     localStorage.setItem('nrg-theme', theme);
 
-    document.body.setAttribute('data-bs-theme', this.preferredTheme);
+    let preferredTheme = theme;
+    if (preferredTheme === 'auto') {
+      preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light';
+    }
+    this.preferredTheme = preferredTheme;
+
+    document.body.setAttribute('data-bs-theme', preferredTheme);
   }
 }
