@@ -16,8 +16,6 @@ const THEME_ICONS = {
   auto: 'bi-circle-half',
 };
 
-const THEMES = ['dark', 'light', 'auto'];
-
 export default class ThemeSwitcherComponent extends Component<ThemeSwitcherSignature> {
   @service('theme')
   declare themeService: ThemeService;
@@ -38,8 +36,8 @@ export default class ThemeSwitcherComponent extends Component<ThemeSwitcherSigna
 
   @action
   cycle() {
-    const currentIndex = THEMES.indexOf(this.theme);
-    const newTheme = THEMES[(currentIndex + 1) % THEMES.length];
+    const preferredTheme = this.themeService.preferredTheme;
+    const newTheme = preferredTheme === 'dark' ? 'light' : 'dark';
     this.themeService.setTheme(newTheme as Theme);
   }
 
