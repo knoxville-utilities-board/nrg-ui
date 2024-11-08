@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2024-11-08)
+
+@nrg-ui/standards 0.2.3 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/standards`
+  * [#264](https://github.com/knoxville-utilities-board/nrg-ui/pull/264) fix(standards): Configure Babel parser ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-11-07)
 
 @nrg-ui/standards 0.2.2 (patch)
