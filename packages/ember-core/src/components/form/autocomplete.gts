@@ -5,6 +5,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
 import InputField from './-private/input-field.ts';
+import onClickOutside from '../../modifiers/on-click-outside.ts';
 
 import type { Optional } from '../../';
 
@@ -33,7 +34,7 @@ class AutocompleteItem extends Component<AutocompleteItemSignature> {
 export interface AutocompleteSignature {
   Args: {
     format?: ((value: Optional<string>) => string) | false;
-    loading: boolean;
+    loading?: boolean;
   };
   Element: HTMLInputElement;
 }
@@ -94,30 +95,32 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
   }
 
   <template>
-    <div>
+    <div
+      {{onClickOutside this.onBlur}}
+    >
       <div class="input-group">
+        {{#unless @basic}}
+          <span class="input-group-text">
+            {{#if @loading}}
+              <span class="spinner-border spinner-border-sm"/>
+            {{else}}
+              <i class="bi bi-search"/>
+            {{/if}}
+          </span>
+        {{/unless}}
         <input
           aria-describedby={{@describedBy}}
           id={{@id}}
-          class="{{this.classList}}"
+          class={{this.classList}}
           disabled={{this.disabled}}
           readonly={{@readonly}}
           type="text"
           value={{this.displayValue}}
           {{on "input" this.change}}
           {{on "focus" this.onFocus}}
-          {{on "blur" this.onBlur}}
           ...attributes
         />
-        {{!-- <span class="input-group-text border-start-0 {{if this.disabled 'bg-body-secondary' 'bg-transparent'}}">
-          {{#if @loading}}
-            <span class="spinner-border spinner-border-sm"/>
-          {{else}}
-            <i class="bi bi-search"/>
-          {{/if}}
-        </span> --}}
       </div>
-
       <div class="dropdown">
         <ul
           class="dropdown-menu mt-1 w-100 {{if this.isFocused 'show'}}"
@@ -133,7 +136,6 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
           {{/each}}
         </ul>
       </div>
-
     </div>
   </template>
 }
