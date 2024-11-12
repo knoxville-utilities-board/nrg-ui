@@ -13,7 +13,7 @@ interface AutocompleteItemSignature {
   Args: {
     value: string;
     index: number;
-    activeIndex: number;
+    activeIndex?: number;
   };
   Element: HTMLLIElement;
 }
@@ -47,23 +47,14 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
   items = ["Apple", "Pear", "Orange", "Banana", "Grape", "Strawberry"];
 
   @tracked
-  activeIndex= -1;
-
-  @tracked
-  isItemGettingSelected = false;
-
-  get displayValue() {
-    const { isFocused, value } = this;
-
-    if (isFocused || !value) {
-      return value;
-    }
-
-    return value;
-  }
+  searchString = '';
 
   get disabled() {
     return this.args.disabled || this.args.loading;
+  }
+
+  get showSuggestions() {
+    return this.isFocused && this.searchString.length > 0;
   }
 
   toggleFocus(focus: boolean) {
@@ -71,12 +62,12 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
   }
 
   @action
-  selectItem(item: string, index: number, evt: Event) {
-    evt.preventDefault();
-    evt.stopPropagation();
+  selectItem(index: number, evt?: Event) {
+    evt?.preventDefault();
+    evt?.stopPropagation();
 
-    this.value = item;
-    this.activeIndex = index;
+    this.value = this.items[index] ?? '';
+    this.searchString = this.value;
 
     this.isFocused = false;
   }
@@ -87,11 +78,14 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
   }
 
   @action
-  onBlur(evt: Event) {
-    evt.preventDefault();
-    evt.stopPropagation();
-
+  onBlur() {
     this.isFocused = false;
+  }
+
+  @action
+  search(evt: Event) {
+    this.searchString = (evt.target as HTMLInputElement).value;
+    this.value = '';
   }
 
   <template>
@@ -115,23 +109,22 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
           disabled={{this.disabled}}
           readonly={{@readonly}}
           type="text"
-          value={{this.displayValue}}
-          {{on "input" this.change}}
+          value={{this.searchString}}
+          {{on "input" this.search}}
           {{on "focus" this.onFocus}}
           ...attributes
         />
       </div>
       <div class="dropdown">
         <ul
-          class="dropdown-menu mt-1 w-100 {{if this.isFocused 'show'}}"
+          class="dropdown-menu mt-1 w-100 {{if this.showSuggestions 'show'}}"
           role="listbox"
         >
           {{#each this.items as |item index|}}
             <AutocompleteItem
               @value={{item}}
               @index={{index}}
-              @activeIndex={{this.activeIndex}}
-              {{on "click" (fn this.selectItem item index)}}
+              {{on "click" (fn this.selectItem index)}}
             />
           {{/each}}
         </ul>
