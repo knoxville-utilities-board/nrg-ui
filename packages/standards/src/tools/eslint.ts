@@ -6,7 +6,13 @@ import { getDependenciesFromPackage, load } from '../utils.js';
 
 import type { Linter } from 'eslint';
 
-export const defaultIgnores = ['node_modules/', 'dist/', 'vendor/', 'assets/'];
+export const defaultJsIgnores = [
+  'node_modules/',
+  'dist/',
+  'vendor/',
+  'assets/',
+];
+export const defaultTsIgnores = defaultJsIgnores.concat(['declarations/']);
 
 const esmParserOptions: Linter.ParserOptions = {
   ecmaFeatures: { modules: true },
@@ -76,11 +82,9 @@ export class Config {
 
   rules = {
     ignore: (files: string[] = []): Linter.Config[] => {
-      const globs = new Set<string>(files.concat(defaultIgnores));
-
-      if (this.hasTypescript) {
-        globs.add('declarations/');
-      }
+      const globs = new Set<string>(
+        files.concat(this.hasTypescript ? defaultTsIgnores : defaultJsIgnores),
+      );
 
       return [
         {
