@@ -40,6 +40,9 @@ export default class extends Component {
   @tracked
   value = '';
 
+  @tracked
+  items = ["Apple", "Pear", "Orange", "Banana", "Grape", "Strawberry"];
+
   @action
   update(key: string, value: unknown) {
     set(this, key, value);
@@ -58,6 +61,7 @@ export default class extends Component {
               @loading={{this.loading}}
               @readonly={{this.readonly}}
               @onChange={{fn log "The value changed to"}}
+              @items={{this.items}}
             />
           </:example>
           <:api as |Args|>
