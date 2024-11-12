@@ -154,6 +154,13 @@ async function createNewConfigFile(priorConfig?: Linter.Config[]) {
     }
   }
 
+  const scriptGlobs = getScriptGlobs(priorConfig);
+  if (scriptGlobs.length) {
+    logger.debug('Found script globs in existing config');
+
+    ruleSets.set('scripts', scriptGlobs);
+  }
+
   await addRuleSets(ruleSets);
 }
 
@@ -294,6 +301,18 @@ function getIgnoredFiles(priorConfig?: Linter.Config[]): string[] {
   }
 
   return Array.from(paths);
+}
+
+function getScriptGlobs(priorConfig?: Linter.Config[]): string[] {
+  if (!priorConfig) {
+    return [];
+  }
+
+  const baseEntry = priorConfig.find(
+    (entry) => entry.name === '@nrg-ui/standards/eslint/scripts/base',
+  );
+
+  return (baseEntry?.files ?? []).flat();
 }
 
 export async function migrate() {
