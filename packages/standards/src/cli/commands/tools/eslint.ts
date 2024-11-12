@@ -1,6 +1,8 @@
 import { existsSync, readFileSync, rmSync, writeFileSync } from 'fs';
+import { resolve } from 'path';
 
 import logger from '../../../logging.js';
+import { defaultJsIgnores, defaultTsIgnores } from '../../../tools/eslint.js';
 import {
   format,
   getDependenciesFromPackage,
@@ -15,6 +17,14 @@ import {
   uninstall,
   update,
 } from '../../utils/dependencies.js';
+
+import type { Linter } from 'eslint';
+
+type Config = {
+  path: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  content?: any;
+};
 
 const eslintCompatibility = '^8.21.0';
 
@@ -60,12 +70,18 @@ async function ensureInstallation() {
   }
 }
 
-function getConfigFile(): string | undefined {
+async function getConfigFile(): Promise<Config | undefined> {
   for (const file of configPaths) {
     if (existsSync(file)) {
       logger.debug(`Found config file: ${file}`);
 
-      return file;
+      const config: Config = { path: file };
+
+      if (file.startsWith('eslint.config')) {
+        config.content = (await import(resolve(file))).default;
+      }
+
+      return config;
     }
   }
 
@@ -76,22 +92,25 @@ function getConfigFile(): string | undefined {
   if (pkg.eslintConfig) {
     logger.debug('Found config in package.json');
 
-    return 'package.json';
+    return {
+      path: 'package.json',
+      content: pkg.eslintConfig,
+    };
   }
 }
 
-async function removeConfigFile() {
-  const config = getConfigFile();
+async function removeConfigFile(): Promise<Linter.Config[] | undefined> {
+  const config = await getConfigFile();
   if (!config) {
     return;
   }
 
-  if (config !== 'package.json') {
+  if (config.path !== 'package.json') {
     logger.debug(`Removing config file ${config}`);
 
-    rmSync(config);
+    rmSync(config.path);
 
-    return;
+    return config.content;
   }
 
   logger.debug('Removing config from package.json');
@@ -102,15 +121,17 @@ async function removeConfigFile() {
   writeFileSync('package.json', JSON.stringify(pkg, null, 2));
 
   await format('package.json');
+
+  return config.content;
 }
 
-async function createNewConfigFile() {
+async function createNewConfigFile(priorConfig?: Linter.Config[]) {
   logger.debug('Creating config file');
 
   const hasTypescript = hasDependency('typescript');
   const ruleSets = new Map<string, unknown>();
 
-  ruleSets.set('ignore', getIgnoredFiles());
+  ruleSets.set('ignore', getIgnoredFiles(priorConfig));
   ruleSets.set('base', null);
   ruleSets.set('js', null);
 
@@ -229,37 +250,59 @@ function detectNeededPlugins(): string[] {
   return plugins;
 }
 
-function getIgnoredFiles(): string[] | null {
+function getIgnoredFiles(priorConfig?: Linter.Config[]): string[] {
   const path = '.eslintignore';
+  const paths = new Set<string>();
+  const hasTypescript = hasDependency('typescript');
+  const defaultIgnores = hasTypescript ? defaultTsIgnores : defaultJsIgnores;
 
-  if (!existsSync(path)) {
+  if (existsSync(path)) {
+    const content = readFileSync(path, 'utf-8');
+    const lines = content
+      .split('\n')
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .filter((line) => !line.startsWith('#'))
+      .filter((line) => !defaultIgnores.includes(line));
+
+    logger.debug(`Found ${lines.length} ignored files in ${path}`);
+    logger.debug(`Ignored files:\n${lines.join('\n')}`);
+
+    logger.debug(`Removing ${path}`);
+    rmSync(path);
+
+    lines.forEach((line) => paths.add(line));
+  } else {
     logger.debug(`No ${path} found`);
-
-    return null;
   }
 
-  const content = readFileSync(path, 'utf-8');
-  const lines = content
-    .split('\n')
-    .map((line) => line.trim())
-    .filter(Boolean)
-    .filter((line) => !line.startsWith('#'));
+  if (priorConfig) {
+    const ignoreEntry = priorConfig.find(
+      (entry) => entry.name === '@nrg-ui/standards/eslint/ignore',
+    );
 
-  logger.debug(`Found ${lines.length} ignored files in ${path}`);
-  logger.debug(`Ignored files:\n${lines.join('\n')}`);
+    if (ignoreEntry?.ignores) {
+      logger.debug(
+        `Found ${ignoreEntry.ignores.length} paths from existing config`,
+        `\n${ignoreEntry.ignores.join('\n')}`,
+      );
 
-  logger.debug(`Removing ${path}`);
-  rmSync(path);
+      ignoreEntry.ignores
+        .filter((ignore) => !defaultIgnores.includes(ignore))
+        .forEach((ignore) => paths.add(ignore));
+    }
+  }
 
-  return lines;
+  return Array.from(paths);
 }
 
 export async function migrate() {
   logger.info('Migrating ESLint configuration');
 
   await ensureInstallation();
-  await removeConfigFile();
-  await createNewConfigFile();
+
+  const priorConfig = await removeConfigFile();
+  await createNewConfigFile(priorConfig);
 
   logger.info('ESLint migration complete');
 }
