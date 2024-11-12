@@ -3,15 +3,17 @@ import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import onKey from 'ember-keyboard/modifiers/on-key';
 
 import InputField from './-private/input-field.ts';
 import onClickOutside from '../../modifiers/on-click-outside.ts';
+
 
 import type { Optional } from '../../';
 
 interface AutocompleteItemSignature {
   Args: {
-    value: string;
+    currentValue: string;
     index: number;
     activeIndex?: number;
   };
@@ -27,7 +29,7 @@ class AutocompleteItem extends Component<AutocompleteItemSignature> {
   }
 
   <template>
-    <li class="dropdown-item {{if this.isActiveIndex "active"}}" role="option" ...attributes>{{this.args.value}}</li>
+    <li class="dropdown-item {{if this.isActiveIndex "active"}}" role="option" ...attributes>{{this.args.currentValue}}</li>
   </template>
 }
 
@@ -35,16 +37,17 @@ export interface AutocompleteSignature {
   Args: {
     format?: ((value: Optional<string>) => string) | false;
     loading?: boolean;
+    items: string[];
   };
   Element: HTMLInputElement;
 }
 
 export default class Autocomplete extends InputField<AutocompleteSignature> {
   @tracked
-  isFocused = false;
+  activeIndex = -1;
 
   @tracked
-  items = ["Apple", "Pear", "Orange", "Banana", "Grape", "Strawberry"];
+  isFocused = false;
 
   @tracked
   searchString = '';
@@ -66,8 +69,10 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
     evt?.preventDefault();
     evt?.stopPropagation();
 
-    this.value = this.items[index] ?? '';
+    this.value = this.args.items[index] ?? '';
     this.searchString = this.value;
+
+    this.activeIndex = index;
 
     this.isFocused = false;
   }
@@ -84,13 +89,88 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
 
   @action
   search(evt: Event) {
+    this.onFocus();
+
     this.searchString = (evt.target as HTMLInputElement).value;
     this.value = '';
+
+    if (this.searchString.length === 0) {
+      this.activeIndex = -1;
+    }
+  }
+
+  @action
+  moveUp(evt: KeyboardEvent) {
+    evt.preventDefault();
+    evt.stopPropagation();
+
+    if (!this.showSuggestions) {
+      return;
+    }
+
+    if (this.activeIndex < 0) {
+      return;
+    }
+
+    this.activeIndex--;
+}
+
+  @action
+  moveDown(evt: KeyboardEvent) {
+    evt.preventDefault();
+    evt.stopPropagation();
+
+    if (!this.showSuggestions) {
+      return;
+    }
+
+    if (this.activeIndex >= this.args.items.length) {
+      return;
+    }
+
+    this.activeIndex++;
+  }
+
+  @action
+  enterKeyHandler(evt?: KeyboardEvent) {
+    evt?.preventDefault();
+    evt?.stopPropagation();
+
+    if (!this.showSuggestions) {
+      return;
+    }
+
+    if (this.activeIndex == -1) {
+      return;
+    }
+
+    this.selectItem(this.activeIndex);
+
+    this.onBlur();
+  }
+
+  @action
+  exitKeyHandler(evt?: KeyboardEvent) {
+    evt?.preventDefault();
+    evt?.stopPropagation();
+
+    if (!this.showSuggestions) {
+      return;
+    }
+
+    this.onBlur();
   }
 
   <template>
     <div
       {{onClickOutside this.onBlur}}
+      {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
+      {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
+      {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
+      {{onKey "Space" this.enterKeyHandler onlyWhenFocused=true}}
+      {{onKey "NumpadEnter" this.enterKeyHandler onlyWhenFocused=true}}
+      {{onKey "Tab" this.exitKeyHandler onlyWhenFocused=true}}
+      {{onKey "Escape" this.exitKeyHandler onlyWhenFocused=true}}
     >
       <div class="input-group">
         {{#unless @basic}}
@@ -120,10 +200,11 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
           class="dropdown-menu mt-1 w-100 {{if this.showSuggestions 'show'}}"
           role="listbox"
         >
-          {{#each this.items as |item index|}}
+          {{#each @items as |item index|}}
             <AutocompleteItem
-              @value={{item}}
+              @currentValue={{item}}
               @index={{index}}
+              @activeIndex={{this.activeIndex}}
               {{on "click" (fn this.selectItem index)}}
             />
           {{/each}}
