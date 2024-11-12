@@ -5,6 +5,8 @@ import { coerce, gte, satisfies } from 'semver';
 import logger from '../../logging.js';
 import { getDependenciesFromPackage, getPackageFile } from '../../utils.js';
 
+import type { SemVer } from 'semver';
+
 type PackageManager = 'pnpm' | 'yarn' | 'npm';
 
 const commands = {
@@ -75,10 +77,10 @@ export function hasDependency(dep: string): boolean {
   return dep in dependencies;
 }
 
-export function getVersion(dep: string): string | undefined {
+export function getVersion(dep: string): SemVer | null {
   const dependencies = getDependenciesFromPackage();
 
-  return dependencies[dep];
+  return coerce(dependencies[dep]);
 }
 
 export async function installMany(deps: { [dep: string]: string | undefined }) {
