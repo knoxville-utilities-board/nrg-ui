@@ -112,6 +112,12 @@ export async function installMany(deps: { [dep: string]: string | undefined }) {
     return arg;
   }).filter(Boolean) as string[];
 
+  if (!args.length) {
+    logger.debug('All dependencies are up to date, skipping installation');
+
+    return;
+  }
+
   // Yarn uses `--dev` while npm and pnpm use `--save-dev`
   await run('add', '--ignore-scripts', ...args, '-D');
 
