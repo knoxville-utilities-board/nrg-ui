@@ -36,6 +36,7 @@ export const compatibility: Record<string, string> = {
   'eslint-plugin-import': '^2.31.0',
   'eslint-plugin-n': '^16.0.0',
   'eslint-plugin-qunit': '8.1.2',
+  'typescript-eslint': '^8.0.0',
 };
 
 let packageManager: PackageManager | false = false;
