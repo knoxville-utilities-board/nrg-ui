@@ -7,13 +7,13 @@
       "oldVersion": "0.16.0"
     },
     "@nrg-ui/standards": {
-      "impact": "minor",
-      "oldVersion": "0.2.3",
-      "newVersion": "0.3.0",
+      "impact": "patch",
+      "oldVersion": "0.3.0",
+      "newVersion": "0.3.1",
       "constraints": [
         {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./packages/standards/package.json"
@@ -22,5 +22,5 @@
       "oldVersion": "0.1.0"
     }
   },
-  "description": "## Release (2024-11-13)\n\n@nrg-ui/standards 0.3.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/standards`\n  * [#271](https://github.com/knoxville-utilities-board/nrg-ui/pull/271) feat(ci): Retain previous configuration if `migrate` is run multiple times ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2024-11-13)\n\n@nrg-ui/standards 0.3.1 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/standards`\n  * [#273](https://github.com/knoxville-utilities-board/nrg-ui/pull/273) fix(standards): Bump minimum compatibility for ember plugin ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }

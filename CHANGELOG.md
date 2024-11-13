@@ -2,6 +2,17 @@
 
 ## Release (2024-11-13)
 
+@nrg-ui/standards 0.3.1 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/standards`
+  * [#273](https://github.com/knoxville-utilities-board/nrg-ui/pull/273) fix(standards): Bump minimum compatibility for ember plugin ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
+## Release (2024-11-13)
+
 @nrg-ui/standards 0.3.0 (minor)
 
 #### :rocket: Enhancement
