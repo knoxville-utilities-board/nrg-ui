@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2024-11-13)
+
+@nrg-ui/standards 0.3.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/standards`
+  * [#271](https://github.com/knoxville-utilities-board/nrg-ui/pull/271) feat(ci): Retain previous configuration if `migrate` is run multiple times ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-11-08)
 
 @nrg-ui/core 0.16.0 (minor)
