@@ -5,6 +5,8 @@ import { coerce, gte, satisfies } from 'semver';
 import logger from '../../logging.js';
 import { getDependenciesFromPackage, getPackageFile } from '../../utils.js';
 
+import type { SemVer } from 'semver';
+
 type PackageManager = 'pnpm' | 'yarn' | 'npm';
 
 const commands = {
@@ -36,6 +38,7 @@ export const compatibility: Record<string, string> = {
   'eslint-plugin-import': '^2.31.0',
   'eslint-plugin-n': '^16.0.0',
   'eslint-plugin-qunit': '8.1.2',
+  'typescript-eslint': '^8.0.0',
 };
 
 let packageManager: PackageManager | false = false;
@@ -74,10 +77,10 @@ export function hasDependency(dep: string): boolean {
   return dep in dependencies;
 }
 
-export function getVersion(dep: string): string | undefined {
+export function getVersion(dep: string): SemVer | null {
   const dependencies = getDependenciesFromPackage();
 
-  return dependencies[dep];
+  return coerce(dependencies[dep]);
 }
 
 export async function installMany(deps: { [dep: string]: string | undefined }) {
@@ -110,6 +113,12 @@ export async function installMany(deps: { [dep: string]: string | undefined }) {
 
     return arg;
   }).filter(Boolean) as string[];
+
+  if (!args.length) {
+    logger.debug('All dependencies are up to date, skipping installation');
+
+    return;
+  }
 
   // Yarn uses `--dev` while npm and pnpm use `--save-dev`
   await run('add', '--ignore-scripts', ...args, '-D');
