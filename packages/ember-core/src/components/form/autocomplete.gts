@@ -3,6 +3,7 @@ import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { restartableTask, timeout } from 'ember-concurrency';
 import onKey from 'ember-keyboard/modifiers/on-key';
 
 import InputField from './-private/input-field.ts';
@@ -52,12 +53,18 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
   @tracked
   searchString = '';
 
-  get disabled() {
-    return this.args.disabled || this.args.loading;
+  @tracked
+  showSuggestions = false;
+
+  @tracked
+  searchRunning = false;
+
+  get loading() {
+    return this.args.loading || this.searchRunning;
   }
 
-  get showSuggestions() {
-    return this.isFocused && this.searchString.length > 0;
+  get disabled() {
+    return this.args.disabled;
   }
 
   toggleFocus(focus: boolean) {
@@ -74,7 +81,7 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
 
     this.activeIndex = index;
 
-    this.isFocused = false;
+    this.onBlur();
   }
 
   @action
@@ -85,18 +92,31 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
   @action
   onBlur() {
     this.isFocused = false;
+    this.showSuggestions = false;
   }
 
   @action
-  search(evt: Event) {
+  async search(evt: Event) {
     this.onFocus();
+
+    this.showSuggestions = false;
 
     this.searchString = (evt.target as HTMLInputElement).value;
     this.value = '';
 
     if (this.searchString.length === 0) {
       this.activeIndex = -1;
+      return;
     }
+
+    this.searchRunning = true;
+
+    await timeout(500);
+
+    await this.onQuery.perform();
+
+    this.showSuggestions = true;
+    this.searchRunning = false;
   }
 
   @action
@@ -108,11 +128,9 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
       return;
     }
 
-    if (this.activeIndex < 0) {
-      return;
+    if (this.activeIndex > 0) {
+      this.activeIndex--;
     }
-
-    this.activeIndex--;
 }
 
   @action
@@ -124,11 +142,9 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
       return;
     }
 
-    if (this.activeIndex >= this.args.items.length) {
-      return;
+    if (this.activeIndex < this.args.items.length - 1) {
+      this.activeIndex++;
     }
-
-    this.activeIndex++;
   }
 
   @action
@@ -161,6 +177,10 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
     this.onBlur();
   }
 
+  onQuery = restartableTask(async () => {
+    await timeout(1500);
+  });
+
   <template>
     <div
       {{onClickOutside this.onBlur}}
@@ -175,7 +195,7 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
       <div class="input-group">
         {{#unless @basic}}
           <span class="input-group-text">
-            {{#if @loading}}
+            {{#if this.loading}}
               <span class="spinner-border spinner-border-sm"/>
             {{else}}
               <i class="bi bi-search"/>
