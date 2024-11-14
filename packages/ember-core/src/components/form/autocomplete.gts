@@ -25,12 +25,22 @@ class AutocompleteItem extends Component<AutocompleteItemSignature> {
   @tracked
   active = true;
 
+  get classList() {
+      const classes = ['dropdown-item'];
+
+      if (this.isActiveIndex) {
+        classes.push('active');
+      }
+
+      return classes.join(' ');
+    }
+
   get isActiveIndex() {
     return this.args.activeIndex === this.args.index;
   }
 
   <template>
-    <li class="dropdown-item {{if this.isActiveIndex "active"}}" role="option" ...attributes>{{this.args.currentValue}}</li>
+    <li class={{this.classList}} role="option" ...attributes>{{this.args.currentValue}}</li>
   </template>
 }
 
@@ -48,57 +58,23 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
   activeIndex = -1;
 
   @tracked
-  isFocused = false;
-
-  @tracked
   searchString = '';
 
   @tracked
   showSuggestions = false;
 
   @tracked
-  searchRunning = false;
+  isSearching = false;
+
+  @tracked
+  filterItems: string[] = [];
 
   get loading() {
-    return this.args.loading || this.searchRunning;
-  }
-
-  get disabled() {
-    return this.args.disabled;
-  }
-
-  toggleFocus(focus: boolean) {
-    this.isFocused = focus;
-  }
-
-  @action
-  selectItem(index: number, evt?: Event) {
-    evt?.preventDefault();
-    evt?.stopPropagation();
-
-    this.value = this.args.items[index] ?? '';
-    this.searchString = this.value;
-
-    this.activeIndex = index;
-
-    this.onBlur();
-  }
-
-  @action
-  onFocus() {
-    this.isFocused = true;
-  }
-
-  @action
-  onBlur() {
-    this.isFocused = false;
-    this.showSuggestions = false;
+    return this.args.loading || this.isSearching;
   }
 
   @action
   async search(evt: Event) {
-    this.onFocus();
-
     this.showSuggestions = false;
 
     this.searchString = (evt.target as HTMLInputElement).value;
@@ -109,14 +85,32 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
       return;
     }
 
-    this.searchRunning = true;
+    this.isSearching = true;
 
     await timeout(500);
 
     await this.onQuery.perform();
 
     this.showSuggestions = true;
-    this.searchRunning = false;
+    this.isSearching = false;
+  }
+
+  @action
+  selectItem(index: number, evt?: Event) {
+    evt?.preventDefault();
+    evt?.stopPropagation();
+
+    this.value = this.filterItems[index] ?? '';
+    this.searchString = this.value;
+
+    this.activeIndex = index;
+
+    this.onBlur();
+  }
+
+  @action
+  onBlur() {
+    this.showSuggestions = false;
   }
 
   @action
@@ -142,7 +136,7 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
       return;
     }
 
-    if (this.activeIndex < this.args.items.length - 1) {
+    if (this.activeIndex < this.filterItems.length - 1) {
       this.activeIndex++;
     }
   }
@@ -179,6 +173,9 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
 
   onQuery = restartableTask(async () => {
     await timeout(1500);
+
+    const match = new RegExp(this.searchString, 'gi');
+    this.filterItems = this.args.items.filter(name => match.test(name));
   });
 
   <template>
@@ -206,12 +203,11 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
           aria-describedby={{@describedBy}}
           id={{@id}}
           class={{this.classList}}
-          disabled={{this.disabled}}
+          disabled={{@disabled}}
           readonly={{@readonly}}
           type="text"
           value={{this.searchString}}
           {{on "input" this.search}}
-          {{on "focus" this.onFocus}}
           ...attributes
         />
       </div>
@@ -220,7 +216,7 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
           class="dropdown-menu mt-1 w-100 {{if this.showSuggestions 'show'}}"
           role="listbox"
         >
-          {{#each @items as |item index|}}
+          {{#each this.filterItems as |item index|}}
             <AutocompleteItem
               @currentValue={{item}}
               @index={{index}}
