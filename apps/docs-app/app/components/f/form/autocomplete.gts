@@ -3,6 +3,7 @@ import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { Autocomplete, bind } from '@nrg-ui/core';
+import { timeout } from 'ember-concurrency';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
@@ -41,7 +42,13 @@ export default class extends Component {
   value = '';
 
   @tracked
-  items = ["Apple", "Pear", "Orange", "Banana", "Grape", "Strawberry"];
+  items = ["Apple", "Pear", "Orange", "Banana", "Grape", "Strawberry", "Mango", "Pineapple", "Peach", "Cherry", "Blueberry"];
+
+  @action
+  async query(searchString: string) {
+    await timeout(1000);
+    return this.items.filter((item) => item.toLowerCase().includes(searchString.toLowerCase()));
+  }
 
   @action
   update(key: string, value: unknown) {
@@ -61,7 +68,7 @@ export default class extends Component {
               @loading={{this.loading}}
               @readonly={{this.readonly}}
               @onChange={{fn log "The value changed to"}}
-              @items={{this.items}}
+              @query={{this.query}}
             />
           </:example>
           <:api as |Args|>

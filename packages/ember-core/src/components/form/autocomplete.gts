@@ -48,7 +48,7 @@ export interface AutocompleteSignature {
   Args: {
     format?: ((value: Optional<string>) => string) | false;
     loading?: boolean;
-    items: string[];
+    query: (searchString: string) => Promise<string[]>;
   };
   Element: HTMLInputElement;
 }
@@ -173,11 +173,8 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
 
   onQuery = restartableTask(async () => {
     await timeout(500);
-
-    await timeout(1500);
-
-    const match = new RegExp(this.searchString, 'gi');
-    this.filterItems = this.args.items.filter(name => match.test(name));
+    this.filterItems = await this.args.query(this.searchString);
+    this.isFocused = true;
   });
 
   <template>
