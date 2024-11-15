@@ -55,44 +55,23 @@ export interface AutocompleteSignature {
 
 export default class Autocomplete extends InputField<AutocompleteSignature> {
   @tracked
+  isFocused = false;
+
+  @tracked
   activeIndex = -1;
 
   @tracked
   searchString = '';
 
   @tracked
-  showSuggestions = false;
-
-  @tracked
-  isSearching = false;
-
-  @tracked
   filterItems: string[] = [];
 
   get loading() {
-    return this.args.loading || this.isSearching;
+    return this.args.loading || this.onQuery.isRunning;
   }
 
-  @action
-  async search(evt: Event) {
-    this.showSuggestions = false;
-
-    this.searchString = (evt.target as HTMLInputElement).value;
-    this.value = '';
-
-    if (this.searchString.length === 0) {
-      this.activeIndex = -1;
-      return;
-    }
-
-    this.isSearching = true;
-
-    await timeout(500);
-
-    await this.onQuery.perform();
-
-    this.showSuggestions = true;
-    this.isSearching = false;
+  get showSuggestions() {
+    return this.isFocused && this.searchString.length > 0 && !this.loading;
   }
 
   @action
@@ -106,11 +85,6 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
     this.activeIndex = index;
 
     this.onBlur();
-  }
-
-  @action
-  onBlur() {
-    this.showSuggestions = false;
   }
 
   @action
@@ -171,7 +145,35 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
     this.onBlur();
   }
 
+  @action
+  onFocus(evt: FocusEvent) {
+    evt.preventDefault();
+    evt.stopPropagation();
+
+    this.isFocused = true;
+  }
+
+  @action
+  onBlur() {
+    this.isFocused = false;
+  }
+
+  @action
+  onSearch(evt: Event) {
+    this.searchString = (evt.target as HTMLInputElement).value;
+    this.value = '';
+
+    if (this.searchString.length === 0) {
+      this.activeIndex = -1;
+      return;
+    }
+
+    this.onQuery.perform();
+  }
+
   onQuery = restartableTask(async () => {
+    await timeout(500);
+
     await timeout(1500);
 
     const match = new RegExp(this.searchString, 'gi');
@@ -207,7 +209,8 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
           readonly={{@readonly}}
           type="text"
           value={{this.searchString}}
-          {{on "input" this.search}}
+          {{on "input" this.onSearch}}
+          {{on "focus" this.onFocus}}
           ...attributes
         />
       </div>
@@ -223,6 +226,8 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
               @activeIndex={{this.activeIndex}}
               {{on "click" (fn this.selectItem index)}}
             />
+          {{else}}
+            <li class="dropdown-item disabled">No results found</li>
           {{/each}}
         </ul>
       </div>
