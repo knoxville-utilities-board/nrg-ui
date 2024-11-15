@@ -7,6 +7,7 @@ import { restartableTask, timeout } from 'ember-concurrency';
 import onKey from 'ember-keyboard/modifiers/on-key';
 
 import InputField from './-private/input-field.ts';
+import onInsert from '../../modifiers/did-insert.ts';
 import onClickOutside from '../../modifiers/on-click-outside.ts';
 
 
@@ -71,6 +72,9 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
   @tracked
   filterItems: string[] = [];
 
+  @tracked
+  searchInputElement: Optional<HTMLElement> = null;
+
   get hideSearchIcon() {
     if (this.args.basic) {
       return true;
@@ -129,10 +133,6 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
     evt.preventDefault();
     evt.stopPropagation();
 
-    if (!this.showSuggestions) {
-      return;
-    }
-
     if (this.activeIndex > 0) {
       this.activeIndex--;
     }
@@ -143,10 +143,6 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
     evt.preventDefault();
     evt.stopPropagation();
 
-    if (!this.showSuggestions) {
-      return;
-    }
-
     if (this.activeIndex < this.filterItems.length - 1) {
       this.activeIndex++;
     }
@@ -156,10 +152,6 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
   enterKeyHandler(evt?: KeyboardEvent) {
     evt?.preventDefault();
     evt?.stopPropagation();
-
-    if (!this.showSuggestions) {
-      return;
-    }
 
     if (this.activeIndex == -1) {
       return;
@@ -175,10 +167,6 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
     evt?.preventDefault();
     evt?.stopPropagation();
 
-    if (!this.showSuggestions) {
-      return;
-    }
-
     this.onBlur();
   }
 
@@ -193,6 +181,7 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
   @action
   onBlur() {
     this.isFocused = false;
+    this.searchInputElement?.blur();
   }
 
   @action
@@ -208,6 +197,11 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
     this.onQuery.perform();
   }
 
+  @action
+  onInsert(element: HTMLElement) {
+    this.searchInputElement = element;
+  }
+
   onQuery = restartableTask(async () => {
     await timeout(this.searchTimeout);
     this.filterItems = await this.args.query(this.searchString);
@@ -217,13 +211,6 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
   <template>
     <div
       {{onClickOutside this.onBlur}}
-      {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
-      {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
-      {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
-      {{onKey "Space" this.enterKeyHandler onlyWhenFocused=true}}
-      {{onKey "NumpadEnter" this.enterKeyHandler onlyWhenFocused=true}}
-      {{onKey "Tab" this.exitKeyHandler onlyWhenFocused=true}}
-      {{onKey "Escape" this.exitKeyHandler onlyWhenFocused=true}}
     >
       <div class="input-group">
         {{#unless this.hideSearchIcon}}
@@ -246,6 +233,14 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
           value={{this.searchString}}
           {{on "input" this.onSearch}}
           {{on "focus" this.onFocus}}
+          {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
+          {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
+          {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
+          {{onKey "Space" this.enterKeyHandler onlyWhenFocused=true}}
+          {{onKey "NumpadEnter" this.enterKeyHandler onlyWhenFocused=true}}
+          {{onKey "Tab" this.exitKeyHandler onlyWhenFocused=true}}
+          {{onKey "Escape" this.exitKeyHandler onlyWhenFocused=true}}
+          {{onInsert this.onInsert}}
           ...attributes
         />
       </div>
