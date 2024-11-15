@@ -33,7 +33,22 @@ export default class extends Component {
   disabled = false;
 
   @tracked
-  disabled = false;
+  hideSearchIcon = false;
+
+  @tracked
+  loading = false;
+
+  @tracked
+  minCharacters = 1;
+
+  @tracked
+  noResultsLabel = "No results found";
+
+  @tracked
+  placeholder = "Search";
+
+  @tracked
+  searchTimeout = 300;
 
   @tracked
   readonly = false;
@@ -65,7 +80,12 @@ export default class extends Component {
               @basic={{this.basic}}
               @binding={{bind this.model "property"}}
               @disabled={{this.disabled}}
+              @hideSearchIcon={{this.hideSearchIcon}}
               @loading={{this.loading}}
+              @noResultsLabel={{this.noResultsLabel}}
+              @minCharacters={{this.minCharacters}}
+              @placeholder={{this.placeholder}}
+              @searchTimeout={{this.searchTimeout}}
               @readonly={{this.readonly}}
               @onChange={{fn log "The value changed to"}}
               @query={{this.query}}
@@ -100,11 +120,43 @@ export default class extends Component {
               @onInput={{fn this.update "disabled"}}
             />
             <Args.Bool
+              @name="hideSearchIcon"
+              @defaultValue={{false}}
+              @description="When true, the text will be replaced with a hideSearchIcon spinner"
+              @value={{this.hideSearchIcon}}
+              @onInput={{fn this.update "hideSearchIcon"}}
+            />
+            <Args.Bool
               @name="loading"
               @defaultValue={{false}}
               @description="When true, the text will be replaced with a loading spinner"
               @value={{this.loading}}
               @onInput={{fn this.update "loading"}}
+            />
+            <Args.Number
+              @name="minCharacters"
+              @defaultValue={{1}}
+              @description="The minimum number of characters needed to search"
+              @value={{this.minCharacters}}
+              @onInput={{fn this.update "minCharacters"}}
+            />
+            <Args.String
+              @name="noResultsLabel"
+              @description="The label to display when no results are found"
+              @value={{this.noResultsLabel}}
+              @onInput={{fn this.update "noResultsLabel"}}
+            />
+            <Args.String
+              @name="placeholder"
+              @description="The placeholder text"
+              @value={{this.placeholder}}
+              @onInput={{fn this.update "placeholder"}}
+            />
+            <Args.Number
+              @name="searchTimeout"
+              @description="The amount of time to wait before searching"
+              @value={{this.searchTimeout}}
+              @onInput={{fn this.update "searchTimeout"}}
             />
             <Args.Bool
               @name="readonly"
@@ -114,12 +166,12 @@ export default class extends Component {
               @onInput={{fn this.update "readonly"}}
             />
             <Args.Action
-              @name="onChange"
-              @description="The action to call when the value changes"
+              @name="isDateDisabled"
+              @description="A function that receives a date and returns whether it should be disabled"
             >
               <CodeBlock
                 @lang="typescript"
-                @code="(newValue: string) => unknown"
+                @code="(string: searchString) => string[]"
               />
             </Args.Action>
           </:api>

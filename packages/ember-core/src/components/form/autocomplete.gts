@@ -47,7 +47,12 @@ class AutocompleteItem extends Component<AutocompleteItemSignature> {
 export interface AutocompleteSignature {
   Args: {
     format?: ((value: Optional<string>) => string) | false;
+    hideSearchIcon?: boolean;
     loading?: boolean;
+    minCharacters?: number;
+    noResultsLabel?: string;
+    placeholder?: string;
+    searchTimeout?: number;
     query: (searchString: string) => Promise<string[]>;
   };
   Element: HTMLInputElement;
@@ -66,12 +71,44 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
   @tracked
   filterItems: string[] = [];
 
+  get hideSearchIcon() {
+    if (this.args.basic) {
+      return true;
+    }
+
+    return this.args.hideSearchIcon ?? false;
+  }
+
   get loading() {
     return this.args.loading || this.onQuery.isRunning;
   }
 
+  get minCharacters() {
+    return this.args.minCharacters ?? 1;
+  }
+
+  get noResultsLabel() {
+    return this.args.noResultsLabel ?? "No results found";
+  }
+
+  get placeholder() {
+    if (this.args.basic) {
+      return "";
+    }
+
+    return this.args.placeholder ?? "Search";
+  }
+
+  get searchTimeout() {
+    return this.args.searchTimeout ?? 300;
+  }
+
+  get canPerformSearch () {
+    return this.searchString.length >= this.minCharacters;
+  }
+
   get showSuggestions() {
-    return this.isFocused && this.searchString.length > 0 && !this.loading;
+    return this.isFocused && this.canPerformSearch && !this.loading;
   }
 
   @action
@@ -172,7 +209,7 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
   }
 
   onQuery = restartableTask(async () => {
-    await timeout(500);
+    await timeout(this.searchTimeout);
     this.filterItems = await this.args.query(this.searchString);
     this.isFocused = true;
   });
@@ -189,7 +226,7 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
       {{onKey "Escape" this.exitKeyHandler onlyWhenFocused=true}}
     >
       <div class="input-group">
-        {{#unless @basic}}
+        {{#unless this.hideSearchIcon}}
           <span class="input-group-text">
             {{#if this.loading}}
               <span class="spinner-border spinner-border-sm"/>
@@ -204,6 +241,7 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
           class={{this.classList}}
           disabled={{@disabled}}
           readonly={{@readonly}}
+          placeholder={{this.placeholder}}
           type="text"
           value={{this.searchString}}
           {{on "input" this.onSearch}}
@@ -224,7 +262,7 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
               {{on "click" (fn this.selectItem index)}}
             />
           {{else}}
-            <li class="dropdown-item disabled">No results found</li>
+            <li class="dropdown-item disabled">{{this.noResultsLabel}}</li>
           {{/each}}
         </ul>
       </div>
