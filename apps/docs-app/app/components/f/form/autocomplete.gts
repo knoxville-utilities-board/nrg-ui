@@ -51,13 +51,16 @@ export default class extends Component {
   searchTimeout = 300;
 
   @tracked
+  scrollable = true;
+
+  @tracked
   readonly = false;
 
   @tracked
   value = '';
 
   @tracked
-  items = ["Apple", "Pear", "Orange", "Banana", "Grape", "Strawberry", "Mango", "Pineapple", "Peach", "Cherry", "Blueberry"];
+  items = ["Apple", "Pear", "Orange", "Banana", "Grape", "Strawberry", "Mango", "Pineapple", "Peach", "Cherry", "Blueberry", "Watermelon", "Papaya", "Kiwi", "Plum", "Apricot", "Pomegranate", "Lemon", "Lime", "Raspberry", "Blackberry", "Coconut", "Dragon fruit", "Lychee", "Fig", "Tangerine" ];
 
   @action
   async query(searchString: string) {
@@ -85,10 +88,11 @@ export default class extends Component {
               @noResultsLabel={{this.noResultsLabel}}
               @minCharacters={{this.minCharacters}}
               @placeholder={{this.placeholder}}
+              @query={{this.query}}
               @searchTimeout={{this.searchTimeout}}
               @readonly={{this.readonly}}
+              @scrollable={{this.scrollable}}
               @onChange={{fn log "The value changed to"}}
-              @query={{this.query}}
             />
           </:example>
           <:api as |Args|>
@@ -142,18 +146,30 @@ export default class extends Component {
             />
             <Args.String
               @name="noResultsLabel"
+              @defaultValue={{"No results found"}}
               @description="The label to display when no results are found"
               @value={{this.noResultsLabel}}
               @onInput={{fn this.update "noResultsLabel"}}
             />
             <Args.String
               @name="placeholder"
+              @defaultValue={{"Search"}}
               @description="The placeholder text"
               @value={{this.placeholder}}
               @onInput={{fn this.update "placeholder"}}
             />
+            <Args.Action
+              @name="query"
+              @description="A function that return a array of strings options"
+            >
+              <CodeBlock
+                @lang="typescript"
+                @code="(string: searchString) => string[]"
+              />
+            </Args.Action>
             <Args.Number
               @name="searchTimeout"
+              @defaultValue={{300}}
               @description="The amount of time to wait before searching"
               @value={{this.searchTimeout}}
               @onInput={{fn this.update "searchTimeout"}}
@@ -165,15 +181,13 @@ export default class extends Component {
               @value={{this.readonly}}
               @onInput={{fn this.update "readonly"}}
             />
-            <Args.Action
-              @name="isDateDisabled"
-              @description="A function that receives a date and returns whether it should be disabled"
-            >
-              <CodeBlock
-                @lang="typescript"
-                @code="(string: searchString) => string[]"
-              />
-            </Args.Action>
+            <Args.Bool
+              @name="scrollable"
+              @defaultValue={{true}}
+              @description="Unless false, the dropdown will be scrollable"
+              @value={{this.scrollable}}
+              @onInput={{fn this.update "scrollable"}}
+            />
           </:api>
         </FreestyleUsage>
       </Section.subsection>
