@@ -54,6 +54,7 @@ export interface AutocompleteSignature {
     noResultsLabel?: string;
     placeholder?: string;
     searchTimeout?: number;
+    scrollable?: boolean;
     query: (searchString: string) => Promise<string[]>;
   };
   Element: HTMLInputElement;
@@ -71,6 +72,9 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
 
   @tracked
   filterItems: string[] = [];
+
+  @tracked
+  menuElement: Optional<HTMLElement> = null;
 
   @tracked
   searchInputElement: Optional<HTMLElement> = null;
@@ -107,6 +111,10 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
     return this.args.searchTimeout ?? 300;
   }
 
+  get scrollable() {
+    return this.args.scrollable && true;
+  }
+
   get canPerformSearch () {
     return this.searchString.length >= this.minCharacters;
   }
@@ -114,6 +122,26 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
   get showSuggestions() {
     return this.isFocused && this.canPerformSearch && !this.loading;
   }
+
+  scrollActiveItemIntoView() {
+    if (this.activeIndex == -1) {
+      return;
+    }
+    const childElements = Array.from(
+      this.menuElement?.querySelectorAll(`li`) ?? [],
+    );
+    const activeElement = childElements[this.activeIndex];
+    if (!activeElement) {
+      return;
+    }
+    activeElement.scrollIntoView({ block: 'nearest' });
+  }
+
+  onQuery = restartableTask(async () => {
+    await timeout(this.searchTimeout);
+    this.filterItems = await this.args.query(this.searchString);
+    this.isFocused = true;
+  });
 
   @action
   selectItem(index: number, evt?: Event) {
@@ -135,6 +163,7 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
 
     if (this.activeIndex > 0) {
       this.activeIndex--;
+      this.scrollActiveItemIntoView();
     }
 }
 
@@ -145,6 +174,7 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
 
     if (this.activeIndex < this.filterItems.length - 1) {
       this.activeIndex++;
+      this.scrollActiveItemIntoView();
     }
   }
 
@@ -188,9 +218,10 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
   onSearch(evt: Event) {
     this.searchString = (evt.target as HTMLInputElement).value;
     this.value = '';
+    this.activeIndex = -1;
 
-    if (this.searchString.length === 0) {
-      this.activeIndex = -1;
+
+    if (this.searchString.trim().length === 0) {
       return;
     }
 
@@ -198,18 +229,18 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
   }
 
   @action
-  onInsert(element: HTMLElement) {
+  onSearchBarInsert(element: HTMLElement) {
     this.searchInputElement = element;
   }
 
-  onQuery = restartableTask(async () => {
-    await timeout(this.searchTimeout);
-    this.filterItems = await this.args.query(this.searchString);
-    this.isFocused = true;
-  });
+  @action
+  onMenuInsert(element: HTMLElement) {
+    this.menuElement = element;
+  }
 
   <template>
     <div
+      class="search"
       {{onClickOutside this.onBlur}}
     >
       <div class="input-group">
@@ -236,18 +267,18 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
           {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
           {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
           {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
-          {{onKey "Space" this.enterKeyHandler onlyWhenFocused=true}}
           {{onKey "NumpadEnter" this.enterKeyHandler onlyWhenFocused=true}}
           {{onKey "Tab" this.exitKeyHandler onlyWhenFocused=true}}
           {{onKey "Escape" this.exitKeyHandler onlyWhenFocused=true}}
-          {{onInsert this.onInsert}}
+          {{onInsert this.onSearchBarInsert}}
           ...attributes
         />
       </div>
-      <div class="dropdown">
+      <div class="dropdown {{if this.scrollable 'scrollable'}}">
         <ul
           class="dropdown-menu mt-1 w-100 {{if this.showSuggestions 'show'}}"
           role="listbox"
+          {{onInsert this.onMenuInsert}}
         >
           {{#each this.filterItems as |item index|}}
             <AutocompleteItem
