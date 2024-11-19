@@ -2,7 +2,7 @@ import { fn } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { Autocomplete, bind } from '@nrg-ui/core';
+import { Search, bind } from '@nrg-ui/core';
 import { timeout } from 'ember-concurrency';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
@@ -77,11 +77,11 @@ export default class extends Component {
   }
 
   <template>
-    <FreestyleSection @name="Autocomplete" as |Section|>
+    <FreestyleSection @name="Search" as |Section|>
       <Section.subsection @name="Basic">
         <FreestyleUsage>
           <:example>
-            <Autocomplete
+            <Search
               class={{this.class}}
               @basic={{this.basic}}
               @binding={{bind this.model "property"}}

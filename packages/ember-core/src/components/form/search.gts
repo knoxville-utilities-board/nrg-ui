@@ -4,6 +4,8 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { restartableTask, timeout } from 'ember-concurrency';
+// @ts-expect-error Ember keyboard doesn't currently ship a type for the `on-key` modifier
+// https://github.com/adopted-ember-addons/ember-keyboard/issues/464
 import onKey from 'ember-keyboard/modifiers/on-key';
 
 import InputField from './-private/input-field.ts';
@@ -13,7 +15,7 @@ import onClickOutside from '../../modifiers/on-click-outside.ts';
 
 import type { Optional } from '../../';
 
-interface AutocompleteItemSignature {
+interface SearchItemSignature {
   Args: {
     currentValue: string;
     index: number;
@@ -22,7 +24,7 @@ interface AutocompleteItemSignature {
   Element: HTMLLIElement;
 }
 
-class AutocompleteItem extends Component<AutocompleteItemSignature> {
+class SearchItem extends Component<SearchItemSignature> {
   @tracked
   active = true;
 
@@ -45,7 +47,7 @@ class AutocompleteItem extends Component<AutocompleteItemSignature> {
   </template>
 }
 
-export interface AutocompleteSignature {
+export interface SearchSignature {
   Args: {
     format?: ((value: Optional<string>) => string) | false;
     clearable?: boolean;
@@ -61,7 +63,7 @@ export interface AutocompleteSignature {
   Element: HTMLInputElement;
 }
 
-export default class Autocomplete extends InputField<AutocompleteSignature> {
+export default class Search extends InputField<SearchSignature> {
   @tracked
   activeIndex = -1;
 
@@ -302,7 +304,7 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
           {{onInsert this.onMenuInsert}}
         >
           {{#each this.filterItems as |item index|}}
-            <AutocompleteItem
+            <SearchItem
               @currentValue={{item}}
               @index={{index}}
               @activeIndex={{this.activeIndex}}

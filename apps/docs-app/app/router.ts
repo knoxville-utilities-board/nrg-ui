@@ -18,12 +18,12 @@ Router.map(function () {
     this.route('card');
     this.route('header');
     this.route('form', function () {
-      this.route('autocomplete')
       this.route('checkbox');
       this.route('checkbox-group');
       this.route('datetime');
       this.route('phone-input');
       this.route('radio-group');
+      this.route('search')
       this.route('select');
       this.route('text-area');
       this.route('text-input');
