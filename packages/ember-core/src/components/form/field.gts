@@ -109,6 +109,14 @@ export default class Field extends Component<FieldSignature> {
   @tracked
   binding!: Binding<object>;
 
+  constructor(owner: unknown, args: FieldSignature['Args']) {
+    super(owner, args);
+
+    registerDestructor(this, () => {
+      this.setupValidator(undefined, [false]);
+    });
+  }
+
   get isValid() {
     const { form } = this.args;
 
@@ -177,7 +185,7 @@ export default class Field extends Component<FieldSignature> {
   }
 
   @action
-  setupValidator(element: Element, [required]: [boolean]) {
+  setupValidator(element: Element | undefined, [required]: [boolean]) {
     const { binding, requiredId } = this;
     const { form } = this.args;
 
