@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2024-11-19)
+
+@nrg-ui/core 0.16.1 (patch)
+
+#### :bug: Bug Fix
+* `docs-app`, `@nrg-ui/core`
+  * [#278](https://github.com/knoxville-utilities-board/nrg-ui/pull/278) fix: Add destructor to field component for validations ([@lnicely](https://github.com/lnicely))
+
+#### Committers: 1
+- Lucas ([@lnicely](https://github.com/lnicely))
+
 ## Release (2024-11-13)
 
 @nrg-ui/standards 0.3.1 (patch)
