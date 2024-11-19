@@ -65,10 +65,10 @@ export interface SearchSignature {
 
 export default class Search extends InputField<SearchSignature> {
   @tracked
-  activeIndex = -1;
+  activeItem = -1;
 
   @tracked
-  filterItems: string[] = [];
+  items: string[] = [];
 
   @tracked
   isFocused = false;
@@ -123,21 +123,21 @@ export default class Search extends InputField<SearchSignature> {
   }
 
   get canPerformSearch () {
-    return this.searchString.length >= this.minCharacters;
+    return this.searchString.trim().length >= this.minCharacters;
   }
 
-  get showSuggestions() {
+  get showItems() {
     return this.isFocused && this.canPerformSearch && !this.loading;
   }
 
   scrollActiveItemIntoView() {
-    if (this.activeIndex == -1) {
+    if (this.activeItem == -1) {
       return;
     }
     const childElements = Array.from(
       this.menuElement?.querySelectorAll(`li`) ?? [],
     );
-    const activeElement = childElements[this.activeIndex];
+    const activeElement = childElements[this.activeItem];
     if (!activeElement) {
       return;
     }
@@ -146,7 +146,7 @@ export default class Search extends InputField<SearchSignature> {
 
   onQuery = restartableTask(async () => {
     await timeout(this.searchTimeout);
-    this.filterItems = await this.args.query(this.searchString);
+    this.items = await this.args.query(this.searchString);
     this.isFocused = true;
   });
 
@@ -155,10 +155,10 @@ export default class Search extends InputField<SearchSignature> {
     evt?.preventDefault();
     evt?.stopPropagation();
 
-    this.value = this.filterItems[index] ?? '';
+    this.value = this.items[index] ?? '';
     this.searchString = this.value;
 
-    this.activeIndex = index;
+    this.activeItem = index;
 
     this.onBlur();
   }
@@ -168,8 +168,8 @@ export default class Search extends InputField<SearchSignature> {
     evt.preventDefault();
     evt.stopPropagation();
 
-    if (this.activeIndex > 0) {
-      this.activeIndex--;
+    if (this.activeItem > 0) {
+      this.activeItem--;
       this.scrollActiveItemIntoView();
     }
 }
@@ -179,8 +179,8 @@ export default class Search extends InputField<SearchSignature> {
     evt.preventDefault();
     evt.stopPropagation();
 
-    if (this.activeIndex < this.filterItems.length - 1) {
-      this.activeIndex++;
+    if (this.activeItem < this.items.length - 1) {
+      this.activeItem++;
       this.scrollActiveItemIntoView();
     }
   }
@@ -190,11 +190,11 @@ export default class Search extends InputField<SearchSignature> {
     evt?.preventDefault();
     evt?.stopPropagation();
 
-    if (this.activeIndex == -1) {
+    if (this.activeItem == -1) {
       return;
     }
 
-    this.selectItem(this.activeIndex);
+    this.selectItem(this.activeItem);
 
     this.onBlur();
   }
@@ -225,9 +225,9 @@ export default class Search extends InputField<SearchSignature> {
   onSearch(evt: Event) {
     this.searchString = (evt.target as HTMLInputElement).value;
     this.value = '';
-    this.activeIndex = -1;
+    this.activeItem = -1;
 
-    if (this.searchString.trim().length === 0) {
+    if (!this.canPerformSearch) {
       return;
     }
 
@@ -238,7 +238,7 @@ export default class Search extends InputField<SearchSignature> {
   clear() {
     this.searchString = ''
     this.value = '';
-    this.activeIndex = -1;
+    this.activeItem = -1;
 
     this.onBlur()
   }
@@ -299,15 +299,15 @@ export default class Search extends InputField<SearchSignature> {
       </div>
       <div class="dropdown {{if this.scrollable 'scrollable'}}">
         <ul
-          class="dropdown-menu mt-1 w-100 {{if this.showSuggestions 'show'}}"
+          class="dropdown-menu mt-1 w-100 {{if this.showItems 'show'}}"
           role="listbox"
           {{onInsert this.onMenuInsert}}
         >
-          {{#each this.filterItems as |item index|}}
+          {{#each this.items as |item index|}}
             <SearchItem
               @currentValue={{item}}
               @index={{index}}
-              @activeIndex={{this.activeIndex}}
+              @activeIndex={{this.activeItem}}
               {{on "click" (fn this.selectItem index)}}
             />
           {{else}}
