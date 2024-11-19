@@ -83,6 +83,10 @@ export default class Search extends InputField<SearchSignature> {
   searchString = '';
 
   get clearable() {
+    if (this.args.basic) {
+      return false;
+    }
+
     return this.args.clearable ?? false;
   }
 
