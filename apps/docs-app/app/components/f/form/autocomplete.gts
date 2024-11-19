@@ -33,6 +33,9 @@ export default class extends Component {
   disabled = false;
 
   @tracked
+  clearable = true;
+
+  @tracked
   hideSearchIcon = false;
 
   @tracked
@@ -82,6 +85,7 @@ export default class extends Component {
               class={{this.class}}
               @basic={{this.basic}}
               @binding={{bind this.model "property"}}
+              @clearable={{this.clearable}}
               @disabled={{this.disabled}}
               @hideSearchIcon={{this.hideSearchIcon}}
               @loading={{this.loading}}
@@ -115,6 +119,13 @@ export default class extends Component {
               @description="Create a two-way binding with the value"
               @value={{this.model.property}}
               @onInput={{fn this.update "model.property"}}
+            />
+            <Args.Bool
+              @name="clearable"
+              @defaultValue={{false}}
+              @description="When true, adds a clear button"
+              @value={{this.clearable}}
+              @onInput={{fn this.update "clearable"}}
             />
             <Args.Bool
               @name="disabled"

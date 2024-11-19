@@ -48,6 +48,7 @@ class AutocompleteItem extends Component<AutocompleteItemSignature> {
 export interface AutocompleteSignature {
   Args: {
     format?: ((value: Optional<string>) => string) | false;
+    clearable?: boolean;
     hideSearchIcon?: boolean;
     loading?: boolean;
     minCharacters?: number;
@@ -112,7 +113,11 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
   }
 
   get scrollable() {
-    return this.args.scrollable && true;
+    return this.args.scrollable ?? true;
+  }
+
+  get clearable() {
+    return this.args.clearable ?? false;
   }
 
   get canPerformSearch () {
@@ -220,12 +225,20 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
     this.value = '';
     this.activeIndex = -1;
 
-
     if (this.searchString.trim().length === 0) {
       return;
     }
 
     this.onQuery.perform();
+  }
+
+  @action
+  clear() {
+    this.searchString = ''
+    this.value = '';
+    this.activeIndex = -1;
+
+    this.onBlur()
   }
 
   @action
@@ -273,6 +286,14 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
           {{onInsert this.onSearchBarInsert}}
           ...attributes
         />
+        {{#if this.clearable}}
+          <button
+            class="input-group-text"
+            {{on "click" this.clear}}
+          >
+            <i class="bi bi-x-lg"/>
+          </button>
+        {{/if}}
       </div>
       <div class="dropdown {{if this.scrollable 'scrollable'}}">
         <ul
