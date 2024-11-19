@@ -90,6 +90,9 @@ class Model {
   checkbox;
 
   @tracked
+  checkbox2;
+
+  @tracked
   checkboxGroup = autoTrack(new Array(3));
 
   toJSON() {
@@ -224,6 +227,11 @@ export default class extends Component {
             >Privacy Policy</a>.
           </Field.Checkbox>
         </Form.Field>
+        {{#if this.model.checkbox}}
+          <Form.Field @required={{true}} as |Field|>
+            <Field.TextInput @binding={{bind this.model "checkbox2"}} />
+          </Form.Field>
+        {{/if}}
         <Form.SubmitButton class="btn-primary" />
         <Button
           class="btn{{unless this.required '-outline'}}-secondary mt-3"

@@ -185,7 +185,7 @@ export default class Field extends Component<FieldSignature> {
   }
 
   @action
-  setupValidator(element: Element, [required]: [boolean]) {
+  setupValidator(element: Element | undefined, [required]: [boolean]) {
     const { binding, requiredId } = this;
     const { form } = this.args;
 
