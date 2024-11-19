@@ -54,31 +54,35 @@ export interface AutocompleteSignature {
     minCharacters?: number;
     noResultsLabel?: string;
     placeholder?: string;
-    searchTimeout?: number;
-    scrollable?: boolean;
     query: (searchString: string) => Promise<string[]>;
+    scrollable?: boolean;
+    searchTimeout?: number;
   };
   Element: HTMLInputElement;
 }
 
 export default class Autocomplete extends InputField<AutocompleteSignature> {
   @tracked
-  isFocused = false;
-
-  @tracked
   activeIndex = -1;
 
   @tracked
-  searchString = '';
+  filterItems: string[] = [];
 
   @tracked
-  filterItems: string[] = [];
+  isFocused = false;
 
   @tracked
   menuElement: Optional<HTMLElement> = null;
 
   @tracked
   searchInputElement: Optional<HTMLElement> = null;
+
+  @tracked
+  searchString = '';
+
+  get clearable() {
+    return this.args.clearable ?? false;
+  }
 
   get hideSearchIcon() {
     if (this.args.basic) {
@@ -108,16 +112,12 @@ export default class Autocomplete extends InputField<AutocompleteSignature> {
     return this.args.placeholder ?? "Search";
   }
 
-  get searchTimeout() {
-    return this.args.searchTimeout ?? 300;
-  }
-
   get scrollable() {
     return this.args.scrollable ?? true;
   }
 
-  get clearable() {
-    return this.args.clearable ?? false;
+  get searchTimeout() {
+    return this.args.searchTimeout ?? 300;
   }
 
   get canPerformSearch () {

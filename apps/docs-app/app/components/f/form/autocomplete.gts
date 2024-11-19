@@ -21,22 +21,25 @@ class Model {
 }
 
 export default class extends Component {
+  model = new Model();
+
   @tracked
   class = '';
-
-  model = new Model();
 
   @tracked
   basic = false;
 
   @tracked
+  clearable = false;
+
+  @tracked
   disabled = false;
 
   @tracked
-  clearable = true;
+  hideSearchIcon = false;
 
   @tracked
-  hideSearchIcon = false;
+  items = ["Apple", "Pear", "Orange", "Banana", "Grape", "Strawberry", "Mango", "Pineapple", "Peach", "Cherry", "Blueberry", "Watermelon", "Papaya", "Kiwi", "Plum", "Apricot", "Pomegranate", "Lemon", "Lime", "Raspberry", "Blackberry", "Coconut", "Dragon fruit", "Lychee", "Fig", "Tangerine" ];
 
   @tracked
   loading = false;
@@ -51,19 +54,16 @@ export default class extends Component {
   placeholder = "Search";
 
   @tracked
-  searchTimeout = 300;
+  readonly = false;
 
   @tracked
   scrollable = true;
 
   @tracked
-  readonly = false;
+  searchTimeout = 300;
 
   @tracked
   value = '';
-
-  @tracked
-  items = ["Apple", "Pear", "Orange", "Banana", "Grape", "Strawberry", "Mango", "Pineapple", "Peach", "Cherry", "Blueberry", "Watermelon", "Papaya", "Kiwi", "Plum", "Apricot", "Pomegranate", "Lemon", "Lime", "Raspberry", "Blackberry", "Coconut", "Dragon fruit", "Lychee", "Fig", "Tangerine" ];
 
   @action
   async query(searchString: string) {
@@ -89,14 +89,14 @@ export default class extends Component {
               @disabled={{this.disabled}}
               @hideSearchIcon={{this.hideSearchIcon}}
               @loading={{this.loading}}
-              @noResultsLabel={{this.noResultsLabel}}
               @minCharacters={{this.minCharacters}}
+              @noResultsLabel={{this.noResultsLabel}}
               @placeholder={{this.placeholder}}
+              @onChange={{fn log "The value changed to"}}
               @query={{this.query}}
-              @searchTimeout={{this.searchTimeout}}
               @readonly={{this.readonly}}
               @scrollable={{this.scrollable}}
-              @onChange={{fn log "The value changed to"}}
+              @searchTimeout={{this.searchTimeout}}
             />
           </:example>
           <:api as |Args|>
@@ -178,13 +178,6 @@ export default class extends Component {
                 @code="(string: searchString) => string[]"
               />
             </Args.Action>
-            <Args.Number
-              @name="searchTimeout"
-              @defaultValue={{300}}
-              @description="The amount of time to wait before searching"
-              @value={{this.searchTimeout}}
-              @onInput={{fn this.update "searchTimeout"}}
-            />
             <Args.Bool
               @name="readonly"
               @defaultValue={{false}}
@@ -198,6 +191,13 @@ export default class extends Component {
               @description="Unless false, the dropdown will be scrollable"
               @value={{this.scrollable}}
               @onInput={{fn this.update "scrollable"}}
+            />
+            <Args.Number
+              @name="searchTimeout"
+              @defaultValue={{300}}
+              @description="The amount of time to wait before searching"
+              @value={{this.searchTimeout}}
+              @onInput={{fn this.update "searchTimeout"}}
             />
           </:api>
         </FreestyleUsage>
