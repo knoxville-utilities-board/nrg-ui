@@ -1,5 +1,4 @@
 /* Components - Forms */
-export { default as Autocomplete } from './components/form/autocomplete.gts'
 export { default as BoundValue } from './components/form/bound-value.ts';
 export { default as CheckboxGroup } from './components/form/checkbox-group.gts';
 export { default as Checkbox } from './components/form/checkbox.gts';
@@ -9,6 +8,7 @@ export { default as Form } from './components/form/index.gts';
 export { default as NumberInput } from './components/form/number-input.gts';
 export { default as PhoneInput } from './components/form/phone-input.gts';
 export { default as RadioGroup } from './components/form/radio-group.gts';
+export { default as Search } from './components/form/search.gts';
 export { default as Select } from './components/form/select.gts';
 export { default as TextArea } from './components/form/text-area.gts';
 export { default as TextInput } from './components/form/text-input.gts';
@@ -53,7 +53,6 @@ export { default as onInsert } from './modifiers/on-insert.ts';
 export { default as onUpdate } from './modifiers/on-update.ts';
 
 /* Types - Components - Forms */
-export type { AutocompleteSignature } from './components/form/autocomplete.gts';
 export type { BoundValueSignature } from './components/form/bound-value.ts';
 export type { CheckboxGroupSignature } from './components/form/checkbox-group.gts';
 export type { CheckboxSignature } from './components/form/checkbox.gts';
@@ -63,6 +62,7 @@ export type { FormSignature } from './components/form/index.gts';
 export type { NumberInputSignature } from './components/form/number-input.gts';
 export type { PhoneInputSignature } from './components/form/phone-input.gts';
 export type { RadioGroupSignature } from './components/form/radio-group.gts';
+export type { SearchSignature } from './components/form/search.gts';
 export type { SelectSignature } from './components/form/select.gts';
 export type { TextAreaSignature } from './components/form/text-area.gts';
 export type { TextInputSignature } from './components/form/text-input.gts';
