@@ -12,19 +12,23 @@ import InputField from './-private/input-field.ts';
 import onInsert from '../../modifiers/did-insert.ts';
 import onClickOutside from '../../modifiers/on-click-outside.ts';
 
-
 import type { Optional } from '../../';
 
-interface SearchItemSignature {
+declare type SearchOption<T> = {
+  label: string;
+  value: string | T;
+};
+
+interface SearchItemSignature<T> {
   Args: {
-    currentValue: string;
+    option: SearchOption<T>;
     index: number;
     activeIndex?: number;
   };
   Element: HTMLLIElement;
 }
 
-class SearchItem extends Component<SearchItemSignature> {
+class SearchItem<T> extends Component<SearchItemSignature<T>> {
   @tracked
   active = true;
 
@@ -43,11 +47,11 @@ class SearchItem extends Component<SearchItemSignature> {
   }
 
   <template>
-    <li class={{this.classList}} role="option" ...attributes>{{this.args.currentValue}}</li>
+    <li class={{this.classList}} role="option" ...attributes>{{this.args.option.label}}</li>
   </template>
 }
 
-export interface SearchSignature {
+export interface SearchSignature<T> {
   Args: {
     format?: ((value: Optional<string>) => string) | false;
     clearable?: boolean;
@@ -56,19 +60,20 @@ export interface SearchSignature {
     minCharacters?: number;
     noResultsLabel?: string;
     placeholder?: string;
-    query: (searchString: string) => Promise<string[]>;
+    query: (searchString: string) => Promise<T[]>;
     scrollable?: boolean;
     searchTimeout?: number;
+    serializationPath?: string;
   };
   Element: HTMLInputElement;
 }
 
-export default class Search extends InputField<SearchSignature> {
+export default class Search<T> extends InputField<SearchSignature<T>> {
   @tracked
   activeItem = -1;
 
   @tracked
-  items: string[] = [];
+  items: T[] = [];
 
   @tracked
   isFocused = false;
@@ -159,8 +164,8 @@ export default class Search extends InputField<SearchSignature> {
     evt?.preventDefault();
     evt?.stopPropagation();
 
-    this.value = this.items[index] ?? '';
-    this.searchString = this.value;
+    this.value = this.internalItems[index]?.label ?? "";
+    this.searchString = this.internalItems[index]?.label ?? "";
 
     this.activeItem = index;
 
@@ -244,7 +249,7 @@ export default class Search extends InputField<SearchSignature> {
     this.value = '';
     this.activeItem = -1;
 
-    this.onBlur()
+    this.onBlur();
   }
 
   @action
@@ -255,6 +260,23 @@ export default class Search extends InputField<SearchSignature> {
   @action
   onMenuInsert(element: HTMLElement) {
     this.menuElement = element;
+  }
+
+  get internalItems() {
+    return this.items.map((item) => {
+    if (this.args.serializationPath != null) {
+      const label = (item as Record<string, string>)[this.args.serializationPath] ?? "";
+      return {
+        label,
+        value: item
+      };
+    }
+
+    return {
+      label: item as string,
+      value: item
+    };
+  });
   }
 
   <template>
@@ -307,9 +329,9 @@ export default class Search extends InputField<SearchSignature> {
           role="listbox"
           {{onInsert this.onMenuInsert}}
         >
-          {{#each this.items as |item index|}}
+          {{#each this.internalItems as |option index|}}
             <SearchItem
-              @currentValue={{item}}
+              @option={{option}}
               @index={{index}}
               @activeIndex={{this.activeItem}}
               {{on "click" (fn this.selectItem index)}}

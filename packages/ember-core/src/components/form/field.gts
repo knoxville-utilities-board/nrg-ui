@@ -60,7 +60,8 @@ export interface FieldSignature {
         NumberInput: ComponentLike<NumberInputSignature>;
         PhoneInput: ComponentLike<TextInputSignature>;
         RadioGroup: ComponentLike<RadioGroupSignature>;
-        Search: ComponentLike<SearchSignature>;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        Search: ComponentLike<SearchSignature<any>>;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         Select: ComponentLike<SelectSignature<any>>;
         Text: ComponentLike<TextSignature>;
@@ -92,6 +93,9 @@ class Text extends Component<TextSignature> {
 }
 
 export default class Field extends Component<FieldSignature> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  TypedSearch = Search<any>;
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   TypedSelect = Select<any>;
 
@@ -303,7 +307,7 @@ export default class Field extends Component<FieldSignature> {
           isWarning=this.hasWarning
         )
         Search=(component
-          Search
+          this.TypedSearch
           describedBy=this.describedBy
           disabled=@disabled
           id=this.fieldId
