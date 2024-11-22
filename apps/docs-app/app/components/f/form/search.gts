@@ -39,7 +39,37 @@ export default class extends Component {
   hideSearchIcon = false;
 
   @tracked
-  items = ["Apple", "Pear", "Orange", "Banana", "Grape", "Strawberry", "Mango", "Pineapple", "Peach", "Cherry", "Blueberry", "Watermelon", "Papaya", "Kiwi", "Plum", "Apricot", "Pomegranate", "Lemon", "Lime", "Raspberry", "Blackberry", "Coconut", "Dragon fruit", "Lychee", "Fig", "Tangerine" ];
+  stringItems = ["Apple", "Pear", "Orange", "Banana", "Grape", "Strawberry", "Mango", "Pineapple", "Peach", "Cherry", "Blueberry", "Watermelon", "Papaya", "Kiwi", "Plum", "Apricot", "Pomegranate", "Lemon", "Lime", "Raspberry", "Blackberry", "Coconut", "Dragon fruit", "Lychee", "Fig", "Tangerine" ];
+
+  @tracked
+  objectItems = [
+    { key: "Option 1", id: "1", fruit: "Apple"},
+    { key: "Option 2", id: "2", fruit: "Pear"},
+    { key: "Option 3", id: "3", fruit: "Orange"},
+    { key: "Option 4", id: "4", fruit: "Banana"},
+    { key: "Option 5", id: "5", fruit: "Grape"},
+    { key: "Option 6", id: "6", fruit: "Strawberry"},
+    { key: "Option 7", id: "7", fruit: "Mango"},
+    { key: "Option 8", id: "8", fruit: "Pineapple"},
+    { key: "Option 9", id: "9", fruit: "Peach"},
+    { key: "Option 10", id: "10", fruit: "Cherry"},
+    { key: "Option 11", id: "11", fruit: "Blueberry"},
+    { key: "Option 12", id: "12", fruit: "Watermelon"},
+    { key: "Option 13", id: "13", fruit: "Papaya"},
+    { key: "Option 14", id: "14", fruit: "Kiwi"},
+    { key: "Option 15", id: "15", fruit: "Plum"},
+    { key: "Option 16", id: "16", fruit: "Apricot"},
+    { key: "Option 17", id: "17", fruit: "Pomegranate"},
+    { key: "Option 18", id: "18", fruit: "Lemon"},
+    { key: "Option 19", id: "19", fruit: "Lime"},
+    { key: "Option 20", id: "20", fruit: "Raspberry"},
+    { key: "Option 21", id: "21", fruit: "Blackberry"},
+    { key: "Option 22", id: "22", fruit: "Coconut"},
+    { key: "Option 23", id: "23", fruit: "Dragon fruit"},
+    { key: "Option 24", id: "24", fruit: "Lychee"},
+    { key: "Option 25", id: "25", fruit: "Fig"},
+    { key: "Option 26", id: "26", fruit: "Tangerine"}
+  ];
 
   @tracked
   loading = false;
@@ -66,10 +96,19 @@ export default class extends Component {
   value = '';
 
   @action
-  async query(searchString: string) {
+  async stringQuery(searchString: string) {
     await timeout(1000);
-    return this.items.filter((item) => item.toLowerCase().includes(searchString.toLowerCase()));
+    return this.stringItems.filter((item) => item.toLowerCase().includes(searchString.toLowerCase()));
   }
+
+  @action
+  async objectQuery(searchString: string) {
+    await timeout(1000);
+
+    const things = this.objectItems.filter((item) => item.fruit.toLowerCase().includes(searchString.toLowerCase()));
+    return things;
+  }
+
 
   @action
   update(key: string, value: unknown) {
@@ -93,7 +132,7 @@ export default class extends Component {
               @noResultsLabel={{this.noResultsLabel}}
               @placeholder={{this.placeholder}}
               @onChange={{fn log "The value changed to"}}
-              @query={{this.query}}
+              @query={{this.stringQuery}}
               @readonly={{this.readonly}}
               @scrollable={{this.scrollable}}
               @searchTimeout={{this.searchTimeout}}
@@ -200,6 +239,31 @@ export default class extends Component {
               @onInput={{fn this.update "searchTimeout"}}
             />
           </:api>
+        </FreestyleUsage>
+      </Section.subsection>
+
+      <Section.subsection @name="Object Options">
+        <FreestyleUsage>
+          <:example>
+            <Search
+              class={{this.class}}
+              @basic={{this.basic}}
+              @binding={{bind this.model "property"}}
+              @clearable={{this.clearable}}
+              @disabled={{this.disabled}}
+              @hideSearchIcon={{this.hideSearchIcon}}
+              @loading={{this.loading}}
+              @minCharacters={{this.minCharacters}}
+              @noResultsLabel={{this.noResultsLabel}}
+              @placeholder={{this.placeholder}}
+              @onChange={{fn log "The value changed to"}}
+              @query={{this.objectQuery}}
+              @readonly={{this.readonly}}
+              @scrollable={{this.scrollable}}
+              @searchTimeout={{this.searchTimeout}}
+              @serializationPath="fruit"
+            />
+          </:example>
         </FreestyleUsage>
       </Section.subsection>
     </FreestyleSection>
