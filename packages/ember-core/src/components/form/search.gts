@@ -8,11 +8,12 @@ import { restartableTask, timeout } from 'ember-concurrency';
 // https://github.com/adopted-ember-addons/ember-keyboard/issues/464
 import onKey from 'ember-keyboard/modifiers/on-key';
 
-import InputField from './-private/input-field.ts';
+import BoundValue from './bound-value.ts';
 import onInsert from '../../modifiers/did-insert.ts';
 import onClickOutside from '../../modifiers/on-click-outside.ts';
 
 import type { Optional } from '../../';
+import type { InputFieldSignature } from './-private/input-field.ts';
 
 declare type SearchOption<T> = {
   label: string;
@@ -68,7 +69,7 @@ export interface SearchSignature<T> {
   Element: HTMLInputElement;
 }
 
-export default class Search<T> extends InputField<SearchSignature<T>> {
+export default class Search<T> extends BoundValue<InputFieldSignature<SearchSignature<T>>, string | T> {
   @tracked
   activeItem = -1;
 
@@ -139,6 +140,39 @@ export default class Search<T> extends InputField<SearchSignature<T>> {
     return this.isFocused && this.canPerformSearch && !this.loading;
   }
 
+  get classList() {
+    const classes = ['form-control'];
+
+    if (this.args.basic) {
+      classes[0] += '-plaintext';
+    }
+
+    if (this.args.isInvalid) {
+      classes.push('is-invalid');
+    } else if (this.args.isWarning) {
+      classes.push('is-warning');
+    }
+
+    return classes.join(' ');
+  }
+
+  get internalItems() {
+    return this.items.map((item) => {
+      if (this.args.serializationPath != null) {
+        const label = (item as Record<string, string>)[this.args.serializationPath] ?? "";
+        return {
+          label,
+          value: item
+        };
+      }
+
+      return {
+        label: item as string,
+        value: item
+      };
+    });
+  }
+
   scrollActiveItemIntoView() {
     if (this.activeItem == -1) {
       return;
@@ -164,7 +198,7 @@ export default class Search<T> extends InputField<SearchSignature<T>> {
     evt?.preventDefault();
     evt?.stopPropagation();
 
-    this.value = this.internalItems[index]?.label ?? "";
+    this.value = this.internalItems[index]?.value ?? "";
     this.searchString = this.internalItems[index]?.label ?? "";
 
     this.activeItem = index;
@@ -260,23 +294,6 @@ export default class Search<T> extends InputField<SearchSignature<T>> {
   @action
   onMenuInsert(element: HTMLElement) {
     this.menuElement = element;
-  }
-
-  get internalItems() {
-    return this.items.map((item) => {
-    if (this.args.serializationPath != null) {
-      const label = (item as Record<string, string>)[this.args.serializationPath] ?? "";
-      return {
-        label,
-        value: item
-      };
-    }
-
-    return {
-      label: item as string,
-      value: item
-    };
-  });
   }
 
   <template>
