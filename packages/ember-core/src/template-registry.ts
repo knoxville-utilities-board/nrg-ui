@@ -36,6 +36,7 @@ import PageNotFound from './components/page-not-found.gts';
 import Progress from './components/progress.gts';
 import ThemeSwitcher from './components/theme-switcher.gts';
 import Toaster from './components/toaster.gts';
+import Bind from './helpers/bind.ts';
 
 export interface ComponentRegistry {
   // Core components
@@ -81,4 +82,8 @@ export interface ComponentRegistry {
   'Mktg::SectionHeader': typeof MktgSectionHeader;
   'Mktg::ServicePricing': typeof MktgServicePricing;
   'Mktg::WorkflowTray': typeof MktgWorkflowTray;
+}
+
+export interface HelperRegistry {
+  bind: typeof Bind;
 }
