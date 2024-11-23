@@ -45,6 +45,9 @@
     "./validation": {
       "types": "./declarations/validation/index.d.ts",
       "default": "./dist/validation/index.js"
+    },
+    "./template-registry": {
+      "types": "./declarations/template-registry.d.ts"
     }
   },
   "typesVersions": {
