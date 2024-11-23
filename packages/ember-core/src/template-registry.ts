@@ -96,3 +96,5 @@ export interface ModifierRegistry {
   'on-click-outside': typeof OnClickOutside;
   'on-update': typeof OnUpdate;
 }
+
+export default interface TemplateRegistry extends ComponentRegistry, HelperRegistry, ModifierRegistry {}
