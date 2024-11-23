@@ -6,7 +6,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { t } from 'ember-intl';
 
-import onInsert from '../modifiers/did-insert.ts';
+import onInsert from '../modifiers/on-insert.ts';
 import onUpdate from '../modifiers/on-update.ts';
 
 import type ModalService from '../services/modal.ts';

@@ -37,8 +37,8 @@ import Progress from './components/progress.gts';
 import ThemeSwitcher from './components/theme-switcher.gts';
 import Toaster from './components/toaster.gts';
 import Bind from './helpers/bind.ts';
-import DidInsert from './modifiers/did-insert.ts';
 import OnClickOutside from './modifiers/on-click-outside.ts';
+import OnInsert from './modifiers/on-insert.ts';
 import OnUpdate from './modifiers/on-update.ts';
 
 export interface ComponentRegistry {
@@ -92,8 +92,8 @@ export interface HelperRegistry {
 }
 
 export interface ModifierRegistry {
-  'did-insert': typeof DidInsert;
   'on-click-outside': typeof OnClickOutside;
+  'on-insert': typeof OnInsert;
   'on-update': typeof OnUpdate;
 }
 

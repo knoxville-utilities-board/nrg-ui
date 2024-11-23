@@ -2,7 +2,7 @@ import { registerDestructor } from '@ember/destroyable';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import { didInsert } from '@nrg-ui/core';
+import { onInsert } from '@nrg-ui/core';
 
 import type ThemeService from '../services/theme';
 
@@ -41,7 +41,7 @@ export default class CodeBlock extends Component {
       {{! template-lint-disable no-inline-styles }}
       style="--bs-bg-opacity: 0; font-size: 0.8rem;"
       tabindex="0"
-      {{didInsert this.highlight}}
+      {{onInsert this.highlight}}
       ...attributes
     >
       <code></code>
