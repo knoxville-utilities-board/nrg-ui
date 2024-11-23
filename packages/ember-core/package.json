@@ -48,6 +48,9 @@
     },
     "./template-registry": {
       "types": "./declarations/template-registry.d.ts"
+    },
+    "./service-registry": {
+      "types": "./declarations/service-registry.d.ts"
     }
   },
   "typesVersions": {
