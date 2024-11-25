@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2024-11-25)
+
+@nrg-ui/core 0.17.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#280](https://github.com/knoxville-utilities-board/nrg-ui/pull/280) feat(types): Update registries for consuming TS/Glint apps/addons ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-11-19)
 
 @nrg-ui/core 0.16.1 (patch)
