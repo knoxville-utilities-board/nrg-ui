@@ -204,6 +204,8 @@ export default class Search<T> extends BoundValue<InputFieldSignature<SearchSign
     this.activeItem = index;
 
     this.onBlur();
+
+    this.onChange(this.value);
   }
 
   @action
