@@ -7,9 +7,9 @@ import { TrackedArray } from 'tracked-built-ins';
 
 import type { EmberRunTimer } from '@ember/runloop/types';
 
-type ToastOptions = {
-  message?: string;
-  type?: 'success' | 'info' | 'warning' | 'danger';
+export type ToastOptions = {
+  message: string;
+  type: 'success' | 'info' | 'warning' | 'danger';
   sticky?: boolean;
   timeout?: number;
   timeoutReference?: EmberRunTimer;
@@ -20,38 +20,38 @@ export default class Toast extends Service {
   queue: Array<ToastOptions> = new TrackedArray();
 
   @action
-  info(message: string, options: ToastOptions) {
+  info(message: string, options?: Partial<ToastOptions>) {
     this.add({
+      ...options,
       message,
       type: 'info',
-      ...options,
     });
   }
 
   @action
-  success(message: string, options: ToastOptions) {
+  success(message: string, options?: Partial<ToastOptions>) {
     this.add({
+      ...options,
       message,
       type: 'success',
-      ...options,
     });
   }
 
   @action
-  warning(message: string, options: ToastOptions) {
+  warning(message: string, options?: Partial<ToastOptions>) {
     this.add({
+      ...options,
       message,
       type: 'warning',
-      ...options,
     });
   }
 
   @action
-  danger(message: string, options: ToastOptions) {
+  danger(message: string, options?: Partial<ToastOptions>) {
     this.add({
+      ...options,
       message,
       type: 'danger',
-      ...options,
     });
   }
 
