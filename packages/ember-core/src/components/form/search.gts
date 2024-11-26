@@ -1,6 +1,6 @@
 import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
-import { action } from '@ember/object';
+import { action, get } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { restartableTask, timeout } from 'ember-concurrency';
@@ -18,6 +18,7 @@ import type { InputFieldSignature } from './-private/input-field.ts';
 declare type SearchOption<T> = {
   label: string;
   value: string | T;
+  raw: T;
 };
 
 interface SearchItemSignature<T> {
@@ -56,6 +57,7 @@ export interface SearchSignature<T> {
   Args: {
     format?: ((value: Optional<string>) => string) | false;
     clearable?: boolean;
+    displayPath?: string;
     hideSearchIcon?: boolean;
     loading?: boolean;
     minCharacters?: number;
@@ -157,18 +159,25 @@ export default class Search<T> extends BoundValue<InputFieldSignature<SearchSign
   }
 
   get internalItems() {
-    return this.items.map((item) => {
-      if (this.args.serializationPath != null) {
-        const label = (item as Record<string, string>)[this.args.serializationPath] ?? "";
+    return this.items.map((option) => {
+      if (typeof option !== 'object') {
         return {
-          label,
-          value: item
+          raw: option,
+          label: option as string,
+          value: option as string,
         };
       }
 
+      const label = get(option, this.args.displayPath ?? 'label') as string;
+      let value: string | T = option;
+      // null serializationPath results in value being the raw option
+      if (this.args.serializationPath !== null) {
+        value = get(option, this.args.serializationPath ?? 'value') as string;
+      }
       return {
-        label: item as string,
-        value: item
+        raw: option,
+        label,
+        value,
       };
     });
   }
@@ -187,19 +196,19 @@ export default class Search<T> extends BoundValue<InputFieldSignature<SearchSign
     activeElement.scrollIntoView({ block: 'nearest' });
   }
 
-  onQuery = restartableTask(async () => {
+  onQuery = restartableTask(async (searchString) => {
     await timeout(this.searchTimeout);
-    this.items = await this.args.query(this.searchString);
+    this.items = await this.args.query(searchString);
     this.isFocused = true;
   });
 
   @action
-  selectItem(index: number, evt?: Event) {
+  selectItem(item: SearchOption<T>, index: number, evt?: Event) {
     evt?.preventDefault();
     evt?.stopPropagation();
 
-    this.value = this.internalItems[index]?.value ?? "";
-    this.searchString = this.internalItems[index]?.label ?? "";
+    this.value = item.value;
+    this.searchString = item.label;
 
     this.activeItem = index;
 
@@ -239,7 +248,11 @@ export default class Search<T> extends BoundValue<InputFieldSignature<SearchSign
       return;
     }
 
-    this.selectItem(this.activeItem);
+    const item = this.internalItems[this.activeItem];
+
+    if (item != undefined) {
+      this.selectItem(item, this.activeItem);
+    }
 
     this.onBlur();
   }
@@ -276,7 +289,7 @@ export default class Search<T> extends BoundValue<InputFieldSignature<SearchSign
       return;
     }
 
-    this.onQuery.perform();
+    this.onQuery.perform(this.searchString);
   }
 
   @action
@@ -353,7 +366,7 @@ export default class Search<T> extends BoundValue<InputFieldSignature<SearchSign
               @option={{option}}
               @index={{index}}
               @activeIndex={{this.activeItem}}
-              {{on "click" (fn this.selectItem index)}}
+              {{on "click" (fn this.selectItem option index)}}
             />
           {{else}}
             <li class="dropdown-item disabled">{{this.noResultsLabel}}</li>
