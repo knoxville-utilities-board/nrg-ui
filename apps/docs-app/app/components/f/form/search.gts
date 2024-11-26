@@ -43,32 +43,32 @@ export default class extends Component {
 
   @tracked
   objectItems = [
-    { key: "Option 1", id: "1", fruit: "Apple"},
-    { key: "Option 2", id: "2", fruit: "Pear"},
-    { key: "Option 3", id: "3", fruit: "Orange"},
-    { key: "Option 4", id: "4", fruit: "Banana"},
-    { key: "Option 5", id: "5", fruit: "Grape"},
-    { key: "Option 6", id: "6", fruit: "Strawberry"},
-    { key: "Option 7", id: "7", fruit: "Mango"},
-    { key: "Option 8", id: "8", fruit: "Pineapple"},
-    { key: "Option 9", id: "9", fruit: "Peach"},
-    { key: "Option 10", id: "10", fruit: "Cherry"},
-    { key: "Option 11", id: "11", fruit: "Blueberry"},
-    { key: "Option 12", id: "12", fruit: "Watermelon"},
-    { key: "Option 13", id: "13", fruit: "Papaya"},
-    { key: "Option 14", id: "14", fruit: "Kiwi"},
-    { key: "Option 15", id: "15", fruit: "Plum"},
-    { key: "Option 16", id: "16", fruit: "Apricot"},
-    { key: "Option 17", id: "17", fruit: "Pomegranate"},
-    { key: "Option 18", id: "18", fruit: "Lemon"},
-    { key: "Option 19", id: "19", fruit: "Lime"},
-    { key: "Option 20", id: "20", fruit: "Raspberry"},
-    { key: "Option 21", id: "21", fruit: "Blackberry"},
-    { key: "Option 22", id: "22", fruit: "Coconut"},
-    { key: "Option 23", id: "23", fruit: "Dragon fruit"},
-    { key: "Option 24", id: "24", fruit: "Lychee"},
-    { key: "Option 25", id: "25", fruit: "Fig"},
-    { key: "Option 26", id: "26", fruit: "Tangerine"}
+    { key: "Option 1", fruit: "Apple"},
+    { key: "Option 2", fruit: "Pear"},
+    { key: "Option 3", fruit: "Orange"},
+    { key: "Option 4", fruit: "Banana"},
+    { key: "Option 5", fruit: "Grape"},
+    { key: "Option 6", fruit: "Strawberry"},
+    { key: "Option 7", fruit: "Mango"},
+    { key: "Option 8", fruit: "Pineapple"},
+    { key: "Option 9", fruit: "Peach"},
+    { key: "Option 10", fruit: "Cherry"},
+    { key: "Option 11", fruit: "Blueberry"},
+    { key: "Option 12", fruit: "Watermelon"},
+    { key: "Option 13", fruit: "Papaya"},
+    { key: "Option 14", fruit: "Kiwi"},
+    { key: "Option 15", fruit: "Plum"},
+    { key: "Option 16", fruit: "Apricot"},
+    { key: "Option 17", fruit: "Pomegranate"},
+    { key: "Option 18", fruit: "Lemon"},
+    { key: "Option 19", fruit: "Lime"},
+    { key: "Option 20", fruit: "Raspberry"},
+    { key: "Option 21", fruit: "Blackberry"},
+    { key: "Option 22", fruit: "Coconut"},
+    { key: "Option 23", fruit: "Dragon fruit"},
+    { key: "Option 24", fruit: "Lychee"},
+    { key: "Option 25", fruit: "Fig"},
+    { key: "Option 26", fruit: "Tangerine"}
   ];
 
   @tracked
@@ -251,6 +251,7 @@ export default class extends Component {
               @binding={{bind this.model "property"}}
               @clearable={{this.clearable}}
               @disabled={{this.disabled}}
+              @displayPath="fruit"
               @hideSearchIcon={{this.hideSearchIcon}}
               @loading={{this.loading}}
               @minCharacters={{this.minCharacters}}
@@ -261,7 +262,7 @@ export default class extends Component {
               @readonly={{this.readonly}}
               @scrollable={{this.scrollable}}
               @searchTimeout={{this.searchTimeout}}
-              @serializationPath="fruit"
+              @serializationPath="key"
             />
           </:example>
         </FreestyleUsage>
