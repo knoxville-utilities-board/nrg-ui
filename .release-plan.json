@@ -4,13 +4,13 @@
       "oldVersion": "0.9.0"
     },
     "@nrg-ui/core": {
-      "impact": "minor",
-      "oldVersion": "0.16.1",
-      "newVersion": "0.17.0",
+      "impact": "patch",
+      "oldVersion": "0.17.0",
+      "newVersion": "0.17.1",
       "constraints": [
         {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
@@ -22,5 +22,5 @@
       "oldVersion": "0.1.0"
     }
   },
-  "description": "## Release (2024-11-25)\n\n@nrg-ui/core 0.17.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#280](https://github.com/knoxville-utilities-board/nrg-ui/pull/280) feat(types): Update registries for consuming TS/Glint apps/addons ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2024-11-26)\n\n@nrg-ui/core 0.17.1 (patch)\n\n#### :house: Internal\n* `@nrg-ui/core`\n  * [#284](https://github.com/knoxville-utilities-board/nrg-ui/pull/284) chore(toast): Improve types ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
