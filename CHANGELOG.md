@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2024-11-26)
+
+@nrg-ui/core 0.17.1 (patch)
+
+#### :house: Internal
+* `@nrg-ui/core`
+  * [#284](https://github.com/knoxville-utilities-board/nrg-ui/pull/284) chore(toast): Improve types ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-11-25)
 
 @nrg-ui/core 0.17.0 (minor)
