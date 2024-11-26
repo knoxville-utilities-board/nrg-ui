@@ -158,6 +158,18 @@ export default class Search<T> extends BoundValue<InputFieldSignature<SearchSign
     return classes.join(' ');
   }
 
+  get displayValue() {
+    if (this.value) {
+      if (this.args.displayPath) {
+        return get(this.value, this.args.displayPath) as string;
+      }
+
+      return this.value as string;
+    }
+
+    return this.searchString;
+  }
+
   get internalItems() {
     return this.items.map((option) => {
       if (typeof option !== 'object') {
@@ -207,14 +219,11 @@ export default class Search<T> extends BoundValue<InputFieldSignature<SearchSign
     evt?.preventDefault();
     evt?.stopPropagation();
 
-    this.value = item.value;
-    this.searchString = item.label;
-
     this.activeItem = index;
 
     this.onBlur();
 
-    this.onChange(this.value);
+    this.onChange(item.value);
   }
 
   @action
@@ -334,7 +343,7 @@ export default class Search<T> extends BoundValue<InputFieldSignature<SearchSign
           readonly={{@readonly}}
           placeholder={{this.placeholder}}
           type="text"
-          value={{this.searchString}}
+          value={{this.displayValue}}
           {{on "input" this.onSearch}}
           {{on "focus" this.onFocus}}
           {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
