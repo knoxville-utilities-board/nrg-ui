@@ -8,8 +8,8 @@ import { TrackedArray } from 'tracked-built-ins';
 import type { EmberRunTimer } from '@ember/runloop/types';
 
 export type ToastOptions = {
-  message?: string;
-  type?: 'success' | 'info' | 'warning' | 'danger';
+  message: string;
+  type: 'success' | 'info' | 'warning' | 'danger';
   sticky?: boolean;
   timeout?: number;
   timeoutReference?: EmberRunTimer;
