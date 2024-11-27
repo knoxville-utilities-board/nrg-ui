@@ -13,7 +13,6 @@ import onInsert from '../../modifiers/did-insert.ts';
 import onClickOutside from '../../modifiers/on-click-outside.ts';
 
 import type { Optional } from '../../';
-import type { InputFieldSignature } from './-private/input-field.ts';
 
 declare type SearchOption<T> = {
   label: string;
@@ -55,23 +54,30 @@ class SearchItem<T> extends Component<SearchItemSignature<T>> {
 
 export interface SearchSignature<T> {
   Args: {
-    format?: ((value: Optional<string>) => string) | false;
+    basic?: boolean;
     clearable?: boolean;
+    describedBy?: string;
+    disabled?: boolean;
     displayPath?: string;
+    format?: ((value: Optional<string>) => string) | false;
     hideSearchIcon?: boolean;
+    id?: string;
+    isInvalid?: boolean;
+    isWarning?: boolean;
     loading?: boolean;
     minCharacters?: number;
     noResultsLabel?: string;
     placeholder?: string;
     query: (searchString: string) => Promise<T[]>;
+    readonly?: boolean;
     scrollable?: boolean;
     searchTimeout?: number;
     serializationPath?: string;
   };
-  Element: HTMLInputElement;
+  Element: HTMLDivElement;
 }
 
-export default class Search<T> extends BoundValue<InputFieldSignature<SearchSignature<T>>, string | T> {
+export default class Search<T> extends BoundValue<SearchSignature<T>, string | T> {
   @tracked
   activeItem = -1;
 
@@ -143,6 +149,18 @@ export default class Search<T> extends BoundValue<InputFieldSignature<SearchSign
   }
 
   get classList() {
+    const classes = ['search'];
+
+    if (this.args.isInvalid) {
+      classes.push('is-invalid');
+    } else if (this.args.isWarning) {
+      classes.push('is-warning');
+    }
+
+    return classes.join(' ');
+  }
+
+  get inputClassList() {
     const classes = ['form-control'];
 
     if (this.args.basic) {
@@ -322,8 +340,9 @@ export default class Search<T> extends BoundValue<InputFieldSignature<SearchSign
 
   <template>
     <div
-      class="search"
+      class={{this.classList}}
       {{onClickOutside this.onBlur}}
+      ...attributes
     >
       <div class="input-group">
         {{#unless this.hideSearchIcon}}
@@ -338,7 +357,7 @@ export default class Search<T> extends BoundValue<InputFieldSignature<SearchSign
         <input
           aria-describedby={{@describedBy}}
           id={{@id}}
-          class={{this.classList}}
+          class={{this.inputClassList}}
           disabled={{@disabled}}
           readonly={{@readonly}}
           placeholder={{this.placeholder}}
@@ -353,7 +372,6 @@ export default class Search<T> extends BoundValue<InputFieldSignature<SearchSign
           {{onKey "Tab" this.exitKeyHandler onlyWhenFocused=true}}
           {{onKey "Escape" this.exitKeyHandler onlyWhenFocused=true}}
           {{onInsert this.onSearchBarInsert}}
-          ...attributes
         />
         {{#if this.clearable}}
           <button
