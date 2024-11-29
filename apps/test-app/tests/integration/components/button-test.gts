@@ -1,8 +1,10 @@
-import { click, findAll, render, type TestContext } from '@ember/test-helpers';
+import { click, findAll, render } from '@ember/test-helpers';
 import { Button } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../helpers';
+
+import type { TestContext } from '@ember/test-helpers';
 
 interface Context extends TestContext {
   clickHandler: (evt: MouseEvent) => void;

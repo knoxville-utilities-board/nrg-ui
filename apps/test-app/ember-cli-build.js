@@ -1,9 +1,10 @@
 'use strict';
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function (defaults) {
-  let app = new EmberApp(defaults, {
+  const app = new EmberApp(defaults, {
     minifyCSS: {
       enabled: false,
     },
@@ -42,6 +43,7 @@ module.exports = function (defaults) {
     },
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { maybeEmbroider } = require('@embroider/test-setup');
   return maybeEmbroider(app);
 };

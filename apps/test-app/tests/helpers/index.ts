@@ -3,10 +3,10 @@ import {
   setupApplicationTest as upstreamSetupApplicationTest,
   setupRenderingTest as upstreamSetupRenderingTest,
   setupTest as upstreamSetupTest,
-  type SetupTestOptions,
 } from 'ember-qunit';
 
 import type { ValidateFnResponse } from '@nrg-ui/core/validation/types';
+import type { SetupTestOptions } from 'ember-qunit';
 
 declare global {
   interface Assert {

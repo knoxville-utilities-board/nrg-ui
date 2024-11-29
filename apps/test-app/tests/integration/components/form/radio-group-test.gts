@@ -1,4 +1,4 @@
-import { render, click } from '@ember/test-helpers';
+import { click, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import { Bind as bind, RadioGroup } from '@nrg-ui/core';
 import { module, test } from 'qunit';
