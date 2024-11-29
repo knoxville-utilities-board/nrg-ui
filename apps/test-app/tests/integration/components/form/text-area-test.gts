@@ -5,6 +5,8 @@ import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
 
+import type { Optional } from '@nrg-ui/core';
+
 class Model {
   @tracked
   value: string = 'Hello, world!';
@@ -17,7 +19,7 @@ module('Integration | Component | form/text-area', function (hooks) {
     assert.expect(5);
 
     const model = new Model();
-    const actionHandler = (text) => {
+    const actionHandler = (text: Optional<string>) => {
       assert.strictEqual(text, 'Foo bar');
     };
 
