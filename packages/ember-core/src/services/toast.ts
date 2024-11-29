@@ -91,3 +91,9 @@ export default class Toast extends Service {
     this.queue.splice(0, this.queue.length);
   }
 }
+
+declare module '@ember/service' {
+  interface Registry {
+    toast: Toast;
+  }
+}
