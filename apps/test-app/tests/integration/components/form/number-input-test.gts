@@ -5,6 +5,8 @@ import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
 
+import type { Optional } from '@nrg-ui/core';
+
 class Model {
   @tracked
   value: number = 42;
@@ -17,7 +19,7 @@ module('Integration | Component | form/number-input', function (hooks) {
     assert.expect(7);
     const model = new Model();
 
-    const actionHandler = (num) => {
+    const actionHandler = (num: Optional<number>) => {
       assert.strictEqual(num, 36);
     };
 
@@ -57,7 +59,7 @@ module('Integration | Component | form/number-input', function (hooks) {
     assert.expect(8);
     const model = new Model();
 
-    const actionHandler = (num) => {
+    const actionHandler = (num: Optional<number>) => {
       assert.strictEqual(num, 3600);
     };
 
@@ -102,7 +104,7 @@ module('Integration | Component | form/number-input', function (hooks) {
     assert.expect(8);
     const model = new Model();
 
-    const actionHandler = (num) => {
+    const actionHandler = (num: Optional<number>) => {
       assert.strictEqual(num, 3600);
     };
 
@@ -149,7 +151,7 @@ module('Integration | Component | form/number-input', function (hooks) {
     assert.expect(8);
     const model = new Model();
 
-    const actionHandler = (num) => {
+    const actionHandler = (num: Optional<number>) => {
       assert.strictEqual(num, 36);
     };
 
@@ -196,11 +198,11 @@ module('Integration | Component | form/number-input', function (hooks) {
     assert.expect(8);
     const model = new Model();
 
-    const format = (value) => {
+    const format = (value: Optional<number>) => {
       return `#${value} units`;
     };
 
-    const actionHandler = (num) => {
+    const actionHandler = (num: Optional<number>) => {
       assert.strictEqual(num, 36);
     };
 

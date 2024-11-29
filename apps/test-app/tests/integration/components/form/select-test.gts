@@ -15,7 +15,7 @@ module('Integration | Component | form/select', function (hooks) {
 
   class Model {
     @tracked
-    value: string = 'Hello, world!';
+    value: unknown = 'Hello, world!';
   }
 
   const stringOptions = ['Option 1', 'Option 2', 'Option 3'];

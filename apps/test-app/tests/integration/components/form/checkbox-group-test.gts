@@ -5,18 +5,24 @@ import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
 
+import type { TestContext as BaseContext } from '@ember/test-helpers';
+
+class Model {
+  @tracked
+  v1: boolean = false;
+
+  @tracked
+  v2: boolean = false;
+}
+
+interface TestContext extends BaseContext {
+  element: HTMLElement;
+}
+
 module('Integration | Component | form/checkbox-group', function (hooks) {
   setupRenderingTest(hooks);
 
-  class Model {
-    @tracked
-    v1: boolean = false;
-
-    @tracked
-    v2: boolean = false;
-  }
-
-  test('it renders', async function (assert) {
+  test('it renders', async function (this: TestContext, assert) {
     const model = new Model();
     await render(<template>
       <CheckboxGroup as |Item|>
@@ -33,9 +39,9 @@ module('Integration | Component | form/checkbox-group', function (hooks) {
       </CheckboxGroup>
     </template>);
 
-    const [cb1, cb2] = this.element.querySelectorAll(
-      '.form-control > .form-check > input',
-    );
+    const [cb1, cb2] = Array.from(
+      this.element.querySelectorAll('.form-control > .form-check > input'),
+    ) as [HTMLInputElement, HTMLInputElement];
 
     assert
       .dom(cb1)
@@ -78,7 +84,7 @@ module('Integration | Component | form/checkbox-group', function (hooks) {
     assert.dom(cb2).hasValue('true').isChecked();
   });
 
-  test('it renders (block)', async function (assert) {
+  test('it renders (block)', async function (this: TestContext, assert) {
     const model = new Model();
     await render(<template>
       <CheckboxGroup as |Item|>
@@ -91,9 +97,9 @@ module('Integration | Component | form/checkbox-group', function (hooks) {
       </CheckboxGroup>
     </template>);
 
-    const [cb1, cb2] = this.element.querySelectorAll(
-      '.form-control > .form-check > input',
-    );
+    const [cb1, cb2] = Array.from(
+      this.element.querySelectorAll('.form-control > .form-check > input'),
+    ) as [HTMLElement, HTMLElement];
 
     assert
       .dom(cb1)
@@ -136,7 +142,7 @@ module('Integration | Component | form/checkbox-group', function (hooks) {
     assert.dom(cb1).hasValue('false').isNotChecked();
   });
 
-  test('it renders (switch)', async function (assert) {
+  test('it renders (switch)', async function (this: TestContext, assert) {
     const model = new Model();
     await render(<template>
       <CheckboxGroup @type="switch" as |Item|>
@@ -155,9 +161,9 @@ module('Integration | Component | form/checkbox-group', function (hooks) {
 
     assert.dom('.form-control > div').hasClass('form-switch');
 
-    const [cb1, cb2] = this.element.querySelectorAll(
-      '.form-control > .form-check > input',
-    );
+    const [cb1, cb2] = Array.from(
+      this.element.querySelectorAll('.form-control > .form-check > input'),
+    ) as [HTMLElement, HTMLElement];
 
     assert
       .dom(cb1)
@@ -200,7 +206,7 @@ module('Integration | Component | form/checkbox-group', function (hooks) {
     assert.dom(cb2).hasValue('true').isChecked();
   });
 
-  test('it works', async function (assert) {
+  test('it works', async function (this: TestContext, assert) {
     const model = new Model();
     await render(<template>
       <CheckboxGroup as |Item|>
@@ -217,9 +223,9 @@ module('Integration | Component | form/checkbox-group', function (hooks) {
       </CheckboxGroup>
     </template>);
 
-    const [cb1, cb2] = this.element.querySelectorAll(
-      '.form-control > .form-check > input',
-    );
+    const [cb1, cb2] = Array.from(
+      this.element.querySelectorAll('.form-control > .form-check > input'),
+    ) as [HTMLElement, HTMLElement];
 
     assert.dom(cb1).hasValue('false').isNotChecked();
 

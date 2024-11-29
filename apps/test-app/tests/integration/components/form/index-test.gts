@@ -9,12 +9,21 @@ import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
 
+import type { TestContext as BaseContext } from '@ember/test-helpers';
+
 class Model {
   @tracked
   textInput: string = '';
 
   @tracked
   textArea: string = '';
+}
+
+interface TestContext extends BaseContext {
+  element: HTMLElement;
+  model: Model;
+
+  actionHandler: () => void;
 }
 
 const Validators = {
@@ -28,12 +37,12 @@ module('Integration | Component | form', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks, 'en-us');
 
-  hooks.beforeEach(function () {
+  hooks.beforeEach(function (this: TestContext) {
     this.model = new Model();
     setOwner(this.model, this.owner);
   });
 
-  test('it renders', async function (assert) {
+  test('it renders', async function (this: TestContext, assert) {
     const model = this.model;
 
     await render(<template>
@@ -58,7 +67,7 @@ module('Integration | Component | form', function (hooks) {
     assert.dom('form').exists();
 
     // Text input
-    let label = this.element.querySelector('label:has(+ input)');
+    let label = this.element.querySelector('label:has(+ input)')!;
     const input = this.element.querySelector('label + input');
 
     assert.dom(label).hasClass('form-label').containsText('Text Input');
@@ -70,12 +79,12 @@ module('Integration | Component | form', function (hooks) {
       .dom(input)
       .exists()
       .hasAttribute('type', 'text')
-      .hasAttribute('id', labelId)
+      .hasAttribute('id', labelId!)
       .hasClass('form-control');
 
     // Text area
-    label = this.element.querySelector('label:has(+ textarea)');
-    const textarea = this.element.querySelector('label + textarea');
+    label = this.element.querySelector('label:has(+ textarea)')!;
+    const textarea = this.element.querySelector('label + textarea')!;
     const text = this.element.querySelector('label + textarea + div');
 
     assert
@@ -84,8 +93,8 @@ module('Integration | Component | form', function (hooks) {
       .containsText('Text Area (with additional text)');
     assert.dom('span', label).exists().hasClass('text-danger').hasText('*');
 
-    labelId = label.getAttribute('for');
-    const ariaId = textarea.getAttribute('aria-describedby');
+    labelId = label.getAttribute('for')!;
+    const ariaId = textarea.getAttribute('aria-describedby')!;
 
     assert
       .dom(textarea)
@@ -109,7 +118,7 @@ module('Integration | Component | form', function (hooks) {
       .hasText('Submit');
   });
 
-  test('validations work', async function (assert) {
+  test('validations work', async function (this: TestContext, assert) {
     assert.expect(20);
 
     const model = this.model;
@@ -149,7 +158,7 @@ module('Integration | Component | form', function (hooks) {
     </template>);
 
     // Select
-    const select = this.element.querySelector('label + button.dropdown');
+    const select = this.element.querySelector('label + button.dropdown')!;
 
     assert
       .dom(select)
@@ -160,7 +169,7 @@ module('Integration | Component | form', function (hooks) {
     await click(select);
     await click('button > .dropdown-menu > li:first-child');
 
-    const ariaId = select.getAttribute('aria-describedby');
+    const ariaId = select.getAttribute('aria-describedby')!;
 
     assert.dom('button.dropdown').doesNotHaveClass('is-invalid');
     assert
