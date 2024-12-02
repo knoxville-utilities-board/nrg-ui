@@ -79,10 +79,10 @@ export interface SearchSignature<T> {
 
 export default class Search<T> extends BoundValue<SearchSignature<T>, string | T> {
   @tracked
-  activeItem = -1;
+  activeIndex = -1;
 
   @tracked
-  items: T[] = [];
+  options: T[] = [];
 
   @tracked
   isFocused = false;
@@ -144,7 +144,7 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
     return this.searchString.trim().length >= this.minCharacters;
   }
 
-  get showItems() {
+  get showOptions() {
     return this.isFocused && this.canPerformSearch && !this.loading;
   }
 
@@ -181,15 +181,15 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
       return this.searchString;
     }
 
-    if (this.selectedItem) {
-      return this.selectedItem.label;
+    if (this.selectedOption) {
+      return this.selectedOption.label;
     }
 
     return '';
   }
 
-  get internalItems() {
-    return this.items.map((option) => {
+  get internalOptions() {
+    return this.options.map((option) => {
       if (typeof option !== 'object') {
         return {
           raw: option,
@@ -212,26 +212,25 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
     });
   }
 
-  get selectedItem(): Optional<SearchOption<T>> {
-    const found = this.internalItems.find(
-      (item) => item.value === this.value,
+  get selectedOption(): Optional<SearchOption<T>> {
+    const found = this.internalOptions.find(
+      (option) => option.value === this.value,
     );
     return found || null;
   }
 
-  set selectedItem(option: SearchOption<T>) {
+  set selectedOption(option: SearchOption<T>) {
     this.onChange(option.value);
   }
 
-
-  scrollActiveItemIntoView() {
-    if (this.activeItem == -1) {
+  scrollActiveOptionIntoView() {
+    if (this.activeIndex == -1) {
       return;
     }
     const childElements = Array.from(
       this.menuElement?.querySelectorAll(`li`) ?? [],
     );
-    const activeElement = childElements[this.activeItem];
+    const activeElement = childElements[this.activeIndex];
     if (!activeElement) {
       return;
     }
@@ -240,17 +239,17 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
 
   onQuery = restartableTask(async (searchString) => {
     await timeout(this.searchTimeout);
-    this.items = await this.args.query(searchString);
+    this.options = await this.args.query(searchString);
     this.isFocused = true;
   });
 
   @action
-  selectItem(item: SearchOption<T>, index: number, evt?: Event) {
+  selectOption(option: SearchOption<T>, index: number, evt?: Event) {
     evt?.preventDefault();
     evt?.stopPropagation();
 
-    this.activeItem = index;
-    this.selectedItem = item;
+    this.activeIndex = index;
+    this.selectedOption = option;
 
     this.onBlur();
   }
@@ -260,9 +259,9 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
     evt.preventDefault();
     evt.stopPropagation();
 
-    if (this.activeItem > 0) {
-      this.activeItem--;
-      this.scrollActiveItemIntoView();
+    if (this.activeIndex > 0) {
+      this.activeIndex--;
+      this.scrollActiveOptionIntoView();
     }
 }
 
@@ -271,9 +270,9 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
     evt.preventDefault();
     evt.stopPropagation();
 
-    if (this.activeItem < this.items.length - 1) {
-      this.activeItem++;
-      this.scrollActiveItemIntoView();
+    if (this.activeIndex < this.options.length - 1) {
+      this.activeIndex++;
+      this.scrollActiveOptionIntoView();
     }
   }
 
@@ -282,14 +281,14 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
     evt?.preventDefault();
     evt?.stopPropagation();
 
-    if (this.activeItem == -1) {
+    if (this.activeIndex == -1) {
       return;
     }
 
-    const item = this.internalItems[this.activeItem];
+    const option = this.internalOptions[this.activeIndex];
 
-    if (item != undefined) {
-      this.selectItem(item, this.activeItem);
+    if (option != undefined) {
+      this.selectOption(option, this.activeIndex);
     }
 
     this.onBlur();
@@ -334,7 +333,7 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
   clear() {
     this.searchString = ''
     this.value = '';
-    this.activeItem = -1;
+    this.activeIndex = -1;
 
     this.onBlur();
   }
@@ -395,16 +394,16 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
       </div>
       <div class="dropdown {{if this.scrollable 'scrollable'}}">
         <ul
-          class="dropdown-menu mt-1 w-100 {{if this.showItems 'show'}}"
+          class="dropdown-menu mt-1 w-100 {{if this.showOptions 'show'}}"
           role="listbox"
           {{onInsert this.onMenuInsert}}
         >
-          {{#each this.internalItems as |option index|}}
+          {{#each this.internalOptions as |option index|}}
             <SearchItem
               @option={{option}}
               @index={{index}}
-              @activeIndex={{this.activeItem}}
-              {{on "click" (fn this.selectItem option index)}}
+              @activeIndex={{this.activeIndex}}
+              {{on "click" (fn this.selectOption option index)}}
             />
           {{else}}
             <li class="dropdown-item disabled">{{this.noResultsLabel}}</li>
