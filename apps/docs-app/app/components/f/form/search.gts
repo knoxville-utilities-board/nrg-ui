@@ -39,10 +39,10 @@ export default class extends Component {
   hideSearchIcon = false;
 
   @tracked
-  stringItems = ["Apple", "Pear", "Orange", "Banana", "Grape", "Strawberry", "Mango", "Pineapple", "Peach", "Cherry", "Blueberry", "Watermelon", "Papaya", "Kiwi", "Plum", "Apricot", "Pomegranate", "Lemon", "Lime", "Raspberry", "Blackberry", "Coconut", "Dragon fruit", "Lychee", "Fig", "Tangerine" ];
+  stringOptions = ["Apple", "Pear", "Orange", "Banana", "Grape", "Strawberry", "Mango", "Pineapple", "Peach", "Cherry", "Blueberry", "Watermelon", "Papaya", "Kiwi", "Plum", "Apricot", "Pomegranate", "Lemon", "Lime", "Raspberry", "Blackberry", "Coconut", "Dragon fruit", "Lychee", "Fig", "Tangerine" ];
 
   @tracked
-  objectItems = [
+  objectOptions = [
     { key: "Option 1", fruit: "Apple"},
     { key: "Option 2", fruit: "Pear"},
     { key: "Option 3", fruit: "Orange"},
@@ -98,21 +98,28 @@ export default class extends Component {
   @action
   async stringQuery(searchString: string) {
     await timeout(1000);
-    return this.stringItems.filter((item) => item.toLowerCase().includes(searchString.toLowerCase()));
+    return this.stringOptions.filter((item) => item.toLowerCase().includes(searchString.toLowerCase()));
   }
 
   @action
   async objectQuery(searchString: string) {
     await timeout(1000);
 
-    const things = this.objectItems.filter((item) => item.fruit.toLowerCase().includes(searchString.toLowerCase()));
+    const things = this.objectOptions.filter((item) => item.fruit.toLowerCase().includes(searchString.toLowerCase()));
     return things;
   }
-
 
   @action
   update(key: string, value: unknown) {
     set(this, key, value);
+  }
+
+  get stringOptionsSource() {
+    return JSON.stringify(this.stringOptions, null, 2);
+  }
+
+  get objectOptionsSource() {
+    return JSON.stringify(this.objectOptions, null, 2);
   }
 
   <template>
@@ -176,21 +183,21 @@ export default class extends Component {
             <Args.Bool
               @name="hideSearchIcon"
               @defaultValue={{false}}
-              @description="When true, the text will be replaced with a hideSearchIcon spinner"
+              @description="When true, the search icon will be hidden"
               @value={{this.hideSearchIcon}}
               @onInput={{fn this.update "hideSearchIcon"}}
             />
             <Args.Bool
               @name="loading"
               @defaultValue={{false}}
-              @description="When true, the text will be replaced with a loading spinner"
+              @description="When true, the icon will be replaced with a loading spinner"
               @value={{this.loading}}
               @onInput={{fn this.update "loading"}}
             />
             <Args.Number
               @name="minCharacters"
               @defaultValue={{1}}
-              @description="The minimum number of characters needed to search"
+              @description="The minimum number of characters needed to start a search"
               @value={{this.minCharacters}}
               @onInput={{fn this.update "minCharacters"}}
             />
@@ -210,7 +217,7 @@ export default class extends Component {
             />
             <Args.Action
               @name="query"
-              @description="A function that return a array of strings options"
+              @description="A function that return a array of strings or objects options"
             >
               <CodeBlock
                 @lang="typescript"
@@ -268,5 +275,29 @@ export default class extends Component {
         </FreestyleUsage>
       </Section.subsection>
     </FreestyleSection>
+    <div class="grid">
+      <div class="g-col-4">
+        <h3>String Options</h3>
+        <CodeBlock
+          class="border rounded p-3"
+          @lang="json"
+          @code={{this.stringOptionsSource}}
+        />
+      </div>
+      <div class="g-col-4">
+        <h3>Object Options</h3>
+        <CodeBlock
+          class="border rounded p-3 scrollable"
+          @lang="json"
+          @code={{this.objectOptionsSource}}
+        />
+      </div>
+      <div class="g-col-4">
+        <h3>Selected</h3>
+        <div class="border rounded p-3">
+          {{this.model.property}}
+        </div>
+      </div>
+    </div>
   </template>
 }
