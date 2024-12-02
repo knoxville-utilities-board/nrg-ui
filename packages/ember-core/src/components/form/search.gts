@@ -177,15 +177,15 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
   }
 
   get displayValue() {
-    if (this.value) {
-      if (this.args.displayPath) {
-        return get(this.value, this.args.displayPath) as string;
-      }
-
-      return this.value as string;
+    if (!this.value) {
+      return this.searchString;
     }
 
-    return this.searchString;
+    if (this.selectedItem) {
+      return this.selectedItem.label;
+    }
+
+    return '';
   }
 
   get internalItems() {
@@ -211,6 +211,18 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
       };
     });
   }
+
+  get selectedItem(): Optional<SearchOption<T>> {
+    const found = this.internalItems.find(
+      (item) => item.value === this.value,
+    );
+    return found || null;
+  }
+
+  set selectedItem(option: SearchOption<T>) {
+    this.onChange(option.value);
+  }
+
 
   scrollActiveItemIntoView() {
     if (this.activeItem == -1) {
@@ -238,10 +250,9 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
     evt?.stopPropagation();
 
     this.activeItem = index;
+    this.selectedItem = item;
 
     this.onBlur();
-
-    this.onChange(item.value);
   }
 
   @action
@@ -308,9 +319,9 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
 
   @action
   onSearch(evt: Event) {
+    this.clear();
+
     this.searchString = (evt.target as HTMLInputElement).value;
-    this.value = '';
-    this.activeItem = -1;
 
     if (!this.canPerformSearch) {
       return;
