@@ -12,7 +12,7 @@ import { runTask } from 'ember-lifeline';
 import { TrackedArray, TrackedMap } from 'tracked-built-ins';
 
 import Field from './field.gts';
-import onInsert from '../../modifiers/did-insert.ts';
+import onInsert from '../../modifiers/on-insert.ts';
 import { scrollTo } from '../../utils/dom.ts';
 import { diff, uid } from '../../utils/index.ts';
 import Button from '../button.gts';

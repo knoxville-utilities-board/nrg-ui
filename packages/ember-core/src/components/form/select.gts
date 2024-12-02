@@ -14,7 +14,7 @@ import onKey from 'ember-keyboard/modifiers/on-key';
 import { runTask } from 'ember-lifeline';
 
 import BoundValue from './bound-value.ts';
-import onInsert from '../../modifiers/did-insert.ts';
+import onInsert from '../../modifiers/on-insert.ts';
 
 import type { Optional } from '../../';
 import type IntlService from 'ember-intl/services/intl';

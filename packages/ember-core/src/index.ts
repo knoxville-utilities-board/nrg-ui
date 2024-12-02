@@ -46,7 +46,7 @@ export { default as ThemeSwitcher } from './components/theme-switcher.gts';
 export { bind, default as Bind } from './helpers/bind.ts';
 
 /* Modifiers */
-export { default as didInsert } from './modifiers/did-insert.ts';
+export { default as onInsert } from './modifiers/on-insert.ts';
 export { default as onUpdate } from './modifiers/on-update.ts';
 
 /* Types - Components - Forms */
