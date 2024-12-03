@@ -318,9 +318,9 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
 
   @action
   onSearch(evt: Event) {
-    this.clear();
-
     this.searchString = (evt.target as HTMLInputElement).value;
+    this.value = '';
+    this.activeIndex = -1;
 
     if (!this.canPerformSearch) {
       return;
