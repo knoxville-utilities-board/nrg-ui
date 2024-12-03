@@ -11,11 +11,17 @@ import {
   checkNodeVersion,
   ensureNrgDirectoryExists,
 } from './dependencies.js';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 
 function getFileHelper() {
   const workingDirectory = process.cwd();
   const targetNodeModules = path.join(workingDirectory, 'node_modules');
-  const thisNodeModules = path.join(import.meta.dirname, '../', 'node_modules');
+  const bootstrapLocation = path.dirname(require.resolve('bootstrap/package.json'))
+  const bootstrapNodeModules = path.join(bootstrapLocation, '../');
+  const bootstrapIconLocation = path.dirname(require.resolve('bootstrap-icons/package.json'))
+  const bootstrapIconNodeModules = path.join(bootstrapIconLocation, '../');
+
   const nrgDirectory = path.join(workingDirectory, '.nrg');
   const nrgCss = path.join(
     targetNodeModules,
@@ -35,7 +41,8 @@ function getFileHelper() {
   return {
     workingDirectory,
     targetNodeModules,
-    thisNodeModules,
+    bootstrapNodeModules,
+    bootstrapIconNodeModules,
     nrgDirectory,
     nrgCss,
     nrgScssDirectory,
