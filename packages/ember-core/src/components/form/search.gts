@@ -9,8 +9,8 @@ import { restartableTask, timeout } from 'ember-concurrency';
 import onKey from 'ember-keyboard/modifiers/on-key';
 
 import BoundValue from './bound-value.ts';
-import onInsert from '../../modifiers/did-insert.ts';
 import onClickOutside from '../../modifiers/on-click-outside.ts';
+import onInsert from '../../modifiers/on-insert.ts';
 
 import type { Optional } from '../../';
 
