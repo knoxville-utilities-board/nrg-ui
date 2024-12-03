@@ -39,36 +39,63 @@ export default class extends Component {
   hideSearchIcon = false;
 
   @tracked
-  stringOptions = ["Apple", "Pear", "Orange", "Banana", "Grape", "Strawberry", "Mango", "Pineapple", "Peach", "Cherry", "Blueberry", "Watermelon", "Papaya", "Kiwi", "Plum", "Apricot", "Pomegranate", "Lemon", "Lime", "Raspberry", "Blackberry", "Coconut", "Dragon fruit", "Lychee", "Fig", "Tangerine" ];
+  stringOptions = [
+    'Apple',
+    'Pear',
+    'Orange',
+    'Banana',
+    'Grape',
+    'Strawberry',
+    'Mango',
+    'Pineapple',
+    'Peach',
+    'Cherry',
+    'Blueberry',
+    'Watermelon',
+    'Papaya',
+    'Kiwi',
+    'Plum',
+    'Apricot',
+    'Pomegranate',
+    'Lemon',
+    'Lime',
+    'Raspberry',
+    'Blackberry',
+    'Coconut',
+    'Dragon fruit',
+    'Lychee',
+    'Fig',
+    'Tangerine',
+  ];
 
   @tracked
   objectOptions = [
-    { key: "Option 1", fruit: "Apple"},
-    { key: "Option 2", fruit: "Pear"},
-    { key: "Option 3", fruit: "Orange"},
-    { key: "Option 4", fruit: "Banana"},
-    { key: "Option 5", fruit: "Grape"},
-    { key: "Option 6", fruit: "Strawberry"},
-    { key: "Option 7", fruit: "Mango"},
-    { key: "Option 8", fruit: "Pineapple"},
-    { key: "Option 9", fruit: "Peach"},
-    { key: "Option 10", fruit: "Cherry"},
-    { key: "Option 11", fruit: "Blueberry"},
-    { key: "Option 12", fruit: "Watermelon"},
-    { key: "Option 13", fruit: "Papaya"},
-    { key: "Option 14", fruit: "Kiwi"},
-    { key: "Option 15", fruit: "Plum"},
-    { key: "Option 16", fruit: "Apricot"},
-    { key: "Option 17", fruit: "Pomegranate"},
-    { key: "Option 18", fruit: "Lemon"},
-    { key: "Option 19", fruit: "Lime"},
-    { key: "Option 20", fruit: "Raspberry"},
-    { key: "Option 21", fruit: "Blackberry"},
-    { key: "Option 22", fruit: "Coconut"},
-    { key: "Option 23", fruit: "Dragon fruit"},
-    { key: "Option 24", fruit: "Lychee"},
-    { key: "Option 25", fruit: "Fig"},
-    { key: "Option 26", fruit: "Tangerine"}
+    { key: 'Option 1', fruit: 'Apple' },
+    { key: 'Option 2', fruit: 'Pear' },
+    { key: 'Option 3', fruit: 'Orange' },
+    { key: 'Option 4', fruit: 'Banana' },
+    { key: 'Option 5', fruit: 'Grape' },
+    { key: 'Option 6', fruit: 'Strawberry' },
+    { key: 'Option 7', fruit: 'Mango' },
+    { key: 'Option 8', fruit: 'Pineapple' },
+    { key: 'Option 9', fruit: 'Peach' },
+    { key: 'Option 10', fruit: 'Cherry' },
+    { key: 'Option 11', fruit: 'Blueberry' },
+    { key: 'Option 12', fruit: 'Watermelon' },
+    { key: 'Option 13', fruit: 'Papaya' },
+    { key: 'Option 14', fruit: 'Kiwi' },
+    { key: 'Option 15', fruit: 'Plum' },
+    { key: 'Option 16', fruit: 'Apricot' },
+    { key: 'Option 17', fruit: 'Pomegranate' },
+    { key: 'Option 18', fruit: 'Lemon' },
+    { key: 'Option 19', fruit: 'Lime' },
+    { key: 'Option 20', fruit: 'Raspberry' },
+    { key: 'Option 21', fruit: 'Blackberry' },
+    { key: 'Option 22', fruit: 'Coconut' },
+    { key: 'Option 23', fruit: 'Dragon fruit' },
+    { key: 'Option 24', fruit: 'Lychee' },
+    { key: 'Option 25', fruit: 'Fig' },
+    { key: 'Option 26', fruit: 'Tangerine' },
   ];
 
   @tracked
@@ -78,10 +105,10 @@ export default class extends Component {
   minCharacters = 1;
 
   @tracked
-  noResultsLabel = "No results found";
+  noResultsLabel = 'No results found';
 
   @tracked
-  placeholder = "Search";
+  placeholder = 'Search';
 
   @tracked
   readonly = false;
@@ -98,14 +125,18 @@ export default class extends Component {
   @action
   async stringQuery(searchString: string) {
     await timeout(1000);
-    return this.stringOptions.filter((item) => item.toLowerCase().includes(searchString.toLowerCase()));
+    return this.stringOptions.filter((item) =>
+      item.toLowerCase().includes(searchString.toLowerCase()),
+    );
   }
 
   @action
   async objectQuery(searchString: string) {
     await timeout(1000);
 
-    const things = this.objectOptions.filter((item) => item.fruit.toLowerCase().includes(searchString.toLowerCase()));
+    const things = this.objectOptions.filter((item) =>
+      item.fruit.toLowerCase().includes(searchString.toLowerCase()),
+    );
     return things;
   }
 

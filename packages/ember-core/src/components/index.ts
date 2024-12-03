@@ -7,7 +7,7 @@ export { default as Field } from './form/field.gts';
 export { default as Form } from './form/index.gts';
 export { default as PhoneInput } from './form/phone-input.gts';
 export { default as RadioGroup } from './form/radio-group.gts';
-export { default as Search } from './form/search.gts'
+export { default as Search } from './form/search.gts';
 export { default as Select } from './form/select.gts';
 export { default as TextArea } from './form/text-area.gts';
 export { default as TextInput } from './form/text-input.gts';

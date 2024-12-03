@@ -34,21 +34,26 @@ class SearchItem<T> extends Component<SearchItemSignature<T>> {
   active = true;
 
   get classList() {
-      const classes = ['dropdown-item'];
+    const classes = ['dropdown-item'];
 
-      if (this.isActiveIndex) {
-        classes.push('active');
-      }
-
-      return classes.join(' ');
+    if (this.isActive) {
+      classes.push('active');
     }
 
-  get isActiveIndex() {
+    return classes.join(' ');
+  }
+
+  get isActive() {
     return this.args.activeIndex === this.args.index;
   }
 
   <template>
-    <li class={{this.classList}} role="option" ...attributes>{{this.args.option.label}}</li>
+    <li
+      class={{this.classList}}
+      role="option"
+      aria-selected={{this.isActive}}
+      ...attributes
+    >{{@option.label}}</li>
   </template>
 }
 
@@ -77,7 +82,10 @@ export interface SearchSignature<T> {
   Element: HTMLDivElement;
 }
 
-export default class Search<T> extends BoundValue<SearchSignature<T>, string | T> {
+export default class Search<T> extends BoundValue<
+  SearchSignature<T>,
+  string | T
+> {
   @tracked
   activeIndex = -1;
 
@@ -121,15 +129,15 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
   }
 
   get noResultsLabel() {
-    return this.args.noResultsLabel ?? "No results found";
+    return this.args.noResultsLabel ?? 'No results found';
   }
 
   get placeholder() {
     if (this.args.basic) {
-      return "";
+      return '';
     }
 
-    return this.args.placeholder ?? "Search";
+    return this.args.placeholder ?? 'Search';
   }
 
   get scrollable() {
@@ -140,7 +148,7 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
     return this.args.searchTimeout ?? 300;
   }
 
-  get canPerformSearch () {
+  get canPerformSearch() {
     return this.searchString.trim().length >= this.minCharacters;
   }
 
@@ -267,7 +275,7 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
       this.activeIndex--;
       this.scrollActiveOptionIntoView();
     }
-}
+  }
 
   @action
   moveDown(evt: KeyboardEvent) {
@@ -335,7 +343,7 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
 
   @action
   clear() {
-    this.searchString = ''
+    this.searchString = '';
     this.value = '';
     this.activeIndex = -1;
 
@@ -353,18 +361,14 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
   }
 
   <template>
-    <div
-      class={{this.classList}}
-      {{onClickOutside this.onBlur}}
-      ...attributes
-    >
+    <div class={{this.classList}} {{onClickOutside this.onBlur}} ...attributes>
       <div class="input-group">
         {{#unless this.hideSearchIcon}}
           <span class="input-group-text">
             {{#if this.loading}}
-              <span class="spinner-border spinner-border-sm"/>
+              <span class="spinner-border spinner-border-sm" />
             {{else}}
-              <i class="bi bi-search"/>
+              <i class="bi bi-search" />
             {{/if}}
           </span>
         {{/unless}}
@@ -390,9 +394,10 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
         {{#if this.clearable}}
           <button
             class="input-group-text"
+            type="button"
             {{on "click" this.clear}}
           >
-            <i class="bi bi-x-lg"/>
+            <i class="bi bi-x-lg" />
           </button>
         {{/if}}
       </div>
