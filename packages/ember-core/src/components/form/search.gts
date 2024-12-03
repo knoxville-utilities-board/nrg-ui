@@ -181,6 +181,10 @@ export default class Search<T> extends BoundValue<SearchSignature<T>, string | T
       return this.searchString;
     }
 
+    if (this.args.serializationPath === null) {
+      return get(this.value, this.args.displayPath ?? 'label') as string;
+    }
+
     if (this.selectedOption) {
       return this.selectedOption.label;
     }
