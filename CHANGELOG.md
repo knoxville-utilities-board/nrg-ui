@@ -1,5 +1,24 @@
 # Changelog
 
+## Release (2024-12-04)
+
+@nrg-ui/core 0.18.0 (minor)
+@nrg-ui/theme-generator 0.2.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/theme-generator`
+  * [#291](https://github.com/knoxville-utilities-board/nrg-ui/pull/291) fix(theme-generator): Find node module location at runtime ([@KeithClinard](https://github.com/KeithClinard))
+* `docs-app`, `@nrg-ui/core`
+  * [#286](https://github.com/knoxville-utilities-board/nrg-ui/pull/286) refactor: Rename `didInsert` modifier to `onInsert` ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/theme-generator`
+  * [#291](https://github.com/knoxville-utilities-board/nrg-ui/pull/291) fix(theme-generator): Find node module location at runtime ([@KeithClinard](https://github.com/KeithClinard))
+
+#### Committers: 2
+- Keith ([@KeithClinard](https://github.com/KeithClinard))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-11-26)
 
 @nrg-ui/core 0.17.1 (patch)
