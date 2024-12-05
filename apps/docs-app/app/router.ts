@@ -33,6 +33,7 @@ Router.map(function () {
     this.route('navbar');
     this.route('toaster');
     this.route('theme-switcher');
+    this.route('pagination');
   });
   this.route('helpers');
   this.route('mktg-components', function () {

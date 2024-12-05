@@ -35,7 +35,7 @@ select,
     }
   }
   &:not([disabled]) {
-    &:not(input[type='checkbox']):not(input[type='radio']) {
+    &:not(input[type="checkbox"]):not(input[type="radio"]) {
       background: inherit !important;
       padding-right: revert !important;
     }
@@ -104,6 +104,12 @@ input::placeholder {
   opacity: 0.75;
 }
 
+.page-item:last-child .dropdown.form-control {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left-width: 0;
+}
+
 /* Datetime calendar */
 .calendar {
   @extend .text-center;
@@ -129,7 +135,8 @@ input::placeholder {
       background-color: var(--bs-secondary-bg);
     }
 
-    &:hover, &.active {
+    &:hover,
+    &.active {
       background-color: var(--bs-secondary-bg);
     }
 

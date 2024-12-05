@@ -18,6 +18,9 @@
       "title": "Page Not Found",
       "message": "The page you requested could not be found."
     },
+    "pagination": {
+      "detailedMeta": "{start, number} - {end, number} of {total, number}"
+    },
     "select": {
       "defaultText": "Select an Option"
     },
