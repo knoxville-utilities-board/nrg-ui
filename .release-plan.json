@@ -5,31 +5,22 @@
     },
     "@nrg-ui/core": {
       "impact": "patch",
-      "oldVersion": "0.18.0",
-      "newVersion": "0.18.1",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./packages/ember-core/package.json"
-    },
-    "@nrg-ui/standards": {
-      "impact": "patch",
-      "oldVersion": "0.3.1",
-      "newVersion": "0.3.2",
+      "oldVersion": "0.18.1",
+      "newVersion": "0.18.2",
       "constraints": [
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
-      "pkgJSONPath": "./packages/standards/package.json"
+      "pkgJSONPath": "./packages/ember-core/package.json"
+    },
+    "@nrg-ui/standards": {
+      "oldVersion": "0.3.2"
     },
     "@nrg-ui/theme-generator": {
       "oldVersion": "0.2.0"
     }
   },
-  "description": "## Release (2024-12-05)\n\n@nrg-ui/core 0.18.1 (patch)\n@nrg-ui/standards 0.3.2 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/standards`\n  * [#294](https://github.com/knoxville-utilities-board/nrg-ui/pull/294) fix(standards): Add Ember.js ruleset ([@TSenter](https://github.com/TSenter))\n  * [#292](https://github.com/knoxville-utilities-board/nrg-ui/pull/292) chore: Bump required version of ESLint ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/core`\n  * [#289](https://github.com/knoxville-utilities-board/nrg-ui/pull/289) chore: Update Gember config and commands ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2024-12-05)\n\n@nrg-ui/core 0.18.2 (patch)\n\n#### :bug: Bug Fix\n* `docs-app`, `@nrg-ui/core`\n  * [#295](https://github.com/knoxville-utilities-board/nrg-ui/pull/295) refactor: Update confirmation validator ([@lnicely](https://github.com/lnicely))\n\n#### Committers: 1\n- Lucas ([@lnicely](https://github.com/lnicely))\n"
 }
