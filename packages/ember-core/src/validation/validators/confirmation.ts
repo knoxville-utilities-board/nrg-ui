@@ -59,7 +59,7 @@ export default class ConfirmationValidator<
   ): ValidateFnResponse {
     const { label, inverse, on } = options;
 
-    const expectedValue = get(context, on);
+    const expectedValue = get(context, on) as TranslatableOption;
 
     const matches = isEqual(value, expectedValue);
     let key = 'nrg.validation.confirmation.invalid';
@@ -78,7 +78,7 @@ export default class ConfirmationValidator<
     return {
       key,
       value,
-      expectedValue: expectedValue as TranslatableOption,
+      expectedValue,
       label: label ?? on,
     };
   }
