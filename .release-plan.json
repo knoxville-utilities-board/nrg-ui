@@ -4,36 +4,32 @@
       "oldVersion": "0.9.0"
     },
     "@nrg-ui/core": {
-      "impact": "minor",
-      "oldVersion": "0.17.1",
-      "newVersion": "0.18.0",
+      "impact": "patch",
+      "oldVersion": "0.18.0",
+      "newVersion": "0.18.1",
       "constraints": [
         {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
     },
     "@nrg-ui/standards": {
-      "oldVersion": "0.3.1"
-    },
-    "@nrg-ui/theme-generator": {
-      "impact": "minor",
-      "oldVersion": "0.1.0",
-      "newVersion": "0.2.0",
+      "impact": "patch",
+      "oldVersion": "0.3.1",
+      "newVersion": "0.3.2",
       "constraints": [
-        {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        },
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
-      "pkgJSONPath": "./packages/theme-generator/package.json"
+      "pkgJSONPath": "./packages/standards/package.json"
+    },
+    "@nrg-ui/theme-generator": {
+      "oldVersion": "0.2.0"
     }
   },
-  "description": "## Release (2024-12-04)\n\n@nrg-ui/core 0.18.0 (minor)\n@nrg-ui/theme-generator 0.2.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/theme-generator`\n  * [#291](https://github.com/knoxville-utilities-board/nrg-ui/pull/291) fix(theme-generator): Find node module location at runtime ([@KeithClinard](https://github.com/KeithClinard))\n* `docs-app`, `@nrg-ui/core`\n  * [#286](https://github.com/knoxville-utilities-board/nrg-ui/pull/286) refactor: Rename `didInsert` modifier to `onInsert` ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/theme-generator`\n  * [#291](https://github.com/knoxville-utilities-board/nrg-ui/pull/291) fix(theme-generator): Find node module location at runtime ([@KeithClinard](https://github.com/KeithClinard))\n\n#### Committers: 2\n- Keith ([@KeithClinard](https://github.com/KeithClinard))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2024-12-05)\n\n@nrg-ui/core 0.18.1 (patch)\n@nrg-ui/standards 0.3.2 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/standards`\n  * [#294](https://github.com/knoxville-utilities-board/nrg-ui/pull/294) fix(standards): Add Ember.js ruleset ([@TSenter](https://github.com/TSenter))\n  * [#292](https://github.com/knoxville-utilities-board/nrg-ui/pull/292) chore: Bump required version of ESLint ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/core`\n  * [#289](https://github.com/knoxville-utilities-board/nrg-ui/pull/289) chore: Update Gember config and commands ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
