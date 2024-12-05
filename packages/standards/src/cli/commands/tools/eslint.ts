@@ -108,7 +108,7 @@ async function removeConfigFile(): Promise<Linter.Config[] | undefined> {
   }
 
   if (config.path !== 'package.json') {
-    logger.debug(`Removing config file ${config}`);
+    logger.debug(`Removing config file ${config.path}`);
 
     rmSync(config.path);
 
