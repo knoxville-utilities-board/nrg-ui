@@ -135,6 +135,13 @@ async function createNewConfigFile(priorConfig?: Linter.Config[]) {
 
   ruleSets.set('ignore', getIgnoredFiles(priorConfig));
   ruleSets.set('base', null);
+
+  if (hasDependency('ember-source')) {
+    logger.debug('Found Ember.js, adding Ember rule sets');
+
+    ruleSets.set('ember', null);
+  }
+
   ruleSets.set('js', null);
 
   if (hasTypescript) {
