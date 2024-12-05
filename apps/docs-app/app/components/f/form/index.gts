@@ -46,6 +46,27 @@ const Validators = {
       },
     }),
   ],
+  phoneConfirm: [
+    validator('confirmation', {
+      on: 'phone',
+      message: 'Phone numbers do not match',
+    }),
+    validator('length', {
+      min: 10,
+      message: 'Phone number must contain a 3-digit area code',
+      disabled() {
+        return !this.requirePhoneLength;
+      },
+    }),
+    validator('length', {
+      max: 10,
+      isWarning: true,
+      message: 'Phone number cannot contain a country code',
+      disabled() {
+        return !this.requirePhoneLength;
+      },
+    }),
+  ],
   checkboxGroup: [
     validator('custom', {
       validate(value) {
@@ -82,6 +103,9 @@ class Model {
 
   @tracked
   phone = '';
+
+  @tracked
+  phoneConfirm = '';
 
   @tracked
   radio = '';
@@ -189,6 +213,13 @@ export default class extends Component {
           as |Field|
         >
           <Field.PhoneInput @binding={{bind this.model "phone"}} />
+        </Form.Field>
+        <Form.Field
+          @label="Phone Number Confirm"
+          @required={{this.required}}
+          as |Field|
+        >
+          <Field.PhoneInput @binding={{bind this.model "phoneConfirm"}} />
         </Form.Field>
         <Form.Field
           @label="Checkbox Group"

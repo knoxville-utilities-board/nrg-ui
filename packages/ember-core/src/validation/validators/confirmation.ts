@@ -1,4 +1,5 @@
 import { assert } from '@ember/debug';
+import { get } from '@ember/object';
 import { isEqual, isPresent } from '@ember/utils';
 
 import BaseValidator from './base.ts';
@@ -58,7 +59,7 @@ export default class ConfirmationValidator<
   ): ValidateFnResponse {
     const { label, inverse, on } = options;
 
-    const expectedValue = (context as Record<string, TranslatableOption>)[on];
+    const expectedValue = get(context, on) as TranslatableOption;
 
     const matches = isEqual(value, expectedValue);
     let key = 'nrg.validation.confirmation.invalid';
