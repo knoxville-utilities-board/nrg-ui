@@ -26,7 +26,7 @@ type Config = {
   content?: any;
 };
 
-const eslintCompatibility = '^8.21.0';
+const eslintCompatibility = '^9.0.0';
 
 const configPath = 'eslint.config';
 
@@ -54,7 +54,9 @@ async function ensureInstallation() {
 
   const hasThisPackage = '@nrg-ui/standards' in dependencies;
   if (!hasThisPackage) {
-    logger.debug('`@nrg-ui/standards` not found in package.json, installing...');
+    logger.debug(
+      '`@nrg-ui/standards` not found in package.json, installing...',
+    );
 
     await install('@nrg-ui/standards', `^${getVersion()}`);
   }
@@ -106,7 +108,7 @@ async function removeConfigFile(): Promise<Linter.Config[] | undefined> {
   }
 
   if (config.path !== 'package.json') {
-    logger.debug(`Removing config file ${config}`);
+    logger.debug(`Removing config file ${config.path}`);
 
     rmSync(config.path);
 
