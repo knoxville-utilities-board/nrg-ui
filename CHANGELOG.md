@@ -1,5 +1,22 @@
 # Changelog
 
+## Release (2024-12-05)
+
+@nrg-ui/core 0.18.1 (patch)
+@nrg-ui/standards 0.3.2 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/standards`
+  * [#294](https://github.com/knoxville-utilities-board/nrg-ui/pull/294) fix(standards): Add Ember.js ruleset ([@TSenter](https://github.com/TSenter))
+  * [#292](https://github.com/knoxville-utilities-board/nrg-ui/pull/292) chore: Bump required version of ESLint ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `@nrg-ui/core`
+  * [#289](https://github.com/knoxville-utilities-board/nrg-ui/pull/289) chore: Update Gember config and commands ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-12-04)
 
 @nrg-ui/core 0.18.0 (minor)
