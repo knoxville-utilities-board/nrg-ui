@@ -11,6 +11,13 @@
   }
 }
 
+.search > .dropdown {
+  &.scrollable > .dropdown-menu {
+    max-height: clamp(9rem, 50vh, 21rem);
+    overflow-y: auto;
+  }
+}
+
 /* I'm open to changing the color (it's the "orange" color from
  * Fomantic) but I think it's a good idea to have a color that's
  * different from the default "warning" color from Bootstrap.
@@ -35,7 +42,7 @@ select,
     }
   }
   &:not([disabled]) {
-    &:not(input[type='checkbox']):not(input[type='radio']) {
+    &:not(input[type="checkbox"]):not(input[type="radio"]) {
       background: inherit !important;
       padding-right: revert !important;
     }
@@ -129,7 +136,8 @@ input::placeholder {
       background-color: var(--bs-secondary-bg);
     }
 
-    &:hover, &.active {
+    &:hover,
+    &.active {
       background-color: var(--bs-secondary-bg);
     }
 
