@@ -2,6 +2,17 @@
 
 ## Release (2024-12-05)
 
+@nrg-ui/core 0.18.2 (patch)
+
+#### :bug: Bug Fix
+* `docs-app`, `@nrg-ui/core`
+  * [#295](https://github.com/knoxville-utilities-board/nrg-ui/pull/295) refactor: Update confirmation validator ([@lnicely](https://github.com/lnicely))
+
+#### Committers: 1
+- Lucas ([@lnicely](https://github.com/lnicely))
+
+## Release (2024-12-05)
+
 @nrg-ui/core 0.18.1 (patch)
 @nrg-ui/standards 0.3.2 (patch)
 
