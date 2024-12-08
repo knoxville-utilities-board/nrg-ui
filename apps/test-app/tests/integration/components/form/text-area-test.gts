@@ -1,9 +1,11 @@
 import { fillIn, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import { Bind as bind, TextArea } from '@nrg-ui/core';
+import { TextArea, bind } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
+
+import type { Optional } from '@nrg-ui/core';
 
 class Model {
   @tracked
@@ -17,7 +19,7 @@ module('Integration | Component | form/text-area', function (hooks) {
     assert.expect(5);
 
     const model = new Model();
-    const actionHandler = (text) => {
+    const actionHandler = (text: Optional<string>) => {
       assert.strictEqual(text, 'Foo bar');
     };
 

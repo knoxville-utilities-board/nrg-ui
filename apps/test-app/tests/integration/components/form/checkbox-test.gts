@@ -1,19 +1,25 @@
 import { click, render, settled } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import { Bind as bind, Checkbox } from '@nrg-ui/core';
+import { Checkbox, bind } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
 
+import type { TestContext as BaseContext } from '@ember/test-helpers';
+
+class Model {
+  @tracked
+  value: boolean = false;
+}
+
+interface TestContext extends BaseContext {
+  element: HTMLElement;
+}
+
 module('Integration | Component | form/checkbox', function (hooks) {
   setupRenderingTest(hooks);
 
-  class Model {
-    @tracked
-    value: boolean = false;
-  }
-
-  test('it renders', async function (assert) {
+  test('it renders', async function (this: TestContext, assert) {
     const model = new Model();
     await render(<template>
       <Checkbox
@@ -31,7 +37,7 @@ module('Integration | Component | form/checkbox', function (hooks) {
       .hasValue('false')
       .isNotChecked();
 
-    const labelId = this.element.querySelector('.form-check > input').id;
+    const labelId = this.element.querySelector('.form-check > input')!.id;
 
     assert
       .dom('.form-check > label')
@@ -44,7 +50,7 @@ module('Integration | Component | form/checkbox', function (hooks) {
     assert.dom('.form-check > input').hasValue('true').isChecked();
   });
 
-  test('it renders (block)', async function (assert) {
+  test('it renders (block)', async function (this: TestContext, assert) {
     const model = new Model();
     await render(<template>
       <Checkbox @binding={{bind model "value"}} @id="my-id">
@@ -60,7 +66,7 @@ module('Integration | Component | form/checkbox', function (hooks) {
       .hasValue('false')
       .isNotChecked();
 
-    const labelId = this.element.querySelector('.form-check > input').id;
+    const labelId = this.element.querySelector('.form-check > input')!.id;
 
     assert.dom('.form-check > label').hasAttribute('for', labelId);
     assert.dom('.form-check > label > span').hasText('This is a checkbox');
@@ -71,7 +77,7 @@ module('Integration | Component | form/checkbox', function (hooks) {
     assert.dom('.form-check > input').hasValue('true').isChecked();
   });
 
-  test('it renders (switch)', async function (assert) {
+  test('it renders (switch)', async function (this: TestContext, assert) {
     const model = new Model();
     await render(<template>
       <Checkbox
@@ -92,7 +98,7 @@ module('Integration | Component | form/checkbox', function (hooks) {
       .hasValue('false')
       .isNotChecked();
 
-    const labelId = this.element.querySelector('.form-check > input').id;
+    const labelId = this.element.querySelector('.form-check > input')!.id;
 
     assert
       .dom('.form-check > label')

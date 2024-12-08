@@ -1,9 +1,11 @@
 import { fillIn, render, triggerEvent } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import { Bind as bind, TextInput } from '@nrg-ui/core';
+import { TextInput, bind } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
+
+import type { Optional } from '@nrg-ui/core';
 
 class Model {
   @tracked
@@ -17,7 +19,7 @@ module('Integration | Component | form/text-input', function (hooks) {
     assert.expect(6);
     const model = new Model();
 
-    const actionHandler = (text) => {
+    const actionHandler = (text: Optional<string>) => {
       assert.strictEqual(text, 'Foo bar');
     };
 
@@ -49,7 +51,7 @@ module('Integration | Component | form/text-input', function (hooks) {
   test('it uses a custom format', async function (assert) {
     const model = new Model();
 
-    const format = (value) => value.toUpperCase();
+    const format = (value: string) => value.toUpperCase();
 
     await render(<template>
       <TextInput @binding={{bind model "value"}} @format={{format}} />

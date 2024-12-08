@@ -43,3 +43,9 @@ export default class ThemeService extends Service {
     document.body.setAttribute('data-bs-theme', preferredTheme);
   }
 }
+
+declare module '@ember/service' {
+  interface Registry {
+    theme: Theme;
+  }
+}
