@@ -2,7 +2,7 @@ import { setOwner } from '@ember/application';
 import { array } from '@ember/helper';
 import { click, fillIn, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import { Bind as bind, Form } from '@nrg-ui/core';
+import { Form, bind } from '@nrg-ui/core';
 import { validator } from '@nrg-ui/core/validation';
 import { setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';

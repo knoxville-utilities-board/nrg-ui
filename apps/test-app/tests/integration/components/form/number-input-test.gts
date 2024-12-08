@@ -1,6 +1,6 @@
 import { blur, fillIn, focus, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import { Bind as bind, NumberInput } from '@nrg-ui/core';
+import { NumberInput, bind } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';

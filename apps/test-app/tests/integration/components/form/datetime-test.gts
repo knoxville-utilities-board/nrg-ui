@@ -1,6 +1,6 @@
 import { render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import { Bind as bind, Datetime } from '@nrg-ui/core';
+import { Datetime, bind } from '@nrg-ui/core';
 import dayjs from 'dayjs';
 import { module, test } from 'qunit';
 

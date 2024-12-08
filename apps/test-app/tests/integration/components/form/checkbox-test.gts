@@ -1,6 +1,6 @@
 import { click, render, settled } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import { Bind as bind, Checkbox } from '@nrg-ui/core';
+import { Checkbox, bind } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
