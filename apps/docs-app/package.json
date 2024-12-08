@@ -21,7 +21,7 @@
     "lint:hbs:fix": "ember-template-lint . --fix",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
-    "lint:types": "tsc --noEmit",
+    "lint:types": "glint",
     "start": "ember serve",
     "test": "echo 'The docs-app does not have tests, run tests in test-app'"
   },
@@ -38,7 +38,9 @@
     "@embroider/webpack": "^4.0.8",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
+    "@glint/core": "^1.5.0",
     "@glint/environment-ember-loose": "^1.5.0",
+    "@glint/environment-ember-template-imports": "^1.5.0",
     "@glint/template": "^1.5.0",
     "@nrg-ui/core": "workspace:*",
     "@nrg-ui/css": "workspace:*",
