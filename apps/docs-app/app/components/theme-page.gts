@@ -22,7 +22,7 @@ export default class extends Component {
   customerClass = 'residential';
 
   @tracked
-  number;
+  number = 0;
 
   @tracked
   text = '';
@@ -40,7 +40,7 @@ export default class extends Component {
   radio = '';
 
   @tracked
-  checkbox;
+  checkbox = false;
 
   @tracked
   checkboxGroup = autoTrack(new Array(3));

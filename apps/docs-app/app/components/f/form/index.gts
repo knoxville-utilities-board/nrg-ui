@@ -69,8 +69,8 @@ const Validators = {
   ],
   checkboxGroup: [
     validator('custom', {
-      validate(value) {
-        return !value.includes('cg0');
+      validate(value: unknown) {
+        return !(value as string).includes('cg0');
       },
       message: 'The first checkbox is not allowed',
       isWarning: true,
@@ -79,7 +79,6 @@ const Validators = {
   number: [
     validator('number', {
       allowBlank: true,
-      allowDecimals: true,
       maxPrecision: 2,
     }),
   ],
@@ -90,7 +89,7 @@ class Model {
   requirePhoneLength = true;
 
   @tracked
-  number;
+  number = 0;
 
   @tracked
   text = '';
@@ -111,24 +110,24 @@ class Model {
   radio = '';
 
   @tracked
-  checkbox;
+  checkbox = false;
 
   @tracked
-  checkbox2;
+  checkbox2 = false;
 
   @tracked
   checkboxGroup = autoTrack(new Array(3));
 
   toJSON() {
-    const obj = {};
+    const obj = {} as Record<string, unknown>;
 
     const prototype = Object.getPrototypeOf(this);
     for (const key of Object.getOwnPropertyNames(prototype)) {
-      const desc = Object.getOwnPropertyDescriptor(prototype, key);
+      const desc = Object.getOwnPropertyDescriptor(prototype, key)!;
       const hasGetter = typeof desc?.get === 'function';
       const isValue = 'value' in desc;
       if (hasGetter || isValue) {
-        obj[key] = this[key];
+        obj[key] = this[key as keyof this];
       }
     }
 
@@ -140,14 +139,14 @@ class Model {
   }
 }
 
-export default class extends Component {
+export default class DocsForm extends Component {
   model: Model;
 
   @tracked
   required = true;
 
-  constructor(...args: unknown[]) {
-    super(...args);
+  constructor(owner: unknown, args: object) {
+    super(owner, args);
     this.model = new Model();
 
     setOwner(this.model, getOwner(this));

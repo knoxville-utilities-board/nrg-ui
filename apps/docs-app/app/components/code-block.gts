@@ -5,15 +5,24 @@ import Component from '@glimmer/component';
 import { onInsert } from '@nrg-ui/core';
 
 import type ThemeService from '../services/theme';
+import type EmberFreestyleService from 'ember-freestyle/services/ember-freestyle';
 
-export default class CodeBlock extends Component {
+export interface CodeBlockSignature {
+  Element: HTMLPreElement;
+  Args: {
+    code: string;
+    lang?: string;
+  }
+}
+
+export default class CodeBlock extends Component<CodeBlockSignature> {
   @service('ember-freestyle')
-  freestyle;
+  declare freestyle: EmberFreestyleService;
 
   @service
   declare theme: ThemeService;
 
-  constructor(owner: unknown, args: object) {
+  constructor(owner: unknown, args: CodeBlockSignature['Args']) {
     super(owner, args);
 
     registerDestructor(this, () => {
@@ -26,12 +35,12 @@ export default class CodeBlock extends Component {
   }
 
   @action
-  highlight(el: HTMLPreElement) {
+  highlight(el: HTMLElement) {
     if (!this.theme.codeBlocks.has(this)) {
       this.theme.codeBlocks.set(this, el);
     }
 
-    el.querySelector('code').textContent = this.args.code;
+    el.querySelector('code')!.textContent = this.args.code;
     this.freestyle.highlight(el);
   }
 
