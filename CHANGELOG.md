@@ -1,5 +1,10 @@
 # Changelog
 
+
+
+
+
+
 ## Release (2024-12-05)
 
 @nrg-ui/core 0.18.2 (patch)
