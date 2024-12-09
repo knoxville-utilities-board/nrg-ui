@@ -1,14 +1,21 @@
 import { render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import { Bind as bind, Datetime } from '@nrg-ui/core';
-import dayjs, { type Dayjs } from 'dayjs';
+import { Datetime, bind } from '@nrg-ui/core';
+import dayjs from 'dayjs';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
 
+import type { TestContext as BaseContext } from '@ember/test-helpers';
+
 class Model {
   @tracked
-  value?: Dayjs = dayjs();
+  value?: Date = new Date();
+}
+
+interface TestContext extends BaseContext {
+  // element: HTMLElement;
+  model: Model;
 }
 
 const testDate = new Date(2013, 2, 3, 4, 10);
@@ -16,11 +23,11 @@ const testDate = new Date(2013, 2, 3, 4, 10);
 module('Integration | Component | form/datetime', function (hooks) {
   setupRenderingTest(hooks);
 
-  hooks.beforeEach(function () {
+  hooks.beforeEach(function (this: TestContext) {
     this.model = new Model();
   });
 
-  test('it renders (empty)', async function (assert) {
+  test('it renders (empty)', async function (this: TestContext, assert) {
     const { model } = this;
 
     model.value = undefined;
@@ -32,7 +39,7 @@ module('Integration | Component | form/datetime', function (hooks) {
     assert.dom('input').hasValue('');
   });
 
-  test('it renders (with default value)', async function (assert) {
+  test('it renders (with default value)', async function (this: TestContext, assert) {
     const { model } = this;
 
     await render(<template>
@@ -44,7 +51,7 @@ module('Integration | Component | form/datetime', function (hooks) {
     assert.true(dayjs().isSame(model.value, 'day'));
   });
 
-  test('it renders (datetime)', async function (assert) {
+  test('it renders (datetime)', async function (this: TestContext, assert) {
     const { model } = this;
     model.value = testDate;
 
@@ -55,7 +62,7 @@ module('Integration | Component | form/datetime', function (hooks) {
     assert.dom('input').hasValue('March 3, 2013 4:10 AM');
   });
 
-  test('it renders (date)', async function (assert) {
+  test('it renders (date)', async function (this: TestContext, assert) {
     const { model } = this;
     model.value = testDate;
 
@@ -66,7 +73,7 @@ module('Integration | Component | form/datetime', function (hooks) {
     assert.dom('input').hasValue('March 3, 2013');
   });
 
-  test('it renders (time)', async function (assert) {
+  test('it renders (time)', async function (this: TestContext, assert) {
     const { model } = this;
     model.value = testDate;
 
@@ -77,7 +84,7 @@ module('Integration | Component | form/datetime', function (hooks) {
     assert.dom('input').hasValue('4:10 AM');
   });
 
-  test('it renders (block)', async function (assert) {
+  test('it renders (block)', async function (this: TestContext, assert) {
     const { model } = this;
 
     await render(<template>
@@ -89,7 +96,7 @@ module('Integration | Component | form/datetime', function (hooks) {
     assert.dom().hasText('template block text');
   });
 
-  test('field can be marked readonly', async function (assert) {
+  test('field can be marked readonly', async function (this: TestContext, assert) {
     const { model } = this;
 
     await render(<template>

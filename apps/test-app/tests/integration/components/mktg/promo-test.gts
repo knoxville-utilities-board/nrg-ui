@@ -1,4 +1,4 @@
-import { render, find } from '@ember/test-helpers';
+import { find, render } from '@ember/test-helpers';
 import { MktgPromo } from '@nrg-ui/core';
 import { assert, module, test } from 'qunit';
 

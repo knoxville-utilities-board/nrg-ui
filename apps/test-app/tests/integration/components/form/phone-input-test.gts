@@ -1,6 +1,6 @@
 import { blur, fillIn, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import { Bind as bind, PhoneInput } from '@nrg-ui/core';
+import { PhoneInput, bind } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';

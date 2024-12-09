@@ -1,10 +1,12 @@
 import Service from '@ember/service';
-import { click, render, type TestContext } from '@ember/test-helpers';
+import { click, render } from '@ember/test-helpers';
 import { ThemeSwitcher } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 import { tracked } from 'tracked-built-ins';
 
 import { setupRenderingTest } from '../../helpers';
+
+import type { TestContext } from '@ember/test-helpers';
 
 interface Context extends TestContext {
   clickHandler: (evt: MouseEvent) => void;

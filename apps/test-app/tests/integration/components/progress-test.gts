@@ -1,8 +1,10 @@
-import { find, render, type TestContext } from '@ember/test-helpers';
+import { find, render } from '@ember/test-helpers';
 import { Progress } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../helpers';
+
+import type { TestContext } from '@ember/test-helpers';
 
 interface Context extends TestContext {
   element: HTMLElement;
