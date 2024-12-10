@@ -368,8 +368,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/design-system
       '@nrg-ui/standards':
-        specifier: ^0.3.1
-        version: 0.3.2
+        specifier: workspace:*
+        version: link:../../packages/standards
       '@tsconfig/ember':
         specifier: ^3.0.8
         version: 3.0.8
@@ -2293,11 +2293,6 @@ packages:
   '@npmcli/promise-spawn@7.0.2':
     resolution: {integrity: sha512-xhfYPXoV5Dy4UkY0D+v2KkwvnDfiA/8Mt3sWCGI/hM03NsYIH8ZaG6QzS9x7pje5vHZBZJ2v6VRFVTWACnqcmQ==}
     engines: {node: ^16.14.0 || >=18.0.0}
-
-  '@nrg-ui/standards@0.3.2':
-    resolution: {integrity: sha512-0WC28vfey5R3qVcV1jBPgu/Ed8voHNhv6oJlLhCyOtOVUBrcduisaXLwr/+O73EvmHfPaJx89H1X65vNi+fR8A==}
-    engines: {node: ^20.0.0}
-    hasBin: true
 
   '@octokit/auth-token@3.0.4':
     resolution: {integrity: sha512-TWFX7cZF2LXoCvdmJWY7XVPi74aSY0+FfBZNSXEXFkMpjcqsQwDSYVv5FhRFaI0V1ECnwbz4j59T/G+rXNWaIQ==}
@@ -11047,14 +11042,6 @@ snapshots:
   '@npmcli/promise-spawn@7.0.2':
     dependencies:
       which: 4.0.0
-
-  '@nrg-ui/standards@0.3.2':
-    dependencies:
-      chalk: 5.3.0
-      execa: 9.5.2
-      find-up: 7.0.0
-      semver: 7.6.3
-      yargs: 17.7.2
 
   '@octokit/auth-token@3.0.4': {}
 
