@@ -1,5 +1,28 @@
 # Changelog
 
+## Release (2024-12-10)
+
+@nrg-ui/css 0.9.1 (patch)
+@nrg-ui/core 0.18.3 (patch)
+@nrg-ui/standards 0.4.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/standards`
+  * [#300](https://github.com/knoxville-utilities-board/nrg-ui/pull/300) feat(standards): Update `eslint-plugin-decorator-position` ([@TSenter](https://github.com/TSenter))
+
+#### :memo: Documentation
+* `@nrg-ui/css`, `@nrg-ui/standards`
+  * [#302](https://github.com/knoxville-utilities-board/nrg-ui/pull/302) chore: Update READMEs for packages ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `docs-app`, `test-app`, `@nrg-ui/core`, `@nrg-ui/standards`
+  * [#301](https://github.com/knoxville-utilities-board/nrg-ui/pull/301) chore: Update `eslint-plugin-decorator-position` ([@TSenter](https://github.com/TSenter))
+* `test-app`, `@nrg-ui/core`
+  * [#297](https://github.com/knoxville-utilities-board/nrg-ui/pull/297) chore(test-app): Enable full Glint support ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-12-05)
 
 @nrg-ui/core 0.18.2 (patch)
