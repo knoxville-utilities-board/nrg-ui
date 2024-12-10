@@ -1,2 +1,13 @@
 @import url("marketing-theme.css");
 @import url("freestyle.css");
+
+.grid-collection {
+  & .item {
+    border: 2px solid var(--bs-primary);
+    border-radius: var(--bs-border-radius);
+
+    &:hover {
+      background-color: var(--bs-primary-bg-subtle);
+    }
+  }
+}
