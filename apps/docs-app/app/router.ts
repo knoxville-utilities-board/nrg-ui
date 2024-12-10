@@ -46,6 +46,8 @@ Router.map(function () {
     this.route('section-header');
     this.route('service-pricing');
   });
-  this.route('modifiers');
+  this.route('modifiers', function() {
+    this.route('on-destroy');
+  });
   this.route('services');
 });
