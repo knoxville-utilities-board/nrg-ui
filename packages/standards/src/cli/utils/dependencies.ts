@@ -33,7 +33,7 @@ const commands = {
 };
 
 export const compatibility: Record<string, string> = {
-  'eslint-plugin-decorator-position': '^5.0.2',
+  'eslint-plugin-decorator-position': '^6.0.0',
   'eslint-plugin-ember': '^12.3.0',
   'eslint-plugin-import': '^2.31.0',
   'eslint-plugin-n': '^16.0.0',

@@ -21,12 +21,10 @@ export default await merge(
 
 Since this package uses ESLint v9, various plugins have a minimum version requirement. The following table lists the compatibility of the plugins:
 
-| Plugin                             | Version    |
-| ---------------------------------- | ---------- |
-| `eslint-plugin-decorator-position` | `^5.0.2`\* |
-| `eslint-plugin-ember`              | `^12.2.0`  |
-| `eslint-plugin-import`             | `^2.31.0`  |
-| `eslint-plugin-n`                  | `^16.0.0`  |
-| `eslint-plugin-qunit`              | `^8.1.2`   |
-
-\* The `eslint-plugin-decorator-position` does not currently have formal support for ESLint v9. However, it is still compatible with this package. As new versions are released, the compatibility will be updated.
+| Plugin                             | Version   |
+| ---------------------------------- | --------- |
+| `eslint-plugin-decorator-position` | `^6.0.0`  |
+| `eslint-plugin-ember`              | `^12.2.0` |
+| `eslint-plugin-import`             | `^2.31.0` |
+| `eslint-plugin-n`                  | `^16.0.0` |
+| `eslint-plugin-qunit`              | `^8.1.2`  |
