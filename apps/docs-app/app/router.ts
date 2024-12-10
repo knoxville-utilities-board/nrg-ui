@@ -48,6 +48,7 @@ Router.map(function () {
   });
   this.route('modifiers', function() {
     this.route('on-destroy');
+    this.route('on-insert');
   });
   this.route('services');
 });
