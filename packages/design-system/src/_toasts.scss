@@ -9,4 +9,9 @@
   right: 0;
   position: fixed;
   z-index: 5000;
+  pointer-events: none;
+
+  & * {
+    pointer-events: auto;
+  }
 }
