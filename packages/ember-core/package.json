@@ -199,6 +199,7 @@
       "./components/form/number-input.js": "./dist/_app_/components/form/number-input.js",
       "./components/form/phone-input.js": "./dist/_app_/components/form/phone-input.js",
       "./components/form/radio-group.js": "./dist/_app_/components/form/radio-group.js",
+      "./components/form/search.js": "./dist/_app_/components/form/search.js",
       "./components/form/select.js": "./dist/_app_/components/form/select.js",
       "./components/form/text-area.js": "./dist/_app_/components/form/text-area.js",
       "./components/form/text-input.js": "./dist/_app_/components/form/text-input.js",
