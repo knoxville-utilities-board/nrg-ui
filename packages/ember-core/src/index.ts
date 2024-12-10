@@ -46,6 +46,7 @@ export { default as ThemeSwitcher } from './components/theme-switcher.gts';
 export { bind, default as Bind } from './helpers/bind.ts';
 
 /* Modifiers */
+export { default as onClickOutside } from './modifiers/on-click-outside.ts';
 export { default as onDestroy } from './modifiers/on-destroy.ts';
 export { default as onInsert } from './modifiers/on-insert.ts';
 export { default as onUpdate } from './modifiers/on-update.ts';
