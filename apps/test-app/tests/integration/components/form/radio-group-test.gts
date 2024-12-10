@@ -1,9 +1,11 @@
-import { render, click } from '@ember/test-helpers';
+import { click, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import { Bind as bind, RadioGroup } from '@nrg-ui/core';
+import { RadioGroup, bind } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
+
+import type { Optional } from '@nrg-ui/core';
 
 class Model {
   @tracked
@@ -17,7 +19,7 @@ module('Integration | Component | form/radio-group', function (hooks) {
     assert.expect(3);
 
     const model = new Model();
-    const actionHandler = (value) => {
+    const actionHandler = (value: Optional<string>) => {
       assert.strictEqual(value, '1');
     };
 
@@ -57,7 +59,7 @@ module('Integration | Component | form/radio-group', function (hooks) {
     assert.expect(2);
 
     const model = new Model();
-    const actionHandler = (value) => {
+    const actionHandler = (value: Optional<string>) => {
       assert.strictEqual(value, '1');
     };
 

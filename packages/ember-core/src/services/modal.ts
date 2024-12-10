@@ -31,3 +31,9 @@ export default class Modal extends Service {
     this.updateActiveModal();
   }
 }
+
+declare module '@ember/service' {
+  interface Registry {
+    modal: Modal;
+  }
+}

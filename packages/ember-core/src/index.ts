@@ -109,12 +109,3 @@ export type { Icon as IconType } from './icons.ts';
 export type Optional<T> = T | null;
 export type Primitive = string | number | boolean | null | undefined;
 export type Theme = 'light' | 'dark' | 'auto';
-
-import type Modal from './services/modal.ts';
-import type ThemeService from './services/theme.ts';
-declare module '@ember/service' {
-  interface Registry {
-    modal: Modal;
-    theme: ThemeService;
-  }
-}

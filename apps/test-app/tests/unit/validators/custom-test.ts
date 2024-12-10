@@ -2,8 +2,8 @@ import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/core';
 import {
-  validator as buildValidator,
   CustomValidator,
+  validator as buildValidator,
 } from '@nrg-ui/core/validation';
 import { addTranslations, setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';

@@ -34,7 +34,7 @@ export interface DatetimeCalendarSignature {
     minDate?: Date;
     showNowShortcut?: boolean;
     type?: 'datetime' | 'date' | 'time';
-    value: Date | null;
+    value?: Date | Dayjs | null;
 
     isDateDisabled?: (date: Date, precision?: OpUnitType) => boolean;
 

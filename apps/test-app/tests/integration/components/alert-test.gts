@@ -3,13 +3,13 @@ import {
   click,
   render,
   waitUntil,
-  type TestContext,
 } from '@ember/test-helpers';
 import { Alert } from '@nrg-ui/core';
-import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../helpers';
+
+import type { TestContext } from '@ember/test-helpers';
 
 interface Context extends TestContext {
   dismissHandler: () => void;
@@ -41,15 +41,15 @@ module('Integration | Component | alert', function (hooks) {
       .hasAttribute('type', 'button')
       .hasClass('btn-close');
 
-    await render(hbs`
+    await render(<template>
       <Alert
         @dismissible={{true}}
         @icon="bi-exclamation-triangle-fill"
         @type="success"
       >
-          Baz
+        Baz
       </Alert>
-    `);
+    </template>);
 
     assert
       .dom('div.alert')

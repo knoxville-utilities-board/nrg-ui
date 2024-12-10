@@ -1,32 +1,39 @@
 import { click, findAll, render, triggerKeyEvent } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import Calendar from '@nrg-ui/core/components/form/-private/calendar';
-import dayjs, { type Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../../helpers';
 
+import type { TestContext as BaseContext } from '@ember/test-helpers';
+import type { OpUnitType } from 'dayjs';
+
+interface TestContext extends BaseContext {
+  model: Model;
+}
+
 class Model {
   @tracked
-  value?: Dayjs = dayjs();
+  value?: Date = new Date();
 }
 
 module(
   'Integration | Component | form/-private/datetime/calendar',
-  function (hooks) {
+  function (this: TestContext, hooks) {
     setupRenderingTest(hooks);
 
-    hooks.beforeEach(function () {
+    hooks.beforeEach(function (this: TestContext) {
       this.model = new Model();
     });
 
-    test('use arrow key to move to previous day', async function (assert) {
+    test('use arrow key to move to previous day', async function (this: TestContext, assert) {
       const { model } = this;
 
-      model.value = dayjs();
+      model.value = dayjs().toDate();
 
-      const onSelect = (date) => {
-        model.value = dayjs(date);
+      const onSelect = (date: Date) => {
+        model.value = date;
       };
 
       await render(<template>
@@ -41,13 +48,11 @@ module(
       assert.true(expectedDate.isSame(model.value, 'day'));
     });
 
-    test('use arrow key to move to next day', async function (assert) {
+    test('use arrow key to move to next day', async function (this: TestContext, assert) {
       const { model } = this;
 
-      model.value = dayjs();
-
-      const onSelect = (date) => {
-        model.value = dayjs(date);
+      const onSelect = (date: Date) => {
+        model.value = date;
       };
 
       await render(<template>
@@ -62,13 +67,13 @@ module(
       assert.true(expectedDate.isSame(model.value, 'day'));
     });
 
-    test('maxDate limits selection', async function (assert) {
+    test('maxDate limits selection', async function (this: TestContext, assert) {
       const { model } = this;
 
       const expectedDate = dayjs();
 
-      const onSelect = (date) => {
-        model.value = dayjs(date);
+      const onSelect = (date: Date) => {
+        model.value = date;
       };
 
       await render(<template>
@@ -86,13 +91,13 @@ module(
       assert.true(expectedDate.isSame(model.value, 'day'));
     });
 
-    test('minDate limits selection', async function (assert) {
+    test('minDate limits selection', async function (this: TestContext, assert) {
       const { model } = this;
 
       const expectedDate = dayjs();
 
-      const onSelect = (date) => {
-        model.value = dayjs(date);
+      const onSelect = (date: Date) => {
+        model.value = date;
       };
 
       await render(<template>
@@ -110,14 +115,14 @@ module(
       assert.true(expectedDate.isSame(model.value, 'day'));
     });
 
-    test('disabled dates are not navigable', async function (assert) {
+    test('disabled dates are not navigable', async function (this: TestContext, assert) {
       const { model } = this;
 
-      const onSelect = (date) => {
-        model.value = dayjs(date);
+      const onSelect = (date: Date) => {
+        model.value = date;
       };
 
-      const isDateDisabled = (date) => {
+      const isDateDisabled = (date: Date) => {
         return dayjs(date).day() === 3;
       };
 
@@ -128,8 +133,8 @@ module(
       });
       model.value = expectedDate.toDate();
 
-      const minDate = expectedDate.day(1);
-      const maxDate = expectedDate.day(5);
+      const minDate = expectedDate.day(1).toDate();
+      const maxDate = expectedDate.day(5).toDate();
 
       await render(<template>
         <Calendar
@@ -148,14 +153,14 @@ module(
       assert.true(expectedDate.isSame(model.value, 'day'));
     });
 
-    test('disabled dates are not clickable', async function (assert) {
+    test('disabled dates are not clickable', async function (this: TestContext, assert) {
       const { model } = this;
 
-      const onSelect = (date) => {
-        model.value = dayjs(date);
+      const onSelect = (date: Date) => {
+        model.value = date;
       };
 
-      const isDateDisabled = (date) => {
+      const isDateDisabled = (date: Date) => {
         return dayjs(date).day() === 3;
       };
 
@@ -166,8 +171,8 @@ module(
       });
       model.value = expectedDate.toDate();
 
-      const minDate = expectedDate.day(1);
-      const maxDate = expectedDate.day(5);
+      const minDate = expectedDate.day(1).toDate();
+      const maxDate = expectedDate.day(5).toDate();
 
       await render(<template>
         <Calendar
@@ -182,22 +187,22 @@ module(
 
       const availableDateCells = findAll('.calendar tbody td.cell');
 
-      await click(availableDateCells[24]);
+      await click(availableDateCells[24]!);
 
       assert.true(expectedDate.isSame(model.value, 'day'));
     });
 
-    test("previous month's dates are clickable", async function (assert) {
+    test("previous month's dates are clickable", async function (this: TestContext, assert) {
       const { model } = this;
 
       model.value = dayjs({
         day: 31,
         month: 6,
         year: 2020,
-      });
+      }).toDate();
 
-      const onSelect = (date) => {
-        model.value = dayjs(date);
+      const onSelect = (date: Date) => {
+        model.value = date;
       };
 
       const expectedDate = dayjs({
@@ -212,22 +217,22 @@ module(
 
       const availableDateCells = findAll('.calendar tbody td.cell');
 
-      await click(availableDateCells[2]);
+      await click(availableDateCells[2]!);
 
       assert.true(expectedDate.isSame(model.value, 'day'));
     });
 
-    test("next month's dates are clickable", async function (assert) {
+    test("next month's dates are clickable", async function (this: TestContext, assert) {
       const { model } = this;
 
       model.value = dayjs({
         day: 15,
         month: 1,
         year: 2020,
-      });
+      }).toDate();
 
-      const onSelect = (date) => {
-        model.value = dayjs(date);
+      const onSelect = (date: Date) => {
+        model.value = date;
       };
 
       const expectedDate = dayjs({
@@ -242,16 +247,16 @@ module(
 
       const availableDateCells = findAll('.calendar tbody td.cell');
 
-      await click(availableDateCells[40]);
+      await click(availableDateCells[40]!);
 
       assert.true(expectedDate.isSame(model.value, 'day'));
     });
 
-    test('go through full date time workflow', async function (assert) {
+    test('go through full date time workflow', async function (this: TestContext, assert) {
       const { model } = this;
 
-      const onSelect = (date) => {
-        model.value = dayjs(date);
+      const onSelect = (date: Date) => {
+        model.value = date;
       };
 
       await render(<template>
@@ -273,11 +278,11 @@ module(
       assert.true(expectedDate.isSame(model.value, 'minute'));
     });
 
-    test('go through time only workflow', async function (assert) {
+    test('go through time only workflow', async function (this: TestContext, assert) {
       const { model } = this;
 
-      const onSelect = (date) => {
-        model.value = dayjs(date);
+      const onSelect = (date: Date) => {
+        model.value = date;
       };
 
       await render(<template>
@@ -292,11 +297,11 @@ module(
       assert.true(expectedDate.isSame(model.value, 'minute'));
     });
 
-    test('header navigation changes indexes', async function (assert) {
+    test('header navigation changes indexes', async function (this: TestContext, assert) {
       const { model } = this;
 
-      const onSelect = (date) => {
-        model.value = dayjs(date);
+      const onSelect = (date: Date) => {
+        model.value = date;
       };
 
       await render(<template>
@@ -311,14 +316,14 @@ module(
       assert.true(expectedDate.isSame(model.value, 'day'));
     });
 
-    test('today/now button hidden if after max date', async function (assert) {
+    test('today/now button hidden if after max date', async function (this: TestContext, assert) {
       const { model } = this;
 
       model.value = dayjs({
         day: 20,
         month: 1,
         year: 2020,
-      });
+      }).toDate();
 
       const maxDate = model.value;
 
@@ -329,19 +334,19 @@ module(
       assert.dom('tbody tr:nth-child(7)').doesNotExist();
     });
 
-    test('no time is selected if no value is passed in', async function (assert) {
+    test('no time is selected if no value is passed in', async function (this: TestContext, assert) {
       await render(<template><Calendar @type="time" /></template>);
 
       assert.dom('.calendar td.active').doesNotExist();
     });
 
-    test('no date is selected if no value is passed in', async function (assert) {
+    test('no date is selected if no value is passed in', async function (this: TestContext, assert) {
       await render(<template><Calendar @type="date" /></template>);
 
       assert.dom('.calendar td.active').doesNotExist();
     });
 
-    test('isDateDisabled can use precision', async function (assert) {
+    test('isDateDisabled can use precision', async function (this: TestContext, assert) {
       const { model } = this;
 
       const hour = 8;
@@ -350,9 +355,9 @@ module(
         hour,
         minute,
       });
-      model.value = minDate;
+      model.value = minDate.toDate();
 
-      const isDateDisabled = (date, precision) => {
+      const isDateDisabled = (date: Date, precision?: OpUnitType) => {
         if (precision == 'hour') {
           return dayjs(date).isBefore(minDate, precision);
         }
@@ -367,18 +372,18 @@ module(
         />
       </template>);
 
-      await click(findAll('tbody tr td.cell')[hour]);
+      await click(findAll('tbody tr td.cell')[hour]!);
 
       const lastDisabledTime = findAll('tbody tr td.cell.disabled')[minute / 5];
 
       assert.dom(lastDisabledTime).hasClass('disabled');
     });
 
-    test('datetime flow (hours only)', async function (assert) {
+    test('datetime flow (hours only)', async function (this: TestContext, assert) {
       const { model } = this;
 
-      const onSelect = (date) => {
-        model.value = dayjs(date);
+      const onSelect = (date: Date) => {
+        model.value = date;
       };
 
       await render(<template>
@@ -399,11 +404,11 @@ module(
       assert.true(expectedDate.isSame(model.value, 'minute'));
     });
 
-    test('time flow (hours only)', async function (assert) {
+    test('time flow (hours only)', async function (this: TestContext, assert) {
       const { model } = this;
 
-      const onSelect = (date) => {
-        model.value = dayjs(date);
+      const onSelect = (date: Date) => {
+        model.value = date;
       };
 
       await render(<template>
@@ -422,7 +427,7 @@ module(
       assert.true(expectedDate.isSame(model.value, 'minute'));
     });
 
-    test('header is hidden with time only', async function (assert) {
+    test('header is hidden with time only', async function (this: TestContext, assert) {
       await render(<template><Calendar @type="time" /></template>);
 
       assert.dom('.calendar thead tr').doesNotExist();
