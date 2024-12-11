@@ -38,23 +38,30 @@ declare type ContextOf<T extends ValidatorType> = ConstructorParameters<
 >[2];
 
 type ValidatorFnArgs<T extends ValidatorType = ValidatorType> = T extends T
-  ? [type: T, values: OptionsOf<T>]
+  ? [type: T, values: OptionsOf<T>, context?: ContextOf<T>]
   : never;
 
-export function validator<V extends ValidatorType = ValidatorType>(
-  ...[type, options]: ValidatorFnArgs<V>
+export function validator<
+  V extends ValidatorType = ValidatorType,
+  Context extends ContextOf<V> = ContextOf<V>,
+>(
+  ...[type, options, rootContext]: ValidatorFnArgs<V>
 ): ValidatorBuilder<unknown, ContextOf<V>, ContextOf<V>, OptionsOf<V>> {
   if (type === 'confirmation') {
-    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
+    return (binding: Binding<ContextOf<V>>, context?: Context) =>
       new ConfirmationValidator(
         binding,
         options,
-        context as Record<string, TranslatableOption>,
+        rootContext ?? (context as Record<string, TranslatableOption>),
       );
   }
   if (type === 'custom') {
-    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
-      new CustomValidator(binding, options, context);
+    return (binding: Binding<ContextOf<V>>, context?: ContextOf<V>) =>
+      new CustomValidator(
+        binding,
+        options,
+        rootContext ?? (context as Record<string, TranslatableOption>),
+      );
   }
   if (type === 'email') {
     return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
@@ -69,8 +76,12 @@ export function validator<V extends ValidatorType = ValidatorType>(
       new InclusionValidator(binding, options, context);
   }
   if (type === 'length') {
-    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
-      new LengthValidator(binding, options, context);
+    return (binding: Binding<ContextOf<V>>, context?: ContextOf<V>) =>
+      new LengthValidator(
+        binding,
+        options,
+        rootContext ?? (context as Record<string, TranslatableOption>),
+      );
   }
   if (type === 'number') {
     return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
