@@ -1,5 +1,36 @@
 # Changelog
 
+## Release (2024-12-11)
+
+@nrg-ui/css 0.9.1 (patch)
+@nrg-ui/core 0.19.0 (minor)
+@nrg-ui/standards 0.4.0 (minor)
+
+#### :rocket: Enhancement
+* `test-app`, `@nrg-ui/core`
+  * [#304](https://github.com/knoxville-utilities-board/nrg-ui/pull/304) feat: Add `onDestroy` modifier ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/standards`
+  * [#300](https://github.com/knoxville-utilities-board/nrg-ui/pull/300) feat(standards): Update `eslint-plugin-decorator-position` ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`
+  * [#303](https://github.com/knoxville-utilities-board/nrg-ui/pull/303) fix(toasts): Allow clicking behind toaster ([@TSenter](https://github.com/TSenter))
+
+#### :memo: Documentation
+* `docs-app`
+  * [#306](https://github.com/knoxville-utilities-board/nrg-ui/pull/306) docs: Add pages for modifiers ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/css`, `@nrg-ui/standards`
+  * [#302](https://github.com/knoxville-utilities-board/nrg-ui/pull/302) chore: Update READMEs for packages ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `docs-app`, `test-app`, `@nrg-ui/core`, `@nrg-ui/standards`
+  * [#301](https://github.com/knoxville-utilities-board/nrg-ui/pull/301) chore: Update `eslint-plugin-decorator-position` ([@TSenter](https://github.com/TSenter))
+* `test-app`, `@nrg-ui/core`
+  * [#297](https://github.com/knoxville-utilities-board/nrg-ui/pull/297) chore(test-app): Enable full Glint support ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-12-05)
 
 @nrg-ui/core 0.18.2 (patch)

@@ -1,26 +1,60 @@
 {
   "solution": {
     "@nrg-ui/css": {
-      "oldVersion": "0.9.0"
-    },
-    "@nrg-ui/core": {
       "impact": "patch",
-      "oldVersion": "0.18.1",
-      "newVersion": "0.18.2",
+      "oldVersion": "0.9.0",
+      "newVersion": "0.9.1",
       "constraints": [
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :memo: Documentation"
+        }
+      ],
+      "pkgJSONPath": "./packages/design-system/package.json"
+    },
+    "@nrg-ui/core": {
+      "impact": "minor",
+      "oldVersion": "0.18.2",
+      "newVersion": "0.19.0",
+      "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
     },
     "@nrg-ui/standards": {
-      "oldVersion": "0.3.2"
+      "impact": "minor",
+      "oldVersion": "0.3.2",
+      "newVersion": "0.4.0",
+      "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :memo: Documentation"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./packages/standards/package.json"
     },
     "@nrg-ui/theme-generator": {
       "oldVersion": "0.2.0"
     }
   },
-  "description": "## Release (2024-12-05)\n\n@nrg-ui/core 0.18.2 (patch)\n\n#### :bug: Bug Fix\n* `docs-app`, `@nrg-ui/core`\n  * [#295](https://github.com/knoxville-utilities-board/nrg-ui/pull/295) refactor: Update confirmation validator ([@lnicely](https://github.com/lnicely))\n\n#### Committers: 1\n- Lucas ([@lnicely](https://github.com/lnicely))\n"
+  "description": "## Release (2024-12-11)\n\n@nrg-ui/css 0.9.1 (patch)\n@nrg-ui/core 0.19.0 (minor)\n@nrg-ui/standards 0.4.0 (minor)\n\n#### :rocket: Enhancement\n* `test-app`, `@nrg-ui/core`\n  * [#304](https://github.com/knoxville-utilities-board/nrg-ui/pull/304) feat: Add `onDestroy` modifier ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/standards`\n  * [#300](https://github.com/knoxville-utilities-board/nrg-ui/pull/300) feat(standards): Update `eslint-plugin-decorator-position` ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`\n  * [#303](https://github.com/knoxville-utilities-board/nrg-ui/pull/303) fix(toasts): Allow clicking behind toaster ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* `docs-app`\n  * [#306](https://github.com/knoxville-utilities-board/nrg-ui/pull/306) docs: Add pages for modifiers ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/css`, `@nrg-ui/standards`\n  * [#302](https://github.com/knoxville-utilities-board/nrg-ui/pull/302) chore: Update READMEs for packages ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `docs-app`, `test-app`, `@nrg-ui/core`, `@nrg-ui/standards`\n  * [#301](https://github.com/knoxville-utilities-board/nrg-ui/pull/301) chore: Update `eslint-plugin-decorator-position` ([@TSenter](https://github.com/TSenter))\n* `test-app`, `@nrg-ui/core`\n  * [#297](https://github.com/knoxville-utilities-board/nrg-ui/pull/297) chore(test-app): Enable full Glint support ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
