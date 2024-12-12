@@ -1,6 +1,5 @@
 import ArrayProxy from '@ember/array/proxy';
 import { assert } from '@ember/debug';
-import { get } from '@ember/object';
 import ObjectProxy from '@ember/object/proxy';
 import { getOwner } from '@ember/owner';
 // @ts-expect-error Glimmer doesn't currently ship a type for the `cached` decorator
@@ -33,7 +32,7 @@ export function unwrapProxy<T>(value: T): T {
 
 export default abstract class BaseValidator<
   T,
-  Model extends object = Record<string, unknown>,
+  Model extends object = object,
   Context extends object = Record<string, unknown>,
   OptionsShape extends BaseOptions = BaseOptions,
 > implements Validator<T, Model, Context, OptionsShape>
@@ -84,23 +83,16 @@ export default abstract class BaseValidator<
     return this.owner.lookup('service:intl');
   }
 
-  get value(): T {
-    const { model, valuePath } = this.binding;
-    const value = get(model, valuePath) as T;
-
-    return unwrapProxy(value);
-  }
-
   @cached
   get result(): ValidationResult {
-    const { context, options, validate, value } = this;
+    const { context, options, validate, binding } = this;
     const computedOptions = this.computeOptions(options);
 
     if (computedOptions.disabled) {
       return { isValid: true };
     }
 
-    const response = validate.apply(this, [value, computedOptions, context]);
+    const response = validate.apply(this, [binding.value, computedOptions, context]);
 
     return this.coalesceResponse(response, computedOptions);
   }

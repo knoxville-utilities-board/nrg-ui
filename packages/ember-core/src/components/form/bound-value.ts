@@ -6,16 +6,16 @@ import { scheduleTask } from 'ember-lifeline';
 import { ensurePathExists } from '../../utils/ensure-path-exists.ts';
 
 import type { Binding, Optional } from '../../';
-import type { Model } from '../../helpers/bind.ts';
+// import type { Model } from '../../helpers/bind.ts';
 
 export type BoundValueSignature<
   Signature,
   Type,
-  M extends Model = Model,
+  M extends object = object,
   P extends keyof M | string = keyof M | string,
   T extends P extends keyof M ? M[P] & Type : unknown = P extends keyof M
-    ? M[P] & Type
-    : Type,
+    ? Optional<M[P] & Type>
+    : Optional<Type>,
   BindingType extends Binding<M, P, T> = Binding<M, P, T>,
 > = {
   Args: {
@@ -33,25 +33,18 @@ export type BoundValueSignature<
 export default class BoundValue<
   Signature,
   Type,
-  M extends Model = Model,
+  M extends object = object,
   P extends keyof M | string = keyof M | string,
   T extends P extends keyof M
     ? Optional<M[P] & Type>
-    : unknown = P extends keyof M ? Optional<M[P] & Type> : Type,
+    : unknown = P extends keyof M ? Optional<M[P] & Type> : Optional<Type>,
   BindingType extends Binding<M, P, T> = Binding<M, P, T>,
 > extends Component<
   BoundValueSignature<Signature, Type, M, P, T, BindingType>
 > {
   constructor(
     owner: unknown,
-    args: BoundValueSignature<
-      Signature,
-      Type,
-      M,
-      P,
-      T,
-      BindingType
-    >['Args'],
+    args: BoundValueSignature<Signature, Type, M, P, T, BindingType>['Args'],
   ) {
     super(owner, args);
 
@@ -98,7 +91,7 @@ export default class BoundValue<
     return this.args.useDefaultValue ?? false;
   }
 
-  get defaultValue(): Optional<T> {
+  get defaultValue(): T {
     if (this.args.defaultValue !== undefined) {
       return this.args.defaultValue ?? null;
     }
@@ -112,7 +105,7 @@ export default class BoundValue<
     return () => true;
   }
 
-  getDefaultValue(): Optional<T> {
+  getDefaultValue(): T {
     return null;
   }
 
