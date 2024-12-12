@@ -1,9 +1,11 @@
 export function ensurePathExists(
   object: Record<string, unknown>,
-  path: string,
+  path: string | number | symbol,
 ) {
-  const keys = path.split?.('.');
-  ensure(object, keys);
+  if (typeof path === 'string') {
+    const keys = path.split?.('.');
+    ensure(object, keys);
+  }
 }
 
 function ensure(object: Record<string, unknown>, keys: string[]) {

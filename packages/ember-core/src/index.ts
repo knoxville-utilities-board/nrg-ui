@@ -103,10 +103,7 @@ export type {
 export type { ToasterSignature } from './components/toaster.gts';
 export type { ThemeSwitcherSignature } from './components/theme-switcher.gts';
 
-export type Binding<Model extends object = Record<string, unknown>> = {
-  model: Model;
-  valuePath: string;
-};
+export type { Binding } from './helpers/bind.ts';
 export type { Icon as IconType } from './icons.ts';
 export type Optional<T> = T | null;
 export type Primitive = string | number | boolean | null | undefined;
