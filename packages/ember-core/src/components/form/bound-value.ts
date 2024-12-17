@@ -6,17 +6,16 @@ import { scheduleTask } from 'ember-lifeline';
 import { ensurePathExists } from '../../utils/ensure-path-exists.ts';
 
 import type { Binding, Optional } from '../../';
-// import type { Model } from '../../helpers/bind.ts';
 
 export type BoundValueSignature<
   Signature,
   Type,
   M extends object = object,
   P extends keyof M | string = keyof M | string,
-  T extends P extends keyof M ? M[P] & Type : unknown = P extends keyof M
-    ? Optional<M[P] & Type>
-    : Optional<Type>,
-  BindingType extends Binding<M, P, T> = Binding<M, P, T>,
+  T extends P extends keyof M ? M[P] & Type : Type = P extends keyof M
+    ? M[P] & Type
+    : Type,
+  BindingType extends Binding<Type, M, P, T> = Binding<Type, M, P, T>,
 > = {
   Args: {
     binding?: BindingType;
@@ -24,9 +23,9 @@ export type BoundValueSignature<
     defaultValue?: T;
     useDefaultValue?: boolean;
 
-    allowChange?: (newValue: T, oldValue: T) => boolean;
+    allowChange?: (newValue: Optional<T>, oldValue: Optional<T>) => boolean;
     initBinding?: (binding: BindingType) => void;
-    onChange?: (value: T, ...args: unknown[]) => void;
+    onChange?: (value: Optional<T>, ...args: unknown[]) => void;
   };
 } & Signature;
 
@@ -35,10 +34,10 @@ export default class BoundValue<
   Type,
   M extends object = object,
   P extends keyof M | string = keyof M | string,
-  T extends P extends keyof M
-    ? Optional<M[P] & Type>
-    : unknown = P extends keyof M ? Optional<M[P] & Type> : Optional<Type>,
-  BindingType extends Binding<M, P, T> = Binding<M, P, T>,
+  T extends P extends keyof M ? M[P] & Type : Type = P extends keyof M
+    ? M[P] & Type
+    : Type,
+  BindingType extends Binding<Type, M, P, T> = Binding<Type, M, P, T>,
 > extends Component<
   BoundValueSignature<Signature, Type, M, P, T, BindingType>
 > {
@@ -78,11 +77,11 @@ export default class BoundValue<
     return this.args.binding!.valuePath;
   }
 
-  get value(): T {
+  get value(): Optional<T> {
     return this.args.binding!.value;
   }
 
-  set value(newValue: T) {
+  set value(newValue: Optional<T>) {
     ensurePathExists(this.model as Record<string, unknown>, this.valuePath);
     this.args.binding!.value = newValue;
   }
@@ -91,7 +90,7 @@ export default class BoundValue<
     return this.args.useDefaultValue ?? false;
   }
 
-  get defaultValue(): T {
+  get defaultValue(): Optional<T> {
     if (this.args.defaultValue !== undefined) {
       return this.args.defaultValue ?? null;
     }
@@ -105,12 +104,12 @@ export default class BoundValue<
     return () => true;
   }
 
-  getDefaultValue(): T {
+  getDefaultValue(): Optional<T> {
     return null;
   }
 
   @action
-  onChange(newValue: T, ...args: unknown[]) {
+  onChange(newValue: Optional<T>, ...args: unknown[]) {
     const currentValue = this.value;
     if (!this.allowChange(newValue, currentValue)) {
       return;

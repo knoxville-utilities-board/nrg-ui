@@ -47,7 +47,7 @@ export interface DatetimeSignature {
 }
 
 export default class Datetime extends BoundValue<DatetimeSignature, Date> {
-  self: Record<'displayValue', string> = this;
+  self: Datetime = this;
 
   @tracked
   isFocused = false;
@@ -184,7 +184,7 @@ export default class Datetime extends BoundValue<DatetimeSignature, Date> {
           id={{@id}}
           placeholder={{@placeholder}}
           @basic={{@basic}}
-          @binding={{bind this.self "displayValue"}}
+          @binding={{bind this "displayValue"}}
           @disabled={{@disabled}}
           @isInvalid={{@isInvalid}}
           @isWarning={{@isWarning}}
