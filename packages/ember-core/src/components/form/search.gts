@@ -1,9 +1,11 @@
 import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { action, get } from '@ember/object';
+import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { restartableTask, timeout } from 'ember-concurrency';
+import { t } from 'ember-intl';
 // @ts-expect-error Ember keyboard doesn't currently ship a type for the `on-key` modifier
 // https://github.com/adopted-ember-addons/ember-keyboard/issues/464
 import onKey from 'ember-keyboard/modifiers/on-key';
@@ -11,8 +13,10 @@ import onKey from 'ember-keyboard/modifiers/on-key';
 import BoundValue from './bound-value.ts';
 import onClickOutside from '../../modifiers/on-click-outside.ts';
 import onInsert from '../../modifiers/on-insert.ts';
+import Button from '../button.gts';
 
 import type { Optional } from '../../';
+import type IntlService from 'ember-intl/services/intl';
 
 declare type SearchOption<T> = {
   label: string;
@@ -30,9 +34,6 @@ interface SearchItemSignature<T> {
 }
 
 class SearchItem<T> extends Component<SearchItemSignature<T>> {
-  @tracked
-  active = true;
-
   get classList() {
     const classes = ['dropdown-item'];
 
@@ -104,6 +105,9 @@ export default class Search<T> extends BoundValue<
   @tracked
   searchString = '';
 
+  @service
+  declare intl: IntlService;
+
   get clearable() {
     if (this.args.basic) {
       return false;
@@ -129,7 +133,7 @@ export default class Search<T> extends BoundValue<
   }
 
   get noResultsLabel() {
-    return this.args.noResultsLabel ?? 'No results found';
+    return this.args.noResultsLabel ?? this.intl.t('nrg.search.noResults');
   }
 
   get placeholder() {
@@ -137,7 +141,7 @@ export default class Search<T> extends BoundValue<
       return '';
     }
 
-    return this.args.placeholder ?? 'Search';
+    return this.args.placeholder ?? this.intl.t('nrg.search.placeholder');
   }
 
   get scrollable() {
@@ -392,13 +396,13 @@ export default class Search<T> extends BoundValue<
           {{onInsert this.onSearchBarInsert}}
         />
         {{#if this.clearable}}
-          <button
-            class="input-group-text"
-            type="button"
-            {{on "click" this.clear}}
+          <Button
+            aria-label={{t "nrg.base.clear"}}
+            class="btn-outline-secondary"
+            @onClick={{this.clear}}
           >
             <i class="bi bi-x-lg" />
-          </button>
+          </Button>
         {{/if}}
       </div>
       <div class="dropdown {{if this.scrollable 'scrollable'}}">

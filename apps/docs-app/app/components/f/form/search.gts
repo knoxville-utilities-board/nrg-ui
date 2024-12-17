@@ -105,10 +105,10 @@ export default class extends Component {
   minCharacters = 1;
 
   @tracked
-  noResultsLabel = 'No results found';
+  noResultsLabel;
 
   @tracked
-  placeholder = 'Search';
+  placeholder;
 
   @tracked
   readonly = false;

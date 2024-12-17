@@ -1,6 +1,6 @@
-import { fillIn, render, click } from '@ember/test-helpers';
+import { click, fillIn, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import { Bind as bind, Search } from '@nrg-ui/core';
+import { Search, bind } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
@@ -13,7 +13,7 @@ class Model {
 module('Integration | Component | form/search', function (hooks) {
   setupRenderingTest(hooks);
 
-  const actionHandler = (text) => {
+  const actionHandler = (text: string) => {
     const fruits = [
       'Apple',
       'Banana',
@@ -132,7 +132,7 @@ module('Integration | Component | form/search', function (hooks) {
 
     assert.dom('.spinner-border').doesNotExist();
     assert.dom('.bi-search').doesNotExist();
-    assert.dom('button > i.bi-x-lg').doesNotExist();
+    assert.dom('button').doesNotExist();
   });
 
   test('it shows clear button', async function (assert) {
@@ -154,9 +154,9 @@ module('Integration | Component | form/search', function (hooks) {
 
     assert.dom('div > input').hasValue('an');
 
-    assert.dom('button > i.bi-x-lg').exists();
+    assert.dom('button').exists();
 
-    await click('button > i.bi-x-lg');
+    await click('button');
 
     assert.dom('div > input').hasValue('');
   });
