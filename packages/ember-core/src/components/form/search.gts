@@ -385,11 +385,11 @@ export default class Search<T> extends BoundValue<
         <TextInput
           @basic={{@basic}}
           @binding={{bind this.self 'searchString'}}
-          @class={{this.inputClassList}}
+          class={{this.inputClassList}}
           @id={{@id}}
           @disabled={{@disabled}}
           @readonly={{@readonly}}
-          @placeholder={{this.placeholder}}
+          placeholder={{this.placeholder}}
           {{on "input" this.onSearch}}
           {{on "focus" this.onFocus}}
           {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}

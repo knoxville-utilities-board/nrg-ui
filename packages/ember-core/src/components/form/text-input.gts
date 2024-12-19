@@ -41,7 +41,6 @@ export default class TextInput extends InputField<TextInputSignature> {
       class={{this.classList}}
       disabled={{@disabled}}
       id={{@id}}
-      placeholder={{@placeholder}}
       readonly={{@readonly}}
       type="text"
       value={{this.displayValue}}
