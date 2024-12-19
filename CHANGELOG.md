@@ -1,5 +1,17 @@
 # Changelog
 
+## Release (2024-12-19)
+
+@nrg-ui/css 0.10.0 (minor)
+@nrg-ui/core 0.20.0 (minor)
+
+#### :rocket: Enhancement
+* `docs-app`, `test-app`, `@nrg-ui/css`, `@nrg-ui/core`
+  * [#290](https://github.com/knoxville-utilities-board/nrg-ui/pull/290) feat: Add search bar component ([@Trishu-Patel](https://github.com/Trishu-Patel))
+
+#### Committers: 1
+- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))
+
 ## Release (2024-12-11)
 
 @nrg-ui/css 0.9.1 (patch)

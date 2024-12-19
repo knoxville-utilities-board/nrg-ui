@@ -1,6 +1,6 @@
 {
   "name": "@nrg-ui/core",
-  "version": "0.19.0",
+  "version": "0.20.0",
   "description": "The default blueprint for Embroider v2 addons.",
   "keywords": [
     "ember-addon"
