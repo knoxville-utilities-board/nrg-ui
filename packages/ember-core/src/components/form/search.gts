@@ -383,13 +383,13 @@ export default class Search<T> extends BoundValue<
           </span>
         {{/unless}}
         <TextInput
+          class={{this.inputClassList}}
+          placeholder={{this.placeholder}}
           @basic={{@basic}}
           @binding={{bind this.self 'searchString'}}
-          class={{this.inputClassList}}
-          @id={{@id}}
           @disabled={{@disabled}}
+          @id={{@id}}
           @readonly={{@readonly}}
-          placeholder={{this.placeholder}}
           {{on "input" this.onSearch}}
           {{on "focus" this.onFocus}}
           {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
@@ -418,9 +418,9 @@ export default class Search<T> extends BoundValue<
         >
           {{#each this.internalOptions as |option index|}}
             <SearchItem
-              @option={{option}}
-              @index={{index}}
               @activeIndex={{this.activeIndex}}
+              @index={{index}}
+              @option={{option}}
               {{on "click" (fn this.selectOption option index)}}
             />
           {{else}}

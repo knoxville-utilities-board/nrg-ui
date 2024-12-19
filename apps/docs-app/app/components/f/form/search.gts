@@ -269,7 +269,7 @@ export default class extends Component {
             />
             <Args.Action
               @name="onQuery"
-              @description="A function that return a array of strings or objects options"
+              @description="A function that return an array of string or object options"
             >
               <CodeBlock
                 @lang="typescript"
