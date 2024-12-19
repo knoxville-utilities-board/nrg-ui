@@ -49,8 +49,8 @@ importers:
         specifier: ^3.3.0
         version: 3.3.1(@babel/core@7.26.0)(@glint/template@1.5.0)(ember-source@5.9.0(@babel/core@7.26.0)(@glimmer/component@1.1.2(@babel/core@7.26.0))(@glint/template@1.5.0)(rsvp@4.8.5)(webpack@5.97.1))(webpack@5.97.1)
       '@embroider/broccoli-side-watch':
-        specifier: 0.0.2-unstable.9372659
-        version: 0.0.2-unstable.9372659
+        specifier: ^1.0.1
+        version: 1.0.1
       '@embroider/compat':
         specifier: ^3.7.0
         version: 3.7.0(@embroider/core@3.4.19(@glint/template@1.5.0))(@glint/template@1.5.0)
@@ -291,9 +291,6 @@ importers:
       qunit-dom:
         specifier: ^2.0.0
         version: 2.0.0
-      read-package-up:
-        specifier: ^11.0.0
-        version: 11.0.0
       stylelint:
         specifier: ^15.11.0
         version: 15.11.0(typescript@5.7.2)
@@ -1872,8 +1869,8 @@ packages:
     peerDependencies:
       '@embroider/core': ^3.4.0
 
-  '@embroider/broccoli-side-watch@0.0.2-unstable.9372659':
-    resolution: {integrity: sha512-PrYKELX8hU7Z+/P0hdU/6x6Gygp4zFyCbTHwsrjKup3pZfe0oXXlHq90hRlzIKaIgvaZv0ENZH5wSHv1DBnO9A==}
+  '@embroider/broccoli-side-watch@1.0.1':
+    resolution: {integrity: sha512-DB5LQ4TQebUip4MdbC9fOVP/LWoG/+HhpxiyG3E3alZdVu89xG+pCbf4o2h+HjRY/tiSOQrtalEKIyZI/JYBOw==}
 
   '@embroider/compat@3.7.0':
     resolution: {integrity: sha512-hv9BNWB278NgxGkpLaKT6VSaGckTX17EiddQpNGlqFEPw4jNuqpEeUGUgFBrSUBsO64wOGrY0U8pbRJsvGGE+Q==}
@@ -2344,36 +2341,42 @@ packages:
     engines: {node: '>= 10.0.0'}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@parcel/watcher-linux-arm-musl@2.5.0':
     resolution: {integrity: sha512-6uHywSIzz8+vi2lAzFeltnYbdHsDm3iIB57d4g5oaB9vKwjb6N6dRIgZMujw4nm5r6v9/BQH0noq6DzHrqr2pA==}
     engines: {node: '>= 10.0.0'}
     cpu: [arm]
     os: [linux]
+    libc: [musl]
 
   '@parcel/watcher-linux-arm64-glibc@2.5.0':
     resolution: {integrity: sha512-BfNjXwZKxBy4WibDb/LDCriWSKLz+jJRL3cM/DllnHH5QUyoiUNEp3GmL80ZqxeumoADfCCP19+qiYiC8gUBjA==}
     engines: {node: '>= 10.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@parcel/watcher-linux-arm64-musl@2.5.0':
     resolution: {integrity: sha512-S1qARKOphxfiBEkwLUbHjCY9BWPdWnW9j7f7Hb2jPplu8UZ3nes7zpPOW9bkLbHRvWM0WDTsjdOTUgW0xLBN1Q==}
     engines: {node: '>= 10.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@parcel/watcher-linux-x64-glibc@2.5.0':
     resolution: {integrity: sha512-d9AOkusyXARkFD66S6zlGXyzx5RvY+chTP9Jp0ypSTC9d4lzyRs9ovGf/80VCxjKddcUvnsGwCHWuF2EoPgWjw==}
     engines: {node: '>= 10.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@parcel/watcher-linux-x64-musl@2.5.0':
     resolution: {integrity: sha512-iqOC+GoTDoFyk/VYSFHwjHhYrk8bljW6zOhPuhi5t9ulqiYq1togGJB5e3PwYVFFfeVgc6pbz3JdQyDoBszVaA==}
     engines: {node: '>= 10.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@parcel/watcher-win32-arm64@2.5.0':
     resolution: {integrity: sha512-twtft1d+JRNkM5YbmexfcH/N4znDtjgysFaV9zvZmmJezQsKpkfLYJ+JFV3uygugK6AtIM2oADPkB2AdhBrNig==}
@@ -2492,51 +2495,61 @@ packages:
     resolution: {integrity: sha512-QAg11ZIt6mcmzpNE6JZBpKfJaKkqTm1A9+y9O+frdZJEuhQxiugM05gnCWiANHj4RmbgeVJpTdmKRmH/a+0QbA==}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm-musleabihf@4.28.1':
     resolution: {integrity: sha512-dRP9PEBfolq1dmMcFqbEPSd9VlRuVWEGSmbxVEfiq2cs2jlZAl0YNxFzAQS2OrQmsLBLAATDMb3Z6MFv5vOcXg==}
     cpu: [arm]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-arm64-gnu@4.28.1':
     resolution: {integrity: sha512-uGr8khxO+CKT4XU8ZUH1TTEUtlktK6Kgtv0+6bIFSeiSlnGJHG1tSFSjm41uQ9sAO/5ULx9mWOz70jYLyv1QkA==}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm64-musl@4.28.1':
     resolution: {integrity: sha512-QF54q8MYGAqMLrX2t7tNpi01nvq5RI59UBNx+3+37zoKX5KViPo/gk2QLhsuqok05sSCRluj0D00LzCwBikb0A==}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-loongarch64-gnu@4.28.1':
     resolution: {integrity: sha512-vPul4uodvWvLhRco2w0GcyZcdyBfpfDRgNKU+p35AWEbJ/HPs1tOUrkSueVbBS0RQHAf/A+nNtDpvw95PeVKOA==}
     cpu: [loong64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-powerpc64le-gnu@4.28.1':
     resolution: {integrity: sha512-pTnTdBuC2+pt1Rmm2SV7JWRqzhYpEILML4PKODqLz+C7Ou2apEV52h19CR7es+u04KlqplggmN9sqZlekg3R1A==}
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-riscv64-gnu@4.28.1':
     resolution: {integrity: sha512-vWXy1Nfg7TPBSuAncfInmAI/WZDd5vOklyLJDdIRKABcZWojNDY0NJwruY2AcnCLnRJKSaBgf/GiJfauu8cQZA==}
     cpu: [riscv64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-s390x-gnu@4.28.1':
     resolution: {integrity: sha512-/yqC2Y53oZjb0yz8PVuGOQQNOTwxcizudunl/tFs1aLvObTclTwZ0JhXF2XcPT/zuaymemCDSuuUPXJJyqeDOg==}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-gnu@4.28.1':
     resolution: {integrity: sha512-fzgeABz7rrAlKYB0y2kSEiURrI0691CSL0+KXwKwhxvj92VULEDQLpBYLHpF49MSiPG4sq5CK3qHMnb9tlCjBw==}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-musl@4.28.1':
     resolution: {integrity: sha512-xQTDVzSGiMlSshpJCtudbWyRfLaNiVPXt1WgdWTwWz9n0U12cI2ZVtWe/Jgwyv/6wjL7b66uu61Vg0POWVfz4g==}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-win32-arm64-msvc@4.28.1':
     resolution: {integrity: sha512-wSXmDRVupJstFP7elGMgv+2HqXelQhuNf+IS4V+nUpNVi/GUiBgDmfwD0UGN3pcAnWsgKG3I52wMOBnk1VHr/A==}
@@ -5232,10 +5245,6 @@ packages:
   find-root@1.1.0:
     resolution: {integrity: sha512-NKfW6bec6GfKc0SGx1e07QZY9PE99u0Bft/0rzSD5k3sO/vwkVUpDUKVm5Gpp5Ue3YfShPFTX2070tDs5kB9Ng==}
 
-  find-up-simple@1.0.0:
-    resolution: {integrity: sha512-q7Us7kcjj2VMePAa02hDAF6d+MzsdsAWEwYyOpwUtlerRBkOEPBCRZrAV4XfcSN8fHAgaD0hP7miwoay6DCprw==}
-    engines: {node: '>=18'}
-
   find-up@2.1.0:
     resolution: {integrity: sha512-NWzkk0jSJtTt08+FBFMvXoeZnOJD+jTtsRmBYbAIzJdX6l7dLgR7CTubCM5/eDdPUBvLCeVasP1brfVR/9/EZQ==}
     engines: {node: '>=4'}
@@ -5810,10 +5819,6 @@ packages:
   indent-string@5.0.0:
     resolution: {integrity: sha512-m6FAo/spmsW2Ab2fU35JTYwtOKa2yAwXSwgjSv1TJzh4Mh7mC3lzAOVLBprb72XsTrgkEIsl7YrFNAiDiRhIGg==}
     engines: {node: '>=12'}
-
-  index-to-position@0.1.2:
-    resolution: {integrity: sha512-MWDKS3AS1bGCHLBA2VLImJz42f7bJh8wQsTGCzI3j519/CASStoDONUBVz2I/VID0MpiX3SGSnbOD2xUalbE5g==}
-    engines: {node: '>=18'}
 
   infer-owner@1.0.4:
     resolution: {integrity: sha512-IClj+Xz94+d7irH5qRyfJonOdfTzuDaifE6ZPWfx0N0+/ATZCbuTPq2prFl526urkQd90WyUKIh1DfBQ2hMz9A==}
@@ -7144,10 +7149,6 @@ packages:
     resolution: {integrity: sha512-ayCKvm/phCGxOkYRSCM82iDwct8/EonSEgCSxWxD7ve6jHggsFl4fZVQBPRNgQoKiuV/odhFrGzQXZwbifC8Rg==}
     engines: {node: '>=8'}
 
-  parse-json@8.1.0:
-    resolution: {integrity: sha512-rum1bPifK5SSar35Z6EKZuYPJx85pkNaFrxBK3mwdfSJ1/WKbYrjoW/zTPSjRRamfmVX1ACBIdFAO0VRErW/EA==}
-    engines: {node: '>=18'}
-
   parse-ms@1.0.1:
     resolution: {integrity: sha512-LpH1Cf5EYuVjkBvCDBYvkUPh+iv2bk3FHflxHkpCYT0/FZ1d3N3uJaLiHr4yGuMcFUhv6eAivitTvWZI4B/chg==}
     engines: {node: '>=0.10.0'}
@@ -7478,10 +7479,6 @@ packages:
     resolution: {integrity: sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==}
     hasBin: true
 
-  read-package-up@11.0.0:
-    resolution: {integrity: sha512-MbgfoNPANMdb4oRBNg5eqLbB2t2r+o5Ua1pNt8BqGp4I0FJZhuVSOj3PaBPni4azWuSzEdNn2evevzVmEk1ohQ==}
-    engines: {node: '>=18'}
-
   read-pkg-up@8.0.0:
     resolution: {integrity: sha512-snVCqPczksT0HS2EC+SxUndvSzn6LRCwpfSvLrIfR5BKDQQZMaI6jPRC9dYvYFDRAuFEAnkwww8kBBNE/3VvzQ==}
     engines: {node: '>=12'}
@@ -7489,10 +7486,6 @@ packages:
   read-pkg@6.0.0:
     resolution: {integrity: sha512-X1Fu3dPuk/8ZLsMhEj5f4wFAF0DWoK7qhGJvgaijocXxBmSToKfbFtqbxMO7bVjNA1dmE5huAzjXj/ey86iw9Q==}
     engines: {node: '>=12'}
-
-  read-pkg@9.0.1:
-    resolution: {integrity: sha512-9viLL4/n1BJUCT1NXVTdS1jtm80yDEgR5T4yCelII49Mbj0v1rZdKqj7zCiYdbB0CuCgdrvHcNogAKTFPBocFA==}
-    engines: {node: '>=18'}
 
   readable-stream@1.0.34:
     resolution: {integrity: sha512-ok1qVCJuRkNmvebYikljxJA/UEsKwLl2nI1OmaqAu4/UE+h0wKCHok4XkL/gvi39OacXvw59RJUOFUkDib2rHg==}
@@ -10262,11 +10255,13 @@ snapshots:
       - supports-color
       - webpack
 
-  '@embroider/broccoli-side-watch@0.0.2-unstable.9372659':
+  '@embroider/broccoli-side-watch@1.0.1':
     dependencies:
+      '@embroider/shared-internals': 2.8.1(supports-color@8.1.1)
       broccoli-merge-trees: 4.2.0
       broccoli-plugin: 4.0.7
       broccoli-source: 3.0.1
+      resolve-package-path: 4.0.3
     transitivePeerDependencies:
       - supports-color
 
@@ -11303,26 +11298,6 @@ snapshots:
       - '@babel/core'
       - supports-color
 
-  '@types/ember@4.0.11':
-    dependencies:
-      '@types/ember__application': 4.0.11(@babel/core@7.26.0)
-      '@types/ember__array': 4.0.10(@babel/core@7.26.0)
-      '@types/ember__component': 4.0.22(@babel/core@7.26.0)
-      '@types/ember__controller': 4.0.12(@babel/core@7.26.0)
-      '@types/ember__debug': 4.0.8(@babel/core@7.26.0)
-      '@types/ember__engine': 4.0.11(@babel/core@7.26.0)
-      '@types/ember__error': 4.0.6
-      '@types/ember__object': 4.0.12(@babel/core@7.26.0)
-      '@types/ember__polyfills': 4.0.6
-      '@types/ember__routing': 4.0.22(@babel/core@7.26.0)
-      '@types/ember__runloop': 4.0.10
-      '@types/ember__service': 4.0.9(@babel/core@7.26.0)
-      '@types/ember__string': 3.16.3
-      '@types/ember__template': 4.0.7
-      '@types/ember__test': 4.0.6(@babel/core@7.26.0)
-      '@types/ember__utils': 4.0.7
-      '@types/rsvp': 4.0.9
-
   '@types/ember@4.0.11(@babel/core@7.26.0)':
     dependencies:
       '@types/ember__application': 4.0.11(@babel/core@7.26.0)
@@ -11349,7 +11324,7 @@ snapshots:
   '@types/ember__application@4.0.11(@babel/core@7.26.0)':
     dependencies:
       '@glimmer/component': 1.1.2(@babel/core@7.26.0)
-      '@types/ember': 4.0.11
+      '@types/ember': 4.0.11(@babel/core@7.26.0)
       '@types/ember__engine': 4.0.11(@babel/core@7.26.0)
       '@types/ember__object': 4.0.12(@babel/core@7.26.0)
       '@types/ember__owner': 4.0.9
@@ -11440,10 +11415,6 @@ snapshots:
       - '@babel/core'
       - supports-color
 
-  '@types/ember__runloop@4.0.10':
-    dependencies:
-      '@types/ember': 4.0.11
-
   '@types/ember__runloop@4.0.10(@babel/core@7.26.0)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.26.0)
@@ -11470,10 +11441,6 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-
-  '@types/ember__utils@4.0.7':
-    dependencies:
-      '@types/ember': 4.0.11
 
   '@types/ember__utils@4.0.7(@babel/core@7.26.0)':
     dependencies:
@@ -15019,8 +14986,6 @@ snapshots:
 
   find-root@1.1.0: {}
 
-  find-up-simple@1.0.0: {}
-
   find-up@2.1.0:
     dependencies:
       locate-path: 2.0.0
@@ -15753,8 +15718,6 @@ snapshots:
   indent-string@4.0.0: {}
 
   indent-string@5.0.0: {}
-
-  index-to-position@0.1.2: {}
 
   infer-owner@1.0.4: {}
 
@@ -17176,12 +17139,6 @@ snapshots:
       json-parse-even-better-errors: 2.3.1
       lines-and-columns: 1.2.4
 
-  parse-json@8.1.0:
-    dependencies:
-      '@babel/code-frame': 7.24.7
-      index-to-position: 0.1.2
-      type-fest: 4.26.1
-
   parse-ms@1.0.1: {}
 
   parse-ms@4.0.0: {}
@@ -17460,12 +17417,6 @@ snapshots:
       minimist: 1.2.8
       strip-json-comments: 2.0.1
 
-  read-package-up@11.0.0:
-    dependencies:
-      find-up-simple: 1.0.0
-      read-pkg: 9.0.1
-      type-fest: 4.26.1
-
   read-pkg-up@8.0.0:
     dependencies:
       find-up: 5.0.0
@@ -17478,14 +17429,6 @@ snapshots:
       normalize-package-data: 3.0.3
       parse-json: 5.2.0
       type-fest: 1.4.0
-
-  read-pkg@9.0.1:
-    dependencies:
-      '@types/normalize-package-data': 2.4.4
-      normalize-package-data: 6.0.2
-      parse-json: 8.1.0
-      type-fest: 4.26.1
-      unicorn-magic: 0.1.0
 
   readable-stream@1.0.34:
     dependencies:
