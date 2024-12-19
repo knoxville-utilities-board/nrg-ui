@@ -77,11 +77,11 @@ export interface SearchSignature<T> {
     minCharacters?: number;
     noResultsLabel?: string;
     placeholder?: string;
-    query: (searchString: string) => Promise<T[]>;
     readonly?: boolean;
     scrollable?: boolean;
     searchTimeout?: number;
     serializationPath?: string;
+    onQuery: (searchString: string) => Promise<T[]>;
   };
   Element: HTMLDivElement;
 }
@@ -130,7 +130,7 @@ export default class Search<T> extends BoundValue<
   }
 
   get loading() {
-    return this.args.loading || this.onQuery.isRunning;
+    return this.args.loading || this.query.isRunning;
   }
 
   get minCharacters() {
@@ -258,9 +258,9 @@ export default class Search<T> extends BoundValue<
     activeElement.scrollIntoView({ block: 'nearest' });
   }
 
-  onQuery = restartableTask(async (searchString) => {
+  query = restartableTask(async (searchString) => {
     await timeout(this.searchTimeout);
-    this.options = await this.args.query(searchString);
+    this.options = await this.args.onQuery(searchString);
     this.isFocused = true;
   });
 
@@ -348,7 +348,7 @@ export default class Search<T> extends BoundValue<
       return;
     }
 
-    this.onQuery.perform(this.searchString);
+    this.query.perform(this.searchString);
   }
 
   @action
@@ -383,7 +383,9 @@ export default class Search<T> extends BoundValue<
           </span>
         {{/unless}}
         <TextInput
+          @basic={{@basic}}
           @binding={{bind this.self 'searchString'}}
+          @class={{this.inputClassList}}
           @id={{@id}}
           @disabled={{@disabled}}
           @readonly={{@readonly}}

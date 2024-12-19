@@ -169,11 +169,11 @@ export default class extends Component {
               @minCharacters={{this.minCharacters}}
               @noResultsLabel={{this.noResultsLabel}}
               @placeholder={{this.placeholder}}
-              @onChange={{fn log "The value changed to"}}
-              @query={{this.stringQuery}}
               @readonly={{this.readonly}}
               @scrollable={{this.scrollable}}
               @searchTimeout={{this.searchTimeout}}
+              @onChange={{fn log "The value changed to"}}
+              @onQuery={{this.stringQuery}}
             />
           </:example>
           <:api as |Args|>
@@ -221,7 +221,7 @@ export default class extends Component {
             <Args.Bool
               @name="loading"
               @defaultValue={{false}}
-              @description="When true, the icon will be replaced with a loading spinner"
+              @description="When true, the icon will be replaced with a loading spinner. Note: the loading indicator will not be displayed if the basic option is set to true"
               @value={{this.loading}}
               @onInput={{fn this.update "loading"}}
             />
@@ -234,27 +234,18 @@ export default class extends Component {
             />
             <Args.String
               @name="noResultsLabel"
-              @defaultValue={{"No results found"}}
+              @defaultValue="No results found"
               @description="The label to display when no results are found"
               @value={{this.noResultsLabel}}
               @onInput={{fn this.update "noResultsLabel"}}
             />
             <Args.String
               @name="placeholder"
-              @defaultValue={{"Search"}}
+              @defaultValue="Search"
               @description="The placeholder text"
               @value={{this.placeholder}}
               @onInput={{fn this.update "placeholder"}}
             />
-            <Args.Action
-              @name="query"
-              @description="A function that return a array of strings or objects options"
-            >
-              <CodeBlock
-                @lang="typescript"
-                @code="(string: searchString) => string[]"
-              />
-            </Args.Action>
             <Args.Bool
               @name="readonly"
               @defaultValue={{false}}
@@ -276,6 +267,15 @@ export default class extends Component {
               @value={{this.searchTimeout}}
               @onInput={{fn this.update "searchTimeout"}}
             />
+            <Args.Action
+              @name="onQuery"
+              @description="A function that return a array of strings or objects options"
+            >
+              <CodeBlock
+                @lang="typescript"
+                @code="(string: searchString) => T[]"
+              />
+            </Args.Action>
           </:api>
         </FreestyleUsage>
       </Section.subsection>
@@ -295,12 +295,12 @@ export default class extends Component {
               @minCharacters={{this.minCharacters}}
               @noResultsLabel={{this.noResultsLabel}}
               @placeholder={{this.placeholder}}
-              @onChange={{fn log "The value changed to"}}
-              @query={{this.objectQuery}}
               @readonly={{this.readonly}}
               @scrollable={{this.scrollable}}
               @searchTimeout={{this.searchTimeout}}
               @serializationPath="key"
+              @onChange={{fn log "The value changed to"}}
+              @onQuery={{this.objectQuery}}
             />
           </:example>
         </FreestyleUsage>
