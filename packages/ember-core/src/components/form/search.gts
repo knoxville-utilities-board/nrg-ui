@@ -10,13 +10,16 @@ import { t } from 'ember-intl';
 // https://github.com/adopted-ember-addons/ember-keyboard/issues/464
 import onKey from 'ember-keyboard/modifiers/on-key';
 
+import TextInput from './../form/text-input.gts';
 import BoundValue from './bound-value.ts';
+import { bind } from '../../helpers/bind.ts';
 import onClickOutside from '../../modifiers/on-click-outside.ts';
 import onInsert from '../../modifiers/on-insert.ts';
 import Button from '../button.gts';
 
 import type { Optional } from '../../';
 import type IntlService from 'ember-intl/services/intl';
+
 
 declare type SearchOption<T> = {
   label: string;
@@ -87,6 +90,8 @@ export default class Search<T> extends BoundValue<
   SearchSignature<T>,
   string | T
 > {
+  self: Record<'searchString', string> = this;
+
   @tracked
   activeIndex = -1;
 
@@ -266,6 +271,7 @@ export default class Search<T> extends BoundValue<
 
     this.activeIndex = index;
     this.selectedOption = option;
+    this.searchString = option.label;
 
     this.onBlur();
   }
@@ -376,15 +382,12 @@ export default class Search<T> extends BoundValue<
             {{/if}}
           </span>
         {{/unless}}
-        <input
-          aria-describedby={{@describedBy}}
-          id={{@id}}
-          class={{this.inputClassList}}
-          disabled={{@disabled}}
-          readonly={{@readonly}}
-          placeholder={{this.placeholder}}
-          type="text"
-          value={{this.displayValue}}
+        <TextInput
+          @binding={{bind this.self 'searchString'}}
+          @id={{@id}}
+          @disabled={{@disabled}}
+          @readonly={{@readonly}}
+          @placeholder={{this.placeholder}}
           {{on "input" this.onSearch}}
           {{on "focus" this.onFocus}}
           {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}

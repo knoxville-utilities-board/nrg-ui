@@ -13,6 +13,7 @@ export type InputFieldSignature<S> = {
     id?: string;
     isInvalid?: boolean;
     isWarning?: boolean;
+    placeholder?: string;
     readonly?: boolean;
   };
 } & S;
