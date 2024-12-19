@@ -40,7 +40,7 @@ module('Integration | Component | form/search', function (hooks) {
     const model = new Model();
 
     await render(<template>
-      <Search @binding={{bind model "value"}} @query={{actionHandler}} />
+      <Search @binding={{bind model "value"}} @onQuery={{actionHandler}} />
     </template>);
 
     assert.dom('div > input').hasClass('form-control').hasValue('');
@@ -76,7 +76,7 @@ module('Integration | Component | form/search', function (hooks) {
     const model = new Model();
 
     await render(<template>
-      <Search @binding={{bind model "value"}} @query={{actionHandler}} />
+      <Search @binding={{bind model "value"}} @onQuery={{actionHandler}} />
     </template>);
 
     assert.dom('div > input').hasClass('form-control').hasValue('');
@@ -106,8 +106,8 @@ module('Integration | Component | form/search', function (hooks) {
     await render(<template>
       <Search
         @binding={{bind model "value"}}
-        @query={{actionHandler}}
         @loading={{true}}
+        @onQuery={{actionHandler}}
       />
     </template>);
 
@@ -123,8 +123,8 @@ module('Integration | Component | form/search', function (hooks) {
     await render(<template>
       <Search
         @binding={{bind model "value"}}
-        @query={{actionHandler}}
         @basic={{true}}
+        @onQuery={{actionHandler}}
       />
     </template>);
 
@@ -141,8 +141,8 @@ module('Integration | Component | form/search', function (hooks) {
     await render(<template>
       <Search
         @binding={{bind model "value"}}
-        @query={{actionHandler}}
         @clearable={{true}}
+        @onQuery={{actionHandler}}
       />
     </template>);
 
