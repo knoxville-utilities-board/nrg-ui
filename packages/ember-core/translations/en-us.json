@@ -9,7 +9,8 @@
       },
       "loading": "Loading",
       "next": "Next",
-      "previous": "Previous"
+      "previous": "Previous",
+      "clear" : "Clear"
     },
     "navbar": {
       "toggleContextMenu": "Toggle context menu"
@@ -20,6 +21,10 @@
     },
     "select": {
       "defaultText": "Select an Option"
+    },
+    "search": {
+      "placeholder": "Search",
+      "noResults": "No results found"
     },
     "validation": {
       "confirmation": {

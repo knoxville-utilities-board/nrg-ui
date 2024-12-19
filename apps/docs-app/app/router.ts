@@ -23,6 +23,7 @@ Router.map(function () {
       this.route('datetime');
       this.route('phone-input');
       this.route('radio-group');
+      this.route('search');
       this.route('select');
       this.route('text-area');
       this.route('text-input');
