@@ -97,4 +97,7 @@ export interface ModifierRegistry {
   'on-update': typeof OnUpdate;
 }
 
-export default interface TemplateRegistry extends ComponentRegistry, HelperRegistry, ModifierRegistry {}
+export default interface TemplateRegistry
+  extends ComponentRegistry,
+    HelperRegistry,
+    ModifierRegistry {}

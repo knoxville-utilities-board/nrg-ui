@@ -11,6 +11,7 @@ import Datetime from './datetime.gts';
 import NumberInput from './number-input.gts';
 import PhoneInput from './phone-input.gts';
 import RadioGroup from './radio-group.gts';
+import Search from './search.gts';
 import Select from './select.gts';
 import TextArea from './text-area.gts';
 import TextInput from './text-input.gts';
@@ -23,6 +24,7 @@ import type { DatetimeSignature } from './datetime.gts';
 import type { FormType } from './index.gts';
 import type { NumberInputSignature } from './number-input.gts';
 import type { RadioGroupSignature } from './radio-group.gts';
+import type { SearchSignature } from './search.gts';
 import type { SelectSignature } from './select.gts';
 import type { TextAreaSignature } from './text-area.gts';
 import type { TextInputSignature } from './text-input.gts';
@@ -59,6 +61,8 @@ export interface FieldSignature {
         PhoneInput: ComponentLike<TextInputSignature>;
         RadioGroup: ComponentLike<RadioGroupSignature>;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        Search: ComponentLike<SearchSignature<any>>;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         Select: ComponentLike<SelectSignature<any>>;
         Text: ComponentLike<TextSignature>;
         TextArea: ComponentLike<TextAreaSignature>;
@@ -89,6 +93,9 @@ class Text extends Component<TextSignature> {
 }
 
 export default class Field extends Component<FieldSignature> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  TypedSearch = Search<any>;
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   TypedSelect = Select<any>;
 
@@ -292,6 +299,15 @@ export default class Field extends Component<FieldSignature> {
         )
         RadioGroup=(component
           RadioGroup
+          describedBy=this.describedBy
+          disabled=@disabled
+          id=this.fieldId
+          initBinding=this.initBinding
+          isInvalid=this.hasError
+          isWarning=this.hasWarning
+        )
+        Search=(component
+          this.TypedSearch
           describedBy=this.describedBy
           disabled=@disabled
           id=this.fieldId
