@@ -31,8 +31,6 @@ module('Integration | Component | form/search', function (hooks) {
       fruit.toLowerCase().includes(text.toLowerCase()),
     );
 
-    console.log(filteredFruits);
-
     return filteredFruits;
   };
 
