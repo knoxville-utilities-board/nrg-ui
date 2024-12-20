@@ -121,7 +121,7 @@ jobs:
 
       - name: Enable pull request automerge
         if: steps.open-pr.outputs.pull-request-operation == 'created'
-        run: gh pr merge --merge --auto {{ steps.open-pr.outputs.pull-request-number }}
+        run: gh pr merge --merge --auto ${{ steps.open-pr.outputs.pull-request-number }}
         env:
           GH_TOKEN: ${{ steps.generate-token.outputs.token }}
 
