@@ -193,22 +193,6 @@ export default class Search<T> extends BoundValue<
     return classes.join(' ');
   }
 
-  get displayValue() {
-    if (!this.value) {
-      return this.searchString;
-    }
-
-    if (this.args.serializationPath === null) {
-      return get(this.value, this.args.displayPath ?? 'label') as string;
-    }
-
-    if (this.selectedOption) {
-      return this.selectedOption.label;
-    }
-
-    return '';
-  }
-
   get internalOptions() {
     return this.options.map((option) => {
       if (typeof option !== 'object') {
@@ -242,6 +226,34 @@ export default class Search<T> extends BoundValue<
 
   set selectedOption(option: SearchOption<T>) {
     this.onChange(option.value);
+  }
+
+  get queryString() {
+    if (!this.value) {
+      return this.searchString;
+    }
+
+    if (this.args.serializationPath === null) {
+      return get(this.value, this.args.displayPath ?? 'label') as string;
+    }
+
+    if (this.selectedOption) {
+      return this.selectedOption.label;
+    }
+
+    return '';
+  }
+
+  set queryString(value) {
+    this.searchString = value;
+    this.value = '';
+    this.activeIndex = -1;
+
+    if (!this.canPerformSearch) {
+      return;
+    }
+
+    this.query.perform(this.searchString);
   }
 
   scrollActiveOptionIntoView() {
@@ -339,19 +351,6 @@ export default class Search<T> extends BoundValue<
   }
 
   @action
-  onSearch(evt: Event) {
-    this.searchString = (evt.target as HTMLInputElement).value;
-    this.value = '';
-    this.activeIndex = -1;
-
-    if (!this.canPerformSearch) {
-      return;
-    }
-
-    this.query.perform(this.searchString);
-  }
-
-  @action
   clear() {
     this.searchString = '';
     this.value = '';
@@ -385,13 +384,11 @@ export default class Search<T> extends BoundValue<
         <TextInput
           class={{this.inputClassList}}
           placeholder={{this.placeholder}}
-          displayValue={{this.displayValue}}
           @basic={{@basic}}
-          @binding={{bind this.self 'searchString'}}
+          @binding={{bind this.self 'queryString'}}
           @disabled={{@disabled}}
           @id={{@id}}
           @readonly={{@readonly}}
-          {{on "input" this.onSearch}}
           {{on "focus" this.onFocus}}
           {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
           {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
