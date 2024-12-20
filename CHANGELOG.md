@@ -1,5 +1,22 @@
 # Changelog
 
+## Release (2024-12-20)
+
+@nrg-ui/css 0.10.0 (minor)
+@nrg-ui/core 0.20.0 (minor)
+
+#### :rocket: Enhancement
+* `docs-app`, `test-app`, `@nrg-ui/css`, `@nrg-ui/core`
+  * [#290](https://github.com/knoxville-utilities-board/nrg-ui/pull/290) feat: Add search bar component ([@Trishu-Patel](https://github.com/Trishu-Patel))
+
+#### :house: Internal
+* `docs-app`
+  * [#310](https://github.com/knoxville-utilities-board/nrg-ui/pull/310) chore(docs-app): Use stable @embroider/broccoli-side-watch ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-12-11)
 
 @nrg-ui/css 0.9.1 (patch)

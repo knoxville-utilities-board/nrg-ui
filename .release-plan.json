@@ -1,60 +1,35 @@
 {
   "solution": {
     "@nrg-ui/css": {
-      "impact": "patch",
-      "oldVersion": "0.9.0",
-      "newVersion": "0.9.1",
+      "impact": "minor",
+      "oldVersion": "0.9.1",
+      "newVersion": "0.10.0",
       "constraints": [
         {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :memo: Documentation"
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
         }
       ],
       "pkgJSONPath": "./packages/design-system/package.json"
     },
     "@nrg-ui/core": {
       "impact": "minor",
-      "oldVersion": "0.18.2",
-      "newVersion": "0.19.0",
+      "oldVersion": "0.19.0",
+      "newVersion": "0.20.0",
       "constraints": [
         {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
     },
     "@nrg-ui/standards": {
-      "impact": "minor",
-      "oldVersion": "0.3.2",
-      "newVersion": "0.4.0",
-      "constraints": [
-        {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :memo: Documentation"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./packages/standards/package.json"
+      "oldVersion": "0.4.0"
     },
     "@nrg-ui/theme-generator": {
       "oldVersion": "0.2.0"
     }
   },
-  "description": "## Release (2024-12-11)\n\n@nrg-ui/css 0.9.1 (patch)\n@nrg-ui/core 0.19.0 (minor)\n@nrg-ui/standards 0.4.0 (minor)\n\n#### :rocket: Enhancement\n* `test-app`, `@nrg-ui/core`\n  * [#304](https://github.com/knoxville-utilities-board/nrg-ui/pull/304) feat: Add `onDestroy` modifier ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/standards`\n  * [#300](https://github.com/knoxville-utilities-board/nrg-ui/pull/300) feat(standards): Update `eslint-plugin-decorator-position` ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`\n  * [#303](https://github.com/knoxville-utilities-board/nrg-ui/pull/303) fix(toasts): Allow clicking behind toaster ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* `docs-app`\n  * [#306](https://github.com/knoxville-utilities-board/nrg-ui/pull/306) docs: Add pages for modifiers ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/css`, `@nrg-ui/standards`\n  * [#302](https://github.com/knoxville-utilities-board/nrg-ui/pull/302) chore: Update READMEs for packages ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `docs-app`, `test-app`, `@nrg-ui/core`, `@nrg-ui/standards`\n  * [#301](https://github.com/knoxville-utilities-board/nrg-ui/pull/301) chore: Update `eslint-plugin-decorator-position` ([@TSenter](https://github.com/TSenter))\n* `test-app`, `@nrg-ui/core`\n  * [#297](https://github.com/knoxville-utilities-board/nrg-ui/pull/297) chore(test-app): Enable full Glint support ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2024-12-20)\n\n@nrg-ui/css 0.10.0 (minor)\n@nrg-ui/core 0.20.0 (minor)\n\n#### :rocket: Enhancement\n* `docs-app`, `test-app`, `@nrg-ui/css`, `@nrg-ui/core`\n  * [#290](https://github.com/knoxville-utilities-board/nrg-ui/pull/290) feat: Add search bar component ([@Trishu-Patel](https://github.com/Trishu-Patel))\n\n#### :house: Internal\n* `docs-app`\n  * [#310](https://github.com/knoxville-utilities-board/nrg-ui/pull/310) chore(docs-app): Use stable @embroider/broccoli-side-watch ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
