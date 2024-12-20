@@ -2,6 +2,17 @@
 
 ## Release (2024-12-20)
 
+
+
+#### :house: Internal
+* [#313](https://github.com/knoxville-utilities-board/nrg-ui/pull/313) fix(ci): Fix auto-merge enabling ([@TSenter](https://github.com/TSenter))
+* [#311](https://github.com/knoxville-utilities-board/nrg-ui/pull/311) chore(ci): Enable auto-merge on release-plan PR ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
+## Release (2024-12-20)
+
 @nrg-ui/css 0.10.0 (minor)
 @nrg-ui/core 0.20.0 (minor)
 
