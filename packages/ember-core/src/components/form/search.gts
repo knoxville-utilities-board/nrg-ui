@@ -385,6 +385,7 @@ export default class Search<T> extends BoundValue<
         <TextInput
           class={{this.inputClassList}}
           placeholder={{this.placeholder}}
+          displayValue={{this.displayValue}}
           @basic={{@basic}}
           @binding={{bind this.self 'searchString'}}
           @disabled={{@disabled}}
