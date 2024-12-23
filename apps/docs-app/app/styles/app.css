@@ -11,3 +11,14 @@
     }
   }
 }
+
+.popover-block {
+  display: flex;
+  width: 100%;
+  height: 20vh;
+  border: 2px solid var(--bs-primary);
+  border-radius: var(--bs-border-radius);
+  background-color: var(--bs-primary-bg-subtle);
+  align-items: center;
+  justify-content: center;
+}
