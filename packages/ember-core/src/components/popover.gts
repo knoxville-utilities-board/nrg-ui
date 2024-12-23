@@ -18,7 +18,7 @@ export interface PopoverActions {
   hide: (evt: Event) => Promise<void>;
 }
 
-interface HeaderSignature {
+export interface HeaderSignature {
   Element: HTMLHeadingElement;
   Blocks: {
     default: [];
@@ -31,7 +31,7 @@ const Header: TOC<HeaderSignature> = <template>
   </h3>
 </template>;
 
-interface BodySignature {
+export interface BodySignature {
   Element: HTMLDivElement;
   Blocks: {
     default: [];
