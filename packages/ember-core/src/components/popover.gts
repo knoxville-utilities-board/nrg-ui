@@ -56,8 +56,8 @@ export interface PopoverSignature {
     offset?: string | number;
     side?: Direction;
 
-    onShow?: () => void | Promise<void>;
-    onHide?: () => void | Promise<void>;
+    onShow?: () => unknown;
+    onHide?: () => unknown;
   };
   Blocks: {
     control: [PopoverActions];
