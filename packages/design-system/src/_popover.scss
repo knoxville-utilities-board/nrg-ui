@@ -22,6 +22,7 @@
 
   z-index: var(--bs-popover-zindex);
   display: block;
+  position: absolute;
   max-width: var(--bs-popover-max-width);
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
@@ -36,6 +37,7 @@
   @include box-shadow(var(--bs-popover-box-shadow));
 
   .popover-arrow {
+    position: absolute;
     display: block;
     width: var(--bs-popover-arrow-width);
     height: var(--bs-popover-arrow-height);
@@ -49,6 +51,10 @@
       border-style: solid;
       border-width: 0;
     }
+  }
+
+  &.hidden {
+    visibility: hidden;
   }
 }
 

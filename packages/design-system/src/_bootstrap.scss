@@ -24,7 +24,10 @@
 @import "bootstrap/scss/toasts";
 @import "bootstrap/scss/modal";
 @import "bootstrap/scss/tooltip";
-@import "bootstrap/scss/popover";
+// Bootstrap's popover uses Popper.js which is not included in this project.
+// Instead, we're using Floating UI and modifying the popover styles.
+// We expect Bootstrap 6 to migrate to Floating UI.
+// @import "bootstrap/scss/popover";
 @import "bootstrap/scss/carousel";
 @import "bootstrap/scss/spinners";
 @import "bootstrap/scss/offcanvas";
