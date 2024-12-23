@@ -67,6 +67,7 @@ export interface PopoverSignature {
             Header: ComponentLike<HeaderSignature>;
             Body: ComponentLike<BodySignature>;
           },
+          PopoverActions,
         ]
       | [];
   };
@@ -215,42 +216,42 @@ export default class Popover extends Component<PopoverSignature> {
   };
 
   <template>
-    {{yield
+    {{#let
       (hash show=this.show hide=this.hide toggle=this.toggle)
-      to="control"
+      as |actions|
     }}
-    <div
-      id={{this.id}}
-      {{classes
-        (unless this.isShown "hidden")
-        (concat "popover bs-popover-" this.side)
-      }}
-      {{onInsert this.initPopover}}
-      {{! @glint-expect-error Modifier types are currently not correct }}
-      {{onUpdate
-        this.showPopover
-        @alignment
-        @arrow
-        @controlElement
-        @offset
-        @side
-      }}
-      ...attributes
-    >
-      {{#if (has-block-params "content")}}
-        {{yield
-          (hash
-            Header=(component Header)
-            Body=(component Body hasArrow=this.hasArrow setArrow=this.setArrow)
-          )
-          to="content"
+      {{yield actions to="control"}}
+      <div
+        id={{this.id}}
+        {{classes
+          (unless this.isShown "hidden")
+          (concat "popover bs-popover-" this.side)
         }}
-      {{else}}
-        {{yield to="content"}}
-      {{/if}}
-      {{#if this.hasArrow}}
-        <div class="popover-arrow" {{onInsert this.setArrow}}></div>
-      {{/if}}
-    </div>
+        {{onInsert this.initPopover}}
+        {{! @glint-expect-error Modifier types are currently not correct }}
+        {{onUpdate
+          this.showPopover
+          @alignment
+          @arrow
+          @controlElement
+          @offset
+          @side
+        }}
+        ...attributes
+      >
+        {{#if (has-block-params "content")}}
+          {{yield
+            (hash Header=(component Header) Body=(component Body))
+            actions
+            to="content"
+          }}
+        {{else}}
+          {{yield to="content"}}
+        {{/if}}
+        {{#if this.hasArrow}}
+          <div class="popover-arrow" {{onInsert this.setArrow}}></div>
+        {{/if}}
+      </div>
+    {{/let}}
   </template>
 }
