@@ -42,6 +42,7 @@ export { default as PageNotFound } from './components/page-not-found.gts';
 export { default as Popover } from './components/popover.gts';
 export { default as Progress } from './components/progress.gts';
 export { default as Toaster } from './components/toaster.gts';
+export { default as Tooltip } from './components/tooltip.gts';
 export { default as ThemeSwitcher } from './components/theme-switcher.gts';
 
 /* Helpers */

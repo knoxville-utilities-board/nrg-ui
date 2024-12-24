@@ -1,4 +1,3 @@
-export { default as classes } from './classes.ts';
 export { default as onClickOutside } from './on-click-outside.ts';
 export { default as onDestroy } from './on-destroy.ts';
 export { default as onInsert } from './on-insert.ts';
