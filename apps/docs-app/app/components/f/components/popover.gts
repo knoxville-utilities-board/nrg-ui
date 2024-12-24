@@ -65,8 +65,8 @@ export default class extends Component {
               @isShown={{this.isShown}}
               @offset={{this.offset}}
               @side={{this.side}}
-              @onShow={{this.toast.info "onShow was fired"}}
-              @onHide={{this.toast.info "onHide was fired"}}
+              @onShow={{fn this.toast.info "onShow was fired"}}
+              @onHide={{fn this.toast.info "onHide was fired"}}
             >
               <:control as |actions|>
                 <Button
@@ -150,8 +150,8 @@ export default class extends Component {
               @isShown={{this.isShown}}
               @offset={{this.offset}}
               @side={{this.side}}
-              @onShow={{fn this.update "isShown" true}}
-              @onHide={{fn this.update "isShown" false}}
+              @onShow={{fn this.toast.info "onShow was fired"}}
+              @onHide={{fn this.toast.info "onHide was fired"}}
             >
               <:control as |actions|>
                 <PopoverBlock
