@@ -15,3 +15,9 @@ export function scrollTo(elementOrSelector: HTMLElement | string) {
     block: 'start',
   });
 }
+
+export function getRemValue() {
+  const rootFontSize = getComputedStyle(document.documentElement).fontSize;
+
+  return parseFloat(rootFontSize);
+}

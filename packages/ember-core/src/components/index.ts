@@ -37,5 +37,6 @@ export { default as Icon } from './icon.gts';
 export { default as LoadingIndicator } from './loading-indicator.gts';
 export { default as NavItem } from './nav-item.gts';
 export { default as PageNotFound } from './page-not-found.gts';
+export { default as Popover } from './popover.gts';
 export { default as Progress } from './progress.gts';
 export { default as Toaster } from './toaster.gts';
