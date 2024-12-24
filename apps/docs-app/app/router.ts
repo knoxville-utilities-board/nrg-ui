@@ -34,6 +34,7 @@ Router.map(function () {
     this.route('navbar');
     this.route('popover');
     this.route('toaster');
+    this.route('tooltip');
     this.route('theme-switcher');
   });
   this.route('helpers');
