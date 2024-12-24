@@ -3,7 +3,7 @@ import { arrow, computePosition, offset } from '@floating-ui/dom';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
-import classes from '../modifiers/classes.ts';
+import { classes } from '../helpers/classes.ts';
 import onInsert from '../modifiers/on-insert.ts';
 import onUpdate from '../modifiers/on-update.ts';
 import { getRemValue } from '../utils/dom.ts';
@@ -223,7 +223,7 @@ export default class Popover extends Component<PopoverSignature> {
       {{yield actions to="control"}}
       <div
         id={{this.id}}
-        {{classes
+        class={{classes
           (unless this.isShown "hidden")
           (concat "popover bs-popover-" this.side)
         }}
