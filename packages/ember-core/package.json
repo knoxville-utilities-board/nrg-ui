@@ -227,6 +227,7 @@
       "./components/progress.js": "./dist/_app_/components/progress.js",
       "./components/theme-switcher.js": "./dist/_app_/components/theme-switcher.js",
       "./components/toaster.js": "./dist/_app_/components/toaster.js",
+      "./components/tooltip.js": "./dist/_app_/components/tooltip.js",
       "./helpers/bind.js": "./dist/_app_/helpers/bind.js",
       "./helpers/classes.js": "./dist/_app_/helpers/classes.js",
       "./helpers/index.js": "./dist/_app_/helpers/index.js",
