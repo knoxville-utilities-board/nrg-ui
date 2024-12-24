@@ -1,5 +1,21 @@
 # Changelog
 
+## Release (2024-12-24)
+
+@nrg-ui/css 0.11.0 (minor)
+@nrg-ui/core 0.21.0 (minor)
+
+#### :rocket: Enhancement
+* `docs-app`, `test-app`, `@nrg-ui/css`, `@nrg-ui/core`
+  * [#315](https://github.com/knoxville-utilities-board/nrg-ui/pull/315) feat: Create popover component ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* [#313](https://github.com/knoxville-utilities-board/nrg-ui/pull/313) fix(ci): Fix auto-merge enabling ([@TSenter](https://github.com/TSenter))
+* [#311](https://github.com/knoxville-utilities-board/nrg-ui/pull/311) chore(ci): Enable auto-merge on release-plan PR ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-12-20)
 
 @nrg-ui/css 0.10.0 (minor)
