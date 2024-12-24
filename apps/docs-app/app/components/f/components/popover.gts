@@ -55,7 +55,7 @@ export default class extends Component {
 
   <template>
     <Toaster />
-    <FreestyleSection @name="Button" as |Section|>
+    <FreestyleSection @name="Popover" as |Section|>
       <Section.subsection @name="Button">
         <FreestyleUsage>
           <:example>
