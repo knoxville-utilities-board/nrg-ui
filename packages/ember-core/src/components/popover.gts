@@ -3,7 +3,7 @@ import { arrow, computePosition, offset } from '@floating-ui/dom';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
-import classes from '../modifiers/classes.ts';
+import { classes } from '../helpers/classes.ts';
 import onInsert from '../modifiers/on-insert.ts';
 import onUpdate from '../modifiers/on-update.ts';
 import { getRemValue } from '../utils/dom.ts';
@@ -18,7 +18,7 @@ export interface PopoverActions {
   hide: (evt: Event) => Promise<void>;
 }
 
-interface HeaderSignature {
+export interface HeaderSignature {
   Element: HTMLHeadingElement;
   Blocks: {
     default: [];
@@ -31,7 +31,7 @@ const Header: TOC<HeaderSignature> = <template>
   </h3>
 </template>;
 
-interface BodySignature {
+export interface BodySignature {
   Element: HTMLDivElement;
   Blocks: {
     default: [];
@@ -56,8 +56,8 @@ export interface PopoverSignature {
     offset?: string | number;
     side?: Direction;
 
-    onShow?: () => void | Promise<void>;
-    onHide?: () => void | Promise<void>;
+    onShow?: () => unknown;
+    onHide?: () => unknown;
   };
   Blocks: {
     control: [PopoverActions];
@@ -223,7 +223,7 @@ export default class Popover extends Component<PopoverSignature> {
       {{yield actions to="control"}}
       <div
         id={{this.id}}
-        {{classes
+        class={{classes
           (unless this.isShown "hidden")
           (concat "popover bs-popover-" this.side)
         }}
