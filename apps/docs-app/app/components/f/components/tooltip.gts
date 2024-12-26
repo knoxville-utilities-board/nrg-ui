@@ -19,12 +19,6 @@ export default class extends Component {
   alignment?: Alignment;
 
   @tracked
-  arrow: boolean = true;
-
-  @tracked
-  isShown?: boolean;
-
-  @tracked
   offset?: number;
 
   @tracked
@@ -32,10 +26,6 @@ export default class extends Component {
 
   update = (key: string, value: unknown) => {
     this[key] = value;
-  };
-
-  log = (...args: unknown[]) => {
-    console.log(...args);
   };
 
   <template>
@@ -47,10 +37,10 @@ export default class extends Component {
             <div class="p-2">
               <Tooltip
                 @alignment={{this.alignment}}
-                @arrow={{this.arrow}}
-                @isShown={{this.isShown}}
                 @offset={{this.offset}}
                 @side={{this.side}}
+                @onShow={{fn this.toast.info "onShow was fired"}}
+                @onHide={{fn this.toast.info "onHide was fired"}}
               >
                 <:default as |Target|>
                   <p class="mb-0">
@@ -153,48 +143,34 @@ export default class extends Component {
           <:api as |Args|>
             <Args.String
               @name="alignment"
-              @description="How to align the popover"
+              @description="How to align the tooltip"
               @value={{this.alignment}}
               @options={{array "" "start" "end"}}
               @onInput={{fn this.update "alignment"}}
             />
-            <Args.Bool
-              @name="arrow"
-              @defaultValue={{true}}
-              @description="Whether to show an arrow pointing to the control"
-              @value={{this.arrow}}
-              @onInput={{fn this.update "arrow"}}
-            />
-            <Args.Bool
-              @name="isShown"
-              @defaultValue="undefined"
-              @description="Whether to show the popover"
-              @value={{this.isShown}}
-              @onInput={{fn this.update "isShown"}}
-            />
             <Args.Number
               @name="offset"
-              @description="How far to offset the popover from the control (in pixels)"
+              @description="How far to offset the tooltip from the target (in pixels)"
               @value={{this.offset}}
               @onInput={{fn this.update "offset"}}
             />
             <Args.String
               @name="side"
               @defaultValue="bottom"
-              @description="Which side of the control to show the popover"
+              @description="Which side of the control to show the tooltip"
               @value={{this.side}}
               @options={{array "" "top" "end" "bottom" "start"}}
               @onInput={{fn this.update "side"}}
             />
             <Args.Action
               @name="onShow"
-              @description="Fired when the popover is shown"
+              @description="Fired when the tooltip is shown"
             >
               <CodeBlock @lang="typescript" @code="() => Promise<void>" />
             </Args.Action>
             <Args.Action
               @name="onHide"
-              @description="Fired when the popover is hidden"
+              @description="Fired when the tooltip is hidden"
             >
               <CodeBlock @lang="typescript" @code="() => Promise<void>" />
             </Args.Action>
