@@ -102,7 +102,6 @@ jobs:
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
 
       - uses: peter-evans/create-pull-request@v6
-        id: open-pr
         with:
           commit-message: ${{ steps.commit-message.outputs.COMMIT_MESSAGE }}
           labels: 'internal'
@@ -118,12 +117,6 @@ jobs:
             -----------------------------------------
 
             ${{ steps.explanation.outputs.text }}
-
-      - name: Enable pull request automerge
-        if: steps.open-pr.outputs.pull-request-operation == 'created'
-        run: gh pr merge --merge --auto ${{ steps.open-pr.outputs.pull-request-number }}
-        env:
-          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
 
       - name: Save dependency cache
         uses: actions/cache/save@v4
