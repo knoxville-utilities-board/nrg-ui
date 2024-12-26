@@ -21,7 +21,7 @@ import type IntlService from 'ember-intl/services/intl';
 
 declare type SelectOption<T> = {
   label: string;
-  value: string | T;
+  value: T;
   raw: T;
 };
 
@@ -29,7 +29,7 @@ interface SelectItemSignature<T> {
   Args: {
     optionIndex: number;
     activeIndex: number;
-    currentValue: string | T;
+    currentValue: T;
     option: SelectOption<T>;
   };
   Blocks: {
@@ -98,10 +98,7 @@ export interface SelectSignature<T> {
   Element: HTMLButtonElement;
 }
 
-export default class Select<T> extends BoundValue<
-  SelectSignature<T>,
-  string | T
-> {
+export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   @tracked
   _isOpen = false;
 
@@ -178,15 +175,15 @@ export default class Select<T> extends BoundValue<
         return {
           raw: option,
           label: option as string,
-          value: option as string,
+          value: option,
         };
       }
 
       const label = get(option, this.args.displayPath ?? 'label') as string;
-      let value: string | T = option;
+      let value: T = option;
       // null serializationPath results in value being the raw option
       if (this.args.serializationPath !== null) {
-        value = get(option, this.args.serializationPath ?? 'value') as string;
+        value = get(option, this.args.serializationPath ?? 'value') as T;
       }
       return {
         raw: option,
