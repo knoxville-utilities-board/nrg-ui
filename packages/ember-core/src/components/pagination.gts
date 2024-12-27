@@ -230,7 +230,7 @@ export default class Pagination extends Component<PaginationSignature> {
   <template>
     <ul class="pagination" role="navigation" ...attributes>
       {{#if @showDetailedMeta}}
-        <li class="page-item disabled">
+        <li class="page-item disabled" data-test-meta>
           <span class="page-link">
             {{t
               "nrg.pagination.detailedMeta"
@@ -246,6 +246,7 @@ export default class Pagination extends Component<PaginationSignature> {
         role={{if this.canStepBackward "button"}}
         {{! @glint-expect-error - Known Glint issue - #661 }}
         {{(if this.canStepBackward (modifier on "click" this.stepBackward))}}
+        data-test-previous
       >
         <span class="page-link">
           {{t "nrg.base.previous"}}
@@ -258,6 +259,7 @@ export default class Pagination extends Component<PaginationSignature> {
           role={{unless page.blank "button"}}
           {{! @glint-expect-error - Known Glint issue - #661 }}
           {{(unless page.blank (modifier on "click" (fn this.changePage page)))}}
+          data-test-page={{page.number}}
         >
           {{#if page.blank}}
             <span aria-hidden="true" class="page-link disabled">
@@ -275,13 +277,14 @@ export default class Pagination extends Component<PaginationSignature> {
         role={{if this.canStepForward "button"}}
         {{! @glint-expect-error - Known Glint issue - #661 }}
         {{(if this.canStepForward (modifier on "click" this.stepForward))}}
+        data-test-next
       >
         <span class="page-link">
           {{t "nrg.base.next"}}
         </span>
       </li>
       {{#if @pageSizes}}
-        <li class="page-item">
+        <li class="page-item" data-test-page-sizes>
           <Select
             {{! @glint-expect-error - Binding types are currently not supported }}
             @binding={{bind this "selectedPageSize"}}
@@ -296,7 +299,7 @@ export default class Pagination extends Component<PaginationSignature> {
         </li>
       {{/if}}
       {{#if @enablePageJump}}
-        <li class="page-item">
+        <li class="page-item" data-test-jump-to>
           <span class="input-group-text">
             {{t "nrg.pagination.jumpToPage.start"}}
             <NumberInput
