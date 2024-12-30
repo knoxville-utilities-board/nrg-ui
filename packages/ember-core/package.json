@@ -93,7 +93,7 @@
     "@floating-ui/dom": "^1.6.12",
     "decorator-transforms": "^1.0.1",
     "ember-css-transitions": "^4.4.1",
-    "ember-intl": "^7.0.9",
+    "ember-intl": "^7.1.0",
     "ember-keyboard": "^8.2.1",
     "ember-lifeline": "^7.0.0",
     "ember-modifier": "^4.1.0",
@@ -156,7 +156,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "tracked-built-ins": "^3.4.0",
     "typescript": "^5.7.2",
-    "typescript-eslint": "^8.18.1",
+    "typescript-eslint": "^8.18.2",
     "webpack": "^5.97.1"
   },
   "peerDependencies": {
