@@ -39,6 +39,7 @@ export { default as LoadingIndicator } from './components/loading-indicator.gts'
 export { default as Modal } from './components/modal.gts';
 export { default as NavItem } from './components/nav-item.gts';
 export { default as PageNotFound } from './components/page-not-found.gts';
+export { default as Pagination } from './components/pagination.gts';
 export { default as Popover } from './components/popover.gts';
 export { default as Progress } from './components/progress.gts';
 export { default as Toaster } from './components/toaster.gts';
@@ -100,6 +101,7 @@ export type { IconSignature } from './components/icon.gts';
 export type { LoadingIndicatorSignature } from './components/loading-indicator.gts';
 export type { ModalSignature } from './components/modal.gts';
 export type { NavItemSignature } from './components/nav-item.gts';
+export type { PaginationSignature } from './components/pagination.gts';
 export type { PopoverSignature } from './components/popover.gts';
 export type {
   ProgressSignature,

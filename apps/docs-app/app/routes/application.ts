@@ -21,10 +21,10 @@ export default class ApplicationRoute extends Route {
   declare intl: IntlService;
 
   async beforeModel() {
-    this.theme.load();
     this.freestyle.hljsThemeUrl = (theme: string) => {
       return `https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/${theme}.min.css`;
     };
+    this.theme.load();
     await this.freestyle.ensureHljs();
     await this.freestyle.ensureHljsLanguage('typescript');
 

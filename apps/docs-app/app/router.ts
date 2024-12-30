@@ -32,6 +32,7 @@ Router.map(function () {
     this.route('icon');
     this.route('modal');
     this.route('navbar');
+    this.route('pagination');
     this.route('popover');
     this.route('toaster');
     this.route('tooltip');

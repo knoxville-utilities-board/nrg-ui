@@ -19,6 +19,14 @@
       "title": "Page Not Found",
       "message": "The page you requested could not be found."
     },
+    "pagination": {
+      "detailedMeta": "{start, number} - {end, number} of {total, number}",
+      "jumpToPage": {
+        "start": "Page",
+        "end": "of {total, number}"
+      },
+      "pageSize": "{value, number} per page"
+    },
     "select": {
       "defaultText": "Select an Option"
     },
