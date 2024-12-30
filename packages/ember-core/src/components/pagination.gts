@@ -66,7 +66,7 @@ export default class Pagination extends Component<PaginationSignature> {
 
   get defaultPageSize() {
     return (
-      this.args.pageSizes?.[0] ?? this.args.defaultPageSize ?? defaultPageSize
+      this.args.defaultPageSize ?? this.args.pageSizes?.[0] ?? defaultPageSize
     );
   }
 
