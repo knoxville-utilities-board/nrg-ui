@@ -1,5 +1,21 @@
 # Changelog
 
+## Release (2024-12-30)
+
+@nrg-ui/css 0.12.0 (minor)
+@nrg-ui/core 0.22.0 (minor)
+
+#### :rocket: Enhancement
+* `docs-app`, `test-app`, `@nrg-ui/css`, `@nrg-ui/core`
+  * [#320](https://github.com/knoxville-utilities-board/nrg-ui/pull/320) feat: Create pagination component ([@TSenter](https://github.com/TSenter))
+  * [#317](https://github.com/knoxville-utilities-board/nrg-ui/pull/317) feat: Create tooltip component ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* [#319](https://github.com/knoxville-utilities-board/nrg-ui/pull/319) chore(ci): Don't auto-merge release PRs ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-12-24)
 
 @nrg-ui/css 0.11.0 (minor)
