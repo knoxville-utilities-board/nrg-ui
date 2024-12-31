@@ -1,18 +1,3 @@
-.dropup,
-.dropend,
-.dropdown,
-.dropstart,
-.dropup-center,
-.dropdown-center {
-  position: relative;
-}
-
-.dropdown-toggle {
-  white-space: nowrap;
-
-  @include caret();
-}
-
 .dropdown-menu {
   --bs-dropdown-zindex: #{$zindex-dropdown};
   --bs-dropdown-min-width: #{$dropdown-min-width};
@@ -41,9 +26,8 @@
   --bs-dropdown-header-padding-x: #{$dropdown-header-padding-x};
   --bs-dropdown-header-padding-y: #{$dropdown-header-padding-y};
 
-  position: absolute;
   z-index: var(--bs-dropdown-zindex);
-  display: none;
+  display: block;
   min-width: var(--bs-dropdown-min-width);
   padding: var(--bs-dropdown-padding-y) var(--bs-dropdown-padding-x);
   margin: 0;
@@ -57,12 +41,6 @@
   @include border-radius(var(--bs-dropdown-border-radius));
   @include box-shadow(var(--bs-dropdown-box-shadow));
 
-  &[data-bs-popper] {
-    top: 100%;
-    left: 0;
-    margin-top: var(--bs-dropdown-spacer);
-  }
-
   @if $dropdown-padding-y == 0 {
     > .dropdown-item:first-child,
     > li:first-child .dropdown-item {
@@ -73,6 +51,10 @@
       @include border-bottom-radius(var(--bs-dropdown-inner-border-radius));
     }
 
+  }
+
+  &.hidden {
+    visibility: hidden;
   }
 }
 
@@ -100,52 +82,6 @@
   }
 }
 
-.dropup {
-  .dropdown-menu[data-bs-popper] {
-    top: auto;
-    bottom: 100%;
-    margin-top: 0;
-    margin-bottom: var(--bs-dropdown-spacer);
-  }
-
-  .dropdown-toggle {
-    @include caret(up);
-  }
-}
-
-.dropend {
-  .dropdown-menu[data-bs-popper] {
-    top: 0;
-    right: auto;
-    left: 100%;
-    margin-top: 0;
-    margin-left: var(--bs-dropdown-spacer);
-  }
-
-  .dropdown-toggle {
-    @include caret(end);
-    &::after {
-      vertical-align: 0;
-    }
-  }
-}
-
-.dropstart {
-  .dropdown-menu[data-bs-popper] {
-    top: 0;
-    right: 100%;
-    left: auto;
-    margin-top: 0;
-    margin-right: var(--bs-dropdown-spacer);
-  }
-
-  .dropdown-toggle {
-    @include caret(start);
-    &::before {
-      vertical-align: 0;
-    }
-  }
-}
 
 .dropdown-divider {
   height: 0;
@@ -169,6 +105,10 @@
   border: 0;
   @include border-radius(var(--bs-dropdown-item-border-radius, 0));
 
+  &:not(.disabled) {
+    cursor: pointer;
+  }
+
   &:hover,
   &:focus {
     color: var(--bs-dropdown-link-hover-color);
@@ -191,11 +131,6 @@
     background-image: if($enable-gradients, none, null);
   }
 }
-
-.dropdown-menu.show {
-  display: block;
-}
-
 .dropdown-header {
   display: block;
   padding: var(--bs-dropdown-header-padding-y) var(--bs-dropdown-header-padding-x);
