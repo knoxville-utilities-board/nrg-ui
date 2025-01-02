@@ -101,7 +101,7 @@ export interface DropdownSignature {
     onHide?: () => unknown | Promise<unknown>;
   };
   Blocks: {
-    control: [];
+    control: [PopoverVisibility];
     menu: [
       {
         Divider: ComponentLike<DividerSignature>;
@@ -180,7 +180,7 @@ export default class Dropdown extends Component<DropdownSignature> {
   };
 
   <template>
-    <div class="dropdown" {{onClickOutside this.visibility.hide}}>
+    <div class="dropdown" {{onClickOutside this.visibility.hide}} ...attributes>
       <Popover
         class="border-0"
         @alignment={{this.alignment}}
@@ -191,27 +191,30 @@ export default class Dropdown extends Component<DropdownSignature> {
         @onHide={{@onHide}}
       >
         <:control as |visibility|>
-          <button
-            aria-controls={{this.menuId}}
-            aria-disabled={{if this.disabled "true"}}
-            {{! This is intentional - if isShown is false, the attribute is removed }}
-            aria-expanded="{{visibility.isShown}}"
-            aria-haspopup="listbox"
-            class="btn dropdown text-start"
-            disabled={{this.disabled}}
-            role="combobox"
-            type="button"
-            {{on "click" visibility.toggle}}
-            ...attributes
-          >
-            {{#if this.showLeftIcon}}
-              <i class="icon {{this.icon}} float-start my-1 ms-n1 me-1"></i>
-            {{/if}}
-            {{yield to="control"}}
-            {{#if this.showRightIcon}}
-              <i class="icon {{this.icon}} float-end my-1 ms-1 me-n1"></i>
-            {{/if}}
-          </button>
+          {{#if (has-block-params "control")}}
+            {{yield visibility to="control"}}
+          {{else}}
+            <button
+              aria-controls={{this.menuId}}
+              aria-disabled={{if this.disabled "true"}}
+              {{! This is intentional - if isShown is false, the attribute is removed }}
+              aria-expanded="{{visibility.isShown}}"
+              aria-haspopup="listbox"
+              class="btn dropdown text-start"
+              disabled={{this.disabled}}
+              role="combobox"
+              type="button"
+              {{on "click" visibility.toggle}}
+            >
+              {{#if this.showLeftIcon}}
+                <i class="icon {{this.icon}} float-start my-1 ms-n1 me-1"></i>
+              {{/if}}
+              {{yield visibility to="control"}}
+              {{#if this.showRightIcon}}
+                <i class="icon {{this.icon}} float-end my-1 ms-1 me-n1"></i>
+              {{/if}}
+            </button>
+          {{/if}}
         </:control>
         <:content as |Content visibility|>
           <Content.Body class="p-0">
