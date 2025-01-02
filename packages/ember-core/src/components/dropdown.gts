@@ -44,6 +44,7 @@ class Item extends Component<ItemSignature> {
     <li
       aria-selected="false"
       role="option"
+      data-test-dropdown-item
       {{on "click" this.onSelect}}
     >
       <span
@@ -63,7 +64,7 @@ interface DividerSignature {
 
 const Divider: TOC<DividerSignature> = <template>
   <li>
-    <hr class="dropdown-divider" ...attributes />
+    <hr class="dropdown-divider" data-test-dropdown-divider ...attributes />
   </li>
 </template>;
 
@@ -76,7 +77,7 @@ interface HeaderSignature {
 
 const Header: TOC<HeaderSignature> = <template>
   <li>
-    <h5 class="dropdown-header" ...attributes>
+    <h5 class="dropdown-header" data-test-dropdown-header ...attributes>
       {{yield}}
     </h5>
   </li>
