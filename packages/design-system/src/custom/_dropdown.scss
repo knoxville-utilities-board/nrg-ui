@@ -1,0 +1,231 @@
+.dropup,
+.dropend,
+.dropdown,
+.dropstart,
+.dropup-center,
+.dropdown-center {
+  position: relative;
+}
+
+.dropdown-toggle {
+  white-space: nowrap;
+
+  @include caret();
+}
+
+.dropdown-menu {
+  --bs-dropdown-zindex: #{$zindex-dropdown};
+  --bs-dropdown-min-width: #{$dropdown-min-width};
+  --bs-dropdown-padding-x: #{$dropdown-padding-x};
+  --bs-dropdown-padding-y: #{$dropdown-padding-y};
+  --bs-dropdown-spacer: #{$dropdown-spacer};
+  @include rfs($dropdown-font-size, --bs-dropdown-font-size);
+  --bs-dropdown-color: #{$dropdown-color};
+  --bs-dropdown-bg: #{$dropdown-bg};
+  --bs-dropdown-border-color: #{$dropdown-border-color};
+  --bs-dropdown-border-radius: #{$dropdown-border-radius};
+  --bs-dropdown-border-width: #{$dropdown-border-width};
+  --bs-dropdown-inner-border-radius: #{$dropdown-inner-border-radius};
+  --bs-dropdown-divider-bg: #{$dropdown-divider-bg};
+  --bs-dropdown-divider-margin-y: #{$dropdown-divider-margin-y};
+  --bs-dropdown-box-shadow: #{$dropdown-box-shadow};
+  --bs-dropdown-link-color: #{$dropdown-link-color};
+  --bs-dropdown-link-hover-color: #{$dropdown-link-hover-color};
+  --bs-dropdown-link-hover-bg: #{$dropdown-link-hover-bg};
+  --bs-dropdown-link-active-color: #{$dropdown-link-active-color};
+  --bs-dropdown-link-active-bg: #{$dropdown-link-active-bg};
+  --bs-dropdown-link-disabled-color: #{$dropdown-link-disabled-color};
+  --bs-dropdown-item-padding-x: #{$dropdown-item-padding-x};
+  --bs-dropdown-item-padding-y: #{$dropdown-item-padding-y};
+  --bs-dropdown-header-color: #{$dropdown-header-color};
+  --bs-dropdown-header-padding-x: #{$dropdown-header-padding-x};
+  --bs-dropdown-header-padding-y: #{$dropdown-header-padding-y};
+
+  position: absolute;
+  z-index: var(--bs-dropdown-zindex);
+  display: none;
+  min-width: var(--bs-dropdown-min-width);
+  padding: var(--bs-dropdown-padding-y) var(--bs-dropdown-padding-x);
+  margin: 0;
+  @include font-size(var(--bs-dropdown-font-size));
+  color: var(--bs-dropdown-color);
+  text-align: left;
+  list-style: none;
+  background-color: var(--bs-dropdown-bg);
+  background-clip: padding-box;
+  border: var(--bs-dropdown-border-width) solid var(--bs-dropdown-border-color);
+  @include border-radius(var(--bs-dropdown-border-radius));
+  @include box-shadow(var(--bs-dropdown-box-shadow));
+
+  &[data-bs-popper] {
+    top: 100%;
+    left: 0;
+    margin-top: var(--bs-dropdown-spacer);
+  }
+
+  @if $dropdown-padding-y == 0 {
+    > .dropdown-item:first-child,
+    > li:first-child .dropdown-item {
+      @include border-top-radius(var(--bs-dropdown-inner-border-radius));
+    }
+    > .dropdown-item:last-child,
+    > li:last-child .dropdown-item {
+      @include border-bottom-radius(var(--bs-dropdown-inner-border-radius));
+    }
+
+  }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .dropdown-menu#{$infix}-start {
+      --bs-position: start;
+
+      &[data-bs-popper] {
+        right: auto;
+        left: 0;
+      }
+    }
+
+    .dropdown-menu#{$infix}-end {
+      --bs-position: end;
+
+      &[data-bs-popper] {
+        right: 0;
+        left: auto;
+      }
+    }
+  }
+}
+
+.dropup {
+  .dropdown-menu[data-bs-popper] {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: var(--bs-dropdown-spacer);
+  }
+
+  .dropdown-toggle {
+    @include caret(up);
+  }
+}
+
+.dropend {
+  .dropdown-menu[data-bs-popper] {
+    top: 0;
+    right: auto;
+    left: 100%;
+    margin-top: 0;
+    margin-left: var(--bs-dropdown-spacer);
+  }
+
+  .dropdown-toggle {
+    @include caret(end);
+    &::after {
+      vertical-align: 0;
+    }
+  }
+}
+
+.dropstart {
+  .dropdown-menu[data-bs-popper] {
+    top: 0;
+    right: 100%;
+    left: auto;
+    margin-top: 0;
+    margin-right: var(--bs-dropdown-spacer);
+  }
+
+  .dropdown-toggle {
+    @include caret(start);
+    &::before {
+      vertical-align: 0;
+    }
+  }
+}
+
+.dropdown-divider {
+  height: 0;
+  margin: var(--bs-dropdown-divider-margin-y) 0;
+  overflow: hidden;
+  border-top: 1px solid var(--bs-dropdown-divider-bg);
+  opacity: 1;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
+  clear: both;
+  font-weight: $font-weight-normal;
+  color: var(--bs-dropdown-link-color);
+  text-align: inherit;
+  text-decoration: if($link-decoration == none, null, none);
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  @include border-radius(var(--bs-dropdown-item-border-radius, 0));
+
+  &:hover,
+  &:focus {
+    color: var(--bs-dropdown-link-hover-color);
+    text-decoration: if($link-hover-decoration == underline, none, null);
+    @include gradient-bg(var(--bs-dropdown-link-hover-bg));
+  }
+
+  &.active,
+  &:active {
+    color: var(--bs-dropdown-link-active-color);
+    text-decoration: none;
+    @include gradient-bg(var(--bs-dropdown-link-active-bg));
+  }
+
+  &.disabled,
+  &:disabled {
+    color: var(--bs-dropdown-link-disabled-color);
+    pointer-events: none;
+    background-color: transparent;
+    background-image: if($enable-gradients, none, null);
+  }
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-header {
+  display: block;
+  padding: var(--bs-dropdown-header-padding-y) var(--bs-dropdown-header-padding-x);
+  margin-bottom: 0;
+  @include font-size($font-size-sm);
+  color: var(--bs-dropdown-header-color);
+  white-space: nowrap;
+}
+
+.dropdown-item-text {
+  display: block;
+  padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
+  color: var(--bs-dropdown-link-color);
+}
+
+.dropdown-menu-dark {
+  --bs-dropdown-color: #{$dropdown-dark-color};
+  --bs-dropdown-bg: #{$dropdown-dark-bg};
+  --bs-dropdown-border-color: #{$dropdown-dark-border-color};
+  --bs-dropdown-box-shadow: #{$dropdown-dark-box-shadow};
+  --bs-dropdown-link-color: #{$dropdown-dark-link-color};
+  --bs-dropdown-link-hover-color: #{$dropdown-dark-link-hover-color};
+  --bs-dropdown-divider-bg: #{$dropdown-dark-divider-bg};
+  --bs-dropdown-link-hover-bg: #{$dropdown-dark-link-hover-bg};
+  --bs-dropdown-link-active-color: #{$dropdown-dark-link-active-color};
+  --bs-dropdown-link-active-bg: #{$dropdown-dark-link-active-bg};
+  --bs-dropdown-link-disabled-color: #{$dropdown-dark-link-disabled-color};
+  --bs-dropdown-header-color: #{$dropdown-dark-header-color};
+}
+
+button.dropdown + .popover {
+  max-width: 100%;
+}
