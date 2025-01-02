@@ -15,7 +15,7 @@ import type { ComponentLike } from '@glint/template';
 import type { WithBoundArgs } from '@glint/template';
 import type IntlService from 'ember-intl/services/intl';
 
-interface ItemSignature {
+export interface ItemSignature {
   Element: HTMLSpanElement;
   Args: {
     disabled?: boolean;

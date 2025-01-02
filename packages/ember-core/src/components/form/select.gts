@@ -13,10 +13,15 @@ import { t } from 'ember-intl';
 import onKey from 'ember-keyboard/modifiers/on-key';
 import { runTask } from 'ember-lifeline';
 
+import Dropdown from '../dropdown.gts';
 import BoundValue from './bound-value.ts';
+import classes from '../../helpers/classes.ts';
 import onInsert from '../../modifiers/on-insert.ts';
 
 import type { Optional } from '../../';
+import type { ItemSignature } from '../dropdown.gts';
+import type { PopoverVisibility } from '../popover.gts';
+import type { ComponentLike } from '@glint/template';
 import type IntlService from 'ember-intl/services/intl';
 
 declare type SelectOption<T> = {
@@ -27,6 +32,8 @@ declare type SelectOption<T> = {
 
 interface SelectItemSignature<T> {
   Args: {
+    component: ComponentLike<ItemSignature>;
+
     optionIndex: number;
     activeIndex: number;
     currentValue: T;
@@ -65,14 +72,11 @@ class SelectItem<T> extends Component<SelectItemSignature<T>> {
   }
 
   <template>
-    <li
-      class={{this.classList}}
-      role="option"
-      aria-selected={{this.isActive}}
-      ...attributes
-    >
+    {{#let @component as |Component|}}
+    <Component>
       {{yield}}
-    </li>
+    </Component>
+    {{/let}}
   </template>
 }
 
@@ -91,6 +95,7 @@ export interface SelectSignature<T> {
     serializationPath?: string | null;
   };
   Blocks: {
+    control?: [PopoverVisibility];
     display?: [T | undefined];
     option?: [T | undefined];
     empty?: [];
@@ -372,79 +377,83 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   }
 
   <template>
-    <button
-      class={{this.classList}}
-      id={{@id}}
-      type="button"
-      role="combobox"
-      disabled={{this.disabled}}
-      aria-controls={{this.menuId}}
-      aria-describedby={{@describedBy}}
-      aria-expanded={{this._isOpen}}
-      aria-haspopup="listbox"
-      {{on "click" this.toggleSelect}}
-      {{on "blur" this.onBlur}}
-      {{on "keydown" this.onKeyboardInput}}
-      {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
-      {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
-      {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
-      {{onKey "Space" this.enterKeyHandler onlyWhenFocused=true}}
-      {{onKey "NumpadEnter" this.enterKeyHandler onlyWhenFocused=true}}
-      {{onKey "Tab" this.exitKeyHandler onlyWhenFocused=true}}
-      {{onKey "Escape" this.exitKeyHandler onlyWhenFocused=true}}
-      ...attributes
-    >
-      <span class="selected-display">
-        {{#if this.hasSelected}}
-          {{#if (has-block "display")}}
-            {{yield this.selected.raw to="display"}}
-          {{else if (has-block "option")}}
-            {{yield this.selected.raw to="option"}}
-          {{else}}
-            {{this.selected.label}}
-          {{/if}}
+    <Dropdown @side={{this.side}}>
+      <:control as |visibility|>
+        {{#if (has-block "control")}}
+          {{yield visibility to="control"}}
         {{else}}
-          {{#if (has-block "empty")}}
-            {{yield to="empty"}}
-          {{else}}
-            {{this.defaultText}}
-          {{/if}}
+          <button
+            class={{this.classList}}
+            id={{@id}}
+            type="button"
+            role="combobox"
+            disabled={{this.disabled}}
+            aria-controls={{this.menuId}}
+            aria-describedby={{@describedBy}}
+            aria-expanded={{this._isOpen}}
+            aria-haspopup="listbox"
+            {{on "click" this.toggleSelect}}
+            {{on "blur" this.onBlur}}
+            {{on "keydown" this.onKeyboardInput}}
+            {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
+            {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
+            {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
+            {{onKey "Space" this.enterKeyHandler onlyWhenFocused=true}}
+            {{onKey "NumpadEnter" this.enterKeyHandler onlyWhenFocused=true}}
+            {{onKey "Tab" this.exitKeyHandler onlyWhenFocused=true}}
+            {{onKey "Escape" this.exitKeyHandler onlyWhenFocused=true}}
+            ...attributes
+          >
+            {{! @glint-expect-error - If there are no block params, we don't need to yield anything to the block }}
+            {{yield to="control"}}
+          </button>
         {{/if}}
-      </span>
-
-      {{#if @loading}}
-        <span
-          class="spinner-border spinner-border-sm float-end m-1"
-          aria-hidden="true"
-        ></span>
-        <span class="visually-hidden" role="status">
-          {{t "nrg.base.loading"}}
+      </:control>
+      <:menu as |Menu|>
+        <span class="selected-display">
+          {{#if this.hasSelected}}
+            {{#if (has-block "display")}}
+              {{yield this.selected.raw to="display"}}
+            {{else if (has-block "option")}}
+              {{yield this.selected.raw to="option"}}
+            {{else}}
+              {{this.selected.label}}
+            {{/if}}
+          {{else}}
+            {{#if (has-block "empty")}}
+              {{yield to="empty"}}
+            {{else}}
+              {{this.defaultText}}
+            {{/if}}
+          {{/if}}
         </span>
-      {{else}}
-        <i class="bi {{this.caretIcon}} float-end m-1" />
-      {{/if}}
-      <ul
-        id={{this.menuId}}
-        class="dropdown-menu {{if this.isOpen 'show'}}"
-        role="listbox"
-        {{onInsert this.onInsert}}
-      >
+        {{#if @loading}}
+          <span
+            class="spinner-border spinner-border-sm float-end m-1"
+            aria-hidden="true"
+          ></span>
+          <span class="visually-hidden" role="status">
+            {{t "nrg.base.loading"}}
+          </span>
+        {{else}}
+          <i class="bi {{this.caretIcon}} float-end m-1" />
+        {{/if}}
         {{#each this.internalOptions as |option i|}}
-          <SelectItem
+          <Menu.Item
             @optionIndex={{i}}
             @activeIndex={{this.activeItem}}
             @currentValue={{this.value}}
             @option={{option}}
-            {{on "click" (fn this.onSelectInternal option)}}
+            @onSelect={{fn this.onSelectInternal option}}
           >
             {{#if (has-block "option")}}
               {{yield option.raw to="option"}}
             {{else}}
               {{option.label}}
             {{/if}}
-          </SelectItem>
+          </Menu.Item>
         {{/each}}
-      </ul>
-    </button>
+      </:menu>
+    </Dropdown>
   </template>
 }
