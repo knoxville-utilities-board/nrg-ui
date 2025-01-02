@@ -12,10 +12,11 @@ import type { TOC } from '@ember/component/template-only';
 import type { Alignment, Placement, Side } from '@floating-ui/dom';
 import type { ComponentLike } from '@glint/template';
 
-export interface PopoverActions {
+export interface PopoverVisibility {
+  isShown: boolean;
   toggle: (evt: Event) => Promise<void>;
   show: (evt: Event) => Promise<void>;
-  hide: (evt: Event) => Promise<void>;
+  hide: () => Promise<void>;
 }
 
 export interface HeaderSignature {
@@ -60,16 +61,14 @@ export interface PopoverSignature {
     onHide?: () => unknown;
   };
   Blocks: {
-    control: [PopoverActions];
-    content:
-      | [
-          {
-            Header: ComponentLike<HeaderSignature>;
-            Body: ComponentLike<BodySignature>;
-          },
-          PopoverActions,
-        ]
-      | [];
+    control: [PopoverVisibility];
+    content: [
+      {
+        Header: ComponentLike<HeaderSignature>;
+        Body: ComponentLike<BodySignature>;
+      },
+      PopoverVisibility,
+    ];
   };
 }
 
@@ -217,10 +216,12 @@ export default class Popover extends Component<PopoverSignature> {
 
   <template>
     {{#let
-      (hash show=this.show hide=this.hide toggle=this.toggle)
-      as |actions|
+      (hash
+        isShown=this.isShown show=this.show hide=this.hide toggle=this.toggle
+      )
+      as |visibility|
     }}
-      {{yield actions to="control"}}
+      {{yield visibility to="control"}}
       <div
         id={{this.id}}
         class={{classes
@@ -242,10 +243,11 @@ export default class Popover extends Component<PopoverSignature> {
         {{#if (has-block-params "content")}}
           {{yield
             (hash Header=(component Header) Body=(component Body))
-            actions
+            visibility
             to="content"
           }}
         {{else}}
+          {{! @glint-expect-error - If there are no block params, we don't need to yield anything to the block }}
           {{yield to="content"}}
         {{/if}}
         {{#if this.hasArrow}}
