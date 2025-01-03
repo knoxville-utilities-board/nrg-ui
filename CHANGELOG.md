@@ -1,5 +1,21 @@
 # Changelog
 
+## Release (2025-01-03)
+
+@nrg-ui/css 0.13.0 (minor)
+@nrg-ui/core 0.23.0 (minor)
+
+#### :rocket: Enhancement
+* `docs-app`, `test-app`, `@nrg-ui/css`, `@nrg-ui/core`
+  * [#323](https://github.com/knoxville-utilities-board/nrg-ui/pull/323) feat: Create dropdown component ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `@nrg-ui/css`
+  * [#324](https://github.com/knoxville-utilities-board/nrg-ui/pull/324) chore: Move pagination styling to dedicated file ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-12-30)
 
 @nrg-ui/css 0.12.0 (minor)
