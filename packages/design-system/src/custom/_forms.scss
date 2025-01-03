@@ -1,14 +1,6 @@
 .form-control.dropdown {
-  & .dropdown-menu {
-    display: none;
-    position: absolute;
-    width: 100%;
-    margin-left: -0.75rem; // This value needs to be the inverse of the padding on the input
-    margin-top: 0.75rem;
-
-    &.show {
-      display: block;
-    }
+  & + .popover > .popover-body > .dropdown-menu {
+    max-width: 100%;
   }
 
   &.scrollable > .dropdown-menu {
@@ -48,7 +40,7 @@ select,
     }
   }
   &:not([disabled]) {
-    &:not(input[type="checkbox"]):not(input[type="radio"]) {
+    &:not(input[type="checkbox"]):not(input[type="radio"]):not(button) {
       background: inherit !important;
       padding-right: revert !important;
     }
