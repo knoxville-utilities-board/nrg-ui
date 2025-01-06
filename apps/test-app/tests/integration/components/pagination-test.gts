@@ -281,10 +281,10 @@ module(
         .dom('.selected-display')
         .containsText('50 per page', 'selected option is 50');
 
-      await click('[data-test-page-sizes] > button');
+      await click('[data-test-page-sizes] > div > button');
 
       assert
-        .dom('.dropdown-menu > li:first-child')
+        .dom('.dropdown-menu > li:first-child > span')
         .containsText('50', 'first option is 50')
         .hasClass('active', 'first option is active');
 
