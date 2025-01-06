@@ -84,7 +84,7 @@ const Header: TOC<HeaderSignature> = <template>
 </template>;
 
 export interface DropdownSignature {
-  Element: HTMLSpanElement;
+  Element: HTMLDivElement;
   Args: {
     alignment?: Alignment;
     closeOnSelect?: boolean;
