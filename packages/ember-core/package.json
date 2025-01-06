@@ -248,7 +248,8 @@
       "./utils/email.js": "./dist/_app_/utils/email.js",
       "./utils/ensure-path-exists.js": "./dist/_app_/utils/ensure-path-exists.js",
       "./utils/index.js": "./dist/_app_/utils/index.js",
-      "./utils/phone.js": "./dist/_app_/utils/phone.js"
+      "./utils/phone.js": "./dist/_app_/utils/phone.js",
+      "./utils/string.js": "./dist/_app_/utils/string.js"
     },
     "defaultBlueprint": "@nrg-ui-core"
   }
