@@ -224,6 +224,16 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   }
 
   @action
+  resizeMenu() {
+    runTask(this, () => {
+      const popup = this.menuElement!.querySelector('.popover') as HTMLElement;
+      const { style } = popup;
+
+      style.right = style.left;
+    });
+  }
+
+  @action
   toggleSelect(evt: MouseEvent) {
     evt.preventDefault();
     evt.stopPropagation();
@@ -351,6 +361,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   <template>
     <Dropdown
       @side={{@side}}
+      @onShow={{this.resizeMenu}}
       @onHide={{this.onBlur}}
       {{on "blur" this.onBlur}}
       {{onInsert this.onInsert}}
