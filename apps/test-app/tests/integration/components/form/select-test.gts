@@ -66,7 +66,7 @@ module('Integration | Component | form/select', function (hooks) {
       <Select @binding={{bind model "value"}} @options={{stringOptions}} />
     </template>);
     await click('button');
-    assert.dom('.dropdown-menu').hasClass('show');
+    assert.dom('.dropdown-menu').doesNotHaveClass('hidden');
   });
 
   test('it closes when selecting an option', async function (assert) {
@@ -75,9 +75,9 @@ module('Integration | Component | form/select', function (hooks) {
       <Select @binding={{bind model "value"}} @options={{stringOptions}} />
     </template>);
     await click('button');
-    assert.dom('.dropdown-menu').hasClass('show');
+    assert.dom('.dropdown-menu').doesNotHaveClass('hidden');
     await click('.dropdown-menu li');
-    assert.dom('.dropdown-menu').doesNotHaveClass('show');
+    assert.dom('.dropdown-menu').hasClass('hidden');
   });
 
   test('it renders string options', async function (assert) {
@@ -208,19 +208,25 @@ module('Integration | Component | form/select', function (hooks) {
     </template>);
 
     await click('button');
-    assert.dom('.dropdown-menu').hasClass('show');
+    assert.dom('.dropdown-menu').doesNotHaveClass('hidden');
+
     await triggerKeyDown('Escape');
-    assert.dom('.dropdown-menu').doesNotHaveClass('show');
+    assert.dom('.dropdown-menu').hasClass('hidden');
+
     await triggerKeyDown('Space');
-    assert.dom('.dropdown-menu').hasClass('show');
+    assert.dom('.dropdown-menu').doesNotHaveClass('hidden');
+
     await triggerKeyDown('Tab');
-    assert.dom('.dropdown-menu').doesNotHaveClass('show');
+    assert.dom('.dropdown-menu').hasClass('hidden');
+
     await triggerKeyDown('NumpadEnter');
-    assert.dom('.dropdown-menu').hasClass('show');
+    assert.dom('.dropdown-menu').doesNotHaveClass('hidden');
+
     await triggerKeyDown('Enter');
-    assert.dom('.dropdown-menu').doesNotHaveClass('show');
+    assert.dom('.dropdown-menu').hasClass('hidden');
+
     await triggerKeyDown('Enter');
-    assert.dom('.dropdown-menu').hasClass('show');
+    assert.dom('.dropdown-menu').doesNotHaveClass('hidden');
   });
 
   test('it allows items to be selected via keyboard', async function (assert) {
