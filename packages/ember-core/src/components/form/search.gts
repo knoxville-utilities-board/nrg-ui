@@ -113,13 +113,13 @@ export default class Search<T> extends BoundValue<
   @service
   declare intl: IntlService;
 
-  constructor(owner: unknown, args: SearchSignature<T>) {
+  constructor(owner: unknown, args: SearchSignature<T>['Args']) {
     super(owner, args);
 
     if (typeof this.value === 'object') {
       this.searchString = get(this.value, this.args.displayPath ?? 'label') as string;
     } else if (this.value) {
-      this.searchString = this.value;
+      this.searchString = this.value as string;
     }
   }
 
@@ -172,7 +172,7 @@ export default class Search<T> extends BoundValue<
   }
 
   get showOptions() {
-    return this.isFocused && this.canPerformSearch && !this.loading;
+    return this.isFocused && this.canPerformSearch && !this.loading && this.value === "";
   }
 
   get classList() {
@@ -395,7 +395,7 @@ export default class Search<T> extends BoundValue<
       </div>
       <div class="dropdown {{if this.scrollable 'scrollable'}}">
         <ul
-          class="dropdown-menu mt-1 w-100 {{if this.showOptions 'show'}}"
+          class="dropdown-menu mt-1 w-100 {{if this.showOptions 'show' 'visually-hidden'}}"
           role="listbox"
           {{onInsert this.onMenuInsert}}
         >
