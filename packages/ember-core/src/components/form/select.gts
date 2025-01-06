@@ -184,7 +184,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
         continue;
       }
       const text = element.textContent?.toLowerCase() ?? '';
-      const splitText = text.split(' ') ?? [];
+      const splitText = collapseWhitespace(text).split(' ') ?? [];
       for (const text of splitText) {
         if (text.startsWith(searchBuffer)) {
           this.activeItem = index;
