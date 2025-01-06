@@ -113,6 +113,16 @@ export default class Search<T> extends BoundValue<
   @service
   declare intl: IntlService;
 
+  constructor(owner: unknown, args: SearchSignature<T>) {
+    super(owner, args);
+
+    if (typeof this.value === 'object') {
+      this.searchString = get(this.value, this.args.displayPath ?? 'label') as string;
+    } else if (this.value) {
+      this.searchString = this.value;
+    }
+  }
+
   get clearable() {
     if (this.args.basic) {
       return false;
@@ -193,22 +203,6 @@ export default class Search<T> extends BoundValue<
     return classes.join(' ');
   }
 
-  get displayValue() {
-    if (!this.value) {
-      return this.searchString;
-    }
-
-    if (this.args.serializationPath === null) {
-      return get(this.value, this.args.displayPath ?? 'label') as string;
-    }
-
-    if (this.selectedOption) {
-      return this.selectedOption.label;
-    }
-
-    return '';
-  }
-
   get internalOptions() {
     return this.options.map((option) => {
       if (typeof option !== 'object') {
@@ -231,17 +225,6 @@ export default class Search<T> extends BoundValue<
         value,
       };
     });
-  }
-
-  get selectedOption(): Optional<SearchOption<T>> {
-    const found = this.internalOptions.find(
-      (option) => option.value === this.value,
-    );
-    return found || null;
-  }
-
-  set selectedOption(option: SearchOption<T>) {
-    this.onChange(option.value);
   }
 
   scrollActiveOptionIntoView() {
@@ -270,7 +253,7 @@ export default class Search<T> extends BoundValue<
     evt?.stopPropagation();
 
     this.activeIndex = index;
-    this.selectedOption = option;
+    this.onChange(option.value);
     this.searchString = option.label;
 
     this.onBlur();
