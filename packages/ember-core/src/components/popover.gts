@@ -1,5 +1,5 @@
 import { concat, hash } from '@ember/helper';
-import { arrow, computePosition, offset } from '@floating-ui/dom';
+import { arrow, computePosition, offset, size } from '@floating-ui/dom';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
@@ -53,6 +53,7 @@ export interface PopoverSignature {
     alignment?: Alignment;
     arrow?: boolean;
     controlElement?: HTMLElement;
+    fullWidth?: boolean;
     isShown?: boolean;
     offset?: string | number;
     side?: Direction;
@@ -122,6 +123,18 @@ export default class Popover extends Component<PopoverSignature> {
 
     if (this.hasArrow) {
       middleware.push(arrow({ element: this.arrow! }));
+    }
+
+    if (this.args.fullWidth) {
+      const expandWidth = size({
+        apply({ rects, elements }) {
+          Object.assign(elements.floating.style, {
+            minWidth: `${rects.reference.width}px`,
+          });
+        },
+      });
+
+      middleware.push(expandWidth);
     }
 
     return middleware;
