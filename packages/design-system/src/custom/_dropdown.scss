@@ -1,3 +1,7 @@
+.dropdown:not(:has(.form-control)) {
+  display: inline-block;
+}
+
 .dropdown-menu {
   --bs-dropdown-zindex: #{$zindex-dropdown};
   --bs-dropdown-min-width: #{$dropdown-min-width};
