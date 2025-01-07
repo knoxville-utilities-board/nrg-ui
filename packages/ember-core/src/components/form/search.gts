@@ -2,6 +2,7 @@ import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { action, get } from '@ember/object';
 import { service } from '@ember/service';
+import { isTesting, macroCondition } from '@embroider/macros';
 import { tracked } from '@glimmer/tracking';
 import { restartableTask, timeout } from 'ember-concurrency';
 import { t } from 'ember-intl';
@@ -119,6 +120,10 @@ export default class Search<T> extends BoundValue<
   }
 
   get searchTimeout() {
+    if (macroCondition(isTesting())) {
+      return 0;
+    }
+
     return this.args.searchTimeout ?? 300;
   }
 
