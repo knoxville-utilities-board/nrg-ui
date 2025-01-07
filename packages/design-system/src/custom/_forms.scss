@@ -3,7 +3,7 @@
     max-width: 100%;
   }
 
-  &.scrollable > .dropdown-menu {
+  & .dropdown-menu.scrollable {
     max-height: clamp(9rem, 50vh, 21rem);
     overflow-y: auto;
   }
