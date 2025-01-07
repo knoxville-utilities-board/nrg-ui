@@ -158,7 +158,7 @@ module('Integration | Component | form', function (hooks) {
     </template>);
 
     // Select
-    const select = this.element.querySelector('label + button.dropdown')!;
+    const select = this.element.querySelector('label + .dropdown > button')!;
 
     assert
       .dom(select)
@@ -167,13 +167,13 @@ module('Integration | Component | form', function (hooks) {
       .hasClass('form-control');
 
     await click(select);
-    await click('button > .dropdown-menu > li:first-child');
+    await click('button + .popover .dropdown-menu > li:first-child');
 
     const ariaId = select.getAttribute('aria-describedby')!;
 
     assert.dom('button.dropdown').doesNotHaveClass('is-invalid');
     assert
-      .dom('button.dropdown + div')
+      .dom('div.dropdown:has(> button.dropdown) + div')
       .exists()
       .hasAttribute('id', ariaId)
       .hasClass('warning-feedback')

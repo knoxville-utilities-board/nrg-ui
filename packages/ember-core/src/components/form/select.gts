@@ -3,7 +3,6 @@ import { on } from '@ember/modifier';
 import { action, get } from '@ember/object';
 import { service } from '@ember/service';
 import { isEqual } from '@ember/utils';
-import Component from '@glimmer/component';
 // @ts-expect-error Glimmer doesn't currently ship a type for the `cached` decorator
 // https://github.com/glimmerjs/glimmer.js/issues/408
 import { cached, tracked } from '@glimmer/tracking';
@@ -13,10 +12,13 @@ import { t } from 'ember-intl';
 import onKey from 'ember-keyboard/modifiers/on-key';
 import { runTask } from 'ember-lifeline';
 
+import Dropdown from '../dropdown.gts';
 import BoundValue from './bound-value.ts';
 import onInsert from '../../modifiers/on-insert.ts';
+import { collapseWhitespace } from '../../utils/string.ts';
 
 import type { Optional } from '../../';
+import type { Direction, PopoverVisibility } from '../popover.gts';
 import type IntlService from 'ember-intl/services/intl';
 
 declare type SelectOption<T> = {
@@ -25,55 +27,19 @@ declare type SelectOption<T> = {
   raw: T;
 };
 
-interface SelectItemSignature<T> {
-  Args: {
-    optionIndex: number;
-    activeIndex: number;
-    currentValue: T;
-    option: SelectOption<T>;
-  };
-  Blocks: {
-    default: [];
-  };
-  Element: HTMLLIElement;
-}
+function isActive<T>(
+  activeIndex: number,
+  optionIndex: number,
+  currentValue: T,
+  option: SelectOption<T>,
+) {
+  const useIndexActive = activeIndex != -1;
+  const isCurrentIndex = optionIndex === activeIndex;
+  const isCurrentValue = isEqual(option.value, currentValue);
 
-class SelectItem<T> extends Component<SelectItemSignature<T>> {
-  get classList() {
-    const classes = ['dropdown-item'];
-
-    const useIndexActive = this.args.activeIndex != -1;
-    const isCurrentIndex = this.args.optionIndex === this.args.activeIndex;
-    const isCurrentValue = isEqual(
-      this.args.option.value,
-      this.args.currentValue,
-    );
-
-    if (useIndexActive && isCurrentIndex) {
-      classes.push('active');
-    }
-
-    if (!useIndexActive && isCurrentValue) {
-      classes.push('active');
-    }
-
-    return classes.join(' ');
-  }
-
-  get isActive() {
-    return isEqual(this.args.option.value, this.args.currentValue);
-  }
-
-  <template>
-    <li
-      class={{this.classList}}
-      role="option"
-      aria-selected={{this.isActive}}
-      ...attributes
-    >
-      {{yield}}
-    </li>
-  </template>
+  return (
+    (useIndexActive && isCurrentIndex) || (!useIndexActive && isCurrentValue)
+  );
 }
 
 export interface SelectSignature<T> {
@@ -89,8 +55,10 @@ export interface SelectSignature<T> {
     options: T[];
     scrollable?: boolean;
     serializationPath?: string | null;
+    side?: Direction;
   };
   Blocks: {
+    control?: [PopoverVisibility];
     display?: [T | undefined];
     option?: [T | undefined];
     empty?: [];
@@ -99,8 +67,7 @@ export interface SelectSignature<T> {
 }
 
 export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
-  @tracked
-  _isOpen = false;
+  declare visibility: PopoverVisibility;
 
   @tracked
   menuId = crypto.randomUUID();
@@ -147,7 +114,11 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   }
 
   get isOpen() {
-    return this._isOpen && !this.disabled && !!this.internalOptions.length;
+    return (
+      this.visibility?.isShown &&
+      !this.disabled &&
+      !!this.internalOptions.length
+    );
   }
 
   get selected(): Optional<SelectOption<T>> {
@@ -213,7 +184,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
         continue;
       }
       const text = element.textContent?.toLowerCase() ?? '';
-      const splitText = text.split(' ') ?? [];
+      const splitText = collapseWhitespace(text).split(' ') ?? [];
       for (const text of splitText) {
         if (text.startsWith(searchBuffer)) {
           this.activeItem = index;
@@ -253,6 +224,16 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   }
 
   @action
+  resizeMenu() {
+    runTask(this, () => {
+      const popup = this.menuElement!.querySelector('.popover') as HTMLElement;
+      const { style } = popup;
+
+      style.right = style.left;
+    });
+  }
+
+  @action
   toggleSelect(evt: MouseEvent) {
     evt.preventDefault();
     evt.stopPropagation();
@@ -262,12 +243,12 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
     if (this.isOpen) {
       this.onBlur();
     } else {
-      this.onFocus();
+      this.onFocus(evt);
     }
   }
 
   @action
-  onFocus() {
+  onFocus(evt: Event) {
     const currentlySelectedIndex = this.internalOptions.findIndex(
       (option) => option.value === this.value,
     );
@@ -278,18 +259,19 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
       });
     }
 
-    this._isOpen = true;
+    this.visibility.show(evt);
   }
 
   @action
   onBlur() {
     this.activeItem = -1;
-    this._isOpen = false;
+    this.internalSearchBuffer = '';
+    this.visibility.hide();
   }
 
   @action
   onKeyboardInput(evt: KeyboardEvent) {
-    if (!this._isOpen) {
+    if (!this.visibility.isShown) {
       return;
     }
     const key = evt.key.toLowerCase();
@@ -314,7 +296,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   moveUp(evt: KeyboardEvent) {
     evt.preventDefault();
     evt.stopPropagation();
-    if (!this._isOpen) {
+    if (!this.visibility.isShown) {
       return;
     }
     this.internalSearchBuffer = '';
@@ -328,7 +310,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   moveDown(evt: KeyboardEvent) {
     evt.preventDefault();
     evt.stopPropagation();
-    if (!this._isOpen) {
+    if (!this.visibility.isShown) {
       return;
     }
     this.internalSearchBuffer = '';
@@ -339,12 +321,12 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   }
 
   @action
-  enterKeyHandler(evt?: KeyboardEvent) {
+  enterKeyHandler(evt: KeyboardEvent) {
     evt?.preventDefault();
     evt?.stopPropagation();
     this.internalSearchBuffer = '';
-    if (!this._isOpen) {
-      this.onFocus();
+    if (!this.visibility.isShown) {
+      this.onFocus(evt);
       return;
     }
 
@@ -364,87 +346,99 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   exitKeyHandler(evt?: KeyboardEvent) {
     evt?.preventDefault();
     evt?.stopPropagation();
-    if (!this._isOpen) {
+    if (!this.visibility.isShown) {
       return;
     }
     this.internalSearchBuffer = '';
     this.onBlur();
   }
 
-  <template>
-    <button
-      class={{this.classList}}
-      id={{@id}}
-      type="button"
-      role="combobox"
-      disabled={{this.disabled}}
-      aria-controls={{this.menuId}}
-      aria-describedby={{@describedBy}}
-      aria-expanded={{this._isOpen}}
-      aria-haspopup="listbox"
-      {{on "click" this.toggleSelect}}
-      {{on "blur" this.onBlur}}
-      {{on "keydown" this.onKeyboardInput}}
-      {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
-      {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
-      {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
-      {{onKey "Space" this.enterKeyHandler onlyWhenFocused=true}}
-      {{onKey "NumpadEnter" this.enterKeyHandler onlyWhenFocused=true}}
-      {{onKey "Tab" this.exitKeyHandler onlyWhenFocused=true}}
-      {{onKey "Escape" this.exitKeyHandler onlyWhenFocused=true}}
-      ...attributes
-    >
-      <span class="selected-display">
-        {{#if this.hasSelected}}
-          {{#if (has-block "display")}}
-            {{yield this.selected.raw to="display"}}
-          {{else if (has-block "option")}}
-            {{yield this.selected.raw to="option"}}
-          {{else}}
-            {{this.selected.label}}
-          {{/if}}
-        {{else}}
-          {{#if (has-block "empty")}}
-            {{yield to="empty"}}
-          {{else}}
-            {{this.defaultText}}
-          {{/if}}
-        {{/if}}
-      </span>
+  @action
+  saveVisibility(visibility: PopoverVisibility) {
+    this.visibility = visibility;
+  }
 
-      {{#if @loading}}
-        <span
-          class="spinner-border spinner-border-sm float-end m-1"
-          aria-hidden="true"
-        ></span>
-        <span class="visually-hidden" role="status">
-          {{t "nrg.base.loading"}}
-        </span>
-      {{else}}
-        <i class="bi {{this.caretIcon}} float-end m-1" />
-      {{/if}}
-      <ul
-        id={{this.menuId}}
-        class="dropdown-menu {{if this.isOpen 'show'}}"
-        role="listbox"
-        {{onInsert this.onInsert}}
-      >
+  <template>
+    <Dropdown
+      @side={{@side}}
+      @onShow={{this.resizeMenu}}
+      @onHide={{this.onBlur}}
+      {{on "blur" this.onBlur}}
+      {{onInsert this.onInsert}}
+    >
+      <:control as |visibility|>
+        {{#if (has-block "control")}}
+          {{yield visibility to="control"}}
+        {{else}}
+          <button
+            class={{this.classList}}
+            id={{@id}}
+            type="button"
+            role="combobox"
+            disabled={{this.disabled}}
+            aria-controls={{this.menuId}}
+            aria-describedby={{@describedBy}}
+            aria-expanded={{visibility.isShown}}
+            aria-haspopup="listbox"
+            {{on "click" this.toggleSelect}}
+            {{on "keydown" this.onKeyboardInput}}
+            {{onInsert (fn this.saveVisibility visibility)}}
+            {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
+            {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
+            {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
+            {{onKey "Space" this.enterKeyHandler onlyWhenFocused=true}}
+            {{onKey "NumpadEnter" this.enterKeyHandler onlyWhenFocused=true}}
+            {{onKey "Tab" this.exitKeyHandler onlyWhenFocused=true}}
+            {{onKey "Escape" this.exitKeyHandler onlyWhenFocused=true}}
+            ...attributes
+          >
+            <span class="selected-display">
+              {{#if this.hasSelected}}
+                {{#if (has-block "display")}}
+                  {{yield this.selected.raw to="display"}}
+                {{else if (has-block "option")}}
+                  {{yield this.selected.raw to="option"}}
+                {{else}}
+                  {{this.selected.label}}
+                {{/if}}
+              {{else}}
+                {{#if (has-block "empty")}}
+                  {{yield to="empty"}}
+                {{else}}
+                  {{this.defaultText}}
+                {{/if}}
+              {{/if}}
+            </span>
+            {{! @glint-expect-error - If there are no block params, we don't need to yield anything to the block }}
+            {{yield to="control"}}
+            {{#if @loading}}
+              <span
+                class="spinner-border spinner-border-sm float-end m-1"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden" role="status">
+                {{t "nrg.base.loading"}}
+              </span>
+            {{else}}
+              <i class="bi {{this.caretIcon}} float-end m-1" />
+            {{/if}}
+          </button>
+        {{/if}}
+      </:control>
+      <:menu as |Menu|>
         {{#each this.internalOptions as |option i|}}
-          <SelectItem
-            @optionIndex={{i}}
-            @activeIndex={{this.activeItem}}
-            @currentValue={{this.value}}
-            @option={{option}}
-            {{on "click" (fn this.onSelectInternal option)}}
+          <Menu.Item
+            class={{if (isActive this.activeItem i this.value option) "active"}}
+            @onSelect={{fn this.onSelectInternal option}}
           >
             {{#if (has-block "option")}}
               {{yield option.raw to="option"}}
             {{else}}
               {{option.label}}
             {{/if}}
-          </SelectItem>
+          </Menu.Item>
         {{/each}}
-      </ul>
-    </button>
+      </:menu>
+    </Dropdown>
   </template>
 }
