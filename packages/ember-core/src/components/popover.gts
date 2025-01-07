@@ -1,5 +1,5 @@
 import { concat, hash } from '@ember/helper';
-import { arrow, computePosition, offset, size } from '@floating-ui/dom';
+import { arrow, computePosition, flip, offset, size } from '@floating-ui/dom';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
@@ -53,6 +53,7 @@ export interface PopoverSignature {
     alignment?: Alignment;
     arrow?: boolean;
     controlElement?: HTMLElement;
+    flip?: boolean;
     fullWidth?: boolean;
     isShown?: boolean;
     offset?: string | number;
@@ -97,6 +98,9 @@ export default class Popover extends Component<PopoverSignature> {
   @tracked
   _isShown = false;
 
+  @tracked
+  adjustedSide: Direction = 'bottom';
+
   get hasArrow() {
     return this.args.arrow ?? true;
   }
@@ -120,6 +124,10 @@ export default class Popover extends Component<PopoverSignature> {
 
   get middleware() {
     const middleware = [offset(this.offset)];
+
+    if (this.args.flip) {
+      middleware.push(flip());
+    }
 
     if (this.hasArrow) {
       middleware.push(arrow({ element: this.arrow! }));
@@ -220,6 +228,14 @@ export default class Popover extends Component<PopoverSignature> {
       return;
     }
 
+    if (placement !== this.placement) {
+      this.adjustedSide = Object.keys(SIDE_TRANSLATION).find(
+        (side) => SIDE_TRANSLATION[side as Direction] === placement,
+      ) as Direction;
+    } else {
+      this.adjustedSide = this.side;
+    }
+
     const { x: arrowX, y: arrowY } = middlewareData.arrow!;
     const staticSide: string =
       ARROW_SIDE[placement.split('-')[0] as Direction]!;
@@ -245,7 +261,7 @@ export default class Popover extends Component<PopoverSignature> {
         id={{this.id}}
         class={{classes
           (unless this.isShown "hidden")
-          (concat "popover bs-popover-" this.side)
+          (concat "popover bs-popover-" this.adjustedSide)
         }}
         {{onInsert this.initPopover}}
         {{! @glint-expect-error Modifier types are currently not correct }}

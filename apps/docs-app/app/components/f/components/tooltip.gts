@@ -19,6 +19,9 @@ export default class extends Component {
   alignment?: Alignment;
 
   @tracked
+  flip?: boolean;
+
+  @tracked
   offset?: number;
 
   @tracked
@@ -37,6 +40,7 @@ export default class extends Component {
             <div class="p-2">
               <Tooltip
                 @alignment={{this.alignment}}
+                @flip={{this.flip}}
                 @offset={{this.offset}}
                 @side={{this.side}}
                 @onShow={{fn this.toast.info "onShow was fired"}}
@@ -147,6 +151,13 @@ export default class extends Component {
               @value={{this.alignment}}
               @options={{array "" "start" "end"}}
               @onInput={{fn this.update "alignment"}}
+            />
+            <Args.Bool
+              @name="flip"
+              @defaultValue={{false}}
+              @description="Whether to flip the side the tooltip is on when it reaches the viewport boundary"
+              @value={{this.fip}}
+              @onInput={{fn this.update "flip"}}
             />
             <Args.Number
               @name="offset"

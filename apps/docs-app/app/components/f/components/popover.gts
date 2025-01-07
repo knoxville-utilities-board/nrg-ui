@@ -37,6 +37,9 @@ export default class extends Component {
   arrow: boolean = true;
 
   @tracked
+  flip: boolean = false;
+
+  @tracked
   isShown?: boolean;
 
   @tracked
@@ -62,6 +65,7 @@ export default class extends Component {
             <Popover
               @alignment={{this.alignment}}
               @arrow={{this.arrow}}
+              @flip={{this.flip}}
               @isShown={{this.isShown}}
               @offset={{this.offset}}
               @side={{this.side}}
@@ -106,6 +110,13 @@ export default class extends Component {
               @onInput={{fn this.update "arrow"}}
             />
             <Args.Bool
+              @name="flip"
+              @defaultValue={{false}}
+              @description="Whether to flip the side the popover is on when it reaches the viewport boundary"
+              @value={{this.fip}}
+              @onInput={{fn this.update "flip"}}
+            />
+            <Args.Bool
               @name="isShown"
               @defaultValue="undefined"
               @description="Whether to show the popover"
@@ -147,6 +158,7 @@ export default class extends Component {
             <Popover
               @alignment={{this.alignment}}
               @arrow={{this.arrow}}
+              @flip={{this.flip}}
               @isShown={{this.isShown}}
               @offset={{this.offset}}
               @side={{this.side}}
@@ -185,6 +197,13 @@ export default class extends Component {
               @description="Whether to show an arrow pointing to the control"
               @value={{this.arrow}}
               @onInput={{fn this.update "arrow"}}
+            />
+            <Args.Bool
+              @name="flip"
+              @defaultValue={{false}}
+              @description="Whether to flip the side the popover is on when it reaches the viewport boundary"
+              @value={{this.fip}}
+              @onInput={{fn this.update "flip"}}
             />
             <Args.Bool
               @name="isShown"
