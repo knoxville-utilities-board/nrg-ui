@@ -417,16 +417,19 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
       </:control>
       <:menu as |Menu|>
         {{#each this.internalOptions as |option i|}}
-          <Menu.Item
-            class={{if (isActive this.activeItem i this.value option) "active"}}
-            @onSelect={{fn this.onSelectInternal option}}
-          >
-            {{#if (has-block "option")}}
-              {{yield option.raw to="option"}}
-            {{else}}
-              {{option.label}}
-            {{/if}}
-          </Menu.Item>
+          {{#let (isActive this.activeItem i this.value option) as |isActive|}}
+            <Menu.Item
+              aria-selected={{isActive}}
+              class={{if isActive "active"}}
+              @onSelect={{fn this.onSelectInternal option}}
+            >
+              {{#if (has-block "option")}}
+                {{yield option.raw to="option"}}
+              {{else}}
+                {{option.label}}
+              {{/if}}
+            </Menu.Item>
+          {{/let}}
         {{/each}}
       </:menu>
     </Dropdown>
