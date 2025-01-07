@@ -15,7 +15,7 @@ import type { ComponentLike } from '@glint/template';
 export interface PopoverVisibility {
   isShown: boolean;
   toggle: (evt: Event) => Promise<void>;
-  show: (evt: Event) => Promise<void>;
+  show: (evtOrInput: HTMLInputElement | Event) => Promise<void>;
   hide: () => Promise<void>;
 }
 
@@ -156,7 +156,7 @@ export default class Popover extends Component<PopoverSignature> {
     this.arrow = popover;
   };
 
-  show = async (evt: Event) => {
+  show = async (evtOrInput: Event | HTMLInputElement) => {
     if (this.isShown) {
       return;
     }
@@ -164,8 +164,14 @@ export default class Popover extends Component<PopoverSignature> {
     this._isShown = true;
     await this.args.onShow?.();
 
-    if (evt.currentTarget instanceof HTMLElement) {
-      this._control = evt.currentTarget;
+    if (evtOrInput instanceof HTMLInputElement) {
+      this._control = evtOrInput;
+      this.showPopover();
+    } else if (
+      evtOrInput instanceof Event &&
+      evtOrInput.currentTarget instanceof HTMLElement
+    ) {
+      this._control = evtOrInput.currentTarget;
       this.showPopover();
     }
   };
