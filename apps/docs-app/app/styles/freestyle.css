@@ -1,6 +1,28 @@
 /* stylelint-disable */
 
-.FreestyleUsage-apiTable tr:nth-child(even),
-.FreestyleUsage-cssVarsTable tr:nth-child(even) {
-  background-color: var(--bs-secondary-bg);
+.FreestyleUsage-focusCta,
+.FreestyleUsage-standaloneFocusCta {
+  display: none;
+}
+
+.FreestyleSection-name {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--bs-gray);
+}
+
+.FreestyleSubsection-name {
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--bs-gray);
+}
+
+.FreestyleUsage-preview {
+  padding: 1rem;
+  border: 1px solid var(--bs-secondary);
+  border-radius: var(--bs-border-radius);
+  margin: 1rem 0;
+}
+
+.FreestyleUsage-apiTitle {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
