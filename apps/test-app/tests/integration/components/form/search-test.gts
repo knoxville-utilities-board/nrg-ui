@@ -1,4 +1,4 @@
-import { click, fillIn, render } from '@ember/test-helpers';
+import { click, fillIn, find, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import { Search, bind } from '@nrg-ui/core';
 import { module, test } from 'qunit';
@@ -85,10 +85,10 @@ module('Integration | Component | form/search', function (hooks) {
 
     assert.dom('div > input').hasValue('test string');
 
-    assert
-      .dom('div > ul > li:first-child')
-      .hasClass('disabled')
-      .hasText('No results found');
+    const item = find('div > ul > li:first-child')!;
+
+    assert.dom(item).hasText('No results found');
+    assert.dom('span', item).hasText('No results found');
   });
 
   test('it shows an icon and loading', async function (assert) {
