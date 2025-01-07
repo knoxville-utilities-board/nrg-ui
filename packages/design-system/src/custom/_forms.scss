@@ -9,8 +9,8 @@
   }
 }
 
-.search > .dropdown {
-  &.scrollable > .dropdown-menu {
+.search + .popover {
+  .dropdown-menu.scrollable {
     max-height: clamp(9rem, 50vh, 21rem);
     overflow-y: auto;
   }
