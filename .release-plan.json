@@ -2,24 +2,32 @@
   "solution": {
     "@nrg-ui/css": {
       "impact": "minor",
-      "oldVersion": "0.11.0",
-      "newVersion": "0.12.0",
+      "oldVersion": "0.12.0",
+      "newVersion": "0.13.0",
       "constraints": [
         {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./packages/design-system/package.json"
     },
     "@nrg-ui/core": {
       "impact": "minor",
-      "oldVersion": "0.21.0",
-      "newVersion": "0.22.0",
+      "oldVersion": "0.22.0",
+      "newVersion": "0.23.0",
       "constraints": [
         {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
@@ -31,5 +39,5 @@
       "oldVersion": "0.2.0"
     }
   },
-  "description": "## Release (2024-12-30)\n\n@nrg-ui/css 0.12.0 (minor)\n@nrg-ui/core 0.22.0 (minor)\n\n#### :rocket: Enhancement\n* `docs-app`, `test-app`, `@nrg-ui/css`, `@nrg-ui/core`\n  * [#320](https://github.com/knoxville-utilities-board/nrg-ui/pull/320) feat: Create pagination component ([@TSenter](https://github.com/TSenter))\n  * [#317](https://github.com/knoxville-utilities-board/nrg-ui/pull/317) feat: Create tooltip component ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* [#319](https://github.com/knoxville-utilities-board/nrg-ui/pull/319) chore(ci): Don't auto-merge release PRs ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-01-08)\n\n@nrg-ui/css 0.13.0 (minor)\n@nrg-ui/core 0.23.0 (minor)\n\n#### :rocket: Enhancement\n* `test-app`, `@nrg-ui/css`, `@nrg-ui/core`\n  * [#330](https://github.com/knoxville-utilities-board/nrg-ui/pull/330) refactor(search): Rewrite using dropdown ([@TSenter](https://github.com/TSenter))\n  * [#327](https://github.com/knoxville-utilities-board/nrg-ui/pull/327) refactor(select): Rewrite using dropdown ([@TSenter](https://github.com/TSenter))\n* `docs-app`, `test-app`, `@nrg-ui/css`, `@nrg-ui/core`\n  * [#323](https://github.com/knoxville-utilities-board/nrg-ui/pull/323) feat: Create dropdown component ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `test-app`, `@nrg-ui/css`, `@nrg-ui/core`\n  * [#330](https://github.com/knoxville-utilities-board/nrg-ui/pull/330) refactor(search): Rewrite using dropdown ([@TSenter](https://github.com/TSenter))\n  * [#327](https://github.com/knoxville-utilities-board/nrg-ui/pull/327) refactor(select): Rewrite using dropdown ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/css`\n  * [#324](https://github.com/knoxville-utilities-board/nrg-ui/pull/324) chore: Move pagination styling to dedicated file ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }

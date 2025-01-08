@@ -1,5 +1,27 @@
 # Changelog
 
+## Release (2025-01-08)
+
+@nrg-ui/css 0.13.0 (minor)
+@nrg-ui/core 0.23.0 (minor)
+
+#### :rocket: Enhancement
+* `test-app`, `@nrg-ui/css`, `@nrg-ui/core`
+  * [#330](https://github.com/knoxville-utilities-board/nrg-ui/pull/330) refactor(search): Rewrite using dropdown ([@TSenter](https://github.com/TSenter))
+  * [#327](https://github.com/knoxville-utilities-board/nrg-ui/pull/327) refactor(select): Rewrite using dropdown ([@TSenter](https://github.com/TSenter))
+* `docs-app`, `test-app`, `@nrg-ui/css`, `@nrg-ui/core`
+  * [#323](https://github.com/knoxville-utilities-board/nrg-ui/pull/323) feat: Create dropdown component ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `test-app`, `@nrg-ui/css`, `@nrg-ui/core`
+  * [#330](https://github.com/knoxville-utilities-board/nrg-ui/pull/330) refactor(search): Rewrite using dropdown ([@TSenter](https://github.com/TSenter))
+  * [#327](https://github.com/knoxville-utilities-board/nrg-ui/pull/327) refactor(select): Rewrite using dropdown ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/css`
+  * [#324](https://github.com/knoxville-utilities-board/nrg-ui/pull/324) chore: Move pagination styling to dedicated file ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2024-12-30)
 
 @nrg-ui/css 0.12.0 (minor)
