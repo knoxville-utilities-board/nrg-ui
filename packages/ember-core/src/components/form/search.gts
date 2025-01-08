@@ -2,64 +2,32 @@ import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { action, get } from '@ember/object';
 import { service } from '@ember/service';
-import Component from '@glimmer/component';
+import { isTesting, macroCondition } from '@embroider/macros';
 import { tracked } from '@glimmer/tracking';
 import { restartableTask, timeout } from 'ember-concurrency';
 import { t } from 'ember-intl';
 // @ts-expect-error Ember keyboard doesn't currently ship a type for the `on-key` modifier
 // https://github.com/adopted-ember-addons/ember-keyboard/issues/464
 import onKey from 'ember-keyboard/modifiers/on-key';
+import { eq } from 'ember-truth-helpers';
 
+import Dropdown from './../dropdown.gts';
 import TextInput from './../form/text-input.gts';
 import BoundValue from './bound-value.ts';
 import { bind } from '../../helpers/bind.ts';
-import onClickOutside from '../../modifiers/on-click-outside.ts';
+import { classes } from '../../helpers/classes.ts';
 import onInsert from '../../modifiers/on-insert.ts';
 import Button from '../button.gts';
 
 import type { Optional } from '../../';
+import type { Direction, PopoverVisibility } from '../popover.ts';
 import type IntlService from 'ember-intl/services/intl';
-
 
 declare type SearchOption<T> = {
   label: string;
   value: string | T;
   raw: T;
 };
-
-interface SearchItemSignature<T> {
-  Args: {
-    option: SearchOption<T>;
-    index: number;
-    activeIndex?: number;
-  };
-  Element: HTMLLIElement;
-}
-
-class SearchItem<T> extends Component<SearchItemSignature<T>> {
-  get classList() {
-    const classes = ['dropdown-item'];
-
-    if (this.isActive) {
-      classes.push('active');
-    }
-
-    return classes.join(' ');
-  }
-
-  get isActive() {
-    return this.args.activeIndex === this.args.index;
-  }
-
-  <template>
-    <li
-      class={{this.classList}}
-      role="option"
-      aria-selected={{this.isActive}}
-      ...attributes
-    >{{@option.label}}</li>
-  </template>
-}
 
 export interface SearchSignature<T> {
   Args: {
@@ -81,6 +49,10 @@ export interface SearchSignature<T> {
     scrollable?: boolean;
     searchTimeout?: number;
     serializationPath?: string;
+    side?: Direction;
+
+    onShow?: () => unknown | Promise<unknown>;
+    onHide?: () => unknown | Promise<unknown>;
     onQuery: (searchString: string) => Promise<T[]>;
   };
   Element: HTMLDivElement;
@@ -91,21 +63,15 @@ export default class Search<T> extends BoundValue<
   string | T
 > {
   self: Record<'searchString', string> = this;
+  declare visibility: PopoverVisibility;
+  declare inputElement: HTMLInputElement;
+  declare menuElement: HTMLElement;
 
   @tracked
   activeIndex = -1;
 
   @tracked
   options: T[] = [];
-
-  @tracked
-  isFocused = false;
-
-  @tracked
-  menuElement: Optional<HTMLElement> = null;
-
-  @tracked
-  searchInputElement: Optional<HTMLElement> = null;
 
   @tracked
   searchString = '';
@@ -154,6 +120,10 @@ export default class Search<T> extends BoundValue<
   }
 
   get searchTimeout() {
+    if (macroCondition(isTesting())) {
+      return 0;
+    }
+
     return this.args.searchTimeout ?? 300;
   }
 
@@ -162,19 +132,7 @@ export default class Search<T> extends BoundValue<
   }
 
   get showOptions() {
-    return this.isFocused && this.canPerformSearch && !this.loading;
-  }
-
-  get classList() {
-    const classes = ['search'];
-
-    if (this.args.isInvalid) {
-      classes.push('is-invalid');
-    } else if (this.args.isWarning) {
-      classes.push('is-warning');
-    }
-
-    return classes.join(' ');
+    return this.visibility?.isShown && this.canPerformSearch && !this.loading;
   }
 
   get inputClassList() {
@@ -249,7 +207,7 @@ export default class Search<T> extends BoundValue<
       return;
     }
     const childElements = Array.from(
-      this.menuElement?.querySelectorAll(`li`) ?? [],
+      this.menuElement.querySelectorAll(`li`) ?? [],
     );
     const activeElement = childElements[this.activeIndex];
     if (!activeElement) {
@@ -261,7 +219,7 @@ export default class Search<T> extends BoundValue<
   query = restartableTask(async (searchString) => {
     await timeout(this.searchTimeout);
     this.options = await this.args.onQuery(searchString);
-    this.isFocused = true;
+    this.visibility.show(this.inputElement);
   });
 
   @action
@@ -329,13 +287,13 @@ export default class Search<T> extends BoundValue<
     evt.preventDefault();
     evt.stopPropagation();
 
-    this.isFocused = true;
+    this.visibility.show(evt);
   }
 
   @action
   onBlur() {
-    this.isFocused = false;
-    this.searchInputElement?.blur();
+    this.visibility.hide();
+    this.inputElement.blur();
   }
 
   @action
@@ -362,7 +320,7 @@ export default class Search<T> extends BoundValue<
 
   @action
   onSearchBarInsert(element: HTMLElement) {
-    this.searchInputElement = element;
+    this.inputElement = element as HTMLInputElement;
   }
 
   @action
@@ -370,64 +328,86 @@ export default class Search<T> extends BoundValue<
     this.menuElement = element;
   }
 
+  @action
+  setVisibility(visibility: PopoverVisibility) {
+    this.visibility = visibility;
+  }
+
   <template>
-    <div class={{this.classList}} {{onClickOutside this.onBlur}} ...attributes>
-      <div class="input-group">
-        {{#unless this.hideSearchIcon}}
-          <span class="input-group-text">
-            {{#if this.loading}}
-              <span class="spinner-border spinner-border-sm" />
-            {{else}}
-              <i class="bi bi-search" />
-            {{/if}}
-          </span>
-        {{/unless}}
-        <TextInput
-          class={{this.inputClassList}}
-          placeholder={{this.placeholder}}
-          @basic={{@basic}}
-          @binding={{bind this.self 'searchString'}}
-          @disabled={{@disabled}}
-          @id={{@id}}
-          @readonly={{@readonly}}
-          {{on "input" this.onSearch}}
-          {{on "focus" this.onFocus}}
-          {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
-          {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
-          {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
-          {{onKey "NumpadEnter" this.enterKeyHandler onlyWhenFocused=true}}
-          {{onKey "Tab" this.exitKeyHandler onlyWhenFocused=true}}
-          {{onKey "Escape" this.exitKeyHandler onlyWhenFocused=true}}
-          {{onInsert this.onSearchBarInsert}}
-        />
-        {{#if this.clearable}}
-          <Button
-            aria-label={{t "nrg.base.clear"}}
-            class="btn-outline-secondary"
-            @onClick={{this.clear}}
-          >
-            <i class="bi bi-x-lg" />
-          </Button>
-        {{/if}}
-      </div>
-      <div class="dropdown {{if this.scrollable 'scrollable'}}">
-        <ul
-          class="dropdown-menu mt-1 w-100 {{if this.showOptions 'show'}}"
-          role="listbox"
-          {{onInsert this.onMenuInsert}}
+    <Dropdown
+      @fullWidth={{true}}
+      @side={{@side}}
+      @onShow={{@onShow}}
+      @onHide={{@onHide}}
+      {{onInsert this.onMenuInsert}}
+    >
+      <:control as |visibility|>
+        <div
+          class={{classes
+            "search"
+            (if @isInvalid "is-invalid")
+            (if @isWarning "is-warning")
+          }}
+          {{onInsert (fn this.setVisibility visibility)}}
+          ...attributes
         >
-          {{#each this.internalOptions as |option index|}}
-            <SearchItem
-              @activeIndex={{this.activeIndex}}
-              @index={{index}}
-              @option={{option}}
-              {{on "click" (fn this.selectOption option index)}}
+          <div class="input-group">
+            {{#unless this.hideSearchIcon}}
+              <span class="input-group-text">
+                {{#if this.loading}}
+                  <span class="spinner-border spinner-border-sm" />
+                {{else}}
+                  <i class="bi bi-search" />
+                {{/if}}
+              </span>
+            {{/unless}}
+            <TextInput
+              class={{this.inputClassList}}
+              placeholder={{this.placeholder}}
+              @basic={{@basic}}
+              @binding={{bind this.self "searchString"}}
+              @disabled={{@disabled}}
+              @id={{@id}}
+              @readonly={{@readonly}}
+              {{on "input" this.onSearch}}
+              {{on "focus" visibility.show}}
+              {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
+              {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
+              {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
+              {{onKey "NumpadEnter" this.enterKeyHandler onlyWhenFocused=true}}
+              {{onKey "Tab" this.exitKeyHandler onlyWhenFocused=true}}
+              {{onKey "Escape" this.exitKeyHandler onlyWhenFocused=true}}
+              {{onInsert this.onSearchBarInsert}}
             />
-          {{else}}
-            <li class="dropdown-item disabled">{{this.noResultsLabel}}</li>
-          {{/each}}
-        </ul>
-      </div>
-    </div>
+            {{#if this.clearable}}
+              <Button
+                aria-label={{t "nrg.base.clear"}}
+                class="btn-outline-secondary"
+                @onClick={{this.clear}}
+              >
+                <i class="bi bi-x-lg" />
+              </Button>
+            {{/if}}
+          </div>
+        </div>
+      </:control>
+      <:menu as |Menu|>
+        {{#each this.internalOptions as |option index|}}
+          {{#let (eq this.activeIndex index) as |isActive|}}
+            <Menu.Item
+              aria-selected={{isActive}}
+              class={{if isActive "active"}}
+              @onSelect={{fn this.selectOption option index}}
+            >
+              {{option.label}}
+            </Menu.Item>
+          {{/let}}
+        {{else}}
+          <Menu.Item class="disabled">
+            {{this.noResultsLabel}}
+          </Menu.Item>
+        {{/each}}
+      </:menu>
+    </Dropdown>
   </template>
 }

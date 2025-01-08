@@ -1,5 +1,5 @@
 import { concat, hash } from '@ember/helper';
-import { arrow, computePosition, offset } from '@floating-ui/dom';
+import { arrow, computePosition, offset, size } from '@floating-ui/dom';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
@@ -15,7 +15,7 @@ import type { ComponentLike } from '@glint/template';
 export interface PopoverVisibility {
   isShown: boolean;
   toggle: (evt: Event) => Promise<void>;
-  show: (evt: Event) => Promise<void>;
+  show: (evtOrInput: HTMLInputElement | Event) => Promise<void>;
   hide: () => Promise<void>;
 }
 
@@ -53,6 +53,7 @@ export interface PopoverSignature {
     alignment?: Alignment;
     arrow?: boolean;
     controlElement?: HTMLElement;
+    fullWidth?: boolean;
     isShown?: boolean;
     offset?: string | number;
     side?: Direction;
@@ -124,6 +125,18 @@ export default class Popover extends Component<PopoverSignature> {
       middleware.push(arrow({ element: this.arrow! }));
     }
 
+    if (this.args.fullWidth) {
+      const expandWidth = size({
+        apply({ rects, elements }) {
+          Object.assign(elements.floating.style, {
+            minWidth: `${rects.reference.width}px`,
+          });
+        },
+      });
+
+      middleware.push(expandWidth);
+    }
+
     return middleware;
   }
 
@@ -143,7 +156,7 @@ export default class Popover extends Component<PopoverSignature> {
     this.arrow = popover;
   };
 
-  show = async (evt: Event) => {
+  show = async (evtOrInput: Event | HTMLInputElement) => {
     if (this.isShown) {
       return;
     }
@@ -151,8 +164,14 @@ export default class Popover extends Component<PopoverSignature> {
     this._isShown = true;
     await this.args.onShow?.();
 
-    if (evt.currentTarget instanceof HTMLElement) {
-      this._control = evt.currentTarget;
+    if (evtOrInput instanceof HTMLInputElement) {
+      this._control = evtOrInput;
+      this.showPopover();
+    } else if (
+      evtOrInput instanceof Event &&
+      evtOrInput.currentTarget instanceof HTMLElement
+    ) {
+      this._control = evtOrInput.currentTarget;
       this.showPopover();
     }
   };
