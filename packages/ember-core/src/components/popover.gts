@@ -170,7 +170,10 @@ export default class Popover extends Component<PopoverSignature> {
     }
 
     this._isShown = true;
-    await this.args.onShow?.();
+
+    if (this.args.onShow) {
+      await this.args.onShow();
+    }
 
     if (evtOrInput instanceof HTMLInputElement) {
       this._control = evtOrInput;

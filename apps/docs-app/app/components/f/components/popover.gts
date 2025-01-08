@@ -113,7 +113,7 @@ export default class extends Component {
               @name="flip"
               @defaultValue={{false}}
               @description="Whether to flip the side the popover is on when it reaches the viewport boundary"
-              @value={{this.fip}}
+              @value={{this.flip}}
               @onInput={{fn this.update "flip"}}
             />
             <Args.Bool
@@ -202,7 +202,7 @@ export default class extends Component {
               @name="flip"
               @defaultValue={{false}}
               @description="Whether to flip the side the popover is on when it reaches the viewport boundary"
-              @value={{this.fip}}
+              @value={{this.flip}}
               @onInput={{fn this.update "flip"}}
             />
             <Args.Bool

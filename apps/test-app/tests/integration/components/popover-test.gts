@@ -1,6 +1,4 @@
-import { render } from '@ember/test-helpers';
-import { settled } from '@ember/test-helpers';
-import { click } from '@ember/test-helpers';
+import { click, render, settled } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import Button from '@nrg-ui/core/components/button';
 import Popover from '@nrg-ui/core/components/popover';
@@ -58,7 +56,12 @@ module('Integration | Component | popover', function (hooks) {
     const { model } = this;
 
     await render(<template>
-      <Popover @isShown={{true}} @side={{model.side}}>
+      <Popover @side={{model.side}}>
+        <:control as |actions|>
+          <Button @onClick={{actions.toggle}}>
+            toggle
+          </Button>
+        </:control>
         <:content as |Content|>
           <Content.Header>
             header
@@ -69,11 +72,10 @@ module('Integration | Component | popover', function (hooks) {
         </:content>
       </Popover>
     </template>);
-
     assert.dom('.popover').hasClass('bs-popover-bottom');
 
-    this.model.side = 'top';
-    await settled();
+    this.model.side = "top";
+    await click('button');
     assert.dom('.popover').hasClass('bs-popover-top');
 
     this.model.side = 'start';
