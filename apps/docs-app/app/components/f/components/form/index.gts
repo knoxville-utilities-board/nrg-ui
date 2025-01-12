@@ -7,7 +7,7 @@ import { Button, Form, bind } from '@nrg-ui/core';
 import { validator } from '@nrg-ui/core/validation';
 import { tracked as autoTrack } from 'tracked-built-ins';
 
-import CodeBlock from '../../code-block';
+import CodeBlock from '../../../code-block';
 
 const Validators = {
   select: validator('inclusion', { in: ['A', 'C'] }),
