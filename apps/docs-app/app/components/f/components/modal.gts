@@ -7,7 +7,7 @@ import { MktgServicePricing, Modal } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
-import CodeBlock from '../code-block';
+import CodeBlock from '../../code-block';
 
 export default class extends Component {
   positionOptions = ['center', 'left', 'right'];
