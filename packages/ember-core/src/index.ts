@@ -5,6 +5,7 @@ export { default as Checkbox } from './components/form/checkbox.gts';
 export { default as Datetime } from './components/form/datetime.gts';
 export { default as Field } from './components/form/field.gts';
 export { default as Form } from './components/form/index.gts';
+export { default as MultiSelect } from './components/form/multi-select.gts';
 export { default as NumberInput } from './components/form/number-input.gts';
 export { default as PhoneInput } from './components/form/phone-input.gts';
 export { default as RadioGroup } from './components/form/radio-group.gts';
