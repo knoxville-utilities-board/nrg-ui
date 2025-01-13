@@ -32,7 +32,7 @@ jobs:
             node-
 
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --prefer-offline
 
       - name: Build App
         run: pnpm run build-docs
