@@ -69,7 +69,7 @@ jobs:
         with:
           version: 9
 
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm install --frozen-lockfile --prefer-offline
 
       - name: 'Generate Explanation and Prep Changelogs'
         id: explanation
