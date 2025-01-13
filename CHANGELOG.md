@@ -1,5 +1,15 @@
 # Changelog
 
+## Release (2025-01-13)
+
+
+
+#### :house: Internal
+* [#334](https://github.com/knoxville-utilities-board/nrg-ui/pull/334) chore(ci): Prefer offline dependencies when reasonable ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-01-08)
 
 @nrg-ui/css 0.13.0 (minor)
