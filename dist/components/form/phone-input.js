@@ -1,0 +1,59 @@
+import { assert } from '@ember/debug';
+import { fn } from '@ember/helper';
+import { on } from '@ember/modifier';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
+import InputField from './-private/input-field.js';
+import { format } from '../../utils/phone.js';
+import { precompileTemplate } from '@ember/template-compilation';
+import { setComponentTemplate } from '@ember/component';
+import { g, i, n } from 'decorator-transforms/runtime';
+
+class PhoneField extends InputField {
+  static {
+    g(this.prototype, "isFocused", [tracked], function () {
+      return false;
+    });
+  }
+  #isFocused = (i(this, "isFocused"), undefined);
+  get format() {
+    return this.args.format ?? format;
+  }
+  get displayValue() {
+    const {
+      format: format1,
+      isFocused: isFocused1
+    } = this;
+    if (isFocused1 || !this.format || !this.value) {
+      return this.value;
+    }
+    assert('format must be a function or false', typeof format1 === 'function');
+    return format1(this.value);
+  }
+  change(event1) {
+    const target1 = event1.target;
+    const newValue1 = target1.value ?? '';
+    this.onChange(newValue1.replace(/\D/g, ''));
+  }
+  static {
+    n(this.prototype, "change", [action]);
+  }
+  toggleFocus(focused1) {
+    this.isFocused = focused1;
+  }
+  static {
+    n(this.prototype, "toggleFocus", [action]);
+  }
+  static {
+    setComponentTemplate(precompileTemplate("\n    <input aria-describedby={{@describedBy}} class={{this.classList}} disabled={{@disabled}} id={{@id}} readonly={{@readonly}} type=\"tel\" value={{this.displayValue}} {{on \"input\" this.change}} {{on \"focus\" (fn this.toggleFocus true)}} {{on \"blur\" (fn this.toggleFocus false)}} ...attributes />\n  ", {
+      strictMode: true,
+      scope: () => ({
+        on,
+        fn
+      })
+    }), this);
+  }
+}
+
+export { PhoneField as default };
+//# sourceMappingURL=phone-input.js.map
