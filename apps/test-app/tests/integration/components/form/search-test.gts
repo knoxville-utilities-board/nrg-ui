@@ -158,4 +158,22 @@ module('Integration | Component | form/search', function (hooks) {
 
     assert.dom('div > input').hasValue('');
   });
+
+  test('it shows internal value', async function (assert) {
+    assert.expect(1);
+
+    const model = new Model();
+
+    model.value = 'Blueberry';
+
+    await render(<template>
+      <Search
+        @binding={{bind model "value"}}
+        @clearable={{true}}
+        @onQuery={{actionHandler}}
+      />
+    </template>);
+
+    assert.dom('div > input').hasValue('Blueberry');
+  });
 });
