@@ -25,8 +25,7 @@ import type IntlService from 'ember-intl/services/intl';
 
 declare type SearchOption<T> = {
   label: string;
-  value: string | T;
-  raw: T;
+  value: T;
 };
 
 export interface SearchSignature<T> {
@@ -48,7 +47,6 @@ export interface SearchSignature<T> {
     readonly?: boolean;
     scrollable?: boolean;
     searchTimeout?: number;
-    serializationPath?: string;
     side?: Direction;
 
     onShow?: () => unknown | Promise<unknown>;
@@ -62,7 +60,7 @@ export default class Search<T> extends BoundValue<
   SearchSignature<T>,
   string | T
 > {
-  self: Record<'searchString', string> = this;
+  self: Record<'searchString', string | null> = this;
   declare visibility: PopoverVisibility;
   declare inputElement: HTMLInputElement;
   declare menuElement: HTMLElement;
@@ -74,7 +72,7 @@ export default class Search<T> extends BoundValue<
   options: T[] = [];
 
   @tracked
-  searchString = '';
+  searchString: string | null = null;
 
   @service
   declare intl: IntlService;
@@ -85,6 +83,10 @@ export default class Search<T> extends BoundValue<
     }
 
     return this.args.clearable ?? false;
+  }
+
+  get displayPath() {
+    return this.args.displayPath ?? 'label';
   }
 
   get hideSearchIcon() {
@@ -128,7 +130,7 @@ export default class Search<T> extends BoundValue<
   }
 
   get canPerformSearch() {
-    return this.searchString.trim().length >= this.minCharacters;
+    return this.searchString && this.searchString.trim().length >= this.minCharacters;
   }
 
   get showOptions() {
@@ -152,54 +154,29 @@ export default class Search<T> extends BoundValue<
   }
 
   get displayValue() {
-    if (!this.value) {
-      return this.searchString;
-    }
-
-    if (this.args.serializationPath === null) {
-      return get(this.value, this.args.displayPath ?? 'label') as string;
-    }
-
-    if (this.selectedOption) {
-      return this.selectedOption.label;
-    }
-
-    return '';
+    const displayLabel = get(this.value ?? {}, this.displayPath) as string;
+    return this.searchString ?? displayLabel ?? this.value ?? '';
   }
 
-  get internalOptions() {
-    return this.options.map((option) => {
-      if (typeof option !== 'object') {
-        return {
-          raw: option,
-          label: option as string,
-          value: option as string,
-        };
-      }
+  set displayValue(value: string) {
+    this.searchString = value;
+    this.value = null;
+    this.activeIndex = -1;
 
-      const label = get(option, this.args.displayPath ?? 'label') as string;
-      let value: string | T = option;
-      // null serializationPath results in value being the raw option
-      if (this.args.serializationPath !== null) {
-        value = get(option, this.args.serializationPath ?? 'value') as string;
-      }
+    if (!this.canPerformSearch) {
+      return;
+    }
+
+    this.query.perform(this.searchString);
+  }
+
+  get internalOptions(): SearchOption<T>[] {
+    return this.options.map((option) => {
       return {
-        raw: option,
-        label,
-        value,
+        label: get(option, this.displayPath) as string ?? option,
+        value: option,
       };
     });
-  }
-
-  get selectedOption(): Optional<SearchOption<T>> {
-    const found = this.internalOptions.find(
-      (option) => option.value === this.value,
-    );
-    return found || null;
-  }
-
-  set selectedOption(option: SearchOption<T>) {
-    this.onChange(option.value);
   }
 
   scrollActiveOptionIntoView() {
@@ -223,13 +200,13 @@ export default class Search<T> extends BoundValue<
   });
 
   @action
-  selectOption(option: SearchOption<T>, index: number, evt?: Event) {
+  selectOption(index: number, evt?: Event) {
     evt?.preventDefault();
     evt?.stopPropagation();
 
     this.activeIndex = index;
-    this.selectedOption = option;
-    this.searchString = option.label;
+    this.value = this.options[index] ?? null;
+    this.searchString = null;
 
     this.onBlur();
   }
@@ -261,15 +238,11 @@ export default class Search<T> extends BoundValue<
     evt?.preventDefault();
     evt?.stopPropagation();
 
-    if (this.activeIndex == -1) {
+    if (this.activeIndex < 0 || this.activeIndex >= this.options.length) {
       return;
     }
 
-    const option = this.internalOptions[this.activeIndex];
-
-    if (option != undefined) {
-      this.selectOption(option, this.activeIndex);
-    }
+    this.selectOption(this.activeIndex);
 
     this.onBlur();
   }
@@ -297,22 +270,9 @@ export default class Search<T> extends BoundValue<
   }
 
   @action
-  onSearch(evt: Event) {
-    this.searchString = (evt.target as HTMLInputElement).value;
-    this.value = '';
-    this.activeIndex = -1;
-
-    if (!this.canPerformSearch) {
-      return;
-    }
-
-    this.query.perform(this.searchString);
-  }
-
-  @action
   clear() {
-    this.searchString = '';
-    this.value = '';
+    this.searchString = null;
+    this.value = null;
     this.activeIndex = -1;
 
     this.onBlur();
@@ -365,11 +325,10 @@ export default class Search<T> extends BoundValue<
               class={{this.inputClassList}}
               placeholder={{this.placeholder}}
               @basic={{@basic}}
-              @binding={{bind this.self "searchString"}}
+              @binding={{bind this.self "displayValue"}}
               @disabled={{@disabled}}
               @id={{@id}}
               @readonly={{@readonly}}
-              {{on "input" this.onSearch}}
               {{on "focus" visibility.show}}
               {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
               {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
@@ -397,7 +356,7 @@ export default class Search<T> extends BoundValue<
             <Menu.Item
               aria-selected={{isActive}}
               class={{if isActive "active"}}
-              @onSelect={{fn this.selectOption option index}}
+              @onSelect={{fn this.selectOption index}}
             >
               {{option.label}}
             </Menu.Item>
