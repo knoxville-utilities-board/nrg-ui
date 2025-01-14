@@ -92,7 +92,6 @@ export interface DropdownSignature {
     disabled?: boolean;
     fullWidth?: boolean;
     hasIcon?: boolean;
-    isShown?: boolean;
     loading?: boolean;
     offset?: string | number;
     scrollable?: boolean;

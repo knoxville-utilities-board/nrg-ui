@@ -116,13 +116,6 @@ export default class extends Component {
               @value={{this.hasIcon}}
               @onInput={{fn this.update "hasIcon"}}
             />
-            <Args.Bool
-              @name="isShown"
-              @defaultValue="undefined"
-              @description="Whether to open the dropdown"
-              @value={{this.isShown}}
-              @onInput={{fn this.update "isShown"}}
-            />
             <Args.Number
               @name="offset"
               @description="How far to offset the dropdown from the button (in pixels)"

@@ -37,7 +37,7 @@ export default class extends Component {
   arrow: boolean = true;
 
   @tracked
-  isShown?: boolean;
+  flip: boolean = false;
 
   @tracked
   offset?: number;
@@ -62,7 +62,7 @@ export default class extends Component {
             <Popover
               @alignment={{this.alignment}}
               @arrow={{this.arrow}}
-              @isShown={{this.isShown}}
+              @flip={{this.flip}}
               @offset={{this.offset}}
               @side={{this.side}}
               @onShow={{fn this.toast.info "onShow was fired"}}
@@ -106,11 +106,11 @@ export default class extends Component {
               @onInput={{fn this.update "arrow"}}
             />
             <Args.Bool
-              @name="isShown"
-              @defaultValue="undefined"
-              @description="Whether to show the popover"
-              @value={{this.isShown}}
-              @onInput={{fn this.update "isShown"}}
+              @name="flip"
+              @defaultValue={{false}}
+              @description="Whether to flip the side the popover is on when it reaches the viewport boundary"
+              @value={{this.flip}}
+              @onInput={{fn this.update "flip"}}
             />
             <Args.Number
               @name="offset"
@@ -147,7 +147,7 @@ export default class extends Component {
             <Popover
               @alignment={{this.alignment}}
               @arrow={{this.arrow}}
-              @isShown={{this.isShown}}
+              @flip={{this.flip}}
               @offset={{this.offset}}
               @side={{this.side}}
               @onShow={{fn this.toast.info "onShow was fired"}}
@@ -187,11 +187,11 @@ export default class extends Component {
               @onInput={{fn this.update "arrow"}}
             />
             <Args.Bool
-              @name="isShown"
-              @defaultValue="undefined"
-              @description="Whether to show the popover"
-              @value={{this.isShown}}
-              @onInput={{fn this.update "isShown"}}
+              @name="flip"
+              @defaultValue={{false}}
+              @description="Whether to flip the side the popover is on when it reaches the viewport boundary"
+              @value={{this.flip}}
+              @onInput={{fn this.update "flip"}}
             />
             <Args.Number
               @name="offset"
