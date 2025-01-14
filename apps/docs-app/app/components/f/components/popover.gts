@@ -40,9 +40,6 @@ export default class extends Component {
   flip: boolean = false;
 
   @tracked
-  isShown?: boolean;
-
-  @tracked
   offset?: number;
 
   @tracked
@@ -66,7 +63,6 @@ export default class extends Component {
               @alignment={{this.alignment}}
               @arrow={{this.arrow}}
               @flip={{this.flip}}
-              @isShown={{this.isShown}}
               @offset={{this.offset}}
               @side={{this.side}}
               @onShow={{fn this.toast.info "onShow was fired"}}
@@ -116,13 +112,6 @@ export default class extends Component {
               @value={{this.flip}}
               @onInput={{fn this.update "flip"}}
             />
-            <Args.Bool
-              @name="isShown"
-              @defaultValue="undefined"
-              @description="Whether to show the popover"
-              @value={{this.isShown}}
-              @onInput={{fn this.update "isShown"}}
-            />
             <Args.Number
               @name="offset"
               @description="How far to offset the popover from the control (in pixels)"
@@ -159,7 +148,6 @@ export default class extends Component {
               @alignment={{this.alignment}}
               @arrow={{this.arrow}}
               @flip={{this.flip}}
-              @isShown={{this.isShown}}
               @offset={{this.offset}}
               @side={{this.side}}
               @onShow={{fn this.toast.info "onShow was fired"}}
@@ -204,13 +192,6 @@ export default class extends Component {
               @description="Whether to flip the side the popover is on when it reaches the viewport boundary"
               @value={{this.flip}}
               @onInput={{fn this.update "flip"}}
-            />
-            <Args.Bool
-              @name="isShown"
-              @defaultValue="undefined"
-              @description="Whether to show the popover"
-              @value={{this.isShown}}
-              @onInput={{fn this.update "isShown"}}
             />
             <Args.Number
               @name="offset"

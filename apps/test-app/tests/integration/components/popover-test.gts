@@ -27,31 +27,6 @@ module('Integration | Component | popover', function (hooks) {
     this.model = new Model();
   });
 
-  test('`isShown` works', async function (this: TestContext, assert) {
-    const { model } = this;
-
-    await render(<template>
-      <Popover @isShown={{model.isShown}}>
-        <:content as |Content|>
-          <Content.Header>
-            header
-          </Content.Header>
-          <Content.Body>
-            body
-          </Content.Body>
-        </:content>
-      </Popover>
-    </template>);
-
-    assert.dom('.popover').hasClass('hidden');
-
-    this.model.isShown = true;
-
-    await settled();
-
-    assert.dom('.popover').doesNotHaveClass('hidden');
-  });
-
   test('`direction` works', async function (this: TestContext, assert) {
     const { model } = this;
 

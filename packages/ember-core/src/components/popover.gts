@@ -55,7 +55,6 @@ export interface PopoverSignature {
     controlElement?: HTMLElement;
     flip?: boolean;
     fullWidth?: boolean;
-    isShown?: boolean;
     offset?: string | number;
     side?: Direction;
 
@@ -96,7 +95,7 @@ export default class Popover extends Component<PopoverSignature> {
   id = `popover-${crypto.randomUUID()}`;
 
   @tracked
-  _isShown = false;
+  isShown = false;
 
   @tracked
   adjustedSide: Direction = 'bottom';
@@ -152,10 +151,6 @@ export default class Popover extends Component<PopoverSignature> {
     return this.args.side ?? 'bottom';
   }
 
-  get isShown() {
-    return this.args.isShown ?? this._isShown;
-  }
-
   get control() {
     return this.args.controlElement ?? this._control;
   }
@@ -169,7 +164,7 @@ export default class Popover extends Component<PopoverSignature> {
       return;
     }
 
-    this._isShown = true;
+    this.isShown = true;
 
     if (this.args.onShow) {
       await this.args.onShow();
@@ -192,7 +187,7 @@ export default class Popover extends Component<PopoverSignature> {
       return;
     }
 
-    this._isShown = false;
+    this.isShown = false;
     await this.args.onHide?.();
 
     this._control = null;

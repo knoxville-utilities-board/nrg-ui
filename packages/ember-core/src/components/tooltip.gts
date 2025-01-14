@@ -14,7 +14,6 @@ export interface TooltipSignature {
     alignment?: Alignment;
     controlElement?: HTMLElement;
     flip?: boolean;
-    isShown?: boolean;
     offset?: string | number;
     side?: Direction;
 
