@@ -1,5 +1,4 @@
 import { fn } from '@ember/helper';
-import { on } from '@ember/modifier';
 import { action, get } from '@ember/object';
 import { service } from '@ember/service';
 import { isTesting, macroCondition } from '@embroider/macros';
@@ -130,7 +129,7 @@ export default class Search<T> extends BoundValue<
   }
 
   get canPerformSearch() {
-    return this.searchString && this.searchString.trim().length >= this.minCharacters;
+    return (this.searchString?.trim().length ?? 0) >= this.minCharacters;
   }
 
   get showOptions() {
@@ -164,10 +163,15 @@ export default class Search<T> extends BoundValue<
     this.activeIndex = -1;
 
     if (!this.canPerformSearch) {
+      this.visibility.hide()
+      this.query.cancelAll();
       return;
     }
 
+    this.visibility.isShown = this.showOptions;
+
     this.query.perform(this.searchString);
+
   }
 
   get internalOptions(): SearchOption<T>[] {
@@ -329,7 +333,6 @@ export default class Search<T> extends BoundValue<
               @disabled={{@disabled}}
               @id={{@id}}
               @readonly={{@readonly}}
-              {{on "focus" visibility.show}}
               {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
               {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
               {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
