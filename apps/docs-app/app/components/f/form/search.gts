@@ -302,7 +302,6 @@ export default class extends Component {
               @readonly={{this.readonly}}
               @scrollable={{this.scrollable}}
               @searchTimeout={{this.searchTimeout}}
-              @serializationPath="key"
               @onChange={{fn log "The value changed to"}}
               @onQuery={{this.objectQuery}}
             />
