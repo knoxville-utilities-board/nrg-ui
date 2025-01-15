@@ -153,6 +153,10 @@ export default class extends Component {
     return JSON.stringify(this.objectOptions, null, 2);
   }
 
+  get selectedOptionSource() {
+    return JSON.stringify(this.model.property, null, 2);
+  }
+
   <template>
     <FreestyleSection @name="Search" as |Section|>
       <Section.subsection @name="Basic">
@@ -298,7 +302,6 @@ export default class extends Component {
               @readonly={{this.readonly}}
               @scrollable={{this.scrollable}}
               @searchTimeout={{this.searchTimeout}}
-              @serializationPath="key"
               @onChange={{fn log "The value changed to"}}
               @onQuery={{this.objectQuery}}
             />
@@ -325,9 +328,11 @@ export default class extends Component {
       </div>
       <div class="g-col-4">
         <h3>Selected</h3>
-        <div class="border rounded p-3">
-          {{this.model.property}}
-        </div>
+        <CodeBlock
+          class="border rounded p-3 scrollable"
+          @lang="json"
+          @code={{this.selectedOptionSource}}
+        />
       </div>
     </div>
   </template>
