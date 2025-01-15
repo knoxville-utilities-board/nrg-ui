@@ -17,7 +17,7 @@ function log(...msg: string[]) {
 
 class Model {
   @tracked
-  property = '';
+  property = 'Orange';
 }
 
 export default class extends Component {
