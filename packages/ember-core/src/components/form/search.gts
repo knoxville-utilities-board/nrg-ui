@@ -132,10 +132,6 @@ export default class Search<T> extends BoundValue<
     return (this.searchString?.trim().length ?? 0) >= this.minCharacters;
   }
 
-  get showOptions() {
-    return this.visibility?.isShown && this.canPerformSearch && !this.loading;
-  }
-
   get inputClassList() {
     const classes = ['form-control'];
 
@@ -154,7 +150,7 @@ export default class Search<T> extends BoundValue<
 
   get displayValue() {
     const displayLabel = get(this.value ?? {}, this.displayPath) as string;
-    return this.searchString ?? displayLabel ?? this.value ?? '';
+    return displayLabel ?? this.value ?? this.searchString ?? '';
   }
 
   set displayValue(value: string) {
@@ -167,8 +163,6 @@ export default class Search<T> extends BoundValue<
       this.query.cancelAll();
       return;
     }
-
-    this.visibility.isShown = this.showOptions;
 
     this.query.perform(this.searchString);
 
