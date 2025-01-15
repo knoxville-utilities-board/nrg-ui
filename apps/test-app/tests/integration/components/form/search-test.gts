@@ -169,11 +169,33 @@ module('Integration | Component | form/search', function (hooks) {
     await render(<template>
       <Search
         @binding={{bind model "value"}}
-        @clearable={{true}}
         @onQuery={{actionHandler}}
       />
     </template>);
 
     assert.dom('div > input').hasValue('Blueberry');
+  });
+
+  test('it shows dropdown on valid search', async function (assert) {
+    assert.expect(3);
+
+    const model = new Model();
+
+    await render(<template>
+      <Search
+        @binding={{bind model "value"}}
+        @onQuery={{actionHandler}}
+      />
+    </template>);
+
+    assert.dom('div > ul').hasClass("hidden");
+
+    await fillIn('div > input', 'a');
+
+    assert.dom('div > ul').doesNotHaveClass("hidden");
+
+    await fillIn('div > input', '');
+
+    assert.dom('div > ul').hasClass("hidden");
   });
 });
