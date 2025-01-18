@@ -1,0 +1,26 @@
+{
+  "name": "@nrg-ui/version",
+  "version": "0.0.0",
+  "description": "Get application version from different sources",
+  "keywords": [],
+  "repository": {
+    "directory": "packages/app-version",
+    "type": "git",
+    "url": "https://github.com/knoxville-utilities-board/nrg-ui.git"
+  },
+  "license": "MIT",
+  "author": "",
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
+  "main": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "echo 'The @nrg-ui/version package does not have tests'"
+  }
+}
