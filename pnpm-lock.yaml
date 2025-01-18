@@ -598,6 +598,9 @@ importers:
 
   packages/app-version:
     devDependencies:
+      '@nrg-ui/standards':
+        specifier: workspace:*
+        version: link:../standards
       '@types/eslint':
         specifier: ^9.6.1
         version: 9.6.1
@@ -607,9 +610,15 @@ importers:
       eslint:
         specifier: ^9.18.0
         version: 9.18.0(jiti@1.21.6)
+      eslint-plugin-decorator-position:
+        specifier: ^6.0.0
+        version: 6.0.0(@babel/eslint-parser@7.25.9(@babel/core@7.26.0)(eslint@9.18.0(jiti@1.21.6)))(eslint@9.18.0(jiti@1.21.6))
       eslint-plugin-import:
         specifier: ^2.31.0
         version: 2.31.0(@typescript-eslint/parser@8.19.1(eslint@9.18.0(jiti@1.21.6))(typescript@5.7.3))(eslint-import-resolver-webpack@0.13.10)(eslint@9.18.0(jiti@1.21.6))
+      eslint-plugin-n:
+        specifier: ^16.0.0
+        version: 16.6.2(eslint@9.18.0(jiti@1.21.6))
       typescript:
         specifier: ^5.7.3
         version: 5.7.3
