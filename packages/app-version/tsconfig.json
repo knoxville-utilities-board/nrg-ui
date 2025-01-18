@@ -1,0 +1,21 @@
+{
+  "include": ["src/**/*", "types"],
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
+    "lib": ["ES2020"],
+
+    "noEmit": false,
+    "emitDeclarationOnly": false,
+    "noEmitOnError": false,
+
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "verbatimModuleSyntax": true,
+    "allowJs": true,
+    "allowImportingTsExtensions": false,
+    "strict": true
+  }
+}
