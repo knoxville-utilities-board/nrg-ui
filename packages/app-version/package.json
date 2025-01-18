@@ -19,7 +19,6 @@
   "exports": {
     ".": "./dist/index.js"
   },
-  "type": "module",
   "scripts": {
     "build": "tsc --build",
     "build:watch": "tsc --build --watch",
