@@ -4,6 +4,8 @@ import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../helpers';
 
+import type Toast from '@nrg-ui/core/services/toast';
+
 module('Integration | Component | toaster', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -26,7 +28,7 @@ module('Integration | Component | toaster', function (hooks) {
   });
 
   test('it displays toasts', async function (assert) {
-    const toast = this.owner.lookup('service:toast');
+    const toast = this.owner.lookup('service:toast') as Toast;
     toast.queue.push({
       message: 'Test message',
       type: 'info',

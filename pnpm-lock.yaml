@@ -370,90 +370,9 @@ importers:
       '@tsconfig/ember':
         specifier: ^3.0.8
         version: 3.0.8
-      '@types/ember':
-        specifier: ^4.0.11
-        version: 4.0.11(@babel/core@7.26.0)
-      '@types/ember-data':
-        specifier: ^4.4.16
-        version: 4.4.16(@babel/core@7.26.0)
-      '@types/ember-data__adapter':
-        specifier: ^4.0.6
-        version: 4.0.6(@babel/core@7.26.0)
-      '@types/ember-data__model':
-        specifier: ^4.0.5
-        version: 4.0.5(@babel/core@7.26.0)
-      '@types/ember-data__serializer':
-        specifier: ^4.0.6
-        version: 4.0.6(@babel/core@7.26.0)
-      '@types/ember-data__store':
-        specifier: ^4.0.7
-        version: 4.0.7(@babel/core@7.26.0)
-      '@types/ember__application':
-        specifier: ^4.0.11
-        version: 4.0.11(@babel/core@7.26.0)
-      '@types/ember__array':
-        specifier: ^4.0.10
-        version: 4.0.10(@babel/core@7.26.0)
-      '@types/ember__component':
-        specifier: ^4.0.22
-        version: 4.0.22(@babel/core@7.26.0)
-      '@types/ember__controller':
-        specifier: ^4.0.12
-        version: 4.0.12(@babel/core@7.26.0)
-      '@types/ember__debug':
-        specifier: ^4.0.8
-        version: 4.0.8(@babel/core@7.26.0)
-      '@types/ember__destroyable':
-        specifier: ^4.0.5
-        version: 4.0.5
-      '@types/ember__engine':
-        specifier: ^4.0.11
-        version: 4.0.11(@babel/core@7.26.0)
-      '@types/ember__error':
-        specifier: ^4.0.6
-        version: 4.0.6
-      '@types/ember__helper':
-        specifier: ^4.0.9
-        version: 4.0.9(@babel/core@7.26.0)
-      '@types/ember__modifier':
-        specifier: ^4.0.9
-        version: 4.0.9(@babel/core@7.26.0)
-      '@types/ember__object':
-        specifier: ^4.0.12
-        version: 4.0.12(@babel/core@7.26.0)
-      '@types/ember__owner':
-        specifier: ^4.0.9
-        version: 4.0.9
-      '@types/ember__polyfills':
-        specifier: ^4.0.6
-        version: 4.0.6
-      '@types/ember__routing':
-        specifier: ^4.0.22
-        version: 4.0.22(@babel/core@7.26.0)
-      '@types/ember__runloop':
-        specifier: ^4.0.10
-        version: 4.0.10(@babel/core@7.26.0)
-      '@types/ember__service':
-        specifier: ^4.0.9
-        version: 4.0.9(@babel/core@7.26.0)
-      '@types/ember__string':
-        specifier: ^3.16.3
-        version: 3.16.3
-      '@types/ember__template':
-        specifier: ^4.0.7
-        version: 4.0.7
-      '@types/ember__test':
-        specifier: ^4.0.6
-        version: 4.0.6(@babel/core@7.26.0)
-      '@types/ember__utils':
-        specifier: ^4.0.7
-        version: 4.0.7(@babel/core@7.26.0)
       '@types/qunit':
         specifier: ^2.19.12
         version: 2.19.12
-      '@types/rsvp':
-        specifier: ^4.0.9
-        version: 4.0.9
       broccoli-asset-rev:
         specifier: ^3.0.0
         version: 3.0.0
