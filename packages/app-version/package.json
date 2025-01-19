@@ -28,6 +28,9 @@
     "prepare": "pnpm build",
     "test": "echo 'The @nrg-ui/version package does not have tests'"
   },
+  "dependencies": {
+    "git-repo-info": "^2.1.1"
+  },
   "devDependencies": {
     "@nrg-ui/standards": "workspace:*",
     "@types/eslint": "^9.6.1",
