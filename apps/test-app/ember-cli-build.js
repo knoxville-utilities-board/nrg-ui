@@ -17,6 +17,9 @@ module.exports = function (defaults) {
         'ember-css-transitions': {
           useTestWaiters: true,
         },
+        '@nrg-ui/core': {
+          appVersion: 'version-v1',
+        },
       },
     },
     babel: {
