@@ -1,6 +1,4 @@
 import { assert } from '@ember/debug';
-// @ts-expect-error Glimmer doesn't currently ship a type for the `cached` decorator
-// https://github.com/glimmerjs/glimmer.js/issues/408
 import { cached } from '@glimmer/tracking';
 
 import BaseValidator from './base.ts';

@@ -3,8 +3,6 @@ import { assert } from '@ember/debug';
 import { get } from '@ember/object';
 import ObjectProxy from '@ember/object/proxy';
 import { getOwner } from '@ember/owner';
-// @ts-expect-error Glimmer doesn't currently ship a type for the `cached` decorator
-// https://github.com/glimmerjs/glimmer.js/issues/408
 import { cached } from '@glimmer/tracking';
 
 import type { Binding } from '../../';
@@ -16,6 +14,7 @@ import type {
   ValidationResult,
   Validator,
 } from '../types.d.ts';
+import type { IntlService } from 'ember-intl';
 
 export function isProxy(
   value: unknown,
@@ -81,7 +80,7 @@ export default abstract class BaseValidator<
   }
 
   get intl() {
-    return this.owner.lookup('service:intl');
+    return this.owner.lookup('service:intl') as IntlService;
   }
 
   get value(): T {

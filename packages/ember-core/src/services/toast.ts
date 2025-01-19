@@ -5,14 +5,14 @@ import { tracked } from '@glimmer/tracking';
 import { cancelTask, runTask } from 'ember-lifeline';
 import { TrackedArray } from 'tracked-built-ins';
 
-import type { EmberRunTimer } from '@ember/runloop/types';
+import type { Timer } from '@ember/runloop';
 
 export type ToastOptions = {
   message: string;
   type: 'success' | 'info' | 'warning' | 'danger';
   sticky?: boolean;
   timeout?: number;
-  timeoutReference?: EmberRunTimer;
+  timeoutReference?: Timer;
 };
 
 export default class Toast extends Service {
@@ -70,7 +70,7 @@ export default class Toast extends Service {
           }
         },
         options.timeout,
-      ) as EmberRunTimer;
+      ) as Timer;
     }
     this.queue.push(options);
   }
@@ -78,6 +78,8 @@ export default class Toast extends Service {
   @action
   remove(message: ToastOptions) {
     if (message.timeoutReference) {
+      // @ts-expect-error - ember-lifeline currently uses DT types, not native types
+      // https://github.com/ember-lifeline/ember-lifeline/issues/1178
       cancelTask(this, message.timeoutReference);
     }
     const index = this.queue.indexOf(message);
