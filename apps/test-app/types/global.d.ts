@@ -1,5 +1,6 @@
 import '@glint/environment-ember-loose';
 import '@glint/environment-ember-template-imports';
+import 'ember-source/types';
 
 import NrgServiceRegistry from '@nrg-ui/core/service-registry';
 import NrgTemplateRegistry from '@nrg-ui/core/template-registry';

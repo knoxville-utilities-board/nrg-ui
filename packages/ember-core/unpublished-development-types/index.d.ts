@@ -3,6 +3,7 @@
 
 import '@glint/environment-ember-loose';
 import '@glint/environment-ember-template-imports';
+import 'ember-source/types';
 
 import type CssTransitionsRegistry from 'ember-css-transitions/template-registry';
 import type IntlService from 'ember-intl/services/intl';

@@ -3,8 +3,6 @@ import { hash } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
-// @ts-expect-error Glimmer doesn't currently ship a type for the `cached` decorator
-// https://github.com/glimmerjs/glimmer.js/issues/408
 import { cached, tracked } from '@glimmer/tracking';
 import { dropTask } from 'ember-concurrency';
 import perform from 'ember-concurrency/helpers/perform';
