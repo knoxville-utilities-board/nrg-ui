@@ -87,6 +87,9 @@ importers:
       '@nrg-ui/standards':
         specifier: workspace:*
         version: link:../../packages/standards
+      '@nrg-ui/version':
+        specifier: workspace:*
+        version: link:../../packages/app-version
       '@tsconfig/ember':
         specifier: ^3.0.8
         version: 3.0.8
