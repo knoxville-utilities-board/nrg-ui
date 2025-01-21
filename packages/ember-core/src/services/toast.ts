@@ -78,8 +78,6 @@ export default class Toast extends Service {
   @action
   remove(message: ToastOptions) {
     if (message.timeoutReference) {
-      // @ts-expect-error - ember-lifeline currently uses DT types, not native types
-      // https://github.com/ember-lifeline/ember-lifeline/issues/1178
       cancelTask(this, message.timeoutReference);
     }
     const index = this.queue.indexOf(message);
