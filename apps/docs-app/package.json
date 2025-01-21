@@ -40,6 +40,7 @@
     "@glimmer/tracking": "^1.1.2",
     "@glint/environment-ember-loose": "^1.5.1",
     "@glint/template": "^1.5.1",
+    "@nrg-ui/version": "workspace:*",
     "@nrg-ui/core": "workspace:*",
     "@nrg-ui/css": "workspace:*",
     "@nrg-ui/standards": "workspace:*",

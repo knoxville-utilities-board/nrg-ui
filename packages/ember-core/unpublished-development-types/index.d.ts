@@ -32,7 +32,9 @@ declare module '@ember/service' {
 }
 
 declare module '@embroider/macros' {
-  export function getOwnConfig(): {
-    appVersion: string;
-  };
+  export function getOwnConfig():
+    | Partial<{
+        appVersion: string;
+      }>
+    | undefined;
 }

@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 
 const sideWatch = require('@embroider/broccoli-side-watch');
+const { getVersion } = require('@nrg-ui/version');
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = async function (defaults) {
@@ -19,6 +20,9 @@ module.exports = async function (defaults) {
       setConfig: {
         'ember-css-transitions': {
           useTestWaiters: true,
+        },
+        '@nrg-ui/core': {
+          appVersion: getVersion(),
         },
       },
     },
