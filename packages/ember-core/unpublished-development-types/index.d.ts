@@ -29,3 +29,9 @@ declare module '@ember/service' {
     intl: IntlService;
   }
 }
+
+declare module '@embroider/macros' {
+  export function getOwnConfig(): {
+    appVersion: string;
+  };
+}
