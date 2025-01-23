@@ -10,6 +10,9 @@ import CodeBlock from '../../../code-block';
 
 export default class extends Component {
   @tracked
+  closeOnSelect = true;
+
+  @tracked
   disabled = false;
 
   @tracked
@@ -61,6 +64,7 @@ export default class extends Component {
           <:example>
             <Select
               @binding={{bind this "selectValue"}}
+              @closeOnSelect={{this.closeOnSelect}}
               @disabled={{this.disabled}}
               @loading={{this.loading}}
               @scrollable={{this.scrollable}}
@@ -68,6 +72,13 @@ export default class extends Component {
             />
           </:example>
           <:api as |Args|>
+            <Args.Bool
+              @name="closeOnSelect"
+              @defaultValue={{true}}
+              @description="When true, the dropdown will close after selecting an option"
+              @value={{this.closeOnSelect}}
+              @onInput={{fn this.update "closeOnSelect"}}
+            />
             <Args.Bool
               @name="disabled"
               @defaultValue={{false}}
