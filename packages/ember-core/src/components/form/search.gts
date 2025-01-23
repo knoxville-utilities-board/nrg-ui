@@ -62,7 +62,7 @@ export default class Search<T> extends BoundValue<
   SearchSignature<T>,
   string | T
 > {
-  self: Record<'searchString', string> = this;
+  self: Record<'searchString' | 'displayValue', string> = this;
   declare visibility: PopoverVisibility;
   declare inputElement: HTMLInputElement;
   declare menuElement: HTMLElement;
@@ -151,13 +151,20 @@ export default class Search<T> extends BoundValue<
     return classes.join(' ');
   }
 
-  get displayValue() {
-    if (!this.value) {
-      return this.searchString;
+  get displayValue(): string {
+    const { value } = this;
+    const isStringValue = typeof value === 'string';
+    const isStringOption = this.selectedOption?.value === value;
+
+    if (
+      isStringValue ||
+      (isStringOption && (!this.internalOptions.length || this.query.isRunning))
+    ) {
+      return value as string;
     }
 
     if (this.args.serializationPath === null) {
-      return get(this.value, this.args.displayPath ?? 'label') as string;
+      return get(value, this.args.displayPath ?? 'label') as string;
     }
 
     if (this.selectedOption) {
@@ -365,7 +372,10 @@ export default class Search<T> extends BoundValue<
               class={{this.inputClassList}}
               placeholder={{this.placeholder}}
               @basic={{@basic}}
-              @binding={{bind this.self "searchString"}}
+              @binding={{bind
+                this.self
+                (if visibility.isShown "searchString" "displayValue")
+              }}
               @disabled={{@disabled}}
               @id={{@id}}
               @readonly={{@readonly}}
