@@ -306,8 +306,6 @@ export default class Search<T> extends BoundValue<
   @action
   onSearch(evt: Event) {
     this.searchString = (evt.target as HTMLInputElement).value;
-    this.value = '';
-    this.activeIndex = -1;
 
     if (!this.canPerformSearch) {
       return;
