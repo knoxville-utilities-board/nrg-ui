@@ -444,7 +444,6 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
           {{/let}}
         {{else}}
           <Menu.Item aria-disabled={{true}} @disabled={{true}}>
-            {{t "nrg.select.noOptions"}}
             {{this.noOptionsText}}
           </Menu.Item>
         {{/each}}
