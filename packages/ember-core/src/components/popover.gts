@@ -164,20 +164,19 @@ export default class Popover extends Component<PopoverSignature> {
       return;
     }
 
+    const { currentTarget } = evtOrInput as Event;
     this.isShown = true;
 
-    if (this.args.onShow) {
-      await this.args.onShow();
-    }
+    await this.args.onShow?.();
 
     if (evtOrInput instanceof HTMLInputElement) {
       this._control = evtOrInput;
       this.showPopover();
     } else if (
       evtOrInput instanceof Event &&
-      evtOrInput.currentTarget instanceof HTMLElement
+      currentTarget instanceof HTMLElement
     ) {
-      this._control = evtOrInput.currentTarget;
+      this._control = currentTarget;
       this.showPopover();
     }
   };
