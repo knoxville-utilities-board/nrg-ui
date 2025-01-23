@@ -42,6 +42,7 @@ function isActive<T>(
 
 export interface SelectSignature<T> {
   Args: {
+    closeOnSelect?: boolean;
     defaultText?: string;
     defaultTextKey?: string;
     describedBy?: string;
@@ -224,7 +225,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   onSelectInternal(option: SelectOption<T>, evt?: MouseEvent) {
     evt?.preventDefault();
     evt?.stopPropagation();
-    this.onBlur();
+
     this.selected = option;
   }
 
@@ -360,6 +361,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
 
   <template>
     <Dropdown
+      @closeOnSelect={{@closeOnSelect}}
       @fullWidth={{true}}
       @side={{@side}}
       @onHide={{this.onBlur}}
