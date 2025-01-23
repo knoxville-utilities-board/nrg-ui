@@ -369,7 +369,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
       {{onInsert this.onInsert}}
     >
       <:control as |visibility|>
-        {{#if (has-block "control")}}
+        {{#if (has-block-params "control")}}
           {{yield visibility to="control"}}
         {{else}}
           <button
