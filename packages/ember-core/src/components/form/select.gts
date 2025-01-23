@@ -43,6 +43,7 @@ function isActive<T>(
 export interface SelectSignature<T> {
   Args: {
     defaultText?: string;
+    defaultTextKey?: string;
     describedBy?: string;
     disabled?: boolean;
     displayPath?: string;
@@ -50,6 +51,8 @@ export interface SelectSignature<T> {
     isInvalid?: boolean;
     isWarning?: boolean;
     loading?: boolean;
+    noOptionsText?: string;
+    noOptionsTextKey?: string;
     options: T[];
     scrollable?: boolean;
     serializationPath?: string | null;
@@ -103,8 +106,10 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   }
 
   get defaultText() {
-    const baseDefaultText = this.intl.t('nrg.select.defaultText', {});
-    return this.args.defaultText ?? baseDefaultText;
+    return (
+      this.args.defaultText ??
+      this.intl.t(this.args.defaultTextKey ?? 'nrg.select.defaultText')
+    );
   }
 
   get scrollable() {
@@ -164,6 +169,13 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
 
   get disabled() {
     return this.args.disabled || this.args.loading;
+  }
+
+  get noOptionsText() {
+    return (
+      this.args.noOptionsText ??
+      this.intl.t(this.args.noOptionsTextKey ?? 'nrg.select.noOptions')
+    );
   }
 
   selectItemBySearch() {
@@ -428,6 +440,10 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
               {{/if}}
             </Menu.Item>
           {{/let}}
+        {{else}}
+          <Menu.Item aria-disabled={{true}} @disabled={{true}}>
+            {{this.noOptionsText}}
+          </Menu.Item>
         {{/each}}
       </:menu>
     </Dropdown>
