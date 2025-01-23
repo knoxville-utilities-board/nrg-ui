@@ -38,7 +38,8 @@
       "pageSize": "{value, number} per page"
     },
     "select": {
-      "defaultText": "Select an Option"
+      "defaultText": "Select an Option",
+      "noOptions": "No options found"
     },
     "search": {
       "placeholder": "Search",
