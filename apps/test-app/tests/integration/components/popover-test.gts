@@ -100,7 +100,7 @@ module('Integration | Component | popover', function (hooks) {
     await render(<template>
       <Popover @onShow={{onShow}} @onHide={{onHide}}>
         <:control as |actions|>
-          <Button class="open" @onClick={{actions.show}}>
+          <Button class="open" @onClick={{actions.show.perform}}>
             show
           </Button>
           <Button class="hide" @onClick={{actions.hide}}>

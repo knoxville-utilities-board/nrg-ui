@@ -37,6 +37,9 @@ export default class extends Component {
   arrow: boolean = true;
 
   @tracked
+  delay?: number;
+
+  @tracked
   flip: boolean = false;
 
   @tracked
@@ -62,6 +65,7 @@ export default class extends Component {
             <Popover
               @alignment={{this.alignment}}
               @arrow={{this.arrow}}
+              @delay={{this.delay}}
               @flip={{this.flip}}
               @offset={{this.offset}}
               @side={{this.side}}
@@ -105,6 +109,13 @@ export default class extends Component {
               @value={{this.arrow}}
               @onInput={{fn this.update "arrow"}}
             />
+            <Args.Number
+              @name="delay"
+              @defaultValue="undefined"
+              @description="Amount of delay before showing the popover (in milliseconds)"
+              @value={{this.delay}}
+              @onInput={{fn this.update "delay"}}
+            />
             <Args.Bool
               @name="flip"
               @defaultValue={{false}}
@@ -147,6 +158,7 @@ export default class extends Component {
             <Popover
               @alignment={{this.alignment}}
               @arrow={{this.arrow}}
+              @delay={{this.delay}}
               @flip={{this.flip}}
               @offset={{this.offset}}
               @side={{this.side}}
@@ -155,7 +167,7 @@ export default class extends Component {
             >
               <:control as |actions|>
                 <PopoverBlock
-                  {{on "mouseenter" actions.show}}
+                  {{on "mouseenter" actions.show.perform}}
                   {{on "mouseleave" actions.hide}}
                 >
                   Hover me!
@@ -185,6 +197,13 @@ export default class extends Component {
               @description="Whether to show an arrow pointing to the control"
               @value={{this.arrow}}
               @onInput={{fn this.update "arrow"}}
+            />
+            <Args.Number
+              @name="delay"
+              @defaultValue="undefined"
+              @description="Amount of delay before showing the popover (in milliseconds)"
+              @value={{this.delay}}
+              @onInput={{fn this.update "delay"}}
             />
             <Args.Bool
               @name="flip"

@@ -89,7 +89,7 @@ const Tooltip: TOC<TooltipSignature> = <template>
     <:control as |actions|>
       {{yield
         (component
-          TooltipTarget onMouseEnter=actions.show onMouseLeave=actions.hide
+          TooltipTarget onMouseEnter=actions.show.perform onMouseLeave=actions.hide
         )
       }}
     </:control>

@@ -226,7 +226,7 @@ export default class Search<T> extends BoundValue<
   query = restartableTask(async (searchString) => {
     await timeout(this.searchTimeout);
     this.options = await this.args.onQuery(searchString);
-    this.visibility.show(this.inputElement);
+    this.visibility.show.perform(this.inputElement);
   });
 
   @action
@@ -294,7 +294,7 @@ export default class Search<T> extends BoundValue<
     evt.preventDefault();
     evt.stopPropagation();
 
-    this.visibility.show(evt);
+    this.visibility.show.perform(evt);
   }
 
   @action
@@ -378,7 +378,7 @@ export default class Search<T> extends BoundValue<
               @id={{@id}}
               @readonly={{@readonly}}
               {{on "input" this.onSearch}}
-              {{on "focus" visibility.show}}
+              {{on "focus" visibility.show.perform}}
               {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
               {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
               {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
