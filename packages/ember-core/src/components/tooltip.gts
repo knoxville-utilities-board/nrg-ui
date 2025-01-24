@@ -13,6 +13,7 @@ export interface TooltipSignature {
   Args: {
     alignment?: Alignment;
     controlElement?: HTMLElement;
+    delay?: number;
     flip?: boolean;
     offset?: string | number;
     side?: Direction;
@@ -80,6 +81,7 @@ const Tooltip: TOC<TooltipSignature> = <template>
   <Popover
     class="tooltip"
     @alignment={{@alignment}}
+    @delay={{@delay}}
     @flip={{@flip}}
     @offset={{@offset}}
     @side={{@side}}

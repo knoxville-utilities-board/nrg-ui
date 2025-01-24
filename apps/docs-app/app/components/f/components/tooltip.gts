@@ -19,6 +19,9 @@ export default class extends Component {
   alignment?: Alignment;
 
   @tracked
+  delay?: number;
+
+  @tracked
   flip?: boolean;
 
   @tracked
@@ -40,6 +43,7 @@ export default class extends Component {
             <div class="p-2">
               <Tooltip
                 @alignment={{this.alignment}}
+                @delay={{this.delay}}
                 @flip={{this.flip}}
                 @offset={{this.offset}}
                 @side={{this.side}}
@@ -151,6 +155,13 @@ export default class extends Component {
               @value={{this.alignment}}
               @options={{array "" "start" "end"}}
               @onInput={{fn this.update "alignment"}}
+            />
+            <Args.Number
+              @name="delay"
+              @defaultValue="undefined"
+              @description="Amount of delay before showing the popover (in milliseconds)"
+              @value={{this.delay}}
+              @onInput={{fn this.update "delay"}}
             />
             <Args.Bool
               @name="flip"
