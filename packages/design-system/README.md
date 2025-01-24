@@ -2,7 +2,7 @@
 
 # @nrg-ui/css
 
-This design system is built on top of [Bootstrap](https://getbootstrap.com/). Note that this is not a full-fledged design system, but rather a collection of raw CSS that can be used in any web application. The [Ember addon](./packages/ember/) provides a more integrated experience for Ember applications.
+This design system is built on top of [Bootstrap](https://getbootstrap.com/). Note that this is not a full-fledged design system, but rather a collection of raw CSS that can be used in any web application. The [Ember addon](../ember-core/) provides a more integrated experience for Ember applications.
 
 ## Installation
 
@@ -57,8 +57,8 @@ To use the CSS in a non-Ember application, include the CSS in your project. The 
 
 ## Contributing
 
-See the [Contributing](CONTRIBUTING.md) guide for details.
+See the [Contributing](../../CONTRIBUTING.md) guide for details.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE.md).
+This project is licensed under the [MIT License](../../LICENSE).

@@ -29,8 +29,8 @@ interface EmbroiderConfig {
 
 ## Contributing
 
-See the [Contributing](CONTRIBUTING.md) guide for details.
+See the [Contributing](../../CONTRIBUTING.md) guide for details.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE.md).
+This project is licensed under the [MIT License](../../LICENSE).

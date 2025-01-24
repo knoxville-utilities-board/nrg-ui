@@ -68,11 +68,12 @@ export interface FormSignature {
 }
 
 export default class Form extends Component<FormSignature> implements FormType {
+
   @tracked
   _didValidate = false;
 
   @tracked
-  element!: HTMLElement;
+  declare element: HTMLElement;
 
   staticValidations: Map<string, Wrapper[]>;
   bindings: Map<string, Binding>;
