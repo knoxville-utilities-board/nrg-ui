@@ -148,3 +148,8 @@ input::placeholder {
     }
   }
 }
+
+.multi-select > .card-body > .badge {
+  --bs-bg-opacity: .5;
+  --bs-badge-font-weight: 600;
+}

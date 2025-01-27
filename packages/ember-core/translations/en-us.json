@@ -1,6 +1,7 @@
 {
   "nrg": {
     "base": {
+      "clear" : "Clear",
       "close": "Close",
       "datetime": {
         "date": "Today",
@@ -10,7 +11,11 @@
       "loading": "Loading",
       "next": "Next",
       "previous": "Previous",
-      "clear" : "Clear"
+      "remove": "Remove"
+    },
+    "multi-select": {
+      "defaultText": "Select at least one option",
+      "noOptions": "No options found"
     },
     "navbar": {
       "toggleContextMenu": "Toggle context menu"
