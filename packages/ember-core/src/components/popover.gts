@@ -2,7 +2,7 @@ import { concat, hash } from '@ember/helper';
 import { arrow, computePosition, flip, offset, size } from '@floating-ui/dom';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { type Task, restartableTask, timeout } from 'ember-concurrency';
+import { restartableTask, timeout } from 'ember-concurrency';
 
 import { classes } from '../helpers/classes.ts';
 import onInsert from '../modifiers/on-insert.ts';
@@ -16,7 +16,7 @@ import type { ComponentLike } from '@glint/template';
 export interface PopoverVisibility {
   isShown: boolean;
   toggle: (evt: Event) => Promise<void>;
-  show: Task<void, [Event | HTMLInputElement]>;
+  show: (evtOrInput: HTMLInputElement | Event) => Promise<void>;
   hide: () => Promise<void>;
 }
 
@@ -161,7 +161,7 @@ export default class Popover extends Component<PopoverSignature> {
     this.arrow = popover;
   };
 
-  show = restartableTask(async (evtOrInput: Event | HTMLInputElement) => {
+  show = async (evtOrInput: Event | HTMLInputElement) => {
     if (this.isShown) {
       return;
     }
@@ -169,7 +169,7 @@ export default class Popover extends Component<PopoverSignature> {
     const { currentTarget } = evtOrInput as Event;
 
     if (this.args.delay) {
-      await timeout(this.args.delay);
+      await this.timeout.perform(this.args.delay);
     }
 
     this.isShown = true;
@@ -186,10 +186,10 @@ export default class Popover extends Component<PopoverSignature> {
       this._control = currentTarget;
       this.showPopover();
     }
-  });
+  };
 
   hide = async () => {
-    this.show.cancelAll();
+    this.timeout.cancelAll();
 
     if (!this.isShown) {
       return;
@@ -201,12 +201,15 @@ export default class Popover extends Component<PopoverSignature> {
     this._control = null;
   };
 
+  timeout = restartableTask(async (delay: number) => {
+    await timeout(delay);
+  })
+
+
   toggle = async (evt: Event) => {
-    if (this.isShown) {
-      await this.hide();
-    } else {
-      await this.show.perform(evt)
-    }
+    const action = this.isShown ? this.hide : this.show;
+
+    await action(evt);
   };
 
   initPopover = (popover: HTMLElement) => {

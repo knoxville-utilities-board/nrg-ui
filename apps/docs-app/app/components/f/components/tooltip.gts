@@ -158,7 +158,7 @@ export default class extends Component {
             />
             <Args.Number
               @name="delay"
-              @defaultValue="undefined"
+              @defaultValue={{300}}
               @description="Amount of delay before showing the popover (in milliseconds)"
               @value={{this.delay}}
               @onInput={{fn this.update "delay"}}

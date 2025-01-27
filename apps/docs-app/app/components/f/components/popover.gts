@@ -167,7 +167,7 @@ export default class extends Component {
             >
               <:control as |actions|>
                 <PopoverBlock
-                  {{on "mouseenter" actions.show.perform}}
+                  {{on "mouseenter" actions.show}}
                   {{on "mouseleave" actions.hide}}
                 >
                   Hover me!

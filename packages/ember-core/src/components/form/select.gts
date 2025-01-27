@@ -247,7 +247,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
       });
     }
 
-    this.visibility.show.perform(evt);
+    this.visibility.show(evt);
   }
 
   @action

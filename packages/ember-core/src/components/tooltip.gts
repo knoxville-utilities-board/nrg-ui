@@ -1,5 +1,6 @@
 import { on } from '@ember/modifier';
 import Component from '@glimmer/component';
+import { or } from 'ember-truth-helpers';
 
 import Popover from './popover.gts';
 
@@ -81,7 +82,7 @@ const Tooltip: TOC<TooltipSignature> = <template>
   <Popover
     class="tooltip"
     @alignment={{@alignment}}
-    @delay={{@delay}}
+    @delay={{or @delay 300}}
     @flip={{@flip}}
     @offset={{@offset}}
     @side={{@side}}
@@ -91,7 +92,7 @@ const Tooltip: TOC<TooltipSignature> = <template>
     <:control as |actions|>
       {{yield
         (component
-          TooltipTarget onMouseEnter=actions.show.perform onMouseLeave=actions.hide
+          TooltipTarget onMouseEnter=actions.show onMouseLeave=actions.hide
         )
       }}
     </:control>
