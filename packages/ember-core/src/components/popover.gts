@@ -2,6 +2,7 @@ import { concat, hash } from '@ember/helper';
 import { arrow, computePosition, flip, offset, size } from '@floating-ui/dom';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { restartableTask, timeout } from 'ember-concurrency';
 
 import { classes } from '../helpers/classes.ts';
 import onInsert from '../modifiers/on-insert.ts';
@@ -53,6 +54,7 @@ export interface PopoverSignature {
     alignment?: Alignment;
     arrow?: boolean;
     controlElement?: HTMLElement;
+    delay?: number;
     flip?: boolean;
     fullWidth?: boolean;
     offset?: string | number;
@@ -95,30 +97,17 @@ export default class Popover extends Component<PopoverSignature> {
   id = `popover-${crypto.randomUUID()}`;
 
   @tracked
-  isShown = false;
+  adjustedSide: Direction = 'bottom';
 
   @tracked
-  adjustedSide: Direction = 'bottom';
+  isShown = false;
+
+  get control() {
+    return this.args.controlElement ?? this._control;
+  }
 
   get hasArrow() {
     return this.args.arrow ?? true;
-  }
-
-  get offset() {
-    const defaultOffset = this.hasArrow ? getRemValue() / 2 : 0;
-    const { offset } = this.args;
-    const numOffset =
-      typeof offset === 'number' ? offset : parseFloat(offset ?? '0');
-
-    return numOffset + defaultOffset;
-  }
-
-  get placement() {
-    let placement: Placement | Side = SIDE_TRANSLATION[this.side];
-    if (this.args.alignment) {
-      placement += `-${this.args.alignment}`;
-    }
-    return placement as Placement;
   }
 
   get middleware() {
@@ -147,41 +136,30 @@ export default class Popover extends Component<PopoverSignature> {
     return middleware;
   }
 
+  get offset() {
+    const defaultOffset = this.hasArrow ? getRemValue() / 2 : 0;
+    const { offset } = this.args;
+    const numOffset =
+      typeof offset === 'number' ? offset : parseFloat(offset ?? '0');
+
+    return numOffset + defaultOffset;
+  }
+
+  get placement() {
+    let placement: Placement | Side = SIDE_TRANSLATION[this.side];
+    if (this.args.alignment) {
+      placement += `-${this.args.alignment}`;
+    }
+    return placement as Placement;
+  }
+
   get side(): Direction {
     return this.args.side ?? 'bottom';
   }
 
-  get control() {
-    return this.args.controlElement ?? this._control;
-  }
-
-  setArrow = (popover: HTMLElement) => {
-    this.arrow = popover;
-  };
-
-  show = async (evtOrInput: Event | HTMLInputElement) => {
-    if (this.isShown) {
-      return;
-    }
-
-    const { currentTarget } = evtOrInput as Event;
-    this.isShown = true;
-
-    await this.args.onShow?.();
-
-    if (evtOrInput instanceof HTMLInputElement) {
-      this._control = evtOrInput;
-      this.showPopover();
-    } else if (
-      evtOrInput instanceof Event &&
-      currentTarget instanceof HTMLElement
-    ) {
-      this._control = currentTarget;
-      this.showPopover();
-    }
-  };
-
   hide = async () => {
+    this.triggerDisplay.cancelAll();
+
     if (!this.isShown) {
       return;
     }
@@ -192,15 +170,21 @@ export default class Popover extends Component<PopoverSignature> {
     this._control = null;
   };
 
-  toggle = async (evt: Event) => {
-    const action = this.isShown ? this.hide : this.show;
-
-    await action(evt);
-  };
-
   initPopover = (popover: HTMLElement) => {
     this.popover = popover;
   };
+
+  setArrow = (popover: HTMLElement) => {
+    this.arrow = popover;
+  };
+
+  show = async (evtOrInput: Event | HTMLInputElement) => {
+    if (this.isShown) {
+      return;
+    }
+
+    this.triggerDisplay.perform(evtOrInput);
+  }
 
   showPopover = async () => {
     if (!this.control || !this.popover) {
@@ -245,6 +229,35 @@ export default class Popover extends Component<PopoverSignature> {
       [staticSide]: 'calc(-1 * (0.5rem + var(--bs-popover-border-width)))',
     });
   };
+
+  toggle = async (evt: Event) => {
+    const action = this.isShown ? this.hide : this.show;
+
+    await action(evt);
+  };
+
+  triggerDisplay = restartableTask(async (evtOrInput: Event | HTMLInputElement) => {
+    const { currentTarget } = evtOrInput as Event;
+
+    if (this.args.delay) {
+      await timeout(this.args.delay);
+    }
+
+    this.isShown = true;
+
+    await this.args.onShow?.();
+
+    if (evtOrInput instanceof HTMLInputElement) {
+      this._control = evtOrInput;
+      this.showPopover();
+    } else if (
+      evtOrInput instanceof Event &&
+      currentTarget instanceof HTMLElement
+    ) {
+      this._control = currentTarget;
+      this.showPopover();
+    }
+  });
 
   <template>
     {{#let

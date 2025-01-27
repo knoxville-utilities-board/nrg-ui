@@ -4,7 +4,6 @@ import Component from '@glimmer/component';
 import Popover from './popover.gts';
 
 import type { Direction } from './popover.gts';
-import type { TOC } from '@ember/component/template-only';
 import type { Alignment } from '@floating-ui/dom';
 import type { ComponentLike } from '@glint/template';
 
@@ -13,6 +12,7 @@ export interface TooltipSignature {
   Args: {
     alignment?: Alignment;
     controlElement?: HTMLElement;
+    delay?: number;
     flip?: boolean;
     offset?: string | number;
     side?: Direction;
@@ -76,10 +76,16 @@ class TooltipTarget extends Component<TooltipTargetSignature> {
   </template>
 }
 
-const Tooltip: TOC<TooltipSignature> = <template>
+class Tooltip extends Component<TooltipSignature> {
+  get delay() {
+    return this.args.delay ?? 300;
+  }
+
+<template>
   <Popover
     class="tooltip"
     @alignment={{@alignment}}
+    @delay={{this.delay}}
     @flip={{@flip}}
     @offset={{@offset}}
     @side={{@side}}
@@ -99,6 +105,7 @@ const Tooltip: TOC<TooltipSignature> = <template>
       {{/if}}
     </:content>
   </Popover>
-</template>;
+</template>
+}
 
 export default Tooltip;
