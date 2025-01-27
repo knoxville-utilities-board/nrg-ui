@@ -35,6 +35,7 @@ import MktgSectionHeader from './mktg/section-header.gts';
 import MktgServicePricing from './mktg/service-pricing.gts';
 import MktgWorkflowTray from './mktg/workflow-tray.gts';
 import Modal from './modal.gts';
+import MultiSelect from './form/multi-select.gts';
 import NavItem from './nav-item.gts';
 import PageNotFound from './page-not-found.gts';
 import Pagination from './pagination.gts';
@@ -54,6 +55,7 @@ export default {
   Checkbox,
   Datetime,
   Field,
+  MultiSelect,
   NumberInput,
   PhoneInput,
   RadioGroup,
