@@ -1,5 +1,44 @@
 # Changelog
 
+## Release (2025-01-27)
+
+@nrg-ui/version 0.1.0 (minor)
+@nrg-ui/css 0.13.1 (patch)
+@nrg-ui/core 0.24.0 (minor)
+
+#### :rocket: Enhancement
+* `docs-app`, `@nrg-ui/core`
+  * [#345](https://github.com/knoxville-utilities-board/nrg-ui/pull/345) feat: Add optional delay to popover ([@ChesneyJulian](https://github.com/ChesneyJulian))
+* `docs-app`, `test-app`, `@nrg-ui/core`
+  * [#329](https://github.com/knoxville-utilities-board/nrg-ui/pull/329) feat: Add flip middleware to popover and tooltip ([@ChesneyJulian](https://github.com/ChesneyJulian))
+* `test-app`, `@nrg-ui/version`, `@nrg-ui/core`
+  * [#336](https://github.com/knoxville-utilities-board/nrg-ui/pull/336) feat: Create package to fetch application version ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `docs-app`, `@nrg-ui/core`
+  * [#342](https://github.com/knoxville-utilities-board/nrg-ui/pull/342) fix(search): Properly rehydrate serialized value ([@TSenter](https://github.com/TSenter))
+  * [#339](https://github.com/knoxville-utilities-board/nrg-ui/pull/339) fix(app-version): Null-check Embroider macro config ([@TSenter](https://github.com/TSenter))
+
+#### :memo: Documentation
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#344](https://github.com/knoxville-utilities-board/nrg-ui/pull/344) chore: Update links in READMEs ([@ChesneyJulian](https://github.com/ChesneyJulian))
+* `docs-app`
+  * [#343](https://github.com/knoxville-utilities-board/nrg-ui/pull/343) chore(docs): Use correct components ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `docs-app`
+  * [#343](https://github.com/knoxville-utilities-board/nrg-ui/pull/343) chore(docs): Use correct components ([@TSenter](https://github.com/TSenter))
+* `docs-app`, `@nrg-ui/core`
+  * [#340](https://github.com/knoxville-utilities-board/nrg-ui/pull/340) refactor(docs): Convert to native types ([@TSenter](https://github.com/TSenter))
+* `docs-app`, `test-app`, `@nrg-ui/core`
+  * [#337](https://github.com/knoxville-utilities-board/nrg-ui/pull/337) refactor: Use native Ember types and rename docs components ([@TSenter](https://github.com/TSenter))
+* Other
+  * [#334](https://github.com/knoxville-utilities-board/nrg-ui/pull/334) chore(ci): Prefer offline dependencies when reasonable ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-01-08)
 
 @nrg-ui/css 0.13.0 (minor)
