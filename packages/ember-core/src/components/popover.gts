@@ -161,15 +161,11 @@ export default class Popover extends Component<PopoverSignature> {
     this.arrow = popover;
   };
 
-  show = async (evtOrInput: Event | HTMLInputElement) => {
-    if (this.isShown) {
-      return;
-    }
-
+  triggerDisplay = restartableTask(async (evtOrInput: Event | HTMLInputElement) => {
     const { currentTarget } = evtOrInput as Event;
 
     if (this.args.delay) {
-      await this.timeout.perform(this.args.delay);
+      await timeout(this.args.delay);
     }
 
     this.isShown = true;
@@ -186,10 +182,10 @@ export default class Popover extends Component<PopoverSignature> {
       this._control = currentTarget;
       this.showPopover();
     }
-  };
+  });
 
   hide = async () => {
-    this.timeout.cancelAll();
+    this.triggerDisplay.cancelAll();
 
     if (!this.isShown) {
       return;
@@ -201,10 +197,13 @@ export default class Popover extends Component<PopoverSignature> {
     this._control = null;
   };
 
-  timeout = restartableTask(async (delay: number) => {
-    await timeout(delay);
-  })
+  show = async (evtOrInput: Event | HTMLInputElement) => {
+    if (this.isShown) {
+      return;
+    }
 
+    this.triggerDisplay.perform(evtOrInput);
+  }
 
   toggle = async (evt: Event) => {
     const action = this.isShown ? this.hide : this.show;

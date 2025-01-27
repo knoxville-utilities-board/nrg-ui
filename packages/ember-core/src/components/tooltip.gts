@@ -1,11 +1,9 @@
 import { on } from '@ember/modifier';
 import Component from '@glimmer/component';
-import { or } from 'ember-truth-helpers';
 
 import Popover from './popover.gts';
 
 import type { Direction } from './popover.gts';
-import type { TOC } from '@ember/component/template-only';
 import type { Alignment } from '@floating-ui/dom';
 import type { ComponentLike } from '@glint/template';
 
@@ -78,11 +76,16 @@ class TooltipTarget extends Component<TooltipTargetSignature> {
   </template>
 }
 
-const Tooltip: TOC<TooltipSignature> = <template>
+class Tooltip extends Component<TooltipSignature> {
+  get delay() {
+    return this.args.delay ?? 300;
+  }
+
+<template>
   <Popover
     class="tooltip"
     @alignment={{@alignment}}
-    @delay={{or @delay 300}}
+    @delay={{this.delay}}
     @flip={{@flip}}
     @offset={{@offset}}
     @side={{@side}}
@@ -102,6 +105,7 @@ const Tooltip: TOC<TooltipSignature> = <template>
       {{/if}}
     </:content>
   </Popover>
-</template>;
+</template>
+}
 
 export default Tooltip;
