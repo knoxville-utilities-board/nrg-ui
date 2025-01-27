@@ -34,8 +34,8 @@
   "devDependencies": {
     "@nrg-ui/standards": "workspace:*",
     "@types/eslint": "^9.6.1",
-    "@types/node": "^22.10.5",
-    "eslint": "^9.18.0",
+    "@types/node": "^22.10.10",
+    "eslint": "^9.19.0",
     "eslint-plugin-decorator-position": "^6.0.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-n": "^16.0.0",
