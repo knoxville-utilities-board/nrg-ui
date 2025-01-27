@@ -41,10 +41,10 @@
   },
   "devDependencies": {
     "@types/eslint": "^9.6.1",
-    "@types/node": "^22.10.7",
+    "@types/node": "^22.10.10",
     "@types/semver": "^7.5.8",
     "@types/yargs": "^17.0.33",
-    "eslint": "^9.18.0",
+    "eslint": "^9.19.0",
     "eslint-plugin-decorator-position": "^6.0.0",
     "eslint-plugin-import": "^2.31.0",
     "typescript": "^5.7.3",
