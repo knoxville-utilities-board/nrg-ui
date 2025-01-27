@@ -389,7 +389,6 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
             {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
             {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
             {{onKey "Space" this.enterKeyHandler onlyWhenFocused=true}}
-            {{onKey "NumpadEnter" this.enterKeyHandler onlyWhenFocused=true}}
             {{onKey "Tab" this.exitKeyHandler onlyWhenFocused=true}}
             {{onKey "Escape" this.exitKeyHandler onlyWhenFocused=true}}
             ...attributes
