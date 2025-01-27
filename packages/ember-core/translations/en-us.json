@@ -14,13 +14,18 @@
       "theme": {
         "dark": "Dark mode",
         "light": "Light mode"
-      }
+      },
+      "remove": "Remove"
     },
     "app-bar": {
       "about": {
         "item": "About",
         "version": "Version {version}"
       }
+    },
+    "multi-select": {
+      "defaultText": "Select at least one option",
+      "noOptions": "No options found"
     },
     "navbar": {
       "toggleContextMenu": "Toggle context menu"
