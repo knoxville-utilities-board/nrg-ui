@@ -1,9 +1,33 @@
 {
   "solution": {
-    "@nrg-ui/css": {
+    "@nrg-ui/version": {
       "impact": "minor",
-      "oldVersion": "0.12.0",
-      "newVersion": "0.13.0",
+      "oldVersion": "0.0.0",
+      "newVersion": "0.1.0",
+      "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        }
+      ],
+      "pkgJSONPath": "./packages/app-version/package.json"
+    },
+    "@nrg-ui/css": {
+      "impact": "patch",
+      "oldVersion": "0.13.0",
+      "newVersion": "0.13.1",
+      "constraints": [
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :memo: Documentation"
+        }
+      ],
+      "pkgJSONPath": "./packages/design-system/package.json"
+    },
+    "@nrg-ui/core": {
+      "impact": "minor",
+      "oldVersion": "0.23.0",
+      "newVersion": "0.24.0",
       "constraints": [
         {
           "impact": "minor",
@@ -11,19 +35,11 @@
         },
         {
           "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./packages/design-system/package.json"
-    },
-    "@nrg-ui/core": {
-      "impact": "minor",
-      "oldVersion": "0.22.0",
-      "newVersion": "0.23.0",
-      "constraints": [
+          "reason": "Appears in changelog section :bug: Bug Fix"
+        },
         {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
+          "impact": "patch",
+          "reason": "Appears in changelog section :memo: Documentation"
         },
         {
           "impact": "patch",
@@ -39,5 +55,5 @@
       "oldVersion": "0.2.0"
     }
   },
-  "description": "## Release (2025-01-08)\n\n@nrg-ui/css 0.13.0 (minor)\n@nrg-ui/core 0.23.0 (minor)\n\n#### :rocket: Enhancement\n* `test-app`, `@nrg-ui/css`, `@nrg-ui/core`\n  * [#330](https://github.com/knoxville-utilities-board/nrg-ui/pull/330) refactor(search): Rewrite using dropdown ([@TSenter](https://github.com/TSenter))\n  * [#327](https://github.com/knoxville-utilities-board/nrg-ui/pull/327) refactor(select): Rewrite using dropdown ([@TSenter](https://github.com/TSenter))\n* `docs-app`, `test-app`, `@nrg-ui/css`, `@nrg-ui/core`\n  * [#323](https://github.com/knoxville-utilities-board/nrg-ui/pull/323) feat: Create dropdown component ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `test-app`, `@nrg-ui/css`, `@nrg-ui/core`\n  * [#330](https://github.com/knoxville-utilities-board/nrg-ui/pull/330) refactor(search): Rewrite using dropdown ([@TSenter](https://github.com/TSenter))\n  * [#327](https://github.com/knoxville-utilities-board/nrg-ui/pull/327) refactor(select): Rewrite using dropdown ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/css`\n  * [#324](https://github.com/knoxville-utilities-board/nrg-ui/pull/324) chore: Move pagination styling to dedicated file ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-01-27)\n\n@nrg-ui/version 0.1.0 (minor)\n@nrg-ui/css 0.13.1 (patch)\n@nrg-ui/core 0.24.0 (minor)\n\n#### :rocket: Enhancement\n* `docs-app`, `@nrg-ui/core`\n  * [#345](https://github.com/knoxville-utilities-board/nrg-ui/pull/345) feat: Add optional delay to popover ([@ChesneyJulian](https://github.com/ChesneyJulian))\n* `docs-app`, `test-app`, `@nrg-ui/core`\n  * [#329](https://github.com/knoxville-utilities-board/nrg-ui/pull/329) feat: Add flip middleware to popover and tooltip ([@ChesneyJulian](https://github.com/ChesneyJulian))\n* `test-app`, `@nrg-ui/version`, `@nrg-ui/core`\n  * [#336](https://github.com/knoxville-utilities-board/nrg-ui/pull/336) feat: Create package to fetch application version ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `docs-app`, `@nrg-ui/core`\n  * [#342](https://github.com/knoxville-utilities-board/nrg-ui/pull/342) fix(search): Properly rehydrate serialized value ([@TSenter](https://github.com/TSenter))\n  * [#339](https://github.com/knoxville-utilities-board/nrg-ui/pull/339) fix(app-version): Null-check Embroider macro config ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#344](https://github.com/knoxville-utilities-board/nrg-ui/pull/344) chore: Update links in READMEs ([@ChesneyJulian](https://github.com/ChesneyJulian))\n* `docs-app`\n  * [#343](https://github.com/knoxville-utilities-board/nrg-ui/pull/343) chore(docs): Use correct components ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `docs-app`\n  * [#343](https://github.com/knoxville-utilities-board/nrg-ui/pull/343) chore(docs): Use correct components ([@TSenter](https://github.com/TSenter))\n* `docs-app`, `@nrg-ui/core`\n  * [#340](https://github.com/knoxville-utilities-board/nrg-ui/pull/340) refactor(docs): Convert to native types ([@TSenter](https://github.com/TSenter))\n* `docs-app`, `test-app`, `@nrg-ui/core`\n  * [#337](https://github.com/knoxville-utilities-board/nrg-ui/pull/337) refactor: Use native Ember types and rename docs components ([@TSenter](https://github.com/TSenter))\n* Other\n  * [#334](https://github.com/knoxville-utilities-board/nrg-ui/pull/334) chore(ci): Prefer offline dependencies when reasonable ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
