@@ -12,6 +12,7 @@ import Checkbox from './form/checkbox.gts';
 import Datetime from './form/datetime.gts';
 import Field from './form/field.gts';
 import Form from './form/index.gts';
+import MultiSelect from './form/multi-select.gts';
 import NumberInput from './form/number-input.gts';
 import PhoneInput from './form/phone-input.gts';
 import RadioGroup from './form/radio-group.gts';
@@ -54,6 +55,7 @@ export default {
   Checkbox,
   Datetime,
   Field,
+  MultiSelect,
   NumberInput,
   PhoneInput,
   RadioGroup,
