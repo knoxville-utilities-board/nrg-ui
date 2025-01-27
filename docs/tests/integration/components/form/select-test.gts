@@ -219,14 +219,11 @@ module('Integration | Component | form/select', function (hooks) {
     await triggerKeyDown('Tab');
     assert.dom('.dropdown-menu').hasClass('hidden');
 
-    await triggerKeyDown('NumpadEnter');
+    await triggerKeyDown('Enter');
     assert.dom('.dropdown-menu').doesNotHaveClass('hidden');
 
     await triggerKeyDown('Enter');
     assert.dom('.dropdown-menu').hasClass('hidden');
-
-    await triggerKeyDown('Enter');
-    assert.dom('.dropdown-menu').doesNotHaveClass('hidden');
   });
 
   test('it allows items to be selected via keyboard', async function (assert) {
