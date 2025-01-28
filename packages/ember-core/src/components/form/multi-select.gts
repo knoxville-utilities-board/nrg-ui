@@ -12,8 +12,8 @@ import Select from './select.gts';
 import { bind } from '../../helpers/bind.ts';
 import { classes } from '../../helpers/classes.ts';
 
-import type { Optional } from '../../index.ts';
-import type { Direction, PopoverVisibility } from '../popover.gts';
+import type { DropdownSignature, Optional } from '../../index.ts';
+import type { PopoverVisibility } from '../popover.gts';
 import type { TOC } from '@ember/component/template-only';
 import type { WithBoundArgs } from '@glint/template';
 import type { IntlService } from 'ember-intl';
@@ -28,18 +28,21 @@ declare type SelectOption<T> = {
 declare interface RemoveButtonSignature {
   Element: HTMLSpanElement;
   Args: {
+    disabled?: boolean;
     onClick: (evt: MouseEvent) => unknown;
   };
 }
 
 const RemoveButton: TOC<RemoveButtonSignature> = <template>
-  <span
-    aria-label={{t "nrg.base.remove"}}
-    class="btn-close btn-close-white"
-    type="button"
-    {{on "click" @onClick}}
-  >
-  </span>
+  {{#unless @disabled}}
+    <span
+      aria-label={{t "nrg.base.remove"}}
+      class="btn-close btn-close-white ms-2"
+      type="button"
+      {{on "click" @onClick}}
+    >
+    </span>
+  {{/unless}}
 </template>;
 
 export interface MultiSelectSignature<T> {
@@ -55,10 +58,11 @@ export interface MultiSelectSignature<T> {
     isInvalid?: boolean;
     isWarning?: boolean;
     loading?: boolean;
+    noOptionsText?: string;
+    noOptionsTextKey?: string;
     options: T[];
     scrollable?: boolean;
     serializationPath?: string | null;
-    side?: Direction;
 
     onAdd?: (value: T) => unknown;
     onRemove?: (value: T) => unknown;
@@ -72,10 +76,11 @@ export interface MultiSelectSignature<T> {
     selection?: [
       {
         value: T | undefined;
-        Remove: WithBoundArgs<typeof RemoveButton, 'onClick'>;
+        Remove: WithBoundArgs<typeof RemoveButton, 'disabled' | 'onClick'>;
       },
     ];
     empty?: [];
+    menu?: DropdownSignature['Blocks']['menu'];
   };
 }
 
@@ -105,7 +110,14 @@ export default class FormMultiSelect<T> extends BoundValue<
   get defaultText() {
     return (
       this.args.defaultText ??
-      this.intl.t(this.args.defaultTextKey ?? 'nrg.select.defaultText')
+      this.intl.t(this.args.defaultTextKey ?? 'nrg.multi-select.defaultText')
+    );
+  }
+
+  get noOptionsText() {
+    return (
+      this.args.noOptionsText ??
+      this.intl.t(this.args.noOptionsTextKey ?? 'nrg.multi-select.noOptions')
     );
   }
 
@@ -195,7 +207,13 @@ export default class FormMultiSelect<T> extends BoundValue<
         @binding={{bind this.self "lastSelection"}}
         @closeOnSelect={{this.closeOnSelect}}
         @defaultTextKey="nrg.multi-select.defaultText"
+        @disabled={{@disabled}}
+        @id={{@id}}
+        @isInvalid={{@isInvalid}}
+        @isWarning={{@isWarning}}
+        @loading={{@loading}}
         @options={{this.availableOptions}}
+        @scrollable={{@scrollable}}
         @onChange={{this.addItem}}
         ...attributes
         @serializationPath={{null}}
@@ -222,6 +240,17 @@ export default class FormMultiSelect<T> extends BoundValue<
             {{option.label}}
           {{/if}}
         </:option>
+        <:menu as |Menu|>
+          {{#if (has-block "menu")}}
+            {{yield Menu to="menu"}}
+          {{else}}
+            {{#unless this.availableOptions.length}}
+              <Menu.Item aria-disabled={{true}} @disabled={{true}}>
+                {{this.noOptionsText}}
+              </Menu.Item>
+            {{/unless}}
+          {{/if}}
+        </:menu>
       </Select>
       {{#if this.selectedOptions.length}}
         <div class="card-body">
@@ -231,7 +260,9 @@ export default class FormMultiSelect<T> extends BoundValue<
                 (hash
                   value=option.raw
                   Remove=(component
-                    RemoveButton onClick=(fn this.removeItem option i)
+                    RemoveButton
+                    disabled=@disabled
+                    onClick=(fn this.removeItem option i)
                   )
                 )
                 to="selection"
@@ -240,10 +271,12 @@ export default class FormMultiSelect<T> extends BoundValue<
               <span
                 class="badge text-bg-secondary d-inline-flex align-items-center"
               >
-                <span class="me-2">
+                <span>
                   {{option.label}}
                 </span>
-                <RemoveButton @onClick={{fn this.removeItem option i}} />
+                {{#unless @disabled}}
+                  <RemoveButton @onClick={{fn this.removeItem option i}} />
+                {{/unless}}
               </span>
             {{/if}}
           {{/each}}
