@@ -277,6 +277,7 @@ function getIgnoredFiles(priorConfig?: Linter.Config[]): string[] {
     const lines = content
       .split('\n')
       .map((line) => line.trim())
+      .map((line) => line.replace(/^\//, ''))
       .filter(Boolean)
       .filter((line) => !line.startsWith('#'))
       .filter((line) => !defaultIgnores.includes(line));
