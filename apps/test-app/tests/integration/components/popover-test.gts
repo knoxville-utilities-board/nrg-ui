@@ -89,11 +89,11 @@ module('Integration | Component | popover', function (hooks) {
       </Popover>
     </template>);
 
-    assert.dom('.popover').hasClass('hidden');
+    assert.dom('.popover').hasClass('d-none');
 
     await click('button');
 
-    assert.dom('.popover').doesNotHaveClass('hidden');
+    assert.dom('.popover').doesNotHaveClass('d-none');
 
     await click('button');
 
