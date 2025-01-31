@@ -270,7 +270,7 @@ export default class Popover extends Component<PopoverSignature> {
       <div
         id={{this.id}}
         class={{classes
-          (unless this.isShown "hidden")
+          (unless this.isShown "d-none")
           (concat "popover bs-popover-" this.adjustedSide)
         }}
         {{onInsert this.initPopover}}
