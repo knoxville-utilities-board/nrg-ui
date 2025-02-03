@@ -1,6 +1,7 @@
 'use strict';
+/* eslint-disable @typescript-eslint/no-require-imports */
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports
+const sideWatch = require('@embroider/broccoli-side-watch');
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function (defaults) {
@@ -9,8 +10,10 @@ module.exports = function (defaults) {
       enabled: false,
     },
     'ember-cli-babel': { enableTypeScriptTransform: true },
-    autoImport: {
-      watchDependencies: ['@nrg-ui/core', '@nrg-ui/css'],
+    trees: {
+      app: sideWatch('app', {
+        watching: ['@nrg-ui/core', '@nrg-ui/css'],
+      }),
     },
     '@embroider/macros': {
       setConfig: {
@@ -46,7 +49,6 @@ module.exports = function (defaults) {
     },
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const { maybeEmbroider } = require('@embroider/test-setup');
-  return maybeEmbroider(app);
+  const { Webpack } = require('@embroider/webpack');
+  return require('@embroider/compat').compatBuild(app, Webpack);
 };
