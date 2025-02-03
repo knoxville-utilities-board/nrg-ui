@@ -1,7 +1,6 @@
 'use strict';
 /* eslint-disable @typescript-eslint/no-require-imports */
 
-const { embroiderOptimized, embroiderSafe } = require('@embroider/test-setup');
 const getChannelURL = require('ember-source-channel-url');
 
 module.exports = async function () {
@@ -48,8 +47,6 @@ module.exports = async function () {
           },
         },
       },
-      embroiderSafe(),
-      embroiderOptimized(),
     ],
   };
 };

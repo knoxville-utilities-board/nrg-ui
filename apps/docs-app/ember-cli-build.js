@@ -5,7 +5,7 @@ const sideWatch = require('@embroider/broccoli-side-watch');
 const { getVersion } = require('@nrg-ui/version');
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-module.exports = async function (defaults) {
+module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
     minifyCSS: {
       enabled: false,
