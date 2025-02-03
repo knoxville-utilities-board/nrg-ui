@@ -30,6 +30,7 @@ import type { TextAreaSignature } from './text-area.gts';
 import type { TextInputSignature } from './text-input.gts';
 import type { Binding } from '../../';
 import type { ComponentLike } from '@glint/template';
+import type Owner from '@ember/owner';
 
 declare interface TextSignature {
   Element: HTMLDivElement;
@@ -73,7 +74,7 @@ export interface FieldSignature {
 }
 
 class Text extends Component<TextSignature> {
-  constructor(owner: unknown, args: TextSignature['Args']) {
+  constructor(owner: Owner, args: TextSignature['Args']) {
     super(owner, args);
 
     runTask(this, () => {
@@ -116,7 +117,7 @@ export default class Field extends Component<FieldSignature> {
   @tracked
   binding!: Binding<object>;
 
-  constructor(owner: unknown, args: FieldSignature['Args']) {
+  constructor(owner: Owner, args: FieldSignature['Args']) {
     super(owner, args);
 
     registerDestructor(this, () => {

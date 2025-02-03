@@ -20,6 +20,7 @@ import type { Binding } from '../../index.ts';
 import type { Validator, ValidatorBuilder } from '../../validation/types';
 import type { ButtonSignature } from '../button.gts';
 import type { ComponentLike } from '@glint/template';
+import type Owner from '@ember/owner';
 
 type Wrapper = {
   id: string;
@@ -78,7 +79,7 @@ export default class Form extends Component<FormSignature> implements FormType {
   staticValidations: Map<string, Wrapper[]>;
   bindings: Map<string, Binding>;
 
-  constructor(owner: unknown, args: FormSignature['Args']) {
+  constructor(owner: Owner, args: FormSignature['Args']) {
     super(owner, args);
 
     this.staticValidations = new TrackedMap();

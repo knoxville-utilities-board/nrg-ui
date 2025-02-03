@@ -10,6 +10,7 @@ import onInsert from '../modifiers/on-insert.ts';
 import onUpdate from '../modifiers/on-update.ts';
 
 import type ModalService from '../services/modal.ts';
+import type Owner from '@ember/owner';
 
 export interface ModalSignature {
   Element: HTMLDialogElement;
@@ -36,7 +37,7 @@ export default class Modal extends Component<ModalSignature> {
   @tracked
   dialogId = crypto.randomUUID();
 
-  constructor(owner: unknown, args: ModalSignature['Args']) {
+  constructor(owner: Owner, args: ModalSignature['Args']) {
     super(owner, args);
     registerDestructor(this, () => {
       if (this.args.isOpen) {

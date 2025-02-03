@@ -11,6 +11,7 @@ import onKey from 'ember-keyboard/modifiers/on-key';
 import { notEq } from 'ember-truth-helpers';
 
 import type { Dayjs, OpUnitType } from 'dayjs';
+import type Owner from '@ember/owner';
 
 const DAY_HEADERS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 const MINUTE_INTERVAL = 5;
@@ -62,7 +63,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
   @tracked
   isSelectingMinutes = false;
 
-  constructor(owner: unknown, args: DatetimeCalendarSignature['Args']) {
+  constructor(owner: Owner, args: DatetimeCalendarSignature['Args']) {
     super(owner, args);
     if (args.type === 'datetime' || args.type === 'date') {
       this.isSelectingDays = true;

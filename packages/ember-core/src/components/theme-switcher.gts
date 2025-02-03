@@ -5,6 +5,7 @@ import Component from '@glimmer/component';
 
 import type { Theme } from '../';
 import type ThemeService from '../services/theme.ts';
+import type Owner from '@ember/owner';
 
 export interface ThemeSwitcherSignature {
   Element: HTMLSpanElement;
@@ -20,7 +21,7 @@ export default class ThemeSwitcherComponent extends Component<ThemeSwitcherSigna
   @service('theme')
   declare themeService: ThemeService;
 
-  constructor(owner: unknown, args: object) {
+  constructor(owner: Owner, args: object) {
     super(owner, args);
     this.themeService.load();
   }
