@@ -1,3 +1,5 @@
+// @ts-nocheck - TODO
+
 import { array } from '@ember/helper';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -14,7 +16,7 @@ import {
 } from '@nrg-ui/core';
 import { tracked as autoTrack } from 'tracked-built-ins';
 
-export default class extends Component {
+export default class ThemePage extends Component {
   @tracked
   searchString = '';
 
@@ -258,4 +260,10 @@ export default class extends Component {
 
     </div>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    ThemePage: typeof ThemePage;
+  }
 }

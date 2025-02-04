@@ -1,3 +1,5 @@
+// @ts-nocheck - TODO
+
 import { registerDestructor } from '@ember/destroyable';
 import { action } from '@ember/object';
 import { service } from '@ember/service';

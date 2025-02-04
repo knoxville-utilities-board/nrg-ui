@@ -4,7 +4,7 @@ import { MktgCardContainer } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
-export default class extends Component {
+export default class CardContainerDemo extends Component {
   @tracked
   class = '';
 
@@ -49,4 +49,10 @@ export default class extends Component {
       </Section.subsection>
     </FreestyleSection>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'F::MktgComponents::CardContainer': typeof CardContainerDemo;
+  }
 }

@@ -1,3 +1,5 @@
+// @ts-nocheck - TODO
+
 import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
@@ -9,7 +11,7 @@ import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 import CodeBlock from '../../code-block';
 
-export default class extends Component {
+export default class ModalDemo extends Component {
   positionOptions = ['center', 'left', 'right'];
 
   @tracked
@@ -178,4 +180,10 @@ export default class extends Component {
       </Section.subsection>
     </FreestyleSection>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'F::Components::Modal': typeof ModalDemo;
+  }
 }

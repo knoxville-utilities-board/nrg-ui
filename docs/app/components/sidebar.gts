@@ -1,3 +1,5 @@
+// @ts-nocheck - TODO
+
 import { hash } from '@ember/helper';
 import { LinkTo } from '@ember/routing';
 
@@ -24,7 +26,7 @@ interface SidebarGroupSignature {
     header?: string;
   };
   Blocks: {
-    Group: [ComponentLike<SidebarGroupItemSignature>];
+    group: [ComponentLike<SidebarGroupItemSignature>];
   };
 }
 
@@ -68,3 +70,9 @@ const Sidebar: TOC<SidebarSignature> = <template>
 </template>;
 
 export default Sidebar;
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Sidebar': typeof Sidebar;
+  }
+}

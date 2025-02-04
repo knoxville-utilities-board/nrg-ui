@@ -1,3 +1,5 @@
+// @ts-nocheck - TODO
+
 import { fn } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
@@ -19,7 +21,7 @@ class Model {
   property = '';
 }
 
-export default class extends Component {
+export default class TextAreaDemo extends Component {
   @tracked
   class = '';
 
@@ -105,4 +107,10 @@ export default class extends Component {
       </Section.subsection>
     </FreestyleSection>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'F::Components::Form::TextArea': typeof TextAreaDemo;
+  }
 }

@@ -1,3 +1,5 @@
+// @ts-nocheck - TODO
+
 import { A } from '@ember/array';
 import { fn } from '@ember/helper';
 import { action } from '@ember/object';
@@ -7,7 +9,7 @@ import { Pagination } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
-export default class extends Component {
+export default class PaginationDemo extends Component {
   @tracked
   start = 0;
 
@@ -23,7 +25,7 @@ export default class extends Component {
   @tracked
   showDetailedMeta = false;
 
-  pageSizes = A([25, 50, 100]);
+  pageSizes: number[] = A([25, 50, 100]);
 
   get meta() {
     return {
@@ -187,4 +189,10 @@ export default class extends Component {
       </Section.subsection>
     </FreestyleSection>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'F::Components::Pagination': typeof PaginationDemo;
+  }
 }

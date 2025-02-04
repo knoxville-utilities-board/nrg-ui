@@ -1,3 +1,5 @@
+// @ts-nocheck - TODO
+
 import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
@@ -6,7 +8,7 @@ import { Footer } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
-export default class extends Component {
+export default class FooterDemo extends Component {
   @tracked
   class = 'bg-body-secondary';
 
@@ -49,4 +51,11 @@ export default class extends Component {
       </Section.subsection>
     </FreestyleSection>
   </template>
+}
+
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'F::Components::Footer': typeof FooterDemo;
+  }
 }

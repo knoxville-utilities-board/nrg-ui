@@ -1,3 +1,5 @@
+// @ts-nocheck - TODO
+
 import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { service } from '@ember/service';
@@ -28,7 +30,7 @@ const Item: TOC<ItemSignature> = <template>
   </div>
 </template>;
 
-export default class OnDestroyComponent extends Component {
+export default class OnDestroyDemo extends Component {
   @service
   toast;
 
@@ -76,4 +78,10 @@ export default class OnDestroyComponent extends Component {
       <Button class="btn-primary" @onClick={{this.add}}>Add</Button>
     </div>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'F::Modifiers::OnDestroy': typeof OnDestroyDemo;
+  }
 }

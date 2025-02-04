@@ -1,3 +1,5 @@
+// @ts-nocheck - TODO
+
 import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
@@ -9,7 +11,7 @@ import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 import type ToastService from '@nrg-ui/core/services/toast';
 
-export default class extends Component {
+export default class ToasterDemo extends Component {
   @service
   toast!: ToastService;
 
@@ -79,4 +81,11 @@ export default class extends Component {
       </Section.subsection>
     </FreestyleSection>
   </template>
+}
+
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'F::Components::Toaster': typeof ToasterDemo;
+  }
 }

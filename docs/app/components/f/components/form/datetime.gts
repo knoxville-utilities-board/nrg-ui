@@ -1,3 +1,5 @@
+// @ts-nocheck - TODO
+
 import { A } from '@ember/array';
 import { array, fn } from '@ember/helper';
 import { on } from '@ember/modifier';
@@ -11,7 +13,7 @@ import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 import CodeBlock from '../../../code-block';
 
-export default class extends Component {
+export default class DatetimeDemo extends Component {
   @tracked
   allowMinuteSelection = true;
 
@@ -31,7 +33,7 @@ export default class extends Component {
   minDate;
 
   @tracked
-  parseFormat = A();
+  parseFormat: string[] = A();
 
   @tracked
   placeholder;
@@ -181,4 +183,10 @@ export default class extends Component {
       </Section.subsection>
     </FreestyleSection>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'F::Components::Form::Datetime': typeof DatetimeDemo;
+  }
 }

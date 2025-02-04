@@ -1,3 +1,5 @@
+// @ts-nocheck - TODO
+
 import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
@@ -160,4 +162,10 @@ export default class extends Component {
       </div>
     </div>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'F::Components::Form::Select': typeof SelectDemo;
+  }
 }

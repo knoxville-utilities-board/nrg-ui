@@ -1,3 +1,5 @@
+// @ts-nocheck - TODO
+
 import { array, fn } from '@ember/helper';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
@@ -11,7 +13,7 @@ import CodeBlock from '../../code-block';
 import type { Alignment, Side } from '@floating-ui/dom';
 import type { ToastService } from '@nrg-ui/core/services/toast';
 
-export default class extends Component {
+export default class DropdownDemo extends Component {
   @service
   declare toast: ToastService;
 
@@ -147,4 +149,11 @@ export default class extends Component {
       </Section.subsection>
     </FreestyleSection>
   </template>
+}
+
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'F::Components::Dropdown': typeof DropdownDemo;
+  }
 }

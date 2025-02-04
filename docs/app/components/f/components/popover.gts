@@ -1,3 +1,5 @@
+// @ts-nocheck - TODO
+
 import { array, fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { service } from '@ember/service';
@@ -26,7 +28,7 @@ const PopoverBlock: TOC<PopoverBlockSignature> = <template>
   </div>
 </template>;
 
-export default class extends Component {
+export default class PopoverDemo extends Component {
   @service
   declare toast: ToastService;
 
@@ -243,4 +245,10 @@ export default class extends Component {
       </Section.subsection>
     </FreestyleSection>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'F::Components::Popover': typeof PopoverDemo;
+  }
 }

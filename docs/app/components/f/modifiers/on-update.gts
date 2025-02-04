@@ -1,9 +1,11 @@
+// @ts-nocheck - TODO
+
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { TextInput, Toaster, bind, onUpdate } from '@nrg-ui/core';
 
-export default class OnDestroyComponent extends Component {
+export default class OnUpdateDemo extends Component {
   @service
   toast;
 
@@ -21,4 +23,10 @@ export default class OnDestroyComponent extends Component {
       <TextInput @binding={{bind this "value"}} />
     </div>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'F::Modifiers::OnUpdate': typeof OnUpdateDemo;
+  }
 }

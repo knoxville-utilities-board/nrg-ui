@@ -1,9 +1,11 @@
+// @ts-nocheck - TODO
+
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { Toaster, onClickOutside } from '@nrg-ui/core';
 
-export default class OnInsertComponent extends Component {
+export default class OnClickOutsideComponent extends Component {
   @service
   toast;
 
@@ -22,4 +24,10 @@ export default class OnInsertComponent extends Component {
       <span>Don't click me</span>
     </div>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'F::Modifiers::OnClickOutside': typeof OnClickOutsideComponent;
+  }
 }

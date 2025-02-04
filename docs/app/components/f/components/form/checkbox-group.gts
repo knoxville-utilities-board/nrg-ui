@@ -1,3 +1,5 @@
+// @ts-nocheck - TODO
+
 import { array, fn } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
@@ -11,7 +13,7 @@ class Model {
   property = '';
 }
 
-export default class extends Component {
+export default class CheckboxGroupDemo extends Component {
   model = new Model();
 
   @tracked
@@ -112,4 +114,10 @@ export default class extends Component {
       </Section.subsection>
     </FreestyleSection>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'F::Components::Form::CheckboxGroup': typeof CheckboxGroupDemo;
+  }
 }

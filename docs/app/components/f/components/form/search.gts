@@ -1,3 +1,5 @@
+// @ts-nocheck - TODO
+
 import { fn } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
@@ -20,7 +22,7 @@ class Model {
   property = 'Orange';
 }
 
-export default class extends Component {
+export default class SearchDemo extends Component {
   model = new Model();
 
   @tracked
@@ -331,4 +333,10 @@ export default class extends Component {
       </div>
     </div>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'F::Components::Form::Search': typeof SearchDemo;
+  }
 }

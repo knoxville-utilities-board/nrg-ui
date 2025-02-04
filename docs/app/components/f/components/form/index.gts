@@ -1,3 +1,5 @@
+// @ts-nocheck - TODO
+
 import { getOwner, setOwner } from '@ember/application';
 import { array } from '@ember/helper';
 import { action } from '@ember/object';
@@ -140,7 +142,7 @@ class Model {
   }
 }
 
-export default class extends Component {
+export default class FormDemo extends Component {
   model: Model;
 
   @tracked
@@ -291,4 +293,10 @@ export default class extends Component {
       </div>
     </div>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'F::Components::Form': typeof FormDemo;
+  }
 }

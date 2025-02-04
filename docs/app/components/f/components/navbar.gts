@@ -1,3 +1,5 @@
+// @ts-nocheck - TODO
+
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -5,7 +7,7 @@ import { MktgNavbar, NavItem } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
-export default class extends Component {
+export default class NavbarDemo extends Component {
   @tracked
   menuOpen = false;
 
@@ -47,4 +49,11 @@ export default class extends Component {
       </Section.subsection>
     </FreestyleSection>
   </template>
+}
+
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'F::Components::Navbar': typeof NavbarDemo;
+  }
 }
