@@ -16,7 +16,7 @@ You will need the following things properly installed on your computer.
 ## Installation
 
 - `git clone <repository-url>` this repository
-- `cd docs-app`
+- `cd apps/docs-app`
 - `pnpm install`
 
 ## Running / Development

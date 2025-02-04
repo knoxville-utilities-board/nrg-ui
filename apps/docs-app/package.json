@@ -23,7 +23,8 @@
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
     "start": "ember serve",
-    "test": "echo 'The docs-app does not have tests, run tests in test-app'"
+    "test": "concurrently \"pnpm:test:*\" --names \"test:\"",
+    "test:ember": "ember test"
   },
   "devDependencies": {
     "@babel/core": "^7.26.7",
