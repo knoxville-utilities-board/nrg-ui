@@ -102,6 +102,9 @@ importers:
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
+      dayjs:
+        specifier: ^1.11.13
+        version: 1.11.13
       ember-auto-import:
         specifier: ^2.10.0
         version: 2.10.0(@glint/template@1.5.2)(webpack@5.97.1)
