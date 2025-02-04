@@ -70,6 +70,15 @@ jobs:
           node-version: 20
           cache: pnpm
 
+      - name: Restore dependency cache
+        id: cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.local/share/pnpm/store
+          key: node-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            node-
+
       - name: Install Dependencies
         run: pnpm install --no-lockfile --prefer-offline
 
