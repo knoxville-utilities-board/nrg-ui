@@ -2,7 +2,7 @@ import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/core';
 import { BaseValidator } from '@nrg-ui/core/validation';
-import { setupTest } from 'docs-app/tests/helpers';
+import { setupTest } from 'docs/tests/helpers';
 import { addTranslations, setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';
 

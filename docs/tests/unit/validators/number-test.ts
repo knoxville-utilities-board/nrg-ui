@@ -5,7 +5,7 @@ import {
   NumberValidator,
   validator as buildValidator,
 } from '@nrg-ui/core/validation';
-import { setupTest } from 'docs-app/tests/helpers';
+import { setupTest } from 'docs/tests/helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';
 

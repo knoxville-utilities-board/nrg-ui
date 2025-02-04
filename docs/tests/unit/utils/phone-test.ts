@@ -17,7 +17,7 @@ import {
   lineNumberInput,
   lineNumberOutput,
 } from '@nrg-ui/core/utils/phone';
-import { setupTest } from 'docs-app/tests/helpers';
+import { setupTest } from 'docs/tests/helpers';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | phone', function (hooks) {

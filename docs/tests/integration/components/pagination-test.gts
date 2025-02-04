@@ -2,7 +2,7 @@ import { click, fillIn, render } from '@ember/test-helpers';
 import { settled } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import Pagination from '@nrg-ui/core/components/pagination';
-import { setupRenderingTest } from 'docs-app/tests/helpers';
+import { setupRenderingTest } from 'docs/tests/helpers';
 import { module, test } from 'qunit';
 
 import type { TestContext as BaseTestContext } from '@ember/test-helpers';

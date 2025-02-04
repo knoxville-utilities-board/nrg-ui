@@ -1,6 +1,6 @@
 import { render, triggerEvent } from '@ember/test-helpers';
 import BaseTooltip from '@nrg-ui/core/components/tooltip';
-import { setupRenderingTest } from 'docs-app/tests/helpers';
+import { setupRenderingTest } from 'docs/tests/helpers';
 import { module, test } from 'qunit';
 
 import type { TOC } from '@ember/component/template-only';

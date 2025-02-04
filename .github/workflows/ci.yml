@@ -121,4 +121,4 @@ jobs:
 
       - name: Run Tests
         run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }} --skip-cleanup
-        working-directory: apps/docs-app
+        working-directory: docs

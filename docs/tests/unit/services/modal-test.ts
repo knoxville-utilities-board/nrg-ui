@@ -1,4 +1,4 @@
-import { setupTest } from 'docs-app/tests/helpers';
+import { setupTest } from 'docs/tests/helpers';
 import { module, test } from 'qunit';
 
 import type Modal from '@nrg-ui/core/services/modal';

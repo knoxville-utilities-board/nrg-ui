@@ -7,8 +7,8 @@
     "lib": ["DOM", "ES2016"],
     "baseUrl": ".",
     "paths": {
-      "docs-app/tests/*": ["tests/*"],
-      "docs-app/*": ["app/*"],
+      "docs/tests/*": ["tests/*"],
+      "docs/*": ["app/*"],
       "*": ["types/*"]
     }
   }

@@ -1,6 +1,6 @@
 import { render } from '@ember/test-helpers';
 import { version } from '@nrg-ui/core/helpers/version';
-import { setupRenderingTest } from 'docs-app/tests/helpers';
+import { setupRenderingTest } from 'docs/tests/helpers';
 import { module, test } from 'qunit';
 
 module('Integration | Helper | version', function (hooks) {

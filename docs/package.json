@@ -1,8 +1,8 @@
 {
-  "name": "docs-app",
+  "name": "docs",
   "version": "0.0.0",
   "private": true,
-  "description": "Test app for @nrg-ui/core addon",
+  "description": "Documentation for @nrg-ui/core addon",
   "repository": "",
   "license": "MIT",
   "author": "",
