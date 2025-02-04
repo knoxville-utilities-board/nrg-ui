@@ -89,6 +89,7 @@
     "test": "echo 'A v2 addon does not have tests, run tests in test-app'"
   },
   "dependencies": {
+    "@ember/string": "^4.0.0",
     "@embroider/addon-shim": "^1.9.0",
     "@embroider/macros": "^1.16.10",
     "@floating-ui/dom": "^1.6.13",
@@ -106,7 +107,7 @@
     "@babel/runtime": "^7.26.7",
     "@bertdeblock/gember": "^0.6.0",
     "@embroider/addon-dev": "^4.3.1",
-    "@glimmer/component": "^2.0.0",
+    "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "@glint/core": "^1.5.2",
     "@glint/environment-ember-loose": "^1.5.2",
@@ -143,6 +144,7 @@
     "webpack": "^5.97.1"
   },
   "peerDependencies": {
+    "@ember/string": "^4.0.0",
     "@glimmer/component": ">= 1.1.2",
     "@glimmer/tracking": ">= 1.1.2",
     "@nrg-ui/css": "workspace:^0",
@@ -151,6 +153,7 @@
     "ember-concurrency": "^4.0.2",
     "ember-css-transitions": "^4.4.0",
     "ember-intl": "^7.0.4",
+    "ember-responsive": "^5.0.0",
     "ember-source": "^5.12.0 || ^6.0.0",
     "ember-truth-helpers": "^4.0.3",
     "tracked-built-ins": "^3.4.0",

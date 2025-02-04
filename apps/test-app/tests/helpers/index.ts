@@ -1,3 +1,4 @@
+import '@ember/string';
 import { setupIntl } from 'ember-intl/test-support';
 import {
   setupApplicationTest as upstreamSetupApplicationTest,
