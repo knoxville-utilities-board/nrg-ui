@@ -36,6 +36,12 @@ module.exports = async function (defaults) {
     },
   });
 
+  if (app.env !== 'production') {
+    app.options['@embroider/macros']['setConfig']['@nrg-ui/core'][
+      'appVersion'
+    ] = 'version-v1';
+  }
+
   app.import('node_modules/@nrg-ui/css/dist/main.css');
   app.import(
     'node_modules/@nrg-ui/css/dist/assets/icons/fonts/bootstrap-icons.woff',
