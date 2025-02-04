@@ -2,9 +2,9 @@ import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/core';
 import { BaseValidator } from '@nrg-ui/core/validation';
+import { setupTest } from 'docs-app/tests/helpers';
 import { addTranslations, setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';
-import { setupTest } from 'test-app/tests/helpers';
 
 import type Owner from '@ember/owner';
 import type { TestContext as TC } from '@ember/test-helpers';

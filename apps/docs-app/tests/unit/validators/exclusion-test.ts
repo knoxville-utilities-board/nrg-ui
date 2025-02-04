@@ -2,19 +2,19 @@ import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/core';
 import {
-  InclusionValidator,
+  ExclusionValidator,
   validator as buildValidator,
 } from '@nrg-ui/core/validation';
+import { setupTest } from 'docs-app/tests/helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';
-import { setupTest } from 'test-app/tests/helpers';
 
 import type { TestContext as TC } from '@ember/test-helpers';
 import type { Binding } from '@nrg-ui/core';
 
 class Model {
   @tracked
-  field?: string | string[];
+  field?: string;
 }
 
 declare type TestContext = {
@@ -22,7 +22,7 @@ declare type TestContext = {
   model: Model;
 } & TC;
 
-module('Unit | Validator | inclusion', function (hooks) {
+module('Unit | Validator | exclusion', function (hooks) {
   setupTest(hooks);
   setupIntl(hooks, 'en-us');
 
@@ -38,17 +38,17 @@ module('Unit | Validator | inclusion', function (hooks) {
 
     assert.throws(() => {
       // @ts-expect-error Testing that the `in` option is required
-      const validator = new InclusionValidator(this.binding, {}, this);
+      const validator = new ExclusionValidator(this.binding, {}, this);
 
       assert.notOk(
         true,
         'Expected an error, but got a result instead: ' + validator.result,
       );
-    }, new Error('Assertion Failed: InclusionValidator requires an array of valid values to be provided'));
+    }, new Error('Assertion Failed: ExclusionValidator requires an array of invalid values to be provided'));
   });
 
   test('response is good when validation passes', function (this: TestContext, assert) {
-    const validator = new InclusionValidator(
+    const validator = new ExclusionValidator(
       this.binding,
       {
         in: ['A', 'B', 'C'],
@@ -56,16 +56,14 @@ module('Unit | Validator | inclusion', function (hooks) {
       this.model,
     );
 
-    this.model.field = 'B';
-
     assert.isValid(validator.result);
   });
 
   test('response is bad when validation fails', function (this: TestContext, assert) {
-    const validator = new InclusionValidator(
+    const validator = new ExclusionValidator(
       this.binding,
       {
-        in: ['A', 'B', 'C'],
+        in: ['A', 'B', 'C', 'D'],
       },
       this.model,
     );
@@ -74,13 +72,13 @@ module('Unit | Validator | inclusion', function (hooks) {
 
     assert.isInvalid(
       validator.result,
-      'This field is not a valid value. Valid values are: A, B, and C',
+      'This field is not a valid value. Value cannot be: A, B, C, and D',
     );
   });
 
   test('works with `validator` function', function (this: TestContext, assert) {
-    const builder = buildValidator('inclusion', {
-      in: ['A', 'B', 'C'],
+    const builder = buildValidator('exclusion', {
+      in: ['A', 'B', 'C', 'D'],
     });
     const validator = builder(this.binding, this.model);
 
@@ -88,7 +86,7 @@ module('Unit | Validator | inclusion', function (hooks) {
 
     assert.isInvalid(
       validator.result,
-      'This field is not a valid value. Valid values are: A, B, and C',
+      'This field is not a valid value. Value cannot be: A, B, C, and D',
     );
   });
 });

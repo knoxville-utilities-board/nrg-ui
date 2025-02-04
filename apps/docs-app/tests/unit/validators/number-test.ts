@@ -5,9 +5,9 @@ import {
   NumberValidator,
   validator as buildValidator,
 } from '@nrg-ui/core/validation';
+import { setupTest } from 'docs-app/tests/helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';
-import { setupTest } from 'test-app/tests/helpers';
 
 import type { TestContext as TC } from '@ember/test-helpers';
 import type { Binding } from '@nrg-ui/core';

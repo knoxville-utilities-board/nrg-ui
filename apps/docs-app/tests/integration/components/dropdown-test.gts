@@ -1,8 +1,8 @@
 import { fn } from '@ember/helper';
 import { click, render } from '@ember/test-helpers';
 import Dropdown from '@nrg-ui/core/components/dropdown';
+import { setupRenderingTest } from 'docs-app/tests/helpers';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'test-app/tests/helpers';
 
 module('Integration | Component | dropdown', function (hooks) {
   setupRenderingTest(hooks);
