@@ -1,5 +1,31 @@
 # Changelog
 
+## Release (2025-02-06)
+
+@nrg-ui/css 0.13.2 (patch)
+@nrg-ui/core 0.25.0 (minor)
+@nrg-ui/standards 0.4.1 (patch)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#348](https://github.com/knoxville-utilities-board/nrg-ui/pull/348) refactor: Use d-none instead of hidden for popovers ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`
+  * [#353](https://github.com/knoxville-utilities-board/nrg-ui/pull/353) fix(modal): Correct styling and focus when dismissible ([@ChesneyJulian](https://github.com/ChesneyJulian))
+* `@nrg-ui/standards`
+  * [#347](https://github.com/knoxville-utilities-board/nrg-ui/pull/347) fix(standards): Remove leading slashes from ignored files ([@TSenter](https://github.com/TSenter))
+* `docs`, `@nrg-ui/core`, `@nrg-ui/standards`
+  * [#352](https://github.com/knoxville-utilities-board/nrg-ui/pull/352) refactor: Merge docs-app and test-app into docs ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `docs`, `@nrg-ui/core`, `@nrg-ui/standards`
+  * [#352](https://github.com/knoxville-utilities-board/nrg-ui/pull/352) refactor: Merge docs-app and test-app into docs ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-01-27)
 
 @nrg-ui/version 0.1.0 (minor)
