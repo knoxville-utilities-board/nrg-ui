@@ -86,7 +86,7 @@
     "start": "concurrently 'pnpm:start:*'",
     "start:js": "rollup --config --watch --no-watch.clearScreen",
     "start:types": "glint --declaration --watch",
-    "test": "echo 'A v2 addon does not have tests, run tests in test-app'"
+    "test": "echo 'A v2 addon does not have tests, run tests in docs'"
   },
   "dependencies": {
     "@embroider/addon-shim": "^1.9.0",
@@ -106,6 +106,8 @@
     "@babel/runtime": "^7.26.7",
     "@bertdeblock/gember": "^0.6.0",
     "@embroider/addon-dev": "^4.3.1",
+    "@glimmer/component": "^1.1.2",
+    "@glimmer/tracking": "^1.1.2",
     "@glint/core": "^1.5.2",
     "@glint/environment-ember-loose": "^1.5.2",
     "@glint/environment-ember-template-imports": "^1.5.2",
@@ -121,6 +123,7 @@
     "ember-concurrency": "^4.0.2",
     "ember-template-imports": "^4.2.0",
     "ember-template-lint": "^5.13.0",
+    "ember-truth-helpers": "^4.0.3",
     "eslint": "^9.19.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-webpack": "^0.13.10",

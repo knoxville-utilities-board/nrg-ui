@@ -8,7 +8,7 @@
   "author": "",
   "scripts": {
     "build": "pnpm --filter '@nrg-ui/*' build",
-    "build-docs": "pnpm --filter 'docs-app' build",
+    "build-docs": "pnpm --filter docs build",
     "format": "pnpm --filter '*' format",
     "gember": "pnpm --filter '@nrg-ui/core' run generate",
     "gember:component": "pnpm --filter @nrg-ui/core run generate component",
@@ -21,8 +21,7 @@
     "start": "concurrently 'pnpm:start:*' --restart-tries -1 --restart-after 3000 --prefix-colors cyan,white,yellow,green",
     "start:addon": "pnpm --filter @nrg-ui/core start --no-watch.clearScreen",
     "start:design-system": "pnpm --filter @nrg-ui/css start",
-    "start:docs-app": "pnpm --filter docs-app start",
-    "start:test-app": "pnpm --filter test-app start --port 4201",
+    "start:docs": "pnpm --filter docs start",
     "test": "pnpm --filter '*' test",
     "test:ember": "pnpm --filter '*' test:ember"
   },

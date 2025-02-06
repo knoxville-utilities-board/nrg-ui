@@ -37,6 +37,7 @@ import Progress from './components/progress.gts';
 import ThemeSwitcher from './components/theme-switcher.gts';
 import Toaster from './components/toaster.gts';
 import Bind from './helpers/bind.ts';
+import Version from './helpers/version.ts';
 import OnClickOutside from './modifiers/on-click-outside.ts';
 import OnInsert from './modifiers/on-insert.ts';
 import OnUpdate from './modifiers/on-update.ts';
@@ -89,6 +90,7 @@ export interface ComponentRegistry {
 
 export interface HelperRegistry {
   bind: typeof Bind;
+  version: typeof Version;
 }
 
 export interface ModifierRegistry {

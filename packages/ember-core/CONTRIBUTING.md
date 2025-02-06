@@ -32,17 +32,17 @@ By default, all modules will be generated as TypeScript files with a backing cla
 
 ## Running tests
 
-- `cd apps/test-app`
+- `cd docs`
 - `pnpm test` – Runs the test suite on the current Ember version
 - `pnpm test:watch` – Runs the test suite in "watch mode"
 
 ### Ember Try
 
-This project uses [ember-try](https://github.com/ember-cli/ember-try) to test against multiple versions of Ember. To run the test suite against all supported versions of Ember, run `pnpm --filter 'test-app' exec ember try:each --skip-cleanup`.
+This project uses [ember-try](https://github.com/ember-cli/ember-try) to test against multiple versions of Ember. To run the test suite against all supported versions of Ember, run `pnpm --filter docs exec ember try:each --skip-cleanup`.
 
 ## Running the test application
 
-- `cd apps/test-app`
+- `cd docs`
 - `pnpm start`
 - Visit the test application at [http://localhost:4200](http://localhost:4200).
 

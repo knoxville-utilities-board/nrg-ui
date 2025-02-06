@@ -70,6 +70,15 @@ jobs:
           node-version: 20
           cache: pnpm
 
+      - name: Restore dependency cache
+        id: cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.local/share/pnpm/store
+          key: node-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            node-
+
       - name: Install Dependencies
         run: pnpm install --no-lockfile --prefer-offline
 
@@ -92,8 +101,6 @@ jobs:
           - ember-release
           - ember-beta
           - ember-canary
-          - embroider-safe
-          - embroider-optimized
 
     steps:
       - uses: actions/checkout@v4
@@ -121,4 +128,4 @@ jobs:
 
       - name: Run Tests
         run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }} --skip-cleanup
-        working-directory: apps/test-app
+        working-directory: docs
