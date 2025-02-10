@@ -35,7 +35,7 @@
     "@nrg-ui/standards": "workspace:*",
     "@types/eslint": "^9.6.1",
     "@types/node": "^22.13.1",
-    "eslint": "^9.19.0",
+    "eslint": "^9.20.0",
     "eslint-plugin-decorator-position": "^6.0.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-n": "^16.0.0",
