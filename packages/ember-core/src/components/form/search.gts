@@ -154,7 +154,11 @@ export default class Search<T> extends BoundValue<
   get displayValue(): string {
     const { value } = this;
     const isStringValue = typeof value === 'string';
-    const isStringOption = this.selectedOption?.value === value;
+    const isStringOption = typeof this.selectedOption?.value === 'string';
+
+    if (!value) {
+      return '';
+    }
 
     if (
       isStringValue ||
@@ -404,7 +408,7 @@ export default class Search<T> extends BoundValue<
           {{#let (eq this.activeIndex index) as |isActive|}}
             <Menu.Item
               aria-selected={{isActive}}
-              class={{if isActive "active"}}
+              class={{classes "d-inline-block" (if isActive "active")}}
               @onSelect={{fn this.selectOption option index}}
             >
               {{option.label}}
