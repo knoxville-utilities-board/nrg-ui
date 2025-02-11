@@ -154,7 +154,11 @@ export default class Search<T> extends BoundValue<
   get displayValue(): string {
     const { value } = this;
     const isStringValue = typeof value === 'string';
-    const isStringOption = this.selectedOption?.value === value;
+    const isStringOption = typeof this.selectedOption?.value === 'string';
+
+    if (!value) {
+      return '';
+    }
 
     if (
       isStringValue ||
