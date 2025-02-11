@@ -404,7 +404,7 @@ export default class Search<T> extends BoundValue<
           {{#let (eq this.activeIndex index) as |isActive|}}
             <Menu.Item
               aria-selected={{isActive}}
-              class={{if isActive "active"}}
+              class={{classes "d-inline-block" (if isActive "active")}}
               @onSelect={{fn this.selectOption option index}}
             >
               {{option.label}}
