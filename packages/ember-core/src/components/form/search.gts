@@ -415,7 +415,7 @@ export default class Search<T> extends BoundValue<
             </Menu.Item>
           {{/let}}
         {{else}}
-          <Menu.Item class="disabled">
+          <Menu.Item @disabled={{true}}>
             {{this.noResultsLabel}}
           </Menu.Item>
         {{/each}}
