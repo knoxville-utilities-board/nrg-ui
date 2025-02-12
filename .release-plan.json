@@ -5,8 +5,8 @@
     },
     "@nrg-ui/css": {
       "impact": "patch",
-      "oldVersion": "0.13.1",
-      "newVersion": "0.13.2",
+      "oldVersion": "0.13.2",
+      "newVersion": "0.13.3",
       "constraints": [
         {
           "impact": "patch",
@@ -16,44 +16,23 @@
       "pkgJSONPath": "./packages/design-system/package.json"
     },
     "@nrg-ui/core": {
-      "impact": "minor",
-      "oldVersion": "0.24.0",
-      "newVersion": "0.25.0",
+      "impact": "patch",
+      "oldVersion": "0.25.0",
+      "newVersion": "0.25.1",
       "constraints": [
-        {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        },
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
     },
     "@nrg-ui/standards": {
-      "impact": "patch",
-      "oldVersion": "0.4.0",
-      "newVersion": "0.4.1",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./packages/standards/package.json"
+      "oldVersion": "0.4.1"
     },
     "@nrg-ui/theme-generator": {
       "oldVersion": "0.2.0"
     }
   },
-  "description": "## Release (2025-02-06)\n\n@nrg-ui/css 0.13.2 (patch)\n@nrg-ui/core 0.25.0 (minor)\n@nrg-ui/standards 0.4.1 (patch)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#348](https://github.com/knoxville-utilities-board/nrg-ui/pull/348) refactor: Use d-none instead of hidden for popovers ([@ChesneyJulian](https://github.com/ChesneyJulian))\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`\n  * [#353](https://github.com/knoxville-utilities-board/nrg-ui/pull/353) fix(modal): Correct styling and focus when dismissible ([@ChesneyJulian](https://github.com/ChesneyJulian))\n* `@nrg-ui/standards`\n  * [#347](https://github.com/knoxville-utilities-board/nrg-ui/pull/347) fix(standards): Remove leading slashes from ignored files ([@TSenter](https://github.com/TSenter))\n* `docs`, `@nrg-ui/core`, `@nrg-ui/standards`\n  * [#352](https://github.com/knoxville-utilities-board/nrg-ui/pull/352) refactor: Merge docs-app and test-app into docs ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `docs`, `@nrg-ui/core`, `@nrg-ui/standards`\n  * [#352](https://github.com/knoxville-utilities-board/nrg-ui/pull/352) refactor: Merge docs-app and test-app into docs ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-02-12)\n\n@nrg-ui/css 0.13.3 (patch)\n@nrg-ui/core 0.25.1 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#358](https://github.com/knoxville-utilities-board/nrg-ui/pull/358) fix(select,search): Show validation messages ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/core`\n  * [#359](https://github.com/knoxville-utilities-board/nrg-ui/pull/359) fix(search): Modify display value for objects ([@Trishu-Patel](https://github.com/Trishu-Patel))\n\n#### Committers: 2\n- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
