@@ -1,5 +1,20 @@
 # Changelog
 
+## Release (2025-02-12)
+
+@nrg-ui/css 0.13.3 (patch)
+@nrg-ui/core 0.25.1 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#358](https://github.com/knoxville-utilities-board/nrg-ui/pull/358) fix(select,search): Show validation messages ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`
+  * [#359](https://github.com/knoxville-utilities-board/nrg-ui/pull/359) fix(search): Modify display value for objects ([@Trishu-Patel](https://github.com/Trishu-Patel))
+
+#### Committers: 2
+- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-02-06)
 
 @nrg-ui/css 0.13.2 (patch)
