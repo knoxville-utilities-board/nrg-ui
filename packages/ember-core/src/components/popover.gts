@@ -41,7 +41,7 @@ export interface BodySignature {
 }
 
 const Body: TOC<BodySignature> = <template>
-  <div class="popover-body" ...attributes>
+  <div class="popover-body min-w-fit" ...attributes>
     {{yield}}
   </div>
 </template>;
@@ -272,6 +272,7 @@ export default class Popover extends Component<PopoverSignature> {
         class={{classes
           (unless this.isShown "d-none")
           (concat "popover bs-popover-" this.adjustedSide)
+          "overflow-x-auto"
         }}
         {{onInsert this.initPopover}}
         {{! @glint-expect-error Modifier types are currently not correct }}

@@ -153,3 +153,7 @@ div.dropdown:has(.is-invalid) ~ .invalid-feedback,
 div.dropdown:has(.is-warning) ~ .warning-feedback {
   display: block;
 }
+
+.min-w-fit {
+  min-width: fit-content
+}
