@@ -126,6 +126,7 @@ export default class Popover extends Component<PopoverSignature> {
         apply({ rects, elements }) {
           Object.assign(elements.floating.style, {
             minWidth: `${rects.reference.width}px`,
+            maxWidth: `${rects.reference.width}px`,
           });
         },
       });
