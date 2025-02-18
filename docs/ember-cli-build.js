@@ -57,5 +57,9 @@ module.exports = async function (defaults) {
   );
 
   const { Webpack } = require('@embroider/webpack');
-  return require('@embroider/compat').compatBuild(app, Webpack);
+  return require('@embroider/compat').compatBuild(app, Webpack, {
+    staticEmberSource: true,
+    staticAddonTrees: true,
+    staticAddonTestSupportTrees: true,
+  });
 };
