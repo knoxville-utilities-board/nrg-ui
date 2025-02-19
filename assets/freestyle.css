@@ -1,6 +1,0 @@
-/* stylelint-disable */
-
-.FreestyleUsage-apiTable tr:nth-child(even),
-.FreestyleUsage-cssVarsTable tr:nth-child(even) {
-  background-color: var(--bs-secondary-bg);
-}
