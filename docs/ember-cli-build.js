@@ -42,20 +42,25 @@ module.exports = async function (defaults) {
     ] = 'version-v1';
   }
 
-  app.import('node_modules/@nrg-ui/css/dist/main.css');
-  app.import(
-    'node_modules/@nrg-ui/css/dist/assets/icons/fonts/bootstrap-icons.woff',
-    {
-      destDir: 'assets/fonts',
-    },
-  );
-  app.import(
-    'node_modules/@nrg-ui/css/dist/assets/icons/fonts/bootstrap-icons.woff2',
-    {
-      destDir: 'assets/fonts',
-    },
-  );
-
   const { Webpack } = require('@embroider/webpack');
-  return require('@embroider/compat').compatBuild(app, Webpack);
+  return require('@embroider/compat').compatBuild(app, Webpack, {
+    staticEmberSource: true,
+    staticAddonTrees: true,
+    staticAddonTestSupportTrees: true,
+    packagerOptions: {
+      webpackConfig: {
+        module: {
+          rules: [
+            {
+              test: /\.(woff|woff2|eot|ttf|otf)$/i,
+              type: 'asset/resource',
+              generator: {
+                filename: 'assets/fonts/[name].[hash][ext]',
+              },
+            },
+          ],
+        },
+      },
+    },
+  });
 };

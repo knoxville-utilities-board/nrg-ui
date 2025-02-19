@@ -21,6 +21,11 @@
     "dist",
     "src"
   ],
+  "exports": {
+    "./*": "./dist/*",
+    "./fonts/*": "./dist/assets/icons/fonts/*",
+    "./icons/*": "./dist/assets/icons/*"
+  },
   "type": "module",
   "keywords": [],
   "author": "",
