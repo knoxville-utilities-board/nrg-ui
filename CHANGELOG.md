@@ -1,5 +1,22 @@
 # Changelog
 
+## Release (2025-02-19)
+
+@nrg-ui/css 0.14.0 (minor)
+@nrg-ui/core 0.25.2 (patch)
+
+#### :rocket: Enhancement
+* `docs`, `@nrg-ui/css`
+  * [#364](https://github.com/knoxville-utilities-board/nrg-ui/pull/364) feat(design-system): Export styles and assets ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#363](https://github.com/knoxville-utilities-board/nrg-ui/pull/363) fix(popover): Show active option on mobile  ([@Trishu-Patel](https://github.com/Trishu-Patel))
+
+#### Committers: 2
+- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-02-12)
 
 @nrg-ui/css 0.13.3 (patch)
