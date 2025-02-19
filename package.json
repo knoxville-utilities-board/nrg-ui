@@ -1,0 +1,42 @@
+{
+  "name": "@nrg-ui/css",
+  "version": "0.14.0",
+  "description": "",
+  "repository": {
+    "directory": "packages/design-system",
+    "type": "git",
+    "url": "https://github.com/knoxville-utilities-board/nrg-ui.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build:icons": "node src/build-icons",
+    "build:sass": "sass --load-path node_modules src:dist --no-source-map",
+    "start": "concurrently pnpm:build:icons pnpm:*:sass",
+    "build": "concurrently 'pnpm:build:*' --prefix-colors cyan,magenta,yellow",
+    "format": "prettier --write .",
+    "sasstest": "sass --help",
+    "watch:sass": "sass --load-path node_modules --watch src:dist"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    "./*": "./dist/*",
+    "./fonts/*": "./dist/assets/icons/fonts/*",
+    "./icons/*": "./dist/assets/icons/*"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "bootstrap": "5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "concurrently": "^8.2.2",
+    "sass": "^1.85.0"
+  },
+  "dependencies": {
+    "prettier": "^3.3.2"
+  }
+}
