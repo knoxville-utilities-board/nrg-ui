@@ -10,15 +10,15 @@
   },
   "license": "MIT",
   "author": "",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "files": [
     "dist",
     "README.md",
     "package.json"
   ],
-  "main": "./dist/index.js",
-  "exports": {
-    ".": "./dist/index.js"
-  },
   "scripts": {
     "build": "tsc --build",
     "build:watch": "tsc --build --watch",

@@ -2,8 +2,11 @@
   "name": "@nrg-ui/theme-generator",
   "version": "0.2.0",
   "description": "Theme generator for @nrg-ui/css",
-  "main": "./src/index.js",
+  "keywords": [],
+  "license": "MIT",
+  "author": "",
   "type": "module",
+  "main": "./src/index.js",
   "bin": {
     "nrg-theme-generator": "./bin/nrg-theme-generator.js"
   },
@@ -15,9 +18,6 @@
     "README.md",
     "package.json"
   ],
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
     "bootstrap": "5.3.3",
     "bootstrap-icons": "^1.11.3",

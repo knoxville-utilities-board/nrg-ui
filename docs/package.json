@@ -3,13 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "description": "Documentation for @nrg-ui/core addon",
+  "keywords": [],
   "repository": "",
   "license": "MIT",
   "author": "",
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
-  },
   "scripts": {
     "build": "ember build --environment=production",
     "format": "prettier --write .",
