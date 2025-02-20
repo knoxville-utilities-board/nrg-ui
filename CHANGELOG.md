@@ -1,5 +1,25 @@
 # Changelog
 
+## Release (2025-02-20)
+
+@nrg-ui/version 0.1.1 (patch)
+@nrg-ui/css 0.14.1 (patch)
+@nrg-ui/core 0.25.3 (patch)
+@nrg-ui/standards 0.4.2 (patch)
+@nrg-ui/theme-generator 0.3.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/theme-generator`
+  * [#365](https://github.com/knoxville-utilities-board/nrg-ui/pull/365) feat: Allow configuration of theme generator ([@KeithClinard](https://github.com/KeithClinard))
+
+#### :house: Internal
+* `docs`, `@nrg-ui/version`, `@nrg-ui/css`, `@nrg-ui/core`, `@nrg-ui/standards`, `@nrg-ui/theme-generator`
+  * [#367](https://github.com/knoxville-utilities-board/nrg-ui/pull/367) chore: Update package contents ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Keith ([@KeithClinard](https://github.com/KeithClinard))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-02-19)
 
 @nrg-ui/css 0.14.0 (minor)
