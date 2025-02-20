@@ -9,12 +9,14 @@ const NRG_CSS_PACKAGE = '@nrg-ui/css';
 const NRG_CSS_VERSION_REQUIRED = '0.9.0';
 const NODE_VERSION_REQUIRED = '20.11.0';
 
-export function getPackageFile() {
-  return JSON.parse(readFileSync(resolve('package.json'), 'utf-8'));
+export function getPackageFile(fileHelper) {
+  return JSON.parse(
+    readFileSync(resolve(fileHelper.targetPackageJson), 'utf-8')
+  );
 }
 
-export function getDependenciesFromPackage() {
-  const pkg = getPackageFile();
+export function getDependenciesFromPackage(fileHelper) {
+  const pkg = getPackageFile(fileHelper);
 
   const dependencies = {
     ...pkg.dependencies,
@@ -24,14 +26,14 @@ export function getDependenciesFromPackage() {
   return dependencies;
 }
 
-export async function installNrgCss() {
-  if (!existsSync('package.json')) {
+export async function installNrgCss(fileHelper) {
+  if (!existsSync(fileHelper.targetPackageJson)) {
     console.error(
       'No package file found. Please run this command in a directory with a package.json file.'
     );
   }
 
-  const dependencies = getDependenciesFromPackage();
+  const dependencies = getDependenciesFromPackage(fileHelper);
   const nrgVersion = dependencies[NRG_CSS_PACKAGE];
 
   if (!nrgVersion) {
