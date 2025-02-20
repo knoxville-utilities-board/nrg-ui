@@ -9,7 +9,10 @@
     "url": "https://github.com/knoxville-utilities-board/nrg-ui.git"
   },
   "license": "MIT",
-  "author": "",
+  "author": {
+    "name": "Knoxville Utilities Board",
+    "url": "https://www.kub.org"
+  },
   "main": "./dist/index.js",
   "exports": {
     ".": "./dist/index.js"

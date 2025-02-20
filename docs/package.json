@@ -4,9 +4,16 @@
   "private": true,
   "description": "Documentation for @nrg-ui/core addon",
   "keywords": [],
-  "repository": "",
+  "repository": {
+    "directory": "docs",
+    "type": "git",
+    "url": "https://github.com/knoxville-utilities-board/nrg-ui.git"
+  },
   "license": "MIT",
-  "author": "",
+  "author": {
+    "name": "Knoxville Utilities Board",
+    "url": "https://www.kub.org"
+  },
   "scripts": {
     "build": "ember build --environment=production",
     "format": "prettier --write .",

@@ -1,13 +1,22 @@
 {
   "name": "@nrg-ui/css",
   "version": "0.14.0",
-  "keywords": [],
+  "description": "Bootstrap-based CSS framework",
+  "keywords": [
+    "bootstrap",
+    "design",
+    "design-system"
+  ],
   "repository": {
     "directory": "packages/design-system",
     "type": "git",
     "url": "https://github.com/knoxville-utilities-board/nrg-ui.git"
   },
-  "license": "ISC",
+  "license": "MIT",
+  "author": {
+    "name": "Knoxville Utilities Board",
+    "url": "https://www.kub.org"
+  },
   "type": "module",
   "main": "index.js",
   "exports": {
