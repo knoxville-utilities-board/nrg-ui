@@ -2,14 +2,23 @@
   "name": "@nrg-ui/standards",
   "version": "0.4.1",
   "description": "Composable standards for NRG UI packages",
-  "keywords": [],
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "config",
+    "javascript",
+    "styleguide"
+  ],
   "repository": {
     "directory": "packages/standards",
     "type": "git",
     "url": "https://github.com/knoxville-utilities-board/nrg-ui.git"
   },
   "license": "MIT",
-  "author": "",
+  "author": {
+    "name": "Knoxville Utilities Board",
+    "url": "https://www.kub.org"
+  },
   "files": [
     "dist",
     "README.md",

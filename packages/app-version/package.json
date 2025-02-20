@@ -9,16 +9,19 @@
     "url": "https://github.com/knoxville-utilities-board/nrg-ui.git"
   },
   "license": "MIT",
-  "author": "",
+  "author": {
+    "name": "Knoxville Utilities Board",
+    "url": "https://www.kub.org"
+  },
+  "main": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "files": [
     "dist",
     "README.md",
     "package.json"
   ],
-  "main": "./dist/index.js",
-  "exports": {
-    ".": "./dist/index.js"
-  },
   "scripts": {
     "build": "tsc --build",
     "build:watch": "tsc --build --watch",

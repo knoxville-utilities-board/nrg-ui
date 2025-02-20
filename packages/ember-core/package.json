@@ -1,8 +1,12 @@
 {
   "name": "@nrg-ui/core",
   "version": "0.25.2",
-  "description": "The default blueprint for Embroider v2 addons.",
+  "description": "Design system for Ember.js built on top of Bootstrap",
   "keywords": [
+    "bootstrap",
+    "design",
+    "design-system",
+    "ember",
     "ember-addon"
   ],
   "repository": {
@@ -11,7 +15,10 @@
     "url": "https://github.com/knoxville-utilities-board/nrg-ui.git"
   },
   "license": "MIT",
-  "author": "",
+  "author": {
+    "name": "Knoxville Utilities Board",
+    "url": "https://www.kub.org"
+  },
   "exports": {
     ".": {
       "types": "./declarations/index.d.ts",
