@@ -6,6 +6,7 @@ import path from 'path';
 import prettify from './prettify.js';
 import treeDiff from './tree-diff.js';
 import readThemes from './read-themes.js';
+import getConfig from './config.js';
 import {
   installNrgCss,
   checkNodeVersion,
@@ -16,13 +17,30 @@ const require = createRequire(import.meta.url);
 
 function getFileHelper() {
   const workingDirectory = process.cwd();
-  const targetNodeModules = path.join(workingDirectory, 'node_modules');
-  const bootstrapLocation = path.dirname(require.resolve('bootstrap/package.json'))
+  const bootstrapLocation = path.dirname(
+    require.resolve('bootstrap/package.json')
+  );
   const bootstrapNodeModules = path.join(bootstrapLocation, '../');
-  const bootstrapIconLocation = path.dirname(require.resolve('bootstrap-icons/package.json'))
+  const bootstrapIconLocation = path.dirname(
+    require.resolve('bootstrap-icons/package.json')
+  );
   const bootstrapIconNodeModules = path.join(bootstrapIconLocation, '../');
 
   const nrgDirectory = path.join(workingDirectory, '.nrg');
+
+  const config = getConfig(workingDirectory);
+
+  const targetNodeModules = path.join(
+    workingDirectory,
+    config.projectPath,
+    'node_modules'
+  );
+  const targetPackageJson = path.join(
+    workingDirectory,
+    config.projectPath,
+    'package.json'
+  );
+
   const nrgCss = path.join(
     targetNodeModules,
     '@nrg-ui',
@@ -36,17 +54,17 @@ function getFileHelper() {
     'css',
     'src'
   );
-  const themeOutputDirectory = path.join(workingDirectory, 'app', 'styles');
 
   return {
+    config,
     workingDirectory,
     targetNodeModules,
+    targetPackageJson,
     bootstrapNodeModules,
     bootstrapIconNodeModules,
     nrgDirectory,
     nrgCss,
     nrgScssDirectory,
-    themeOutputDirectory,
   };
 }
 
@@ -58,7 +76,8 @@ export default async function run() {
 
   const fileHelper = getFileHelper();
   ensureNrgDirectoryExists(fileHelper);
-  await installNrgCss();
+
+  await installNrgCss(fileHelper);
 
   console.log(chalk.green('Gathering theme files'));
   const rawNrgCSS = fs.readFileSync(fileHelper.nrgCss, 'utf-8');
@@ -77,8 +96,15 @@ export default async function run() {
     const prettifiedTheme = prettify(cleanup(diffedTheme));
 
     const cssCommentHeader = `/* stylelint-disable */\n/* Generated using @nrg-ui/theme-generator */\n`;
+    const themeOutputDirectory = path.join(
+      fileHelper.workingDirectory,
+      fileHelper.config.outputDir
+    );
+    if (!fs.existsSync(themeOutputDirectory)) {
+      fs.mkdirSync(themeOutputDirectory, { recursive: true });
+    }
     fs.writeFileSync(
-      path.join(fileHelper.themeOutputDirectory, theme.outputName),
+      path.join(themeOutputDirectory, theme.outputName),
       `${cssCommentHeader}${prettifiedTheme}`
     );
   }
