@@ -54,18 +54,18 @@
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-n": "^16.0.0",
     "eslint-plugin-qunit": "8.1.2",
-    "typescript-eslint": "^8.24.0"
+    "typescript-eslint": "^8.24.1"
   },
   "devDependencies": {
     "@types/eslint": "^9.6.1",
-    "@types/node": "^22.13.4",
+    "@types/node": "^22.13.5",
     "@types/semver": "^7.5.8",
     "@types/yargs": "^17.0.33",
-    "eslint": "^9.20.1",
+    "eslint": "^9.21.0",
     "eslint-plugin-decorator-position": "^6.0.0",
     "eslint-plugin-import": "^2.31.0",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.24.0"
+    "typescript-eslint": "^8.24.1"
   },
   "engines": {
     "node": "^20.0.0"
