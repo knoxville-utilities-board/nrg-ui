@@ -22,3 +22,19 @@
   align-items: center;
   justify-content: center;
 }
+
+.list-group-item-subheading {
+  padding: var(--bs-list-group-item-padding-y), 0 !important;
+  margin-bottom: 0;
+}
+
+.list-group-item-child-route {
+  color: var(--bs-secondary);
+  padding: var(--bs-list-group-item-padding-y)
+    var(--bs-list-group-item-padding-x) !important;
+  margin-bottom: 0;
+}
+
+.navbar {
+  background-color: var(--bs-body-bg);
+}

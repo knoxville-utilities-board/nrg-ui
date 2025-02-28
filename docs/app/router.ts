@@ -58,4 +58,5 @@ Router.map(function () {
     this.route('on-update');
   });
   this.route('services');
+  this.route('side-nav-page');
 });

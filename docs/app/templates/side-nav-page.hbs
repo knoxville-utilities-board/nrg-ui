@@ -1,0 +1,45 @@
+<SideNavPage @navLinks={{this.navLinks}} @themeSwitcher={{true}}>
+  <:brand>
+    KUB Branding
+  </:brand>
+  <:nav as |Nav|>
+    <Nav.Item @route="#" @display="Home" />
+    <Nav.Group @route="#" @display="Accounts" as |Group|>
+      <Group.Item @route="#" @display="Summary & History" />
+      <Group.Item @route="#" @display="Manage Account" />
+    </Nav.Group>
+    <Nav.Item @route="#" @display="Edit Profile" />
+    <Nav.Group @display="Billing" as |Group|>
+      <Group.Item @route="#" @display="Payment Now" />
+      <Group.Item @route="#" @display="Payment Options" />
+      <Group.Item @route="#" @display="Billing Information" />
+      <Group.Item @route="#" @display="Past Bills" />
+    </Nav.Group>
+    <Nav.Group @display="Outage" as |Group|>
+      <Group.Item @route="#" @display="Outage Map" />
+      <Group.Item @route="#" @display="Report an Outage" />
+      <Group.Item @route="#" @display="Check my Status" />
+    </Nav.Group>
+    <Nav.Item @route="#" @display="Fiber" />
+    <Nav.Item @route="#" @display="Contact Us" />
+    <Nav.Group @display="About Us" as |Group|>
+      <Group.Item @route="#" @display="About KUB" />
+      <Group.Item @route="#" @display="Procurement" />
+      <Group.Item @route="#" @display="Public Records Policy" />
+      <Group.Item @route="#" @display="Media Center" />
+      <Group.Item @route="#" @display="Career Center" />
+      <Group.Item @route="#" @display="KUB in the Community" />
+    </Nav.Group>
+  </:nav>
+  <:main>
+    <div class="p-3 d-flex flex-column">
+      <h1>Side Nav Page</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+        sollicitudin, nisl eget aliquam aliquet, nunc nisl aliquet nunc, eget
+        aliquam nisl nunc eget nunc. Donec sollicitudin, nisl eget aliquam
+        aliquet, nunc nisl aliquet nunc, eget aliquam nisl nunc eget nunc.
+      </p>
+    </div>
+  </:main>
+</SideNavPage>

@@ -23,7 +23,7 @@ const HeaderComponent: TOC<HeaderSignature> = <template>
         {{yield to="center"}}
       </div>
     {{/if}}
-    <div class="col d-flex justify-content-end">
+    <div class="col d-flex justify-content-end align-items-center">
       {{yield to="right"}}
     </div>
     {{#if (has-block "mobile-drop-section")}}
