@@ -62,6 +62,9 @@ importers:
       '@glimmer/tracking':
         specifier: ^1.1.2
         version: 1.1.2
+      '@nrg-ui/core':
+        specifier: workspace:*
+        version: link:../../packages/ember-core
       broccoli-asset-rev:
         specifier: ^3.0.0
         version: 3.0.0
@@ -203,6 +206,9 @@ importers:
       '@glint/template':
         specifier: ^1.4.0
         version: 1.5.2
+      '@nrg-ui/core':
+        specifier: workspace:*
+        version: link:../../packages/ember-core
       '@tsconfig/ember':
         specifier: ^3.0.8
         version: 3.0.9

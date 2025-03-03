@@ -36,6 +36,7 @@
     "@embroider/webpack": "^4.0.5",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
+    "@nrg-ui/core": "workspace:*",
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^8.2.2",
     "ember-auto-import": "^2.8.1",
