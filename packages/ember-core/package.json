@@ -142,11 +142,11 @@
     "execa": "^9.5.2",
     "prettier": "^3.1.1",
     "prettier-plugin-ember-template-tag": "^1.1.0",
-    "rollup": "^4.34.8",
+    "rollup": "^4.34.9",
     "rollup-plugin-copy": "^3.5.0",
     "tracked-built-ins": "^3.4.0",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.24.1",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.25.0",
     "webpack": "^5.98.0"
   },
   "peerDependencies": {
