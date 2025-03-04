@@ -136,6 +136,33 @@ export default class ButtonDemo extends Component {
           </:api>
         </FreestyleUsage>
       </Section.subsection>
+
+      <Section.subsection @name="Icon-Only Button">
+        <FreestyleUsage>
+          <:example>
+            <Button
+              class="btn-primary"
+              @icon={{this.icon}}
+              @iconLabel={{this.iconLabel}}
+              @iconPosition="center"
+            />
+          </:example>
+          <:api as |Args|>
+            <Args.String
+              @name="icon"
+              @description="The icon to display"
+              @value={{this.icon}}
+              @onInput={{fn this.update "icon"}}
+            />
+            <Args.String
+              @name="iconLabel"
+              @description="The label for the icon (for accessibility)"
+              @value={{this.iconLabel}}
+              @onInput={{fn this.update "iconLabel"}}
+            />
+          </:api>
+        </FreestyleUsage>
+      </Section.subsection>
     </FreestyleSection>
   </template>
 }
