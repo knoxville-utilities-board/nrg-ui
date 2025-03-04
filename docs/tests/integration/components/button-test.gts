@@ -117,7 +117,7 @@ module('Integration | Component | button', function (hooks) {
   });
 
   test('it can have an icon', async function (assert) {
-    assert.expect(7);
+    assert.expect(9);
 
     await render(<template>
       <Button @icon="bi-suitcase">
@@ -156,9 +156,9 @@ module('Integration | Component | button', function (hooks) {
         @iconPosition="center"
       />
     </template>);
-    
+
     assert
-      .dom('button > i:first-child')
+      .dom('button > span > i:first-child')
       .hasClass('bi-suitcase')
       .hasAria('label', 'Suitcase');
   });
