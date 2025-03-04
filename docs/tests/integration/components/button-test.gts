@@ -148,5 +148,18 @@ module('Integration | Component | button', function (hooks) {
       .hasClass('bi-suitcase')
       .hasAria('label', 'Suitcase');
     assert.dom('button > span:last-child').containsText('Text');
+
+    await render(<template>
+      <Button
+        @icon="bi-suitcase"
+        @iconLabel="Suitcase"
+        @iconPosition="center"
+      />
+    </template>);
+    
+    assert
+      .dom('button > i:first-child')
+      .hasClass('bi-suitcase')
+      .hasAria('label', 'Suitcase');
   });
 });
