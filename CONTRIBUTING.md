@@ -44,4 +44,4 @@ For more information on using ember-cli, visit [https://cli.emberjs.com/release/
 
 ## Development Workflow
 
-- Once you have run `pnpm install`, run the corresponding `pnpm start:` commands for the code you are working on. For example, if you are working on adding or modifying a component to `@nrg-ui/core`, you would run `pnpm start:addon` and `pnpm start:docs`. Then, visit the docs website and any changes you make to a component will be reflected in the docs.
+- Once you have run `pnpm install`, you can run `pnpm start` to start all three packages in watch mode. Any changes you make to `@nrg-ui/core` or `@nrg-ui/design-system` will be reflected in the Ember docs application.
