@@ -209,6 +209,12 @@ importers:
       '@nrg-ui/core':
         specifier: workspace:*
         version: link:../../packages/ember-core
+      '@nrg-ui/css':
+        specifier: workspace:*
+        version: link:../../packages/design-system
+      '@nrg-ui/version':
+        specifier: workspace:*
+        version: link:../../packages/app-version
       '@tsconfig/ember':
         specifier: ^3.0.8
         version: 3.0.9

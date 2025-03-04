@@ -38,6 +38,8 @@
     "@glint/environment-ember-loose": "^1.4.0",
     "@glint/template": "^1.4.0",
     "@nrg-ui/core": "workspace:*",
+    "@nrg-ui/css": "workspace:*",
+    "@nrg-ui/version": "workspace:*",
     "@tsconfig/ember": "^3.0.8",
     "@types/qunit": "^2.19.10",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
