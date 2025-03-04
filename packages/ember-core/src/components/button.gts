@@ -2,7 +2,7 @@ import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { t } from 'ember-intl';
-import { and, not, or } from 'ember-truth-helpers';
+import { or } from 'ember-truth-helpers';
 
 import type { ButtonGroupType } from './button-group';
 import type { IconType } from '../';
@@ -14,7 +14,7 @@ export interface ButtonSignature {
     disabled?: boolean;
     group?: ButtonGroupType;
     icon?: IconType;
-    iconPosition?: 'right' | 'left';
+    iconPosition?: 'right' | 'left' | 'center';
     iconLabel?: string;
     loading?: boolean;
     text?: string;
@@ -28,7 +28,13 @@ export interface ButtonSignature {
 
 export default class ButtonComponent extends Component<ButtonSignature> {
   get classList() {
-    const classes = ['btn'];
+    const classes = [
+      'btn',
+      'position-relative',
+      'd-inline-flex',
+      'justify-content-center',
+      'align-items-center',
+    ];
 
     if (this.args._class) {
       classes.push(this.args._class);
@@ -42,10 +48,6 @@ export default class ButtonComponent extends Component<ButtonSignature> {
       classes.push('disabled');
     }
 
-    classes.push(
-      'position-relative d-inline-flex justify-content-center align-items-center',
-    );
-
     return classes.join(' ');
   }
 
@@ -57,12 +59,16 @@ export default class ButtonComponent extends Component<ButtonSignature> {
     return Boolean(this.args.icon);
   }
 
-  get alignIconRight() {
+  get isLeftAlignedIcon() {
+    return this.hasIcon && (this.args.iconPosition === 'left' || !this.args.iconPosition);
+  }
+
+  get isRightAlignedIcon() {
     return this.hasIcon && this.args.iconPosition === 'right';
   }
 
-  get hasIconLabel() {
-    return Boolean(this.args.iconLabel);
+  get isCenterAlignedIcon() {
+    return this.hasIcon && this.args.iconPosition === 'center';
   }
 
   @action
@@ -90,19 +96,25 @@ export default class ButtonComponent extends Component<ButtonSignature> {
           {{t "nrg.base.loading"}}
         </span>
       {{/if}}
-      {{#if (and this.hasIcon (not this.alignIconRight))}}
+
+      {{#if this.isLeftAlignedIcon}}
         <i class="me-1 {{@icon}}" aria-label={{@iconLabel}}></i>
       {{/if}}
+
       <span class="content">
-        {{#if (has-block)}}
+        {{#if this.isCenterAlignedIcon}}
+          <i class="{{@icon}}" aria-label={{@iconLabel}}></i>
+        {{else if (has-block)}}
           {{yield}}
         {{else}}
           {{@text}}
         {{/if}}
       </span>
-      {{#if (and this.hasIcon this.alignIconRight)}}
+
+      {{#if this.isRightAlignedIcon}}
         <i class="ms-1 {{@icon}}" aria-label={{@iconLabel}}></i>
       {{/if}}
+
     </button>
   </template>
 }
