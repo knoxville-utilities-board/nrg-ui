@@ -17,7 +17,7 @@
 
 ## Building the Ember addon
 
-- `cd packages/ember`
+- `cd packages/ember-core`
 - `pnpm build`
 
 ## Running the Ember tests
@@ -26,7 +26,11 @@
 - `pnpm test` – Runs the test suite on the current Ember version
 - `pnpm test:watch` – Runs the test suite in "watch mode"
 
-## Build the design system (while watching for changes)
+## Running the Ember addon locally (while watching for changes)
+
+- `pnpm start:addon`
+
+## Running the design system locally (while watching for changes)
 
 - `pnpm start:design-system`
 - Note that the design system does not provide its own application. You can use the Ember docs application to see the changes in action, or you can use the compiled CSS in your own project.
@@ -37,3 +41,7 @@
 - Visit the docs application at [http://localhost:4200](http://localhost:4200).
 
 For more information on using ember-cli, visit [https://cli.emberjs.com/release/](https://cli.emberjs.com/release/).
+
+## Development Workflow
+
+- Once you have run `pnpm install`, you can run `pnpm start` to start all three packages in watch mode. Any changes you make to `@nrg-ui/core` or `@nrg-ui/design-system` will be reflected in the Ember docs application.
