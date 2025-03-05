@@ -158,6 +158,7 @@
     "ember-concurrency": "^4.0.3",
     "ember-css-transitions": "^4.4.0",
     "ember-intl": "^7.0.4",
+    "ember-responsive": "^5.0.0",
     "ember-source": "^5.9.0 || ^6.0.0",
     "ember-truth-helpers": "^4.0.3",
     "tracked-built-ins": "^3.4.0",
