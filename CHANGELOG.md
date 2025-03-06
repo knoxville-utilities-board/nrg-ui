@@ -1,5 +1,22 @@
 # Changelog
 
+## Release (2025-03-06)
+
+@nrg-ui/css 0.14.2 (patch)
+@nrg-ui/core 0.26.0 (minor)
+
+#### :rocket: Enhancement
+* `docs`, `@nrg-ui/core`
+  * [#372](https://github.com/knoxville-utilities-board/nrg-ui/pull/372) feat: Update blueprint to use Webpack for CSS ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#374](https://github.com/knoxville-utilities-board/nrg-ui/pull/374) fix(popover): Prevent horizontal scrolling on popover ([@Trishu-Patel](https://github.com/Trishu-Patel))
+
+#### Committers: 2
+- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-02-20)
 
 @nrg-ui/version 0.1.1 (patch)

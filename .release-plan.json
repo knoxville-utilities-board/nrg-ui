@@ -1,57 +1,24 @@
 {
   "solution": {
     "@nrg-ui/version": {
-      "impact": "patch",
-      "oldVersion": "0.1.0",
-      "newVersion": "0.1.1",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./packages/app-version/package.json"
+      "oldVersion": "0.1.1"
     },
     "@nrg-ui/css": {
       "impact": "patch",
-      "oldVersion": "0.14.0",
-      "newVersion": "0.14.1",
+      "oldVersion": "0.14.1",
+      "newVersion": "0.14.2",
       "constraints": [
         {
           "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./packages/design-system/package.json"
     },
     "@nrg-ui/core": {
-      "impact": "patch",
-      "oldVersion": "0.25.2",
-      "newVersion": "0.25.3",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./packages/ember-core/package.json"
-    },
-    "@nrg-ui/standards": {
-      "impact": "patch",
-      "oldVersion": "0.4.1",
-      "newVersion": "0.4.2",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./packages/standards/package.json"
-    },
-    "@nrg-ui/theme-generator": {
       "impact": "minor",
-      "oldVersion": "0.2.0",
-      "newVersion": "0.3.0",
+      "oldVersion": "0.25.3",
+      "newVersion": "0.26.0",
       "constraints": [
         {
           "impact": "minor",
@@ -59,11 +26,17 @@
         },
         {
           "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
-      "pkgJSONPath": "./packages/theme-generator/package.json"
+      "pkgJSONPath": "./packages/ember-core/package.json"
+    },
+    "@nrg-ui/standards": {
+      "oldVersion": "0.4.2"
+    },
+    "@nrg-ui/theme-generator": {
+      "oldVersion": "0.3.0"
     }
   },
-  "description": "## Release (2025-02-20)\n\n@nrg-ui/version 0.1.1 (patch)\n@nrg-ui/css 0.14.1 (patch)\n@nrg-ui/core 0.25.3 (patch)\n@nrg-ui/standards 0.4.2 (patch)\n@nrg-ui/theme-generator 0.3.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/theme-generator`\n  * [#365](https://github.com/knoxville-utilities-board/nrg-ui/pull/365) feat: Allow configuration of theme generator ([@KeithClinard](https://github.com/KeithClinard))\n\n#### :house: Internal\n* `docs`, `@nrg-ui/version`, `@nrg-ui/css`, `@nrg-ui/core`, `@nrg-ui/standards`, `@nrg-ui/theme-generator`\n  * [#367](https://github.com/knoxville-utilities-board/nrg-ui/pull/367) chore: Update package contents ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Keith ([@KeithClinard](https://github.com/KeithClinard))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-03-06)\n\n@nrg-ui/css 0.14.2 (patch)\n@nrg-ui/core 0.26.0 (minor)\n\n#### :rocket: Enhancement\n* `docs`, `@nrg-ui/core`\n  * [#372](https://github.com/knoxville-utilities-board/nrg-ui/pull/372) feat: Update blueprint to use Webpack for CSS ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#374](https://github.com/knoxville-utilities-board/nrg-ui/pull/374) fix(popover): Prevent horizontal scrolling on popover ([@Trishu-Patel](https://github.com/Trishu-Patel))\n\n#### Committers: 2\n- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
