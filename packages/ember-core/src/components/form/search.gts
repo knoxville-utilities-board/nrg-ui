@@ -348,6 +348,7 @@ export default class Search<T> extends BoundValue<
       @side={{@side}}
       @onShow={{@onShow}}
       @onHide={{@onHide}}
+      @scrollable={{this.scrollable}}
       {{onInsert this.onMenuInsert}}
     >
       <:control as |visibility|>
@@ -408,7 +409,7 @@ export default class Search<T> extends BoundValue<
           {{#let (eq this.activeIndex index) as |isActive|}}
             <Menu.Item
               aria-selected={{isActive}}
-              class={{classes "d-inline-block" (if isActive "active")}}
+              class={{if isActive "active"}}
               @onSelect={{fn this.selectOption option index}}
             >
               {{option.label}}

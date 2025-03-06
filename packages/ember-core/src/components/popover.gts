@@ -41,7 +41,7 @@ export interface BodySignature {
 }
 
 const Body: TOC<BodySignature> = <template>
-  <div class="popover-body min-w-fit" ...attributes>
+  <div class="popover-body" ...attributes>
     {{yield}}
   </div>
 </template>;
