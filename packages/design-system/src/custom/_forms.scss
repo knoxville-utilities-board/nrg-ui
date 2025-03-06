@@ -154,6 +154,5 @@ div.dropdown:has(.is-warning) ~ .warning-feedback {
   display: block;
 }
 
-.min-w-fit {
-  min-width: fit-content;
-}
+.dropdown-item {
+  white-space: normal;}
