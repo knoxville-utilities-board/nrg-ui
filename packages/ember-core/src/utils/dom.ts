@@ -21,3 +21,8 @@ export function getRemValue() {
 
   return parseFloat(rootFontSize);
 }
+
+export default {
+  scrollTo,
+  getRemValue,
+};

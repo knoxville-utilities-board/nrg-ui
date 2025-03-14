@@ -5,3 +5,5 @@ export function collapseWhitespace(string: string): string {
     .replace(/^ /, '')
     .replace(/ $/, '');
 }
+
+export default { collapseWhitespace };

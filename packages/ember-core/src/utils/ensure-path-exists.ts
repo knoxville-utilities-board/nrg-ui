@@ -34,3 +34,7 @@ function ensure(object: Record<string, unknown>, keys: string[]) {
 
   ensure(object[key] as Record<string, unknown>, keys.slice(1));
 }
+
+export default {
+  ensurePathExists,
+};

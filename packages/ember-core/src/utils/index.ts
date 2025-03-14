@@ -36,3 +36,9 @@ export function diff<T>(a: T[], b: T[]): [T[], T[]] {
 
   return [inANotB, inBNotA];
 }
+
+export default {
+  uid,
+  guid,
+  diff,
+};
