@@ -1,5 +1,25 @@
 # Changelog
 
+## Release (2025-03-14)
+
+* @nrg-ui/core 0.27.0 (minor)
+
+#### :rocket: Enhancement
+* `docs`, `@nrg-ui/core`
+  * [#371](https://github.com/knoxville-utilities-board/nrg-ui/pull/371) feat: Add ability to create icon-only button ([@RudraPatel2003](https://github.com/RudraPatel2003))
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#378](https://github.com/knoxville-utilities-board/nrg-ui/pull/378) chore(blueprint): Install @embroider/macros on install ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `@nrg-ui/core`
+  * [#379](https://github.com/knoxville-utilities-board/nrg-ui/pull/379) chore: Reorganize exports to resolve Webpack warnings ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Rudra Patel ([@RudraPatel2003](https://github.com/RudraPatel2003))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-03-06)
 
 @nrg-ui/css 0.14.2 (patch)

@@ -4,21 +4,12 @@
       "oldVersion": "0.1.1"
     },
     "@nrg-ui/css": {
-      "impact": "patch",
-      "oldVersion": "0.14.1",
-      "newVersion": "0.14.2",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
-        }
-      ],
-      "pkgJSONPath": "./packages/design-system/package.json"
+      "oldVersion": "0.14.2"
     },
     "@nrg-ui/core": {
       "impact": "minor",
-      "oldVersion": "0.25.3",
-      "newVersion": "0.26.0",
+      "oldVersion": "0.26.0",
+      "newVersion": "0.27.0",
       "constraints": [
         {
           "impact": "minor",
@@ -27,6 +18,10 @@
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
@@ -38,5 +33,5 @@
       "oldVersion": "0.3.0"
     }
   },
-  "description": "## Release (2025-03-06)\n\n@nrg-ui/css 0.14.2 (patch)\n@nrg-ui/core 0.26.0 (minor)\n\n#### :rocket: Enhancement\n* `docs`, `@nrg-ui/core`\n  * [#372](https://github.com/knoxville-utilities-board/nrg-ui/pull/372) feat: Update blueprint to use Webpack for CSS ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#374](https://github.com/knoxville-utilities-board/nrg-ui/pull/374) fix(popover): Prevent horizontal scrolling on popover ([@Trishu-Patel](https://github.com/Trishu-Patel))\n\n#### Committers: 2\n- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-03-14)\n\n* @nrg-ui/core 0.27.0 (minor)\n\n#### :rocket: Enhancement\n* `docs`, `@nrg-ui/core`\n  * [#371](https://github.com/knoxville-utilities-board/nrg-ui/pull/371) feat: Add ability to create icon-only button ([@RudraPatel2003](https://github.com/RudraPatel2003))\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#378](https://github.com/knoxville-utilities-board/nrg-ui/pull/378) chore(blueprint): Install @embroider/macros on install ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/core`\n  * [#379](https://github.com/knoxville-utilities-board/nrg-ui/pull/379) chore: Reorganize exports to resolve Webpack warnings ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Rudra Patel ([@RudraPatel2003](https://github.com/RudraPatel2003))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
