@@ -17,6 +17,7 @@ module.exports = {
   async afterInstall() {
     await this.removePackagesFromProject([{ name: 'ember-welcome-page' }]);
     await this.addPackagesToProject([
+      { name: '@embroider/macros' },
       { name: '@nrg-ui/css' },
       { name: '@nrg-ui/version' },
       { name: 'dayjs', target: '^1.11.13' },
