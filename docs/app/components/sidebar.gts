@@ -1,78 +1,181 @@
-// @ts-nocheck - TODO
-
 import { hash } from '@ember/helper';
+import { on } from '@ember/modifier';
+import { action } from '@ember/object';
 import { LinkTo } from '@ember/routing';
+import Component from '@glimmer/component';
+import { or } from 'ember-truth-helpers';
 
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike } from '@glint/template';
 
-interface SidebarGroupItemSignature {
-  Element: HTMLAnchorElement;
-  Args: {
-    name: string;
-    route: string;
-  };
-}
 
-const GroupItem: TOC<SidebarGroupItemSignature> = <template>
-  <LinkTo @route={{@route}} class="list-group-item list-group-item-action">
-    {{@name}}
-  </LinkTo>
-</template>;
 
-interface SidebarGroupSignature {
+export interface SidebarSignature {
   Element: HTMLDivElement;
   Args: {
-    header?: string;
-  };
-  Blocks: {
-    group: [ComponentLike<SidebarGroupItemSignature>];
-  };
-}
-
-const Group: TOC<SidebarGroupSignature> = <template>
-  <div class="card">
-    {{#if @header}}
-      <div class="card-header">
-        {{@header}}
-      </div>
-    {{/if}}
-    {{#if (has-block "group")}}
-      <div class="list-group list-group-flush">
-        {{yield (component GroupItem) to="group"}}
-      </div>
-    {{/if}}
-  </div>
-</template>;
-
-interface SidebarSignature {
-  Element: HTMLDivElement;
-  Args: {
-    header?: string;
+    appReloadLocation?: string;
+    onClickInternal?: (evt: MouseEvent) => void;
   };
   Blocks: {
     default: [
       {
+        Item: ComponentLike<SidebarItemSignature>;
         Group: ComponentLike<SidebarGroupSignature>;
-      },
-    ];
+      }];
+    footer: [
+      {
+        Item: ComponentLike<SidebarItemSignature>;
+        Group: ComponentLike<SidebarGroupSignature>;
+      }];
   };
 }
 
 const Sidebar: TOC<SidebarSignature> = <template>
-  <div class="col-12 col-md-2">
-    <div class="p-3 sticky-top">
-      <div class="d-flex flex-column align-items-stretch gap-2 gap-md-4">
-        {{yield (hash Group=(component Group))}}
-      </div>
-    </div>
-  </div>
-</template>;
+  {{#if (has-block "logo")}}
+    {{yield to="logo"}}
+  {{/if}}
+  <ul class="list-unstyled">
+    {{yield
+      (hash
+        Item=(component SidebarItem onClickInternal=@onClickInternal)
+        Group=(component SidebarGroup onClickInternal=@onClickInternal)
+      )
+    }}
+  </ul>
 
+  {{#if (has-block "footer")}}
+    <ul class="list-unstyled">
+      {{yield
+        (hash
+          Item=(component SidebarItem onClickInternal=@onClickInternal)
+          Group=(component SidebarGroup onClickInternal=@onClickInternal)
+        )
+        to="footer"
+      }}
+    </ul>
+  {{/if}}
+</template>;
 export default Sidebar;
 
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'Sidebar': typeof Sidebar;
+interface SidebarGroupSignature {
+  Element: HTMLLIElement;
+  Args: {
+    url?: string;
+    route?: string;
+    header: string;
+    onClick?: (evt: MouseEvent) => void;
+    onClickInternal?: (evt: MouseEvent) => void;
+  };
+  Blocks: {
+    default: [];
+    group: [
+        ComponentLike<SidebarItemSignature>
+    ];
+  };
+}
+
+const SidebarGroup: TOC<SidebarGroupSignature> = <template>
+  <li ...attributes>
+    {{#if (or @url @route)}}
+      <NavItem
+        @url={{@url}}
+        @route={{@route}}
+        @onClick={{@onClick}}
+        @onClickInternal={{@onClickInternal}}
+      >
+        {{@header}}
+      </NavItem>
+    {{else}}
+      <span>{{@header}}</span>
+    {{/if}}
+
+    <ul class="list-unstyled">
+      {{yield
+          (component SidebarItem onClickInternal=@onClickInternal)
+        to="group"
+      }}
+    </ul>
+  </li>
+</template>;
+
+
+interface SidebarItemSignature {
+  Element: HTMLAnchorElement;
+  Args: {
+    url?: string;
+    route?: string;
+    onClick?: (evt: MouseEvent) => void;
+    onClickInternal?: (evt: MouseEvent) => void;
+  };
+  Blocks: {
+    default?: [];
+  };
+}
+
+const SidebarItem: TOC<SidebarItemSignature> = <template>
+  <li>
+    <NavItem
+      @url={{@url}}
+      @route={{@route}}
+      @onClick={{@onClick}}
+      @onClickInternal={{@onClickInternal}}
+      ...attributes
+    >
+      {{yield}}
+    </NavItem>
+  </li>
+</template>;
+
+interface NavItemSignature {
+  Element: HTMLAnchorElement;
+  Args: {
+    url?: string;
+    route?: string;
+    onClick?: (evt: MouseEvent) => void;
+    onClickInternal?: (evt: MouseEvent) => void;
+  };
+  Blocks: {
+    default?: [];
+  };
+}
+
+class NavItem extends Component<NavItemSignature> {
+  get url() {
+    return this.args.url ?? '';
   }
+
+  @action
+  onClick(evt: MouseEvent) {
+    if (!this.args.url && !this.args.route) {
+      evt.preventDefault();
+      evt.stopPropagation();
+    }
+    this.args.onClick?.(evt);
+    this.args.onClickInternal?.(evt);
+  }
+
+  <template>
+      {{#if @route}}
+        <LinkTo
+          @route={{@route}}
+          {{on "click" this.onClick}}
+          ...attributes
+        >
+          {{yield}}
+        </LinkTo>
+      {{else}}
+        <a
+          href={{this.url}}
+          target="_blank"
+          rel="noopener noreferrer"
+          {{on "click" this.onClick}}
+          ...attributes
+        >
+          {{yield}}
+          {{#if this.url}}
+            <i class="right icon external default-external-icon"></i>
+          {{/if}}
+        </a>
+      {{/if}}
+  </template>
 }
