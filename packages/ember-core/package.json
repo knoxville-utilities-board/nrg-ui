@@ -101,14 +101,14 @@
     "@floating-ui/dom": "^1.6.13",
     "decorator-transforms": "^1.0.1",
     "ember-css-transitions": "^4.4.1",
-    "ember-intl": "^7.1.4",
+    "ember-intl": "^7.1.5",
     "ember-keyboard": "^8.2.1",
     "ember-lifeline": "^7.0.0",
     "ember-modifier": "^4.1.0",
     "ismobilejs": "^1.1.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.9",
+    "@babel/core": "^7.26.10",
     "@babel/plugin-transform-typescript": "^7.26.8",
     "@babel/runtime": "^7.26.10",
     "@bertdeblock/gember": "^0.6.0",
@@ -142,11 +142,11 @@
     "execa": "^9.5.2",
     "prettier": "^3.1.1",
     "prettier-plugin-ember-template-tag": "^1.1.0",
-    "rollup": "^4.35.0",
+    "rollup": "^4.36.0",
     "rollup-plugin-copy": "^3.5.0",
     "tracked-built-ins": "^3.4.0",
     "typescript": "^5.8.2",
-    "typescript-eslint": "^8.26.0",
+    "typescript-eslint": "^8.26.1",
     "webpack": "^5.98.0"
   },
   "peerDependencies": {
