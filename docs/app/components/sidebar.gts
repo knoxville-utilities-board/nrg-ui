@@ -8,8 +8,6 @@ import { or } from 'ember-truth-helpers';
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike } from '@glint/template';
 
-
-
 export interface SidebarSignature {
   Element: HTMLDivElement;
   Args: {
@@ -21,39 +19,44 @@ export interface SidebarSignature {
       {
         Item: ComponentLike<SidebarItemSignature>;
         Group: ComponentLike<SidebarGroupSignature>;
-      }];
+      },
+    ];
     footer: [
       {
         Item: ComponentLike<SidebarItemSignature>;
         Group: ComponentLike<SidebarGroupSignature>;
-      }];
+      },
+    ];
   };
 }
 
 const Sidebar: TOC<SidebarSignature> = <template>
-  {{#if (has-block "logo")}}
-    {{yield to="logo"}}
-  {{/if}}
-  <ul class="list-unstyled">
-    {{yield
-      (hash
-        Item=(component SidebarItem onClickInternal=@onClickInternal)
-        Group=(component SidebarGroup onClickInternal=@onClickInternal)
-      )
-    }}
-  </ul>
+  <div class="sidebar" ...attributes>
+    {{#if (has-block "logo")}}
+      {{yield to="logo"}}
+    {{/if}}
 
-  {{#if (has-block "footer")}}
     <ul class="list-unstyled">
       {{yield
         (hash
           Item=(component SidebarItem onClickInternal=@onClickInternal)
           Group=(component SidebarGroup onClickInternal=@onClickInternal)
         )
-        to="footer"
       }}
     </ul>
-  {{/if}}
+
+    {{#if (has-block "footer")}}
+      <ul class="list-unstyled">
+        {{yield
+          (hash
+            Item=(component SidebarItem onClickInternal=@onClickInternal)
+            Group=(component SidebarGroup onClickInternal=@onClickInternal)
+          )
+          to="footer"
+        }}
+      </ul>
+    {{/if}}
+  </div>
 </template>;
 export default Sidebar;
 
@@ -68,36 +71,35 @@ interface SidebarGroupSignature {
   };
   Blocks: {
     default: [];
-    group: [
-        ComponentLike<SidebarItemSignature>
-    ];
+    group: [ComponentLike<SidebarItemSignature>];
   };
 }
 
 const SidebarGroup: TOC<SidebarGroupSignature> = <template>
-  <li ...attributes>
-    {{#if (or @url @route)}}
-      <NavItem
-        @url={{@url}}
-        @route={{@route}}
-        @onClick={{@onClick}}
-        @onClickInternal={{@onClickInternal}}
-      >
-        {{@header}}
-      </NavItem>
-    {{else}}
-      <span>{{@header}}</span>
-    {{/if}}
+  <li class="sidebar-group" ...attributes>
+    <strong>
+      {{#if (or @url @route)}}
+        <NavItem
+          @url={{@url}}
+          @route={{@route}}
+          @onClick={{@onClick}}
+          @onClickInternal={{@onClickInternal}}
+        >
+          {{@header}}
+        </NavItem>
+      {{else}}
+        <span>{{@header}}</span>
+      {{/if}}
+    </strong>
 
     <ul class="list-unstyled">
       {{yield
-          (component SidebarItem onClickInternal=@onClickInternal)
+        (component SidebarItem onClickInternal=@onClickInternal)
         to="group"
       }}
     </ul>
   </li>
 </template>;
-
 
 interface SidebarItemSignature {
   Element: HTMLAnchorElement;
@@ -113,7 +115,7 @@ interface SidebarItemSignature {
 }
 
 const SidebarItem: TOC<SidebarItemSignature> = <template>
-  <li>
+  <li class="sidebar-item">
     <NavItem
       @url={{@url}}
       @route={{@route}}
@@ -155,27 +157,29 @@ class NavItem extends Component<NavItemSignature> {
   }
 
   <template>
-      {{#if @route}}
-        <LinkTo
-          @route={{@route}}
-          {{on "click" this.onClick}}
-          ...attributes
-        >
-          {{yield}}
-        </LinkTo>
-      {{else}}
-        <a
-          href={{this.url}}
-          target="_blank"
-          rel="noopener noreferrer"
-          {{on "click" this.onClick}}
-          ...attributes
-        >
-          {{yield}}
-          {{#if this.url}}
-            <i class="right icon external default-external-icon"></i>
-          {{/if}}
-        </a>
-      {{/if}}
+    {{#if @route}}
+      <LinkTo
+        class="rounded"
+        @route={{@route}}
+        {{on "click" this.onClick}}
+        ...attributes
+      >
+        {{yield}}
+      </LinkTo>
+    {{else}}
+      <a
+        class="rounded"
+        href={{this.url}}
+        target="_blank"
+        rel="noopener noreferrer"
+        {{on "click" this.onClick}}
+        ...attributes
+      >
+        {{yield}}
+        {{#if this.url}}
+          <i class="right icon external default-external-icon"></i>
+        {{/if}}
+      </a>
+    {{/if}}
   </template>
 }
