@@ -34,6 +34,7 @@ import Modal from './components/modal.gts';
 import NavItem from './components/nav-item.gts';
 import PageNotFound from './components/page-not-found.gts';
 import Progress from './components/progress.gts';
+import Sidebar from './components/sidebar.gts';
 import ThemeSwitcher from './components/theme-switcher.gts';
 import Toaster from './components/toaster.gts';
 import Bind from './helpers/bind.ts';
@@ -56,6 +57,7 @@ export interface ComponentRegistry {
   NavItem: typeof NavItem;
   PageNotFound: typeof PageNotFound;
   Progress: typeof Progress;
+  Sidebar: typeof Sidebar;
   ThemeSwitcher: typeof ThemeSwitcher;
   Toaster: typeof Toaster;
 

@@ -1,0 +1,27 @@
+
+.sidebar {
+  width: 200px;
+  padding: 0.5em;
+  border-right: 1px solid var(--bs-body-color);
+}
+
+.sidebar-group > ul > li {
+  padding-left: 1em;
+}
+
+.sidebar > ul > li {
+  margin-bottom: 1em;
+}
+
+.sidebar-item a {
+  color: var(--bs-body-color);
+  text-decoration: none;
+}
+
+.sidebar-item a:hover {
+  background-color: var(--bs-primary-bg-subtle);
+}
+
+.sidebar-item a.active {
+  font-weight: bold;
+}
