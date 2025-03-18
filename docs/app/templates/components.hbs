@@ -1,35 +1,43 @@
 {{page-title "Components"}}
 <div class="row g-0">
   <Sidebar as |Sidebar|>
-    <Sidebar.Group @header="Components">
+    <Sidebar.Group>
+      <:header>
+        Components
+      </:header>
       <:group as |Item|>
-        <Item @name="Button" @route="components.button" />
-        <Item @name="Card" @route="components.card" />
-        <Item @name="Dropdown" @route="components.dropdown" />
-        <Item @name="Footer" @route="components.footer" />
-        <Item @name="Header" @route="components.header" />
-        <Item @name="Icon" @route="components.icon" />
-        <Item @name="Modal" @route="components.modal" />
-        <Item @name="Navbar" @route="components.navbar" />
-        <Item @name="Pagination" @route="components.pagination" />
-        <Item @name="Popover" @route="components.popover" />
-        <Item @name="Toaster" @route="components.toaster" />
-        <Item @name="Tooltip" @route="components.tooltip" />
-        <Item @name="Theme Switcher" @route="components.theme-switcher" />
+        <Item @route="components.button">Button</Item>
+        <Item @route="components.card">Card</Item>
+        <Item @route="components.dropdown">Dropdown</Item>
+        <Item @route="components.footer">Footer</Item>
+        <Item @route="components.header">Header</Item>
+        <Item @route="components.icon">Icon</Item>
+        <Item @route="components.modal">Modal</Item>
+        <Item @route="components.navbar">Navbar</Item>
+        <Item @route="components.pagination">Pagination</Item>
+        <Item @route="components.popover">Popover</Item>
+        <Item @route="components.toaster">Toaster</Item>
+        <Item @route="components.tooltip">Tooltip</Item>
+        <Item @route="components.theme-switcher">Theme Switcher</Item>
       </:group>
     </Sidebar.Group>
-    <Sidebar.Group @header="Forms">
+    <Sidebar.Item @route="components.footer">Footer</Sidebar.Item>
+    <Sidebar.Item @route="components.header">Header</Sidebar.Item>
+    <Sidebar.Group>
+      <:header>
+        Forms
+      </:header>
       <:group as |Item|>
-        <Item @name="Form" @route="components.form.index" />
-        <Item @name="Datetime" @route="components.form.datetime" />
-        <Item @name="Checkbox" @route="components.form.checkbox" />
-        <Item @name="Checkbox Group" @route="components.form.checkbox-group" />
-        <Item @name="Phone Input" @route="components.form.phone-input" />
-        <Item @name="Radio Group" @route="components.form.radio-group" />
-        <Item @name="Search" @route="components.form.search" />
-        <Item @name="Select" @route="components.form.select" />
-        <Item @name="Text Area" @route="components.form.text-area" />
-        <Item @name="Text Input" @route="components.form.text-input" />
+        <Item @route="components.form.index">Form</Item>
+        <Item @route="components.form.datetime">Datetime</Item>
+        <Item @route="components.form.checkbox">Checkbox</Item>
+        <Item @route="components.form.checkbox-group">Checkbox Group</Item>
+        <Item @route="components.form.phone-input">Phone Input</Item>
+        <Item @route="components.form.radio-group">Radio Group</Item>
+        <Item @route="components.form.search">Search</Item>
+        <Item @route="components.form.select">Select</Item>
+        <Item @route="components.form.text-area">Text Area</Item>
+        <Item @route="components.form.text-input">Text Input</Item>
       </:group>
     </Sidebar.Group>
   </Sidebar>

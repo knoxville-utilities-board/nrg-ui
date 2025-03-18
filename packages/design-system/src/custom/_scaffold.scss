@@ -1,0 +1,44 @@
+.sidebar {
+  --sidebar-width: 300px;
+  --sidebar-padding-y: 0.5rem;
+  --sidebar-padding-x: 1rem;
+
+  border-radius: 0;
+  max-width: var(--sidebar-width);
+
+  .sidebar-item {
+    & > .card-header,
+    & > .list-group-item {
+      border: 0;
+      border-radius: 0;
+      padding: var(--sidebar-padding-y) var(--sidebar-padding-x);
+    }
+  }
+}
+
+// .sidebar {
+//   width: 200px;
+//   padding: 0.5em;
+//   border-right: 1px solid var(--bs-body-color);
+// }
+
+// .sidebar-group > ul > li {
+//   padding-left: 1em;
+// }
+
+// .sidebar > ul > li {
+//   margin-bottom: 1em;
+// }
+
+// .sidebar-item a {
+//   color: var(--bs-body-color);
+//   text-decoration: none;
+// }
+
+// .sidebar-item a:hover {
+//   background-color: var(--bs-primary-bg-subtle);
+// }
+
+// .sidebar-item a.active {
+//   font-weight: bold;
+// }

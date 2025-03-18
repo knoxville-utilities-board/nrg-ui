@@ -43,6 +43,7 @@ export { default as PageNotFound } from './components/page-not-found.gts';
 export { default as Pagination } from './components/pagination.gts';
 export { default as Popover } from './components/popover.gts';
 export { default as Progress } from './components/progress.gts';
+export { default as Sidebar } from './components/sidebar.gts';
 export { default as Toaster } from './components/toaster.gts';
 export { default as Tooltip } from './components/tooltip.gts';
 export { default as ThemeSwitcher } from './components/theme-switcher.gts';
@@ -111,6 +112,7 @@ export type {
   ProgressSignature,
   SegmentSignature as ProgressSegmentSignature,
 } from './components/progress.gts';
+export type { SidebarSignature } from './components/sidebar.gts';
 export type { ToasterSignature } from './components/toaster.gts';
 export type { ThemeSwitcherSignature } from './components/theme-switcher.gts';
 
