@@ -1,56 +1,97 @@
 import { hash } from '@ember/helper';
 import { LinkTo } from '@ember/routing';
-import Component from '@glimmer/component';
 
-import classes from '../helpers/classes.ts';
+import { classes } from '../helpers/classes.ts';
 
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike } from '@glint/template';
 
-interface SidebarGroupItemSignature {
-  Element: HTMLAnchorElement;
-  Args: {
-    route: string;
+interface ItemSignature {
+  Element: HTMLAnchorElement | HTMLDivElement;
+  Args: (
+    | {
+        route: string;
+        url?: never;
+      }
+    | {
+        route?: never;
+        url: string;
+      }
+  ) & {
+    active?: boolean;
+    disabled?: boolean;
   };
   Blocks: {
     default: [];
     group: [
       {
-        Group: ComponentLike<SidebarGroupSignature>;
+        Group: ComponentLike<GroupSignature>;
       },
     ];
   };
 }
 
-const GroupItem: TOC<SidebarGroupItemSignature> = <template>
-  {{#if (has-block "group")}}
-    {{yield (hash Group=(component Group)) to="group"}}
-  {{else}}
-    <LinkTo @route={{@route}} class="list-group-item list-group-item-action">
+const Item: TOC<ItemSignature> = <template>
+  {{#if @route}}
+    <LinkTo
+      class="list-group-item list-group-item-action"
+      @route={{@route}}
+      ...attributes
+    >
       {{yield}}
     </LinkTo>
+  {{else if @url}}
+    <a
+      class={{classes
+        "list-group-item list-group-item-action"
+        (if @active "active")
+        (if @disabled "disabled")
+      }}
+      href={{@url}}
+      ...attributes
+    >
+      {{yield}}
+    </a>
+  {{else}}
+    <div class="list-group-item list-group-item-action" ...attributes>
+      {{yield}}
+    </div>
+  {{/if}}
+  {{#if (has-block "group")}}
+    {{yield (hash Group=(component Group)) to="group"}}
   {{/if}}
 </template>;
 
-interface SidebarGroupSignature {
-  Element: HTMLDivElement;
+interface GroupSignature {
+  Element: HTMLAnchorElement;
+  Args: {
+    route?: string;
+  };
   Blocks: {
     header: [];
-    group: [ComponentLike<SidebarGroupItemSignature>];
+    group: [ComponentLike<ItemSignature>];
   };
 }
 
-const Group: TOC<SidebarGroupSignature> = <template>
-  <div class="sidebar-item">
+const Group: TOC<GroupSignature> = <template>
+  <div class="item">
     {{#if (has-block "header")}}
-      <div class="card-header">
-        {{yield to="header"}}
-      </div>
+      {{#if @route}}
+        <LinkTo
+          class="header list-group-item list-group-item-action"
+          @route={{@route}}
+          ...attributes
+        >
+          {{yield to="header"}}
+        </LinkTo>
+      {{else}}
+        <div class="header">
+          {{yield to="header"}}
+        </div>
+      {{/if}}
     {{/if}}
     {{#if (has-block "group")}}
-      <div class="list-group list-group-flush">
-        {{yield (component GroupItem) to="group"}}
-      </div>
+      {{yield (component Item) to="group"}}
     {{/if}}
   </div>
 </template>;
@@ -58,32 +99,24 @@ const Group: TOC<SidebarGroupSignature> = <template>
 export interface SidebarSignature {
   Element: HTMLDivElement;
   Args: {
-    header?: string;
     sticky?: boolean;
   };
   Blocks: {
     default: [
       {
-        Item: ComponentLike<SidebarGroupItemSignature>;
-        Group: ComponentLike<SidebarGroupSignature>;
+        Group: ComponentLike<GroupSignature>;
+        Item: ComponentLike<ItemSignature>;
       },
     ];
   };
 }
 
-export default class Sidebar extends Component<SidebarSignature> {
-  get sticky() {
-    return this.args.sticky ?? true;
-  }
-
-  <template>
-    <div
-      class={{classes "sidebar card" (if this.sticky "sticky-top")}}
-      ...attributes
-    >
-      <div class="d-flex flex-column align-items-stretch">
-        {{yield (hash Item=(component GroupItem) Group=(component Group))}}
-      </div>
+const Sidebar: TOC<SidebarSignature> = <template>
+  <div class="sidebar card" ...attributes>
+    <div class="list-group d-flex flex-column overflow-auto">
+      {{yield (hash Group=(component Group) Item=(component Item))}}
     </div>
-  </template>
-}
+  </div>
+</template>;
+
+export default Sidebar;

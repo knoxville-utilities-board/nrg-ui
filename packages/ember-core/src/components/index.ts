@@ -38,6 +38,7 @@ import PageNotFound from './page-not-found.gts';
 import Pagination from './pagination.gts';
 import Popover from './popover.gts';
 import Progress from './progress.gts';
+import Sidebar from './sidebar.gts';
 import ThemeSwitcher from './theme-switcher.gts';
 import Toaster from './toaster.gts';
 import Tooltip from './tooltip.gts';
@@ -73,6 +74,7 @@ export default {
   Pagination,
   Popover,
   Progress,
+  Sidebar,
   ThemeSwitcher,
   Toaster,
   Tooltip,

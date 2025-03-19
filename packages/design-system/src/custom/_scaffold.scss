@@ -1,18 +1,43 @@
+.full-height {
+  height: 100vh;
+  min-height: 100vh;
+}
+
 .sidebar {
-  --sidebar-width: 300px;
+  @extend .card;
+
+  --sidebar-width: 400px;
   --sidebar-padding-y: 0.5rem;
   --sidebar-padding-x: 1rem;
+  --sidebar-left: 1rem;
 
   border-radius: 0;
   max-width: var(--sidebar-width);
+  height: 100vh;
+  min-height: 100vh;
+  border-top: 0;
+  border-bottom: 0;
+  border-left: 0;
+  // border-width: 0 inherit 0 0;
 
-  .sidebar-item {
-    & > .card-header,
-    & > .list-group-item {
-      border: 0;
-      border-radius: 0;
-      padding: var(--sidebar-padding-y) var(--sidebar-padding-x);
+  .item > .header,
+  .item > .list-group-item {
+    &.header {
+      @extend .card-header;
     }
+
+    border: 0;
+    border-radius: 0;
+    padding: var(--sidebar-padding-y) var(--sidebar-padding-x);
+  }
+
+  .list-group-item {
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .item > .list-group-item {
+    padding-left: var(--sidebar-left);
   }
 }
 
