@@ -8,92 +8,103 @@ import type { ComponentLike } from '@glint/template';
 
 interface ItemSignature {
   Element: HTMLAnchorElement | HTMLDivElement;
-  Args: (
-    | {
-        route: string;
-        url?: never;
-      }
-    | {
-        route?: never;
-        url: string;
-      }
-  ) & {
+  Args: {
     active?: boolean;
     disabled?: boolean;
+    header?: boolean;
+    route?: string;
+    url?: string;
   };
   Blocks: {
     default: [];
-    group: [
-      {
-        Group: ComponentLike<GroupSignature>;
-      },
-    ];
   };
 }
 
 const Item: TOC<ItemSignature> = <template>
   {{#if @route}}
     <LinkTo
-      class="list-group-item list-group-item-action"
+      class={{classes
+        "item list-group-item list-group-item-action"
+        (if @active "active")
+        (if @disabled "disabled")
+        (if @header "header")
+      }}
       @route={{@route}}
       ...attributes
     >
-      {{yield}}
+      <span>
+        {{yield}}
+      </span>
     </LinkTo>
   {{else if @url}}
     <a
       class={{classes
-        "list-group-item list-group-item-action"
+        "item list-group-item list-group-item-action"
         (if @active "active")
         (if @disabled "disabled")
+        (if @header "header")
       }}
       href={{@url}}
       ...attributes
     >
-      {{yield}}
+      <span>
+        {{yield}}
+      </span>
     </a>
   {{else}}
-    <div class="list-group-item list-group-item-action" ...attributes>
-      {{yield}}
+    <div
+      class={{classes
+        "item list-group-item"
+        (if @active "active")
+        (if @disabled "disabled")
+        (if @header "header")
+      }}
+      ...attributes
+    >
+      <span>
+        {{yield}}
+      </span>
     </div>
-  {{/if}}
-  {{#if (has-block "group")}}
-    {{yield (hash Group=(component Group)) to="group"}}
   {{/if}}
 </template>;
 
 interface GroupSignature {
-  Element: HTMLAnchorElement;
+  Element: HTMLAnchorElement | HTMLDivElement;
   Args: {
+    disabled?: boolean;
     route?: string;
+    url?: string;
   };
   Blocks: {
     header: [];
-    group: [ComponentLike<ItemSignature>];
+    items: [ComponentLike<ItemSignature>];
   };
 }
 
 const Group: TOC<GroupSignature> = <template>
-  <div class="item">
-    {{#if (has-block "header")}}
-      {{#if @route}}
-        <LinkTo
-          class="header list-group-item list-group-item-action"
-          @route={{@route}}
-          ...attributes
-        >
+  {{#if (has-block "header")}}
+    {{#if @route}}
+      <LinkTo
+        class="item header list-group-item list-group-item-action"
+        @disabled={{@disabled}}
+        @route={{@route}}
+        ...attributes
+      >
+        <span>
           {{yield to="header"}}
-        </LinkTo>
-      {{else}}
-        <div class="header">
+        </span>
+      </LinkTo>
+    {{else}}
+      <div class="item header list-group-item" ...attributes>
+        <span>
           {{yield to="header"}}
-        </div>
-      {{/if}}
+        </span>
+      </div>
     {{/if}}
-    {{#if (has-block "group")}}
-      {{yield (component Item) to="group"}}
-    {{/if}}
-  </div>
+  {{/if}}
+  {{#if (has-block "items")}}
+    {{yield Item to="items"}}
+  {{/if}}
 </template>;
 
 export interface SidebarSignature {
@@ -108,14 +119,20 @@ export interface SidebarSignature {
         Item: ComponentLike<ItemSignature>;
       },
     ];
+    footer: [ComponentLike<ItemSignature>];
   };
 }
 
 const Sidebar: TOC<SidebarSignature> = <template>
-  <div class="sidebar card" ...attributes>
-    <div class="list-group d-flex flex-column overflow-auto">
-      {{yield (hash Group=(component Group) Item=(component Item))}}
+  <div class="sidebar card justify-content-between overflow-auto" ...attributes>
+    <div class="list-group d-flex flex-column">
+      {{yield (hash Group=Group Item=(component Item header=true))}}
     </div>
+    {{#if (has-block "footer")}}
+      <div class="list-group d-flex flex-column footer">
+        {{yield Item to="footer"}}
+      </div>
+    {{/if}}
   </div>
 </template>;
 
