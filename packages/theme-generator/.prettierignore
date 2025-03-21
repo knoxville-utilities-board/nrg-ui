@@ -1,6 +1,0 @@
-# compiled output
-# /dist/ # Dist needs to be formatted
-/tmp/
-
-# dependencies
-/node_modules/
