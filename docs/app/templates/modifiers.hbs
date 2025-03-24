@@ -4,10 +4,18 @@
   <Sidebar as |Sidebar|>
     <Sidebar.Group @header="Modifiers">
       <:group as |Item|>
-        <Item @name="on-click-outside" @route="modifiers.on-click-outside" />
-        <Item @name="on-destroy" @route="modifiers.on-destroy" />
-        <Item @name="on-insert" @route="modifiers.on-insert" />
-        <Item @name="on-update" @route="modifiers.on-update" />
+        <Item @route="modifiers.on-click-outside">
+          on-click-outside
+        </Item>
+        <Item @route="modifiers.on-destroy">
+          on-destroy
+        </Item>
+        <Item @route="modifiers.on-insert">
+          on-insert
+        </Item>
+        <Item @route="modifiers.on-update">
+          on-update
+        </Item>
       </:group>
     </Sidebar.Group>
   </Sidebar>
