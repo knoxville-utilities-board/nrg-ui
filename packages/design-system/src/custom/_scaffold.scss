@@ -33,11 +33,10 @@
 
     border: 0;
 
-    & > span {
+    & > span:not(.badge) {
       @extend .rounded;
 
-      padding: var(--bs-list-group-item-padding-y)
-        var(--bs-list-group-item-padding-x);
+      padding: 0 var(--bs-list-group-item-padding-x);
     }
 
     &.active {
@@ -60,5 +59,12 @@
     &:not(.header) {
       padding-left: calc(2 * var(--bs-list-group-item-padding-x));
     }
+  }
+
+  & .badge {
+    @extend .rounded-pill;
+
+    background-color: var(--bs-primary);
+    color: var(--bs-badge-color);
   }
 }

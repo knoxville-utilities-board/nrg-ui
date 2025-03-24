@@ -20,6 +20,7 @@ interface ItemSignature {
     onClick?: (evt: MouseEvent) => unknown;
   };
   Blocks: {
+    badge: [];
     default: [];
   };
 }
@@ -54,12 +55,22 @@ class Item extends Component<ItemSignature> {
         <span>
           {{yield}}
         </span>
+        {{#if (has-block "badge")}}
+          <span class="badge rounded-pill">
+            {{yield to="badge"}}
+          </span>
+        {{/if}}
       </LinkTo>
     {{else if @url}}
       <a class={{this.classes}} href={{@url}} ...attributes>
         <span>
           {{yield}}
         </span>
+        {{#if (has-block "badge")}}
+          <span class="badge rounded-pill">
+            {{yield to="badge"}}
+          </span>
+        {{/if}}
       </a>
     {{else}}
       <div
@@ -71,6 +82,11 @@ class Item extends Component<ItemSignature> {
         <span>
           {{yield}}
         </span>
+        {{#if (has-block "badge")}}
+          <span class="badge rounded-pill">
+            {{yield to="badge"}}
+          </span>
+        {{/if}}
       </div>
     {{/if}}
   </template>
@@ -87,6 +103,7 @@ interface GroupSignature {
     onClick?: (evt: MouseEvent) => unknown;
   };
   Blocks: {
+    badge: [];
     header: [];
     items: [ComponentLike<ItemSignature>];
   };
@@ -127,6 +144,11 @@ class Group extends Component<GroupSignature> {
           <span>
             {{yield to="header"}}
           </span>
+          {{#if (has-block "badge")}}
+            <span class="badge rounded-pill">
+              {{yield to="badge"}}
+            </span>
+          {{/if}}
         </LinkTo>
       {{else if @url}}
         <a
@@ -154,6 +176,11 @@ class Group extends Component<GroupSignature> {
           <span>
             {{yield to="header"}}
           </span>
+          {{#if (has-block "badge")}}
+            <span class="badge rounded-pill">
+              {{yield to="badge"}}
+            </span>
+          {{/if}}
         </div>
       {{/if}}
     {{/if}}
