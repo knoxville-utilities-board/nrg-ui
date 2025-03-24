@@ -14959,9 +14959,9 @@ select.form-select.is-warning:focus:not([disabled]),
   user-select: none;
 }
 
-.form-label,
-.form-check,
-form button[type=submit] {
+.form-label:not(:first-child),
+.form-check:not(:first-child),
+form button[type=submit]:not(:first-child) {
   margin-top: 1em;
 }
 
