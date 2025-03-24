@@ -98,7 +98,9 @@ select.form-select,
 .form-label,
 .form-check,
 form button[type="submit"] {
-  margin-top: 1em;
+  &:not(:first-child) {
+    margin-top: 1em;
+  }
 }
 
 .form-check-group .form-check {
@@ -155,4 +157,5 @@ div.dropdown:has(.is-warning) ~ .warning-feedback {
 }
 
 .dropdown-item {
-  white-space: normal;}
+  white-space: normal;
+}
