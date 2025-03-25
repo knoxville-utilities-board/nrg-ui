@@ -1,5 +1,20 @@
 # Changelog
 
+## Release (2025-03-24)
+
+* @nrg-ui/css 0.14.3 (patch)
+* @nrg-ui/core 0.27.1 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`
+  * [#384](https://github.com/knoxville-utilities-board/nrg-ui/pull/384) style(forms): Don't apply top margin to first inputs ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`
+  * [#373](https://github.com/knoxville-utilities-board/nrg-ui/pull/373) fix(search): Prevent displayValue from being set ([@Trishu-Patel](https://github.com/Trishu-Patel))
+
+#### Committers: 2
+- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-03-14)
 
 * @nrg-ui/core 0.27.0 (minor)
