@@ -10553,7 +10553,7 @@ select.focus-ring.form-select.is-warning:focus:not([disabled]),
   pointer-events: auto !important;
 }
 
-.rounded {
+.rounded, .sidebar .item.list-group-item > span:not(.badge) {
   border-radius: var(--bs-border-radius) !important;
 }
 
@@ -10585,7 +10585,7 @@ select.focus-ring.form-select.is-warning:focus:not([disabled]),
   border-radius: 50% !important;
 }
 
-.rounded-pill {
+.rounded-pill, .sidebar .badge {
   border-radius: var(--bs-border-radius-pill) !important;
 }
 
@@ -23682,6 +23682,60 @@ dialog .btn-close {
   color: var(--bs-popover-body-color);
 }
 
+.full-height {
+  height: 100vh;
+  min-height: 100vh;
+}
+
+.sidebar {
+  --sidebar-width: 300px;
+  --sidebar-left: 1rem;
+  border-radius: 0;
+  max-width: var(--sidebar-width);
+  border-left-width: 0;
+  border-top-width: 0;
+  border-bottom-width: 0;
+}
+.sidebar.card {
+  height: 100vh;
+  min-height: 100vh;
+}
+.sidebar > .list-group {
+  padding: var(--bs-list-group-item-padding-y) 0;
+}
+.sidebar > .list-group.footer {
+  border-top-width: var(--bs-list-group-border-width);
+  border-radius: 0;
+}
+.sidebar .item.list-group-item {
+  --bs-list-group-item-padding-y: 0.25rem;
+  --bs-list-group-item-padding-x: 0.5rem;
+  border: 0;
+}
+.sidebar .item.list-group-item > span:not(.badge) {
+  padding: 0 var(--bs-list-group-item-padding-x);
+}
+.sidebar .item.list-group-item.active {
+  background: 0;
+}
+.sidebar .item.list-group-item.active > span {
+  background-color: rgba(var(--bs-primary-rgb), 0.25);
+  color: var(--bs-body-color);
+}
+.sidebar .item.list-group-item.header {
+  font-weight: bold;
+}
+.sidebar .item.list-group-item.header:not(:first-child) {
+  margin-top: 0.5rem;
+}
+.sidebar .item.list-group-item:not(.header) {
+  padding-left: calc(2 * var(--bs-list-group-item-padding-x));
+}
+.sidebar .badge {
+  background-color: var(--bs-primary);
+  color: var(--bs-badge-color);
+}
+
 .text-blue {
   color: var(--bs-blue) !important;
 }
@@ -23753,6 +23807,29 @@ dialog .btn-close {
 }
 .toaster.fixed * {
   pointer-events: auto;
+}
+
+body {
+  scrollbar-color: rgba(var(--bs-body-color-rgb), 0.25) rgba(var(--bs-body-color-rgb), 0.1);
+  scrollbar-width: thin;
+}
+
+body ::-webkit-scrollbar-track {
+  background: rgba(var(--bs-body-color-rgb), 0.1);
+}
+
+body ::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  border-radius: 5px;
+  background: rgba(var(--bs-body-color-rgb), 0.25);
+  -webkit-transition: color 0.2s ease;
+  transition: color 0.2s ease;
+}
+
+body ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
 }
 
 /* stylelint-disable */
