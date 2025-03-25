@@ -2,11 +2,70 @@
 
 <div class="min-vh-100 d-flex flex-column">
   {{! TODO: Add header/sidebar }}
-  <main>
+  <main class="d-flex flex-grow-1">
     <div class="position-absolute end-0 pt-2">
       <ThemeSwitcher />
     </div>
-    {{outlet}}
+    <div class="d-flex flex-grow-1 w-100">
+      <div
+        class="col-12 col-md-2 d-flex flex-column sticky-top overflow-auto full-height"
+      >
+        <Sidebar>
+          <:default as |Menu|>
+            <Menu.Group>
+              <:badge>12</:badge>
+              <:header>
+                Components
+              </:header>
+              <:items as |Item|>
+                <Item @route="components.button">Button</Item>
+                <Item @route="components.card">Card</Item>
+                <Item @route="components.dropdown">Dropdown</Item>
+                <Item @route="components.footer">Footer</Item>
+                <Item @route="components.header">Header</Item>
+                <Item @route="components.icon">Icon</Item>
+                <Item @route="components.modal">Modal</Item>
+                <Item @route="components.navbar">Navbar</Item>
+                <Item @route="components.pagination">Pagination</Item>
+                <Item @route="components.popover">Popover</Item>
+                <Item @route="components.toaster">Toaster</Item>
+                <Item @route="components.tooltip">Tooltip</Item>
+                <Item @route="components.theme-switcher">Theme Switcher</Item>
+              </:items>
+            </Menu.Group>
+            <Menu.Group>
+              <:badge>9</:badge>
+              <:header>
+                Forms
+              </:header>
+              <:items as |Item|>
+                <Item @route="components.form.datetime">Datetime</Item>
+                <Item @route="components.form.checkbox">Checkbox</Item>
+                <Item @route="components.form.checkbox-group">Checkbox Group</Item>
+                <Item @route="components.form.phone-input">Phone Input</Item>
+                <Item @route="components.form.radio-group">Radio Group</Item>
+                <Item @route="components.form.search">Search</Item>
+                <Item @route="components.form.select">Select</Item>
+                <Item @route="components.form.text-area">Text Area</Item>
+                <Item @route="components.form.text-input">Text Input</Item>
+              </:items>
+            </Menu.Group>
+          </:default>
+          <:footer as |Item|>
+            <Item
+              target="_blank"
+              @url="https://github.com/knoxville-utilities-board/nrg-ui"
+            >
+              {{version}}
+            </Item>
+          </:footer>
+        </Sidebar>
+      </div>
+      <div class="col flex-grow-1 px-md-0 py-3 overflow-hidden">
+        {{outlet}}
+      </div>
+    </div>
+
   </main>
   {{! TODO: Add footer }}
 </div>

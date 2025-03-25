@@ -1,38 +1,5 @@
 {{page-title "Components"}}
 <div class="row g-0">
-  <Sidebar as |Sidebar|>
-    <Sidebar.Group @header="Components">
-      <:group as |Item|>
-        <Item @name="Button" @route="components.button" />
-        <Item @name="Card" @route="components.card" />
-        <Item @name="Dropdown" @route="components.dropdown" />
-        <Item @name="Footer" @route="components.footer" />
-        <Item @name="Header" @route="components.header" />
-        <Item @name="Icon" @route="components.icon" />
-        <Item @name="Modal" @route="components.modal" />
-        <Item @name="Navbar" @route="components.navbar" />
-        <Item @name="Pagination" @route="components.pagination" />
-        <Item @name="Popover" @route="components.popover" />
-        <Item @name="Toaster" @route="components.toaster" />
-        <Item @name="Tooltip" @route="components.tooltip" />
-        <Item @name="Theme Switcher" @route="components.theme-switcher" />
-      </:group>
-    </Sidebar.Group>
-    <Sidebar.Group @header="Forms">
-      <:group as |Item|>
-        <Item @name="Form" @route="components.form.index" />
-        <Item @name="Datetime" @route="components.form.datetime" />
-        <Item @name="Checkbox" @route="components.form.checkbox" />
-        <Item @name="Checkbox Group" @route="components.form.checkbox-group" />
-        <Item @name="Phone Input" @route="components.form.phone-input" />
-        <Item @name="Radio Group" @route="components.form.radio-group" />
-        <Item @name="Search" @route="components.form.search" />
-        <Item @name="Select" @route="components.form.select" />
-        <Item @name="Text Area" @route="components.form.text-area" />
-        <Item @name="Text Input" @route="components.form.text-input" />
-      </:group>
-    </Sidebar.Group>
-  </Sidebar>
   <div class="col px-md-0 py-3">
     {{outlet}}
   </div>
