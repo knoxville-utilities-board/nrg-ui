@@ -24,11 +24,11 @@ const Validators = {
   inclusion: InclusionValidator,
   length: LengthValidator,
   number: NumberValidator,
+  password: PasswordValidator,
   phone: PhoneValidator,
   presence: PresenceValidator,
   range: RangeValidator,
   regex: RegexValidator,
-  password: PasswordValidator,
 };
 type ValidatorType = keyof typeof Validators;
 

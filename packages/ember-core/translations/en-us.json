@@ -80,6 +80,9 @@
         "precision": "This field must have at most {precision} decimal places",
         "multipleOf": "This field must be a multiple of {multipleOf, number}"
       },
+      "password": {
+        "strength": "Password must include at least {minClasses} of the following: an uppercase letter, a lowercase letter, a number, or a symbol."
+      },
       "phone": {
         "areaCode": {
           "invalid": "This phone number must not include one of the following area codes: {areaCodes}",

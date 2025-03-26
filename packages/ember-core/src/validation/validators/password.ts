@@ -1,15 +1,22 @@
-
 import { assert } from '@ember/debug';
 import { isNone } from '@ember/utils';
 
 import BaseValidator from './base.ts';
 
-import type { Binding, Primitive } from '../../index.ts';
+import type { Binding } from '../../index.ts';
 import type { BaseOptions, Computable, ValidateFnResponse } from '../types.ts';
 
+export type  CommonTests = {
+  alpha: RegExp;
+  upper: RegExp;
+  lower: RegExp;
+  numeral: RegExp;
+  special: RegExp;
+};
+
 export type PasswordOptions = {
-  minLength?: number;
-  maxLength?: number;
+
+  tests: (keyof CommonTests | RegExp)[];
   /**
    * The minimum number of character types required, including uppercase, lowercase, digits, and symbols.
    */
@@ -17,10 +24,9 @@ export type PasswordOptions = {
 } & BaseOptions;
 
 export default class PasswordValidator<
-  T extends Primitive,
   Context extends object = Record<string, unknown>,
   Model extends object = Record<string, unknown>,
-> extends BaseValidator<T, Model, Context, PasswordOptions> {
+> extends BaseValidator<string, Model, Context, PasswordOptions> {
   constructor(
     bind: Binding<Model>,
     options: Computable<Context, PasswordOptions>,
@@ -29,56 +35,38 @@ export default class PasswordValidator<
     super(bind, options, context);
 
     if (
-      isNone(options.minLength) &&
-      isNone(options.maxLength) &&
       isNone(options.minClasses)
     ) {
       assert(
-        'PasswordValidator requires `minLength`, `maxLength`, and `minClasses` to be provided',
+        'PasswordValidator requires `minClasses` to be provided',
       );
     }
   }
 
-  validate(value: T, options: PasswordOptions): ValidateFnResponse {
-    const {minLength, maxLength, minClasses} = options;
+  validate(value: string, options: PasswordOptions): ValidateFnResponse {
+    const { minClasses } = options;
 
-    if (minLength !== undefined && typeof value === 'string' && value.length < minLength) {
-      return {
-        key: 'nrg.validation.passwordLengthTooShort',
-        value,
-        minLength,
-      };
-    }
+    const commonTests = {
+      alpha: /(?:[A-Z]|[a-z])/,
+      upper: /[A-Z]/,
+      lower: /[a-z]/,
+      numeral: /\d/,
+      special: /[@#$%^&*\-_+=[\]{}|\\:',.?/`~"();!]/,
+    };
 
-    if (minLength !== undefined && typeof value === 'string' && value.length < minLength) {
-      return {
-        key: 'nrg.validation.passwordLengthTooLong',
-        value,
-        maxLength,
-      };
-    }
-
-    const conditions = [
-      /[A-Z]/.test(value as string),
-      /[a-z]/.test(value as string),
-      /\d/.test(value as string),
-      /[^a-zA-Z0-9]/.test(value as string),
-    ];
-
-    const classCount = conditions.filter(Boolean).length;
+    const classCount = Object.keys(commonTests)
+      .map(key => commonTests[key as keyof typeof commonTests].test(value))
+      .filter(Boolean)
+      .length;
 
     if (minClasses !== undefined && classCount >= minClasses) {
       return true;
     }
 
     return {
-      key: 'nrg.validation.passwordStrength',
+      key: 'nrg.validation.password.strength',
       value,
       minClasses,
     };
-  }
-
-  listToString(value: string[]): string {
-    return this.intl.formatList(value);
   }
 }
