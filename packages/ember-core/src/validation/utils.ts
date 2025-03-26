@@ -1,4 +1,3 @@
-import B2CPasswordValidator from './validators/b2c-password.ts';
 import ConfirmationValidator from './validators/confirmation.ts';
 import CustomValidator from './validators/custom.ts';
 import EmailValidator from './validators/email.ts';
@@ -6,6 +5,7 @@ import ExclusionValidator from './validators/exclusion.ts';
 import InclusionValidator from './validators/inclusion.ts';
 import LengthValidator from './validators/length.ts';
 import NumberValidator from './validators/number.ts';
+import PasswordValidator from './validators/password.ts';
 import PhoneValidator from './validators/phone.ts';
 import PresenceValidator from './validators/presence.ts';
 import RangeValidator from './validators/range.ts';
@@ -28,7 +28,7 @@ const Validators = {
   presence: PresenceValidator,
   range: RangeValidator,
   regex: RegexValidator,
-  B2CPassword: B2CPasswordValidator,
+  password: PasswordValidator,
 };
 type ValidatorType = keyof typeof Validators;
 
@@ -94,9 +94,9 @@ export function validator<V extends ValidatorType = ValidatorType>(
     return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
       new RegexValidator(binding, options, context);
   }
-  if (type === 'B2CPassword') {
+  if (type === 'password') {
     return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
-      new B2CPasswordValidator(binding, options, context);
+      new PasswordValidator(binding, options, context);
   }
 
   throw new Error(`Unknown validator type: ${type}`);
