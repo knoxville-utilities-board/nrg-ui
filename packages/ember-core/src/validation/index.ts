@@ -10,6 +10,7 @@ export { default as PhoneValidator } from './validators/phone.ts';
 export { default as PresenceValidator } from './validators/presence.ts';
 export { default as RangeValidator } from './validators/range.ts';
 export { default as RegexValidator } from './validators/regex.ts';
+export { default as B2CPasswordValidator } from './validators/b2c-password.ts';
 
 export { validator } from './utils.ts';
 
