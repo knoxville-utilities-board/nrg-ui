@@ -29,6 +29,7 @@ export { default as MktgWorkflowTray } from './components/mktg/workflow-tray.gts
 
 /* Components - Core */
 export { default as Alert } from './components/alert.gts';
+export { default as AppBar } from './components/app-bar.gts';
 export { default as Button } from './components/button.gts';
 export { default as ButtonGroup } from './components/button-group.gts';
 export { default as Card } from './components/card.gts';
@@ -96,6 +97,7 @@ export type { MktgWorkflowTraySignature } from './components/mktg/workflow-tray.
 
 /* Types - Components - Core */
 export type { AlertSignature } from './components/alert.gts';
+export type { AppBarSignature } from './components/app-bar.gts';
 export type { ButtonGroupSignature } from './components/button-group.gts';
 export type { ButtonSignature } from './components/button.gts';
 export type { CardSignature } from './components/card.gts';

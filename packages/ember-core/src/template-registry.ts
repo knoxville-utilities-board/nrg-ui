@@ -1,4 +1,5 @@
 import Alert from './components/alert.gts';
+import AppBar from './components/app-bar.gts';
 import ButtonGroup from './components/button-group.gts';
 import Button from './components/button.gts';
 import Card from './components/card.gts';
@@ -46,6 +47,7 @@ import OnUpdate from './modifiers/on-update.ts';
 export interface ComponentRegistry {
   // Core components
   Alert: typeof Alert;
+  AppBar: typeof AppBar;
   ButtonGroup: typeof ButtonGroup;
   Button: typeof Button;
   Card: typeof Card;

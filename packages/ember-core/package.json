@@ -176,6 +176,7 @@
     "main": "addon-main.cjs",
     "app-js": {
       "./components/alert.js": "./dist/_app_/components/alert.js",
+      "./components/app-bar.js": "./dist/_app_/components/app-bar.js",
       "./components/button-group.js": "./dist/_app_/components/button-group.js",
       "./components/button.js": "./dist/_app_/components/button.js",
       "./components/card.js": "./dist/_app_/components/card.js",

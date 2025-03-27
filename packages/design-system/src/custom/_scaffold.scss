@@ -1,6 +1,24 @@
+:root {
+  --app-bar-height: 3rem;
+}
+
 .full-height {
   height: 100vh;
   min-height: 100vh;
+}
+
+.application {
+  display: flex;
+  flex-grow: 1;
+  height: 100vh;
+  margin-top: 0;
+  min-height: 100vh;
+
+  .app-bar-container ~ & {
+    height: calc(100vh - var(--app-bar-height));
+    min-height: calc(100vh - var(--app-bar-height));
+    margin-top: var(--app-bar-height);
+  }
 }
 
 .sidebar {
@@ -12,11 +30,7 @@
   border-left-width: 0;
   border-top-width: 0;
   border-bottom-width: 0;
-
-  &.card {
-    height: 100vh;
-    min-height: 100vh;
-  }
+  height: 100%;
 
   & > .list-group {
     padding: var(--bs-list-group-item-padding-y) 0;
@@ -66,5 +80,27 @@
 
     background-color: var(--bs-primary);
     color: var(--bs-badge-color);
+  }
+}
+
+.app-bar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: auto;
+  width: 100%;
+  height: var(--app-bar-height);
+  z-index: 1021;
+
+  .app-bar {
+    height: 100%;
+  }
+
+  .environment-title {
+    color: var(--bs-danger);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0.5rem;
+    text-transform: uppercase;
   }
 }
