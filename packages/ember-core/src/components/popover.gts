@@ -271,7 +271,7 @@ export default class Popover extends Component<PopoverSignature> {
       <div
         id={{this.id}}
         class={{classes
-          (unless this.isShown "d-none")
+          (unless this.isShown "hidden")
           (concat "popover bs-popover-" this.adjustedSide)
           "overflow-x-auto"
         }}

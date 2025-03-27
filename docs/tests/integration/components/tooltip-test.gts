@@ -112,15 +112,15 @@ module('Integration | Component | tooltip', function (hooks) {
 
     await render(<template><Tooltip @onShow={{show}} @onHide={{hide}} /></template>);
 
-    assert.dom('.tooltip').hasClass('d-none');
+    assert.dom('.tooltip').hasClass('hidden');
 
     assert.step('beforeShow');
     await triggerEvent('span:has(> p)', 'mouseenter');
-    assert.dom('.tooltip').doesNotHaveClass('d-none');
+    assert.dom('.tooltip').doesNotHaveClass('hidden');
 
     assert.step('beforeHide');
     await triggerEvent('span:has(> p)', 'mouseleave');
-    assert.dom('.tooltip').hasClass('d-none');
+    assert.dom('.tooltip').hasClass('hidden');
 
     assert.verifySteps(['beforeShow', 'show', 'beforeHide', 'hide']);
   });
