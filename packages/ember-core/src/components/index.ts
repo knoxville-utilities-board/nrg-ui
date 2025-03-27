@@ -1,4 +1,5 @@
 import Alert from './alert.gts';
+import AppBar from './app-bar.gts';
 import ButtonGroup from './button-group.gts';
 import Button from './button.gts';
 import Card from './card.gts';
@@ -62,6 +63,7 @@ export default {
   Form,
   /* Core */
   Alert,
+  AppBar,
   Card,
   Dropdown,
   Footer,
