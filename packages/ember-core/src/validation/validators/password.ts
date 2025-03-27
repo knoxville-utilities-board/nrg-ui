@@ -16,11 +16,11 @@ export type  CommonTests = {
 
 export type PasswordOptions = {
 
-  tests: (keyof CommonTests | RegExp)[];
+  tests: (string | RegExp)[];
   /**
-   * The minimum number of character types required, including uppercase, lowercase, digits, and symbols.
+   * The minimum number of character types required from the list of `tests`.
    */
-  minClasses?: number;
+  minClasses: number;
 } & BaseOptions;
 
 export default class PasswordValidator<
@@ -44,7 +44,14 @@ export default class PasswordValidator<
   }
 
   validate(value: string, options: PasswordOptions): ValidateFnResponse {
-    const { minClasses } = options;
+    const { minClasses, tests } = options;
+
+    if (minClasses > tests.length) {
+      return {
+        key: 'nrg.validation.password.invalid',
+        value,
+      }
+    }
 
     const commonTests = {
       alpha: /(?:[A-Z]|[a-z])/,
@@ -54,8 +61,19 @@ export default class PasswordValidator<
       special: /[@#$%^&*\-_+=[\]{}|\\:',.?/`~"();!]/,
     };
 
-    const classCount = Object.keys(commonTests)
-      .map(key => commonTests[key as keyof typeof commonTests].test(value))
+    const applicableTests: RegExp[] = tests.map(test => {
+      if (typeof test === 'string') {
+        if (test in commonTests) {
+          return commonTests[test as keyof typeof commonTests];
+        }
+        throw new Error(`Invalid test key: ${test}`);
+      }
+
+      return test;
+    });
+
+    const classCount = applicableTests
+      .map(test => test.test(value))
       .filter(Boolean)
       .length;
 
@@ -66,7 +84,6 @@ export default class PasswordValidator<
     return {
       key: 'nrg.validation.password.strength',
       value,
-      minClasses,
     };
   }
 }
