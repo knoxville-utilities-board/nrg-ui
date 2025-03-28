@@ -1,5 +1,25 @@
 # Changelog
 
+## Release (2025-03-28)
+
+* @nrg-ui/css 0.15.0 (minor)
+* @nrg-ui/core 0.28.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#387](https://github.com/knoxville-utilities-board/nrg-ui/pull/387) feat: Add password validator ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#388](https://github.com/knoxville-utilities-board/nrg-ui/pull/388) feat: Create app bar component ([@TSenter](https://github.com/TSenter))
+  * [#385](https://github.com/knoxville-utilities-board/nrg-ui/pull/385) feat: Add sidebar component and add default scrollbar styling ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#390](https://github.com/knoxville-utilities-board/nrg-ui/pull/390) fix(popover): Use hidden instead of d-none ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-03-24)
 
 * @nrg-ui/css 0.14.3 (patch)

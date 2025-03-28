@@ -4,24 +4,28 @@
       "oldVersion": "0.1.1"
     },
     "@nrg-ui/css": {
-      "impact": "patch",
-      "oldVersion": "0.14.2",
-      "newVersion": "0.14.3",
+      "impact": "minor",
+      "oldVersion": "0.14.3",
+      "newVersion": "0.15.0",
       "tagName": "latest",
       "constraints": [
         {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
         }
       ],
       "pkgJSONPath": "./packages/design-system/package.json"
     },
     "@nrg-ui/core": {
-      "impact": "patch",
-      "oldVersion": "0.27.0",
-      "newVersion": "0.27.1",
+      "impact": "minor",
+      "oldVersion": "0.27.1",
+      "newVersion": "0.28.0",
       "tagName": "latest",
       "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
@@ -36,5 +40,5 @@
       "oldVersion": "0.3.0"
     }
   },
-  "description": "## Release (2025-03-24)\n\n* @nrg-ui/css 0.14.3 (patch)\n* @nrg-ui/core 0.27.1 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`\n  * [#384](https://github.com/knoxville-utilities-board/nrg-ui/pull/384) style(forms): Don't apply top margin to first inputs ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/core`\n  * [#373](https://github.com/knoxville-utilities-board/nrg-ui/pull/373) fix(search): Prevent displayValue from being set ([@Trishu-Patel](https://github.com/Trishu-Patel))\n\n#### Committers: 2\n- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-03-28)\n\n* @nrg-ui/css 0.15.0 (minor)\n* @nrg-ui/core 0.28.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#387](https://github.com/knoxville-utilities-board/nrg-ui/pull/387) feat: Add password validator ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#388](https://github.com/knoxville-utilities-board/nrg-ui/pull/388) feat: Create app bar component ([@TSenter](https://github.com/TSenter))\n  * [#385](https://github.com/knoxville-utilities-board/nrg-ui/pull/385) feat: Add sidebar component and add default scrollbar styling ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#390](https://github.com/knoxville-utilities-board/nrg-ui/pull/390) fix(popover): Use hidden instead of d-none ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
