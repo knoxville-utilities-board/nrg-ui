@@ -81,8 +81,7 @@
         "multipleOf": "This field must be a multiple of {multipleOf, number}"
       },
       "password": {
-        "strength": "Password does not meet the minimum strength requirements for character classes",
-        "invalid": "PasswordValidator requires `minClasses` to be less than or equal to the number of tests provided"
+        "strength": "Password does not meet the minimum strength requirements"
       },
       "phone": {
         "areaCode": {

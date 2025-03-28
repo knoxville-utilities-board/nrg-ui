@@ -1,22 +1,23 @@
 import { assert } from '@ember/debug';
-import { isNone } from '@ember/utils';
 
 import BaseValidator from './base.ts';
 
-import type { Binding } from '../../index.ts';
-import type { BaseOptions, Computable, ValidateFnResponse } from '../types.ts';
+import type { BaseOptions, ValidateFnResponse } from '../types.ts';
 
-export type  CommonTests = {
-  alpha: RegExp;
-  upper: RegExp;
-  lower: RegExp;
-  numeral: RegExp;
-  special: RegExp;
+const CommonTests = {
+  alpha: /[a-zA-Z]/,
+  upper: /[A-Z]/,
+  lower: /[a-z]/,
+  numeral: /\d/,
+  special: /[^A-Za-z0-9]/,
 };
 
 export type PasswordOptions = {
-
-  tests: (string | RegExp)[];
+  /**
+   * A list of tests to run against the password.
+   * Each test must be either a regular expression or one of the following values: "alpha", "upper", "lower", "numeral", "special".
+   */
+  tests: (RegExp | keyof typeof CommonTests)[];
   /**
    * The minimum number of character types required from the list of `tests`.
    */
@@ -27,57 +28,39 @@ export default class PasswordValidator<
   Context extends object = Record<string, unknown>,
   Model extends object = Record<string, unknown>,
 > extends BaseValidator<string, Model, Context, PasswordOptions> {
-  constructor(
-    bind: Binding<Model>,
-    options: Computable<Context, PasswordOptions>,
-    context: Context,
-  ) {
-    super(bind, options, context);
-
-    if (
-      isNone(options.minClasses)
-    ) {
-      assert(
-        'PasswordValidator requires `minClasses` to be provided',
-      );
-    }
-  }
+  defaultOptions = {
+    tests: Object.keys(CommonTests) as (keyof typeof CommonTests)[],
+    minClasses: 3,
+  };
 
   validate(value: string, options: PasswordOptions): ValidateFnResponse {
     const { minClasses, tests } = options;
 
-    if (minClasses > tests.length) {
-      return {
-        key: 'nrg.validation.password.invalid',
-        value,
-      }
-    }
+    assert(
+      'PasswordValidator requires `minClasses` to be provided',
+      minClasses,
+    );
 
-    const commonTests = {
-      alpha: /(?:[A-Z]|[a-z])/,
-      upper: /[A-Z]/,
-      lower: /[a-z]/,
-      numeral: /\d/,
-      special: /[@#$%^&*\-_+=[\]{}|\\:',.?/`~"();!]/,
-    };
+    assert(
+      'PasswordValidator requires `minClasses` to be less than or equal to the number of tests provided',
+      minClasses <= tests.length,
+    );
 
-    const applicableTests: RegExp[] = tests.map(test => {
+    const applicableTests: RegExp[] = tests.map((test) => {
       if (typeof test === 'string') {
-        if (test in commonTests) {
-          return commonTests[test as keyof typeof commonTests];
-        }
-        throw new Error(`Invalid test key: ${test}`);
+        assert(`Invalid test key: ${test}`, test in CommonTests);
+
+        return CommonTests[test];
       }
 
       return test;
     });
 
     const classCount = applicableTests
-      .map(test => test.test(value))
-      .filter(Boolean)
-      .length;
+      .map((test) => test.test(value))
+      .filter(Boolean).length;
 
-    if (minClasses !== undefined && classCount >= minClasses) {
+    if (classCount >= minClasses) {
       return true;
     }
 

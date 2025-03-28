@@ -30,41 +30,24 @@ module('Unit | Validator | password', function (hooks) {
     setOwner(this.model, this.owner);
   });
 
-  test('`minClasses` option is required', function (this: TestContext, assert) {
+  test('`minClasses` cannot be greater than `tests` length', function (this: TestContext, assert) {
     assert.expect(1);
 
     assert.throws(() => {
-      // @ts-expect-error Testing that the `in` option is required
-      const validator = new PasswordValidator(this.binding, {}, this);
+      const validator = new PasswordValidator(
+        this.binding,
+        {
+          tests: [],
+          minClasses: 5,
+        },
+        this.model,
+      );
 
       assert.notOk(
         true,
         'Expected an error, but got a result instead: ' + validator.result,
       );
-    }, new Error('Assertion Failed: PasswordValidator requires `minClasses` to be provided'));
-  });
-
-  test('`minClasses` cannot be greater than `tests` length', function (this: TestContext, assert) {
-    const commonTests = {
-      symbol: /[^a-zA-Z0-9]/,
-      upper: /[A-Z]/,
-      lower: /[a-z]/,
-      numeral: /\d/,
-    };
-
-    const validator = new PasswordValidator(
-      this.binding,
-      {
-        tests: Object.values(commonTests),
-        minClasses: 5,
-      },
-      this.model,
-    );
-
-    assert.isInvalid(
-      validator.result,
-      'PasswordValidator requires `minClasses` to be less than or equal to the number of tests provided',
-    );
+    }, new Error('Assertion Failed: PasswordValidator requires `minClasses` to be less than or equal to the number of tests provided'));
   });
 
   test('`tests` option works', function (this: TestContext, assert) {
@@ -101,7 +84,7 @@ module('Unit | Validator | password', function (hooks) {
     this.model.field = 'password';
     assert.isInvalid(
       numeralValidator.result,
-      'Password does not meet the minimum strength requirements for character classes',
+      'Password does not meet the minimum strength requirements',
     );
   });
 
@@ -127,14 +110,14 @@ module('Unit | Validator | password', function (hooks) {
 
     assert.isInvalid(
       validator.result,
-      'Password does not meet the minimum strength requirements for character classes',
+      'Password does not meet the minimum strength requirements',
     );
 
     this.model.field = 'Password';
 
     assert.isInvalid(
       validator.result,
-      'Password does not meet the minimum strength requirements for character classes',
+      'Password does not meet the minimum strength requirements',
     );
 
     this.model.field = 'Passw0rd';
