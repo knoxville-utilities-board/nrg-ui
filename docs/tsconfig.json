@@ -7,7 +7,7 @@
     // The combination of `baseUrl` with `paths` allows Ember's classic package
     // layout, which is not resolvable with the Node resolution algorithm, to
     // work with TypeScript.
-    "lib": ["DOM", "ES2016"],
+    "lib": ["DOM", "ES2017"],
     "baseUrl": ".",
     "paths": {
       "docs/tests/*": ["tests/*"],

@@ -5,6 +5,7 @@ import ExclusionValidator from './validators/exclusion.ts';
 import InclusionValidator from './validators/inclusion.ts';
 import LengthValidator from './validators/length.ts';
 import NumberValidator from './validators/number.ts';
+import PasswordValidator from './validators/password.ts';
 import PhoneValidator from './validators/phone.ts';
 import PresenceValidator from './validators/presence.ts';
 import RangeValidator from './validators/range.ts';
@@ -23,6 +24,7 @@ const Validators = {
   inclusion: InclusionValidator,
   length: LengthValidator,
   number: NumberValidator,
+  password: PasswordValidator,
   phone: PhoneValidator,
   presence: PresenceValidator,
   range: RangeValidator,
@@ -91,6 +93,10 @@ export function validator<V extends ValidatorType = ValidatorType>(
   if (type === 'regex') {
     return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
       new RegexValidator(binding, options, context);
+  }
+  if (type === 'password') {
+    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
+      new PasswordValidator(binding, options, context);
   }
 
   throw new Error(`Unknown validator type: ${type}`);
