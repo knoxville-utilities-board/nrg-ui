@@ -38,6 +38,7 @@ Router.map(function () {
     this.route('toaster');
     this.route('tooltip');
     this.route('theme-switcher');
+    this.route('context-menu');
   });
   this.route('helpers');
   this.route('mktg-components', function () {

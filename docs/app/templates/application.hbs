@@ -13,6 +13,7 @@
     </:right>
   </AppBar>
   <main class="application">
+    <Toaster />
     <div class="col-12 col-md-2 d-flex flex-column sticky-top overflow-auto">
       <Sidebar>
         <:default as |Menu|>
@@ -24,6 +25,7 @@
             <:items as |Item|>
               <Item @route="components.button">Button</Item>
               <Item @route="components.card">Card</Item>
+              <Item @route="components.context-menu">Context Menu</Item>
               <Item @route="components.dropdown">Dropdown</Item>
               <Item @route="components.footer">Footer</Item>
               <Item @route="components.header">Header</Item>
@@ -37,7 +39,7 @@
               <Item @route="components.theme-switcher">Theme Switcher</Item>
             </:items>
           </Menu.Group>
-          <Menu.Group>
+          <Menu.Group @route="components.form.index">
             <:badge>9</:badge>
             <:header>
               Forms

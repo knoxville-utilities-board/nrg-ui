@@ -72,7 +72,8 @@ const Validators = {
   checkboxGroup: [
     validator('custom', {
       validate(value) {
-        return !value.includes('cg0');
+        // debugger;
+        return !value.includes('checkboxGroup.0');
       },
       message: 'The first checkbox is not allowed',
       isWarning: true,
