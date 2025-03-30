@@ -168,3 +168,12 @@
 button.dropdown + .popover {
   max-width: 100%;
 }
+
+.context-menu > i {
+  cursor: pointer;
+  color: var(--bs-body-color);
+
+  &[disabled] {
+    pointer-events: none;
+  }
+}

@@ -3,6 +3,7 @@ import AppBar from './app-bar.gts';
 import ButtonGroup from './button-group.gts';
 import Button from './button.gts';
 import Card from './card.gts';
+import ContextMenu, { ContextMenuItem } from './context-menu.gts';
 import Dropdown from './dropdown.gts';
 import Footer from './footer.gts';
 import BoundValue from './form/bound-value.ts';
@@ -65,6 +66,8 @@ export default {
   Alert,
   AppBar,
   Card,
+  ContextMenu,
+  ContextMenuItem,
   Dropdown,
   Footer,
   Header,
