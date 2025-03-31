@@ -95,7 +95,7 @@
     "stylelint-prettier": "^4.1.0",
     "tracked-built-ins": "^3.4.0",
     "typescript": "^5.8.2",
-    "typescript-eslint": "^8.27.0",
+    "typescript-eslint": "^8.28.0",
     "webpack": "^5.98.0"
   },
   "engines": {
