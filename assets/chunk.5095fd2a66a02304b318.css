@@ -14874,6 +14874,14 @@ button.dropdown + .popover {
   max-width: 100%;
 }
 
+.context-menu > i {
+  cursor: pointer;
+  color: var(--bs-body-color);
+}
+.context-menu > i[disabled] {
+  pointer-events: none;
+}
+
 .form-control.dropdown + .popover > .popover-body > .dropdown-menu {
   max-width: 100%;
 }
