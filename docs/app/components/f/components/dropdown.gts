@@ -27,6 +27,9 @@ export default class DropdownDemo extends Component {
   closeOnSelect?: boolean;
 
   @tracked
+  disabled?: boolean;
+
+  @tracked
   hasIcon?: boolean;
 
   @tracked
@@ -56,6 +59,7 @@ export default class DropdownDemo extends Component {
               class={{this.class}}
               @alignment={{this.alignment}}
               @closeOnSelect={{this.closeOnSelect}}
+              @disabled={{this.disabled}}
               @hasIcon={{this.hasIcon}}
               @isOpen={{this.isOpen}}
               @offset={{this.offset}}
@@ -110,6 +114,12 @@ export default class DropdownDemo extends Component {
               @description="Whether to close the dropdown when an item is selected"
               @value={{this.closeOnSelect}}
               @onInput={{fn this.update "closeOnSelect"}}
+            />
+            <Args.Bool
+              @name="disabled"
+              @description="Whether the dropdown is disabled"
+              @value={{this.disabled}}
+              @onInput={{fn this.update "disabled"}}
             />
             <Args.Bool
               @name="hasIcon"
