@@ -13,6 +13,7 @@
     </:right>
   </AppBar>
   <main class="application">
+    <Toaster />
     <div class="col-12 col-md-2 d-flex flex-column sticky-top overflow-auto">
       <Sidebar>
         <:default as |Menu|>
@@ -37,7 +38,7 @@
               <Item @route="components.theme-switcher">Theme Switcher</Item>
             </:items>
           </Menu.Group>
-          <Menu.Group>
+          <Menu.Group @route="components.form.index">
             <:badge>9</:badge>
             <:header>
               Forms
