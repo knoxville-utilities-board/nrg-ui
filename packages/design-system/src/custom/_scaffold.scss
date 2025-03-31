@@ -18,6 +18,16 @@
     height: calc(100vh - var(--app-bar-height));
     min-height: calc(100vh - var(--app-bar-height));
     margin-top: var(--app-bar-height);
+
+    &:has(+ footer) {
+      height: calc(100vh - var(--app-bar-height) - var(--footer-height));
+      min-height: calc(100vh - var(--app-bar-height) - var(--footer-height));
+    }
+  }
+
+  &:has(+ footer) {
+    height: calc(100vh - var(--footer-height));
+    min-height: calc(100vh - var(--footer-height));
   }
 }
 
