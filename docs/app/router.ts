@@ -16,6 +16,7 @@ Router.map(function () {
   this.route('components', function () {
     this.route('button');
     this.route('card');
+    this.route('context-menu');
     this.route('dropdown');
     this.route('header');
     this.route('form', function () {
