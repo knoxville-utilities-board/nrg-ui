@@ -5,7 +5,7 @@
 .toaster.fixed {
   padding: 1em;
   max-width: calc(100vw - 1em);
-  top: 0;
+  top: var(--app-bar-height);
   right: 0;
   position: fixed;
   z-index: 5000;
