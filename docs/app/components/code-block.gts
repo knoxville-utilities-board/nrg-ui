@@ -39,7 +39,7 @@ export default class CodeBlock extends Component {
 
   <template>
     <pre
-      class="mb-0 d-flex align-items-center bg-body {{this.lang}}"
+      class="mb-0 p-2 d-flex align-items-center bg-body {{this.lang}}"
       {{! template-lint-disable no-inline-styles }}
       style="--bs-bg-opacity: 0; font-size: 0.8rem;"
       tabindex="0"
@@ -49,4 +49,10 @@ export default class CodeBlock extends Component {
       <code></code>
     </pre>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    CodeBlock: typeof CodeBlock;
+  }
 }

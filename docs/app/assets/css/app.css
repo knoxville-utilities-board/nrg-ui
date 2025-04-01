@@ -22,3 +22,7 @@
   align-items: center;
   justify-content: center;
 }
+
+pre.handlebars.simple > span.xml {
+  display: none;
+}

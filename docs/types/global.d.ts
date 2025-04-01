@@ -2,6 +2,7 @@ import '@glint/environment-ember-loose';
 import '@glint/environment-ember-template-imports';
 import 'ember-source/types';
 
+import { HelperLike } from '@glint/template';
 import NrgServiceRegistry from '@nrg-ui/core/service-registry';
 import NrgTemplateRegistry from '@nrg-ui/core/template-registry';
 import PageTitleRegistry from 'ember-page-title/template-registry';
@@ -20,12 +21,21 @@ import 'dayjs/plugin/timezone';
 import 'dayjs/plugin/utc';
 import 'dayjs/plugin/weekday';
 
+type GetCodeSnippet = HelperLike<{
+  Args: {
+    Positional: [string];
+  };
+  Return: {
+    source: string;
+    language: string;
+  };
+}>;
+
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry
     extends NrgTemplateRegistry,
       PageTitleRegistry {
-    // Add any registry entries from other addons here that your addon itself uses (in non-strict mode templates)
-    // See https://typed-ember.gitbook.io/glint/using-glint/ember/using-addons
+    'get-code-snippet': GetCodeSnippet;
   }
 }
 

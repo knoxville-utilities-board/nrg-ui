@@ -1,5 +1,6 @@
 {{page-title "@nrg-ui/core"}}
 
+{{! BEGIN-SNIPPET scaffold-component }}
 <Scaffold @environment={{this.environment}}>
   <:app-bar-center as |AppBar|>
     <h5 class="d-none d-md-block m-0">
@@ -8,6 +9,9 @@
     <AppBar.Environment />
   </:app-bar-center>
   <:sidebar as |Menu|>
+    <Menu.Item @route="scaffold">
+      Scaffold
+    </Menu.Item>
     <Menu.Group>
       <:badge>12</:badge>
       <:header>
@@ -60,3 +64,4 @@
     {{outlet}}
   </:default>
 </Scaffold>
+{{! END-SNIPPET }}
