@@ -1,21 +1,35 @@
-// @ts-nocheck - TODO
-
 import { registerDestructor } from '@ember/destroyable';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { onInsert } from '@nrg-ui/core';
 
-import type ThemeService from '../services/theme';
+import type Owner from '@ember/owner';
 
-export default class CodeBlock extends Component {
+export interface CodeBlockSignature {
+  Element: HTMLPreElement;
+  Args: {
+    code: string;
+    lang?: string;
+  };
+}
+
+interface FreestyleService {
+  highlight(element: HTMLElement): void;
+}
+
+interface ThemeService {
+  codeBlocks: Map<CodeBlock, HTMLElement>;
+}
+
+export default class CodeBlock extends Component<CodeBlockSignature> {
   @service('ember-freestyle')
-  freestyle;
+  declare freestyle: FreestyleService;
 
   @service
   declare theme: ThemeService;
 
-  constructor(owner: unknown, args: object) {
+  constructor(owner: Owner, args: CodeBlockSignature['Args']) {
     super(owner, args);
 
     registerDestructor(this, () => {
@@ -28,12 +42,12 @@ export default class CodeBlock extends Component {
   }
 
   @action
-  highlight(el: HTMLPreElement) {
+  highlight(el: HTMLElement) {
     if (!this.theme.codeBlocks.has(this)) {
       this.theme.codeBlocks.set(this, el);
     }
 
-    el.querySelector('code').textContent = this.args.code;
+    el.querySelector('code')!.textContent = this.args.code;
     this.freestyle.highlight(el);
   }
 
