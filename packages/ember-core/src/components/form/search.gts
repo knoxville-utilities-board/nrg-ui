@@ -209,8 +209,8 @@ export default class Search<T> extends BoundValue<
     return found || null;
   }
 
-  set selectedOption(option: SearchOption<T>) {
-    this.onChange(option.value);
+  set selectedOption(option: SearchOption<T> | null) {
+    this.onChange(option?.value ?? null);
   }
 
   get isTextInputFocused() {
@@ -231,6 +231,11 @@ export default class Search<T> extends BoundValue<
     activeElement.scrollIntoView({ block: 'nearest' });
   }
 
+  selectOption(option: SearchOption<T> | null, index?: number) {
+    this.activeIndex = index ?? -1;
+    this.selectedOption = option;
+  }
+
   query = restartableTask(async (searchString) => {
     await timeout(this.searchTimeout);
     this.options = await this.args.onQuery(searchString);
@@ -238,13 +243,11 @@ export default class Search<T> extends BoundValue<
   });
 
   @action
-  selectOption(option: SearchOption<T>, index: number, evt?: Event) {
+  selectOptionViaDropdown(option: SearchOption<T>, index: number, evt?: Event) {
     evt?.preventDefault();
     evt?.stopPropagation();
 
-    this.activeIndex = index;
-    this.selectedOption = option;
-    this.searchString = option.label;
+    this.selectOption(option, index);
 
     this.onBlur();
   }
@@ -302,6 +305,8 @@ export default class Search<T> extends BoundValue<
     evt.preventDefault();
     evt.stopPropagation();
 
+    this.searchString = this.displayValue;
+
     this.visibility.show(evt);
   }
 
@@ -319,15 +324,14 @@ export default class Search<T> extends BoundValue<
       return;
     }
 
+    this.selectOption(null);
+
     this.query.perform(this.searchString);
   }
 
   @action
   clear() {
-    this.searchString = '';
-    this.value = '';
-    this.activeIndex = -1;
-
+    this.selectOption(null);
     this.onBlur();
   }
 
@@ -387,7 +391,7 @@ export default class Search<T> extends BoundValue<
               @id={{@id}}
               @readonly={{@readonly}}
               {{on "input" this.onSearch}}
-              {{on "focus" visibility.show}}
+              {{on "focus" this.onFocus}}
               {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
               {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
               {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
@@ -414,7 +418,7 @@ export default class Search<T> extends BoundValue<
             <Menu.Item
               aria-selected={{isActive}}
               class={{if isActive "active"}}
-              @onSelect={{fn this.selectOption option index}}
+              @onSelect={{fn this.selectOptionViaDropdown option index}}
             >
               {{option.label}}
             </Menu.Item>
