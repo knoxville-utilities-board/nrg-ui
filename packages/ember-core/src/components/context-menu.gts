@@ -2,6 +2,7 @@ import { assert, warn } from '@ember/debug';
 import { on } from '@ember/modifier';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
+import { t } from 'ember-intl';
 
 import Dropdown from './dropdown.gts';
 import onDestroy from '../modifiers/on-destroy.ts';
@@ -150,6 +151,7 @@ export default class ContextMenu extends Component<ContextMenuSignature> {
           class="bi bi-three-dots-vertical p-1"
           disabled={{@disabled}}
           role="button"
+          title={{t "nrg.navbar.toggleContextMenu"}}
           {{on "click" visibility.toggle}}
         />
       </:control>

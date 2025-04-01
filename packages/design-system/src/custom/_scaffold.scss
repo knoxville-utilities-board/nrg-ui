@@ -104,6 +104,10 @@
 
   .app-bar {
     height: 100%;
+
+    .dropdown-menu {
+      --bs-dropdown-padding-y: 0;
+    }
   }
 
   .environment-title {
