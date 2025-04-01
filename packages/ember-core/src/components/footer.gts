@@ -10,7 +10,7 @@ export interface FooterSignature {
 
 const Footer: TOC<FooterSignature> = <template>
   <footer
-    class="border-top border-2 border-dark-subtle mt-auto fs-6"
+    class="border-top border-1 border-dark-subtle mt-auto fs-6"
     ...attributes
   >
     <div class="container-fluid py-2 px-2 px-sm-4">
