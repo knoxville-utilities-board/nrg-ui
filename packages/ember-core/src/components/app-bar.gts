@@ -43,7 +43,11 @@ export interface AppBarSignature {
         Environment: ComponentLike<EnvironmentDisplaySignature>;
       },
     ];
-    'mobile-drop-section': [];
+    'mobile-drop-section': [
+      {
+        Environment: ComponentLike<EnvironmentDisplaySignature>;
+      },
+    ];
   };
 }
 
@@ -71,7 +75,16 @@ const AppBar: TOC<AppBarSignature> = <template>
         {{yield to="right"}}
       </:right>
       <:mobile-drop-section>
-        {{yield to="mobile-drop-section"}}
+        {{#if (has-block "mobile-drop-section")}}
+          {{yield
+            (hash
+              Environment=(component
+                EnvironmentDisplay environment=@environment
+              )
+            )
+            to="mobile-drop-section"
+          }}
+        {{/if}}
       </:mobile-drop-section>
     </Header>
   </div>
