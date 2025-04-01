@@ -7,7 +7,6 @@ import { and, or } from 'ember-truth-helpers';
 import AppBar from './app-bar.gts';
 import Footer from './footer.gts';
 import Sidebar from './sidebar.gts';
-import ThemeSwitcher from './theme-switcher.gts';
 import Toaster from './toaster.gts';
 
 import type { AppBarSignature } from './app-bar.gts';
@@ -97,7 +96,7 @@ export default class Scaffold extends Component<ScaffoldSignature> {
           <:right>
             {{yield to="app-bar-right"}}
             {{#if this.allowThemes}}
-              <ThemeSwitcher />
+              {{!-- TODO --}}
             {{/if}}
           </:right>
           <:mobile-drop-section>

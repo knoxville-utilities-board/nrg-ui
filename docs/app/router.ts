@@ -38,7 +38,6 @@ Router.map(function () {
     this.route('popover');
     this.route('toaster');
     this.route('tooltip');
-    this.route('theme-switcher');
   });
   this.route('helpers');
   this.route('mktg-components', function () {
