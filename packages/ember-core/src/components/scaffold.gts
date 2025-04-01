@@ -5,15 +5,18 @@ import { tracked } from '@glimmer/tracking';
 import { and, or } from 'ember-truth-helpers';
 
 import AppBar from './app-bar.gts';
+import ContextMenu, { ContextMenuItem } from './context-menu.gts';
 import Footer from './footer.gts';
 import Sidebar from './sidebar.gts';
-import ThemeSwitcher from './theme-switcher.gts';
 import Toaster from './toaster.gts';
 
 import type { AppBarSignature } from './app-bar.gts';
 import type { GroupSignature, ItemSignature } from './sidebar.gts';
+import type { Dropdown as ContextMenuType } from '../services/context-menu.ts';
 import type ResponsiveService from '../services/responsive.ts';
+import type ThemeService from '../services/theme.ts';
 import type { ComponentLike } from '@glint/template';
+import type { IntlService } from 'ember-intl';
 
 type AppBarYieldType = AppBarSignature['Blocks']['center'][0];
 
@@ -28,6 +31,7 @@ export interface ScaffoldSignature {
     'app-bar-center': [AppBarYieldType];
     'app-bar-right': [];
     'app-bar-mobile-drop-section': [];
+    'context-menu': [ContextMenuType];
     default: [];
     'footer-left': [];
     'footer-right': [];
@@ -43,7 +47,13 @@ export interface ScaffoldSignature {
 
 export default class Scaffold extends Component<ScaffoldSignature> {
   @service
+  declare intl: IntlService;
+
+  @service
   declare responsive: ResponsiveService;
+
+  @service
+  declare theme: ThemeService;
 
   @tracked
   _showSidebar?: boolean;
@@ -65,6 +75,12 @@ export default class Scaffold extends Component<ScaffoldSignature> {
       return 'list';
     }
     return this.responsive.isMobileDevice ? 'x-lg' : 'list';
+  }
+
+  get themeText() {
+    const key = this.theme.theme == 'light' ? 'light' : 'dark';
+
+    return this.intl.t(`nrg.base.theme.${key}`);
   }
 
   toggleSidebar = () => {
@@ -96,8 +112,26 @@ export default class Scaffold extends Component<ScaffoldSignature> {
           </:center>
           <:right>
             {{yield to="app-bar-right"}}
+            <ContextMenu class="pe-2" @flip={{true}} @id="application">
+              <:default as |Menu|>
+                {{yield Menu to="context-menu"}}
+              </:default>
+            </ContextMenu>
             {{#if this.allowThemes}}
-              <ThemeSwitcher />
+              <ContextMenuItem
+                class="d-flex justify-content-between align-items-center"
+                @bottom={{true}}
+                @menuId="application"
+                @onSelect={{this.theme.cycle}}
+              >
+                <span>
+                  {{this.themeText}}
+                </span>
+                <i
+                  class="fs-5 {{this.theme.icon}}"
+                  title={{this.themeText}}
+                ></i>
+              </ContextMenuItem>
             {{/if}}
           </:right>
           <:mobile-drop-section>

@@ -42,7 +42,6 @@ import Popover from './popover.gts';
 import Progress from './progress.gts';
 import Scaffold from './scaffold.gts';
 import Sidebar from './sidebar.gts';
-import ThemeSwitcher from './theme-switcher.gts';
 import Toaster from './toaster.gts';
 import Tooltip from './tooltip.gts';
 
@@ -82,7 +81,6 @@ export default {
   Progress,
   Scaffold,
   Sidebar,
-  ThemeSwitcher,
   Toaster,
   Tooltip,
   /* Marketing */

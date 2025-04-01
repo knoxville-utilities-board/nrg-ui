@@ -2,6 +2,7 @@ import { assert, warn } from '@ember/debug';
 import { on } from '@ember/modifier';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
+import { t } from 'ember-intl';
 
 import Dropdown from './dropdown.gts';
 import onDestroy from '../modifiers/on-destroy.ts';
@@ -92,6 +93,7 @@ export interface ContextMenuSignature {
     alignment?: Alignment;
     closeOnSelect?: boolean;
     controlElement?: HTMLElement;
+    flip?: boolean;
     fullWidth?: boolean;
     hasIcon?: boolean;
     loading?: boolean;
@@ -132,6 +134,7 @@ export default class ContextMenu extends Component<ContextMenuSignature> {
       @disabled={{@disabled}}
       @closeOnSelect={{@closeOnSelect}}
       @controlElement={{@controlElement}}
+      @flip={{@flip}}
       @fullWidth={{@fullWidth}}
       @hasIcon={{@hasIcon}}
       @loading={{@loading}}
@@ -148,6 +151,7 @@ export default class ContextMenu extends Component<ContextMenuSignature> {
           class="bi bi-three-dots-vertical p-1"
           disabled={{@disabled}}
           role="button"
+          title={{t "nrg.navbar.toggleContextMenu"}}
           {{on "click" visibility.toggle}}
         />
       </:control>

@@ -37,7 +37,6 @@ import PageNotFound from './components/page-not-found.gts';
 import Progress from './components/progress.gts';
 import Scaffold from './components/scaffold.gts';
 import Sidebar from './components/sidebar.gts';
-import ThemeSwitcher from './components/theme-switcher.gts';
 import Toaster from './components/toaster.gts';
 import Bind from './helpers/bind.ts';
 import Version from './helpers/version.ts';
@@ -62,7 +61,6 @@ export interface ComponentRegistry {
   Progress: typeof Progress;
   Scaffold: typeof Scaffold;
   Sidebar: typeof Sidebar;
-  ThemeSwitcher: typeof ThemeSwitcher;
   Toaster: typeof Toaster;
 
   // Form components
