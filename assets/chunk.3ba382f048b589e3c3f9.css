@@ -23711,6 +23711,14 @@ dialog .btn-close {
   min-height: calc(100vh - var(--app-bar-height));
   margin-top: var(--app-bar-height);
 }
+.app-bar-container ~ .application:has(+ footer) {
+  height: calc(100vh - var(--app-bar-height) - var(--footer-height));
+  min-height: calc(100vh - var(--app-bar-height) - var(--footer-height));
+}
+.application:has(+ footer) {
+  height: calc(100vh - var(--footer-height));
+  min-height: calc(100vh - var(--footer-height));
+}
 
 .sidebar {
   --sidebar-width: 100%;
@@ -23841,7 +23849,7 @@ dialog .btn-close {
 .toaster.fixed {
   padding: 1em;
   max-width: calc(100vw - 1em);
-  top: 0;
+  top: var(--app-bar-height);
   right: 0;
   position: fixed;
   z-index: 5000;
@@ -24081,5 +24089,14 @@ body ::-webkit-scrollbar {
   background-color: var(--bs-primary-bg-subtle);
   align-items: center;
   justify-content: center;
+}
+
+pre.handlebars.simple > span.xml {
+  display: none;
+}
+
+footer img {
+  width: 47px;
+  height: 30px;
 }
 
