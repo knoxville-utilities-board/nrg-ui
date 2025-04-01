@@ -23778,6 +23778,9 @@ dialog .btn-close {
 .app-bar-container .app-bar {
   height: 100%;
 }
+.app-bar-container .app-bar .dropdown-menu {
+  --bs-dropdown-padding-y: 0;
+}
 .app-bar-container .environment-title {
   color: var(--bs-danger);
   font-size: 1.25rem;
