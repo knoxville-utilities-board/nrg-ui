@@ -58,6 +58,13 @@ module.exports = async function (defaults) {
                 filename: 'assets/fonts/[name].[hash][ext]',
               },
             },
+            {
+              test: /\.(svg)/,
+              type: 'asset/resource',
+              generator: {
+                filename: 'assets/[name].[hash][ext][query]',
+              },
+            },
           ],
         },
       },

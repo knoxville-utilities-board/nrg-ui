@@ -39,6 +39,11 @@ declare module '@glint/environment-ember-loose/registry' {
   }
 }
 
+declare module '*.svg' {
+  const src: string;
+  export default src;
+}
+
 declare module '@ember/service' {
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   interface Registry extends NrgServiceRegistry {}
