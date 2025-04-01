@@ -90,6 +90,7 @@ export interface DropdownSignature {
     closeOnSelect?: boolean;
     controlElement?: HTMLElement;
     disabled?: boolean;
+    flip?: boolean;
     fullWidth?: boolean;
     hasIcon?: boolean;
     loading?: boolean;
@@ -185,6 +186,7 @@ export default class Dropdown extends Component<DropdownSignature> {
         class="border-0"
         @alignment={{this.alignment}}
         @arrow={{false}}
+        @flip={{@flip}}
         @fullWidth={{@fullWidth}}
         @offset={{@offset}}
         @side={{@side}}

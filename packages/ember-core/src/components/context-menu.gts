@@ -92,6 +92,7 @@ export interface ContextMenuSignature {
     alignment?: Alignment;
     closeOnSelect?: boolean;
     controlElement?: HTMLElement;
+    flip?: boolean;
     fullWidth?: boolean;
     hasIcon?: boolean;
     loading?: boolean;
@@ -132,6 +133,7 @@ export default class ContextMenu extends Component<ContextMenuSignature> {
       @disabled={{@disabled}}
       @closeOnSelect={{@closeOnSelect}}
       @controlElement={{@controlElement}}
+      @flip={{@flip}}
       @fullWidth={{@fullWidth}}
       @hasIcon={{@hasIcon}}
       @loading={{@loading}}
