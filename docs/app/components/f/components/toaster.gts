@@ -5,7 +5,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { Button, Toaster } from '@nrg-ui/core';
+import { Button } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
@@ -66,13 +66,13 @@ export default class ToasterDemo extends Component {
             <Button @onClick={{this.createStickyToast}} class="btn-primary">
               Create Sticky Toasts
             </Button>
-            <Toaster @fixed={{this.fixed}} />
           </:example>
           <:api as |Args|>
             <Args.Bool
               @name="fixed"
               @defaultValue={{true}}
               @description="When true, the toaster will be fixed to the top-right of the screen."
+              @hideControls={{true}}
               @value={{this.fixed}}
               @onInput={{fn this.update "fixed"}}
             />

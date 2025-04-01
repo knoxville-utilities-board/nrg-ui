@@ -220,6 +220,7 @@
       "./components/pagination.js": "./dist/_app_/components/pagination.js",
       "./components/popover.js": "./dist/_app_/components/popover.js",
       "./components/progress.js": "./dist/_app_/components/progress.js",
+      "./components/scaffold.js": "./dist/_app_/components/scaffold.js",
       "./components/sidebar.js": "./dist/_app_/components/sidebar.js",
       "./components/theme-switcher.js": "./dist/_app_/components/theme-switcher.js",
       "./components/toaster.js": "./dist/_app_/components/toaster.js",

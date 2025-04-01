@@ -1,76 +1,79 @@
 {{page-title "@nrg-ui/core"}}
 
-<div class="min-vh-100 d-flex flex-column">
-  <AppBar @environment={{this.environment}}>
-    <:center as |AppBar|>
-      <h5 class="m-0">
-        Docs | @nrg-ui/core
-      </h5>
-      <AppBar.Environment />
-    </:center>
-    <:right>
-      <ThemeSwitcher />
-    </:right>
-  </AppBar>
-  <main class="application">
-    <Toaster />
-    <div class="col-12 col-md-2 d-flex flex-column sticky-top overflow-auto">
-      <Sidebar>
-        <:default as |Menu|>
-          <Menu.Group>
-            <:badge>12</:badge>
-            <:header>
-              Components
-            </:header>
-            <:items as |Item|>
-              <Item @route="components.button">Button</Item>
-              <Item @route="components.card">Card</Item>
-              <Item @route="components.context-menu">Context Menu</Item>
-              <Item @route="components.dropdown">Dropdown</Item>
-              <Item @route="components.footer">Footer</Item>
-              <Item @route="components.header">Header</Item>
-              <Item @route="components.icon">Icon</Item>
-              <Item @route="components.modal">Modal</Item>
-              <Item @route="components.navbar">Navbar</Item>
-              <Item @route="components.pagination">Pagination</Item>
-              <Item @route="components.popover">Popover</Item>
-              <Item @route="components.toaster">Toaster</Item>
-              <Item @route="components.tooltip">Tooltip</Item>
-              <Item @route="components.theme-switcher">Theme Switcher</Item>
-            </:items>
-          </Menu.Group>
-          <Menu.Group @route="components.form.index">
-            <:badge>9</:badge>
-            <:header>
-              Forms
-            </:header>
-            <:items as |Item|>
-              <Item @route="components.form.datetime">Datetime</Item>
-              <Item @route="components.form.checkbox">Checkbox</Item>
-              <Item @route="components.form.checkbox-group">Checkbox Group</Item>
-              <Item @route="components.form.phone-input">Phone Input</Item>
-              <Item @route="components.form.radio-group">Radio Group</Item>
-              <Item @route="components.form.search">Search</Item>
-              <Item @route="components.form.select">Select</Item>
-              <Item @route="components.form.text-area">Text Area</Item>
-              <Item @route="components.form.text-input">Text Input</Item>
-            </:items>
-          </Menu.Group>
-        </:default>
-        <:footer as |Item|>
-          <Item
-            target="_blank"
-            @url="https://github.com/knoxville-utilities-board/nrg-ui"
-          >
-            {{version}}
-          </Item>
-        </:footer>
-      </Sidebar>
-    </div>
-    <div class="col flex-grow-1 px-md-0 py-3 overflow-auto">
-      {{outlet}}
-    </div>
-
-  </main>
-  {{! TODO: Add footer }}
-</div>
+{{! BEGIN-SNIPPET scaffold-component }}
+<Scaffold @environment={{this.environment}}>
+  <:app-bar-center as |AppBar|>
+    <h5 class="d-none d-md-block m-0">
+      Docs | @nrg-ui/core
+    </h5>
+    <AppBar.Environment />
+  </:app-bar-center>
+  <:sidebar as |Menu|>
+    <Menu.Item @route="scaffold">
+      Scaffold
+    </Menu.Item>
+    <Menu.Group>
+      <:badge>12</:badge>
+      <:header>
+        Components
+      </:header>
+      <:items as |Item|>
+        <Item @route="components.button">Button</Item>
+        <Item @route="components.card">Card</Item>
+        <Item @route="components.context-menu">Context Menu</Item>
+        <Item @route="components.dropdown">Dropdown</Item>
+        <Item @route="components.footer">Footer</Item>
+        <Item @route="components.header">Header</Item>
+        <Item @route="components.icon">Icon</Item>
+        <Item @route="components.modal">Modal</Item>
+        <Item @route="components.navbar">Navbar</Item>
+        <Item @route="components.pagination">Pagination</Item>
+        <Item @route="components.popover">Popover</Item>
+        <Item @route="components.toaster">Toaster</Item>
+        <Item @route="components.tooltip">Tooltip</Item>
+        <Item @route="components.theme-switcher">Theme Switcher</Item>
+      </:items>
+    </Menu.Group>
+    <Menu.Group @route="components.form.index">
+      <:badge>9</:badge>
+      <:header>
+        Forms
+      </:header>
+      <:items as |Item|>
+        <Item @route="components.form.datetime">Datetime</Item>
+        <Item @route="components.form.checkbox">Checkbox</Item>
+        <Item @route="components.form.checkbox-group">Checkbox Group</Item>
+        <Item @route="components.form.phone-input">Phone Input</Item>
+        <Item @route="components.form.radio-group">Radio Group</Item>
+        <Item @route="components.form.search">Search</Item>
+        <Item @route="components.form.select">Select</Item>
+        <Item @route="components.form.text-area">Text Area</Item>
+        <Item @route="components.form.text-input">Text Input</Item>
+      </:items>
+    </Menu.Group>
+  </:sidebar>
+  <:sidebar-footer as |Item|>
+    <Item
+      target="_blank"
+      @url="https://github.com/knoxville-utilities-board/nrg-ui"
+    >
+      {{version}}
+    </Item>
+  </:sidebar-footer>
+  <:default>
+    {{outlet}}
+  </:default>
+  <:footer-left>
+    <a
+      aria-label="Knoxville Utilities Board"
+      class="p-0 d-none d-md-block"
+      href="https://www.kub.org/"
+    >
+      <img src={{this.logo}} alt="Knoxville Utilities Board" />
+    </a>
+    <span class="mb-0 p-0 px-md-3 align-content-center">
+      &copy; Knoxville Utilities Board
+    </span>
+  </:footer-left>
+</Scaffold>
+{{! END-SNIPPET }}

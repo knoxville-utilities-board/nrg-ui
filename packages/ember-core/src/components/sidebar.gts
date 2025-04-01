@@ -8,7 +8,7 @@ import { classes } from '../helpers/classes.ts';
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike } from '@glint/template';
 
-interface ItemSignature {
+export interface ItemSignature {
   Element: HTMLAnchorElement | HTMLDivElement;
   Args: {
     active?: boolean;
@@ -92,7 +92,7 @@ class Item extends Component<ItemSignature> {
   </template>
 }
 
-interface GroupSignature {
+export interface GroupSignature {
   Element: HTMLAnchorElement | HTMLDivElement;
   Args: {
     active?: boolean;

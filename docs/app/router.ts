@@ -58,5 +58,6 @@ Router.map(function () {
     this.route('on-insert');
     this.route('on-update');
   });
+  this.route('scaffold');
   this.route('services');
 });
