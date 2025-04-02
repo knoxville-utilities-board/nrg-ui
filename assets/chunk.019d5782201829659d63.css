@@ -14989,7 +14989,6 @@ input::placeholder {
 }
 .calendar .cell {
   max-width: min-content;
-  background-color: var(--bs-white);
 }
 .calendar .cell:not(.disabled) {
   cursor: pointer;
