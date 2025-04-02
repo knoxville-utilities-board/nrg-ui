@@ -14876,7 +14876,6 @@ button.dropdown + .popover {
 
 .context-menu > i {
   cursor: pointer;
-  color: var(--bs-body-color);
 }
 .context-menu > i[disabled] {
   pointer-events: none;
