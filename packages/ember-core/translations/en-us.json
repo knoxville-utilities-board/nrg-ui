@@ -19,7 +19,7 @@
     "app-bar": {
       "about": {
         "item": "About",
-        "versionPrefix": "Version"
+        "version": "Version {version}"
       }
     },
     "navbar": {

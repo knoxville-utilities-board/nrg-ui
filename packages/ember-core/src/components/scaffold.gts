@@ -168,10 +168,7 @@ export default class Scaffold extends Component<ScaffoldSignature> {
                       {{this.environmentConfig.modulePrefix}}
                     </h4>
                     <span>
-                      {{t "nrg.app-bar.about.versionPrefix"}}
-                    </span>
-                    <span>
-                      {{version}}
+                      {{t "nrg.app-bar.about.version" version=(version)}}
                     </span>
                   </div>
                 {{/if}}
