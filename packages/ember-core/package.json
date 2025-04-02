@@ -142,7 +142,7 @@
     "execa": "^9.5.2",
     "prettier": "^3.1.1",
     "prettier-plugin-ember-template-tag": "^1.1.0",
-    "rollup": "^4.38.0",
+    "rollup": "^4.39.0",
     "rollup-plugin-copy": "^3.5.0",
     "tracked-built-ins": "^3.4.0",
     "typescript": "^5.8.2",
