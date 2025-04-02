@@ -12,8 +12,8 @@
       "previous": "Previous",
       "clear": "Clear",
       "theme": {
-        "dark": "Dark mode",
-        "light": "Light mode"
+        "dark": "Dark",
+        "light": "Light"
       }
     },
     "app-bar": {
