@@ -150,10 +150,7 @@ export default class Scaffold extends Component<ScaffoldSignature> {
                 <span>
                   {{this.themeText}}
                 </span>
-                <i
-                  class="fs-5 {{this.theme.icon}}"
-                  title={{this.themeText}}
-                ></i>
+                <i class={{this.theme.icon}} title={{this.themeText}}></i>
               </ContextMenuItem>
             {{/if}}
             <Modal
