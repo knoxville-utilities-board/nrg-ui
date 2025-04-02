@@ -10,7 +10,7 @@
       "loading": "Loading",
       "next": "Next",
       "previous": "Previous",
-      "clear" : "Clear",
+      "clear": "Clear",
       "theme": {
         "dark": "Dark mode",
         "light": "Light mode"
@@ -19,7 +19,7 @@
     "app-bar": {
       "about": {
         "item": "About",
-        "title": "About"
+        "versionPrefix": "Version"
       }
     },
     "navbar": {

@@ -44,6 +44,7 @@ export interface ScaffoldSignature {
     default: [];
     'footer-left': [];
     'footer-right': [];
+    about: [];
     sidebar: [
       {
         Item: ComponentLike<ItemSignature>;
@@ -154,19 +155,26 @@ export default class Scaffold extends Component<ScaffoldSignature> {
               </ContextMenuItem>
             {{/if}}
             <Modal
+              class="subtle"
               @isOpen={{this.showAboutModel}}
               @onDismiss={{fn this.toggleAboutModal false}}
             >
-              <:header>
-                {{t "nrg.app-bar.about.title"}}
-              </:header>
               <:default>
-                <div class="p-3">
-                  <span>
-                    {{this.environmentConfig.modulePrefix}}
-                    ({{version}})
-                  </span>
-                </div>
+                {{#if (has-block "about")}}
+                  {{yield to="about"}}
+                {{else}}
+                  <div class="p-3">
+                    <h4>
+                      {{this.environmentConfig.modulePrefix}}
+                    </h4>
+                    <span>
+                      {{t "nrg.app-bar.about.versionPrefix"}}
+                    </span>
+                    <span>
+                      {{version}}
+                    </span>
+                  </div>
+                {{/if}}
               </:default>
             </Modal>
             <ContextMenuItem
