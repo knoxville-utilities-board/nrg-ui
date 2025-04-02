@@ -53,7 +53,7 @@ export interface AppBarSignature {
 
 const AppBar: TOC<AppBarSignature> = <template>
   <div class="app-bar-container">
-    <Header class="app-bar bg-primary shadow-sm py-2" ...attributes>
+    <Header class="app-bar text-bg-primary shadow-sm py-2" ...attributes>
       <:left>
         {{yield to="left"}}
       </:left>
