@@ -125,7 +125,6 @@ input::placeholder {
 
   & .cell {
     max-width: min-content;
-    background-color: var(--bs-white);
 
     &:not(.disabled) {
       cursor: pointer;
