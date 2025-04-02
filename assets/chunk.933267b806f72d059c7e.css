@@ -23410,6 +23410,8 @@ div.dropdown:has(.is-warning) ~ .warning-feedback {
 }
 
 dialog {
+  --bs-modal-bg: var(--bs-body-bg);
+  background-color: var(--bs-modal-bg);
   transition: all 0.3s ease allow-discrete;
 }
 dialog.center {
