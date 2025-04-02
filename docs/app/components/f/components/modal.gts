@@ -18,6 +18,9 @@ export default class ModalDemo extends Component {
   isOpen = false;
 
   @tracked
+  subtle = false;
+
+  @tracked
   modal2Open = false;
 
   @tracked
@@ -54,6 +57,7 @@ export default class ModalDemo extends Component {
             <Modal
               @dismissible={{this.dismissible}}
               @isOpen={{this.isOpen}}
+              @subtle={{this.subtle}}
               @position={{this.position}}
               @onDismiss={{fn this.update "isOpen" false}}
             >
@@ -160,6 +164,13 @@ export default class ModalDemo extends Component {
               @name="dismissible"
               @value={{this.dismissible}}
               @onInput={{fn this.update "dismissible"}}
+            />
+            <Args.Bool
+              @defaultValue={{false}}
+              @description="When true, modal will have no background and light text"
+              @name="subtle"
+              @value={{this.subtle}}
+              @onInput={{fn this.update "subtle"}}
             />
             <Args.String
               @defaultValue="center"

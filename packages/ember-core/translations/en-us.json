@@ -10,16 +10,16 @@
       "loading": "Loading",
       "next": "Next",
       "previous": "Previous",
-      "clear" : "Clear",
+      "clear": "Clear",
       "theme": {
-        "dark": "Dark mode",
-        "light": "Light mode"
+        "dark": "Dark",
+        "light": "Light"
       }
     },
     "app-bar": {
       "about": {
         "item": "About",
-        "title": "About"
+        "version": "Version {version}"
       }
     },
     "navbar": {

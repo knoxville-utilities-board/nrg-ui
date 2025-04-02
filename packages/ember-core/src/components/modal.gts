@@ -16,6 +16,7 @@ export interface ModalSignature {
   Args: {
     isOpen: boolean;
     dismissible?: boolean;
+    subtle?: boolean;
     position?: 'center' | 'left' | 'right';
     onDismiss: () => void;
   };
@@ -57,6 +58,9 @@ export default class Modal extends Component<ModalSignature> {
     const classes = ['border-0', 'rounded-3', this.position];
     if (!this.isActive) {
       classes.push('inactive');
+    }
+    if (this.args.subtle) {
+      classes.push('subtle');
     }
     return classes.join(' ');
   }
