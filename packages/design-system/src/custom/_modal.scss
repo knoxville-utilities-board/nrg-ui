@@ -1,4 +1,7 @@
 dialog {
+  --bs-modal-bg: var(--bs-body-bg);
+
+  background-color: var(--bs-modal-bg);
   transition: all 0.3s ease allow-discrete;
 
   &.center {
@@ -33,7 +36,8 @@ dialog {
     background: rgba(0, 0, 0, 0); // Animation end for close
   }
 
-  &[open] { // Animation end for open, animation start for close
+  &[open] {
+    // Animation end for open, animation start for close
     opacity: 1;
     transform: translate3d(0, 0, 0);
     &::backdrop {

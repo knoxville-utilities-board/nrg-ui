@@ -1,14 +1,19 @@
+import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
+import { getOwner } from '@ember/owner';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { t } from 'ember-intl';
 import { and, or } from 'ember-truth-helpers';
 
 import AppBar from './app-bar.gts';
 import ContextMenu, { ContextMenuItem } from './context-menu.gts';
 import Footer from './footer.gts';
+import Modal from './modal.gts';
 import Sidebar from './sidebar.gts';
 import Toaster from './toaster.gts';
+import version from '../helpers/version.ts';
 
 import type { AppBarSignature } from './app-bar.gts';
 import type { GroupSignature, ItemSignature } from './sidebar.gts';
@@ -19,6 +24,10 @@ import type { ComponentLike } from '@glint/template';
 import type { IntlService } from 'ember-intl';
 
 type AppBarYieldType = AppBarSignature['Blocks']['center'][0];
+
+type EnvironmentConfig = Record<string, string> & {
+  modulePrefix: string;
+};
 
 export interface ScaffoldSignature {
   Element: HTMLDivElement;
@@ -56,6 +65,9 @@ export default class Scaffold extends Component<ScaffoldSignature> {
   declare theme: ThemeService;
 
   @tracked
+  showAboutModel = false;
+
+  @tracked
   _showSidebar?: boolean;
 
   get showSidebar() {
@@ -68,6 +80,13 @@ export default class Scaffold extends Component<ScaffoldSignature> {
 
   get allowThemes() {
     return this.args.allowThemes ?? true;
+  }
+
+  get environmentConfig() {
+    // @ts-expect-error - this is a private API
+    return getOwner(this)!.resolveRegistration(
+      'config:environment',
+    ) as EnvironmentConfig;
   }
 
   get sidebarIcon() {
@@ -85,6 +104,10 @@ export default class Scaffold extends Component<ScaffoldSignature> {
 
   toggleSidebar = () => {
     this.showSidebar = !this.showSidebar;
+  };
+
+  toggleAboutModal = (open: boolean) => {
+    this.showAboutModel = open;
   };
 
   <template>
@@ -127,12 +150,32 @@ export default class Scaffold extends Component<ScaffoldSignature> {
                 <span>
                   {{this.themeText}}
                 </span>
-                <i
-                  class="fs-5 {{this.theme.icon}}"
-                  title={{this.themeText}}
-                ></i>
+                <i class={{this.theme.icon}} title={{this.themeText}}></i>
               </ContextMenuItem>
             {{/if}}
+            <Modal
+              @isOpen={{this.showAboutModel}}
+              @onDismiss={{fn this.toggleAboutModal false}}
+            >
+              <:header>
+                {{t "nrg.app-bar.about.title"}}
+              </:header>
+              <:default>
+                <div class="p-3">
+                  <span>
+                    {{this.environmentConfig.modulePrefix}}
+                    ({{version}})
+                  </span>
+                </div>
+              </:default>
+            </Modal>
+            <ContextMenuItem
+              @bottom={{true}}
+              @menuId="application"
+              @onSelect={{fn this.toggleAboutModal true}}
+            >
+              {{t "nrg.app-bar.about.item"}}
+            </ContextMenuItem>
           </:right>
           <:mobile-drop-section>
             {{yield to="app-bar-mobile-drop-section"}}
