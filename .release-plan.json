@@ -5,21 +5,8 @@
     },
     "@nrg-ui/css": {
       "impact": "minor",
-      "oldVersion": "0.14.3",
-      "newVersion": "0.15.0",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        }
-      ],
-      "pkgJSONPath": "./packages/design-system/package.json"
-    },
-    "@nrg-ui/core": {
-      "impact": "minor",
-      "oldVersion": "0.27.1",
-      "newVersion": "0.28.0",
+      "oldVersion": "0.15.0",
+      "newVersion": "0.16.0",
       "tagName": "latest",
       "constraints": [
         {
@@ -29,6 +16,31 @@
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./packages/design-system/package.json"
+    },
+    "@nrg-ui/core": {
+      "impact": "minor",
+      "oldVersion": "0.28.0",
+      "newVersion": "0.29.0",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
@@ -40,5 +52,5 @@
       "oldVersion": "0.3.0"
     }
   },
-  "description": "## Release (2025-03-28)\n\n* @nrg-ui/css 0.15.0 (minor)\n* @nrg-ui/core 0.28.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#387](https://github.com/knoxville-utilities-board/nrg-ui/pull/387) feat: Add password validator ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#388](https://github.com/knoxville-utilities-board/nrg-ui/pull/388) feat: Create app bar component ([@TSenter](https://github.com/TSenter))\n  * [#385](https://github.com/knoxville-utilities-board/nrg-ui/pull/385) feat: Add sidebar component and add default scrollbar styling ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#390](https://github.com/knoxville-utilities-board/nrg-ui/pull/390) fix(popover): Use hidden instead of d-none ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-04-02)\n\n* @nrg-ui/css 0.16.0 (minor)\n* @nrg-ui/core 0.29.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#405](https://github.com/knoxville-utilities-board/nrg-ui/pull/405) feat: Add 'subtle' variant to modals ([@KeithClinard](https://github.com/KeithClinard))\n  * [#402](https://github.com/knoxville-utilities-board/nrg-ui/pull/402) feat(scaffold): Add basic About modal to context menu ([@TSenter](https://github.com/TSenter))\n  * [#401](https://github.com/knoxville-utilities-board/nrg-ui/pull/401) feat: Add context menu to scaffold app bar ([@TSenter](https://github.com/TSenter))\n  * [#400](https://github.com/knoxville-utilities-board/nrg-ui/pull/400) feat: Create scaffold component ([@TSenter](https://github.com/TSenter))\n  * [#393](https://github.com/knoxville-utilities-board/nrg-ui/pull/393) feat: Create context menu component ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#406](https://github.com/knoxville-utilities-board/nrg-ui/pull/406) fix: Correct dark mode colors for date picker ([@KeithClinard](https://github.com/KeithClinard))\n  * [#403](https://github.com/knoxville-utilities-board/nrg-ui/pull/403) fix: Correct appbar text colors ([@KeithClinard](https://github.com/KeithClinard))\n* `@nrg-ui/core`\n  * [#398](https://github.com/knoxville-utilities-board/nrg-ui/pull/398) fix(app-bar): Add environment yield to mobile drop ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* [#392](https://github.com/knoxville-utilities-board/nrg-ui/pull/392) docs: Add global toaster and link to form page ([@TSenter](https://github.com/TSenter))\n* [#391](https://github.com/knoxville-utilities-board/nrg-ui/pull/391) docs(form): Use correct value path ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/css`\n  * [#397](https://github.com/knoxville-utilities-board/nrg-ui/pull/397) chore(sidebar): Fill parent container by default ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/core`\n  * [#399](https://github.com/knoxville-utilities-board/nrg-ui/pull/399) style: Reduce border on footer to match other scaffold elements ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Keith ([@KeithClinard](https://github.com/KeithClinard))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
