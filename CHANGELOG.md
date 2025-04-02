@@ -1,5 +1,39 @@
 # Changelog
 
+## Release (2025-04-02)
+
+* @nrg-ui/css 0.16.0 (minor)
+* @nrg-ui/core 0.29.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#405](https://github.com/knoxville-utilities-board/nrg-ui/pull/405) feat: Add 'subtle' variant to modals ([@KeithClinard](https://github.com/KeithClinard))
+  * [#402](https://github.com/knoxville-utilities-board/nrg-ui/pull/402) feat(scaffold): Add basic About modal to context menu ([@TSenter](https://github.com/TSenter))
+  * [#401](https://github.com/knoxville-utilities-board/nrg-ui/pull/401) feat: Add context menu to scaffold app bar ([@TSenter](https://github.com/TSenter))
+  * [#400](https://github.com/knoxville-utilities-board/nrg-ui/pull/400) feat: Create scaffold component ([@TSenter](https://github.com/TSenter))
+  * [#393](https://github.com/knoxville-utilities-board/nrg-ui/pull/393) feat: Create context menu component ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#406](https://github.com/knoxville-utilities-board/nrg-ui/pull/406) fix: Correct dark mode colors for date picker ([@KeithClinard](https://github.com/KeithClinard))
+  * [#403](https://github.com/knoxville-utilities-board/nrg-ui/pull/403) fix: Correct appbar text colors ([@KeithClinard](https://github.com/KeithClinard))
+* `@nrg-ui/core`
+  * [#398](https://github.com/knoxville-utilities-board/nrg-ui/pull/398) fix(app-bar): Add environment yield to mobile drop ([@TSenter](https://github.com/TSenter))
+
+#### :memo: Documentation
+* [#392](https://github.com/knoxville-utilities-board/nrg-ui/pull/392) docs: Add global toaster and link to form page ([@TSenter](https://github.com/TSenter))
+* [#391](https://github.com/knoxville-utilities-board/nrg-ui/pull/391) docs(form): Use correct value path ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `@nrg-ui/css`
+  * [#397](https://github.com/knoxville-utilities-board/nrg-ui/pull/397) chore(sidebar): Fill parent container by default ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`
+  * [#399](https://github.com/knoxville-utilities-board/nrg-ui/pull/399) style: Reduce border on footer to match other scaffold elements ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Keith ([@KeithClinard](https://github.com/KeithClinard))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-03-28)
 
 * @nrg-ui/css 0.15.0 (minor)
