@@ -16,6 +16,12 @@
         "light": "Light mode"
       }
     },
+    "app-bar": {
+      "about": {
+        "item": "About",
+        "title": "About"
+      }
+    },
     "navbar": {
       "toggleContextMenu": "Toggle context menu"
     },
