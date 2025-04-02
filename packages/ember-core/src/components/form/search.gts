@@ -131,10 +131,6 @@ export default class Search<T> extends BoundValue<
     return this.searchString.trim().length >= this.minCharacters;
   }
 
-  get showOptions() {
-    return this.visibility?.isShown && this.canPerformSearch && !this.loading;
-  }
-
   get inputClassList() {
     const classes = ['form-control'];
 
@@ -213,8 +209,14 @@ export default class Search<T> extends BoundValue<
     this.onChange(option?.value ?? null);
   }
 
-  get isTextInputFocused() {
-    return this.inputElement !== document.activeElement;
+  get inputText(){
+    return this.displayValue ? this.displayValue : this.searchString
+  }
+
+  set inputText(value: string) {
+    this.selectOption(null);
+
+    this.query.perform(value);
   }
 
   scrollActiveOptionIntoView() {
@@ -237,6 +239,14 @@ export default class Search<T> extends BoundValue<
   }
 
   query = restartableTask(async (searchString) => {
+    this.searchString = searchString
+
+    if (!this.canPerformSearch) {
+      this.options = []
+      this.visibility.hide()
+      return
+    }
+
     await timeout(this.searchTimeout);
     this.options = await this.args.onQuery(searchString);
     this.visibility.show(this.inputElement);
@@ -305,9 +315,7 @@ export default class Search<T> extends BoundValue<
     evt.preventDefault();
     evt.stopPropagation();
 
-    this.searchString = this.displayValue;
-
-    this.visibility.show(evt);
+    this.query.perform(this.displayValue);
   }
 
   @action
@@ -317,21 +325,9 @@ export default class Search<T> extends BoundValue<
   }
 
   @action
-  onSearch(evt: Event) {
-    this.searchString = (evt.target as HTMLInputElement).value;
-
-    if (!this.canPerformSearch) {
-      return;
-    }
-
-    this.selectOption(null);
-
-    this.query.perform(this.searchString);
-  }
-
-  @action
   clear() {
     this.selectOption(null);
+    this.searchString = ""
     this.onBlur();
   }
 
@@ -383,14 +379,10 @@ export default class Search<T> extends BoundValue<
               class={{this.inputClassList}}
               placeholder={{this.placeholder}}
               @basic={{@basic}}
-              @binding={{bind
-                this.self
-                (if this.isTextInputFocused "searchString" "displayValue")
-              }}
+              @binding={{bind this.self "inputText"}}
               @disabled={{@disabled}}
               @id={{@id}}
               @readonly={{@readonly}}
-              {{on "input" this.onSearch}}
               {{on "focus" this.onFocus}}
               {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
               {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}

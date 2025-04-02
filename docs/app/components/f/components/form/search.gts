@@ -19,7 +19,7 @@ function log(...msg: string[]) {
 
 class Model {
   @tracked
-  property = 'Orange';
+  property = 'Apple';
 }
 
 export default class SearchDemo extends Component {
