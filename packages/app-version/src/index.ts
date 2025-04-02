@@ -1,7 +1,6 @@
+import { spawnSync } from 'child_process';
 import { readFileSync } from 'fs';
-import getGitInfo from 'git-repo-info';
 import { join } from 'path';
-
 export interface VersionOptions {
   /**
    * The version to use if no version can be found.
@@ -34,6 +33,7 @@ export function getPackageVersion(defaultValue?: string) {
 }
 
 export function getVersion(options?: VersionOptions): string {
+  debugger;
   const defaultVersion = options?.defaultVersion ?? getPackageVersion();
   const includeSha = options?.includeSha ?? false;
   const includePrefix = options?.includePrefix ?? false;

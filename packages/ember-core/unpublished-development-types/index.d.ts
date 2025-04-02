@@ -38,3 +38,7 @@ declare module '@embroider/macros' {
       }>
     | undefined;
 }
+
+declare global {
+  type VERSION = string | undefined;
+}

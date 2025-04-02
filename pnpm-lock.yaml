@@ -204,6 +204,9 @@ importers:
       eslint-plugin-qunit:
         specifier: ^8.1.2
         version: 8.1.2(eslint@9.23.0)
+      git-revision-webpack-plugin:
+        specifier: ^5.0.0
+        version: 5.0.0(webpack@5.98.0)
       loader.js:
         specifier: ^4.7.0
         version: 4.7.0
@@ -4711,6 +4714,12 @@ packages:
   git-repo-info@2.1.1:
     resolution: {integrity: sha512-8aCohiDo4jwjOwma4FmYFd3i97urZulL8XL24nIPxuE+GZnfsAyy/g2Shqx6OjUiFKUXZM+Yy+KHnOmmA3FVcg==}
     engines: {node: '>= 4.0'}
+
+  git-revision-webpack-plugin@5.0.0:
+    resolution: {integrity: sha512-RptQN/4UKcEPkCBmRy8kLPo5i8MnF8+XfAgFYN9gbwmKLTLx4YHsQw726H+C5+sIGDixDkmGL3IxPA2gKo+u4w==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      webpack: ^5.0.0
 
   github-changelog@2.0.0:
     resolution: {integrity: sha512-JdAwddNCvHkZY/pTMqpoaLEfksaWiTc+beDjBkPEnr7iVlKfu8SeyCT8Sef+KsonRgIj6pl3SiWDPSefWmeicw==}
@@ -13794,6 +13803,10 @@ snapshots:
   git-hooks-list@1.0.3: {}
 
   git-repo-info@2.1.1: {}
+
+  git-revision-webpack-plugin@5.0.0(webpack@5.98.0):
+    dependencies:
+      webpack: 5.98.0
 
   github-changelog@2.0.0:
     dependencies:

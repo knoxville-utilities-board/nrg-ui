@@ -2,8 +2,12 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 
 const sideWatch = require('@embroider/broccoli-side-watch');
-const { getVersion } = require('@nrg-ui/version');
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const { GitRevisionPlugin } = require('git-revision-webpack-plugin');
+
+const gitRevisionPlugin = new GitRevisionPlugin({
+  versionCommand: 'describe --tags --always --abbrev=7',
+});
 
 module.exports = async function (defaults) {
   const app = new EmberApp(defaults, {
@@ -22,7 +26,8 @@ module.exports = async function (defaults) {
           useTestWaiters: true,
         },
         '@nrg-ui/core': {
-          appVersion: getVersion(),
+          // appVersion: getVersion(),
+          appVersion: gitRevisionPlugin.version(),
         },
       },
     },
@@ -36,11 +41,11 @@ module.exports = async function (defaults) {
     },
   });
 
-  if (app.env !== 'production') {
-    app.options['@embroider/macros']['setConfig']['@nrg-ui/core'][
-      'appVersion'
-    ] = 'version-v1';
-  }
+  // if (app.env !== 'production') {
+  //   app.options['@embroider/macros']['setConfig']['@nrg-ui/core'][
+  //     'appVersion'
+  //   ] = 'version-v1';
+  // }
 
   const { Webpack } = require('@embroider/webpack');
   return require('@embroider/compat').compatBuild(app, Webpack, {
