@@ -635,7 +635,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       ...attributes
     >
       <table class="table table-borderless calendar mb-0">
-        <thead class="table-light">
+        <thead>
           {{#if (notEq @type "time")}}
             <tr class="header">
               <th colspan="7">
@@ -687,7 +687,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
             </tr>
           {{/each}}
         </tbody>
-        <tfoot class="table-light">
+        <tfoot>
           {{#if this.showNowShortcut}}
             <tr>
               <td
