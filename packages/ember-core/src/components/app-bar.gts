@@ -30,63 +30,44 @@ const EnvironmentDisplay: TOC<EnvironmentDisplaySignature> = <template>
   {{/let}}
 </template>;
 
+export interface AppBarBlock {
+  Environment: ComponentLike<EnvironmentDisplaySignature>;
+}
+
 export interface AppBarSignature {
   Element: HTMLDivElement;
   Args: {
     environment?: string;
   };
   Blocks: {
-    left: [];
-    right: [];
-    center: [
-      {
-        Environment: ComponentLike<EnvironmentDisplaySignature>;
-      },
-    ];
-    'mobile-drop-section': [
-      {
-        Environment: ComponentLike<EnvironmentDisplaySignature>;
-      },
-    ];
+    left: [AppBarBlock];
+    right: [AppBarBlock];
+    center: [AppBarBlock];
+    'mobile-drop-section': [AppBarBlock];
   };
 }
 
 const AppBar: TOC<AppBarSignature> = <template>
   <div class="app-bar-container">
-    <Header class="app-bar text-bg-primary shadow-sm py-2" ...attributes>
-      <:left>
-        {{yield to="left"}}
-      </:left>
-      <:center>
-        {{#if (has-block "center")}}
-          {{yield
-            (hash
-              Environment=(component
-                EnvironmentDisplay environment=@environment
-              )
-            )
-            to="center"
-          }}
-        {{else}}
-          <EnvironmentDisplay @environment={{@environment}} />
-        {{/if}}
-      </:center>
-      <:right>
-        {{yield to="right"}}
-      </:right>
-      <:mobile-drop-section>
-        {{#if (has-block "mobile-drop-section")}}
-          {{yield
-            (hash
-              Environment=(component
-                EnvironmentDisplay environment=@environment
-              )
-            )
-            to="mobile-drop-section"
-          }}
-        {{/if}}
-      </:mobile-drop-section>
-    </Header>
+    {{#let
+      (hash Environment=(component EnvironmentDisplay environment=@environment))
+      as |AppBarYield|
+    }}
+      <Header class="app-bar text-bg-primary shadow-sm py-2" ...attributes>
+        <:left>
+          {{yield AppBarYield to="left"}}
+        </:left>
+        <:center>
+          {{yield AppBarYield to="center"}}
+        </:center>
+        <:right>
+          {{yield AppBarYield to="right"}}
+        </:right>
+        <:mobile-drop-section>
+          {{yield AppBarYield to="mobile-drop-section"}}
+        </:mobile-drop-section>
+      </Header>
+    {{/let}}
   </div>
 </template>;
 

@@ -34,17 +34,6 @@ module('Integration | Component | app-bar', function (hooks) {
       .hasText('Mobile drop section');
   });
 
-  test('environment renders when applicable', async function (assert) {
-    await render(<template><AppBar @environment="dev" /></template>);
-    assert.dom('.environment-title').hasText('dev');
-
-    await render(<template><AppBar @environment="test" /></template>);
-    assert.dom('.environment-title').hasText('test');
-
-    await render(<template><AppBar @environment="prod" /></template>);
-    assert.dom('.environment-title').doesNotExist();
-  });
-
   test('environment can be rendered in custom location', async function (assert) {
     await render(<template>
       <AppBar @environment="dev">
