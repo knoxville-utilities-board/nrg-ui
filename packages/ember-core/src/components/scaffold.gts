@@ -15,15 +15,13 @@ import Sidebar from './sidebar.gts';
 import Toaster from './toaster.gts';
 import version from '../helpers/version.ts';
 
-import type { AppBarSignature } from './app-bar.gts';
+import type { AppBarBlock } from './app-bar.gts';
 import type { GroupSignature, ItemSignature } from './sidebar.gts';
 import type { Dropdown as ContextMenuType } from '../services/context-menu.ts';
 import type ResponsiveService from '../services/responsive.ts';
 import type ThemeService from '../services/theme.ts';
 import type { ComponentLike } from '@glint/template';
 import type { IntlService } from 'ember-intl';
-
-type AppBarYieldType = AppBarSignature['Blocks']['center'][0];
 
 type EnvironmentConfig = Record<string, string> & {
   modulePrefix: string;
@@ -36,10 +34,10 @@ export interface ScaffoldSignature {
     environment?: string;
   };
   Blocks: {
-    'app-bar-left': [];
-    'app-bar-center': [AppBarYieldType];
-    'app-bar-right': [];
-    'app-bar-mobile-drop-section': [];
+    'app-bar-left': [AppBarBlock];
+    'app-bar-center': [AppBarBlock];
+    'app-bar-right': [AppBarBlock];
+    'app-bar-mobile-drop-section': [AppBarBlock];
     'context-menu': [ContextMenuType];
     default: [];
     'footer-left': [];
@@ -118,7 +116,7 @@ export default class Scaffold extends Component<ScaffoldSignature> {
     }}
       <div class="min-vh-100 d-flex flex-column">
         <AppBar @environment={{@environment}}>
-          <:left>
+          <:left as |AppBar|>
             {{#if hasSidebar}}
               <i
                 class="bi-{{this.sidebarIcon}} fs-4 px-3"
@@ -126,16 +124,13 @@ export default class Scaffold extends Component<ScaffoldSignature> {
                 {{on "click" this.toggleSidebar}}
               />
             {{/if}}
-            {{yield to="app-bar-left"}}
+            {{yield AppBar to="app-bar-left"}}
           </:left>
           <:center as |AppBar|>
             {{yield AppBar to="app-bar-center"}}
-            {{#unless (has-block-params "app-bar-center")}}
-              <AppBar.Environment />
-            {{/unless}}
           </:center>
-          <:right>
-            {{yield to="app-bar-right"}}
+          <:right as |AppBar|>
+            {{yield AppBar to="app-bar-right"}}
             <ContextMenu class="pe-2" @flip={{true}} @id="application">
               <:default as |Menu|>
                 {{yield Menu to="context-menu"}}
@@ -182,8 +177,8 @@ export default class Scaffold extends Component<ScaffoldSignature> {
               {{t "nrg.app-bar.about.item"}}
             </ContextMenuItem>
           </:right>
-          <:mobile-drop-section>
-            {{yield to="app-bar-mobile-drop-section"}}
+          <:mobile-drop-section as |AppBar|>
+            {{yield AppBar to="app-bar-mobile-drop-section"}}
           </:mobile-drop-section>
         </AppBar>
         <div class="application" ...attributes>
