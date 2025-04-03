@@ -2,12 +2,12 @@
 
 {{! BEGIN-SNIPPET scaffold-component }}
 <Scaffold @environment={{this.environment}}>
-  <:app-bar-center as |AppBar|>
+  <:app-bar-left as |AppBar|>
     <h5 class="d-none d-md-block m-0">
       Docs | @nrg-ui/core
     </h5>
     <AppBar.Environment />
-  </:app-bar-center>
+  </:app-bar-left>
   <:sidebar as |Menu|>
     <Menu.Item @route="scaffold">
       Scaffold
