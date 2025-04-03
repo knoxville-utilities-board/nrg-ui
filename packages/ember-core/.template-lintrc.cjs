@@ -7,6 +7,6 @@ module.exports = {
     'require-valid-named-block-naming-format': 'kebab-case',
     'require-presentational-children': {
       additionalNonSemanticTags: ['i', 'TextInput', 'DatetimeCalendar'],
-    }
+    },
   },
 };

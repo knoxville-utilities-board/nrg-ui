@@ -83,7 +83,6 @@ export default class ToasterDemo extends Component {
   </template>
 }
 
-
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
     'F::Components::Toaster': typeof ToasterDemo;
