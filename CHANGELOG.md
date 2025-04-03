@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2025-04-03)
+
+* @nrg-ui/core 0.29.1 (patch)
+
+#### :house: Internal
+* `@nrg-ui/core`
+  * [#409](https://github.com/knoxville-utilities-board/nrg-ui/pull/409) refactor: Allow all app bar options in each section ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-04-02)
 
 * @nrg-ui/css 0.16.0 (minor)
