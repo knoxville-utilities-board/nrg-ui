@@ -1,9 +1,4 @@
-import {
-  clearRender,
-  click,
-  render,
-  waitUntil,
-} from '@ember/test-helpers';
+import { clearRender, click, render, waitUntil } from '@ember/test-helpers';
 import { Alert } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 

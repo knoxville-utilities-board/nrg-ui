@@ -9,7 +9,7 @@ interface TooltipSignature {
   Args: {
     onShow: () => unknown;
     onHide: () => unknown;
-  }
+  };
 }
 
 const Tooltip: TOC<TooltipSignature> = <template>
@@ -104,13 +104,15 @@ module('Integration | Component | tooltip', function (hooks) {
   test('it works', async function (assert) {
     const show = () => {
       assert.step('show');
-    }
+    };
 
     const hide = () => {
       assert.step('hide');
-    }
+    };
 
-    await render(<template><Tooltip @onShow={{show}} @onHide={{hide}} /></template>);
+    await render(<template>
+      <Tooltip @onShow={{show}} @onHide={{hide}} />
+    </template>);
 
     assert.dom('.tooltip').hasClass('hidden');
 

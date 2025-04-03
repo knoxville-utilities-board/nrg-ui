@@ -53,7 +53,6 @@ export default class FooterDemo extends Component {
   </template>
 }
 
-
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
     'F::Components::Footer': typeof FooterDemo;
