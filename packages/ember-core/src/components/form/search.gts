@@ -213,10 +213,6 @@ export default class Search<T> extends BoundValue<
     this.onChange(option.value);
   }
 
-  get isTextInputFocused() {
-    return this.inputElement !== document.activeElement;
-  }
-
   scrollActiveOptionIntoView() {
     if (this.activeIndex == -1) {
       return;
@@ -381,7 +377,7 @@ export default class Search<T> extends BoundValue<
               @basic={{@basic}}
               @binding={{bind
                 this.self
-                (if this.isTextInputFocused "searchString" "displayValue")
+                (if visibility.isShown "searchString" "displayValue")
               }}
               @disabled={{@disabled}}
               @id={{@id}}
