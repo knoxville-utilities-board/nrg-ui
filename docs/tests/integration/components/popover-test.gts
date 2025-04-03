@@ -49,7 +49,7 @@ module('Integration | Component | popover', function (hooks) {
     </template>);
     assert.dom('.popover').hasClass('bs-popover-bottom');
 
-    this.model.side = "top";
+    this.model.side = 'top';
     await click('button');
     assert.dom('.popover').hasClass('bs-popover-top');
 
