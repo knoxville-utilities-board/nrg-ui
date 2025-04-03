@@ -185,7 +185,7 @@ export default class Popover extends Component<PopoverSignature> {
     }
 
     this.triggerDisplay.perform(evtOrInput);
-  }
+  };
 
   showPopover = async () => {
     if (!this.control || !this.popover) {
@@ -237,28 +237,30 @@ export default class Popover extends Component<PopoverSignature> {
     await action(evt);
   };
 
-  triggerDisplay = restartableTask(async (evtOrInput: Event | HTMLInputElement) => {
-    const { currentTarget } = evtOrInput as Event;
+  triggerDisplay = restartableTask(
+    async (evtOrInput: Event | HTMLInputElement) => {
+      const { currentTarget } = evtOrInput as Event;
 
-    if (this.args.delay) {
-      await timeout(this.args.delay);
-    }
+      if (this.args.delay) {
+        await timeout(this.args.delay);
+      }
 
-    this.isShown = true;
+      this.isShown = true;
 
-    await this.args.onShow?.();
+      await this.args.onShow?.();
 
-    if (evtOrInput instanceof HTMLInputElement) {
-      this._control = evtOrInput;
-      this.showPopover();
-    } else if (
-      evtOrInput instanceof Event &&
-      currentTarget instanceof HTMLElement
-    ) {
-      this._control = currentTarget;
-      this.showPopover();
-    }
-  });
+      if (evtOrInput instanceof HTMLInputElement) {
+        this._control = evtOrInput;
+        this.showPopover();
+      } else if (
+        evtOrInput instanceof Event &&
+        currentTarget instanceof HTMLElement
+      ) {
+        this._control = currentTarget;
+        this.showPopover();
+      }
+    },
+  );
 
   <template>
     {{#let

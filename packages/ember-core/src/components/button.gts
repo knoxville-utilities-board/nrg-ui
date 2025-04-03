@@ -60,7 +60,10 @@ export default class ButtonComponent extends Component<ButtonSignature> {
   }
 
   get isLeftAlignedIcon() {
-    return this.hasIcon && (this.args.iconPosition === 'left' || !this.args.iconPosition);
+    return (
+      this.hasIcon &&
+      (this.args.iconPosition === 'left' || !this.args.iconPosition)
+    );
   }
 
   get isRightAlignedIcon() {

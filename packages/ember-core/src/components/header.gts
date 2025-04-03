@@ -19,7 +19,9 @@ const HeaderComponent: TOC<HeaderSignature> = <template>
       {{yield to="left"}}
     </div>
     {{#if (has-block "center")}}
-      <div class="col d-flex justify-content-center align-items-center flex-row flex-no-wrap">
+      <div
+        class="col d-flex justify-content-center align-items-center flex-row flex-no-wrap"
+      >
         {{yield to="center"}}
       </div>
     {{/if}}
