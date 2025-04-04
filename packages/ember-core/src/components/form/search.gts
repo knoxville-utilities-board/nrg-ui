@@ -322,8 +322,8 @@ export default class Search<T> extends BoundValue<
   @action
   clear() {
     this.searchString = '';
-    this.value = '';
     this.activeIndex = -1;
+    this.onChange("")
 
     this.onBlur();
   }
