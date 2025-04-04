@@ -310,7 +310,7 @@ export default class Search<T> extends BoundValue<
     evt.preventDefault();
     evt.stopPropagation();
 
-    this.query.perform(this.displayValue);
+    this.searchString = this.displayValue;
   }
 
   @action
