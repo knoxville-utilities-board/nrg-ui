@@ -109,6 +109,14 @@ export default class Scaffold extends Component<ScaffoldSignature> {
     this.showAboutModel = open;
   };
 
+  sidebarClicked = (evt: MouseEvent) => {
+    evt?.preventDefault?.();
+    evt?.stopPropagation?.();
+    if (this.responsive.isMobileScreenGroup) {
+      this.showSidebar = false;
+    }
+  };
+
   <template>
     {{#let
       (or (has-block "sidebar") (has-block "sidebar-footer"))
@@ -187,7 +195,7 @@ export default class Scaffold extends Component<ScaffoldSignature> {
             <div
               class="col-12 col-md-2 d-flex flex-column sticky-top overflow-auto"
             >
-              <Sidebar>
+              <Sidebar @onClickInternal={{this.sidebarClicked}}>
                 <:default as |Menu|>
                   {{yield Menu to="sidebar"}}
                 </:default>
