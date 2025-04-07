@@ -17,11 +17,11 @@ import Toaster from './toaster.gts';
 import version from '../helpers/version.ts';
 
 import type { AppBarBlock } from './app-bar.gts';
-import type { GroupSignature, ItemSignature } from './sidebar.gts';
+import type { Group, Item } from './sidebar.gts';
 import type { Dropdown as ContextMenuType } from '../services/context-menu.ts';
 import type ResponsiveService from '../services/responsive.ts';
 import type ThemeService from '../services/theme.ts';
-import type { ComponentLike } from '@glint/template';
+import type { WithBoundArgs } from '@glint/template';
 import type { IntlService } from 'ember-intl';
 
 type EnvironmentConfig = Record<string, string> & {
@@ -46,11 +46,11 @@ export interface ScaffoldSignature {
     about: [];
     sidebar: [
       {
-        Item: ComponentLike<ItemSignature>;
-        Group: ComponentLike<GroupSignature>;
+        Item: WithBoundArgs<typeof Item, 'header' | 'onClickInternal'>;
+        Group: WithBoundArgs<typeof Group, 'onClickInternal'>;
       },
     ];
-    'sidebar-footer': [ComponentLike<ItemSignature>];
+    'sidebar-footer': [WithBoundArgs<typeof Item, 'onClickInternal'>];
   };
 }
 

@@ -3,6 +3,7 @@ import { render } from '@ember/test-helpers';
 import Scaffold from '@nrg-ui/core/components/scaffold';
 import { setBreakpoint } from 'ember-responsive/test-support';
 import { module, test } from 'qunit';
+
 import { setupRenderingTest } from '../../helpers';
 
 module('Integration | Component | scaffold', function (hooks) {

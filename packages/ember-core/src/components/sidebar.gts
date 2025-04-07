@@ -6,7 +6,7 @@ import Component from '@glimmer/component';
 import { classes } from '../helpers/classes.ts';
 
 import type { TOC } from '@ember/component/template-only';
-import type { ComponentLike } from '@glint/template';
+import type { ComponentLike, WithBoundArgs } from '@glint/template';
 
 export interface ItemSignature {
   Element: HTMLAnchorElement | HTMLDivElement;
@@ -26,7 +26,7 @@ export interface ItemSignature {
   };
 }
 
-class Item extends Component<ItemSignature> {
+export class Item extends Component<ItemSignature> {
   get classes() {
     const hasRoute = Boolean(this.args.route);
     const hasUrl = Boolean(this.args.url);
@@ -122,7 +122,7 @@ export interface GroupSignature {
   };
 }
 
-class Group extends Component<GroupSignature> {
+export class Group extends Component<GroupSignature> {
   get classes() {
     const hasRoute = Boolean(this.args.route);
     const hasUrl = Boolean(this.args.url);
@@ -216,11 +216,11 @@ export interface SidebarSignature {
   Blocks: {
     default: [
       {
-        Group: ComponentLike<GroupSignature>;
-        Item: ComponentLike<ItemSignature>;
+        Group: WithBoundArgs<typeof Group, 'onClickInternal'>;
+        Item: WithBoundArgs<typeof Item, 'header' | 'onClickInternal'>;
       },
     ];
-    footer: [ComponentLike<ItemSignature>];
+    footer: [WithBoundArgs<typeof Item, 'onClickInternal'>];
   };
 }
 
