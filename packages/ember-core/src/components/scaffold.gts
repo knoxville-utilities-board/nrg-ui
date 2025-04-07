@@ -5,6 +5,7 @@ import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { t } from 'ember-intl';
+import { runTask } from 'ember-lifeline';
 import { and, or } from 'ember-truth-helpers';
 
 import AppBar from './app-bar.gts';
@@ -16,11 +17,11 @@ import Toaster from './toaster.gts';
 import version from '../helpers/version.ts';
 
 import type { AppBarBlock } from './app-bar.gts';
-import type { GroupSignature, ItemSignature } from './sidebar.gts';
+import type { Group, Item } from './sidebar.gts';
 import type { Dropdown as ContextMenuType } from '../services/context-menu.ts';
 import type ResponsiveService from '../services/responsive.ts';
 import type ThemeService from '../services/theme.ts';
-import type { ComponentLike } from '@glint/template';
+import type { WithBoundArgs } from '@glint/template';
 import type { IntlService } from 'ember-intl';
 
 type EnvironmentConfig = Record<string, string> & {
@@ -45,11 +46,11 @@ export interface ScaffoldSignature {
     about: [];
     sidebar: [
       {
-        Item: ComponentLike<ItemSignature>;
-        Group: ComponentLike<GroupSignature>;
+        Item: WithBoundArgs<typeof Item, 'header' | 'onClickInternal'>;
+        Group: WithBoundArgs<typeof Group, 'onClickInternal'>;
       },
     ];
-    'sidebar-footer': [ComponentLike<ItemSignature>];
+    'sidebar-footer': [WithBoundArgs<typeof Item, 'onClickInternal'>];
   };
 }
 
@@ -70,7 +71,7 @@ export default class Scaffold extends Component<ScaffoldSignature> {
   _showSidebar?: boolean;
 
   get showSidebar() {
-    return this._showSidebar ?? !this.responsive.isMobileDevice;
+    return this._showSidebar ?? !this.responsive.isMobileScreenGroup;
   }
 
   set showSidebar(value: boolean) {
@@ -92,7 +93,7 @@ export default class Scaffold extends Component<ScaffoldSignature> {
     if (!this.showSidebar) {
       return 'list';
     }
-    return this.responsive.isMobileDevice ? 'x-lg' : 'list';
+    return this.responsive.isMobileScreenGroup ? 'x-lg' : 'list';
   }
 
   get themeText() {
@@ -107,6 +108,16 @@ export default class Scaffold extends Component<ScaffoldSignature> {
 
   toggleAboutModal = (open: boolean) => {
     this.showAboutModel = open;
+  };
+
+  sidebarClicked = (evt: MouseEvent) => {
+    evt?.preventDefault?.();
+    evt?.stopPropagation?.();
+    if (this.responsive.isMobileScreenGroup) {
+      runTask(this, () => {
+        this.showSidebar = false;
+      });
+    }
   };
 
   <template>
@@ -187,7 +198,7 @@ export default class Scaffold extends Component<ScaffoldSignature> {
             <div
               class="col-12 col-md-2 d-flex flex-column sticky-top overflow-auto"
             >
-              <Sidebar>
+              <Sidebar @onClickInternal={{this.sidebarClicked}}>
                 <:default as |Menu|>
                   {{yield Menu to="sidebar"}}
                 </:default>

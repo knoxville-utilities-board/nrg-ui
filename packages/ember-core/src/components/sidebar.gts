@@ -6,7 +6,7 @@ import Component from '@glimmer/component';
 import { classes } from '../helpers/classes.ts';
 
 import type { TOC } from '@ember/component/template-only';
-import type { ComponentLike } from '@glint/template';
+import type { ComponentLike, WithBoundArgs } from '@glint/template';
 
 export interface ItemSignature {
   Element: HTMLAnchorElement | HTMLDivElement;
@@ -18,6 +18,7 @@ export interface ItemSignature {
     url?: string;
 
     onClick?: (evt: MouseEvent) => unknown;
+    onClickInternal?: (evt: MouseEvent) => unknown;
   };
   Blocks: {
     badge: [];
@@ -25,7 +26,7 @@ export interface ItemSignature {
   };
 }
 
-class Item extends Component<ItemSignature> {
+export class Item extends Component<ItemSignature> {
   get classes() {
     const hasRoute = Boolean(this.args.route);
     const hasUrl = Boolean(this.args.url);
@@ -47,11 +48,17 @@ class Item extends Component<ItemSignature> {
     }
 
     this.args.onClick?.(evt);
+    this.args.onClickInternal?.(evt);
   };
 
   <template>
     {{#if @route}}
-      <LinkTo class={{this.classes}} @route={{@route}} ...attributes>
+      <LinkTo
+        class={{this.classes}}
+        @route={{@route}}
+        {{on "click" this.onClick}}
+        ...attributes
+      >
         <span>
           {{yield}}
         </span>
@@ -62,7 +69,12 @@ class Item extends Component<ItemSignature> {
         {{/if}}
       </LinkTo>
     {{else if @url}}
-      <a class={{this.classes}} href={{@url}} ...attributes>
+      <a
+        class={{this.classes}}
+        href={{@url}}
+        {{on "click" this.onClick}}
+        ...attributes
+      >
         <span>
           {{yield}}
         </span>
@@ -101,6 +113,7 @@ export interface GroupSignature {
     url?: string;
 
     onClick?: (evt: MouseEvent) => unknown;
+    onClickInternal?: (evt: MouseEvent) => unknown;
   };
   Blocks: {
     badge: [];
@@ -109,7 +122,7 @@ export interface GroupSignature {
   };
 }
 
-class Group extends Component<GroupSignature> {
+export class Group extends Component<GroupSignature> {
   get classes() {
     const hasRoute = Boolean(this.args.route);
     const hasUrl = Boolean(this.args.url);
@@ -130,6 +143,7 @@ class Group extends Component<GroupSignature> {
     }
 
     this.args.onClick?.(evt);
+    this.args.onClickInternal?.(evt);
   };
 
   <template>
@@ -139,6 +153,7 @@ class Group extends Component<GroupSignature> {
           class={{this.classes}}
           @disabled={{@disabled}}
           @route={{@route}}
+          {{on "click" this.onClick}}
           ...attributes
         >
           <span>
@@ -155,6 +170,7 @@ class Group extends Component<GroupSignature> {
           class={{this.classes}}
           href={{@url}}
           disabled={{@disabled}}
+          {{on "click" this.onClick}}
           ...attributes
         >
           <span>
@@ -185,7 +201,7 @@ class Group extends Component<GroupSignature> {
       {{/if}}
     {{/if}}
     {{#if (has-block "items")}}
-      {{yield Item to="items"}}
+      {{yield (component Item onClickInternal=@onClickInternal) to="items"}}
     {{/if}}
   </template>
 }
@@ -194,26 +210,33 @@ export interface SidebarSignature {
   Element: HTMLDivElement;
   Args: {
     sticky?: boolean;
+
+    onClickInternal?: (evt: MouseEvent) => unknown;
   };
   Blocks: {
     default: [
       {
-        Group: ComponentLike<GroupSignature>;
-        Item: ComponentLike<ItemSignature>;
+        Group: WithBoundArgs<typeof Group, 'onClickInternal'>;
+        Item: WithBoundArgs<typeof Item, 'header' | 'onClickInternal'>;
       },
     ];
-    footer: [ComponentLike<ItemSignature>];
+    footer: [WithBoundArgs<typeof Item, 'onClickInternal'>];
   };
 }
 
 const Sidebar: TOC<SidebarSignature> = <template>
   <div class="sidebar card justify-content-between overflow-auto" ...attributes>
     <div class="list-group d-flex flex-column">
-      {{yield (hash Group=Group Item=(component Item header=true))}}
+      {{yield
+        (hash
+          Group=(component Group onClickInternal=@onClickInternal)
+          Item=(component Item header=true onClickInternal=@onClickInternal)
+        )
+      }}
     </div>
     {{#if (has-block "footer")}}
       <div class="list-group d-flex flex-column footer">
-        {{yield Item to="footer"}}
+        {{yield (component Item onClickInternal=@onClickInternal) to="footer"}}
       </div>
     {{/if}}
   </div>
