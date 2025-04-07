@@ -48,3 +48,7 @@ declare module '@ember/service' {
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   interface Registry extends NrgServiceRegistry {}
 }
+
+declare module 'ember-responsive/test-support' {
+  export function setBreakpoint(breakpoint: string): void;
+}
