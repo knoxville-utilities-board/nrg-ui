@@ -245,7 +245,7 @@ export default class Search<T> extends BoundValue<
     }
 
     await timeout(this.searchTimeout);
-    this.options = await this.args.onQuery(this.searchString);
+    this.options = await this.args.onQuery(searchString);
     this.visibility.show(this.inputElement);
   });
 
@@ -332,7 +332,7 @@ export default class Search<T> extends BoundValue<
   clear() {
     this.searchString = '';
     this.activeIndex = -1;
-    this.onChange('');
+    this.onChange(null);
 
     this.onBlur();
   }
