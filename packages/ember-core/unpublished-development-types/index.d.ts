@@ -9,12 +9,10 @@ import type CssTransitionsRegistry from 'ember-css-transitions/template-registry
 import type IntlService from 'ember-intl/services/intl';
 
 declare interface MediaService {
-  isSmallMobile: boolean;
   isMobile: boolean;
   isTablet: boolean;
-  isComputer: boolean;
-  isLargeMonitor: boolean;
-  isWidescreenMonitor: boolean;
+  isDesktop: boolean;
+  isJumbo: boolean;
 }
 
 declare module '@glint/environment-ember-loose/registry' {
