@@ -237,6 +237,7 @@ export default class Search<T> extends BoundValue<
 
   query = restartableTask(async (searchString) => {
     this.searchString = searchString;
+    this.activeIndex = -1;
 
     if (!this.canPerformSearch) {
       this.visibility.hide();
@@ -317,6 +318,14 @@ export default class Search<T> extends BoundValue<
   onBlur() {
     this.visibility.hide();
     this.inputElement.blur();
+  }
+
+  @action
+  onMouseDown(evt: MouseEvent) {
+    evt.preventDefault();
+    evt.stopPropagation();
+
+    this.inputElement.focus();
   }
 
   @action
@@ -408,6 +417,7 @@ export default class Search<T> extends BoundValue<
               aria-selected={{isActive}}
               class={{if isActive "active"}}
               @onSelect={{fn this.selectOption option index}}
+              {{on "mousedown" this.onMouseDown}}
             >
               {{option.label}}
             </Menu.Item>
