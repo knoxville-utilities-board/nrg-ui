@@ -22,40 +22,28 @@ export default class Responsive extends Service {
     return this.isMobile.any;
   }
 
-  get isSmallMobileScreen() {
-    return this.media?.isSmallMobile;
-  }
-
   get isMobileScreen() {
     return this.media?.isMobile;
   }
 
   get isTabletScreen() {
-    return this.isMobile?.tablet;
+    return this.media?.isTablet;
   }
 
   get isComputerScreen() {
-    return this.media?.isComputer;
+    return this.media?.isDesktop;
   }
 
   get isLargeMonitor() {
-    return this.media?.isLargeMonitor;
-  }
-
-  get isWidescreenMonitor() {
-    return this.media?.isWidescreenMonitor;
+    return this.media?.isJumbo;
   }
 
   get isMobileScreenGroup() {
-    return (
-      this.isSmallMobileScreen || this.isMobileScreen || this.isTabletScreen
-    );
+    return this.isMobileScreen || this.isTabletScreen;
   }
 
   get isComputerScreenGroup() {
-    return (
-      this.isComputerScreen || this.isLargeMonitor || this.isWidescreenMonitor
-    );
+    return this.isComputerScreen || this.isLargeMonitor;
   }
 }
 
