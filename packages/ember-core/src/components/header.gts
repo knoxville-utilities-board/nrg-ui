@@ -12,18 +12,24 @@ export interface HeaderSignature {
 
 const HeaderComponent: TOC<HeaderSignature> = <template>
   <div
-    class="row row-cols-12 p-1 align-items-center justify-content-evenly"
+    class="row row-cols-12 p-1 flex-nowrap align-items-center justify-content-between"
     ...attributes
   >
-    <div class="col d-flex justify-content-start align-items-center">
+    <div
+      class="col text-nowrap d-flex align-items-center flex-grow-0 app-bar-left"
+    >
       {{yield to="left"}}
     </div>
     {{#if (has-block "center")}}
-      <div class="col d-flex justify-content-center align-items-center flex-row flex-no-wrap">
+      <div
+        class="col text-nowrap d-flex align-items-center flex-grow-0 app-bar-center"
+      >
         {{yield to="center"}}
       </div>
     {{/if}}
-    <div class="col d-flex justify-content-end align-items-center">
+    <div
+      class="col text-nowrap d-flex align-items-center flex-grow-0 app-bar-right"
+    >
       {{yield to="right"}}
     </div>
     {{#if (has-block "mobile-drop-section")}}
