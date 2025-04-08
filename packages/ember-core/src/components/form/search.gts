@@ -131,10 +131,6 @@ export default class Search<T> extends BoundValue<
     return this.searchString.trim().length >= this.minCharacters;
   }
 
-  get showOptions() {
-    return this.visibility?.isShown && this.canPerformSearch && !this.loading;
-  }
-
   get inputClassList() {
     const classes = ['form-control'];
 
@@ -213,8 +209,16 @@ export default class Search<T> extends BoundValue<
     this.onChange(option.value);
   }
 
-  get isTextInputFocused() {
-    return this.inputElement !== document.activeElement;
+  get isInputElementActive() {
+    return this.inputElement === document.activeElement;
+  }
+
+  get inputValue() {
+    return this.isInputElementActive ? this.searchString : this.displayValue;
+  }
+
+  set inputValue(searchString: string) {
+    this.query.perform(searchString);
   }
 
   scrollActiveOptionIntoView() {
@@ -232,6 +236,14 @@ export default class Search<T> extends BoundValue<
   }
 
   query = restartableTask(async (searchString) => {
+    this.searchString = searchString;
+    this.activeIndex = -1;
+
+    if (!this.canPerformSearch) {
+      this.visibility.hide();
+      return;
+    }
+
     await timeout(this.searchTimeout);
     this.options = await this.args.onQuery(searchString);
     this.visibility.show(this.inputElement);
@@ -244,7 +256,6 @@ export default class Search<T> extends BoundValue<
 
     this.activeIndex = index;
     this.selectedOption = option;
-    this.searchString = option.label;
 
     this.onBlur();
   }
@@ -285,8 +296,6 @@ export default class Search<T> extends BoundValue<
     if (option != undefined) {
       this.selectOption(option, this.activeIndex);
     }
-
-    this.onBlur();
   }
 
   @action
@@ -302,7 +311,7 @@ export default class Search<T> extends BoundValue<
     evt.preventDefault();
     evt.stopPropagation();
 
-    this.visibility.show(evt);
+    this.searchString = this.displayValue;
   }
 
   @action
@@ -312,21 +321,18 @@ export default class Search<T> extends BoundValue<
   }
 
   @action
-  onSearch(evt: Event) {
-    this.searchString = (evt.target as HTMLInputElement).value;
+  onMouseDown(evt: MouseEvent) {
+    evt.preventDefault();
+    evt.stopPropagation();
 
-    if (!this.canPerformSearch) {
-      return;
-    }
-
-    this.query.perform(this.searchString);
+    this.inputElement.focus();
   }
 
   @action
   clear() {
     this.searchString = '';
-    this.value = '';
     this.activeIndex = -1;
+    this.onChange(null);
 
     this.onBlur();
   }
@@ -379,15 +385,11 @@ export default class Search<T> extends BoundValue<
               class={{this.inputClassList}}
               placeholder={{this.placeholder}}
               @basic={{@basic}}
-              @binding={{bind
-                this.self
-                (if this.isTextInputFocused "searchString" "displayValue")
-              }}
+              @binding={{bind this.self "inputValue"}}
               @disabled={{@disabled}}
               @id={{@id}}
               @readonly={{@readonly}}
-              {{on "input" this.onSearch}}
-              {{on "focus" visibility.show}}
+              {{on "focus" this.onFocus}}
               {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
               {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
               {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
@@ -415,6 +417,8 @@ export default class Search<T> extends BoundValue<
               aria-selected={{isActive}}
               class={{if isActive "active"}}
               @onSelect={{fn this.selectOption option index}}
+              {{! template-lint-disable no-pointer-down-event-binding }}
+              {{on "mousedown" this.onMouseDown}}
             >
               {{option.label}}
             </Menu.Item>
