@@ -42,8 +42,6 @@ export interface AppBarSignature {
   Blocks: {
     left: [AppBarBlock];
     right: [AppBarBlock];
-    center: [AppBarBlock];
-    'mobile-drop-section': [AppBarBlock];
   };
 }
 
@@ -57,15 +55,9 @@ const AppBar: TOC<AppBarSignature> = <template>
         <:left>
           {{yield AppBarYield to="left"}}
         </:left>
-        <:center>
-          {{yield AppBarYield to="center"}}
-        </:center>
         <:right>
           {{yield AppBarYield to="right"}}
         </:right>
-        <:mobile-drop-section>
-          {{yield AppBarYield to="mobile-drop-section"}}
-        </:mobile-drop-section>
       </Header>
     {{/let}}
   </div>

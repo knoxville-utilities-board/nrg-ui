@@ -15,15 +15,9 @@ module('Integration | Component | scaffold', function (hooks) {
         <:app-bar-left>
           Appbar Left
         </:app-bar-left>
-        <:app-bar-center>
-          Appbar Center
-        </:app-bar-center>
         <:app-bar-right>
           Appbar Right
         </:app-bar-right>
-        <:app-bar-mobile-drop-section>
-          Appbar Mobile Drop Section
-        </:app-bar-mobile-drop-section>
         <:sidebar as |Menu|>
           <Menu.Item>
             Sidebar Item
@@ -58,12 +52,7 @@ module('Integration | Component | scaffold', function (hooks) {
     assert
       .dom()
       .containsText('Appbar Left', 'renders app bar left section')
-      .containsText('Appbar Center', 'renders app bar center section')
       .containsText('Appbar Right', 'renders app bar sections')
-      .containsText(
-        'Appbar Mobile Drop Section',
-        'renders app bar mobile drop section',
-      )
       .containsText('Main Content', 'renders main content')
       .containsText('Sidebar Item', 'renders sidebar item from default block')
       .containsText('Sidebar Group', 'renders sidebar group header')

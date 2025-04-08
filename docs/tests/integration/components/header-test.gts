@@ -26,19 +26,19 @@ module('Integration | Component | header', function (hooks) {
     </template>);
 
     assert
-      .dom('.col.d-flex.justify-content-start p')
+      .dom('.col.d-flex.app-bar-left p')
       .hasText(
         'Left side content',
         'Content is rendered in correct block with correct text',
       );
     assert
-      .dom('.col.d-flex.justify-content-center.flex-row.flex-no-wrap p')
+      .dom('.col.d-flex.app-bar-center p')
       .hasText(
         'center content',
         'Content is rendered in correct block with correct text',
       );
     assert
-      .dom('.col.d-flex.justify-content-end p')
+      .dom('.col.d-flex.app-bar-right p')
       .hasText(
         'right side content',
         'Content is rendered in correct block with correct text',
