@@ -196,7 +196,7 @@ export default class Scaffold extends Component<ScaffoldSignature> {
           <Toaster />
           {{#if (and hasSidebar this.showSidebar)}}
             <div
-              class="col-12 col-md-2 d-flex flex-column sticky-top overflow-auto"
+              class="col-12 col-md-3 col-xl-2 d-flex flex-column sticky-top overflow-auto"
             >
               <Sidebar @onClickInternal={{this.sidebarClicked}}>
                 <:default as |Menu|>
