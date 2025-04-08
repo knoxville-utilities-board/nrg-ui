@@ -209,15 +209,15 @@ export default class Search<T> extends BoundValue<
     this.onChange(option.value);
   }
 
-  get isInputElementActive () {
-    return this.inputElement === document.activeElement
+  get isInputElementActive() {
+    return this.inputElement === document.activeElement;
   }
 
   get inputValue() {
-    return this.isInputElementActive ? this.searchString : this.displayValue
+    return this.isInputElementActive ? this.searchString : this.displayValue;
   }
 
-  set inputValue(searchString : string) {
+  set inputValue(searchString: string) {
     this.query.perform(searchString);
   }
 
@@ -332,7 +332,7 @@ export default class Search<T> extends BoundValue<
   clear() {
     this.searchString = '';
     this.activeIndex = -1;
-    this.onChange("")
+    this.onChange('');
 
     this.onBlur();
   }
@@ -417,6 +417,7 @@ export default class Search<T> extends BoundValue<
               aria-selected={{isActive}}
               class={{if isActive "active"}}
               @onSelect={{fn this.selectOption option index}}
+              {{! template-lint-disable no-pointer-down-event-binding }}
               {{on "mousedown" this.onMouseDown}}
             >
               {{option.label}}
