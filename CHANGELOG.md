@@ -1,5 +1,24 @@
 # Changelog
 
+## Release (2025-04-08)
+
+* @nrg-ui/core 0.30.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#417](https://github.com/knoxville-utilities-board/nrg-ui/pull/417) feat: Improve responsiveness of header ([@KeithClinard](https://github.com/KeithClinard))
+  * [#411](https://github.com/knoxville-utilities-board/nrg-ui/pull/411) feat(search): Refine component behavior to improve user experience ([@Trishu-Patel](https://github.com/Trishu-Patel))
+  * [#416](https://github.com/knoxville-utilities-board/nrg-ui/pull/416) feat: Tweak sidebar sizing ([@KeithClinard](https://github.com/KeithClinard))
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#418](https://github.com/knoxville-utilities-board/nrg-ui/pull/418) fix: Correct breakpoints in responsive service ([@KeithClinard](https://github.com/KeithClinard))
+  * [#412](https://github.com/knoxville-utilities-board/nrg-ui/pull/412) fix: Close sidebar on item clicked ([@KeithClinard](https://github.com/KeithClinard))
+
+#### Committers: 2
+- Keith ([@KeithClinard](https://github.com/KeithClinard))
+- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))
+
 ## Release (2025-04-03)
 
 * @nrg-ui/core 0.29.1 (patch)
