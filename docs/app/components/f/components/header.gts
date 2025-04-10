@@ -12,6 +12,9 @@ export default class HeaderDemo extends Component {
   @tracked
   class = 'text-primary';
 
+  @tracked
+  flexCollapse = false;
+
   @action
   update(key: string, value: unknown) {
     this[key] = value;
@@ -23,7 +26,7 @@ export default class HeaderDemo extends Component {
         <FreestyleUsage>
           <:example>
             <div class="container-fluid">
-              <Header class={{this.class}}>
+              <Header class={{this.class}} @flexCollapse={{this.flexCollapse}}>
                 <:left>
                   <p class="m-0">Left section</p>
                 </:left>
@@ -45,6 +48,12 @@ export default class HeaderDemo extends Component {
               @name="class"
               @value={{this.class}}
               @onInput={{fn this.update "class"}}
+            />
+            <Args.Bool
+              @name="flexCollapse"
+              @description="Each of the sections of the flexbox container shrink to fit the content. Each section is also evenly spaced. This is most useful when one of the header sections contains more content than the others."
+              @value={{this.flexCollapse}}
+              @onInput={{fn this.update "flexCollapse"}}
             />
             <Args.Yield
               @description="Named yield block that renders content in the center of the header"
