@@ -10,35 +10,51 @@ module('Integration | Component | app-bar', function (hooks) {
     await render(<template>
       <AppBar>
         <:left>Left text</:left>
+        <:center>Center text</:center>
         <:right>Right text</:right>
+        <:mobile-drop-section>Mobile drop section</:mobile-drop-section>
       </AppBar>
     </template>);
 
-    assert.dom('.app-bar-left').exists().hasText('Left text');
-    assert.dom('.app-bar-right').exists().hasText('Right text');
+    assert
+      .dom('.app-bar-container .justify-content-start')
+      .exists()
+      .hasText('Left text');
+    assert
+      .dom('.app-bar-container .justify-content-center.flex-row')
+      .exists()
+      .hasText('Center text');
+    assert
+      .dom('.app-bar-container .justify-content-end')
+      .exists()
+      .hasText('Right text');
+    assert
+      .dom('.app-bar-container .d-md-none.order-last.justify-content-center')
+      .exists()
+      .hasText('Mobile drop section');
   });
 
   test('environment can be rendered in custom location', async function (assert) {
     await render(<template>
       <AppBar @environment="dev">
-        <:left as |AppBar|>
+        <:center as |AppBar|>
           <h5>
             Test Title
           </h5>
           <AppBar.Environment />
-        </:left>
+        </:center>
       </AppBar>
     </template>);
     assert.dom('.environment-title').hasText('dev').matchesSelector('h5 ~ &');
 
     await render(<template>
       <AppBar @environment="dev">
-        <:left as |AppBar|>
+        <:center as |AppBar|>
           <AppBar.Environment />
           <h5>
             Test Title
           </h5>
-        </:left>
+        </:center>
       </AppBar>
     </template>);
     assert
@@ -49,17 +65,17 @@ module('Integration | Component | app-bar', function (hooks) {
 
     await render(<template>
       <AppBar @environment="prod">
-        <:left as |AppBar|>
+        <:center as |AppBar|>
           <h5>
             Test Title
           </h5>
           <AppBar.Environment />
-        </:left>
+        </:center>
       </AppBar>
     </template>);
     assert.dom('.environment-title').doesNotExist();
     assert
-      .dom('.app-bar .flex-grow-0')
+      .dom('.justify-content-center.flex-row')
       .hasText('Test Title')
       .doesNotMatchSelector('& .environment-title');
   });

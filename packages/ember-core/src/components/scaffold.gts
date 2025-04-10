@@ -36,7 +36,9 @@ export interface ScaffoldSignature {
   };
   Blocks: {
     'app-bar-left': [AppBarBlock];
+    'app-bar-center': [AppBarBlock];
     'app-bar-right': [AppBarBlock];
+    'app-bar-mobile-drop-section': [AppBarBlock];
     'context-menu': [ContextMenuType];
     default: [];
     'footer-left': [];
@@ -135,6 +137,9 @@ export default class Scaffold extends Component<ScaffoldSignature> {
             {{/if}}
             {{yield AppBar to="app-bar-left"}}
           </:left>
+          <:center as |AppBar|>
+            {{yield AppBar to="app-bar-center"}}
+          </:center>
           <:right as |AppBar|>
             {{yield AppBar to="app-bar-right"}}
             <ContextMenu class="pe-2" @flip={{true}} @id="application">
@@ -183,6 +188,9 @@ export default class Scaffold extends Component<ScaffoldSignature> {
               {{t "nrg.app-bar.about.item"}}
             </ContextMenuItem>
           </:right>
+          <:mobile-drop-section as |AppBar|>
+            {{yield AppBar to="app-bar-mobile-drop-section"}}
+          </:mobile-drop-section>
         </AppBar>
         <div class="application" ...attributes>
           <Toaster />
