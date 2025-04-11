@@ -53,6 +53,7 @@ export { default as Tooltip } from './components/tooltip.gts';
 /* Helpers */
 export { bind, default as Bind } from './helpers/bind.ts';
 export { classes, default as Classes } from './helpers/classes.ts';
+export { default as lookupService } from './helpers/lookup-service.ts';
 export { default as Version, version } from './helpers/version.ts';
 
 /* Modifiers */
