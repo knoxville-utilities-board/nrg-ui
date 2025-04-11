@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2025-04-10)
+
+* @nrg-ui/core 0.31.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#420](https://github.com/knoxville-utilities-board/nrg-ui/pull/420) feat: Add optional header collapse ([@KeithClinard](https://github.com/KeithClinard))
+
+#### Committers: 1
+- Keith ([@KeithClinard](https://github.com/KeithClinard))
+
 ## Release (2025-04-08)
 
 * @nrg-ui/core 0.30.0 (minor)

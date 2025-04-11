@@ -8,17 +8,13 @@
     },
     "@nrg-ui/core": {
       "impact": "minor",
-      "oldVersion": "0.29.1",
-      "newVersion": "0.30.0",
+      "oldVersion": "0.30.0",
+      "newVersion": "0.31.0",
       "tagName": "latest",
       "constraints": [
         {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
@@ -30,5 +26,5 @@
       "oldVersion": "0.3.0"
     }
   },
-  "description": "## Release (2025-04-08)\n\n* @nrg-ui/core 0.30.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#417](https://github.com/knoxville-utilities-board/nrg-ui/pull/417) feat: Improve responsiveness of header ([@KeithClinard](https://github.com/KeithClinard))\n  * [#411](https://github.com/knoxville-utilities-board/nrg-ui/pull/411) feat(search): Refine component behavior to improve user experience ([@Trishu-Patel](https://github.com/Trishu-Patel))\n  * [#416](https://github.com/knoxville-utilities-board/nrg-ui/pull/416) feat: Tweak sidebar sizing ([@KeithClinard](https://github.com/KeithClinard))\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#418](https://github.com/knoxville-utilities-board/nrg-ui/pull/418) fix: Correct breakpoints in responsive service ([@KeithClinard](https://github.com/KeithClinard))\n  * [#412](https://github.com/knoxville-utilities-board/nrg-ui/pull/412) fix: Close sidebar on item clicked ([@KeithClinard](https://github.com/KeithClinard))\n\n#### Committers: 2\n- Keith ([@KeithClinard](https://github.com/KeithClinard))\n- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))\n"
+  "description": "## Release (2025-04-10)\n\n* @nrg-ui/core 0.31.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#420](https://github.com/knoxville-utilities-board/nrg-ui/pull/420) feat: Add optional header collapse ([@KeithClinard](https://github.com/KeithClinard))\n\n#### Committers: 1\n- Keith ([@KeithClinard](https://github.com/KeithClinard))\n"
 }
