@@ -26,10 +26,12 @@ export default class ThemeService extends BaseService {
     this.freestyle.defaultTheme = syntaxThemes[theme];
 
     // Remove previous theme
-    document.querySelector(`[data-hljs-theme=${syntaxThemes[previousTheme]}]`)?.remove();
+    document
+      .querySelector(`[data-hljs-theme=${syntaxThemes[previousTheme]}]`)
+      ?.remove();
 
     for (const [codeBlock, el] of Object.entries(this.codeBlocks)) {
       codeBlock.highlight(el);
     }
-  }
+  };
 }

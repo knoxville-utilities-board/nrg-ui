@@ -81,31 +81,31 @@ class Tooltip extends Component<TooltipSignature> {
     return this.args.delay ?? 300;
   }
 
-<template>
-  <Popover
-    class="tooltip"
-    @alignment={{@alignment}}
-    @delay={{this.delay}}
-    @flip={{@flip}}
-    @offset={{@offset}}
-    @side={{@side}}
-    @onShow={{@onShow}}
-    @onHide={{@onHide}}
-  >
-    <:control as |actions|>
-      {{yield
-        (component
-          TooltipTarget onMouseEnter=actions.show onMouseLeave=actions.hide
-        )
-      }}
-    </:control>
-    <:content as |Content|>
-      {{#if Content}}
-        {{yield Content to="content"}}
-      {{/if}}
-    </:content>
-  </Popover>
-</template>
+  <template>
+    <Popover
+      class="tooltip"
+      @alignment={{@alignment}}
+      @delay={{this.delay}}
+      @flip={{@flip}}
+      @offset={{@offset}}
+      @side={{@side}}
+      @onShow={{@onShow}}
+      @onHide={{@onHide}}
+    >
+      <:control as |actions|>
+        {{yield
+          (component
+            TooltipTarget onMouseEnter=actions.show onMouseLeave=actions.hide
+          )
+        }}
+      </:control>
+      <:content as |Content|>
+        {{#if Content}}
+          {{yield Content to="content"}}
+        {{/if}}
+      </:content>
+    </Popover>
+  </template>
 }
 
 export default Tooltip;

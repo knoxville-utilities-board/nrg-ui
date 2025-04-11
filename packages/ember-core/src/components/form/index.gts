@@ -68,7 +68,6 @@ export interface FormSignature {
 }
 
 export default class Form extends Component<FormSignature> implements FormType {
-
   @tracked
   _didValidate = false;
 

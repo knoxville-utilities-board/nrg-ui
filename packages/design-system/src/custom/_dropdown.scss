@@ -54,7 +54,6 @@
     > li:last-child .dropdown-item {
       @include border-bottom-radius(var(--bs-dropdown-inner-border-radius));
     }
-
   }
 
   &.hidden {
@@ -85,7 +84,6 @@
     }
   }
 }
-
 
 .dropdown-divider {
   height: 0;
@@ -137,7 +135,8 @@
 }
 .dropdown-header {
   display: block;
-  padding: var(--bs-dropdown-header-padding-y) var(--bs-dropdown-header-padding-x);
+  padding: var(--bs-dropdown-header-padding-y)
+    var(--bs-dropdown-header-padding-x);
   margin-bottom: 0;
   @include font-size($font-size-sm);
   color: var(--bs-dropdown-header-color);

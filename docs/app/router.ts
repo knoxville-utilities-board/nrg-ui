@@ -51,7 +51,7 @@ Router.map(function () {
     this.route('section-header');
     this.route('service-pricing');
   });
-  this.route('modifiers', function() {
+  this.route('modifiers', function () {
     this.route('on-click-outside');
     this.route('on-destroy');
     this.route('on-insert');
