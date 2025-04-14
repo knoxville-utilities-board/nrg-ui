@@ -114,6 +114,10 @@ export function getTag(options: Partial<TagOptions> = {}): TagInfo | null {
   return tagInfo[0];
 }
 
+export function getBranch() {
+  return git(['branch', '--show-current']);
+}
+
 export function getVersion() {
   let version;
 
@@ -124,6 +128,10 @@ export function getVersion() {
 
   if (tagInfo) {
     version = tagInfo.displayTag;
+  } else {
+    const branch = getBranch();
+
+    version = branch;
   }
 
   return version ?? getPackageVersion();
