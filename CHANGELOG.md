@@ -1,5 +1,25 @@
 # Changelog
 
+## Release (2025-04-14)
+
+* @nrg-ui/css 0.16.1 (patch)
+* @nrg-ui/core 0.32.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#422](https://github.com/knoxville-utilities-board/nrg-ui/pull/422) feat: Create helper to lookup service in a template ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`
+  * [#423](https://github.com/knoxville-utilities-board/nrg-ui/pull/423) style: Remove border rounding on sidebar items ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#410](https://github.com/knoxville-utilities-board/nrg-ui/pull/410) chore: Format project ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-04-10)
 
 * @nrg-ui/core 0.31.0 (minor)
