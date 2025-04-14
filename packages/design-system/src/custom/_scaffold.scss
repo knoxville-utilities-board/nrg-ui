@@ -45,6 +45,10 @@
   & > .list-group {
     padding: var(--bs-list-group-item-padding-y) 0;
 
+    & > .list-group-item {
+      border-radius: 0;
+    }
+
     &.footer {
       border-top-width: var(--bs-list-group-border-width);
       border-radius: 0;
