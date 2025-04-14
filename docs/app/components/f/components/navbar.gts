@@ -51,7 +51,6 @@ export default class NavbarDemo extends Component {
   </template>
 }
 
-
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
     'F::Components::Navbar': typeof NavbarDemo;

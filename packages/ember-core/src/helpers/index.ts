@@ -11,4 +11,4 @@ export default {
   classes,
   lookupService,
   version,
-}
+};

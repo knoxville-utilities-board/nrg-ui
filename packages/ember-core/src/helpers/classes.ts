@@ -3,7 +3,7 @@ import Helper from '@ember/component/helper';
 type Positional = unknown[];
 type Element = HTMLElement;
 
-export function classes (...args: unknown[]): string {
+export function classes(...args: unknown[]): string {
   const classes = args.filter(Boolean);
 
   return classes.join(' ');

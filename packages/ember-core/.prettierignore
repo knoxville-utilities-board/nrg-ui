@@ -7,3 +7,7 @@
 
 # misc
 /coverage/
+
+# TODO: Figure out a way to not require this
+# <https://discord.com/channels/480462759797063690/717767358743183412/1357430838878277752>
+src/components/pagination.gts
