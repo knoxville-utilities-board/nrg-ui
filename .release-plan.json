@@ -4,17 +4,35 @@
       "oldVersion": "0.1.1"
     },
     "@nrg-ui/css": {
-      "oldVersion": "0.16.0"
+      "impact": "patch",
+      "oldVersion": "0.16.0",
+      "newVersion": "0.16.1",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./packages/design-system/package.json"
     },
     "@nrg-ui/core": {
       "impact": "minor",
-      "oldVersion": "0.30.0",
-      "newVersion": "0.31.0",
+      "oldVersion": "0.31.0",
+      "newVersion": "0.32.0",
       "tagName": "latest",
       "constraints": [
         {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
@@ -26,5 +44,5 @@
       "oldVersion": "0.3.0"
     }
   },
-  "description": "## Release (2025-04-10)\n\n* @nrg-ui/core 0.31.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#420](https://github.com/knoxville-utilities-board/nrg-ui/pull/420) feat: Add optional header collapse ([@KeithClinard](https://github.com/KeithClinard))\n\n#### Committers: 1\n- Keith ([@KeithClinard](https://github.com/KeithClinard))\n"
+  "description": "## Release (2025-04-14)\n\n* @nrg-ui/css 0.16.1 (patch)\n* @nrg-ui/core 0.32.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#422](https://github.com/knoxville-utilities-board/nrg-ui/pull/422) feat: Create helper to lookup service in a template ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`\n  * [#423](https://github.com/knoxville-utilities-board/nrg-ui/pull/423) style: Remove border rounding on sidebar items ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#410](https://github.com/knoxville-utilities-board/nrg-ui/pull/410) chore: Format project ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
