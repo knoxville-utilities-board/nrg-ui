@@ -2,8 +2,12 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 
 const sideWatch = require('@embroider/broccoli-side-watch');
-const { getVersion } = require('@nrg-ui/version');
+const { getTag } = require('@nrg-ui/version');
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+
+const { displayTag } = getTag({
+  tagPattern: /v?(.+)-@nrg-ui\/core/,
+});
 
 module.exports = async function (defaults) {
   const app = new EmberApp(defaults, {
@@ -22,7 +26,7 @@ module.exports = async function (defaults) {
           useTestWaiters: true,
         },
         '@nrg-ui/core': {
-          appVersion: getVersion(),
+          appVersion: displayTag,
         },
       },
     },
