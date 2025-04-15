@@ -30,7 +30,7 @@
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "prepare": "pnpm build",
-    "test": "echo 'The @nrg-ui/version package does not have tests'"
+    "test": "vitest"
   },
   "dependencies": {
     "git-repo-info": "^2.1.1"
@@ -44,6 +44,7 @@
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-n": "^16.0.0",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.29.1"
+    "typescript-eslint": "^8.29.1",
+    "vitest": "^3.1.1"
   }
 }
