@@ -118,6 +118,10 @@ export function getBranch() {
   return git(['branch', '--show-current']);
 }
 
+export function getCommitHash() {
+  return git(['rev-parse', 'HEAD']);
+}
+
 export function getVersion() {
   let version;
 
@@ -131,7 +135,11 @@ export function getVersion() {
   } else {
     const branch = getBranch();
 
-    version = branch;
+    if (branch) {
+      version = branch;
+    } else {
+      version = getCommitHash();
+    }
   }
 
   return version ?? getPackageVersion();
