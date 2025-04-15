@@ -1,4 +1,5 @@
 dist
 
 # TypeScript
+declarations
 tsconfig.tsbuildinfo
