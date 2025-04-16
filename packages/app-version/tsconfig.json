@@ -1,5 +1,6 @@
 {
   "include": ["src/**/*", "types"],
+  "exclude": ["src/**/*.test.ts"],
   "compilerOptions": {
     "target": "ES2020",
     "module": "CommonJS",
@@ -9,6 +10,8 @@
     "noEmit": false,
     "emitDeclarationOnly": false,
     "noEmitOnError": false,
+    "declaration": true,
+    "declarationDir": "./declarations",
 
     "rootDir": "./src",
     "outDir": "./dist",
