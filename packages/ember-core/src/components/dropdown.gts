@@ -18,11 +18,13 @@ import type IntlService from 'ember-intl/services/intl';
 interface ItemSignature {
   Element: HTMLSpanElement;
   Args: {
+    closeOnSelect?: boolean;
     disabled?: boolean;
 
     onSelect?: (evt: MouseEvent) => unknown;
     onSelectInternal: (
       evt: MouseEvent,
+      shouldClose: boolean,
       callback?: (evt: MouseEvent) => unknown,
     ) => unknown;
   };
@@ -37,7 +39,11 @@ class Item extends Component<ItemSignature> {
       return;
     }
 
-    this.args.onSelectInternal(evt, this.args.onSelect);
+    this.args.onSelectInternal(
+      evt,
+      this.args.closeOnSelect ?? true,
+      this.args.onSelect,
+    );
   };
 
   <template>
@@ -167,13 +173,14 @@ export default class Dropdown extends Component<DropdownSignature> {
 
   onSelect = async (
     evt: MouseEvent,
+    shouldClose: boolean,
     callback?: (evt: MouseEvent) => unknown,
   ) => {
     if (!this.visibility.isShown) {
       return;
     }
 
-    if (this.args.closeOnSelect ?? true) {
+    if (shouldClose) {
       await this.visibility.hide();
     }
 
@@ -235,7 +242,11 @@ export default class Dropdown extends Component<DropdownSignature> {
                 (hash
                   Divider=(component Divider)
                   Header=(component Header)
-                  Item=(component Item onSelectInternal=this.onSelect)
+                  Item=(component
+                    Item
+                    closeOnSelect=@closeOnSelect
+                    onSelectInternal=this.onSelect
+                  )
                 )
                 to="menu"
               }}

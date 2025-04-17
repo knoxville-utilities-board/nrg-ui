@@ -11,9 +11,11 @@ import { and, or } from 'ember-truth-helpers';
 import AppBar from './app-bar.gts';
 import ContextMenu, { ContextMenuItem } from './context-menu.gts';
 import Footer from './footer.gts';
+import Checkbox from './form/checkbox.gts';
 import Modal from './modal.gts';
 import Sidebar from './sidebar.gts';
 import Toaster from './toaster.gts';
+import { bind } from '../helpers/bind.ts';
 import version from '../helpers/version.ts';
 
 import type { AppBarBlock } from './app-bar.gts';
@@ -53,6 +55,8 @@ export interface ScaffoldSignature {
 }
 
 export default class Scaffold extends Component<ScaffoldSignature> {
+  self: Record<'isDark', boolean> = this;
+
   @service
   declare intl: IntlService;
 
@@ -94,10 +98,12 @@ export default class Scaffold extends Component<ScaffoldSignature> {
     return this.responsive.isMobileScreenGroup ? 'x-lg' : 'list';
   }
 
-  get themeText() {
-    const key = this.theme.theme == 'light' ? 'light' : 'dark';
+  get isDark() {
+    return this.theme.theme === 'dark';
+  }
 
-    return this.intl.t(`nrg.base.theme.${key}`);
+  set isDark(value: boolean) {
+    this.theme.theme = value ? 'dark' : 'light';
   }
 
   toggleSidebar = () => {
@@ -144,15 +150,27 @@ export default class Scaffold extends Component<ScaffoldSignature> {
             </ContextMenu>
             {{#if this.allowThemes}}
               <ContextMenuItem
-                class="d-flex justify-content-between align-items-center"
+                class="d-flex justify-content-between align-items-center theme-switcher"
                 @bottom={{true}}
+                @closeOnSelect={{false}}
                 @menuId="application"
                 @onSelect={{this.theme.cycle}}
               >
                 <span>
-                  {{this.themeText}}
+                  <i class="bi-sun-fill" title={{t "nrg.base.theme.light"}} />
                 </span>
-                <i class={{this.theme.icon}} title={{this.themeText}}></i>
+                <span>
+                  <Checkbox
+                    @binding={{bind this.self "isDark"}}
+                    @type="switch"
+                  />
+                </span>
+                <span>
+                  <i
+                    class="bi-moon-stars-fill"
+                    title={{t "nrg.base.theme.dark"}}
+                  />
+                </span>
               </ContextMenuItem>
             {{/if}}
             <Modal
