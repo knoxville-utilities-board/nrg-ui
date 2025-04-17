@@ -1,5 +1,24 @@
 # Changelog
 
+## Release (2025-04-17)
+
+* @nrg-ui/version 0.2.0 (minor)
+* @nrg-ui/css 0.17.0 (minor)
+* @nrg-ui/core 0.33.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#428](https://github.com/knoxville-utilities-board/nrg-ui/pull/428) feat(scaffold): Use switch for theme picker ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/version`
+  * [#426](https://github.com/knoxville-utilities-board/nrg-ui/pull/426) feat: Rewrite version computation ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#429](https://github.com/knoxville-utilities-board/nrg-ui/pull/429) fix(blueprint): Add missing dependencies during installation ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-04-14)
 
 * @nrg-ui/css 0.16.1 (patch)
