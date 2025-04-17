@@ -80,7 +80,12 @@ export default class DropdownDemo extends Component {
                 >
                   Item 1
                 </Menu.Item>
-                <Menu.Item @onSelect={{fn this.log "Item 2 clicked"}}>Item 2</Menu.Item>
+                <Menu.Item
+                  @closeOnSelect={{false}}
+                  @onSelect={{fn this.log "Item 2 clicked"}}
+                >
+                  Item 2 (I don't close on select)
+                </Menu.Item>
                 <Menu.Item @onSelect={{fn this.log "Item 3 clicked"}}>Item 3</Menu.Item>
                 <Menu.Divider />
                 <Menu.Header>

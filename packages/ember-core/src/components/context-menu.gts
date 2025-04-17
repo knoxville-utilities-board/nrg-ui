@@ -17,6 +17,7 @@ export interface ContextMenuItemSignature {
   Element: HTMLHRElement | HTMLHeadingElement | HTMLSpanElement;
   Args: {
     bottom?: boolean;
+    closeOnSelect?: boolean;
     disabled?: boolean;
     divider?: boolean;
     header?: boolean;
@@ -70,6 +71,7 @@ export class ContextMenuItem extends Component<ContextMenuItemSignature> {
             </Options.Header>
           {{else}}
             <Options.Item
+              @closeOnSelect={{@closeOnSelect}}
               @disabled={{@disabled}}
               @onSelect={{@onSelect}}
               ...attributes
