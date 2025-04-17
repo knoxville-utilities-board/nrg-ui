@@ -27,7 +27,11 @@ pre.handlebars.simple > span.xml {
   display: none;
 }
 
-footer img {
-  width: 47px;
-  height: 30px;
+footer {
+  min-height: 49px;
+
+  & img {
+    width: 47px;
+    height: 30px;
+  }
 }
