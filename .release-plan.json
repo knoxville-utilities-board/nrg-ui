@@ -1,29 +1,35 @@
 {
   "solution": {
     "@nrg-ui/version": {
-      "oldVersion": "0.1.1"
-    },
-    "@nrg-ui/css": {
-      "impact": "patch",
-      "oldVersion": "0.16.0",
-      "newVersion": "0.16.1",
+      "impact": "minor",
+      "oldVersion": "0.1.1",
+      "newVersion": "0.2.0",
       "tagName": "latest",
       "constraints": [
         {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
-        },
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        }
+      ],
+      "pkgJSONPath": "./packages/app-version/package.json"
+    },
+    "@nrg-ui/css": {
+      "impact": "minor",
+      "oldVersion": "0.16.1",
+      "newVersion": "0.17.0",
+      "tagName": "latest",
+      "constraints": [
         {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
         }
       ],
       "pkgJSONPath": "./packages/design-system/package.json"
     },
     "@nrg-ui/core": {
       "impact": "minor",
-      "oldVersion": "0.31.0",
-      "newVersion": "0.32.0",
+      "oldVersion": "0.32.0",
+      "newVersion": "0.33.0",
       "tagName": "latest",
       "constraints": [
         {
@@ -32,7 +38,7 @@
         },
         {
           "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
@@ -44,5 +50,5 @@
       "oldVersion": "0.3.0"
     }
   },
-  "description": "## Release (2025-04-14)\n\n* @nrg-ui/css 0.16.1 (patch)\n* @nrg-ui/core 0.32.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#422](https://github.com/knoxville-utilities-board/nrg-ui/pull/422) feat: Create helper to lookup service in a template ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`\n  * [#423](https://github.com/knoxville-utilities-board/nrg-ui/pull/423) style: Remove border rounding on sidebar items ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#410](https://github.com/knoxville-utilities-board/nrg-ui/pull/410) chore: Format project ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-04-17)\n\n* @nrg-ui/version 0.2.0 (minor)\n* @nrg-ui/css 0.17.0 (minor)\n* @nrg-ui/core 0.33.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#428](https://github.com/knoxville-utilities-board/nrg-ui/pull/428) feat(scaffold): Use switch for theme picker ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/version`\n  * [#426](https://github.com/knoxville-utilities-board/nrg-ui/pull/426) feat: Rewrite version computation ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#429](https://github.com/knoxville-utilities-board/nrg-ui/pull/429) fix(blueprint): Add missing dependencies during installation ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
