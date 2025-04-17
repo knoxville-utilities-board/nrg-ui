@@ -17,6 +17,7 @@ module.exports = {
   async afterInstall() {
     await this.removePackagesFromProject([{ name: 'ember-welcome-page' }]);
     await this.addPackagesToProject([
+      { name: '@ember/string', target: '^3.1.1' },
       { name: '@embroider/macros' },
       { name: '@nrg-ui/css' },
       { name: '@nrg-ui/version' },
@@ -26,6 +27,7 @@ module.exports = {
       { name: 'ember-intl', target: '^7.0.0' },
       { name: 'ember-keyboard', target: '^8.2.0' },
       { name: 'ember-lifeline', target: '^7.0.0' },
+      { name: 'ember-responsive', target: '^5.0.0' },
       { name: 'ismobilejs', target: '^1.1.1' },
     ]);
 
