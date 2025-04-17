@@ -23815,6 +23815,9 @@ dialog .btn-close {
   margin: 0 0.5rem;
   text-transform: uppercase;
 }
+.app-bar-container .theme-switcher .form-switch {
+  margin-bottom: 0;
+}
 
 .text-blue {
   color: var(--bs-blue) !important;
