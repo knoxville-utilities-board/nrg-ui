@@ -20,6 +20,8 @@ module.exports = async function (defaults) {
         watching: ['@nrg-ui/core', '@nrg-ui/css'],
       }),
     },
+
+    // Add options here
     '@embroider/macros': {
       setConfig: {
         'ember-css-transitions': {
