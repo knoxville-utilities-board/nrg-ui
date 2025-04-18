@@ -31,3 +31,12 @@ footer img {
   width: 47px;
   height: 30px;
 }
+
+.stacked-page:not(:last-of-type) {
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  visibility: hidden;
+  user-select: none;
+  pointer-events: none;
+}

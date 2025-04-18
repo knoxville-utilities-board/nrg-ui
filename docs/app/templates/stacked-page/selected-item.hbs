@@ -1,33 +1,32 @@
-<h3>Selected Item: {{@model}}</h3>
+<div class="stacked-page">
+  <h3>Selected Item: {{@model}}</h3>
 
-<ul class="list-group">
-  <LinkTo
-    class="list-group-item"
-    @route="stacked-page.selected-item.selected-subitem"
-    @model={{6}}
-  >SubItem 6</LinkTo>
-  <LinkTo
-    class="list-group-item"
-    @route="stacked-page.selected-item.selected-subitem"
-    @model={{7}}
-  >SubItem 7</LinkTo>
-  <LinkTo
-    class="list-group-item"
-    @route="stacked-page.selected-item.selected-subitem"
-    @model={{8}}
-  >SubItem 8</LinkTo>
-  <LinkTo
-    class="list-group-item"
-    @route="stacked-page.selected-item.selected-subitem"
-    @model={{9}}
-  >SubItem 9</LinkTo>
-  <LinkTo
-    class="list-group-item"
-    @route="stacked-page.selected-item.selected-subitem"
-    @model={{10}}
-  >SubItem 10</LinkTo>
-</ul>
-
-<hr />
-
+  <ul class="list-group">
+    <LinkTo
+      class="list-group-item"
+      @route="stacked-page.selected-item.selected-subitem"
+      @model={{6}}
+    >SubItem 6</LinkTo>
+    <LinkTo
+      class="list-group-item"
+      @route="stacked-page.selected-item.selected-subitem"
+      @model={{7}}
+    >SubItem 7</LinkTo>
+    <LinkTo
+      class="list-group-item"
+      @route="stacked-page.selected-item.selected-subitem"
+      @model={{8}}
+    >SubItem 8</LinkTo>
+    <LinkTo
+      class="list-group-item"
+      @route="stacked-page.selected-item.selected-subitem"
+      @model={{9}}
+    >SubItem 9</LinkTo>
+    <LinkTo
+      class="list-group-item"
+      @route="stacked-page.selected-item.selected-subitem"
+      @model={{10}}
+    >SubItem 10</LinkTo>
+  </ul>
+</div>
 {{outlet}}
