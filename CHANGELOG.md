@@ -1,5 +1,19 @@
 # Changelog
 
+## Release (2025-04-18)
+
+* @nrg-ui/version 0.2.1 (patch)
+* @nrg-ui/standards 0.4.3 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/standards`
+  * [#432](https://github.com/knoxville-utilities-board/nrg-ui/pull/432) fix(standards): Add local Node binaries to PATH ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/version`
+  * [#430](https://github.com/knoxville-utilities-board/nrg-ui/pull/430) fix(version): Provide better error handling ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-04-17)
 
 * @nrg-ui/version 0.2.0 (minor)
