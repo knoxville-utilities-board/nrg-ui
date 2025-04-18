@@ -15,7 +15,7 @@ export interface TagOptions {
   /**
    * If provided, this prefix will be appended to the tag before returning it.
    *
-   * @default undefined
+   * @default 'v'
    */
   prefix: string | null;
 
@@ -33,7 +33,7 @@ export interface TagOptions {
    *    1. If a pattern is not provided,
    * 2. To extract the version from the tag
    *
-   * @default undefined
+   * @default /(\d+\.\d+\.\d+)/
    */
   tagPattern: RegExp;
 }
@@ -45,12 +45,12 @@ export interface TagInfo {
   displayTag: string;
 }
 
-export function getPackageVersion(defaultValue?: string) {
+export function getPackageVersion(fallback?: string) {
   const pkg = JSON.parse(
     readFileSync(join(process.cwd(), 'package.json'), 'utf-8'),
   );
 
-  return pkg.version ?? defaultValue;
+  return (pkg.version ?? fallback) as string;
 }
 
 function git(args: string[]): string {
@@ -72,11 +72,13 @@ function git(args: string[]): string {
 
 const defaultTagOptions: TagOptions = {
   appendCommitHash: null,
-  prefix: null,
-  tagPattern: /^.*$/,
+  prefix: 'v',
+  tagPattern: /(\d+\.\d+\.\d+)/,
 };
 
-export function getTag(options: Partial<TagOptions> = {}): TagInfo | null {
+export function getTagDetails(
+  options: Partial<TagOptions> = {},
+): TagInfo | null {
   const { appendCommitHash, prefix, tagPattern } = {
     ...defaultTagOptions,
     ...options,
@@ -114,6 +116,16 @@ export function getTag(options: Partial<TagOptions> = {}): TagInfo | null {
   return tagInfo[0];
 }
 
+export function getTag(options: Partial<TagOptions> = {}): string | null {
+  const tagInfo = getTagDetails(options);
+
+  if (!tagInfo) {
+    return null;
+  }
+
+  return tagInfo.displayTag;
+}
+
 export function getBranch() {
   return git(['branch', '--show-current']);
 }
@@ -122,25 +134,31 @@ export function getCommitHash() {
   return git(['rev-parse', 'HEAD']);
 }
 
-export function getVersion() {
+export function getVersion(
+  options: Partial<TagOptions> = defaultTagOptions,
+  fallback?: string,
+): string {
   let version;
 
-  const tagInfo = getTag({
-    prefix: 'v',
-    tagPattern: /^v?(\d+\.\d+\.\d+)/,
-  });
+  try {
+    version = getTag(options);
+  } catch {}
 
-  if (tagInfo) {
-    version = tagInfo.displayTag;
-  } else {
-    const branch = getBranch();
+  if (!version) {
+    try {
+      version = getBranch();
+    } catch {}
 
-    if (branch) {
-      version = branch;
-    } else {
-      version = getCommitHash();
+    if (!version) {
+      try {
+        version = getCommitHash();
+      } catch {}
     }
   }
 
-  return version ?? getPackageVersion();
+  if (!version) {
+    version = getPackageVersion(fallback);
+  }
+
+  return version;
 }
