@@ -15,7 +15,7 @@ export interface TagOptions {
   /**
    * If provided, this prefix will be appended to the tag before returning it.
    *
-   * @default undefined
+   * @default 'v'
    */
   prefix: string | null;
 
@@ -33,7 +33,7 @@ export interface TagOptions {
    *    1. If a pattern is not provided,
    * 2. To extract the version from the tag
    *
-   * @default undefined
+   * @default /(\d+\.\d+\.\d+)/
    */
   tagPattern: RegExp;
 }
@@ -72,8 +72,8 @@ function git(args: string[]): string {
 
 const defaultTagOptions: TagOptions = {
   appendCommitHash: null,
-  prefix: null,
-  tagPattern: /^.*$/,
+  prefix: 'v',
+  tagPattern: /(\d+\.\d+\.\d+)/,
 };
 
 export function getTagDetails(
@@ -134,14 +134,14 @@ export function getCommitHash() {
   return git(['rev-parse', 'HEAD']);
 }
 
-export function getVersion(fallback?: string): string {
+export function getVersion(
+  options: Partial<TagOptions> = defaultTagOptions,
+  fallback?: string,
+): string {
   let version;
 
   try {
-    version = getTag({
-      prefix: 'v',
-      tagPattern: /^v?(\d+\.\d+\.\d+)/,
-    });
+    version = getTag(options);
   } catch {}
 
   if (!version) {

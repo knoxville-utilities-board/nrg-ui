@@ -101,7 +101,7 @@ describe('getTagDetails', () => {
     expect(tag).toMatchObject({
       commit: commitSha,
       count: 4,
-      displayTag: 'v12.34.5-alpha.1-g1234567',
+      displayTag: 'v12.34.5-g1234567',
       tag: tagName,
     });
   });
@@ -117,7 +117,7 @@ describe('getTagDetails', () => {
     expect(tag).toMatchObject({
       commit: `${commitSha}0`,
       count: 4,
-      displayTag: 'v12.34.5-alpha.A-g1234567',
+      displayTag: 'v12.34.5-g1234567',
       tag: `${tagName}A`,
     });
   });
@@ -133,14 +133,14 @@ describe('getTagDetails', () => {
     // Test with all options, include commit hash
     let tag = getTagDetails({
       appendCommitHash: true,
-      prefix: 'v',
+      prefix: null,
       tagPattern: /^v?(.+)-@/,
     });
 
     expect(tag).toMatchObject({
       commit: commitSha,
       count: 4,
-      displayTag: 'v12.34.5-g1234567',
+      displayTag: '12.34.5-g1234567',
       tag: tagName,
     });
 
@@ -149,14 +149,14 @@ describe('getTagDetails', () => {
     // Test with all options, no commit hash
     tag = getTagDetails({
       appendCommitHash: false,
-      prefix: 'v',
+      prefix: null,
       tagPattern: /^v?(.+)-@/,
     });
 
     expect(tag).toMatchObject({
       commit: commitSha,
       count: 4,
-      displayTag: 'v12.34.5',
+      displayTag: '12.34.5',
       tag: tagName,
     });
 
@@ -216,7 +216,7 @@ describe('getTagDetails', () => {
     expect(tag).toMatchObject({
       commit: commitSha,
       count: 4,
-      displayTag: '12.34.5',
+      displayTag: 'v12.34.5',
       tag: tagName,
     });
 
@@ -257,14 +257,14 @@ describe('getTagDetails', () => {
     // Test with all options, no commit hash
     tag = getTagDetails({
       appendCommitHash: false,
-      prefix: 'v',
+      prefix: null,
       tagPattern: /^v?(.+)-@/,
     });
 
     expect(tag).toMatchObject({
       commit: `${commitSha}0`,
       count: 4,
-      displayTag: 'v12.34.5',
+      displayTag: '12.34.5',
       tag: `${tagName}A`,
     });
 
@@ -324,7 +324,7 @@ describe('getTagDetails', () => {
     expect(tag).toMatchObject({
       commit: `${commitSha}0`,
       count: 4,
-      displayTag: '12.34.5',
+      displayTag: 'v12.34.5',
       tag: `${tagName}A`,
     });
 
