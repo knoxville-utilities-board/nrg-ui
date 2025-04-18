@@ -1,31 +1,30 @@
-<ul class="list-group">
-  <LinkTo
-    class="list-group-item"
-    @route="stacked-page.selected-item"
-    @model={{1}}
-  >Item 1</LinkTo>
-  <LinkTo
-    class="list-group-item"
-    @route="stacked-page.selected-item"
-    @model={{2}}
-  >Item 2</LinkTo>
-  <LinkTo
-    class="list-group-item"
-    @route="stacked-page.selected-item"
-    @model={{3}}
-  >Item 3</LinkTo>
-  <LinkTo
-    class="list-group-item"
-    @route="stacked-page.selected-item"
-    @model={{4}}
-  >Item 4</LinkTo>
-  <LinkTo
-    class="list-group-item"
-    @route="stacked-page.selected-item"
-    @model={{5}}
-  >Item 5</LinkTo>
-</ul>
-
-<hr />
-
+<div class="stacked-page">
+  <ul class="list-group">
+    <LinkTo
+      class="list-group-item"
+      @route="stacked-page.selected-item"
+      @model={{1}}
+    >Item 1</LinkTo>
+    <LinkTo
+      class="list-group-item"
+      @route="stacked-page.selected-item"
+      @model={{2}}
+    >Item 2</LinkTo>
+    <LinkTo
+      class="list-group-item"
+      @route="stacked-page.selected-item"
+      @model={{3}}
+    >Item 3</LinkTo>
+    <LinkTo
+      class="list-group-item"
+      @route="stacked-page.selected-item"
+      @model={{4}}
+    >Item 4</LinkTo>
+    <LinkTo
+      class="list-group-item"
+      @route="stacked-page.selected-item"
+      @model={{5}}
+    >Item 5</LinkTo>
+  </ul>
+</div>
 {{outlet}}
