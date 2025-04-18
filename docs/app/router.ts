@@ -59,4 +59,31 @@ Router.map(function () {
   });
   this.route('scaffold');
   this.route('services');
+  this.route(
+    'stacked-page',
+    {
+      path: 'stacked-page/list',
+    },
+    function () {
+      this.route(
+        'selected-item',
+        {
+          path: ':item_id/sublist',
+        },
+        function () {
+          this.route(
+            'selected-subitem',
+            {
+              path: ':subitem_id',
+            },
+            function () {},
+          );
+        },
+      );
+      this.route('on-click-outside');
+      this.route('on-destroy');
+      this.route('on-insert');
+      this.route('on-update');
+    },
+  );
 });
