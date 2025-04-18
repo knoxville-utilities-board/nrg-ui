@@ -2,6 +2,9 @@ import { ExecaError, execa } from 'execa';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
+export const PATH_SEP = process.platform === 'win32' ? ';' : ':';
+export const NODE_BIN_PATH = resolve(process.cwd(), 'node_modules', '.bin');
+
 import logger from './logging.js';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -55,19 +58,28 @@ export async function format(...files: string[]) {
 
   logger.debug(`Formatting ${files.join(', ')}`);
 
-  const args = ['--write', ...files];
+  await exec('prettier', '--write', ...files);
+}
 
-  const command = `prettier --write ${files.map((a) => "'" + a + "'").join(' ')}`;
-
+export async function exec(command: string, ...args: string[]) {
   try {
-    await execa('prettier', args);
+    await execa(command, args, {
+      env: {
+        PATH: NODE_BIN_PATH + PATH_SEP + process.env.PATH,
+      },
+    });
   } catch (e) {
+    const whitespace = /\s/;
+    const fullCommand =
+      command +
+      ' ' +
+      args.map((a) => (whitespace.test(a) ? `'${a}'` : a)).join(' ');
     logger.debug(e);
     let errorMessage = 'Command failed';
     if (e instanceof ExecaError) {
       errorMessage += ` with exit code [${e.exitCode ?? 'unknown'}]`;
     }
-    errorMessage += `: ${command}`;
+    errorMessage += `: ${fullCommand}`;
     logger.error(errorMessage);
   }
 }
