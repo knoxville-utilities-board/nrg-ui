@@ -55,19 +55,24 @@ export async function format(...files: string[]) {
 
   logger.debug(`Formatting ${files.join(', ')}`);
 
-  const args = ['--write', ...files];
+  await exec('prettier', '--write', ...files);
+}
 
-  const command = `prettier --write ${files.map((a) => "'" + a + "'").join(' ')}`;
-
+export async function exec(command: string, ...args: string[]) {
   try {
-    await execa('prettier', args);
+    await execa(command, args);
   } catch (e) {
+    const whitespace = /\s/;
+    const fullCommand =
+      command +
+      ' ' +
+      args.map((a) => (whitespace.test(a) ? `'${a}'` : a)).join(' ');
     logger.debug(e);
     let errorMessage = 'Command failed';
     if (e instanceof ExecaError) {
       errorMessage += ` with exit code [${e.exitCode ?? 'unknown'}]`;
     }
-    errorMessage += `: ${command}`;
+    errorMessage += `: ${fullCommand}`;
     logger.error(errorMessage);
   }
 }
