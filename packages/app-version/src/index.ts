@@ -45,12 +45,12 @@ export interface TagInfo {
   displayTag: string;
 }
 
-export function getPackageVersion(defaultValue?: string) {
+export function getPackageVersion(fallback?: string) {
   const pkg = JSON.parse(
     readFileSync(join(process.cwd(), 'package.json'), 'utf-8'),
   );
 
-  return pkg.version ?? defaultValue;
+  return (pkg.version ?? fallback) as string;
 }
 
 function git(args: string[]): string {
@@ -76,7 +76,9 @@ const defaultTagOptions: TagOptions = {
   tagPattern: /^.*$/,
 };
 
-export function getTag(options: Partial<TagOptions> = {}): TagInfo | null {
+export function getTagDetails(
+  options: Partial<TagOptions> = {},
+): TagInfo | null {
   const { appendCommitHash, prefix, tagPattern } = {
     ...defaultTagOptions,
     ...options,
@@ -114,6 +116,16 @@ export function getTag(options: Partial<TagOptions> = {}): TagInfo | null {
   return tagInfo[0];
 }
 
+export function getTag(options: Partial<TagOptions> = {}): string | null {
+  const tagInfo = getTagDetails(options);
+
+  if (!tagInfo) {
+    return null;
+  }
+
+  return tagInfo.displayTag;
+}
+
 export function getBranch() {
   return git(['branch', '--show-current']);
 }
@@ -122,25 +134,31 @@ export function getCommitHash() {
   return git(['rev-parse', 'HEAD']);
 }
 
-export function getVersion() {
+export function getVersion(fallback?: string): string {
   let version;
 
-  const tagInfo = getTag({
-    prefix: 'v',
-    tagPattern: /^v?(\d+\.\d+\.\d+)/,
-  });
+  try {
+    version = getTag({
+      prefix: 'v',
+      tagPattern: /^v?(\d+\.\d+\.\d+)/,
+    });
+  } catch {}
 
-  if (tagInfo) {
-    version = tagInfo.displayTag;
-  } else {
-    const branch = getBranch();
+  if (!version) {
+    try {
+      version = getBranch();
+    } catch {}
 
-    if (branch) {
-      version = branch;
-    } else {
-      version = getCommitHash();
+    if (!version) {
+      try {
+        version = getCommitHash();
+      } catch {}
     }
   }
 
-  return version ?? getPackageVersion();
+  if (!version) {
+    version = getPackageVersion(fallback);
+  }
+
+  return version;
 }

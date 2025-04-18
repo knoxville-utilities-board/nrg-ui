@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, test, vi } from 'vitest';
 
-import { getBranch, getCommitHash, getTag } from './index.js';
+import { getBranch, getCommitHash, getTagDetails } from './index.js';
 
 const spawnSync = vi.fn();
 vi.mock('child_process', () => {
@@ -89,14 +89,14 @@ function mockMultipleTags(
     });
 }
 
-describe('getTag', () => {
+describe('getTagDetails', () => {
   test('works with default options, single tag', () => {
     const tagName = 'v12.34.5-alpha.1';
     const commitSha = '1234567890abcdef';
 
     mockSingleTag(tagName, commitSha);
 
-    const tag = getTag();
+    const tag = getTagDetails();
 
     expect(tag).toMatchObject({
       commit: commitSha,
@@ -112,7 +112,7 @@ describe('getTag', () => {
 
     mockMultipleTags(tagName, commitSha);
 
-    const tag = getTag();
+    const tag = getTagDetails();
 
     expect(tag).toMatchObject({
       commit: `${commitSha}0`,
@@ -131,7 +131,7 @@ describe('getTag', () => {
     reset();
 
     // Test with all options, include commit hash
-    let tag = getTag({
+    let tag = getTagDetails({
       appendCommitHash: true,
       prefix: 'v',
       tagPattern: /^v?(.+)-@/,
@@ -147,7 +147,7 @@ describe('getTag', () => {
     reset();
 
     // Test with all options, no commit hash
-    tag = getTag({
+    tag = getTagDetails({
       appendCommitHash: false,
       prefix: 'v',
       tagPattern: /^v?(.+)-@/,
@@ -163,7 +163,7 @@ describe('getTag', () => {
     mockSingleTag(tagName, commitSha, 0);
 
     // Test with all options, omit commit hash
-    tag = getTag({
+    tag = getTagDetails({
       prefix: 'v',
       tagPattern: /^v?(.+)-@/,
     });
@@ -178,7 +178,7 @@ describe('getTag', () => {
     mockSingleTag(tagName, commitSha, 4);
 
     // Test with all options, infer commit hash (included)
-    tag = getTag({
+    tag = getTagDetails({
       prefix: 'v',
       tagPattern: /^v?(.+)-@/,
     });
@@ -193,7 +193,7 @@ describe('getTag', () => {
     mockSingleTag(tagName, commitSha, 0);
 
     // Test with all options, infer commit hash (excluded)
-    tag = getTag({
+    tag = getTagDetails({
       prefix: 'v',
       tagPattern: /^v?(.+)-@/,
     });
@@ -208,7 +208,7 @@ describe('getTag', () => {
     reset();
 
     // Test with no prefix
-    tag = getTag({
+    tag = getTagDetails({
       appendCommitHash: false,
       tagPattern: /^v?(.+)-@/,
     });
@@ -223,7 +223,7 @@ describe('getTag', () => {
     reset();
 
     // No tags should match since the tag can't start with 'v'
-    tag = getTag({
+    tag = getTagDetails({
       tagPattern: /^[^v](.+)-@/,
     });
 
@@ -239,7 +239,7 @@ describe('getTag', () => {
     reset();
 
     // Test with all options, include commit hash
-    let tag = getTag({
+    let tag = getTagDetails({
       appendCommitHash: true,
       prefix: 'v',
       tagPattern: /^v?(.+)-@/,
@@ -255,7 +255,7 @@ describe('getTag', () => {
     reset();
 
     // Test with all options, no commit hash
-    tag = getTag({
+    tag = getTagDetails({
       appendCommitHash: false,
       prefix: 'v',
       tagPattern: /^v?(.+)-@/,
@@ -271,7 +271,7 @@ describe('getTag', () => {
     mockMultipleTags(tagName, commitSha, 0);
 
     // Test with all options, omit commit hash
-    tag = getTag({
+    tag = getTagDetails({
       prefix: 'v',
       tagPattern: /^v?(.+)-@/,
     });
@@ -286,7 +286,7 @@ describe('getTag', () => {
     mockSingleTag(tagName, commitSha, 4);
 
     // Test with all options, infer commit hash (included)
-    tag = getTag({
+    tag = getTagDetails({
       prefix: 'v',
       tagPattern: /^v?(.+)-@/,
     });
@@ -301,7 +301,7 @@ describe('getTag', () => {
     mockSingleTag(tagName, commitSha, 0);
 
     // Test with all options, infer commit hash (excluded)
-    tag = getTag({
+    tag = getTagDetails({
       prefix: 'v',
       tagPattern: /^v?(.+)-@/,
     });
@@ -316,7 +316,7 @@ describe('getTag', () => {
     reset();
 
     // Test with no prefix
-    tag = getTag({
+    tag = getTagDetails({
       appendCommitHash: false,
       tagPattern: /^v?(.+)-@/,
     });
@@ -331,7 +331,7 @@ describe('getTag', () => {
     reset();
 
     // No tags should match since the tag can't start with 'v'
-    tag = getTag({
+    tag = getTagDetails({
       tagPattern: /^[^v](.+)-@/,
     });
 
