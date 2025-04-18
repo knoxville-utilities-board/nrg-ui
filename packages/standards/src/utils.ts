@@ -2,6 +2,9 @@ import { ExecaError, execa } from 'execa';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
+export const PATH_SEP = process.platform === 'win32' ? ';' : ':';
+export const NODE_BIN_PATH = resolve(process.cwd(), 'node_modules', '.bin');
+
 import logger from './logging.js';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -60,7 +63,11 @@ export async function format(...files: string[]) {
 
 export async function exec(command: string, ...args: string[]) {
   try {
-    await execa(command, args);
+    await execa(command, args, {
+      env: {
+        PATH: NODE_BIN_PATH + PATH_SEP + process.env.PATH,
+      },
+    });
   } catch (e) {
     const whitespace = /\s/;
     const fullCommand =
