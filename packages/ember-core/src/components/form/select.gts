@@ -15,7 +15,7 @@ import BoundValue from './bound-value.ts';
 import onInsert from '../../modifiers/on-insert.ts';
 import { collapseWhitespace } from '../../utils/string.ts';
 
-import type { Optional } from '../../';
+import type { DropdownSignature, Optional } from '../../';
 import type { Direction, PopoverVisibility } from '../popover.gts';
 import type IntlService from 'ember-intl/services/intl';
 
@@ -64,6 +64,7 @@ export interface SelectSignature<T> {
     display?: [T | undefined];
     option?: [T | undefined];
     empty?: [];
+    menu?: DropdownSignature['Blocks']['menu'];
   };
   Element: HTMLButtonElement;
 }
@@ -446,6 +447,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
             {{this.noOptionsText}}
           </Menu.Item>
         {{/each}}
+        {{yield Menu to="menu"}}
       </:menu>
     </Dropdown>
   </template>
