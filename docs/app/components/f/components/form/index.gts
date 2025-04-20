@@ -104,6 +104,9 @@ class Model {
   select = '';
 
   @tracked
+  multiSelect = autoTrack([]);
+
+  @tracked
   phone = '';
 
   @tracked
@@ -200,6 +203,16 @@ export default class FormDemo extends Component {
           <Field.Select
             @binding={{bind this.model "select"}}
             @options={{array "A" "B" "C"}}
+          />
+        </Form.Field>
+        <Form.Field
+          @label="Multi Select"
+          @required={{this.required}}
+          as |Field|
+        >
+          <Field.MultiSelect
+            @binding={{bind this.model "multiSelect"}}
+            @options={{array "Alpha" "Beta" "Charlie" "Delta" "Echo"}}
           />
         </Form.Field>
         <Form.Field @label="Radio Group" @required={{this.required}} as |Field|>
