@@ -104,6 +104,9 @@ class Model {
   select = '';
 
   @tracked
+  datetime = new Date();
+
+  @tracked
   phone = '';
 
   @tracked
@@ -201,6 +204,9 @@ export default class FormDemo extends Component {
             @binding={{bind this.model "select"}}
             @options={{array "A" "B" "C"}}
           />
+        </Form.Field>
+        <Form.Field @label="Datetime" @required={{this.required}} as |Field|>
+          <Field.Datetime @binding={{bind this.model "datetime"}} />
         </Form.Field>
         <Form.Field @label="Radio Group" @required={{this.required}} as |Field|>
           <Field.RadioGroup @binding={{bind this.model "radio"}} as |Group|>
