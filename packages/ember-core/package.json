@@ -97,10 +97,10 @@
   },
   "dependencies": {
     "@embroider/addon-shim": "^1.10.0",
-    "@embroider/macros": "^1.17.1",
+    "@embroider/macros": "^1.17.2",
     "@floating-ui/dom": "^1.6.13",
     "decorator-transforms": "^1.0.1",
-    "ember-css-transitions": "^4.4.1",
+    "ember-css-transitions": "^4.5.0",
     "ember-intl": "^7.1.6",
     "ember-keyboard": "^8.2.1",
     "ember-lifeline": "^7.0.0",
@@ -131,7 +131,7 @@
     "ember-template-imports": "^4.3.0",
     "ember-template-lint": "^5.13.0",
     "ember-truth-helpers": "^4.0.3",
-    "eslint": "^9.24.0",
+    "eslint": "^9.25.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-webpack": "^0.13.10",
     "eslint-plugin-decorator-position": "^6.0.0",
@@ -146,8 +146,8 @@
     "rollup-plugin-copy": "^3.5.0",
     "tracked-built-ins": "^3.4.0",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.29.1",
-    "webpack": "^5.99.5"
+    "typescript-eslint": "^8.30.1",
+    "webpack": "^5.99.6"
   },
   "peerDependencies": {
     "@glimmer/component": "^1.1.2",
