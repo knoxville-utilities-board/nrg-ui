@@ -30,6 +30,7 @@ declare type SearchOption<T> = {
 };
 
 export interface SearchSignature<T> {
+  Element: HTMLDivElement;
   Args: {
     basic?: boolean;
     clearable?: boolean;
@@ -55,7 +56,9 @@ export interface SearchSignature<T> {
     onHide?: () => unknown | Promise<unknown>;
     onQuery: (searchString: string) => Promise<T[]>;
   };
-  Element: HTMLDivElement;
+  Blocks: {
+    option: [T];
+  };
 }
 
 export default class Search<T> extends BoundValue<
@@ -420,7 +423,11 @@ export default class Search<T> extends BoundValue<
               {{! template-lint-disable no-pointer-down-event-binding }}
               {{on "mousedown" this.onMouseDown}}
             >
-              {{option.label}}
+              {{#if (has-block "option")}}
+                {{yield option.raw to="option"}}
+              {{else}}
+                {{option.label}}
+              {{/if}}
             </Menu.Item>
           {{/let}}
         {{else}}
