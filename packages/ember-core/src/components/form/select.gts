@@ -15,7 +15,7 @@ import BoundValue from './bound-value.ts';
 import onInsert from '../../modifiers/on-insert.ts';
 import { collapseWhitespace } from '../../utils/string.ts';
 
-import type { Optional } from '../../';
+import type { DropdownSignature, Optional } from '../../';
 import type { Direction, PopoverVisibility } from '../popover.gts';
 import type IntlService from 'ember-intl/services/intl';
 
@@ -42,7 +42,9 @@ function isActive<T>(
 
 export interface SelectSignature<T> {
   Args: {
+    closeOnSelect?: boolean;
     defaultText?: string;
+    defaultTextKey?: string;
     describedBy?: string;
     disabled?: boolean;
     displayPath?: string;
@@ -50,6 +52,8 @@ export interface SelectSignature<T> {
     isInvalid?: boolean;
     isWarning?: boolean;
     loading?: boolean;
+    noOptionsText?: string;
+    noOptionsTextKey?: string;
     options: T[];
     scrollable?: boolean;
     serializationPath?: string | null;
@@ -60,6 +64,7 @@ export interface SelectSignature<T> {
     display?: [T | undefined];
     option?: [T | undefined];
     empty?: [];
+    menu?: DropdownSignature['Blocks']['menu'];
   };
   Element: HTMLButtonElement;
 }
@@ -103,8 +108,10 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   }
 
   get defaultText() {
-    const baseDefaultText = this.intl.t('nrg.select.defaultText', {});
-    return this.args.defaultText ?? baseDefaultText;
+    return (
+      this.args.defaultText ??
+      this.intl.t(this.args.defaultTextKey ?? 'nrg.select.defaultText')
+    );
   }
 
   get scrollable() {
@@ -166,6 +173,13 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
     return this.args.disabled || this.args.loading;
   }
 
+  get noOptionsText() {
+    return (
+      this.args.noOptionsText ??
+      this.intl.t(this.args.noOptionsTextKey ?? 'nrg.select.noOptions')
+    );
+  }
+
   selectItemBySearch() {
     const searchBuffer = this.internalSearchBuffer;
     if (searchBuffer.length === 0) {
@@ -212,7 +226,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   onSelectInternal(option: SelectOption<T>, evt?: MouseEvent) {
     evt?.preventDefault();
     evt?.stopPropagation();
-    this.onBlur();
+
     this.selected = option;
   }
 
@@ -348,6 +362,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
 
   <template>
     <Dropdown
+      @closeOnSelect={{@closeOnSelect}}
       @fullWidth={{true}}
       @side={{@side}}
       @onHide={{this.onBlur}}
@@ -355,7 +370,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
       {{onInsert this.onInsert}}
     >
       <:control as |visibility|>
-        {{#if (has-block "control")}}
+        {{#if (has-block-params "control")}}
           {{yield visibility to="control"}}
         {{else}}
           <button
@@ -375,7 +390,6 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
             {{onKey "ArrowDown" this.moveDown onlyWhenFocused=true}}
             {{onKey "Enter" this.enterKeyHandler onlyWhenFocused=true}}
             {{onKey "Space" this.enterKeyHandler onlyWhenFocused=true}}
-            {{onKey "NumpadEnter" this.enterKeyHandler onlyWhenFocused=true}}
             {{onKey "Tab" this.exitKeyHandler onlyWhenFocused=true}}
             {{onKey "Escape" this.exitKeyHandler onlyWhenFocused=true}}
             ...attributes
@@ -428,7 +442,12 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
               {{/if}}
             </Menu.Item>
           {{/let}}
+        {{else}}
+          <Menu.Item aria-disabled={{true}} @disabled={{true}}>
+            {{this.noOptionsText}}
+          </Menu.Item>
         {{/each}}
+        {{yield Menu to="menu"}}
       </:menu>
     </Dropdown>
   </template>

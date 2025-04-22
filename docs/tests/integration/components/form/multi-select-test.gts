@@ -1,6 +1,6 @@
 import { click, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import { Select, bind } from '@nrg-ui/core';
+import { MultiSelect, bind } from '@nrg-ui/core';
 import { setupIntl } from 'ember-intl/test-support';
 // @ts-expect-error Ember keyboard doesn't currently ship types
 // https://github.com/adopted-ember-addons/ember-keyboard/issues/464
@@ -9,13 +9,13 @@ import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
 
-module('Integration | Component | form/select', function (hooks) {
+module('Integration | Component | form/multi-select', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks, 'en-us');
 
   class Model {
     @tracked
-    value: unknown = 'Hello, world!';
+    value: unknown[] = [];
   }
 
   const stringOptions = ['Option 1', 'Option 2', 'Option 3'];
@@ -42,51 +42,47 @@ module('Integration | Component | form/select', function (hooks) {
 
   test('it renders when empty', async function (assert) {
     const model = new Model();
+
     await render(<template>
-      <Select @binding={{bind model "value"}} />
+      <MultiSelect @binding={{bind model "value"}} />
     </template>);
-    assert.dom('.selected-display').hasText('Select an Option');
+
+    assert.dom('.selected-display').hasText('Select at least one option');
   });
 
   test('it renders custom empty block', async function (assert) {
     const model = new Model();
+    model.value = [];
+
     await render(<template>
-      <Select @binding={{bind model "value"}}>
+      <MultiSelect @binding={{bind model "value"}}>
         <:empty>
           Custom Empty Block
         </:empty>
-      </Select>
+      </MultiSelect>
     </template>);
+
     assert.dom('.selected-display').hasText('Custom Empty Block');
   });
 
   test('it opens when clicked', async function (assert) {
     const model = new Model();
-    await render(<template>
-      <Select @binding={{bind model "value"}} @options={{stringOptions}} />
-    </template>);
-    await click('button');
-    assert.dom('.dropdown-menu').doesNotHaveClass('hidden');
-  });
 
-  test('it closes when selecting an option', async function (assert) {
-    const model = new Model();
     await render(<template>
-      <Select @binding={{bind model "value"}} @options={{stringOptions}} />
+      <MultiSelect @binding={{bind model "value"}} @options={{stringOptions}} />
     </template>);
+
     await click('button');
     assert.dom('.dropdown-menu').doesNotHaveClass('hidden');
-    await click('.dropdown-menu li');
-    assert.dom('.dropdown-menu').hasClass('hidden');
   });
 
   test('it renders string options', async function (assert) {
     const model = new Model();
     await render(<template>
-      <Select @binding={{bind model "value"}} @options={{stringOptions}} />
+      <MultiSelect @binding={{bind model "value"}} @options={{stringOptions}} />
     </template>);
 
-    assert.dom('.selected-display').hasText('Select an Option');
+    assert.dom('.selected-display').hasText('Select at least one option');
 
     await click('button');
     assert
@@ -96,17 +92,17 @@ module('Integration | Component | form/select', function (hooks) {
       .containsText('Option 3');
 
     await click('.dropdown-menu li');
-    assert.dom('.selected-display').hasText('Option 1');
-    assert.strictEqual(model.value, 'Option 1');
+    assert.dom('.selected-display > span:first-child').hasText('Option 1');
+    assert.deepEqual(model.value, ['Option 1']);
   });
 
   test('it renders label-value options', async function (assert) {
     const model = new Model();
     await render(<template>
-      <Select @binding={{bind model "value"}} @options={{objectOptions}} />
+      <MultiSelect @binding={{bind model "value"}} @options={{objectOptions}} />
     </template>);
 
-    assert.dom('.selected-display').hasText('Select an Option');
+    assert.dom('.selected-display').hasText('Select at least one option');
 
     await click('button');
     assert
@@ -116,14 +112,14 @@ module('Integration | Component | form/select', function (hooks) {
       .containsText('label 3');
 
     await click('.dropdown-menu li');
-    assert.dom('.selected-display').hasText('label 1');
-    assert.strictEqual(model.value, 'value 1');
+    assert.dom('.selected-display > span:first-child').hasText('label 1');
+    assert.deepEqual(model.value, ['value 1']);
   });
 
   test('it renders custom object options', async function (assert) {
     const model = new Model();
     await render(<template>
-      <Select
+      <MultiSelect
         @binding={{bind model "value"}}
         @options={{objectOptions}}
         @displayPath="key"
@@ -131,7 +127,7 @@ module('Integration | Component | form/select', function (hooks) {
       />
     </template>);
 
-    assert.dom('.selected-display').hasText('Select an Option');
+    assert.dom('.selected-display').hasText('Select at least one option');
 
     await click('button');
     assert
@@ -141,21 +137,21 @@ module('Integration | Component | form/select', function (hooks) {
       .containsText('key 3');
 
     await click('.dropdown-menu li');
-    assert.dom('.selected-display').hasText('key 1');
-    assert.strictEqual(model.value, 1);
+    assert.dom('.selected-display > span:first-child').hasText('key 1');
+    assert.deepEqual(model.value, [1]);
   });
 
   test('it renders yielded options', async function (assert) {
     const model = new Model();
     await render(<template>
-      <Select @binding={{bind model "value"}} @options={{objectOptions}}>
+      <MultiSelect @binding={{bind model "value"}} @options={{objectOptions}}>
         <:option as |option|>
           {{option.key}}
         </:option>
-      </Select>
+      </MultiSelect>
     </template>);
 
-    assert.dom('.selected-display').hasText('Select an Option');
+    assert.dom('.selected-display').hasText('Select at least one option');
 
     await click('button');
     assert
@@ -165,20 +161,22 @@ module('Integration | Component | form/select', function (hooks) {
       .containsText('key 3');
 
     await click('.dropdown-menu li');
-    assert.dom('.selected-display').hasText('key 1');
-    assert.strictEqual(model.value, 'value 1');
+    assert.dom('.selected-display > span:first-child').hasText('label 1');
+    assert.deepEqual(model.value, ['value 1']);
   });
 
   test('it renders custom display', async function (assert) {
     const model = new Model();
-    model.value = 'value 2';
+    model.value = [objectOptions[1]];
     await render(<template>
-      <Select @binding={{bind model "value"}} @options={{objectOptions}}>
+      <MultiSelect @binding={{bind model "value"}} @options={{objectOptions}}>
         <:display as |option|>
-          Custom Display
-          {{option.id}}
+          {{#each option as |o|}}
+            Custom Display
+            {{o.id}}
+          {{/each}}
         </:display>
-      </Select>
+      </MultiSelect>
     </template>);
 
     assert.dom('.selected-display').hasText('Custom Display 2');
@@ -191,20 +189,10 @@ module('Integration | Component | form/select', function (hooks) {
       .containsText('label 3');
   });
 
-  test('it renders active item', async function (assert) {
-    const model = new Model();
-    model.value = 'value 2';
-    await render(<template>
-      <Select @binding={{bind model "value"}} @options={{objectOptions}} />
-    </template>);
-
-    assert.dom('.dropdown-item.active').hasText('label 2');
-  });
-
   test('it opens and closes via keyboard when focused', async function (assert) {
     const model = new Model();
     await render(<template>
-      <Select @binding={{bind model "value"}} @options={{objectOptions}} />
+      <MultiSelect @binding={{bind model "value"}} @options={{objectOptions}} />
     </template>);
 
     await click('button');
@@ -229,9 +217,9 @@ module('Integration | Component | form/select', function (hooks) {
   test('it allows items to be selected via keyboard', async function (assert) {
     const model = new Model();
     await render(<template>
-      <Select @binding={{bind model "value"}} @options={{objectOptions}} />
+      <MultiSelect @binding={{bind model "value"}} @options={{objectOptions}} />
     </template>);
-    assert.dom('.selected-display').hasText('Select an Option');
+    assert.dom('.selected-display').hasText('Select at least one option');
 
     await click('button');
     await triggerKeyDown('ArrowDown');
@@ -243,65 +231,7 @@ module('Integration | Component | form/select', function (hooks) {
     await triggerKeyDown('Enter');
     assert.dom('.dropdown-menu').doesNotHaveClass('show');
 
-    assert.strictEqual(model.value, 'value 2');
-    assert.dom('.selected-display').hasText('label 2');
-  });
-
-  test('it displays currently active item when reopening', async function (assert) {
-    const model = new Model();
-    model.value = 'value 2';
-    await render(<template>
-      <Select @binding={{bind model "value"}} @options={{objectOptions}} />
-    </template>);
-    assert.dom('.selected-display').hasText('label 2');
-
-    await click('button');
-    assert.dom('.dropdown-item.active').hasText('label 2');
-
-    await triggerKeyDown('ArrowUp');
-    assert.dom('.dropdown-item.active').hasText('label 1');
-
-    await triggerKeyDown('Space');
-    assert.strictEqual(model.value, 'value 1');
-    assert.dom('.selected-display').hasText('label 1');
-  });
-
-  test('it disallows arrow up from first item', async function (assert) {
-    const model = new Model();
-    model.value = 'value 1';
-    await render(<template>
-      <Select @binding={{bind model "value"}} @options={{objectOptions}} />
-    </template>);
-
-    assert.dom('.selected-display').hasText('label 1');
-
-    await click('button');
-    assert.dom('.dropdown-item.active').hasText('label 1');
-
-    await triggerKeyDown('ArrowUp');
-    assert.dom('.dropdown-item.active').hasText('label 1');
-
-    await triggerKeyDown('Tab');
-    assert.strictEqual(model.value, 'value 1');
-    assert.dom('.selected-display').hasText('label 1');
-  });
-
-  test('it disallows arrow down from last item', async function (assert) {
-    const model = new Model();
-    model.value = 'value 3';
-    await render(<template>
-      <Select @binding={{bind model "value"}} @options={{objectOptions}} />
-    </template>);
-    assert.dom('.selected-display').hasText('label 3');
-
-    await click('button');
-    assert.dom('.dropdown-item.active').hasText('label 3');
-
-    await triggerKeyDown('ArrowDown');
-    assert.dom('.dropdown-item.active').hasText('label 3');
-
-    await triggerKeyDown('Tab');
-    assert.strictEqual(model.value, 'value 3');
-    assert.dom('.selected-display').hasText('label 3');
+    assert.deepEqual(model.value, ['value 2']);
+    assert.dom('.selected-display > span:first-child').hasText('label 2');
   });
 });

@@ -40,7 +40,7 @@ select,
     }
   }
   &:not([disabled]) {
-    &:not(input[type="checkbox"]):not(input[type="radio"]):not(button) {
+    &:not(input[type="checkbox"]):not(input[type="radio"]) {
       background: inherit !important;
       padding-right: revert !important;
     }
@@ -157,4 +157,9 @@ div.dropdown:has(.is-warning) ~ .warning-feedback {
 
 .dropdown-item {
   white-space: normal;
+}
+
+.multi-select > .card-body > .badge {
+  --bs-bg-opacity: .5;
+  --bs-badge-font-weight: 600;
 }
