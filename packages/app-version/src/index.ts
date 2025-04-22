@@ -84,7 +84,21 @@ export function getTagDetails(
     ...options,
   };
 
-  const latestTag = git(['describe', '--tags', '--abbrev=0']);
+  let latestTag: string | null = null;
+  if (tagPattern) {
+    const allTags = git([
+      'tag',
+      '--sort=tag',
+      '--sort=-committerdate',
+      '--merged',
+    ]);
+    latestTag = allTags.split('\n').find((tag) => tagPattern.test(tag)) ?? null;
+  }
+
+  if (!latestTag) {
+    latestTag = git(['describe', '--tags', '--abbrev=0']);
+  }
+
   const tagCommit = git(['rev-list', '-n', '1', latestTag]);
   const allTags = git(['tag', '--points-at', tagCommit]).split('\n');
   const tagInfo = allTags
