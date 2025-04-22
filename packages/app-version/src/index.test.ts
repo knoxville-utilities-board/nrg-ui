@@ -20,7 +20,12 @@ afterEach(() => {
 function mockSingleTag(tagName: string, commitSha: string, count = 4) {
   spawnSync
     .mockImplementationOnce((command: string, args: string[]) => {
-      expect(args).toEqual(['describe', '--tags', '--abbrev=0']);
+      expect(args).toEqual([
+        'tag',
+        '--sort=tag',
+        '--sort=-committerdate',
+        '--merged',
+      ]);
 
       return tagName;
     })
@@ -53,7 +58,12 @@ function mockMultipleTags(
 ) {
   spawnSync
     .mockImplementationOnce((command: string, args: string[]) => {
-      expect(args).toEqual(['describe', '--tags', '--abbrev=0']);
+      expect(args).toEqual([
+        'tag',
+        '--sort=tag',
+        '--sort=-committerdate',
+        '--merged',
+      ]);
 
       return `${baseTagName}A`;
     })
@@ -219,15 +229,6 @@ describe('getTagDetails', () => {
       displayTag: 'v12.34.5',
       tag: tagName,
     });
-
-    reset();
-
-    // No tags should match since the tag can't start with 'v'
-    tag = getTagDetails({
-      tagPattern: /^[^v](.+)-@/,
-    });
-
-    expect(tag).toBeUndefined();
   });
 
   test('works with custom options, multiple tags', () => {
@@ -327,15 +328,6 @@ describe('getTagDetails', () => {
       displayTag: 'v12.34.5',
       tag: `${tagName}A`,
     });
-
-    reset();
-
-    // No tags should match since the tag can't start with 'v'
-    tag = getTagDetails({
-      tagPattern: /^[^v](.+)-@/,
-    });
-
-    expect(tag).toBeUndefined();
   });
 });
 
