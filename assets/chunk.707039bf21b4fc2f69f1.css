@@ -14892,12 +14892,8 @@ button.dropdown + .popover {
 .form-control.dropdown + .popover > .popover-body > .dropdown-menu {
   max-width: 100%;
 }
-.form-control.dropdown .dropdown-menu.scrollable {
-  max-height: clamp(9rem, 50vh, 21rem);
-  overflow-y: auto;
-}
 
-.search + .popover .dropdown-menu.scrollable {
+.dropdown-menu.scrollable {
   max-height: clamp(9rem, 50vh, 21rem);
   overflow-y: auto;
 }
