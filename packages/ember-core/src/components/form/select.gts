@@ -349,6 +349,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   <template>
     <Dropdown
       @fullWidth={{true}}
+      @scrollable={{this.scrollable}}
       @side={{@side}}
       @onHide={{this.onBlur}}
       {{on "blur" this.onBlur}}
