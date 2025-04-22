@@ -92,7 +92,7 @@ module('Integration | Component | form/multi-select', function (hooks) {
       .containsText('Option 3');
 
     await click('.dropdown-menu li');
-    assert.dom('.card-body > span:first-child').hasText('Option 1');
+    assert.dom('.selected-display > span:first-child').hasText('Option 1');
     assert.deepEqual(model.value, ['Option 1']);
   });
 
@@ -112,7 +112,7 @@ module('Integration | Component | form/multi-select', function (hooks) {
       .containsText('label 3');
 
     await click('.dropdown-menu li');
-    assert.dom('.card-body > span:first-child').hasText('label 1');
+    assert.dom('.selected-display > span:first-child').hasText('label 1');
     assert.deepEqual(model.value, ['value 1']);
   });
 
@@ -137,7 +137,7 @@ module('Integration | Component | form/multi-select', function (hooks) {
       .containsText('key 3');
 
     await click('.dropdown-menu li');
-    assert.dom('.card-body > span:first-child').hasText('key 1');
+    assert.dom('.selected-display > span:first-child').hasText('key 1');
     assert.deepEqual(model.value, [1]);
   });
 
@@ -161,7 +161,7 @@ module('Integration | Component | form/multi-select', function (hooks) {
       .containsText('key 3');
 
     await click('.dropdown-menu li');
-    assert.dom('.card-body > span:first-child').hasText('label 1');
+    assert.dom('.selected-display > span:first-child').hasText('label 1');
     assert.deepEqual(model.value, ['value 1']);
   });
 
@@ -232,6 +232,6 @@ module('Integration | Component | form/multi-select', function (hooks) {
     assert.dom('.dropdown-menu').doesNotHaveClass('show');
 
     assert.deepEqual(model.value, ['value 2']);
-    assert.dom('.card-body > span:first-child').hasText('label 2');
+    assert.dom('.selected-display > span:first-child').hasText('label 2');
   });
 });

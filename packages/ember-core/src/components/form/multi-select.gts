@@ -197,7 +197,6 @@ export default class MultiSelect<T> extends BoundValue<
   <template>
     <div class="card multi-select border-0">
       <Select
-        class={{if this.selectedOptions.length "rounded-bottom-0"}}
         @binding={{bind this.self "lastSelection"}}
         @closeOnSelect={{this.closeOnSelect}}
         @defaultTextKey="nrg.multi-select.defaultText"
@@ -219,7 +218,31 @@ export default class MultiSelect<T> extends BoundValue<
             {{#if (has-block "display")}}
               {{yield this.value to="display"}}
             {{else}}
-              {{this.defaultText}}
+              {{#each this.selectedOptions as |option i|}}
+                {{#if (has-block "selection")}}
+                  {{yield
+                    (hash
+                      value=option.raw
+                      Remove=(component
+                        RemoveButton
+                        disabled=@disabled
+                        onClick=(fn this.removeItem option i)
+                      )
+                    )
+                    to="selection"
+                  }}
+                {{else}}
+                  <span
+                    class="badge text-bg-secondary d-inline-flex align-items-center"
+                  >
+                    {{option.label}}
+                    <RemoveButton
+                      @disabled={{@disabled}}
+                      @onClick={{fn this.removeItem option i}}
+                    />
+                  </span>
+                {{/if}}
+              {{/each}}
             {{/if}}
           {{else}}
             {{#if (has-block "empty")}}
@@ -242,35 +265,6 @@ export default class MultiSelect<T> extends BoundValue<
           {{/if}}
         </:menu>
       </Select>
-      {{#if this.selectedOptions.length}}
-        <div class="card-body border border-top-0 rounded-bottom">
-          {{#each this.selectedOptions as |option i|}}
-            {{#if (has-block "selection")}}
-              {{yield
-                (hash
-                  value=option.raw
-                  Remove=(component
-                    RemoveButton
-                    disabled=@disabled
-                    onClick=(fn this.removeItem option i)
-                  )
-                )
-                to="selection"
-              }}
-            {{else}}
-              <span
-                class="badge text-bg-secondary d-inline-flex align-items-center"
-              >
-                {{option.label}}
-                <RemoveButton
-                  @disabled={{@disabled}}
-                  @onClick={{fn this.removeItem option i}}
-                />
-              </span>
-            {{/if}}
-          {{/each}}
-        </div>
-      {{/if}}
     </div>
   </template>
 }
