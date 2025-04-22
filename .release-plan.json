@@ -1,40 +1,58 @@
 {
   "solution": {
     "@nrg-ui/version": {
-      "impact": "patch",
-      "oldVersion": "0.2.0",
-      "newVersion": "0.2.1",
+      "impact": "minor",
+      "oldVersion": "0.2.1",
+      "newVersion": "0.3.0",
       "tagName": "latest",
       "constraints": [
         {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
         }
       ],
       "pkgJSONPath": "./packages/app-version/package.json"
     },
     "@nrg-ui/css": {
-      "oldVersion": "0.17.0"
-    },
-    "@nrg-ui/core": {
-      "oldVersion": "0.33.0"
-    },
-    "@nrg-ui/standards": {
-      "impact": "patch",
-      "oldVersion": "0.4.2",
-      "newVersion": "0.4.3",
+      "impact": "minor",
+      "oldVersion": "0.17.0",
+      "newVersion": "0.18.0",
       "tagName": "latest",
       "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
-      "pkgJSONPath": "./packages/standards/package.json"
+      "pkgJSONPath": "./packages/design-system/package.json"
+    },
+    "@nrg-ui/core": {
+      "impact": "minor",
+      "oldVersion": "0.33.0",
+      "newVersion": "0.34.0",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
+        }
+      ],
+      "pkgJSONPath": "./packages/ember-core/package.json"
+    },
+    "@nrg-ui/standards": {
+      "oldVersion": "0.4.3"
     },
     "@nrg-ui/theme-generator": {
       "oldVersion": "0.3.0"
     }
   },
-  "description": "## Release (2025-04-18)\n\n* @nrg-ui/version 0.2.1 (patch)\n* @nrg-ui/standards 0.4.3 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/standards`\n  * [#432](https://github.com/knoxville-utilities-board/nrg-ui/pull/432) fix(standards): Add local Node binaries to PATH ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/version`\n  * [#430](https://github.com/knoxville-utilities-board/nrg-ui/pull/430) fix(version): Provide better error handling ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-04-22)\n\n* @nrg-ui/version 0.3.0 (minor)\n* @nrg-ui/css 0.18.0 (minor)\n* @nrg-ui/core 0.34.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#434](https://github.com/knoxville-utilities-board/nrg-ui/pull/434) feat: Create multi-select component ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/core`\n  * [#440](https://github.com/knoxville-utilities-board/nrg-ui/pull/440) feat(popover): Auto update position when open ([@TSenter](https://github.com/TSenter))\n  * [#439](https://github.com/knoxville-utilities-board/nrg-ui/pull/439) feat(search): Add yield block if provided ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/version`\n  * [#438](https://github.com/knoxville-utilities-board/nrg-ui/pull/438) feat: Lookup all tags by date first ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#441](https://github.com/knoxville-utilities-board/nrg-ui/pull/441)  fix(select): Scrollable option should work ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }

@@ -1,5 +1,27 @@
 # Changelog
 
+## Release (2025-04-22)
+
+* @nrg-ui/version 0.3.0 (minor)
+* @nrg-ui/css 0.18.0 (minor)
+* @nrg-ui/core 0.34.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#434](https://github.com/knoxville-utilities-board/nrg-ui/pull/434) feat: Create multi-select component ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`
+  * [#440](https://github.com/knoxville-utilities-board/nrg-ui/pull/440) feat(popover): Auto update position when open ([@TSenter](https://github.com/TSenter))
+  * [#439](https://github.com/knoxville-utilities-board/nrg-ui/pull/439) feat(search): Add yield block if provided ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/version`
+  * [#438](https://github.com/knoxville-utilities-board/nrg-ui/pull/438) feat: Lookup all tags by date first ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#441](https://github.com/knoxville-utilities-board/nrg-ui/pull/441)  fix(select): Scrollable option should work ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-04-18)
 
 * @nrg-ui/version 0.2.1 (patch)
