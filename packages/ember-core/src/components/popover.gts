@@ -1,5 +1,13 @@
+import { registerDestructor } from '@ember/destroyable';
 import { concat, hash } from '@ember/helper';
-import { arrow, computePosition, flip, offset, size } from '@floating-ui/dom';
+import {
+  arrow,
+  autoUpdate,
+  computePosition,
+  flip,
+  offset,
+  size,
+} from '@floating-ui/dom';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { restartableTask, timeout } from 'ember-concurrency';
@@ -10,6 +18,7 @@ import onUpdate from '../modifiers/on-update.ts';
 import { getRemValue } from '../utils/dom.ts';
 
 import type { TOC } from '@ember/component/template-only';
+import type Owner from '@ember/owner';
 import type { Alignment, Placement, Side } from '@floating-ui/dom';
 import type { ComponentLike } from '@glint/template';
 
@@ -94,6 +103,8 @@ export default class Popover extends Component<PopoverSignature> {
   declare popover: HTMLElement | null;
   declare arrow: HTMLElement | null;
 
+  declare cleanupAutoUpdate: (() => void) | null;
+
   id = `popover-${crypto.randomUUID()}`;
 
   @tracked
@@ -101,6 +112,17 @@ export default class Popover extends Component<PopoverSignature> {
 
   @tracked
   isShown = false;
+
+  constructor(owner: Owner, args: PopoverSignature['Args']) {
+    super(owner, args);
+
+    registerDestructor(this, () => {
+      if (this.cleanupAutoUpdate) {
+        this.cleanupAutoUpdate();
+        this.cleanupAutoUpdate = null;
+      }
+    });
+  }
 
   get control() {
     return this.args.controlElement ?? this._control;
@@ -168,6 +190,11 @@ export default class Popover extends Component<PopoverSignature> {
     this.isShown = false;
     await this.args.onHide?.();
 
+    if (this.cleanupAutoUpdate) {
+      this.cleanupAutoUpdate();
+      this.cleanupAutoUpdate = null;
+    }
+
     this._control = null;
   };
 
@@ -192,6 +219,14 @@ export default class Popover extends Component<PopoverSignature> {
       return;
     }
 
+    this.cleanupAutoUpdate = autoUpdate(
+      this.control,
+      this.popover,
+      this.updatePosition,
+    );
+  };
+
+  updatePosition = async () => {
     const { x, y, placement, middlewareData } = await computePosition(
       this.control!,
       this.popover!,
