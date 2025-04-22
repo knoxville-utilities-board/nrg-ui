@@ -206,6 +206,8 @@ export default class MultiSelect<T> extends BoundValue<
         @isInvalid={{@isInvalid}}
         @isWarning={{@isWarning}}
         @loading={{@loading}}
+        @noOptionsText={{@noOptionsText}}
+        @noOptionsTextKey={{@noOptionsTextKey}}
         @options={{this.availableOptions}}
         @scrollable={{@scrollable}}
         @onChange={{this.addItem}}
@@ -237,12 +239,6 @@ export default class MultiSelect<T> extends BoundValue<
         <:menu as |Menu|>
           {{#if (has-block "menu")}}
             {{yield Menu to="menu"}}
-          {{else}}
-            {{#unless this.availableOptions.length}}
-              <Menu.Item aria-disabled={{true}} @disabled={{true}}>
-                {{this.noOptionsText}}
-              </Menu.Item>
-            {{/unless}}
           {{/if}}
         </:menu>
       </Select>
