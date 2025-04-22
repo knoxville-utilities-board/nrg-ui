@@ -14921,10 +14921,10 @@ select[disabled] ~ .warning-feedback,
 .form-control[disabled] ~ .warning-feedback {
   display: none;
 }
-input:not([disabled]):not(input[type=checkbox]):not(input[type=radio]):not(button),
-textarea:not([disabled]):not(input[type=checkbox]):not(input[type=radio]):not(button),
-select:not([disabled]):not(input[type=checkbox]):not(input[type=radio]):not(button),
-.form-control:not([disabled]):not(input[type=checkbox]):not(input[type=radio]):not(button) {
+input:not([disabled]):not(input[type=checkbox]):not(input[type=radio]),
+textarea:not([disabled]):not(input[type=checkbox]):not(input[type=radio]),
+select:not([disabled]):not(input[type=checkbox]):not(input[type=radio]),
+.form-control:not([disabled]):not(input[type=checkbox]):not(input[type=radio]) {
   background: inherit !important;
   padding-right: revert !important;
 }
@@ -15189,6 +15189,11 @@ div.dropdown:has(.is-warning) ~ .warning-feedback {
 
 .dropdown-item {
   white-space: normal;
+}
+
+.multi-select > .card-body > .badge {
+  --bs-bg-opacity: .5;
+  --bs-badge-font-weight: 600;
 }
 
 /*!
