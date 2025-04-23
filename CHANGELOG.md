@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2025-04-23)
+
+* @nrg-ui/core 0.34.1 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#442](https://github.com/knoxville-utilities-board/nrg-ui/pull/442) fix(marketing header): Add flex collapse attribute to fix mobile styling ([@Trishu-Patel](https://github.com/Trishu-Patel))
+
+#### Committers: 1
+- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))
+
 ## Release (2025-04-22)
 
 * @nrg-ui/version 0.3.0 (minor)
