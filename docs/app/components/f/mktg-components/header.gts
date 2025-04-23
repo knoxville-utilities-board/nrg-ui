@@ -15,6 +15,9 @@ export default class HeaderDemo extends Component {
   @tracked
   dropSection = false;
 
+  @tracked
+  flexCollapse = false;
+
   @action
   update(key: string, value: unknown) {
     this[key] = value;
@@ -25,7 +28,7 @@ export default class HeaderDemo extends Component {
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
-            <MktgHeader class={{this.class}} @dropSection={{this.dropSection}}>
+            <MktgHeader class={{this.class}} @dropSection={{this.dropSection}}  @flexCollapse={{this.flexCollapse}}>
               <:brand>
                 <img src="https://imageplaceholder.net/50" alt="Icon" />
               </:brand>
@@ -57,6 +60,12 @@ export default class HeaderDemo extends Component {
               @type="Bool"
               @value={{this.dropSection}}
               @onInput={{fn this.update "dropSection"}}
+            />
+            <Args.Bool
+              @name="flexCollapse"
+              @description="Each of the sections of the flexbox container shrink to fit the content. Each section is also evenly spaced. This is most useful when one of the header sections contains more content than the others."
+              @value={{this.flexCollapse}}
+              @onInput={{fn this.update "flexCollapse"}}
             />
             <Args.Yield
               @description="Named yield block to render branding content such as icons"
