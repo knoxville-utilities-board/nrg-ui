@@ -6,6 +6,7 @@ export interface MktgHeaderSignature {
   Element: HTMLDivElement;
   Args: {
     dropSection: boolean;
+    flexCollapse: boolean;
   };
   Blocks: {
     brand: [];
@@ -18,6 +19,7 @@ export interface MktgHeaderSignature {
 const Header: TOC<MktgHeaderSignature> = <template>
   <HeaderComponent
     class="bg-body top-0 sticky-top w-100 gx-0 border border-bottom"
+    @flexCollapse={{@flexCollapse}}
     ...attributes
   >
     <:left>
