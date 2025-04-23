@@ -1,3 +1,4 @@
+@use "sass:color";
 @each $color, $value in $colors {
   .btn-#{$color} {
     @include button-variant($value, $value);
@@ -12,4 +13,38 @@
 
 .btn.loading > .content {
   visibility: hidden;
+}
+
+[data-bs-theme="dark"] {
+  .btn-primary {
+    @include button-variant(
+      color.scale($primary, $lightness: 30%, $saturation: -30%),
+      color.scale($primary, $lightness: 30%, $saturation: -30%)
+    );
+    --#{$prefix}btn-color: var(--bs-body-color);
+    --#{$prefix}btn-hover-color: var(--bs-body-color);
+    --#{$prefix}btn-active-color: var(--bs-body-color);
+    --#{$prefix}btn-disabled-color: var(--bs-body-color);
+  }
+
+  .btn-outline-primary {
+    @include button-outline-variant(
+      color.scale($primary, $lightness: 30%, $saturation: -30%)
+    );
+    --#{$prefix}btn-hover-color: var(--bs-body-color);
+    --#{$prefix}btn-active-color: var(--bs-body-color);
+  }
+
+  .btn-secondary {
+    @include button-variant(
+      color.scale($secondary, $lightness: 20%),
+      color.scale($secondary, $lightness: 20%)
+    );
+  }
+
+  .btn-outline-secondary {
+    @include button-outline-variant(
+      color.scale($secondary, $lightness: 20%, $saturation: -20%)
+    );
+  }
 }
