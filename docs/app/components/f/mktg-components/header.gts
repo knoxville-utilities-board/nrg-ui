@@ -28,7 +28,11 @@ export default class HeaderDemo extends Component {
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
-            <MktgHeader class={{this.class}} @dropSection={{this.dropSection}}  @flexCollapse={{this.flexCollapse}}>
+            <MktgHeader
+              class={{this.class}}
+              @dropSection={{this.dropSection}}
+              @flexCollapse={{this.flexCollapse}}
+            >
               <:brand>
                 <img src="https://imageplaceholder.net/50" alt="Icon" />
               </:brand>
