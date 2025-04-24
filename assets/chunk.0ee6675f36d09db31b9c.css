@@ -15188,7 +15188,7 @@ div.dropdown:has(.is-warning) ~ .warning-feedback {
 }
 
 .multi-select > .card-body > .badge {
-  --bs-bg-opacity: .5;
+  --bs-bg-opacity: 0.5;
   --bs-badge-font-weight: 600;
 }
 
