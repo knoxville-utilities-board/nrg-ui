@@ -52,22 +52,14 @@ jobs:
           fetch-depth: 0
           ref: 'main'
 
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - name: Restore dependency cache
-        id: cache
-        uses: actions/cache/restore@v4
-        with:
-          path: ~/.local/share/pnpm/store
-          key: node-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            node-
-
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9
+          cache: 'pnpm'
 
       - run: pnpm install --frozen-lockfile --prefer-offline
 
@@ -117,10 +109,3 @@ jobs:
             -----------------------------------------
 
             ${{ steps.explanation.outputs.text }}
-
-      - name: Save dependency cache
-        uses: actions/cache/save@v4
-        if: always() && steps.cache.outputs.cache-hit != 'true'
-        with:
-          path: ~/.local/share/pnpm/store
-          key: node-${{ hashFiles('**/pnpm-lock.yaml') }}

@@ -1,13 +1,18 @@
 name: Build and publish docs
 
 on:
-  push:
+  workflow_run:
+    workflows:
+      - Publish Stable
     branches:
       - main
+    types:
+      - completed
 
 jobs:
   docs:
     name: Build and publish docs
+    if: github.event.workflow_run.conclusion == 'success' || github.event.workflow_run.conclusion == 'skipped'
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -19,20 +24,12 @@ jobs:
 
       - uses: pnpm/action-setup@v3
         with:
-          version: 9
+          version: 10
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - name: Restore dependency cache
-        id: cache
-        uses: actions/cache/restore@v4
-        with:
-          path: ~/.local/share/pnpm/store
-          key: node-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            node-
+          cache: 'pnpm'
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
@@ -44,12 +41,3 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.6.3
         with:
           folder: docs/dist
-
-      - name: Save dependency cache
-        uses: actions/cache/save@v4
-        if: always() && steps.cache.outputs.cache-hit != 'true'
-        with:
-          path: ~/.local/share/pnpm/store
-          key: node-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            node-

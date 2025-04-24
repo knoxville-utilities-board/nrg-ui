@@ -24,21 +24,12 @@ jobs:
 
       - uses: pnpm/action-setup@v3
         with:
-          version: 9
+          version: 10
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
-
-      - name: Restore dependency cache
-        id: cache
-        uses: actions/cache/restore@v4
-        with:
-          path: ~/.local/share/pnpm/store
-          key: node-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            node-
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
@@ -48,13 +39,6 @@ jobs:
 
       - name: Run Tests
         run: pnpm test
-
-      - name: Save dependency cache
-        uses: actions/cache/save@v4
-        if: always() && steps.cache.outputs.cache-hit != 'true'
-        with:
-          path: ~/.local/share/pnpm/store
-          key: node-${{ hashFiles('**/pnpm-lock.yaml') }}
 
   floating:
     name: 'Floating Dependencies'
@@ -69,21 +53,12 @@ jobs:
 
       - uses: pnpm/action-setup@v3
         with:
-          version: 9
+          version: 10
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
-
-      - name: Restore dependency cache
-        id: cache
-        uses: actions/cache/restore@v4
-        with:
-          path: ~/.local/share/pnpm/store
-          key: node-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            node-
 
       - name: Install Dependencies
         run: pnpm install --no-lockfile --prefer-offline
@@ -116,21 +91,12 @@ jobs:
 
       - uses: pnpm/action-setup@v3
         with:
-          version: 9
+          version: 10
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
-
-      - name: Restore dependency cache
-        id: cache
-        uses: actions/cache/restore@v4
-        with:
-          path: ~/.local/share/pnpm/store
-          key: node-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            node-
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
