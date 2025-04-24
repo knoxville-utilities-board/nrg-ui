@@ -47,21 +47,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'pnpm'
           # This creates an .npmrc that reads the NODE_AUTH_TOKEN environment variable
           registry-url: 'https://registry.npmjs.org'
 
       - uses: pnpm/action-setup@v4
         with:
           version: 9
-
-      - name: Restore dependency cache
-        id: cache
-        uses: actions/cache/restore@v4
-        with:
-          path: ~/.local/share/pnpm/store
-          key: node-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            node-
 
       - run: pnpm install --frozen-lockfile --prefer-offline
 
@@ -70,10 +62,3 @@ jobs:
         env:
           GITHUB_AUTH: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Save dependency cache
-        uses: actions/cache/save@v4
-        if: always() && steps.cache.outputs.cache-hit != 'true'
-        with:
-          path: ~/.local/share/pnpm/store
-          key: node-${{ hashFiles('**/pnpm-lock.yaml') }}

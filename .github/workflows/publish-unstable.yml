@@ -26,15 +26,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - name: Restore dependency cache
-        id: cache
-        uses: actions/cache/restore@v4
-        with:
-          path: ~/.local/share/pnpm/store
-          key: node-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            node-
+          cache: 'pnpm'
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
@@ -50,10 +42,3 @@ jobs:
           branch: unstable-css
           token: ${{ secrets.GITHUB_TOKEN }}
           working-directory: 'packages/design-system'
-
-      - name: Save dependency cache
-        uses: actions/cache/save@v4
-        if: always() && steps.cache.outputs.cache-hit != 'true'
-        with:
-          path: ~/.local/share/pnpm/store
-          key: node-${{ hashFiles('**/pnpm-lock.yaml') }}
