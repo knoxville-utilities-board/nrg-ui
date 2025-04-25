@@ -4,20 +4,24 @@
       "oldVersion": "0.3.0"
     },
     "@nrg-ui/css": {
-      "oldVersion": "0.18.0"
-    },
-    "@nrg-ui/core": {
-      "impact": "patch",
-      "oldVersion": "0.34.0",
-      "newVersion": "0.34.1",
+      "impact": "minor",
+      "oldVersion": "0.18.0",
+      "newVersion": "0.19.0",
       "tagName": "latest",
       "constraints": [
         {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
           "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
-      "pkgJSONPath": "./packages/ember-core/package.json"
+      "pkgJSONPath": "./packages/design-system/package.json"
+    },
+    "@nrg-ui/core": {
+      "oldVersion": "0.34.1"
     },
     "@nrg-ui/standards": {
       "oldVersion": "0.4.3"
@@ -26,5 +30,5 @@
       "oldVersion": "0.3.0"
     }
   },
-  "description": "## Release (2025-04-23)\n\n* @nrg-ui/core 0.34.1 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#442](https://github.com/knoxville-utilities-board/nrg-ui/pull/442) fix(marketing header): Add flex collapse attribute to fix mobile styling ([@Trishu-Patel](https://github.com/Trishu-Patel))\n\n#### Committers: 1\n- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))\n"
+  "description": "## Release (2025-04-25)\n\n* @nrg-ui/css 0.19.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/css`\n  * [#443](https://github.com/knoxville-utilities-board/nrg-ui/pull/443) feat: Update custom mixin styling for dark theme ([@ChesneyJulian](https://github.com/ChesneyJulian))\n\n#### :house: Internal\n* `@nrg-ui/css`\n  * [#446](https://github.com/knoxville-utilities-board/nrg-ui/pull/446) chore: Format project ([@TSenter](https://github.com/TSenter))\n* Other\n  * [#445](https://github.com/knoxville-utilities-board/nrg-ui/pull/445) refactor(ci): Clean up caching and publishing docs ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
