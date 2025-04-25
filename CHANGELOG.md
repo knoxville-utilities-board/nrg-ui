@@ -1,5 +1,23 @@
 # Changelog
 
+## Release (2025-04-25)
+
+* @nrg-ui/css 0.19.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/css`
+  * [#443](https://github.com/knoxville-utilities-board/nrg-ui/pull/443) feat: Update custom mixin styling for dark theme ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+#### :house: Internal
+* `@nrg-ui/css`
+  * [#446](https://github.com/knoxville-utilities-board/nrg-ui/pull/446) chore: Format project ([@TSenter](https://github.com/TSenter))
+* Other
+  * [#445](https://github.com/knoxville-utilities-board/nrg-ui/pull/445) refactor(ci): Clean up caching and publishing docs ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-04-23)
 
 * @nrg-ui/core 0.34.1 (patch)
