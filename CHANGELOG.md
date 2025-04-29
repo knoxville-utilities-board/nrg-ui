@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2025-04-29)
+
+* @nrg-ui/css 0.20.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/css`
+  * [#451](https://github.com/knoxville-utilities-board/nrg-ui/pull/451) chore: Make dark theme mixins more generic ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+#### Committers: 1
+- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
 ## Release (2025-04-25)
 
 * @nrg-ui/css 0.19.0 (minor)

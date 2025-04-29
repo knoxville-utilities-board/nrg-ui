@@ -5,17 +5,13 @@
     },
     "@nrg-ui/css": {
       "impact": "minor",
-      "oldVersion": "0.18.0",
-      "newVersion": "0.19.0",
+      "oldVersion": "0.19.0",
+      "newVersion": "0.20.0",
       "tagName": "latest",
       "constraints": [
         {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./packages/design-system/package.json"
@@ -30,5 +26,5 @@
       "oldVersion": "0.3.0"
     }
   },
-  "description": "## Release (2025-04-25)\n\n* @nrg-ui/css 0.19.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/css`\n  * [#443](https://github.com/knoxville-utilities-board/nrg-ui/pull/443) feat: Update custom mixin styling for dark theme ([@ChesneyJulian](https://github.com/ChesneyJulian))\n\n#### :house: Internal\n* `@nrg-ui/css`\n  * [#446](https://github.com/knoxville-utilities-board/nrg-ui/pull/446) chore: Format project ([@TSenter](https://github.com/TSenter))\n* Other\n  * [#445](https://github.com/knoxville-utilities-board/nrg-ui/pull/445) refactor(ci): Clean up caching and publishing docs ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-04-29)\n\n* @nrg-ui/css 0.20.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/css`\n  * [#451](https://github.com/knoxville-utilities-board/nrg-ui/pull/451) chore: Make dark theme mixins more generic ([@ChesneyJulian](https://github.com/ChesneyJulian))\n\n#### Committers: 1\n- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))\n"
 }
