@@ -2,7 +2,7 @@
   --shadow-color: #{if(
       variable-exists(box-shadow-color-dark),
       $box-shadow-color-dark,
-      rgba(127, 125, 125, 0.406)
+      rgba(0, 0, 0, 0.075)
     )};
   .shadow-sm {
     box-shadow: 0 0.125rem 0.25rem var(--shadow-color) !important;

@@ -15,36 +15,34 @@
   visibility: hidden;
 }
 
-[data-bs-theme="dark"] {
-  .btn-primary {
-    @include button-variant(
-      color.scale($primary, $lightness: 30%, $saturation: -30%),
-      color.scale($primary, $lightness: 30%, $saturation: -30%)
-    );
-    --#{$prefix}btn-color: var(--bs-body-color);
-    --#{$prefix}btn-hover-color: var(--bs-body-color);
-    --#{$prefix}btn-active-color: var(--bs-body-color);
-    --#{$prefix}btn-disabled-color: var(--bs-body-color);
+@if variable-exists(btn-primary-dark) {
+  $btn-bg: $btn-primary-dark;
+
+  [data-bs-theme="dark"] {
+    .btn-primary {
+      @include button-variant($btn-bg, $btn-bg);
+      --#{$prefix}btn-color: var(--bs-body-color);
+      --#{$prefix}btn-hover-color: var(--bs-body-color);
+      --#{$prefix}btn-active-color: var(--bs-body-color);
+      --#{$prefix}btn-disabled-color: var(--bs-body-color);
+    }
+
+    .btn-outline-primary {
+      @include button-outline-variant($btn-bg);
+      --#{$prefix}btn-hover-color: var(--bs-body-color);
+      --#{$prefix}btn-active-color: var(--bs-body-color);
+    }
   }
 
-  .btn-outline-primary {
-    @include button-outline-variant(
-      color.scale($primary, $lightness: 30%, $saturation: -30%)
-    );
-    --#{$prefix}btn-hover-color: var(--bs-body-color);
-    --#{$prefix}btn-active-color: var(--bs-body-color);
-  }
+  @if variable-exists(btn-secondary-dark) {
+    $btn-bg: $btn-secondary-dark;
 
-  .btn-secondary {
-    @include button-variant(
-      color.scale($secondary, $lightness: 20%),
-      color.scale($secondary, $lightness: 20%)
-    );
-  }
+    .btn-secondary {
+      @include button-variant($btn-bg, $btn-bg);
+    }
 
-  .btn-outline-secondary {
-    @include button-outline-variant(
-      color.scale($secondary, $lightness: 20%, $saturation: -20%)
-    );
+    .btn-outline-secondary {
+      @include button-outline-variant($btn-bg);
+    }
   }
 }
