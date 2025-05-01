@@ -5,6 +5,7 @@ import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
+import BoundValue from './bound-value.ts';
 import Button from '../button.gts';
 import Modal from '../modal.gts';
 
@@ -60,7 +61,7 @@ class FileList extends Component<FileListSignature> {
   </template>
 }
 
-export default class FileUpload extends Component<FileUploadSignature> {
+export default class FileUpload extends BoundValue<FileUploadSignature, File[]> {
   @service
   declare theme: ThemeService;
 
@@ -82,7 +83,6 @@ export default class FileUpload extends Component<FileUploadSignature> {
     return this.selectedFiles.length >= (this.args.maxUploadCount ?? Infinity);
   }
 
-
   @action
   handleDrop(event: DragEvent) {
     event.preventDefault();
@@ -96,6 +96,7 @@ export default class FileUpload extends Component<FileUploadSignature> {
     const files = event.dataTransfer?.files;
     if (files && files.length > 0) {
       this.selectedFiles = this.selectedFiles.concat(Array.from(files));
+      this.value = this.selectedFiles;
       this.args.onSelect?.();
     }
   }
@@ -120,6 +121,7 @@ export default class FileUpload extends Component<FileUploadSignature> {
   @action
   removeFile(file: File) {
     this.selectedFiles = this.selectedFiles.filter(f => f !== file);
+    this.value = this.selectedFiles;
     this.args.onRemove?.();
   }
 
@@ -131,6 +133,7 @@ export default class FileUpload extends Component<FileUploadSignature> {
     const files = input?.files;
     if (files && files.length > 0) {
       this.selectedFiles = this.selectedFiles.concat(Array.from(files));
+      this.value = this.selectedFiles;
     }
     this.args.onSelect?.();
   }
