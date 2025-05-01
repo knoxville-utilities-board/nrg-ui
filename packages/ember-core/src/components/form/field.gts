@@ -8,6 +8,7 @@ import { runTask } from 'ember-lifeline';
 import CheckboxGroup from './checkbox-group.gts';
 import Checkbox from './checkbox.gts';
 import Datetime from './datetime.gts';
+import FileUpload from './file-upload.gts';
 import MultiSelect from './multi-select.gts';
 import NumberInput from './number-input.gts';
 import PhoneInput from './phone-input.gts';
@@ -22,6 +23,7 @@ import { PresenceValidator } from '../../validation/index.ts';
 import type { CheckboxGroupSignature } from './checkbox-group.gts';
 import type { CheckboxSignature } from './checkbox.gts';
 import type { DatetimeSignature } from './datetime.gts';
+import type { FileUploadSignature } from './file-upload.gts';
 import type { FormType } from './index.gts';
 import type { MultiSelectSignature } from './multi-select.gts';
 import type { NumberInputSignature } from './number-input.gts';
@@ -59,6 +61,7 @@ export interface FieldSignature {
         Checkbox: ComponentLike<CheckboxSignature>;
         CheckboxGroup: ComponentLike<CheckboxGroupSignature>;
         Datetime: ComponentLike<DatetimeSignature>;
+        FileUpload: ComponentLike<FileUploadSignature>;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         MultiSelect: ComponentLike<MultiSelectSignature<any>>;
         NumberInput: ComponentLike<NumberInputSignature>;
@@ -279,6 +282,15 @@ export default class Field extends Component<FieldSignature> {
         )
         Datetime=(component
           Datetime
+          describedBy=this.describedBy
+          disabled=@disabled
+          id=this.fieldId
+          initBinding=this.initBinding
+          isInvalid=this.hasError
+          isWarning=this.hasWarning
+        )
+        FileUpload=(component
+          FileUpload
           describedBy=this.describedBy
           disabled=@disabled
           id=this.fieldId

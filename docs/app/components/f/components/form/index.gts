@@ -86,6 +86,16 @@ const Validators = {
       maxPrecision: 2,
     }),
   ],
+  fileUpload: [
+    validator('custom', {
+      validate(value) {
+        if (!value || value.length === 0) {
+          return 'You must upload at least one file';
+        }
+        return true;
+      },
+    }),
+  ]
 };
 
 class Model {
@@ -127,6 +137,9 @@ class Model {
 
   @tracked
   datetime;
+
+  @tracked
+  fileUpload;
 
   toJSON() {
     const obj = {};
@@ -189,6 +202,9 @@ export default class FormDemo extends Component {
         @onSubmit={{this.onSubmit}}
         as |Form|
       >
+        <Form.Field @label="Multiple File Upload" @validatorKey="fileUpload" as |Field|>
+          <Field.FileUpload @binding={{bind this.model "fileUpload"}} @maxUploadCount={{4}} @acceptedFileTypes={{array "png"}}/>
+        </Form.Field>
         <Form.Field
           @label="Text Input"
           @required={{this.required}}
