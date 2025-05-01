@@ -14,6 +14,8 @@ import type ThemeService from '../../services/theme.ts';
 export interface FileListSignature {
   Args: {
     files: File[];
+    isInvalid?: boolean;
+    isWarning?: boolean;
     onRemove?: (file: File) => void;
   };
   Element: HTMLUListElement;
@@ -26,6 +28,8 @@ export interface FileUploadSignature {
   Args: {
     acceptedFileTypes?: string[];
     maxUploadCount?: number;
+    isInvalid?: boolean;
+    isWarning?: boolean;
     onSelect?: () => void;
     onRemove?: () => void;
   };
@@ -36,17 +40,26 @@ export interface FileUploadSignature {
 }
 
 class FileList extends Component<FileListSignature> {
-  @tracked
-  selectedFiles: File[] = this.args.files ?? [];
+  get classList() {
+    const classList = ['form-control'];
+
+    if (this.args.isInvalid) {
+      classList.push('is-invalid');
+    } else if (this.args.isWarning) {
+      classList.push('is-warning');
+    }
+
+    return classList.join(' ');
+  }
 
   @action
   removeFile(file: File) {
-    this.selectedFiles = this.selectedFiles.filter(f => f !== file);
     this.args.onRemove?.(file);
   }
 
   <template>
-    {{#if @files.length}}
+    {{#if @files}}
+    <div class="{{this.classList}} m-0 p-0">
       <ul class="list-group col-12">
         {{#each @files as |file|}}
           <li class="col-12 list-group-item d-flex flex-row align-items-center justify-content-between">
@@ -55,8 +68,11 @@ class FileList extends Component<FileListSignature> {
           </li>
         {{/each}}
       </ul>
+    </div>
     {{else}}
-      <p class="text-muted">No files selected</p>
+    <div class="{{this.classList}}">
+      <p class="text-muted m-0">No files selected</p>
+    </div>
     {{/if}}
   </template>
 }
@@ -149,7 +165,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
         <i class="bi bi-upload"/>
         Upload Files
       </Button>
-      <FileList @files={{this.selectedFiles}} @onRemove={{this.removeFile}}/>
+        <FileList @files={{this.selectedFiles}} @onRemove={{this.removeFile}} @isInvalid={{@isInvalid}} @isWarning={{@isWarning}} />
       <Modal @dismissible={{true}} @isOpen={{this.modalIsOpen}} @onDismiss={{this.toggleModal}}>
         <:header>
           Upload Files
@@ -190,7 +206,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
               {{/if}}
             </div>
             <div class="mt-3 col-10 d-flex flex-column align-items-center p-0">
-              <FileList @files={{this.selectedFiles}} @onRemove={{this.removeFile}} />
+              <FileList @files={{this.selectedFiles}} @onRemove={{this.removeFile}} @isInvalid={{@isInvalid}} @isWarning={{@isWarning}}/>
             </div>
             <Button class="col-auto align-self-end btn-primary mt-3 me-3" @onClick={{this.toggleModal}}>Done</Button>
           </div>
