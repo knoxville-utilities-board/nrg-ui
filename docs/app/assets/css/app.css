@@ -31,3 +31,27 @@ footer img {
   width: 47px;
   height: 30px;
 }
+
+.stacked-page-container {
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row-reverse nowrap;
+  overflow-x: hidden;
+  direction: rtl;
+  width: 100%;
+  height: 100%;
+  flex: 1 0 0;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.stacked-page-container.container {
+  border-right: calc(var(--bs-gutter-x) * 0.5) solid transparent;
+  border-left: calc(var(--bs-gutter-x) * 0.5) solid transparent;
+}
+
+.stacked-page {
+  height: 100%;
+  overflow-y: auto;
+  direction: ltr;
+}
