@@ -58,20 +58,20 @@ class FileList extends Component<FileListSignature> {
 
   <template>
     {{#if @files}}
-    <div class="m-0 p-0 col-12">
-      <ul class="list-group list-group-flush rounded p-0 col-12 {{this.classList}}">
-        {{#each @files as |file|}}
-          <li class="col-12 list-group-item d-flex flex-row align-items-center justify-content-between">
-            {{file.name}}
-            <Button class="btn-link" @onClick={{fn this.removeFile file}}>Remove</Button>
-          </li>
-        {{/each}}
-      </ul>
-    </div>
+      <div class="m-0 p-0 col-12">
+        <ul class="list-group list-group-flush rounded p-0 col-12 {{this.classList}}">
+          {{#each @files as |file|}}
+            <li class="col-12 list-group-item d-flex flex-row align-items-center justify-content-between">
+              {{file.name}}
+              <Button class="btn-link" @onClick={{fn this.removeFile file}}>Remove</Button>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
     {{else}}
-    <div class="{{this.classList}}">
-      <p class="text-muted m-0">No files selected</p>
-    </div>
+      <div class="{{this.classList}}">
+        <p class="text-muted m-0">No files selected</p>
+      </div>
     {{/if}}
   </template>
 }
@@ -106,6 +106,27 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
     return `btn-${theme}`;
   }
 
+  checkDuplicateFiles(files: File[]): boolean {
+    let isDuplicate = false;
+    for (const file of files) {
+      if (this.selectedFiles.some(existingFile => existingFile.name === file.name)) {
+        isDuplicate = true;
+        break;
+      }
+    }
+    return isDuplicate;
+  }
+
+  updateValue(files: File[]) {
+    const isDuplicate = this.checkDuplicateFiles(files);
+    if (isDuplicate) {
+      return;
+    }
+    this.selectedFiles = this.selectedFiles.concat(files);
+    this.value = this.selectedFiles;
+    this.args.onSelect?.();
+  }
+
   @action
   handleDragover(event: DragEvent) {
     event.preventDefault();
@@ -120,10 +141,9 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
     this.isDraggingOver = false;
 
     const files = event.dataTransfer?.files;
+
     if (files && files.length > 0) {
-      this.selectedFiles = this.selectedFiles.concat(Array.from(files));
-      this.value = this.selectedFiles;
-      this.args.onSelect?.();
+      this.updateValue(Array.from(files));
     }
   }
 
@@ -133,13 +153,14 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
     event.stopPropagation();
     const input = document.querySelector('input[type="file"]');
     if (input instanceof HTMLInputElement) {
+      input.value = '';
       input.click();
     }
   }
 
   @action
   removeFile(file: File) {
-    this.selectedFiles = this.selectedFiles.filter(f => f !== file);
+    this.selectedFiles = this.selectedFiles.filter(selectedFile => selectedFile !== file);
     this.value = this.selectedFiles;
     this.args.onRemove?.();
   }
@@ -151,10 +172,8 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
     const input = event.target as HTMLInputElement | null;
     const files = input?.files;
     if (files && files.length > 0) {
-      this.selectedFiles = this.selectedFiles.concat(Array.from(files));
-      this.value = this.selectedFiles;
+      this.updateValue(Array.from(files));
     }
-    this.args.onSelect?.();
   }
 
   @action
