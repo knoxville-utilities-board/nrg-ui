@@ -31,3 +31,14 @@ footer img {
   width: 47px;
   height: 30px;
 }
+
+.side-by-side {
+  overflow-x: hidden;
+  direction: rtl;
+  flex-flow: row-reverse nowrap;
+  justify-content: flex-end;
+}
+
+.side-by-side > * {
+  direction: ltr;
+}
