@@ -26,8 +26,7 @@ export interface FileListSignature {
 
 export interface FileUploadSignature {
   Args: {
-    acceptedFileTypes?: string[];
-    maxUploadCount?: number;
+    describedBy?: string;
     isInvalid?: boolean;
     isWarning?: boolean;
     onSelect?: () => void;
@@ -59,8 +58,8 @@ class FileList extends Component<FileListSignature> {
 
   <template>
     {{#if @files}}
-    <div class="{{this.classList}} m-0 p-0">
-      <ul class="list-group col-12">
+    <div class="m-0 p-0 col-12">
+      <ul class="list-group list-group-flush rounded p-0 col-12 {{this.classList}}">
         {{#each @files as |file|}}
           <li class="col-12 list-group-item d-flex flex-row align-items-center justify-content-between">
             {{file.name}}
@@ -90,13 +89,28 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
   @tracked
   selectedFiles: File[] = [];
 
+  get classList() {
+    const classList = ['form-control-plaintext'];
+
+    if (this.args.isInvalid) {
+      classList.push('is-invalid');
+    } else if (this.args.isWarning) {
+      classList.push('is-warning');
+    }
+
+    return classList.join(' ');
+  }
+
   get themedButtonClass() {
     const theme = this.theme.theme ?? 'light';
     return `btn-${theme}`;
   }
 
-  get maxCountReached() {
-    return this.selectedFiles.length >= (this.args.maxUploadCount ?? Infinity);
+  @action
+  handleDragover(event: DragEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isDraggingOver = true;
   }
 
   @action
@@ -105,23 +119,12 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
     event.stopPropagation();
     this.isDraggingOver = false;
 
-    if (this.maxCountReached) {
-      return;
-    }
-
     const files = event.dataTransfer?.files;
     if (files && files.length > 0) {
       this.selectedFiles = this.selectedFiles.concat(Array.from(files));
       this.value = this.selectedFiles;
       this.args.onSelect?.();
     }
-  }
-
-  @action
-  handleDragover(event: DragEvent) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.isDraggingOver = true;
   }
 
   @action
@@ -160,7 +163,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
   }
 
   <template>
-    <div>
+    <div class="{{this.classList}} p-0">
       <Button @onClick={{this.toggleModal}} class="{{this.themedButtonClass}} mb-2">
         <i class="bi bi-upload"/>
         Upload Files
@@ -182,28 +185,23 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
               {{on "dragleave" (fn (mut this.isDraggingOver) false)}}
               {{on "drop" this.handleDrop}}
             >
-              {{#if this.maxCountReached}}
-                <p class="fw-semibold mx-0 my-5">Maximum file count reached</p>
-              {{else}}
-                <div class="d-flex align-items-center justify-content-center my-5">
-                  <i class="bi bi-upload me-2" />
-                  <p class="m-0">
-                    Drag and drop files here or
-                  </p>
-                  <Button class="btn btn-link p-0 m-0" @onClick={{this.openInput}}>
-                    <span class="btn btn-link p-0 m-0">select a file</span>
-                  </Button>
-                  <input
-                    type="file"
-                    title="Select a file"
-                    aria-label="Select a file"
-                    multiple
-                    hidden
-                    {{on "change" this.selectFile}}
-                    disabled={{this.maxCountReached}}
-                  />
-                </div>
-              {{/if}}
+              <div class="d-flex align-items-center justify-content-center my-5">
+                <i class="bi bi-upload me-2" />
+                <p class="m-0">
+                  Drag and drop files here or
+                </p>
+                <Button class="btn btn-link p-0 m-0" @onClick={{this.openInput}}>
+                  <span class="btn btn-link p-0 m-0">select a file</span>
+                </Button>
+                <input
+                  type="file"
+                  title="Select a file"
+                  aria-label="Select a file"
+                  multiple
+                  hidden
+                  {{on "change" this.selectFile}}
+                />
+              </div>
             </div>
             <div class="mt-3 col-10 d-flex flex-column align-items-center p-0">
               <FileList @files={{this.selectedFiles}} @onRemove={{this.removeFile}} @isInvalid={{@isInvalid}} @isWarning={{@isWarning}}/>
