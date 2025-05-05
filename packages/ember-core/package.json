@@ -98,7 +98,7 @@
   "dependencies": {
     "@embroider/addon-shim": "^1.10.0",
     "@embroider/macros": "^1.17.2",
-    "@floating-ui/dom": "^1.6.13",
+    "@floating-ui/dom": "^1.7.0",
     "decorator-transforms": "^1.0.1",
     "ember-css-transitions": "^4.5.0",
     "ember-intl": "^7.1.7",
@@ -108,8 +108,8 @@
     "ismobilejs": "^1.1.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.10",
-    "@babel/plugin-transform-typescript": "^7.27.0",
+    "@babel/core": "^7.27.1",
+    "@babel/plugin-transform-typescript": "^7.27.1",
     "@babel/runtime": "^7.27.1",
     "@bertdeblock/gember": "^0.7.0",
     "@embroider/addon-dev": "^4.3.1",
@@ -131,14 +131,14 @@
     "ember-template-imports": "^4.3.0",
     "ember-template-lint": "^5.13.0",
     "ember-truth-helpers": "^4.0.3",
-    "eslint": "^9.25.1",
+    "eslint": "^9.26.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-webpack": "^0.13.10",
     "eslint-plugin-decorator-position": "^6.0.0",
     "eslint-plugin-ember": "^12.5.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-n": "^16.6.2",
-    "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-prettier": "^5.4.0",
     "execa": "^9.5.2",
     "prettier": "^3.1.1",
     "prettier-plugin-ember-template-tag": "^1.1.0",
@@ -146,7 +146,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "tracked-built-ins": "^3.4.0",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.31.0",
+    "typescript-eslint": "^8.31.1",
     "webpack": "^5.99.7"
   },
   "peerDependencies": {
