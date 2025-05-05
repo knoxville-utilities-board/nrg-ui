@@ -2,8 +2,10 @@ import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
+import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { t } from 'ember-intl';
 
 import BoundValue from './bound-value.ts';
 import Button from '../button.gts';
@@ -27,6 +29,8 @@ export interface FileListSignature {
 export interface FileUploadSignature {
   Args: {
     describedBy?: string;
+    disabled?: boolean;
+    id?: string;
     isInvalid?: boolean;
     isWarning?: boolean;
     onSelect?: () => void;
@@ -63,14 +67,14 @@ class FileList extends Component<FileListSignature> {
           {{#each @files as |file|}}
             <li class="col-12 list-group-item d-flex flex-row align-items-center justify-content-between">
               {{file.name}}
-              <Button class="btn-link" @onClick={{fn this.removeFile file}}>Remove</Button>
+              <Button class="btn-link" @onClick={{fn this.removeFile file}}>{{t "nrg.file-upload.remove"}}</Button>
             </li>
           {{/each}}
         </ul>
       </div>
     {{else}}
       <div class="{{this.classList}}">
-        <p class="text-muted m-0">No files selected</p>
+        <p class="text-muted m-0">{{t "nrg.file-upload.noFiles"}}</p>
       </div>
     {{/if}}
   </template>
@@ -183,19 +187,19 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
 
   <template>
     <div class="{{this.classList}} p-0">
-      <Button @onClick={{this.toggleModal}} class="{{this.themedButtonClass}} mb-2">
+      <Button @disabled={{@disabled}} @onClick={{this.toggleModal}} class="{{this.themedButtonClass}} mb-2">
         <i class="bi bi-upload"/>
-        Upload Files
+        {{t "nrg.file-upload.upload"}}
       </Button>
         <FileList @files={{this.selectedFiles}} @onRemove={{this.removeFile}} @isInvalid={{@isInvalid}} @isWarning={{@isWarning}} />
       <Modal @dismissible={{true}} @isOpen={{this.modalIsOpen}} @onDismiss={{this.toggleModal}}>
         <:header>
-          Upload Files
+          {{t "nrg.file-upload.upload"}}
         </:header>
         <:default>
           <div class="d-flex flex-column align-items-center mt-4 row row-cols-12">
             <div
-              style="border-style: dashed !important;"
+              style={{htmlSafe "border-style: dashed !important;"}}
               class="col-10 py-5 border border-2 rounded-3 d-flex flex-row align-items-center justify-content-center
               {{if this.isDraggingOver "bg-dark-subtle"}}"
               {{on "dragover" this.handleDragover}}
@@ -204,18 +208,17 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
               {{on "dragleave" (fn (mut this.isDraggingOver) false)}}
               {{on "drop" this.handleDrop}}
             >
-              <div class="d-flex align-items-center justify-content-center my-5">
+              <div class="d-flex flex-column flex-md-row align-items-center justify-content-center my-5">
                 <i class="bi bi-upload me-2" />
                 <p class="m-0">
-                  Drag and drop files here or
+                  {{t "nrg.file-upload.dragAndDrop"}}
                 </p>
-                <Button class="btn btn-link p-0 m-0" @onClick={{this.openInput}}>
-                  <span class="btn btn-link p-0 m-0">select a file</span>
-                </Button>
+                <Button class="btn btn-link p-0 m-0 ms-1" @onClick={{this.openInput}} @text={{t "nrg.file-upload.selectFiles"}} />
                 <input
                   type="file"
-                  title="Select a file"
-                  aria-label="Select a file"
+                  id={{@id}}
+                  disabled={{@disabled}}
+                  aria-describedby={{@describedBy}}
                   multiple
                   hidden
                   {{on "change" this.selectFile}}
@@ -225,7 +228,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
             <div class="mt-3 col-10 d-flex flex-column align-items-center p-0">
               <FileList @files={{this.selectedFiles}} @onRemove={{this.removeFile}} @isInvalid={{@isInvalid}} @isWarning={{@isWarning}}/>
             </div>
-            <Button class="col-auto align-self-end btn-primary mt-3 me-3" @onClick={{this.toggleModal}}>Done</Button>
+            <Button class="col-auto align-self-end btn-primary mt-3 me-3" @onClick={{this.toggleModal}}>{{t "nrg.base.done"}}</Button>
           </div>
         </:default>
       </Modal>

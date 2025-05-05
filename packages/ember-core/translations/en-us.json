@@ -7,6 +7,7 @@
         "datetime": "Now",
         "time": "Now"
       },
+      "done": "Done",
       "loading": "Loading",
       "next": "Next",
       "previous": "Previous",
@@ -22,6 +23,13 @@
         "item": "About",
         "version": "Version {version}"
       }
+    },
+    "file-upload": {
+      "dragAndDrop": "Drag and drop files here or",
+      "noFiles": "No files selected",
+      "remove": "Remove",
+      "selectFiles": "select a file",
+      "upload": "Upload Files"
     },
     "multi-select": {
       "defaultText": "Select at least one option",
