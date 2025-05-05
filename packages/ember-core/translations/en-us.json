@@ -68,6 +68,9 @@
       "exclusion": {
         "in": "This field is not a valid value. Value cannot be: {in}"
       },
+      "file": {
+        "invalidType": "One or more files is not an accepted file type. Accepted types are: {types}"
+      },
       "inclusion": {
         "in": "This field is not a valid value. Valid values are: {in}"
       },
