@@ -110,23 +110,22 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
     return `btn-${theme}`;
   }
 
-  checkDuplicateFiles(files: File[]): boolean {
-    let isDuplicate = false;
+  filterDuplicateFiles(files: File[]): File[] {
+    const filteredFiles = [];
     for (const file of files) {
-      if (this.selectedFiles.some(existingFile => existingFile.name === file.name)) {
-        isDuplicate = true;
-        break;
+      if (!this.selectedFiles.some(selectedFile => selectedFile.name === file.name)) {
+        filteredFiles.push(file);
       }
     }
-    return isDuplicate;
+    return filteredFiles;
   }
 
   updateValue(files: File[]) {
-    const isDuplicate = this.checkDuplicateFiles(files);
-    if (isDuplicate) {
-      return;
+    let filteredFiles = files;
+    if (this.selectedFiles.length > 0) {
+      filteredFiles = this.filterDuplicateFiles(files);
     }
-    this.selectedFiles = this.selectedFiles.concat(files);
+    this.selectedFiles = this.selectedFiles.concat(filteredFiles);
     this.value = this.selectedFiles;
     this.args.onSelect?.(files);
   }
