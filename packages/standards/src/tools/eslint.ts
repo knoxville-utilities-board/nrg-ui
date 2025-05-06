@@ -387,14 +387,13 @@ export class Config {
       }
 
       const nodePlugin = await load('eslint-plugin-n');
-      const defaultConfig = nodePlugin.configs['flat/recommended-script'];
+      const defaultConfig = nodePlugin.configs['flat/recommended'];
 
       objects.push({
         ...defaultConfig,
         name: '@nrg-ui/standards/eslint/scripts/base',
         files: globs,
         rules: {
-          ...defaultConfig.rules,
           ...rules,
         },
       });
