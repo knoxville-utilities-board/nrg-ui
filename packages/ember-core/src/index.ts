@@ -4,6 +4,7 @@ export { default as CheckboxGroup } from './components/form/checkbox-group.gts';
 export { default as Checkbox } from './components/form/checkbox.gts';
 export { default as Datetime } from './components/form/datetime.gts';
 export { default as Field } from './components/form/field.gts';
+export { default as FileUpload } from './components/form/file-upload.gts';
 export { default as Form } from './components/form/index.gts';
 export { default as MultiSelect } from './components/form/multi-select.gts';
 export { default as NumberInput } from './components/form/number-input.gts';
@@ -72,6 +73,7 @@ export type { CheckboxGroupSignature } from './components/form/checkbox-group.gt
 export type { CheckboxSignature } from './components/form/checkbox.gts';
 export type { DatetimeSignature } from './components/form/datetime.gts';
 export type { FieldSignature } from './components/form/field.gts';
+export type { FileUploadSignature } from './components/form/file-upload.gts';
 export type { FormSignature } from './components/form/index.gts';
 export type { MultiSelectSignature } from './components/form/multi-select.gts';
 export type { NumberInputSignature } from './components/form/number-input.gts';

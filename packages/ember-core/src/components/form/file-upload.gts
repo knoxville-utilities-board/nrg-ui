@@ -33,8 +33,8 @@ export interface FileUploadSignature {
     id?: string;
     isInvalid?: boolean;
     isWarning?: boolean;
-    onSelect?: () => void;
-    onRemove?: () => void;
+    onSelect?: (files: File[]) => unknown;
+    onRemove?: (file: File) => unknown;
   };
   Blocks: {
     default: [];
@@ -67,7 +67,7 @@ class FileList extends Component<FileListSignature> {
           {{#each @files as |file|}}
             <li class="col-12 list-group-item d-flex flex-row align-items-center justify-content-between">
               {{file.name}}
-              <Button class="btn-link" @onClick={{fn this.removeFile file}}>{{t "nrg.file-upload.remove"}}</Button>
+              <Button data-test-remove class="btn-link" @onClick={{fn this.removeFile file}}>{{t "nrg.file-upload.remove"}}</Button>
             </li>
           {{/each}}
         </ul>
@@ -128,7 +128,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
     }
     this.selectedFiles = this.selectedFiles.concat(files);
     this.value = this.selectedFiles;
-    this.args.onSelect?.();
+    this.args.onSelect?.(files);
   }
 
   @action
@@ -166,7 +166,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
   removeFile(file: File) {
     this.selectedFiles = this.selectedFiles.filter(selectedFile => selectedFile !== file);
     this.value = this.selectedFiles;
-    this.args.onRemove?.();
+    this.args.onRemove?.(file);
   }
 
   @action
@@ -187,7 +187,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
 
   <template>
     <div class="{{this.classList}} p-0">
-      <Button @disabled={{@disabled}} @onClick={{this.toggleModal}} class="{{this.themedButtonClass}} mb-2">
+      <Button data-test-open="modal" @disabled={{@disabled}} @onClick={{this.toggleModal}} class="{{this.themedButtonClass}} mb-2">
         <i class="bi bi-upload"/>
         {{t "nrg.file-upload.upload"}}
       </Button>
@@ -213,7 +213,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
                 <p class="m-0">
                   {{t "nrg.file-upload.dragAndDrop"}}
                 </p>
-                <Button class="btn btn-link p-0 m-0 ms-1" @onClick={{this.openInput}} @text={{t "nrg.file-upload.selectFiles"}} />
+                <Button data-test-open="input" class="btn btn-link p-0 m-0 ms-1" @onClick={{this.openInput}} @text={{t "nrg.file-upload.selectFiles"}} />
                 <input
                   type="file"
                   id={{@id}}

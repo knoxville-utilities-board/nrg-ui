@@ -9,6 +9,7 @@ import CheckboxGroup from './components/form/checkbox-group.gts';
 import Checkbox from './components/form/checkbox.gts';
 import Datetime from './components/form/datetime.gts';
 import Field from './components/form/field.gts';
+import FileUpload from './components/form/file-upload.gts';
 import Form from './components/form/index.gts';
 import NumberInput from './components/form/number-input.gts';
 import PhoneInput from './components/form/phone-input.gts';
@@ -71,6 +72,7 @@ export interface ComponentRegistry {
   'Form::Checkbox': typeof Checkbox;
   'Form::Datetime': typeof Datetime;
   'Form::Field': typeof Field;
+  'Form::FileUpload': typeof FileUpload;
   'Form::NumberInput': typeof NumberInput;
   'Form::PhoneInput': typeof PhoneInput;
   'Form::RadioGroup': typeof RadioGroup;

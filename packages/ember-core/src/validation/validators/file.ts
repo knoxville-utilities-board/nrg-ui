@@ -1,5 +1,5 @@
 import { assert } from '@ember/debug';
-import { isNone } from '@ember/utils';
+import { isEmpty } from '@ember/utils';
 
 import BaseValidator from './base.ts';
 
@@ -40,7 +40,7 @@ export default class FileValidator<
 
     const { acceptedFileTypes, unacceptedFileTypes } = options;
 
-    if (isNone(acceptedFileTypes) && isNone(unacceptedFileTypes)) {
+    if (isEmpty(acceptedFileTypes) && isEmpty(unacceptedFileTypes)) {
       assert(
         'FileValidator requires either `acceptedFileTypes` or `unacceptedFileTypes` to be provided',
       );
@@ -50,14 +50,14 @@ export default class FileValidator<
   validate(value: T, options: FileOptions): ValidateFnResponse {
     const { allowBlank, acceptedFileTypes, unacceptedFileTypes } = options;
 
-    if (isNone(value)) {
+    if (isEmpty(value)) {
       if (allowBlank) {
         return true;
       }
       return { key: 'nrg.validation.file.required' };
     }
 
-    if (!isNone(acceptedFileTypes)) {
+    if (!isEmpty(acceptedFileTypes)) {
       if (Array.isArray(value)) {
         for (const file of value) {
           const acceptedResponse = this.checkFileIsAccepted(file, options);
@@ -73,7 +73,7 @@ export default class FileValidator<
       }
     }
 
-    if (!isNone(unacceptedFileTypes)) {
+    if (!isEmpty(unacceptedFileTypes)) {
       if (Array.isArray(value)) {
         for (const file of value) {
           const unacceptedResponse = this.checkFileIsUnaccepted(file, options);
@@ -101,7 +101,7 @@ export default class FileValidator<
 
     if (!acceptedFileTypes?.some(type => type.toLowerCase() === fileType)) {
       const types = acceptedFileTypes?.join(', ');
-      return { key: 'nrg.validation.file.invalidType', types };
+      return { key: 'nrg.validation.file.acceptedTypes', types };
     }
 
     return true;
@@ -113,7 +113,7 @@ export default class FileValidator<
 
     if (unacceptedFileTypes?.some(type => type.toLowerCase() === fileType)) {
       const types = unacceptedFileTypes.join(', ');
-      return { key: 'nrg.validation.file.invalidType', types };
+      return { key: 'nrg.validation.file.unacceptedTypes', types };
     }
 
     return true;
