@@ -232,6 +232,7 @@ const icons = [
   'bi-binoculars-fill',
   'bi-blockquote-left',
   'bi-blockquote-right',
+  'bi-bluesky',
   'bi-bluetooth',
   'bi-body-text',
   'bi-book',
