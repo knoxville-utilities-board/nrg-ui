@@ -25,11 +25,10 @@
       }
     },
     "file-upload": {
-      "dragAndDrop": "Drag and drop files here or",
+      "dragAndDrop": "Drop files here or",
       "noFiles": "No files selected",
       "remove": "Remove",
-      "selectFiles": "select a file",
-      "upload": "Upload Files"
+      "selectFiles": "click to browse"
     },
     "multi-select": {
       "defaultText": "Select at least one option",

@@ -21,19 +21,7 @@ module('Integration | Component | form/file-upload', function (hooks) {
       <FileUpload @binding={{bind model "files"}} />
     </template>);
     assert.dom('input').hasAttribute('type', 'file');
-    assert.dom('[data-test-open="modal"]').exists();
-  });
-
-  test('it opens modal when clicked', async function (assert) {
-    const model = new Model();
-    await render(<template>
-      <FileUpload @binding={{bind model "files"}} />
-    </template>);
-    assert.dom('dialog.inactive').exists()
-    await click('[data-test-open="modal"]');
-    assert.dom('dialog.inactive').doesNotExist();
-    assert.dom('.modal-header').containsText('Upload Files');
-    assert.dom('.modal-body').containsText('Drag and drop files here or select a file');
+    assert.dom('[data-test-drop-zone]').containsText('Drop files here or click to browse');
   });
 
   test('it displays message when no files are selected', async function (assert) {
@@ -42,8 +30,6 @@ module('Integration | Component | form/file-upload', function (hooks) {
       <FileUpload @binding={{bind model "files"}} />
     </template>);
     assert.dom('p.text-muted').hasText('No files selected');
-    await click('[data-test-open="modal"]');
-    assert.dom('p.text-muted').exists({ count: 2});
   });
 
   test('it displays and removes selected files', async function (assert) {
@@ -51,7 +37,7 @@ module('Integration | Component | form/file-upload', function (hooks) {
     await render(<template>
       <FileUpload @binding={{bind model "files"}} />
     </template>);
-    await click('[data-test-open="modal"]');
+
     await click('[data-test-open="input"]');
 
     const file = new File(['test'], 'test.txt', { type: 'text/plain' });
@@ -83,6 +69,7 @@ module('Integration | Component | form/file-upload', function (hooks) {
     const onRemove = function() {
       assert.ok(true, 'onRemove called');
     }
+
     await render(<template>
       <FileUpload @binding={{bind model "files"}} @onSelect={{onSelect}} @onRemove={{onRemove}} />
     </template>);
@@ -97,9 +84,11 @@ module('Integration | Component | form/file-upload', function (hooks) {
 
     await settled();
     await click('[data-test-remove]');
+
     await render(<template>
       <FileUpload @binding={{bind model "files"}} @disabled={{true}} />
     </template>);
-    assert.dom('[data-test-open="modal"]').hasClass('disabled');
+
+    assert.dom('input').hasAttribute('disabled');
   });
 })
