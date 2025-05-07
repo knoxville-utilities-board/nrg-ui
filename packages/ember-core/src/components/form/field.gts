@@ -293,10 +293,12 @@ export default class Field extends Component<FieldSignature> {
           FileUpload
           describedBy=this.describedBy
           disabled=@disabled
+          form=@form
           id=this.fieldId
           initBinding=this.initBinding
           isInvalid=this.hasError
           isWarning=this.hasWarning
+          validatorKey=this.validatorKey
         )
         MultiSelect=(component
           this.TypedMultiSelect

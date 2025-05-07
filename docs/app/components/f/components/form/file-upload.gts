@@ -21,7 +21,7 @@ export default class FileUploadDemo extends Component {
   disabled = false;
 
   @tracked
-  allowedFiles: string[] = A(['.pdf', 'image/*']);
+  accept: string[] = A(['.pdf', 'image/*']);
 
   model = new Model();
 
@@ -49,7 +49,7 @@ export default class FileUploadDemo extends Component {
       <FreestyleUsage>
         <:example>
           <FileUpload
-            @allowedFiles={{this.allowedFiles}}
+            @accept={{this.accept}}
             @binding={{bind this.model "property"}}
             @disabled={{this.disabled}}
             @id="file-upload"
@@ -59,10 +59,10 @@ export default class FileUploadDemo extends Component {
         </:example>
         <:api as |Args|>
           <Args.Array
-            @name="allowedFiles"
+            @name="accept"
             @description="The accepted file types. This is a list of file extensions or MIME types."
             @defaultValue="[]"
-            @items={{this.allowedFiles}}
+            @items={{this.accept}}
             @type="String"
           />
           <Args.Bool

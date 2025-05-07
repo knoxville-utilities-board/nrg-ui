@@ -5,16 +5,17 @@ import BaseValidator from './base.ts';
 
 import type { Binding } from '../../';
 import type { BaseOptions, Computable, ValidateFnResponse } from '../types.ts';
+import type EmberArray from '@ember/array';
 
 export type FileOptions = {
   /**
    * Accepted file types, e.g. ['png', 'jpeg'].
    */
-  allowed?: string[];
+  allowed?: string[] | EmberArray<string>;
   /**
    * Unaccepted file types, e.g. ['png', 'jpeg'].
    */
-  notAllowed?: string[];
+  notAllowed?: string[] | EmberArray<string>;
 } & BaseOptions;
 
 export default class FileValidator<
@@ -42,7 +43,6 @@ export default class FileValidator<
 
   validate(value: T, options: FileOptions): ValidateFnResponse {
     const { allowed, notAllowed } = options;
-    
     if (!isEmpty(allowed)) {
       if (Array.isArray(value)) {
         for (const file of value) {
@@ -77,16 +77,30 @@ export default class FileValidator<
     return true;
   }
 
-  extractFileType(file: File): string {
+  extractFileExtension(file: File): string {
     return file.name.split('.').pop()?.toLowerCase() ?? '';
+  }
+
+  checkMimeType(type: string, fileType: string): boolean {
+    if (type.endsWith('/*')) {
+      return type.split('/')[0] === fileType.split('/')[0];
+    }
+    return false;
   }
 
   checkFileIsAccepted(value: File, options: FileOptions): ValidateFnResponse {
     const { allowed } = options;
-    const fileType = this.extractFileType(value);
+    const allowedFiles = allowed as string[];
+    const fileExtension = this.extractFileExtension(value);
 
-    if (!allowed?.some(type => type.toLowerCase() === fileType)) {
-      const types = allowed?.join(', ');
+    if (
+      !allowedFiles?.some(
+        (allowedType) =>
+          allowedType.toLowerCase() === fileExtension ||
+          this.checkMimeType(allowedType, value.type),
+      )
+    ) {
+      const types = allowedFiles?.join(', ');
       return { key: 'nrg.validation.file.acceptedTypes', types };
     }
 
@@ -95,10 +109,15 @@ export default class FileValidator<
 
   checkFileIsUnaccepted(value: File, options: FileOptions): ValidateFnResponse {
     const { notAllowed } = options;
-    const fileType = this.extractFileType(value);
+    const notAllowedFiles = notAllowed as string[];
+    const fileExtension = this.extractFileExtension(value);
 
-    if (notAllowed?.some(type => type.toLowerCase() === fileType)) {
-      const types = notAllowed.join(', ');
+    if (
+      notAllowedFiles?.some(
+        (notAllowedType) => notAllowedType.toLowerCase() === fileExtension || this.checkMimeType(notAllowedType, value.type)
+      )
+    ) {
+      const types = notAllowedFiles.join(', ');
       return { key: 'nrg.validation.file.unacceptedTypes', types };
     }
 
