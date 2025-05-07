@@ -76,7 +76,15 @@ Router.map(function () {
             {
               path: ':subitem_id',
             },
-            function () {},
+            function () {
+              this.route(
+                'selected-subitem-2',
+                {
+                  path: ':subitem_2_id',
+                },
+                function () {},
+              );
+            },
           );
         },
       );
