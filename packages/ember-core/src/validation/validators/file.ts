@@ -8,17 +8,13 @@ import type { BaseOptions, Computable, ValidateFnResponse } from '../types.ts';
 
 export type FileOptions = {
   /**
-   * If `true`, the value can be an empty string, null, or undefined.
-   */
-  allowBlank?: boolean;
-  /**
    * Accepted file types, e.g. ['png', 'jpeg'].
    */
-  acceptedFileTypes?: string[];
+  allowed?: string[];
   /**
    * Unaccepted file types, e.g. ['png', 'jpeg'].
    */
-  unacceptedFileTypes?: string[];
+  notAllowed?: string[];
 } & BaseOptions;
 
 export default class FileValidator<
@@ -26,10 +22,7 @@ export default class FileValidator<
   Model extends object,
   Context extends object = Record<string, unknown>,
 > extends BaseValidator<T, Model, Context, FileOptions> {
-  defaultOptions = {
-    allowBlank: true,
-    presence: true,
-  };
+  defaultOptions = {};
 
   constructor(
     binding: Binding<Model>,
@@ -38,26 +31,19 @@ export default class FileValidator<
   ) {
     super(binding, options, context);
 
-    const { acceptedFileTypes, unacceptedFileTypes } = options;
+    const { allowed, notAllowed } = options;
 
-    if (isEmpty(acceptedFileTypes) && isEmpty(unacceptedFileTypes)) {
+    if (isEmpty(allowed) && isEmpty(notAllowed)) {
       assert(
-        'FileValidator requires either `acceptedFileTypes` or `unacceptedFileTypes` to be provided',
+        'FileValidator requires either `allowed` or `notAllowed` to be provided',
       );
     }
   }
 
   validate(value: T, options: FileOptions): ValidateFnResponse {
-    const { allowBlank, acceptedFileTypes, unacceptedFileTypes } = options;
-
-    if (isEmpty(value)) {
-      if (allowBlank) {
-        return true;
-      }
-      return { key: 'nrg.validation.file.required' };
-    }
-
-    if (!isEmpty(acceptedFileTypes)) {
+    const { allowed, notAllowed } = options;
+    
+    if (!isEmpty(allowed)) {
       if (Array.isArray(value)) {
         for (const file of value) {
           const acceptedResponse = this.checkFileIsAccepted(file, options);
@@ -73,7 +59,7 @@ export default class FileValidator<
       }
     }
 
-    if (!isEmpty(unacceptedFileTypes)) {
+    if (!isEmpty(notAllowed)) {
       if (Array.isArray(value)) {
         for (const file of value) {
           const unacceptedResponse = this.checkFileIsUnaccepted(file, options);
@@ -96,11 +82,11 @@ export default class FileValidator<
   }
 
   checkFileIsAccepted(value: File, options: FileOptions): ValidateFnResponse {
-    const { acceptedFileTypes } = options;
+    const { allowed } = options;
     const fileType = this.extractFileType(value);
 
-    if (!acceptedFileTypes?.some(type => type.toLowerCase() === fileType)) {
-      const types = acceptedFileTypes?.join(', ');
+    if (!allowed?.some(type => type.toLowerCase() === fileType)) {
+      const types = allowed?.join(', ');
       return { key: 'nrg.validation.file.acceptedTypes', types };
     }
 
@@ -108,11 +94,11 @@ export default class FileValidator<
   }
 
   checkFileIsUnaccepted(value: File, options: FileOptions): ValidateFnResponse {
-    const { unacceptedFileTypes } = options;
+    const { notAllowed } = options;
     const fileType = this.extractFileType(value);
 
-    if (unacceptedFileTypes?.some(type => type.toLowerCase() === fileType)) {
-      const types = unacceptedFileTypes.join(', ');
+    if (notAllowed?.some(type => type.toLowerCase() === fileType)) {
+      const types = notAllowed.join(', ');
       return { key: 'nrg.validation.file.unacceptedTypes', types };
     }
 

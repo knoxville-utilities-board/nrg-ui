@@ -77,7 +77,6 @@
         "in": "This field is not a valid value. Value cannot be: {in}"
       },
       "file": {
-        "required": "This field may not be empty",
         "acceptedTypes": "Only files of the following types are accepted: {types}",
         "unacceptedTypes": "Files of the following types are not accepted: {types}"
       },

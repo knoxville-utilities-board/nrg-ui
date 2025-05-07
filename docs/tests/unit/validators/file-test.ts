@@ -40,33 +40,13 @@ module('Unit | Validator | file', function (hooks) {
         true,
         'Expected an error, but got a result instead: ' + validator.result,
       );
-    }, new Error('Assertion Failed: FileValidator requires either `acceptedFileTypes` or `unacceptedFileTypes` to be provided'));
+    }, new Error('Assertion Failed: FileValidator requires either `allowed` or `notAllowed` to be provided'));
   });
 
-  test('`allowBlank` option works', function (this: TestContext, assert) {
-    let validator = new FileValidator(
-      this.binding,
-      { allowBlank: true, acceptedFileTypes: ['png'] },
-      this.model,
-    );
-
-    this.model.field = [];
-
-    assert.isValid(validator.result);
-
-    validator = new FileValidator(
-      this.binding,
-      { allowBlank: false, acceptedFileTypes: ['png'] },
-      this.model,
-    );
-
-    assert.isInvalid(validator.result, 'This field may not be empty');
-  });
-
-  test('`acceptedFileTypes` option works', function (this: TestContext, assert) {
+  test('`allowed` option works', function (this: TestContext, assert) {
     const validator = new FileValidator(
       this.binding,
-      { acceptedFileTypes: ['png'] },
+      { allowed: ['png'] },
       this.model,
     );
 
@@ -82,10 +62,10 @@ module('Unit | Validator | file', function (hooks) {
     );
   });
 
-  test('`unacceptedFileTypes` option works', function (this: TestContext, assert) {
+  test('`notAllowed` option works', function (this: TestContext, assert) {
     const validator = new FileValidator(
       this.binding,
-      { unacceptedFileTypes: ['png'] },
+      { notAllowed: ['png'] },
       this.model,
     );
 
