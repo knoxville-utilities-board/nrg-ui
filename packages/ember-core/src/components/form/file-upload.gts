@@ -8,12 +8,14 @@ import { tracked } from '@glimmer/tracking';
 import { t } from 'ember-intl';
 
 import BoundValue from './bound-value.ts';
+import { classes } from '../../helpers/classes.ts';
 import Button from '../button.gts';
 import Modal from '../modal.gts';
 
 import type ThemeService from '../../services/theme.ts';
+import type EmberArray from '@ember/array';
 
-export interface FileListSignature {
+export interface SelectedFileListSignature {
   Args: {
     files: File[];
     isInvalid?: boolean;
@@ -28,6 +30,7 @@ export interface FileListSignature {
 
 export interface FileUploadSignature {
   Args: {
+    allowedFiles?: string[] | EmberArray<string>;
     describedBy?: string;
     disabled?: boolean;
     id?: string;
@@ -39,22 +42,10 @@ export interface FileUploadSignature {
   Blocks: {
     default: [];
   };
-  Element: null;
+  Element: HTMLDivElement;
 }
 
-class FileList extends Component<FileListSignature> {
-  get classList() {
-    const classList = ['form-control'];
-
-    if (this.args.isInvalid) {
-      classList.push('is-invalid');
-    } else if (this.args.isWarning) {
-      classList.push('is-warning');
-    }
-
-    return classList.join(' ');
-  }
-
+class SelectedFileList extends Component<SelectedFileListSignature> {
   @action
   removeFile(file: File) {
     this.args.onRemove?.(file);
@@ -63,7 +54,7 @@ class FileList extends Component<FileListSignature> {
   <template>
     {{#if @files}}
       <div class="m-0 p-0 col-12">
-        <ul class="list-group list-group-flush rounded p-0 col-12 {{this.classList}}">
+        <ul class="list-group list-group-flush rounded p-0 col-12 {{classes "form-control" (if @isInvalid "is-invalid") (if @isWarning "is-warning")}}">
           {{#each @files as |file|}}
             <li class="col-12 list-group-item d-flex flex-row align-items-center justify-content-between">
               {{file.name}}
@@ -73,7 +64,7 @@ class FileList extends Component<FileListSignature> {
         </ul>
       </div>
     {{else}}
-      <div class="{{this.classList}}">
+      <div class=" {{classes "form-control" (if @isInvalid "is-invalid") (if @isWarning "is-warning")}}">
         <p class="text-muted m-0">{{t "nrg.file-upload.noFiles"}}</p>
       </div>
     {{/if}}
@@ -85,6 +76,9 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
   declare theme: ThemeService;
 
   @tracked
+  inputElement: HTMLInputElement | null = document.querySelector('input[type="file"]');
+
+  @tracked
   isDraggingOver = false;
 
   @tracked
@@ -93,16 +87,8 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
   @tracked
   selectedFiles: File[] = [];
 
-  get classList() {
-    const classList = ['form-control-plaintext'];
-
-    if (this.args.isInvalid) {
-      classList.push('is-invalid');
-    } else if (this.args.isWarning) {
-      classList.push('is-warning');
-    }
-
-    return classList.join(' ');
+  get allowedFiles() {
+    return (this.args.allowedFiles as string[])?.join(', ') ?? '';
   }
 
   get themedButtonClass() {
@@ -110,7 +96,10 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
     return `btn-${theme}`;
   }
 
-  filterDuplicateFiles(files: File[]): File[] {
+  filterDuplicateFiles(files: FileList): File[] {
+    if (this.selectedFiles.length === 0) {
+      return Array.from(files);
+    }
     const filteredFiles = [];
     for (const file of files) {
       if (!this.selectedFiles.some(selectedFile => selectedFile.name === file.name)) {
@@ -120,14 +109,34 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
     return filteredFiles;
   }
 
-  updateValue(files: File[]) {
-    let filteredFiles = files;
-    if (this.selectedFiles.length > 0) {
-      filteredFiles = this.filterDuplicateFiles(files);
+  triggerChange() {
+    const event = new Event('change');
+    this.inputElement?.dispatchEvent(event);
+  }
+
+  @action
+  updateValue(event: Event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const inputFiles = this.inputElement?.files;
+
+    if (inputFiles && inputFiles.length > 0) {
+      const filteredFiles = this.filterDuplicateFiles(inputFiles);
+      this.selectedFiles = this.selectedFiles.concat(filteredFiles);
+      this.value = this.selectedFiles;
+      this.args.onSelect?.(filteredFiles);
     }
-    this.selectedFiles = this.selectedFiles.concat(filteredFiles);
-    this.value = this.selectedFiles;
-    this.args.onSelect?.(files);
+
+    if (inputFiles!.length === 0 && this.selectedFiles.length < this.value!.length) {
+      this.value = this.selectedFiles;
+    }
+  }
+
+  @action
+  handleCancel(event: Event) {
+    event.preventDefault();
+    event.stopPropagation();
   }
 
   @action
@@ -146,7 +155,8 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
     const files = event.dataTransfer?.files;
 
     if (files && files.length > 0) {
-      this.updateValue(Array.from(files));
+      this.inputElement!.files = files;
+      this.triggerChange();
     }
   }
 
@@ -154,29 +164,21 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
   openInput(event: MouseEvent) {
     event.preventDefault();
     event.stopPropagation();
-    const input = document.querySelector('input[type="file"]');
-    if (input instanceof HTMLInputElement) {
-      input.value = '';
-      input.click();
-    }
+    this.inputElement!.value = '';
+    this.inputElement!.click();
   }
 
   @action
   removeFile(file: File) {
     this.selectedFiles = this.selectedFiles.filter(selectedFile => selectedFile !== file);
-    this.value = this.selectedFiles;
+    this.inputElement!.value = '';
+    this.triggerChange();
     this.args.onRemove?.(file);
   }
 
   @action
-  selectFile(event: Event) {
-    event.preventDefault();
-    event.stopPropagation();
-    const input = event.target as HTMLInputElement | null;
-    const files = input?.files;
-    if (files && files.length > 0) {
-      this.updateValue(Array.from(files));
-    }
+  toggleIsDragging(isDragging: boolean) {
+    this.isDraggingOver = isDragging;
   }
 
   @action
@@ -185,12 +187,12 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
   }
 
   <template>
-    <div class="{{this.classList}} p-0">
+    <div class="{{classes "form-control-plaintext" (if @isInvalid "is-invalid") (if @isWarning "is-warning")}} p-0" ...attributes>
       <Button data-test-open="modal" @disabled={{@disabled}} @onClick={{this.toggleModal}} class="{{this.themedButtonClass}} mb-2">
         <i class="bi bi-upload"/>
         {{t "nrg.file-upload.upload"}}
       </Button>
-        <FileList @files={{this.selectedFiles}} @onRemove={{this.removeFile}} @isInvalid={{@isInvalid}} @isWarning={{@isWarning}} />
+        <SelectedFileList @files={{this.selectedFiles}} @onRemove={{this.removeFile}} @isInvalid={{@isInvalid}} @isWarning={{@isWarning}} />
       <Modal @dismissible={{true}} @isOpen={{this.modalIsOpen}} @onDismiss={{this.toggleModal}}>
         <:header>
           {{t "nrg.file-upload.upload"}}
@@ -202,9 +204,9 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
               class="col-10 py-5 border border-2 rounded-3 d-flex flex-row align-items-center justify-content-center
               {{if this.isDraggingOver "bg-dark-subtle"}}"
               {{on "dragover" this.handleDragover}}
-              {{on "dragenter" (fn (mut this.isDraggingOver) true)}}
-              {{on "dragend" (fn (mut this.isDraggingOver) false)}}
-              {{on "dragleave" (fn (mut this.isDraggingOver) false)}}
+              {{on "dragenter" (fn this.toggleIsDragging true)}}
+              {{on "dragend" (fn this.toggleIsDragging false)}}
+              {{on "dragleave" (fn this.toggleIsDragging false)}}
               {{on "drop" this.handleDrop}}
             >
               <div class="d-flex flex-column flex-md-row align-items-center justify-content-center my-5">
@@ -215,17 +217,19 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
                 <Button data-test-open="input" class="btn btn-link p-0 m-0 ms-1" @onClick={{this.openInput}} @text={{t "nrg.file-upload.selectFiles"}} />
                 <input
                   type="file"
+                  accept={{this.allowedFiles}}
                   id={{@id}}
                   disabled={{@disabled}}
                   aria-describedby={{@describedBy}}
                   multiple
                   hidden
-                  {{on "change" this.selectFile}}
+                  {{on "change" this.updateValue}}
+                  {{on "cancel" this.handleCancel}}
                 />
               </div>
             </div>
             <div class="mt-3 col-10 d-flex flex-column align-items-center p-0">
-              <FileList @files={{this.selectedFiles}} @onRemove={{this.removeFile}} @isInvalid={{@isInvalid}} @isWarning={{@isWarning}}/>
+              <SelectedFileList @files={{this.selectedFiles}} @onRemove={{this.removeFile}} @isInvalid={{@isInvalid}} @isWarning={{@isWarning}}/>
             </div>
             <Button class="col-auto align-self-end btn-primary mt-3 me-3" @onClick={{this.toggleModal}}>{{t "nrg.base.done"}}</Button>
           </div>

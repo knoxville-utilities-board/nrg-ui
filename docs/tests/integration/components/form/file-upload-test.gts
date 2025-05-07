@@ -1,4 +1,4 @@
-import { click, render, settled } from '@ember/test-helpers';
+import { click, find, render, settled } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import { FileUpload, bind } from '@nrg-ui/core';
 import { setupIntl } from 'ember-intl/test-support';
@@ -55,7 +55,7 @@ module('Integration | Component | form/file-upload', function (hooks) {
     await click('[data-test-open="input"]');
 
     const file = new File(['test'], 'test.txt', { type: 'text/plain' });
-    const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+    const input = find('input[type="file"]') as HTMLInputElement;
     const dataTransfer = new DataTransfer();
 
     dataTransfer.items.add(file);
@@ -67,9 +67,11 @@ module('Integration | Component | form/file-upload', function (hooks) {
     assert.dom('.list-group.list-group-flush').exists();
     assert.dom('.list-group.list-group-flush').containsText('test.txt');
     assert.dom('[data-test-remove]').exists();
+    assert.equal(model.files[0]!.name, 'test.txt', 'File added to bound value');
 
     await click('[data-test-remove]');
     assert.dom('.list-group.list-group-flush').doesNotExist();
+    assert.notOk(model.files.length > 0, 'File removed from bound value');
   });
 
   test('it accepts arguments properly', async function (assert) {
@@ -86,7 +88,7 @@ module('Integration | Component | form/file-upload', function (hooks) {
     </template>);
 
     const file = new File(['test'], 'test.txt', { type: 'text/plain' });
-    const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+    const input = find('input[type="file"]') as HTMLInputElement;
     const dataTransfer = new DataTransfer();
 
     dataTransfer.items.add(file);
@@ -94,9 +96,7 @@ module('Integration | Component | form/file-upload', function (hooks) {
     input.dispatchEvent(new Event('change'));
 
     await settled();
-
     await click('[data-test-remove]');
-
     await render(<template>
       <FileUpload @binding={{bind model "files"}} @disabled={{true}} />
     </template>);

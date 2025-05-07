@@ -1,4 +1,5 @@
 // @ts-nocheck - TODO
+import { A } from '@ember/array';
 import { fn } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
@@ -18,6 +19,9 @@ class Model {
 export default class FileUploadDemo extends Component {
   @tracked
   disabled = false;
+
+  @tracked
+  allowedFiles: string[] = A(['.pdf', 'image/*']);
 
   model = new Model();
 
@@ -45,6 +49,7 @@ export default class FileUploadDemo extends Component {
       <FreestyleUsage>
         <:example>
           <FileUpload
+            @allowedFiles={{this.allowedFiles}}
             @binding={{bind this.model "property"}}
             @disabled={{this.disabled}}
             @id="file-upload"
@@ -53,6 +58,13 @@ export default class FileUploadDemo extends Component {
           />
         </:example>
         <:api as |Args|>
+          <Args.Array
+            @name="allowedFiles"
+            @description="The accepted file types. This is a list of file extensions or MIME types."
+            @defaultValue="[]"
+            @items={{this.allowedFiles}}
+            @type="String"
+          />
           <Args.Bool
             @name="disabled"
             @description="Disables the file upload component"
