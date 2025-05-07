@@ -87,9 +87,6 @@ const Validators = {
     }),
   ],
   fileUpload: [
-    validator('file', {
-      allowed: ['png', 'jpg'],
-    }),
     validator('length', {
       between: [1, 4],
       message: 'No more than 4 files can be uploaded',
@@ -202,7 +199,10 @@ export default class FormDemo extends Component {
         as |Form|
       >
         <Form.Field @label="Multiple File Upload" @required={{true}} as |Field|>
-          <Field.FileUpload @binding={{bind this.model "fileUpload"}} @allowedFiles={{array "image/*" ".pdf"}} />
+          <Field.FileUpload
+            @binding={{bind this.model "fileUpload"}}
+            @accept={{array "image/*" ".pdf"}}
+          />
         </Form.Field>
         <Form.Field
           @label="Text Input"

@@ -1,3 +1,4 @@
+import { registerDestructor } from '@ember/destroyable';
 import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
@@ -9,9 +10,12 @@ import { t } from 'ember-intl';
 
 import BoundValue from './bound-value.ts';
 import { classes } from '../../helpers/classes.ts';
+import onUpdate from '../../modifiers/on-update.ts';
+import { FileValidator } from '../../validation/index.ts';
 import Button from '../button.gts';
 import Modal from '../modal.gts';
 
+import type { FormType } from './index.gts';
 import type ThemeService from '../../services/theme.ts';
 import type EmberArray from '@ember/array';
 
@@ -30,12 +34,14 @@ export interface SelectedFileListSignature {
 
 export interface FileUploadSignature {
   Args: {
-    allowedFiles?: string[] | EmberArray<string>;
+    accept?: string[] | EmberArray<string>;
     describedBy?: string;
     disabled?: boolean;
+    form?: FormType;
     id?: string;
     isInvalid?: boolean;
     isWarning?: boolean;
+    validatorKey?: string;
     onSelect?: (files: File[]) => unknown;
     onRemove?: (file: File) => unknown;
   };
@@ -75,6 +81,8 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
   @service
   declare theme: ThemeService;
 
+  validatorId?: string;
+
   @tracked
   inputElement: HTMLInputElement | null = document.querySelector('input[type="file"]');
 
@@ -87,8 +95,16 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
   @tracked
   selectedFiles: File[] = [];
 
-  get allowedFiles() {
-    return (this.args.allowedFiles as string[])?.join(', ') ?? '';
+
+  constructor(owner: unknown, args: FileUploadSignature['Args']) {
+    super(owner, args);
+    registerDestructor(this, () => {
+      this.setupValidator();
+    });
+  }
+
+  get accept() {
+    return (this.args.accept as string[])?.join(', ') ?? '';
   }
 
   get themedButtonClass() {
@@ -112,25 +128,6 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
   triggerChange() {
     const event = new Event('change');
     this.inputElement?.dispatchEvent(event);
-  }
-
-  @action
-  updateValue(event: Event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    const inputFiles = this.inputElement?.files;
-
-    if (inputFiles && inputFiles.length > 0) {
-      const filteredFiles = this.filterDuplicateFiles(inputFiles);
-      this.selectedFiles = this.selectedFiles.concat(filteredFiles);
-      this.value = this.selectedFiles;
-      this.args.onSelect?.(filteredFiles);
-    }
-
-    if (inputFiles!.length === 0 && this.selectedFiles.length < this.value!.length) {
-      this.value = this.selectedFiles;
-    }
   }
 
   @action
@@ -177,6 +174,23 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
   }
 
   @action
+  setupValidator() {
+    const { binding, form, accept, validatorKey } = this.args;
+    if (!binding || !form || !accept || !validatorKey) {
+      return;
+    }
+    if (this.validatorId) {
+      form.unregisterValidator(validatorKey, this.validatorId);
+    }
+    const fileValidator = new FileValidator(
+      binding,
+      { allowed: accept },
+      binding.model,
+    )
+    form.registerValidator(fileValidator, validatorKey);
+  }
+
+  @action
   toggleIsDragging(isDragging: boolean) {
     this.isDraggingOver = isDragging;
   }
@@ -186,14 +200,52 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
     this.modalIsOpen = !this.modalIsOpen;
   }
 
+  @action
+  updateValue(event: Event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const inputFiles = this.inputElement?.files;
+
+    if (inputFiles && inputFiles.length > 0) {
+      const filteredFiles = this.filterDuplicateFiles(inputFiles);
+      this.selectedFiles = this.selectedFiles.concat(filteredFiles);
+      this.value = this.selectedFiles;
+      this.args.onSelect?.(filteredFiles);
+    }
+
+    if (inputFiles!.length === 0 && this.selectedFiles.length < this.value!.length) {
+      this.value = this.selectedFiles;
+    }
+  }
+
   <template>
-    <div class="{{classes "form-control-plaintext" (if @isInvalid "is-invalid") (if @isWarning "is-warning")}} p-0" ...attributes>
-      <Button data-test-open="modal" @disabled={{@disabled}} @onClick={{this.toggleModal}} class="{{this.themedButtonClass}} mb-2">
-        <i class="bi bi-upload"/>
-        {{t "nrg.file-upload.upload"}}
-      </Button>
-        <SelectedFileList @files={{this.selectedFiles}} @onRemove={{this.removeFile}} @isInvalid={{@isInvalid}} @isWarning={{@isWarning}} />
-      <Modal @dismissible={{true}} @isOpen={{this.modalIsOpen}} @onDismiss={{this.toggleModal}}>
+    <div
+    class="{{classes "form-control-plaintext" (if @isInvalid "is-invalid") (if @isWarning "is-warning")}} p-0"
+    {{onUpdate this.setupValidator @accept}}
+    ...attributes
+    >
+      <Button
+        class="{{this.themedButtonClass}} mb-2"
+        @disabled={{@disabled}}
+        @icon="bi-upload"
+        @iconLabel={{t "nrg.file-upload.upload"}}
+        @iconPosition="left"
+        @onClick={{this.toggleModal}}
+        @text={{t "nrg.file-upload.upload"}}
+        data-test-open="modal"
+      />
+        <SelectedFileList
+          @files={{this.selectedFiles}}
+          @isInvalid={{@isInvalid}}
+          @isWarning={{@isWarning}}
+          @onRemove={{this.removeFile}}
+        />
+      <Modal
+        @dismissible={{true}}
+        @isOpen={{this.modalIsOpen}}
+        @onDismiss={{this.toggleModal}}
+      >
         <:header>
           {{t "nrg.file-upload.upload"}}
         </:header>
@@ -214,24 +266,38 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
                 <p class="m-0">
                   {{t "nrg.file-upload.dragAndDrop"}}
                 </p>
-                <Button data-test-open="input" class="btn btn-link p-0 m-0 ms-1" @onClick={{this.openInput}} @text={{t "nrg.file-upload.selectFiles"}} />
+                <Button
+                  class="btn btn-link p-0 m-0 ms-1"
+                  @onClick={{this.openInput}}
+                  @text={{t "nrg.file-upload.selectFiles"}}
+                  data-test-open="input"
+                />
                 <input
-                  type="file"
-                  accept={{this.allowedFiles}}
-                  id={{@id}}
-                  disabled={{@disabled}}
+                  accept={{this.accept}}
                   aria-describedby={{@describedBy}}
-                  multiple
+                  disabled={{@disabled}}
                   hidden
+                  id={{@id}}
+                  multiple
+                  type="file"
                   {{on "change" this.updateValue}}
                   {{on "cancel" this.handleCancel}}
                 />
               </div>
             </div>
             <div class="mt-3 col-10 d-flex flex-column align-items-center p-0">
-              <SelectedFileList @files={{this.selectedFiles}} @onRemove={{this.removeFile}} @isInvalid={{@isInvalid}} @isWarning={{@isWarning}}/>
+              <SelectedFileList
+                @files={{this.selectedFiles}}
+                @isInvalid={{@isInvalid}}
+                @isWarning={{@isWarning}}
+                @onRemove={{this.removeFile}}
+              />
             </div>
-            <Button class="col-auto align-self-end btn-primary mt-3 me-3" @onClick={{this.toggleModal}}>{{t "nrg.base.done"}}</Button>
+            <Button
+              class="col-auto align-self-end btn-primary mt-3 me-3"
+              @onClick={{this.toggleModal}}
+              @text={{t "nrg.base.done"}}
+            />
           </div>
         </:default>
       </Modal>
