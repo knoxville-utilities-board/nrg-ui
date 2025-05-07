@@ -85,12 +85,12 @@ export default class FileValidator<
     if (type.endsWith('/*')) {
       return type.split('/')[0] === fileType.split('/')[0];
     }
-    return false;
+    return type === fileType;
   }
 
   checkFileIsAccepted(value: File, options: FileOptions): ValidateFnResponse {
     const { allowed } = options;
-    const allowedFiles = allowed as string[];
+    let allowedFiles = allowed as string[];
     const fileExtension = this.extractFileExtension(value);
 
     if (
@@ -100,6 +100,15 @@ export default class FileValidator<
           this.checkMimeType(allowedType, value.type),
       )
     ) {
+      for (const allowedType of allowedFiles) {
+        if (allowedType.endsWith('/*')) {
+          allowedFiles = allowedFiles.filter((type) => type !== allowedType);
+          const typePrefix = allowedType.split('/')[0];
+          if (typePrefix) {
+            allowedFiles.push(typePrefix.concat('s'));
+          }
+        }
+      }
       const types = allowedFiles?.join(', ');
       return { key: 'nrg.validation.file.acceptedTypes', types };
     }
@@ -109,14 +118,25 @@ export default class FileValidator<
 
   checkFileIsUnaccepted(value: File, options: FileOptions): ValidateFnResponse {
     const { notAllowed } = options;
-    const notAllowedFiles = notAllowed as string[];
+    let notAllowedFiles = notAllowed as string[];
     const fileExtension = this.extractFileExtension(value);
 
     if (
       notAllowedFiles?.some(
-        (notAllowedType) => notAllowedType.toLowerCase() === fileExtension || this.checkMimeType(notAllowedType, value.type)
+        (notAllowedType) =>
+          notAllowedType.toLowerCase() === fileExtension ||
+          this.checkMimeType(notAllowedType, value.type),
       )
     ) {
+      for (const notAllowedType of notAllowedFiles) {
+        if (notAllowedType.endsWith('/*')) {
+          notAllowedFiles = notAllowedFiles.filter((type) => type !== notAllowedType);
+          const typePrefix = notAllowedType.split('/')[0];
+          if (typePrefix) {
+            notAllowedFiles.push(typePrefix.concat('s'));
+          }
+        }
+      }
       const types = notAllowedFiles.join(', ');
       return { key: 'nrg.validation.file.unacceptedTypes', types };
     }
