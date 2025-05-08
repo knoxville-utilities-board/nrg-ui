@@ -24,19 +24,19 @@ export default class ContextMenuDemo extends Component {
   declare toast: ToastService;
 
   @tracked
-  showExternalButton = true;
+  alignment?: Alignment;
 
   @tracked
   disabled?: boolean;
 
   @tracked
+  flip?: boolean;
+
+  @tracked
   id = 'my-context-menu';
 
   @tracked
-  alignment?: Alignment;
-
-  @tracked
-  flip?: boolean;
+  showExternalButton = true;
 
   @action
   update(key: keyof ContextMenuDemo, value: unknown) {
@@ -55,10 +55,10 @@ export default class ContextMenuDemo extends Component {
         <FreestyleUsage>
           <:example>
             <ContextMenu
-              @id={{this.id}}
-              @disabled={{this.disabled}}
               @alignment={{this.alignment}}
+              @disabled={{this.disabled}}
               @flip={{this.flip}}
+              @id={{this.id}}
               as |Menu|
             >
               <Menu.Item @onSelect={{fn this.log "I was clicked!"}}>
@@ -90,13 +90,6 @@ export default class ContextMenuDemo extends Component {
           </:example>
           <:api as |Args|>
             <Args.String
-              @description="A unique identifier for the menu."
-              @name="id"
-              @required={{true}}
-              @value={{this.id}}
-              @onInput={{fn this.update "id"}}
-            />
-            <Args.String
               @name="alignment"
               @defaultValue="start"
               @description="How to align the dropdown"
@@ -117,6 +110,13 @@ export default class ContextMenuDemo extends Component {
               @value={{this.flip}}
               @defaultValue={{false}}
               @onInput={{fn this.update "flip"}}
+            />
+            <Args.String
+              @description="A unique identifier for the menu."
+              @name="id"
+              @required={{true}}
+              @value={{this.id}}
+              @onInput={{fn this.update "id"}}
             />
           </:api>
         </FreestyleUsage>
