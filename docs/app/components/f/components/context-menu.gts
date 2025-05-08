@@ -27,13 +27,16 @@ export default class ContextMenuDemo extends Component {
   showExternalButton = true;
 
   @tracked
-  disabled = false;
+  disabled?: boolean;
 
   @tracked
   id = 'my-context-menu';
 
   @tracked
   alignment?: Alignment;
+
+  @tracked
+  flip?: boolean;
 
   @action
   update(key: keyof ContextMenuDemo, value: unknown) {
@@ -51,7 +54,13 @@ export default class ContextMenuDemo extends Component {
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
-            <ContextMenu @disabled={{this.disabled}} @id={{this.id}} @alignment={{this.alignment}} as |Menu|>
+            <ContextMenu
+              @id={{this.id}}
+              @disabled={{this.disabled}}
+              @alignment={{this.alignment}}
+              @flip={{this.flip}}
+              as |Menu|
+            >
               <Menu.Item @onSelect={{fn this.log "I was clicked!"}}>
                 I'm an item
               </Menu.Item>
@@ -80,13 +89,6 @@ export default class ContextMenuDemo extends Component {
             </Button>
           </:example>
           <:api as |Args|>
-            <Args.Bool
-              @name="disabled"
-              @description="When true, the menu will be disabled and not open."
-              @value={{this.disabled}}
-              @defaultValue={{false}}
-              @onInput={{fn this.update "disabled"}}
-            />
             <Args.String
               @description="A unique identifier for the menu."
               @name="id"
@@ -101,6 +103,20 @@ export default class ContextMenuDemo extends Component {
               @value={{this.alignment}}
               @options={{array "" "start" "end"}}
               @onInput={{fn this.update "alignment"}}
+            />
+            <Args.Bool
+              @name="disabled"
+              @description="When true, the menu will be disabled and not open."
+              @value={{this.disabled}}
+              @defaultValue={{false}}
+              @onInput={{fn this.update "disabled"}}
+            />
+            <Args.Bool
+              @name="flip"
+              @description="When true, the dropdown placement will auto-flip to stay within viewport."
+              @value={{this.flip}}
+              @defaultValue={{false}}
+              @onInput={{fn this.update "flip"}}
             />
           </:api>
         </FreestyleUsage>

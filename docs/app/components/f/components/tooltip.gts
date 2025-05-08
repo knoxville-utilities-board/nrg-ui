@@ -168,7 +168,7 @@ export default class TooltipDemo extends Component {
             <Args.Bool
               @name="flip"
               @defaultValue={{false}}
-              @description="Whether to flip the side the tooltip is on when it reaches the viewport boundary"
+              @description="When true, the tooltip placement will auto-flip to stay within viewport."
               @value={{this.flip}}
               @onInput={{fn this.update "flip"}}
             />
