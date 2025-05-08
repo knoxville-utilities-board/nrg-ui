@@ -143,15 +143,11 @@ export default class Scaffold extends Component<ScaffoldSignature> {
           </:left>
           <:right as |AppBar|>
             {{yield AppBar to="app-bar-right"}}
-            <ContextMenu class="pe-2" @flip={{true}} @id="application">
-              <:default as |Menu|>
-                {{yield Menu to="context-menu"}}
-              </:default>
-            </ContextMenu>
+
             {{#if this.allowThemes}}
               <ContextMenuItem
                 class="d-flex justify-content-between align-items-center theme-switcher"
-                @bottom={{true}}
+                @bottom={{false}}
                 @closeOnSelect={{false}}
                 @menuId="application"
                 @onSelect={{this.theme.cycle}}
@@ -172,7 +168,16 @@ export default class Scaffold extends Component<ScaffoldSignature> {
                   />
                 </span>
               </ContextMenuItem>
+              <ContextMenuItem @menuId="application" @divider={{true}} />
+
             {{/if}}
+
+            <ContextMenu class="pe-2" @flip={{true}} @id="application">
+              <:default as |Menu|>
+                {{yield Menu to="context-menu"}}
+              </:default>
+            </ContextMenu>
+
             <Modal
               class="subtle"
               @isOpen={{this.showAboutModel}}
