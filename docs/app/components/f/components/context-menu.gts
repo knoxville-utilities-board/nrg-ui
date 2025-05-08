@@ -1,5 +1,3 @@
-// @ts-nocheck - TODO
-
 import { array, fn } from '@ember/helper';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
