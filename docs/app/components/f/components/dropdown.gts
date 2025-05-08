@@ -30,6 +30,9 @@ export default class DropdownDemo extends Component {
   disabled?: boolean;
 
   @tracked
+  flip?: boolean;
+
+  @tracked
   hasIcon?: boolean;
 
   @tracked
@@ -60,6 +63,7 @@ export default class DropdownDemo extends Component {
               @alignment={{this.alignment}}
               @closeOnSelect={{this.closeOnSelect}}
               @disabled={{this.disabled}}
+              @flip={{this.flip}}
               @hasIcon={{this.hasIcon}}
               @isOpen={{this.isOpen}}
               @offset={{this.offset}}
@@ -125,6 +129,13 @@ export default class DropdownDemo extends Component {
               @description="Whether the dropdown is disabled"
               @value={{this.disabled}}
               @onInput={{fn this.update "disabled"}}
+            />
+            <Args.Bool
+              @name="flip"
+              @description="When true, the dropdown placement will auto-flip to stay within viewport."
+              @value={{this.flip}}
+              @defaultValue={{false}}
+              @onInput={{fn this.update "flip"}}
             />
             <Args.Bool
               @name="hasIcon"

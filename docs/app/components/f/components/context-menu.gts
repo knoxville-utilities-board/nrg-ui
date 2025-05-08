@@ -1,4 +1,4 @@
-import { fn } from '@ember/helper';
+import { array, fn } from '@ember/helper';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
@@ -10,6 +10,7 @@ import ContextMenu, {
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
+import type { Alignment } from '@floating-ui/dom';
 import type ToastService from '@nrg-ui/core/services/toast';
 
 function not(value: unknown) {
@@ -21,13 +22,19 @@ export default class ContextMenuDemo extends Component {
   declare toast: ToastService;
 
   @tracked
-  showExternalButton = true;
+  alignment?: Alignment;
 
   @tracked
-  disabled = false;
+  disabled?: boolean;
+
+  @tracked
+  flip?: boolean;
 
   @tracked
   id = 'my-context-menu';
+
+  @tracked
+  showExternalButton = true;
 
   @action
   update(key: keyof ContextMenuDemo, value: unknown) {
@@ -45,7 +52,13 @@ export default class ContextMenuDemo extends Component {
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
-            <ContextMenu @disabled={{this.disabled}} @id={{this.id}} as |Menu|>
+            <ContextMenu
+              @alignment={{this.alignment}}
+              @disabled={{this.disabled}}
+              @flip={{this.flip}}
+              @id={{this.id}}
+              as |Menu|
+            >
               <Menu.Item @onSelect={{fn this.log "I was clicked!"}}>
                 I'm an item
               </Menu.Item>
@@ -74,12 +87,27 @@ export default class ContextMenuDemo extends Component {
             </Button>
           </:example>
           <:api as |Args|>
+            <Args.String
+              @name="alignment"
+              @defaultValue="start"
+              @description="How to align the dropdown"
+              @value={{this.alignment}}
+              @options={{array "" "start" "end"}}
+              @onInput={{fn this.update "alignment"}}
+            />
             <Args.Bool
               @name="disabled"
               @description="When true, the menu will be disabled and not open."
               @value={{this.disabled}}
               @defaultValue={{false}}
               @onInput={{fn this.update "disabled"}}
+            />
+            <Args.Bool
+              @name="flip"
+              @description="When true, the dropdown placement will auto-flip to stay within viewport."
+              @value={{this.flip}}
+              @defaultValue={{false}}
+              @onInput={{fn this.update "flip"}}
             />
             <Args.String
               @description="A unique identifier for the menu."

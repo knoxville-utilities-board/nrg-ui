@@ -121,7 +121,7 @@ export default class PopoverDemo extends Component {
             <Args.Bool
               @name="flip"
               @defaultValue={{false}}
-              @description="Whether to flip the side the popover is on when it reaches the viewport boundary"
+              @description="When true, the popover will auto-flip to stay within viewport."
               @value={{this.flip}}
               @onInput={{fn this.update "flip"}}
             />
