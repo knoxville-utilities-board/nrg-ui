@@ -1,4 +1,7 @@
-<div class="stacked-page col-12 p-2">
+<StackedPane
+  @ratio="full"
+  @previousRoute="stacked-pane.selected-item.selected-subitem"
+>
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">{{@model}}</h5>
@@ -18,4 +21,4 @@
       <span class="card-text">4567</span>
     </div>
   </div>
-</div>
+</StackedPane>

@@ -1,4 +1,4 @@
-<div class="stacked-page col-12 col-md-6 col-lg-4 p-2">
+<StackedPane @ratio="focused" @previousRoute="stacked-pane.selected-item">
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">Address {{@model}}</h5>
@@ -27,7 +27,7 @@
       <ul class="list-group">
         <LinkTo
           class="list-group-item"
-          @route="stacked-page.selected-item.selected-subitem.selected-subitem-2"
+          @route="stacked-pane.selected-item.selected-subitem.selected-subitem-2"
           @model="Electric"
         >
           <div class="d-flex w-100 justify-content-between">
@@ -36,7 +36,7 @@
         </LinkTo>
         <LinkTo
           class="list-group-item"
-          @route="stacked-page.selected-item.selected-subitem.selected-subitem-2"
+          @route="stacked-pane.selected-item.selected-subitem.selected-subitem-2"
           @model="Water"
         >
           <div class="d-flex w-100 justify-content-between">
@@ -45,7 +45,7 @@
         </LinkTo>
         <LinkTo
           class="list-group-item"
-          @route="stacked-page.selected-item.selected-subitem.selected-subitem-2"
+          @route="stacked-pane.selected-item.selected-subitem.selected-subitem-2"
           @model="Gas"
         >
           <div class="d-flex w-100 justify-content-between">
@@ -55,6 +55,6 @@
       </ul>
     </div>
   </div>
-</div>
+</StackedPane>
 
 {{outlet}}

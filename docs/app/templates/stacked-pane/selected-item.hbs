@@ -1,4 +1,4 @@
-<div class="stacked-page col-12 col-md-6 col-lg-8 p-2">
+<StackedPane @ratio="focused" @previousRoute="stacked-pane">
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">Account {{@model}}</h5>
@@ -27,7 +27,7 @@
       <ul class="list-group">
         <LinkTo
           class="list-group-item"
-          @route="stacked-page.selected-item.selected-subitem"
+          @route="stacked-pane.selected-item.selected-subitem"
           @model={{6}}
         >
           <div class="d-flex w-100 justify-content-between">
@@ -37,7 +37,7 @@
         </LinkTo>
         <LinkTo
           class="list-group-item"
-          @route="stacked-page.selected-item.selected-subitem"
+          @route="stacked-pane.selected-item.selected-subitem"
           @model={{7}}
         >
 
@@ -47,7 +47,7 @@
           <p class="mb-1">City, State Zip</p></LinkTo>
         <LinkTo
           class="list-group-item"
-          @route="stacked-page.selected-item.selected-subitem"
+          @route="stacked-pane.selected-item.selected-subitem"
           @model={{8}}
         >
           <div class="d-flex w-100 justify-content-between">
@@ -56,7 +56,7 @@
           <p class="mb-1">City, State Zip</p></LinkTo>
         <LinkTo
           class="list-group-item"
-          @route="stacked-page.selected-item.selected-subitem"
+          @route="stacked-pane.selected-item.selected-subitem"
           @model={{9}}
         >
           <div class="d-flex w-100 justify-content-between">
@@ -65,7 +65,7 @@
           <p class="mb-1">City, State Zip</p></LinkTo>
         <LinkTo
           class="list-group-item"
-          @route="stacked-page.selected-item.selected-subitem"
+          @route="stacked-pane.selected-item.selected-subitem"
           @model={{10}}
         >
           <div class="d-flex w-100 justify-content-between">
@@ -75,6 +75,5 @@
       </ul>
     </div>
   </div>
-</div>
-
+</StackedPane>
 {{outlet}}

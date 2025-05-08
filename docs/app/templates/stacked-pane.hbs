@@ -1,9 +1,9 @@
-<div class="stacked-page-container container flex-nowrap">
-  <div class="stacked-page col-12 col-md-6 col-lg-4 p-2">
+<StackedPane::Container>
+  <StackedPane @ratio="focused">
     <ul class="list-group">
       <LinkTo
         class="list-group-item"
-        @route="stacked-page.selected-item"
+        @route="stacked-pane.selected-item"
         @model={{1}}
       >
         <div class="d-flex w-100 justify-content-between">
@@ -15,7 +15,7 @@
       </LinkTo>
       <LinkTo
         class="list-group-item"
-        @route="stacked-page.selected-item"
+        @route="stacked-pane.selected-item"
         @model={{2}}
       >
         <div class="d-flex w-100 justify-content-between">
@@ -26,7 +26,7 @@
         <small>Phone</small></LinkTo>
       <LinkTo
         class="list-group-item"
-        @route="stacked-page.selected-item"
+        @route="stacked-pane.selected-item"
         @model={{3}}
       >
         <div class="d-flex w-100 justify-content-between">
@@ -37,7 +37,7 @@
         <small>Phone</small></LinkTo>
       <LinkTo
         class="list-group-item"
-        @route="stacked-page.selected-item"
+        @route="stacked-pane.selected-item"
         @model={{4}}
       >
         <div class="d-flex w-100 justify-content-between">
@@ -48,7 +48,7 @@
         <small>Phone</small></LinkTo>
       <LinkTo
         class="list-group-item"
-        @route="stacked-page.selected-item"
+        @route="stacked-pane.selected-item"
         @model={{5}}
       >
         <div class="d-flex w-100 justify-content-between">
@@ -58,7 +58,6 @@
         <p class="mb-1">Email</p>
         <small>Phone</small></LinkTo>
     </ul>
-  </div>
-
+  </StackedPane>
   {{outlet}}
-</div>
+</StackedPane::Container>
