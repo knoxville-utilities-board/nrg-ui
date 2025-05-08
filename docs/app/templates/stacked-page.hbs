@@ -1,5 +1,5 @@
-<div class="stacked-page-container container flex-nowrap">
-  <div class="stacked-page col-12 col-md-6 col-lg-4 p-2">
+<StackedPage @container={{true}}>
+  <StackedPage @ratio="list-detail">
     <ul class="list-group">
       <LinkTo
         class="list-group-item"
@@ -58,7 +58,7 @@
         <p class="mb-1">Email</p>
         <small>Phone</small></LinkTo>
     </ul>
-  </div>
+  </StackedPage>
 
   {{outlet}}
-</div>
+</StackedPage>

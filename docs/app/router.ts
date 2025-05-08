@@ -59,6 +59,15 @@ Router.map(function () {
   });
   this.route('scaffold');
   this.route('services');
+  this.route('side-by-side', function () {
+    this.route(
+      'detail',
+      {
+        path: ':item_id',
+      },
+      function () {},
+    );
+  });
   this.route(
     'stacked-page',
     {
