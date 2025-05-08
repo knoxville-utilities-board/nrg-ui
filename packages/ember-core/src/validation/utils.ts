@@ -2,6 +2,7 @@ import ConfirmationValidator from './validators/confirmation.ts';
 import CustomValidator from './validators/custom.ts';
 import EmailValidator from './validators/email.ts';
 import ExclusionValidator from './validators/exclusion.ts';
+import FileValidator from './validators/file.ts';
 import InclusionValidator from './validators/inclusion.ts';
 import LengthValidator from './validators/length.ts';
 import NumberValidator from './validators/number.ts';
@@ -21,6 +22,7 @@ const Validators = {
   custom: CustomValidator,
   email: EmailValidator,
   exclusion: ExclusionValidator,
+  file: FileValidator,
   inclusion: InclusionValidator,
   length: LengthValidator,
   number: NumberValidator,
@@ -65,6 +67,10 @@ export function validator<V extends ValidatorType = ValidatorType>(
   if (type === 'exclusion') {
     return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
       new ExclusionValidator(binding, options, context);
+  }
+  if (type === 'file') {
+    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
+      new FileValidator(binding, options, context);
   }
   if (type === 'inclusion') {
     return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>

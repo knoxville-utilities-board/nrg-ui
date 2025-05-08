@@ -85,6 +85,12 @@ const Validators = {
       maxPrecision: 2,
     }),
   ],
+  fileUpload: [
+    validator('length', {
+      between: [1, 4],
+      message: 'No more than 4 files can be uploaded',
+    })
+  ]
 };
 
 class Model {
@@ -123,6 +129,9 @@ class Model {
 
   @tracked
   checkboxGroup = autoTrack(new Array(3));
+
+  @tracked
+  fileUpload;
 
   toJSON() {
     const obj = {};
@@ -185,6 +194,12 @@ export default class FormDemo extends Component {
         @onSubmit={{this.onSubmit}}
         as |Form|
       >
+        <Form.Field @label="File Upload" @required={{true}} as |Field|>
+          <Field.FileUpload
+            @binding={{bind this.model "fileUpload"}}
+            @accept={{array "image/*" ".pdf"}}
+          />
+        </Form.Field>
         <Form.Field
           @label="Text Input"
           @required={{this.required}}
