@@ -1,4 +1,6 @@
-import { fn } from '@ember/helper';
+// @ts-nocheck - TODO
+
+import { array, fn } from '@ember/helper';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
@@ -10,6 +12,7 @@ import ContextMenu, {
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
+import type { Alignment } from '@floating-ui/dom';
 import type ToastService from '@nrg-ui/core/services/toast';
 
 function not(value: unknown) {
@@ -29,6 +32,9 @@ export default class ContextMenuDemo extends Component {
   @tracked
   id = 'my-context-menu';
 
+  @tracked
+  alignment?: Alignment;
+
   @action
   update(key: keyof ContextMenuDemo, value: unknown) {
     // @ts-expect-error - Don't need type safety here
@@ -45,7 +51,7 @@ export default class ContextMenuDemo extends Component {
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
-            <ContextMenu @disabled={{this.disabled}} @id={{this.id}} as |Menu|>
+            <ContextMenu @disabled={{this.disabled}} @id={{this.id}} @alignment={{this.alignment}} as |Menu|>
               <Menu.Item @onSelect={{fn this.log "I was clicked!"}}>
                 I'm an item
               </Menu.Item>
@@ -87,6 +93,14 @@ export default class ContextMenuDemo extends Component {
               @required={{true}}
               @value={{this.id}}
               @onInput={{fn this.update "id"}}
+            />
+            <Args.String
+              @name="alignment"
+              @defaultValue="start"
+              @description="How to align the dropdown"
+              @value={{this.alignment}}
+              @options={{array "" "start" "end"}}
+              @onInput={{fn this.update "alignment"}}
             />
           </:api>
         </FreestyleUsage>
