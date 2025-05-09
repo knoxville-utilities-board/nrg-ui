@@ -4,55 +4,27 @@
       "oldVersion": "0.3.0"
     },
     "@nrg-ui/css": {
-      "impact": "minor",
-      "oldVersion": "0.20.0",
-      "newVersion": "0.21.0",
+      "impact": "patch",
+      "oldVersion": "0.21.0",
+      "newVersion": "0.21.1",
       "tagName": "latest",
       "constraints": [
         {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        },
-        {
           "impact": "patch",
-          "reason": "Appears in changelog section :memo: Documentation"
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./packages/design-system/package.json"
     },
     "@nrg-ui/core": {
-      "impact": "patch",
-      "oldVersion": "0.34.1",
-      "newVersion": "0.34.2",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./packages/ember-core/package.json"
+      "oldVersion": "0.34.2"
     },
     "@nrg-ui/standards": {
-      "impact": "patch",
-      "oldVersion": "0.4.3",
-      "newVersion": "0.4.4",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
-        }
-      ],
-      "pkgJSONPath": "./packages/standards/package.json"
+      "oldVersion": "0.4.4"
     },
     "@nrg-ui/theme-generator": {
       "oldVersion": "0.3.0"
     }
   },
-  "description": "## Release (2025-05-09)\n\n* @nrg-ui/css 0.21.0 (minor)\n* @nrg-ui/core 0.34.2 (patch)\n* @nrg-ui/standards 0.4.4 (patch)\n\n#### :rocket: Enhancement\n* `@nrg-ui/css`\n  * [#463](https://github.com/knoxville-utilities-board/nrg-ui/pull/463) feat: Add invalid and warning color to datetime ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`, `@nrg-ui/standards`\n  * [#458](https://github.com/knoxville-utilities-board/nrg-ui/pull/458) fix(standards): Use base recommended config for eslint-plugin-n ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* `@nrg-ui/css`\n  * [#463](https://github.com/knoxville-utilities-board/nrg-ui/pull/463) feat: Add invalid and warning color to datetime ([@TSenter](https://github.com/TSenter))\n* Other\n  * [#461](https://github.com/knoxville-utilities-board/nrg-ui/pull/461) docs: Add alignment and flip arguments ([@baekay000](https://github.com/baekay000))\n\n#### :house: Internal\n* `@nrg-ui/core`\n  * [#460](https://github.com/knoxville-utilities-board/nrg-ui/pull/460) style: Move themeswitcher to top of scaffold context menu ([@baekay000](https://github.com/baekay000))\n\n#### Committers: 2\n- Kaylee Bae ([@baekay000](https://github.com/baekay000))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-05-09)\n\n* @nrg-ui/css 0.21.1 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`\n  * [#464](https://github.com/knoxville-utilities-board/nrg-ui/pull/464) fix(datetime): Show validation messages ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* [#465](https://github.com/knoxville-utilities-board/nrg-ui/pull/465) chore(ci): Enable testing for Ember 6.4 ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
