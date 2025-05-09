@@ -1,12 +1,13 @@
 // @ts-nocheck - TODO
 
-import { getOwner, setOwner } from '@ember/application';
 import { array } from '@ember/helper';
 import { action } from '@ember/object';
+import { getOwner, setOwner } from '@ember/owner';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { Button, Form, bind } from '@nrg-ui/core';
 import { validator } from '@nrg-ui/core/validation';
+import dayjs from 'dayjs';
 import { tracked as autoTrack } from 'tracked-built-ins';
 
 import CodeBlock from '../../../code-block';
@@ -123,6 +124,9 @@ class Model {
 
   @tracked
   checkboxGroup = autoTrack(new Array(3));
+
+  @tracked
+  datetime;
 
   toJSON() {
     const obj = {};
@@ -262,6 +266,12 @@ export default class FormDemo extends Component {
             @binding={{bind this.model "number"}}
             @format="currency"
             @formatPrecision={{3}}
+          />
+        </Form.Field>
+        <Form.Field @label="Datetime" @required={{this.required}} as |Field|>
+          <Field.Datetime
+            @binding={{bind this.model "datetime"}}
+            @minDate={{(dayjs)}}
           />
         </Form.Field>
         <Form.Field @required={{this.required}} as |Field|>

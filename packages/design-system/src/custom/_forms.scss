@@ -143,6 +143,20 @@ input::placeholder {
   }
 }
 
+.calendar.input-group:has(input.form-control.is-invalid)
+  > span.input-group-text {
+  border-left-color: var(--bs-form-invalid-border-color);
+  border-top-color: var(--bs-form-invalid-border-color);
+  border-bottom-color: var(--bs-form-invalid-border-color);
+}
+
+.calendar.input-group:has(input.form-control.is-warning)
+  > span.input-group-text {
+  border-left-color: var(--bs-form-warning-border-color);
+  border-top-color: var(--bs-form-warning-border-color);
+  border-bottom-color: var(--bs-form-warning-border-color);
+}
+
 div.dropdown:has(.is-invalid) ~ .invalid-feedback,
 div.dropdown:has(.is-warning) ~ .warning-feedback {
   display: block;
