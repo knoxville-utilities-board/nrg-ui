@@ -1,5 +1,33 @@
 # Changelog
 
+## Release (2025-05-09)
+
+* @nrg-ui/css 0.21.0 (minor)
+* @nrg-ui/core 0.34.2 (patch)
+* @nrg-ui/standards 0.4.4 (patch)
+
+#### :rocket: Enhancement
+* `@nrg-ui/css`
+  * [#463](https://github.com/knoxville-utilities-board/nrg-ui/pull/463) feat: Add invalid and warning color to datetime ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`, `@nrg-ui/standards`
+  * [#458](https://github.com/knoxville-utilities-board/nrg-ui/pull/458) fix(standards): Use base recommended config for eslint-plugin-n ([@TSenter](https://github.com/TSenter))
+
+#### :memo: Documentation
+* `@nrg-ui/css`
+  * [#463](https://github.com/knoxville-utilities-board/nrg-ui/pull/463) feat: Add invalid and warning color to datetime ([@TSenter](https://github.com/TSenter))
+* Other
+  * [#461](https://github.com/knoxville-utilities-board/nrg-ui/pull/461) docs: Add alignment and flip arguments ([@baekay000](https://github.com/baekay000))
+
+#### :house: Internal
+* `@nrg-ui/core`
+  * [#460](https://github.com/knoxville-utilities-board/nrg-ui/pull/460) style: Move themeswitcher to top of scaffold context menu ([@baekay000](https://github.com/baekay000))
+
+#### Committers: 2
+- Kaylee Bae ([@baekay000](https://github.com/baekay000))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-04-29)
 
 * @nrg-ui/css 0.20.0 (minor)
