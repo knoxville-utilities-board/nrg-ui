@@ -2,6 +2,20 @@
 
 ## Release (2025-05-09)
 
+* @nrg-ui/css 0.21.1 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`
+  * [#464](https://github.com/knoxville-utilities-board/nrg-ui/pull/464) fix(datetime): Show validation messages ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* [#465](https://github.com/knoxville-utilities-board/nrg-ui/pull/465) chore(ci): Enable testing for Ember 6.4 ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
+## Release (2025-05-09)
+
 * @nrg-ui/css 0.21.0 (minor)
 * @nrg-ui/core 0.34.2 (patch)
 * @nrg-ui/standards 0.4.4 (patch)
