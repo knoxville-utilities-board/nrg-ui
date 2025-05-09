@@ -77,7 +77,13 @@
       },
       "file": {
         "acceptedTypes": "Only files of the following types are accepted: {types}",
-        "unacceptedTypes": "Files of the following types are not accepted: {types}"
+        "unacceptedTypes": "Files of the following types are not accepted: {types}",
+        "application": "applications",
+        "audio": "audio",
+        "document": "documents",
+        "image": "images",
+        "text": "text",
+        "video": "videos"
       },
       "inclusion": {
         "in": "This field is not a valid value. Valid values are: {in}"

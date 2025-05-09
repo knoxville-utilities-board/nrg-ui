@@ -5,17 +5,16 @@ import BaseValidator from './base.ts';
 
 import type { Binding } from '../../';
 import type { BaseOptions, Computable, ValidateFnResponse } from '../types.ts';
-import type EmberArray from '@ember/array';
 
 export type FileOptions = {
   /**
    * Accepted file types, e.g. ['png', 'jpeg'].
    */
-  allowed?: string[] | EmberArray<string>;
+  acceptedTypes?: string[];
   /**
    * Unaccepted file types, e.g. ['png', 'jpeg'].
    */
-  notAllowed?: string[] | EmberArray<string>;
+  unacceptedTypes?: string[];
 } & BaseOptions;
 
 export default class FileValidator<
@@ -32,18 +31,18 @@ export default class FileValidator<
   ) {
     super(binding, options, context);
 
-    const { allowed, notAllowed } = options;
+    const { acceptedTypes, unacceptedTypes } = options;
 
-    if (isEmpty(allowed) && isEmpty(notAllowed)) {
+    if (isEmpty(acceptedTypes) && isEmpty(unacceptedTypes)) {
       assert(
-        'FileValidator requires either `allowed` or `notAllowed` to be provided',
+        'FileValidator requires either `acceptedTypes` or `unacceptedTypes` to be provided',
       );
     }
   }
 
   validate(value: T, options: FileOptions): ValidateFnResponse {
-    const { allowed, notAllowed } = options;
-    if (!isEmpty(allowed)) {
+    const { acceptedTypes, unacceptedTypes } = options;
+    if (!isEmpty(acceptedTypes)) {
       if (Array.isArray(value)) {
         for (const file of value) {
           const acceptedResponse = this.checkFileIsAccepted(file, options);
@@ -59,7 +58,7 @@ export default class FileValidator<
       }
     }
 
-    if (!isEmpty(notAllowed)) {
+    if (!isEmpty(unacceptedTypes)) {
       if (Array.isArray(value)) {
         for (const file of value) {
           const unacceptedResponse = this.checkFileIsUnaccepted(file, options);
@@ -88,56 +87,59 @@ export default class FileValidator<
     return type === fileType;
   }
 
-  checkFileIsAccepted(value: File, options: FileOptions): ValidateFnResponse {
-    const { allowed } = options;
-    let allowedFiles = allowed as string[];
-    const fileExtension = this.extractFileExtension(value);
+  formatTypeValidations(types: string[]): string {
+    const typePrefixes = [];
+    for (const type of types) {
+      if (type.includes('/')) {
+        const prefix = type.split('/')[0];
+        typePrefixes.push(this.intl.t(`nrg.validation.file.${prefix}`));
+      } else {
+        typePrefixes.push(type);
+      }
+    }
+    return this.intl.formatList(typePrefixes, { style: 'narrow' });
+  }
 
-    if (
-      !allowedFiles?.some(
-        (allowedType) =>
-          allowedType.toLowerCase() === fileExtension ||
-          this.checkMimeType(allowedType, value.type),
-      )
-    ) {
-      for (const allowedType of allowedFiles) {
-        if (allowedType.endsWith('/*')) {
-          allowedFiles = allowedFiles.filter((type) => type !== allowedType);
-          const typePrefix = allowedType.split('/')[0];
-          if (typePrefix) {
-            allowedFiles.push(typePrefix.concat('s'));
-          }
+  fileIsAllowed(value: File, options: string[]): boolean {
+    const fileExtension = this.extractFileExtension(value);
+    return options.some(
+      (option) =>
+        option.toLowerCase() === fileExtension ||
+        this.checkMimeType(option, value.type),
+    );
+  }
+
+  checkFileIsAccepted(value: File, options: FileOptions): ValidateFnResponse {
+    let acceptedTypes = options.acceptedTypes as string[];
+    const typeIsAllowed = this.fileIsAllowed(value, acceptedTypes);
+
+    if (!typeIsAllowed) {
+      for (const acceptedType of acceptedTypes) {
+        if (acceptedType.endsWith('/*')) {
+          acceptedTypes = acceptedTypes.filter((type) => type !== acceptedType);
+          acceptedTypes.push(acceptedType);
         }
       }
-      const types = allowedFiles?.join(', ');
+      const types = this.formatTypeValidations(acceptedTypes);
       return { key: 'nrg.validation.file.acceptedTypes', types };
     }
-
     return true;
   }
 
   checkFileIsUnaccepted(value: File, options: FileOptions): ValidateFnResponse {
-    const { notAllowed } = options;
-    let notAllowedFiles = notAllowed as string[];
-    const fileExtension = this.extractFileExtension(value);
+    let unacceptedTypes = options.unacceptedTypes as string[];
+    const typeIsNotAllowed = this.fileIsAllowed(value, unacceptedTypes);
 
-    if (
-      notAllowedFiles?.some(
-        (notAllowedType) =>
-          notAllowedType.toLowerCase() === fileExtension ||
-          this.checkMimeType(notAllowedType, value.type),
-      )
-    ) {
-      for (const notAllowedType of notAllowedFiles) {
-        if (notAllowedType.endsWith('/*')) {
-          notAllowedFiles = notAllowedFiles.filter((type) => type !== notAllowedType);
-          const typePrefix = notAllowedType.split('/')[0];
-          if (typePrefix) {
-            notAllowedFiles.push(typePrefix.concat('s'));
-          }
+    if (typeIsNotAllowed) {
+      for (const unacceptedType of unacceptedTypes) {
+        if (unacceptedType.endsWith('/*')) {
+          unacceptedTypes = unacceptedTypes.filter(
+            (type) => type !== unacceptedType,
+          );
+          unacceptedTypes.push(unacceptedType);
         }
       }
-      const types = notAllowedFiles.join(', ');
+      const types = this.formatTypeValidations(unacceptedTypes);
       return { key: 'nrg.validation.file.unacceptedTypes', types };
     }
 

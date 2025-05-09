@@ -40,13 +40,13 @@ module('Unit | Validator | file', function (hooks) {
         true,
         'Expected an error, but got a result instead: ' + validator.result,
       );
-    }, new Error('Assertion Failed: FileValidator requires either `allowed` or `notAllowed` to be provided'));
+    }, new Error('Assertion Failed: FileValidator requires either `acceptedTypes` or `unacceptedTypes` to be provided'));
   });
 
-  test('`allowed` option works', function (this: TestContext, assert) {
+  test('`acceptedTypes` option works', function (this: TestContext, assert) {
     const validator = new FileValidator(
       this.binding,
-      { allowed: ['png'] },
+      { acceptedTypes: ['png'] },
       this.model,
     );
 
@@ -62,10 +62,10 @@ module('Unit | Validator | file', function (hooks) {
     );
   });
 
-  test('`notAllowed` option works', function (this: TestContext, assert) {
+  test('`unacceptedTypes` option works', function (this: TestContext, assert) {
     const validator = new FileValidator(
       this.binding,
-      { notAllowed: ['png'] },
+      { unacceptedTypes: ['png'] },
       this.model,
     );
 

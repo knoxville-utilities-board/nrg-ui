@@ -57,7 +57,7 @@ module('Integration | Component | form/file-upload', function (hooks) {
 
     await click('[data-test-remove]');
     assert.dom('.list-group.list-group-flush').doesNotExist();
-    assert.notOk(model.files.length > 0, 'File removed from bound value');
+    assert.strictEqual(model.files.length, 0, 'File removed from bound value');
   });
 
   test('it accepts arguments properly', async function (assert) {

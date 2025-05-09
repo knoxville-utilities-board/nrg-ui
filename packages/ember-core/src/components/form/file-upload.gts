@@ -9,12 +9,12 @@ import { t } from 'ember-intl';
 
 import BoundValue from './bound-value.ts';
 import { classes } from '../../helpers/classes.ts';
+import onInsert from '../../modifiers/on-insert.ts';
 import onUpdate from '../../modifiers/on-update.ts';
 import { FileValidator } from '../../validation/index.ts';
 import Button from '../button.gts';
 
 import type { FormType } from './index.gts';
-import type EmberArray from '@ember/array';
 
 export interface SelectedFileListSignature {
   Args: {
@@ -31,7 +31,7 @@ export interface SelectedFileListSignature {
 
 export interface FileUploadSignature {
   Args: {
-    accept?: string[] | EmberArray<string>;
+    accept?: string[];
     describedBy?: string;
     disabled?: boolean;
     form?: FormType;
@@ -57,7 +57,7 @@ class SelectedFileList extends Component<SelectedFileListSignature> {
   <template>
     {{#if @files}}
       <div class="m-0 p-0 col-12">
-        <ul class="list-group list-group-flush rounded p-0 col-12 {{classes "form-control" (if @isInvalid "is-invalid") (if @isWarning "is-warning")}}">
+        <ul class={{classes "list-group list-group-flush rounded p-0 col-12 form-control" (if @isInvalid "is-invalid") (if @isWarning "is-warning")}}>
           {{#each @files as |file|}}
             <li class="col-12 list-group-item d-flex flex-row align-items-center justify-content-between">
               {{file.name}}
@@ -67,7 +67,7 @@ class SelectedFileList extends Component<SelectedFileListSignature> {
         </ul>
       </div>
     {{else}}
-      <div class=" {{classes "form-control" (if @isInvalid "is-invalid") (if @isWarning "is-warning")}}">
+      <div class={{classes "form-control" (if @isInvalid "is-invalid") (if @isWarning "is-warning")}}>
         <p class="text-muted m-0">{{t "nrg.file-upload.noFiles"}}</p>
       </div>
     {{/if}}
@@ -78,7 +78,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
   validatorId?: string;
 
   @tracked
-  inputElement: HTMLInputElement | null = document.querySelector('input[type="file"]');
+  inputElement?: HTMLInputElement;
 
   @tracked
   isDraggingOver = false;
@@ -158,6 +158,13 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
   }
 
   @action
+  initInput(element: HTMLElement) {
+    if (element instanceof HTMLInputElement) {
+      this.inputElement = element;
+    }
+  }
+
+  @action
   openInput(event: MouseEvent) {
     event.preventDefault();
     event.stopPropagation();
@@ -184,7 +191,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
     }
     const fileValidator = new FileValidator(
       binding,
-      { allowed: accept },
+      { acceptedTypes: accept },
       binding.model,
     )
     form.registerValidator(fileValidator, validatorKey);
@@ -219,7 +226,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
 
   <template>
     <div
-    class="{{classes "form-control-plaintext" (if @isInvalid "is-invalid") (if @isWarning "is-warning")}} p-0"
+    class={{classes "form-control-plaintext p-0" (if @isInvalid "is-invalid") (if @isWarning "is-warning")}}
     {{onUpdate this.setupValidator @accept}}
     ...attributes
     >
@@ -234,7 +241,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
         {{on "dragleave" (fn this.toggleIsDragging false)}}
         {{on "drop" this.handleDrop}}
       >
-        <div class="w-100 d-flex flex-column flex-md-row align-items-center justify-content-center my-4 {{if @disabled "text-body-tertiary"}}" data-test-drop-zone>
+        <div class={{classes "w-100 d-flex flex-column flex-md-row align-items-center justify-content-center my-4" (if @disabled "text-body-tertiary")}} data-test-drop-zone>
           <i class="bi bi-file-earmark-text mx-2 fs-4" />
           <p class="m-0">
             {{t "nrg.file-upload.dragAndDrop"}}
@@ -256,6 +263,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
             type="file"
             {{on "change" this.updateValue}}
             {{on "cancel" this.handleCancel}}
+            {{onInsert this.initInput}}
           />
         </div>
       </div>
