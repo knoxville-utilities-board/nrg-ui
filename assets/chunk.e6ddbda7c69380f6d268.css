@@ -15011,6 +15011,18 @@ input::placeholder {
   box-shadow: inset 0 0 0 1px rgba(13, 110, 253, 0.25);
 }
 
+.calendar.input-group:has(input.form-control.is-invalid, input.form-control.is-warning:not([disabled]), input.form-control.is-warning:focus:not([disabled])) > span.input-group-text {
+  border-left-color: var(--bs-form-invalid-border-color);
+  border-top-color: var(--bs-form-invalid-border-color);
+  border-bottom-color: var(--bs-form-invalid-border-color);
+}
+
+.calendar.input-group:has(input.form-control.is-warning) > span.input-group-text {
+  border-left-color: var(--bs-form-warning-border-color);
+  border-top-color: var(--bs-form-warning-border-color);
+  border-bottom-color: var(--bs-form-warning-border-color);
+}
+
 div.dropdown:has(.is-invalid, input.form-control.is-warning:not([disabled]),
 textarea.form-control.is-warning:not([disabled]),
 select.form-select.is-warning:not([disabled]),
