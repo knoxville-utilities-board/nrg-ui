@@ -158,7 +158,9 @@ input::placeholder {
 }
 
 div.dropdown:has(.is-invalid) ~ .invalid-feedback,
-div.dropdown:has(.is-warning) ~ .warning-feedback {
+div.dropdown:has(.is-warning) ~ .warning-feedback,
+.calendar.input-group:has(input.is-invalid) ~ .invalid-feedback,
+.calendar.input-group:has(input.is-warning) ~ .warning-feedback {
   display: block;
 }
 
