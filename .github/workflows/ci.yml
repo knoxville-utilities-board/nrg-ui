@@ -79,6 +79,7 @@ jobs:
           - ember-5.9
           - ember-lts-5.12
           - ember-6.0
+          - ember-6.4
           - ember-release
           - ember-beta
           - ember-canary
