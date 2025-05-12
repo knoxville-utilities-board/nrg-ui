@@ -11,6 +11,7 @@ import CheckboxGroup from './form/checkbox-group.gts';
 import Checkbox from './form/checkbox.gts';
 import Datetime from './form/datetime.gts';
 import Field from './form/field.gts';
+import FileUpload from './form/file-upload.gts';
 import Form from './form/index.gts';
 import MultiSelect from './form/multi-select.gts';
 import NumberInput from './form/number-input.gts';
@@ -54,6 +55,7 @@ export default {
   CheckboxGroup,
   Checkbox,
   Datetime,
+  FileUpload,
   Field,
   MultiSelect,
   NumberInput,

@@ -23,6 +23,7 @@ Router.map(function () {
       this.route('checkbox');
       this.route('checkbox-group');
       this.route('datetime');
+      this.route('file-upload');
       this.route('multi-select');
       this.route('phone-input');
       this.route('radio-group');
