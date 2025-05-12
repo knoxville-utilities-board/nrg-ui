@@ -12,7 +12,11 @@
     <Menu.Item @route="scaffold">
       Scaffold
     </Menu.Item>
-    <Menu.Group>
+    <Menu.Group
+      @collapsible={{true}}
+      @isCollapsed={{this.isCollapsed}}
+      @onClick={{this.toggleCollapsed}}
+    >
       <:badge>
         12
       </:badge>

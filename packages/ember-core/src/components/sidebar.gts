@@ -108,6 +108,8 @@ export interface GroupSignature {
   Element: HTMLAnchorElement | HTMLDivElement;
   Args: {
     active?: boolean;
+    collapsible?: boolean;
+    isCollapsed?: boolean;
     disabled?: boolean;
     route?: string;
     url?: string;
@@ -147,62 +149,74 @@ export class Group extends Component<GroupSignature> {
   };
 
   <template>
-    {{#if (has-block "header")}}
-      {{#if @route}}
-        <LinkTo
-          class={{this.classes}}
-          @disabled={{@disabled}}
-          @route={{@route}}
-          {{on "click" this.onClick}}
-          ...attributes
-        >
-          <span>
+    <div class={{classes (if @collapsible "accordion accordion-item")}}>
+      {{#if (has-block "header")}}
+        {{#if @collapsible}}
+          <div
+            role="button"
+            class={{classes "ember-view item list-group-item header d-flex justify-content-between align-items-center list-group-item-action bg-body" (if @collapsible "accordion-button") (if @isCollapsed "collapsed")}}
+            {{on "click" this.onClick}}
+          >
             {{yield to="header"}}
-          </span>
-          {{#if (has-block "badge")}}
-            <span class="badge rounded-pill">
-              {{yield to="badge"}}
+          </div>
+        {{else if @route}}
+          <LinkTo
+            class={{this.classes}}
+            @disabled={{@disabled}}
+            @route={{@route}}
+            {{on "click" this.onClick}}
+            ...attributes
+          >
+            <span>
+              {{yield to="header"}}
             </span>
-          {{/if}}
-        </LinkTo>
-      {{else if @url}}
-        <a
-          class={{this.classes}}
-          href={{@url}}
-          disabled={{@disabled}}
-          {{on "click" this.onClick}}
-          ...attributes
-        >
-          <span>
-            {{yield to="header"}}
-          </span>
-          {{#if (has-block "badge")}}
-            <span class="badge rounded-pill">
-              {{yield to="badge"}}
+            {{#if (has-block "badge")}}
+              <span class="badge rounded-pill">
+                {{yield to="badge"}}
+              </span>
+            {{/if}}
+          </LinkTo>
+        {{else if @url}}
+          <a
+            class={{this.classes}}
+            href={{@url}}
+            disabled={{@disabled}}
+            {{on "click" this.onClick}}
+            ...attributes
+          >
+            <span>
+              {{yield to="header"}}
             </span>
-          {{/if}}
-        </a>
-      {{else}}
-        <div
-          class={{this.classes}}
-          {{! @glint-expect-error - Known Glint issue - #661 }}
-          {{(if @onClick (modifier on "click" this.onClick))}}
-          ...attributes
-        >
-          <span>
-            {{yield to="header"}}
-          </span>
-          {{#if (has-block "badge")}}
-            <span class="badge rounded-pill">
-              {{yield to="badge"}}
+            {{#if (has-block "badge")}}
+              <span class="badge rounded-pill">
+                {{yield to="badge"}}
+              </span>
+            {{/if}}
+          </a>
+        {{else}}
+          <div
+            class={{this.classes}}
+            {{! @glint-expect-error - Known Glint issue - #661 }}
+            {{(if @onClick (modifier on "click" this.onClick))}}
+            ...attributes
+          >
+            <span>
+              {{yield to="header"}}
             </span>
-          {{/if}}
+            {{#if (has-block "badge")}}
+              <span class="badge rounded-pill">
+                {{yield to="badge"}}
+              </span>
+            {{/if}}
+          </div>
+        {{/if}}
+      {{/if}}
+      {{#if (has-block "items")}}
+        <div class={{classes (if @collapsible "accordion-collapse") (if @isCollapsed "collapse")}}>
+        {{yield (component Item onClickInternal=@onClickInternal) to="items"}}
         </div>
       {{/if}}
-    {{/if}}
-    {{#if (has-block "items")}}
-      {{yield (component Item onClickInternal=@onClickInternal) to="items"}}
-    {{/if}}
+    </div>
   </template>
 }
 
