@@ -6,6 +6,8 @@ import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { t } from 'ember-intl';
+import { scheduleTask } from 'ember-lifeline';
+import { TrackedArray } from 'tracked-built-ins';
 
 import BoundValue from './bound-value.ts';
 import { classes } from '../../helpers/classes.ts';
@@ -18,6 +20,7 @@ import type { FormType } from './index.gts';
 
 export interface SelectedFileListSignature {
   Args: {
+    disabled?: boolean;
     files: File[] | null;
     isInvalid?: boolean;
     isWarning?: boolean;
@@ -61,7 +64,9 @@ class SelectedFileList extends Component<SelectedFileListSignature> {
           {{#each @files as |file index|}}
             <li class="col-12 list-group-item d-flex flex-row align-items-center justify-content-between">
               {{file.name}}
+              {{#unless @disabled}}
               <Button data-test-remove class="btn-link" @onClick={{fn this.removeFile index}}>{{t "nrg.file-upload.remove"}}</Button>
+              {{/unless}}
             </li>
           {{/each}}
         </ul>
@@ -89,6 +94,12 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
     registerDestructor(this, () => {
       this.setupValidator();
     });
+
+    if (!(this.value instanceof TrackedArray)) {
+      scheduleTask(this, 'actions', () => {
+        this.onChange(new TrackedArray(this.value ?? []));
+      });
+    }
   }
 
   get accept() {
@@ -147,13 +158,15 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
 
   @action
   initInput(element: HTMLElement) {
-    if (element instanceof HTMLInputElement) {
-      this.inputElement = element;
-    }
+    this.inputElement = element as HTMLInputElement;
   }
 
   @action
   change(files: FileList) {
+    if (this.args.disabled) {
+      return;
+    }
+
     const value = this.value ?? [];
 
     if (files && files.length > 0) {
@@ -174,6 +187,9 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
 
   @action
   removeFile(index: number) {
+    if (this.args.disabled) {
+      return;
+    }
     const [ removedFile ] = this.value!.splice(index, 1);
     this.onChange(this.value);
     this.args.onRemove?.(removedFile!);
@@ -258,6 +274,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
       </div>
       <div class="d-flex flex-column align-items-center p-0 mt-1">
         <SelectedFileList
+          @disabled={{@disabled}}
           @files={{this.value}}
           @isInvalid={{@isInvalid}}
           @isWarning={{@isWarning}}
