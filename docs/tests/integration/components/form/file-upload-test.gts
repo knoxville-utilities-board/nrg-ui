@@ -63,15 +63,15 @@ module('Integration | Component | form/file-upload', function (hooks) {
   test('it accepts arguments properly', async function (assert) {
     assert.expect(3);
     const model = new Model();
-    const onSelect = function() {
-      assert.ok(true, 'onSelect called');
+    const onAdd = function() {
+      assert.ok(true, 'onAdd called');
     }
     const onRemove = function() {
       assert.ok(true, 'onRemove called');
     }
 
     await render(<template>
-      <FileUpload @binding={{bind model "files"}} @onSelect={{onSelect}} @onRemove={{onRemove}} />
+      <FileUpload @binding={{bind model "files"}} @onAdd={{onAdd}} @onRemove={{onRemove}} />
     </template>);
 
     const file = new File(['test'], 'test.txt', { type: 'text/plain' });

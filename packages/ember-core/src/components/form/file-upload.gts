@@ -18,10 +18,10 @@ import type { FormType } from './index.gts';
 
 export interface SelectedFileListSignature {
   Args: {
-    files: File[];
+    files: File[] | null;
     isInvalid?: boolean;
     isWarning?: boolean;
-    onRemove?: (file: File) => void;
+    onRemove?: (index: number) => void;
   };
   Element: HTMLUListElement;
   Blocks: {
@@ -39,7 +39,7 @@ export interface FileUploadSignature {
     isInvalid?: boolean;
     isWarning?: boolean;
     validatorKey?: string;
-    onSelect?: (files: File[]) => unknown;
+    onAdd?: (files: File[]) => unknown;
     onRemove?: (file: File) => unknown;
   };
   Blocks: {
@@ -50,18 +50,18 @@ export interface FileUploadSignature {
 
 class SelectedFileList extends Component<SelectedFileListSignature> {
   @action
-  removeFile(file: File) {
-    this.args.onRemove?.(file);
+  removeFile(index: number) {
+    this.args.onRemove?.(index);
   }
 
   <template>
     {{#if @files}}
       <div class="m-0 p-0 col-12">
         <ul class={{classes "list-group list-group-flush rounded p-0 col-12 form-control" (if @isInvalid "is-invalid") (if @isWarning "is-warning")}}>
-          {{#each @files as |file|}}
+          {{#each @files as |file index|}}
             <li class="col-12 list-group-item d-flex flex-row align-items-center justify-content-between">
               {{file.name}}
-              <Button data-test-remove class="btn-link" @onClick={{fn this.removeFile file}}>{{t "nrg.file-upload.remove"}}</Button>
+              <Button data-test-remove class="btn-link" @onClick={{fn this.removeFile index}}>{{t "nrg.file-upload.remove"}}</Button>
             </li>
           {{/each}}
         </ul>
@@ -82,9 +82,6 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
 
   @tracked
   isDraggingOver = false;
-
-  @tracked
-  selectedFiles: File[] = [];
 
 
   constructor(owner: unknown, args: FileUploadSignature['Args']) {
@@ -107,21 +104,16 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
   }
 
   filterDuplicateFiles(files: FileList): File[] {
-    if (this.selectedFiles.length === 0) {
+    if (!this.value || this.value!.length === 0) {
       return Array.from(files);
     }
     const filteredFiles = [];
-    for (const file of files) {
-      if (!this.selectedFiles.some(selectedFile => selectedFile.name === file.name)) {
-        filteredFiles.push(file);
+    for (const newFile of files) {
+      if (!this.value!.some(file => file.name === newFile.name)) {
+        filteredFiles.push(newFile);
       }
     }
     return filteredFiles;
-  }
-
-  triggerChange() {
-    const event = new Event('change');
-    this.inputElement?.dispatchEvent(event);
   }
 
   @action
@@ -150,17 +142,25 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
     this.isDraggingOver = false;
 
     const files = event.dataTransfer?.files;
-
-    if (files && files.length > 0) {
-      this.inputElement!.files = files;
-      this.triggerChange();
-    }
+    this.change(files!)
   }
 
   @action
   initInput(element: HTMLElement) {
     if (element instanceof HTMLInputElement) {
       this.inputElement = element;
+    }
+  }
+
+  @action
+  change(files: FileList) {
+    const value = this.value ?? [];
+
+    if (files && files.length > 0) {
+      const filteredFiles = this.filterDuplicateFiles(files);
+      value.push(...filteredFiles);
+      this.onChange(value);
+      this.args.onAdd?.(filteredFiles);
     }
   }
 
@@ -173,11 +173,10 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
   }
 
   @action
-  removeFile(file: File) {
-    this.selectedFiles = this.selectedFiles.filter(selectedFile => selectedFile !== file);
-    this.inputElement!.value = '';
-    this.triggerChange();
-    this.args.onRemove?.(file);
+  removeFile(index: number) {
+    const [ removedFile ] = this.value!.splice(index, 1);
+    this.onChange(this.value);
+    this.args.onRemove?.(removedFile!);
   }
 
   @action
@@ -211,17 +210,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
     event.stopPropagation();
 
     const inputFiles = this.inputElement?.files;
-
-    if (inputFiles && inputFiles.length > 0) {
-      const filteredFiles = this.filterDuplicateFiles(inputFiles);
-      this.selectedFiles = this.selectedFiles.concat(filteredFiles);
-      this.value = this.selectedFiles;
-      this.args.onSelect?.(filteredFiles);
-    }
-
-    if (inputFiles!.length === 0 && this.selectedFiles.length < this.value!.length) {
-      this.value = this.selectedFiles;
-    }
+    this.change(inputFiles!);
   }
 
   <template>
@@ -269,7 +258,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
       </div>
       <div class="d-flex flex-column align-items-center p-0 mt-1">
         <SelectedFileList
-          @files={{this.selectedFiles}}
+          @files={{this.value}}
           @isInvalid={{@isInvalid}}
           @isWarning={{@isWarning}}
           @onRemove={{this.removeFile}}
