@@ -6252,24 +6252,24 @@ select.navbar-toggler.form-select.is-warning:focus:not([disabled]),
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
-  .card-group > .card:not(:last-child) .card-img-top,
-  .card-group > .card:not(:last-child) .card-header {
+  .card-group > .card:not(:last-child) > .card-img-top,
+  .card-group > .card:not(:last-child) > .card-header {
     border-top-right-radius: 0;
   }
-  .card-group > .card:not(:last-child) .card-img-bottom,
-  .card-group > .card:not(:last-child) .card-footer {
+  .card-group > .card:not(:last-child) > .card-img-bottom,
+  .card-group > .card:not(:last-child) > .card-footer {
     border-bottom-right-radius: 0;
   }
   .card-group > .card:not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
-  .card-group > .card:not(:first-child) .card-img-top,
-  .card-group > .card:not(:first-child) .card-header {
+  .card-group > .card:not(:first-child) > .card-img-top,
+  .card-group > .card:not(:first-child) > .card-header {
     border-top-left-radius: 0;
   }
-  .card-group > .card:not(:first-child) .card-img-bottom,
-  .card-group > .card:not(:first-child) .card-footer {
+  .card-group > .card:not(:first-child) > .card-img-bottom,
+  .card-group > .card:not(:first-child) > .card-footer {
     border-bottom-left-radius: 0;
   }
 }
@@ -8656,6 +8656,10 @@ select.focus-ring.form-select.is-warning:focus:not([disabled]),
 .visually-hidden:not(caption),
 .visually-hidden-focusable:not(:focus):not(input.form-control.is-warning:focus:not([disabled])):not(textarea.form-control.is-warning:focus:not([disabled])):not(select.form-select.is-warning:focus:not([disabled])):not(.form-control.is-warning:focus:not([disabled])):not(.form-check.is-warning:focus:not([disabled])):not(.form-check-input.is-warning:focus:not([disabled])):not(.form-control.is-warning:not([disabled]):focus):not(.form-control.is-warning.form-check:not([disabled]):focus):not(.form-control.is-warning.form-check-input:not([disabled]):focus):not(.form-check.is-warning:not([disabled]):focus):not(.form-check.is-warning.form-check-input:not([disabled]):focus):not(.form-check-input.is-warning:not([disabled]):focus):not(:focus-within):not(caption) {
   position: absolute !important;
+}
+.visually-hidden *,
+.visually-hidden-focusable:not(:focus):not(input.form-control.is-warning:focus:not([disabled])):not(textarea.form-control.is-warning:focus:not([disabled])):not(select.form-select.is-warning:focus:not([disabled])):not(.form-control.is-warning:focus:not([disabled])):not(.form-check.is-warning:focus:not([disabled])):not(.form-check-input.is-warning:focus:not([disabled])):not(.form-control.is-warning:not([disabled]):focus):not(.form-control.is-warning.form-check:not([disabled]):focus):not(.form-control.is-warning.form-check-input:not([disabled]):focus):not(.form-check.is-warning:not([disabled]):focus):not(.form-check.is-warning.form-check-input:not([disabled]):focus):not(.form-check-input.is-warning:not([disabled]):focus):not(:focus-within) * {
+  overflow: hidden !important;
 }
 
 .stretched-link::after {
@@ -15271,14 +15275,14 @@ input.form-check-input.is-warning:focus:not([disabled])):not([disabled]) ~ .warn
 }
 
 /*!
- * Bootstrap Icons v1.12.1 (https://icons.getbootstrap.com/)
+ * Bootstrap Icons v1.13.1 (https://icons.getbootstrap.com/)
  * Copyright 2019-2024 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/icons/blob/main/LICENSE)
  */
 @font-face {
   font-display: block;
   font-family: "bootstrap-icons";
-  src: url(/nrg-ui/assets/fonts/bootstrap-icons.ca961065e092080ca3f5.woff2) format("woff2"), url(/nrg-ui/assets/fonts/bootstrap-icons.ff25a7ff93ea67f144c5.woff) format("woff");
+  src: url(/nrg-ui/assets/fonts/bootstrap-icons.92ea18a81d737146ff04.woff2) format("woff2"), url(/nrg-ui/assets/fonts/bootstrap-icons.1295669cd4e305c97f2c.woff) format("woff");
 }
 .bi::before,
 [class^=bi-]::before,
@@ -23497,6 +23501,114 @@ input.form-check-input.is-warning:focus:not([disabled])):not([disabled]) ~ .warn
 
 .bi-bluesky::before {
   content: "\f7f9";
+}
+
+.bi-tux::before {
+  content: "滑";
+}
+
+.bi-beaker-fill::before {
+  content: "串";
+}
+
+.bi-beaker::before {
+  content: "句";
+}
+
+.bi-flask-fill::before {
+  content: "龜";
+}
+
+.bi-flask-florence-fill::before {
+  content: "龜";
+}
+
+.bi-flask-florence::before {
+  content: "契";
+}
+
+.bi-flask::before {
+  content: "金";
+}
+
+.bi-leaf-fill::before {
+  content: "喇";
+}
+
+.bi-leaf::before {
+  content: "奈";
+}
+
+.bi-measuring-cup-fill::before {
+  content: "懶";
+}
+
+.bi-measuring-cup::before {
+  content: "癩";
+}
+
+.bi-unlock2-fill::before {
+  content: "羅";
+}
+
+.bi-unlock2::before {
+  content: "蘿";
+}
+
+.bi-battery-low::before {
+  content: "螺";
+}
+
+.bi-anthropic::before {
+  content: "裸";
+}
+
+.bi-apple-music::before {
+  content: "邏";
+}
+
+.bi-claude::before {
+  content: "樂";
+}
+
+.bi-openai::before {
+  content: "洛";
+}
+
+.bi-perplexity::before {
+  content: "烙";
+}
+
+.bi-css::before {
+  content: "珞";
+}
+
+.bi-javascript::before {
+  content: "落";
+}
+
+.bi-typescript::before {
+  content: "酪";
+}
+
+.bi-fork-knife::before {
+  content: "駱";
+}
+
+.bi-globe-americas-fill::before {
+  content: "亂";
+}
+
+.bi-globe-asia-australia-fill::before {
+  content: "卵";
+}
+
+.bi-globe-central-south-asia-fill::before {
+  content: "欄";
+}
+
+.bi-globe-europe-africa-fill::before {
+  content: "爛";
 }
 
 dialog {
