@@ -2,6 +2,17 @@
 
 ## Release (2025-05-14)
 
+* @nrg-ui/core 0.35.1 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#471](https://github.com/knoxville-utilities-board/nrg-ui/pull/471) fix(icon): Use correct type, not component ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
+## Release (2025-05-14)
+
 * @nrg-ui/core 0.35.0 (minor)
 
 #### :rocket: Enhancement

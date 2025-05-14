@@ -7,15 +7,11 @@
       "oldVersion": "0.21.1"
     },
     "@nrg-ui/core": {
-      "impact": "minor",
-      "oldVersion": "0.34.2",
-      "newVersion": "0.35.0",
+      "impact": "patch",
+      "oldVersion": "0.35.0",
+      "newVersion": "0.35.1",
       "tagName": "latest",
       "constraints": [
-        {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        },
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
@@ -30,5 +26,5 @@
       "oldVersion": "0.3.0"
     }
   },
-  "description": "## Release (2025-05-14)\n\n* @nrg-ui/core 0.35.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#456](https://github.com/knoxville-utilities-board/nrg-ui/pull/456) feat: File upload form component and validator ([@ChesneyJulian](https://github.com/ChesneyJulian))\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#469](https://github.com/knoxville-utilities-board/nrg-ui/pull/469) refactor(sidebar): Remove click modifier if url or route present ([@ChesneyJulian](https://github.com/ChesneyJulian))\n\n#### Committers: 1\n- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))\n"
+  "description": "## Release (2025-05-14)\n\n* @nrg-ui/core 0.35.1 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#471](https://github.com/knoxville-utilities-board/nrg-ui/pull/471) fix(icon): Use correct type, not component ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
