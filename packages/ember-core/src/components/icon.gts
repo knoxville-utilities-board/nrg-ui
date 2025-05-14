@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 
-import type { Icon as IconType } from '../';
+import type { IconType } from '../';
 
 declare type SubtleColorType =
   | 'primary-subtle'
