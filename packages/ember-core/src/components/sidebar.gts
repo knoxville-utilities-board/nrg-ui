@@ -56,7 +56,6 @@ export class Item extends Component<ItemSignature> {
       <LinkTo
         class={{this.classes}}
         @route={{@route}}
-        {{on "click" this.onClick}}
         ...attributes
       >
         <span>
@@ -72,7 +71,6 @@ export class Item extends Component<ItemSignature> {
       <a
         class={{this.classes}}
         href={{@url}}
-        {{on "click" this.onClick}}
         ...attributes
       >
         <span>
@@ -153,7 +151,6 @@ export class Group extends Component<GroupSignature> {
           class={{this.classes}}
           @disabled={{@disabled}}
           @route={{@route}}
-          {{on "click" this.onClick}}
           ...attributes
         >
           <span>
@@ -170,7 +167,6 @@ export class Group extends Component<GroupSignature> {
           class={{this.classes}}
           href={{@url}}
           disabled={{@disabled}}
-          {{on "click" this.onClick}}
           ...attributes
         >
           <span>
