@@ -1,5 +1,20 @@
 # Changelog
 
+## Release (2025-05-14)
+
+* @nrg-ui/core 0.35.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#456](https://github.com/knoxville-utilities-board/nrg-ui/pull/456) feat: File upload form component and validator ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#469](https://github.com/knoxville-utilities-board/nrg-ui/pull/469) refactor(sidebar): Remove click modifier if url or route present ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+#### Committers: 1
+- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
 ## Release (2025-05-09)
 
 * @nrg-ui/css 0.21.1 (patch)
