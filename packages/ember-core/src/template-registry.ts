@@ -38,6 +38,10 @@ import PageNotFound from './components/page-not-found.gts';
 import Progress from './components/progress.gts';
 import Scaffold from './components/scaffold.gts';
 import Sidebar from './components/sidebar.gts';
+import {
+  Container as StackedPaneContainer,
+  Pane as StackedPane,
+} from './components/stacked-pane.gts';
 import Toaster from './components/toaster.gts';
 import Bind from './helpers/bind.ts';
 import LookupService from './helpers/lookup-service.ts';
@@ -63,6 +67,8 @@ export interface ComponentRegistry {
   Progress: typeof Progress;
   Scaffold: typeof Scaffold;
   Sidebar: typeof Sidebar;
+  StackedPane: typeof StackedPane;
+  'StackedPane::Container': typeof StackedPaneContainer;
   Toaster: typeof Toaster;
 
   // Form components

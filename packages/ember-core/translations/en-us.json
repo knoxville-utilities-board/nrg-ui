@@ -57,6 +57,9 @@
       "placeholder": "Search",
       "noResults": "No results found"
     },
+    "stacked-pane": {
+      "navigate-back": "Go back"
+    },
     "validation": {
       "confirmation": {
         "invalid": "This field does not match {label}",

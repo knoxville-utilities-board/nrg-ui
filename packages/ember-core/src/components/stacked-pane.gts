@@ -2,6 +2,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { classes } from '@nrg-ui/core';
+import { t } from 'ember-intl';
 import { eq } from 'ember-truth-helpers';
 
 import Button from './button.gts';
@@ -72,7 +73,7 @@ class Pane extends Component<PaneSignature> {
             @iconPosition="left"
             @onClick={{this.onBackButtonClick}}
           >
-            Go back
+            {{t "nrg.stacked-pane.navigate-back"}}
           </Button>
         </div>
       {{/if}}
