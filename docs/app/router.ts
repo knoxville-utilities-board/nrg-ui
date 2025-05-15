@@ -61,4 +61,44 @@ Router.map(function () {
   });
   this.route('scaffold');
   this.route('services');
+  this.route('side-by-side', function () {
+    this.route(
+      'detail',
+      {
+        path: ':item_id',
+      },
+      function () {},
+    );
+  });
+  this.route(
+    'stacked-pane',
+    {
+      path: 'stacked-pane/list',
+    },
+    function () {
+      this.route(
+        'selected-item',
+        {
+          path: ':item_id/sublist',
+        },
+        function () {
+          this.route(
+            'selected-subitem',
+            {
+              path: ':subitem_id',
+            },
+            function () {
+              this.route(
+                'selected-subitem-2',
+                {
+                  path: ':subitem_2_id',
+                },
+                function () {},
+              );
+            },
+          );
+        },
+      );
+    },
+  );
 });

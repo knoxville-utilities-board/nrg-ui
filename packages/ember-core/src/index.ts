@@ -52,6 +52,10 @@ export { default as Popover } from './components/popover.gts';
 export { default as Progress } from './components/progress.gts';
 export { default as Scaffold } from './components/scaffold.gts';
 export { default as Sidebar } from './components/sidebar.gts';
+export {
+  Container as StackedPaneContainer,
+  Pane as StackedPane,
+} from './components/stacked-pane.gts';
 export { default as Toaster } from './components/toaster.gts';
 export { default as Tooltip } from './components/tooltip.gts';
 
@@ -129,6 +133,10 @@ export type {
 } from './components/progress.gts';
 export type { ScaffoldSignature } from './components/scaffold.gts';
 export type { SidebarSignature } from './components/sidebar.gts';
+export type {
+  ContainerSignature as StackedPaneContainerSignature,
+  PaneSignature as StackedPaneSignature,
+} from './components/stacked-pane.gts';
 export type { ToasterSignature } from './components/toaster.gts';
 
 export type Binding<Model extends object = Record<string, unknown>> = {

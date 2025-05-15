@@ -226,7 +226,7 @@ export default class Scaffold extends Component<ScaffoldSignature> {
           <div
             class="col flex-grow-1 justify-content-between overflow-auto px-md-0 d-flex flex-column"
           >
-            <main class="col">
+            <main class="col d-flex flex-column">
               {{yield}}
             </main>
             {{#if (or (has-block "footer-left") (has-block "footer-right"))}}
