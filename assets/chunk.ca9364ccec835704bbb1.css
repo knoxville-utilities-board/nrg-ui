@@ -1323,7 +1323,7 @@ progress {
   width: 91.66666667%;
 }
 
-.col-12 {
+.col-12, .stacked-pane.full, .stacked-pane.half, .stacked-pane.focused {
   flex: 0 0 auto;
   width: 100%;
 }
@@ -1657,7 +1657,7 @@ progress {
     flex: 0 0 auto;
     width: 41.66666667%;
   }
-  .col-md-6 {
+  .col-md-6, .stacked-pane.half, .stacked-pane.focused {
     flex: 0 0 auto;
     width: 50%;
   }
@@ -1818,7 +1818,7 @@ progress {
     flex: 0 0 auto;
     width: 25%;
   }
-  .col-lg-4 {
+  .col-lg-4, .stacked-pane.focused {
     flex: 0 0 auto;
     width: 33.33333333%;
   }
@@ -1834,7 +1834,7 @@ progress {
     flex: 0 0 auto;
     width: 58.33333333%;
   }
-  .col-lg-8 {
+  .col-lg-8, .stacked-pane.focused:last-of-type {
     flex: 0 0 auto;
     width: 66.66666667%;
   }
@@ -24103,6 +24103,28 @@ dialog .btn-close {
   pointer-events: auto;
 }
 
+.stacked-pane-container {
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row-reverse nowrap;
+  overflow-x: hidden;
+  direction: rtl;
+  width: 100%;
+  height: 100%;
+  flex: 1 0 0;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.stacked-pane-container.container {
+  border-right: calc(var(--bs-gutter-x) * 0.5) solid transparent;
+  border-left: calc(var(--bs-gutter-x) * 0.5) solid transparent;
+}
+
+.stacked-pane {
+  height: 100%;
+  overflow-y: auto;
+  direction: ltr;
+}
 body {
   scrollbar-color: rgba(var(--bs-body-color-rgb), 0.25) rgba(var(--bs-body-color-rgb), 0.1);
   scrollbar-width: thin;
