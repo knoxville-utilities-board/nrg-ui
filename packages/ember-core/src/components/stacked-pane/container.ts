@@ -1,2 +1,1 @@
-import { Container } from '../stacked-pane.gts';
-export default Container;
+export { Container as default } from '../stacked-pane.gts';

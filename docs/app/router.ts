@@ -99,10 +99,6 @@ Router.map(function () {
           );
         },
       );
-      this.route('on-click-outside');
-      this.route('on-destroy');
-      this.route('on-insert');
-      this.route('on-update');
     },
   );
 });

@@ -52,7 +52,7 @@ export { default as Popover } from './components/popover.gts';
 export { default as Progress } from './components/progress.gts';
 export { default as Scaffold } from './components/scaffold.gts';
 export { default as Sidebar } from './components/sidebar.gts';
-export type {
+export {
   Container as StackedPaneContainer,
   Pane as StackedPane,
 } from './components/stacked-pane.gts';
