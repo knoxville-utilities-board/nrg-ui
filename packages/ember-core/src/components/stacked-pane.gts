@@ -1,11 +1,9 @@
-import { action } from '@ember/object';
+import { LinkTo } from '@ember/routing';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { classes } from '@nrg-ui/core';
 import { t } from 'ember-intl';
 import { eq } from 'ember-truth-helpers';
-
-import Button from './button.gts';
 
 import type { TOC } from '@ember/component/template-only';
 import type RouterService from '@ember/routing/router-service';
@@ -39,18 +37,6 @@ class Pane extends Component<PaneSignature> {
   @service
   declare router: RouterService;
 
-  get showBackButton() {
-    return !!this.args.previousRoute;
-  }
-
-  @action
-  onBackButtonClick() {
-    if (!this.args.previousRoute) {
-      return;
-    }
-    this.router.transitionTo(this.args.previousRoute);
-  }
-
   get ratio() {
     return this.args.ratio || 'focused';
   }
@@ -66,15 +52,15 @@ class Pane extends Component<PaneSignature> {
       }}
       ...attributes
     >
-      {{#if this.showBackButton}}
+      {{#if @previousRoute}}
         <div class="d-block d-md-none">
-          <Button
-            @icon="bi-arrow-left"
-            @iconPosition="left"
-            @onClick={{this.onBackButtonClick}}
+          <LinkTo
+            @route={{@previousRoute}}
+            class="icon-link icon-link-hover p-1"
           >
+            <i class="bi bi-arrow-left"></i>
             {{t "nrg.stacked-pane.navigate-back"}}
-          </Button>
+          </LinkTo>
         </div>
       {{/if}}
       {{yield}}
