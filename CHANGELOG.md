@@ -1,5 +1,17 @@
 # Changelog
 
+## Release (2025-05-19)
+
+* @nrg-ui/css 0.22.0 (minor)
+* @nrg-ui/core 0.36.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#470](https://github.com/knoxville-utilities-board/nrg-ui/pull/470) feat: Add stacked pane component ([@KeithClinard](https://github.com/KeithClinard))
+
+#### Committers: 1
+- Keith ([@KeithClinard](https://github.com/KeithClinard))
+
 ## Release (2025-05-14)
 
 * @nrg-ui/core 0.35.1 (patch)
