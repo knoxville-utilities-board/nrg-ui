@@ -58,7 +58,7 @@
   },
   "devDependencies": {
     "@types/eslint": "^9.6.1",
-    "@types/node": "^22.15.19",
+    "@types/node": "^22.15.21",
     "@types/semver": "^7.7.0",
     "@types/yargs": "^17.0.33",
     "eslint": "^9.27.0",

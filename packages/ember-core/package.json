@@ -97,7 +97,7 @@
   },
   "dependencies": {
     "@embroider/addon-shim": "^1.10.0",
-    "@embroider/macros": "^1.17.3",
+    "@embroider/macros": "^1.18.0",
     "@floating-ui/dom": "^1.7.0",
     "decorator-transforms": "^1.0.1",
     "ember-css-transitions": "^4.5.0",
@@ -142,12 +142,12 @@
     "execa": "^9.5.3",
     "prettier": "^3.1.1",
     "prettier-plugin-ember-template-tag": "^1.1.0",
-    "rollup": "^4.41.0",
+    "rollup": "^4.41.1",
     "rollup-plugin-copy": "^3.5.0",
     "tracked-built-ins": "^3.4.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.32.1",
-    "webpack": "^5.99.8"
+    "webpack": "^5.99.9"
   },
   "peerDependencies": {
     "@glimmer/component": "^1.1.2",
