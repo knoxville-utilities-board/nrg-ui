@@ -56,11 +56,12 @@ module.exports = {
    */
   normalizeEntityName() {},
 
-  locals() {
+  locals({ isTypeScriptProject }) {
     const environment = require(join(cwd(), 'config', 'environment.js'));
     const { modulePrefix } = environment();
 
     return {
+      isTypeScriptProject,
       modulePrefix,
     };
   },
