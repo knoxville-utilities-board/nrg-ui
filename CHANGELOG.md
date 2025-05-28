@@ -1,5 +1,23 @@
 # Changelog
 
+## Release (2025-05-28)
+
+* @nrg-ui/css 0.22.0 (minor)
+* @nrg-ui/core 0.36.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#470](https://github.com/knoxville-utilities-board/nrg-ui/pull/470) feat: Add stacked pane component ([@KeithClinard](https://github.com/KeithClinard))
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#477](https://github.com/knoxville-utilities-board/nrg-ui/pull/477) fix(blueprint): Use CommonJS version of chalk ([@TSenter](https://github.com/TSenter))
+  * [#478](https://github.com/knoxville-utilities-board/nrg-ui/pull/478) fix(blueprint): Include Babel TS transform only in TS projects ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Keith ([@KeithClinard](https://github.com/KeithClinard))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-05-14)
 
 * @nrg-ui/core 0.35.1 (patch)

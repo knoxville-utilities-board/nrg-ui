@@ -4,14 +4,28 @@
       "oldVersion": "0.3.0"
     },
     "@nrg-ui/css": {
-      "oldVersion": "0.21.1"
-    },
-    "@nrg-ui/core": {
-      "impact": "patch",
-      "oldVersion": "0.35.0",
-      "newVersion": "0.35.1",
+      "impact": "minor",
+      "oldVersion": "0.21.1",
+      "newVersion": "0.22.0",
       "tagName": "latest",
       "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        }
+      ],
+      "pkgJSONPath": "./packages/design-system/package.json"
+    },
+    "@nrg-ui/core": {
+      "impact": "minor",
+      "oldVersion": "0.35.1",
+      "newVersion": "0.36.0",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
@@ -26,5 +40,5 @@
       "oldVersion": "0.3.0"
     }
   },
-  "description": "## Release (2025-05-14)\n\n* @nrg-ui/core 0.35.1 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#471](https://github.com/knoxville-utilities-board/nrg-ui/pull/471) fix(icon): Use correct type, not component ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-05-28)\n\n* @nrg-ui/css 0.22.0 (minor)\n* @nrg-ui/core 0.36.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#470](https://github.com/knoxville-utilities-board/nrg-ui/pull/470) feat: Add stacked pane component ([@KeithClinard](https://github.com/KeithClinard))\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#477](https://github.com/knoxville-utilities-board/nrg-ui/pull/477) fix(blueprint): Use CommonJS version of chalk ([@TSenter](https://github.com/TSenter))\n  * [#478](https://github.com/knoxville-utilities-board/nrg-ui/pull/478) fix(blueprint): Include Babel TS transform only in TS projects ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Keith ([@KeithClinard](https://github.com/KeithClinard))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
