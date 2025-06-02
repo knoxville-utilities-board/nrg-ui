@@ -109,7 +109,7 @@
     "ismobilejs": "^1.1.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.27.1",
+    "@babel/core": "^7.27.4",
     "@babel/plugin-transform-typescript": "^7.27.1",
     "@babel/runtime": "^7.27.1",
     "@bertdeblock/gember": "^0.7.0",
