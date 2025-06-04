@@ -34,6 +34,7 @@ Router.map(function () {
     });
     this.route('footer');
     this.route('icon');
+    this.route('loading-indicator');
     this.route('modal');
     this.route('navbar');
     this.route('pagination');
