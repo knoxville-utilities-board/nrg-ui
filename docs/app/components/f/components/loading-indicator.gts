@@ -28,7 +28,7 @@ export default class LoadingIndicatorDemo extends Component {
   }
 
   <template>
-    <FreestyleSection @name="Navbar" as |Section|>
+    <FreestyleSection @name="Loading Indicator" as |Section|>
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
