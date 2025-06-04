@@ -1,5 +1,15 @@
 # Changelog
 
+## Release (2025-06-04)
+
+
+
+#### :memo: Documentation
+* [#481](https://github.com/knoxville-utilities-board/nrg-ui/pull/481) docs: Add loading indicator to docs app ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+#### Committers: 1
+- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
 ## Release (2025-05-28)
 
 * @nrg-ui/css 0.22.0 (minor)
