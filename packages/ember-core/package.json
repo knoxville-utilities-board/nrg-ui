@@ -102,7 +102,7 @@
     "chalk": "^4.1.2",
     "decorator-transforms": "^1.0.1",
     "ember-css-transitions": "^4.5.0",
-    "ember-intl": "^7.1.8",
+    "ember-intl": "^7.3.0",
     "ember-keyboard": "^8.2.1",
     "ember-lifeline": "^7.0.0",
     "ember-modifier": "^4.2.2",
@@ -111,7 +111,7 @@
   "devDependencies": {
     "@babel/core": "^7.27.4",
     "@babel/plugin-transform-typescript": "^7.27.1",
-    "@babel/runtime": "^7.27.1",
+    "@babel/runtime": "^7.27.6",
     "@bertdeblock/gember": "^0.7.0",
     "@embroider/addon-dev": "^4.3.1",
     "@glimmer/component": "^1.1.2",
@@ -143,11 +143,11 @@
     "execa": "^9.5.3",
     "prettier": "^3.1.1",
     "prettier-plugin-ember-template-tag": "^1.1.0",
-    "rollup": "^4.41.1",
+    "rollup": "^4.42.0",
     "rollup-plugin-copy": "^3.5.0",
     "tracked-built-ins": "^3.4.0",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.32.1",
+    "typescript-eslint": "^8.33.1",
     "webpack": "^5.99.9"
   },
   "peerDependencies": {
