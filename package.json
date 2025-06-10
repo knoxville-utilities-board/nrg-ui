@@ -34,7 +34,8 @@
   },
   "pnpm": {
     "overrides": {
-      "@types/eslint": "^9.6.1"
+      "@types/eslint": "^9.6.1",
+      "ansi-html": "^0.0.8"
     }
   }
 }
