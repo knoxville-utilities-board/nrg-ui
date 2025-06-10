@@ -19,9 +19,7 @@ const esmParserOptions: Linter.ParserOptions = {
   ecmaVersion: 'latest',
   requireConfigFile: false,
   babelOptions: {
-    plugins: [
-      ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: true }],
-    ],
+    plugins: [],
   },
 };
 
@@ -110,12 +108,20 @@ export class Config {
 
       if (this.hasDependency('eslint-plugin-import', 'base')) {
         const importPlugin = await load('eslint-plugin-import');
+        const parserOptions = structuredClone(esmParserOptions);
+
+        if (!this.hasDependency('decorator-transforms')) {
+          parserOptions.babelOptions.plugins.push([
+            '@babel/plugin-proposal-decorators',
+            { decoratorsBeforeExport: true },
+          ]);
+        }
 
         objects.push({
           name: '@nrg-ui/standards/eslint/base/import',
           languageOptions: {
             parser: defaultParser,
-            parserOptions: esmParserOptions,
+            parserOptions,
           },
           plugins: {
             import: importPlugin,
@@ -145,12 +151,20 @@ export class Config {
         const decoratorPositionPlugin = await load(
           'eslint-plugin-decorator-position',
         );
+        const parserOptions = structuredClone(esmParserOptions);
+
+        if (!this.hasDependency('decorator-transforms')) {
+          parserOptions.babelOptions.plugins.push([
+            '@babel/plugin-proposal-decorators',
+            { decoratorsBeforeExport: true },
+          ]);
+        }
 
         objects.push({
           name: '@nrg-ui/standards/eslint/base/decorator-position',
           languageOptions: {
             parser: defaultParser,
-            parserOptions: esmParserOptions,
+            parserOptions,
           },
           plugins: {
             'decorator-position': decoratorPositionPlugin,
