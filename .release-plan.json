@@ -4,41 +4,27 @@
       "oldVersion": "0.3.0"
     },
     "@nrg-ui/css": {
-      "impact": "minor",
-      "oldVersion": "0.21.1",
-      "newVersion": "0.22.0",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        }
-      ],
-      "pkgJSONPath": "./packages/design-system/package.json"
+      "oldVersion": "0.22.0"
     },
     "@nrg-ui/core": {
+      "oldVersion": "0.36.0"
+    },
+    "@nrg-ui/standards": {
       "impact": "minor",
-      "oldVersion": "0.35.1",
-      "newVersion": "0.36.0",
+      "oldVersion": "0.4.4",
+      "newVersion": "0.5.0",
       "tagName": "latest",
       "constraints": [
         {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
-      "pkgJSONPath": "./packages/ember-core/package.json"
-    },
-    "@nrg-ui/standards": {
-      "oldVersion": "0.4.4"
+      "pkgJSONPath": "./packages/standards/package.json"
     },
     "@nrg-ui/theme-generator": {
       "oldVersion": "0.3.0"
     }
   },
-  "description": "## Release (2025-05-28)\n\n* @nrg-ui/css 0.22.0 (minor)\n* @nrg-ui/core 0.36.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#470](https://github.com/knoxville-utilities-board/nrg-ui/pull/470) feat: Add stacked pane component ([@KeithClinard](https://github.com/KeithClinard))\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#477](https://github.com/knoxville-utilities-board/nrg-ui/pull/477) fix(blueprint): Use CommonJS version of chalk ([@TSenter](https://github.com/TSenter))\n  * [#478](https://github.com/knoxville-utilities-board/nrg-ui/pull/478) fix(blueprint): Include Babel TS transform only in TS projects ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Keith ([@KeithClinard](https://github.com/KeithClinard))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-06-12)\n\n* @nrg-ui/standards 0.5.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/standards`\n  * [#483](https://github.com/knoxville-utilities-board/nrg-ui/pull/483) feat(standards): Only include Babel decorator plugin if needed ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* [#481](https://github.com/knoxville-utilities-board/nrg-ui/pull/481) docs: Add loading indicator to docs app ([@ChesneyJulian](https://github.com/ChesneyJulian))\n\n#### :house: Internal\n* [#486](https://github.com/knoxville-utilities-board/nrg-ui/pull/486) chore: Force `brace-expansion` to ^1.1.12 or ^2.0.1 ([@TSenter](https://github.com/TSenter))\n* [#484](https://github.com/knoxville-utilities-board/nrg-ui/pull/484) chore: Resolve security alerts ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
