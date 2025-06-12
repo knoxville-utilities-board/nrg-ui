@@ -34,7 +34,10 @@
   },
   "pnpm": {
     "overrides": {
-      "@types/eslint": "^9.6.1"
+      "@babel/runtime": "^7.26.10 || ^8.0.0",
+      "@types/eslint": "^9.6.1",
+      "ansi-html": "^0.0.8",
+      "sane": "^5.0.1"
     }
   }
 }

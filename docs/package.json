@@ -69,7 +69,6 @@
     "ember-code-snippet": "^3.0.0",
     "ember-concurrency": "^4.0.4",
     "ember-css-transitions": "^4.5.0",
-    "ember-fetch": "^8.1.2",
     "ember-freestyle": "^0.22.0",
     "ember-intl": "^7.3.0",
     "ember-keyboard": "^8.2.0",
