@@ -1,5 +1,24 @@
 # Changelog
 
+## Release (2025-06-12)
+
+* @nrg-ui/standards 0.5.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/standards`
+  * [#483](https://github.com/knoxville-utilities-board/nrg-ui/pull/483) feat(standards): Only include Babel decorator plugin if needed ([@TSenter](https://github.com/TSenter))
+
+#### :memo: Documentation
+* [#481](https://github.com/knoxville-utilities-board/nrg-ui/pull/481) docs: Add loading indicator to docs app ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+#### :house: Internal
+* [#486](https://github.com/knoxville-utilities-board/nrg-ui/pull/486) chore: Force `brace-expansion` to ^1.1.12 or ^2.0.1 ([@TSenter](https://github.com/TSenter))
+* [#484](https://github.com/knoxville-utilities-board/nrg-ui/pull/484) chore: Resolve security alerts ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-05-28)
 
 * @nrg-ui/css 0.22.0 (minor)
