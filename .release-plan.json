@@ -7,12 +7,9 @@
       "oldVersion": "0.22.0"
     },
     "@nrg-ui/core": {
-      "oldVersion": "0.36.0"
-    },
-    "@nrg-ui/standards": {
       "impact": "minor",
-      "oldVersion": "0.4.4",
-      "newVersion": "0.5.0",
+      "oldVersion": "0.36.0",
+      "newVersion": "0.37.0",
       "tagName": "latest",
       "constraints": [
         {
@@ -20,11 +17,14 @@
           "reason": "Appears in changelog section :rocket: Enhancement"
         }
       ],
-      "pkgJSONPath": "./packages/standards/package.json"
+      "pkgJSONPath": "./packages/ember-core/package.json"
+    },
+    "@nrg-ui/standards": {
+      "oldVersion": "0.5.0"
     },
     "@nrg-ui/theme-generator": {
       "oldVersion": "0.3.0"
     }
   },
-  "description": "## Release (2025-06-12)\n\n* @nrg-ui/standards 0.5.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/standards`\n  * [#483](https://github.com/knoxville-utilities-board/nrg-ui/pull/483) feat(standards): Only include Babel decorator plugin if needed ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* [#481](https://github.com/knoxville-utilities-board/nrg-ui/pull/481) docs: Add loading indicator to docs app ([@ChesneyJulian](https://github.com/ChesneyJulian))\n\n#### :house: Internal\n* [#486](https://github.com/knoxville-utilities-board/nrg-ui/pull/486) chore: Force `brace-expansion` to ^1.1.12 or ^2.0.1 ([@TSenter](https://github.com/TSenter))\n* [#484](https://github.com/knoxville-utilities-board/nrg-ui/pull/484) chore: Resolve security alerts ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-06-16)\n\n* @nrg-ui/core 0.37.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#487](https://github.com/knoxville-utilities-board/nrg-ui/pull/487) feat: Add all LinkTo args to sidebar ([@ChesneyJulian](https://github.com/ChesneyJulian))\n\n#### Committers: 1\n- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))\n"
 }
