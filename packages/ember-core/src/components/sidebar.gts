@@ -1,3 +1,4 @@
+import { assert } from '@ember/debug';
 import { hash } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { LinkTo } from '@ember/routing';
@@ -8,19 +9,25 @@ import { classes } from '../helpers/classes.ts';
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike, WithBoundArgs } from '@glint/template';
 
-export interface ItemSignature {
-  Element: HTMLAnchorElement | HTMLDivElement;
+export interface LinkToSignature {
+  Element: HTMLAnchorElement;
   Args: {
     active?: boolean;
     activeClass?: string;
     'current-when'?: string | boolean;
     disabled?: boolean;
-    header?: boolean;
     model?: unknown;
     models?: unknown[];
     query?: Record<string, unknown>;
     replace?: boolean;
     route?: string;
+  };
+}
+
+export interface ItemSignature {
+  Element: HTMLAnchorElement | HTMLDivElement;
+  Args: LinkToSignature['Args'] & {
+    header?: boolean;
     url?: string;
 
     onClick?: (evt: MouseEvent) => unknown;
@@ -33,6 +40,14 @@ export interface ItemSignature {
 }
 
 export class Item extends Component<ItemSignature> {
+  constructor(owner: unknown, args: ItemSignature['Args']) {
+    super(owner, args);
+    assert(
+      'You cannot provide both the `@model` and `@models` arguments to the <Item> component.',
+      (!args.models && args.model) || (args.models && !args.model) || (!args.model && !args.models),
+    );
+  }
+
   get classes() {
     const hasRoute = Boolean(this.args.route);
     const hasUrl = Boolean(this.args.url);
@@ -74,13 +89,13 @@ export class Item extends Component<ItemSignature> {
     {{#if @route}}
       <LinkTo
         class={{this.classes}}
-        @route={{@route}}
+        @activeClass={{@activeClass}}
+        @current-when={{@current-when}}
+        @disabled={{@disabled}}
         @models={{this.models}}
         @query={{this.query}}
         @replace={{@replace}}
-        @disabled={{@disabled}}
-        @current-when={{@current-when}}
-        @activeClass={{@activeClass}}
+        @route={{@route}}
         ...attributes
       >
         <span>
@@ -129,16 +144,7 @@ export class Item extends Component<ItemSignature> {
 
 export interface GroupSignature {
   Element: HTMLAnchorElement | HTMLDivElement;
-  Args: {
-    active?: boolean;
-    activeClass?: string;
-    'current-when'?: string | boolean;
-    disabled?: boolean;
-    model?: unknown;
-    models?: unknown[];
-    query?: Record<string, unknown>;
-    replace?: boolean;
-    route?: string;
+  Args: LinkToSignature['Args'] &{
     url?: string;
 
     onClick?: (evt: MouseEvent) => unknown;
@@ -152,6 +158,14 @@ export interface GroupSignature {
 }
 
 export class Group extends Component<GroupSignature> {
+    constructor(owner: unknown, args: GroupSignature['Args']) {
+    super(owner, args);
+    assert(
+      'You cannot provide both the `@model` and `@models` arguments to the <Group> component.',
+      (!args.models && args.model) || (args.models && !args.model) || (!args.model && !args.models),
+    );
+  }
+
   get classes() {
     const hasRoute = Boolean(this.args.route);
     const hasUrl = Boolean(this.args.url);
@@ -193,13 +207,13 @@ export class Group extends Component<GroupSignature> {
       {{#if @route}}
         <LinkTo
           class={{this.classes}}
-          @route={{@route}}
+          @activeClass={{@activeClass}}
+          @current-when={{@current-when}}
+          @disabled={{@disabled}}
           @models={{this.models}}
           @query={{this.query}}
           @replace={{@replace}}
-          @disabled={{@disabled}}
-          @current-when={{@current-when}}
-          @activeClass={{@activeClass}}
+          @route={{@route}}
           ...attributes
         >
           <span>
