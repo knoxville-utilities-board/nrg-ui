@@ -9,24 +9,21 @@ import { classes } from '../helpers/classes.ts';
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike, WithBoundArgs } from '@glint/template';
 
-export interface LinkToSignature {
-  Element: HTMLAnchorElement;
-  Args: {
-    active?: boolean;
-    activeClass?: string;
-    'current-when'?: string | boolean;
-    disabled?: boolean;
-    model?: unknown;
-    models?: unknown[];
-    query?: Record<string, unknown>;
-    replace?: boolean;
-    route?: string;
-  };
+interface LinkToArgs {
+  active?: boolean;
+  activeClass?: string;
+  'current-when'?: string | boolean;
+  disabled?: boolean;
+  model?: unknown;
+  models?: unknown[];
+  query?: Record<string, unknown>;
+  replace?: boolean;
+  route?: string;
 }
 
 export interface ItemSignature {
   Element: HTMLAnchorElement | HTMLDivElement;
-  Args: LinkToSignature['Args'] & {
+  Args: LinkToArgs & {
     header?: boolean;
     url?: string;
 
@@ -144,7 +141,7 @@ export class Item extends Component<ItemSignature> {
 
 export interface GroupSignature {
   Element: HTMLAnchorElement | HTMLDivElement;
-  Args: LinkToSignature['Args'] &{
+  Args: LinkToArgs & {
     url?: string;
 
     onClick?: (evt: MouseEvent) => unknown;
