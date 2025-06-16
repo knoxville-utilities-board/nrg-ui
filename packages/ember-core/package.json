@@ -132,7 +132,7 @@
     "ember-template-imports": "^4.3.0",
     "ember-template-lint": "^5.13.0",
     "ember-truth-helpers": "^4.0.3",
-    "eslint": "^9.27.0",
+    "eslint": "^9.29.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-webpack": "^0.13.10",
     "eslint-plugin-decorator-position": "^6.0.0",
@@ -147,7 +147,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "tracked-built-ins": "^3.4.0",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.33.1",
+    "typescript-eslint": "^8.34.0",
     "webpack": "^5.99.9"
   },
   "peerDependencies": {
