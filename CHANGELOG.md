@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2025-06-16)
+
+* @nrg-ui/core 0.37.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#487](https://github.com/knoxville-utilities-board/nrg-ui/pull/487) feat: Add all LinkTo args to sidebar ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+#### Committers: 1
+- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
 ## Release (2025-06-12)
 
 * @nrg-ui/standards 0.5.0 (minor)
