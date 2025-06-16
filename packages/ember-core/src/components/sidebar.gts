@@ -12,8 +12,14 @@ export interface ItemSignature {
   Element: HTMLAnchorElement | HTMLDivElement;
   Args: {
     active?: boolean;
+    activeClass?: string;
+    'current-when'?: string | boolean;
     disabled?: boolean;
     header?: boolean;
+    model?: unknown;
+    models?: unknown[];
+    query?: Record<string, unknown>;
+    replace?: boolean;
     route?: string;
     url?: string;
 
@@ -42,6 +48,19 @@ export class Item extends Component<ItemSignature> {
     );
   }
 
+  get models() {
+    if (this.args.model) {
+      return [this.args.model];
+    } else if (this.args.models) {
+      return this.args.models;
+    }
+    return [];
+  }
+
+  get query() {
+    return this.args.query ?? {};
+  }
+
   onClick = (evt: MouseEvent) => {
     if (this.args.active || this.args.disabled) {
       return;
@@ -56,6 +75,12 @@ export class Item extends Component<ItemSignature> {
       <LinkTo
         class={{this.classes}}
         @route={{@route}}
+        @models={{this.models}}
+        @query={{this.query}}
+        @replace={{@replace}}
+        @disabled={{@disabled}}
+        @current-when={{@current-when}}
+        @activeClass={{@activeClass}}
         ...attributes
       >
         <span>
@@ -106,7 +131,13 @@ export interface GroupSignature {
   Element: HTMLAnchorElement | HTMLDivElement;
   Args: {
     active?: boolean;
+    activeClass?: string;
+    'current-when'?: string | boolean;
     disabled?: boolean;
+    model?: unknown;
+    models?: unknown[];
+    query?: Record<string, unknown>;
+    replace?: boolean;
     route?: string;
     url?: string;
 
@@ -135,6 +166,19 @@ export class Group extends Component<GroupSignature> {
     );
   }
 
+  get models() {
+    if (this.args.model) {
+      return [this.args.model];
+    } else if (this.args.models) {
+      return this.args.models;
+    }
+    return [];
+  }
+
+  get query() {
+    return this.args.query ?? {};
+  }
+
   onClick = (evt: MouseEvent) => {
     if (this.args.active || this.args.disabled) {
       return;
@@ -149,8 +193,13 @@ export class Group extends Component<GroupSignature> {
       {{#if @route}}
         <LinkTo
           class={{this.classes}}
-          @disabled={{@disabled}}
           @route={{@route}}
+          @models={{this.models}}
+          @query={{this.query}}
+          @replace={{@replace}}
+          @disabled={{@disabled}}
+          @current-when={{@current-when}}
+          @activeClass={{@activeClass}}
           ...attributes
         >
           <span>
