@@ -7,17 +7,7 @@
       "oldVersion": "0.22.0"
     },
     "@nrg-ui/core": {
-      "impact": "minor",
-      "oldVersion": "0.36.0",
-      "newVersion": "0.37.0",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        }
-      ],
-      "pkgJSONPath": "./packages/ember-core/package.json"
+      "oldVersion": "0.37.0"
     },
     "@nrg-ui/standards": {
       "oldVersion": "0.5.0"
@@ -26,5 +16,5 @@
       "oldVersion": "0.3.0"
     }
   },
-  "description": "## Release (2025-06-16)\n\n* @nrg-ui/core 0.37.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#487](https://github.com/knoxville-utilities-board/nrg-ui/pull/487) feat: Add all LinkTo args to sidebar ([@ChesneyJulian](https://github.com/ChesneyJulian))\n\n#### Committers: 1\n- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))\n"
+  "description": "\n\n\n\n"
 }
