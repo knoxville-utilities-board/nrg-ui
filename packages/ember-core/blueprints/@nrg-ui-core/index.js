@@ -27,7 +27,6 @@ module.exports = {
       { name: 'ember-intl', target: '^7.0.0' },
       { name: 'ember-keyboard', target: '^8.2.0' },
       { name: 'ember-lifeline', target: '^7.0.0' },
-      { name: 'ember-responsive', target: '^5.0.0' },
       { name: 'ismobilejs', target: '^1.1.1' },
     ]);
 
