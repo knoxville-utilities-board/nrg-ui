@@ -96,6 +96,7 @@
     "test": "echo 'A v2 addon does not have tests, run tests in docs'"
   },
   "dependencies": {
+    "@ember/string": "^4.0.1",
     "@embroider/addon-shim": "^1.10.0",
     "@embroider/macros": "^1.18.0",
     "@floating-ui/dom": "^1.7.2",
