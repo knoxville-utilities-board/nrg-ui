@@ -1,5 +1,3 @@
-// @ts-nocheck - TODO
-
 import { array, fn } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
@@ -10,18 +8,16 @@ import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 import CodeBlock from '../../../code-block';
 
-// TypeScript doesn't recognize that this function is used in the template
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function log(...msg: string[]) {
-  console.log(msg.join(' '));
-}
-
 class Model {
   @tracked
   property = '';
 }
 
 export default class CheckboxDemo extends Component {
+  log(...msg: string[]) {
+    console.log(msg.join(' '));
+  }
+
   model = new Model();
 
   @tracked
@@ -31,7 +27,7 @@ export default class CheckboxDemo extends Component {
   disabled = false;
 
   @tracked
-  inline;
+  inline = false;
 
   @tracked
   label = 'Checkbox label';
@@ -48,8 +44,10 @@ export default class CheckboxDemo extends Component {
   }
 
   <template>
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="Checkbox" as |Section|>
       <Section.subsection @name="Basic">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <Checkbox
@@ -60,17 +58,10 @@ export default class CheckboxDemo extends Component {
               @label={{this.label}}
               @reverse={{this.reverse}}
               @type={{this.type}}
-              @onChange={{fn log "The value changed to"}}
+              @onChange={{fn this.log "The value changed to"}}
             />
           </:example>
           <:api as |Args|>
-            <Args.String
-              @name="class"
-              @description="The class to apply to the group input. Note that this is not an argument but rather a class applied directly to the input"
-              @value={{this.class}}
-              @onInput={{fn this.update "class"}}
-              @options={{this.classOptions}}
-            />
             <Args.Bool
               @name="binding"
               @description="Create a two-way binding with the value"
