@@ -1,5 +1,3 @@
-// @ts-nocheck - TODO
-
 import { fn } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
@@ -11,18 +9,16 @@ import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 import CodeBlock from '../../../code-block';
 
-// TypeScript doesn't recognize that this function is used in the template
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function log(...msg: string[]) {
-  console.log(msg.join(' '));
-}
-
 class Model {
   @tracked
   property = 'Orange';
 }
 
 export default class SearchDemo extends Component {
+  log(...msg: string[]) {
+    console.log(msg.join(' '));
+  }
+
   model = new Model();
 
   @tracked
@@ -107,10 +103,10 @@ export default class SearchDemo extends Component {
   minCharacters = 1;
 
   @tracked
-  noResultsLabel;
+  declare noResultsLabel: string;
 
   @tracked
-  placeholder;
+  declare placeholder: string;
 
   @tracked
   readonly = false;
@@ -156,8 +152,10 @@ export default class SearchDemo extends Component {
   }
 
   <template>
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="Search" as |Section|>
       <Section.subsection @name="Basic">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <Search
@@ -174,18 +172,11 @@ export default class SearchDemo extends Component {
               @readonly={{this.readonly}}
               @scrollable={{this.scrollable}}
               @searchTimeout={{this.searchTimeout}}
-              @onChange={{fn log "The value changed to"}}
+              @onChange={{fn this.log "The value changed to"}}
               @onQuery={{this.stringQuery}}
             />
           </:example>
           <:api as |Args|>
-            <Args.String
-              @name="class"
-              @description="The class to apply to the input. Note that this is not an argument but rather a class applied directly to the input"
-              @value={{this.class}}
-              @onInput={{fn this.update "class"}}
-              @options={{this.classOptions}}
-            />
             <Args.Bool
               @name="basic"
               @defaultValue={{false}}
@@ -283,6 +274,7 @@ export default class SearchDemo extends Component {
       </Section.subsection>
 
       <Section.subsection @name="Object Options">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <Search
@@ -301,7 +293,7 @@ export default class SearchDemo extends Component {
               @scrollable={{this.scrollable}}
               @searchTimeout={{this.searchTimeout}}
               @serializationPath="key"
-              @onChange={{fn log "The value changed to"}}
+              @onChange={{fn this.log "The value changed to"}}
               @onQuery={{this.objectQuery}}
             />
           </:example>

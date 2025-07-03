@@ -1,5 +1,3 @@
-// @ts-nocheck - TODO
-
 import { fn } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
@@ -10,18 +8,16 @@ import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 import CodeBlock from '../../../code-block';
 
-// TypeScript doesn't recognize that this function is used in the template
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function log(...msg: string[]) {
-  console.log(msg.join(' '));
-}
-
 class Model {
   @tracked
   property = '';
 }
 
 export default class RadioGroupDemo extends Component {
+  log(...msg: string[]) {
+    console.log(msg.join(' '));
+  }
+
   @tracked
   class = '';
 
@@ -49,8 +45,10 @@ export default class RadioGroupDemo extends Component {
   }
 
   <template>
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="Radio Group" as |Section|>
       <Section.subsection @name="Basic">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <RadioGroup
@@ -59,7 +57,7 @@ export default class RadioGroupDemo extends Component {
               @binding={{bind this.model "property"}}
               @basic={{this.basic}}
               @disabled={{this.disabled}}
-              @onChange={{fn log "The value changed to"}}
+              @onChange={{fn this.log "The value changed to"}}
               as |Group|
             >
               <Group.Radio @option="1" @label="One" />
@@ -68,13 +66,6 @@ export default class RadioGroupDemo extends Component {
             </RadioGroup>
           </:example>
           <:api as |Args|>
-            <Args.String
-              @name="class"
-              @description="The class to apply to the group <div>. Note that this is not an argument but rather a class applied directly to the group"
-              @value={{this.class}}
-              @onInput={{fn this.update "class"}}
-              @options={{this.classOptions}}
-            />
             <Args.Bool
               @name="basic"
               @defaultValue={{false}}

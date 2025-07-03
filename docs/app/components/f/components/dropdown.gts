@@ -1,17 +1,15 @@
-// @ts-nocheck - TODO
-
 import { array, fn } from '@ember/helper';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { Dropdown, Toaster } from '@nrg-ui/core';
+import { Dropdown } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 import CodeBlock from '../../code-block';
 
 import type { Alignment, Side } from '@floating-ui/dom';
-import type { ToastService } from '@nrg-ui/core/services/toast';
+import type ToastService from '@nrg-ui/core/services/toast';
 
 export default class DropdownDemo extends Component {
   @service
@@ -45,6 +43,7 @@ export default class DropdownDemo extends Component {
   side?: Side;
 
   update = (key: string, value: unknown) => {
+    // @ts-expect-error - TODO
     this[key] = value;
   };
 
@@ -53,9 +52,10 @@ export default class DropdownDemo extends Component {
   };
 
   <template>
-    <Toaster />
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="Dropdown" as |Section|>
       <Section.subsection @name="Button">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <Dropdown
@@ -102,13 +102,6 @@ export default class DropdownDemo extends Component {
             </Dropdown>
           </:example>
           <:api as |Args|>
-            <Args.String
-              @name="class"
-              @description="The class to apply to the dropdown button. Note that this is not an argument but rather a class applied directly to the button"
-              @value={{this.class}}
-              @onInput={{fn this.update "class"}}
-              @options={{this.classOptions}}
-            />
             <Args.String
               @name="alignment"
               @defaultValue="start"

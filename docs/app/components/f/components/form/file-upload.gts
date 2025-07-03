@@ -1,4 +1,3 @@
-// @ts-nocheck - TODO
 import { A } from '@ember/array';
 import { fn } from '@ember/helper';
 import { action, set } from '@ember/object';
@@ -44,12 +43,15 @@ export default class FileUploadDemo extends Component {
   }
 
   <template>
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="File Upload" as |Section|>
       <Section.subsection @name="Basic">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <FileUpload
               @accept={{this.accept}}
+              {{! @glint-expect-error - Binding types are currently not supported }}
               @binding={{bind this.model "property"}}
               @disabled={{this.disabled}}
               @id="file-upload"

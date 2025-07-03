@@ -1,13 +1,13 @@
-// @ts-nocheck - TODO
-
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { TextInput, Toaster, bind, onUpdate } from '@nrg-ui/core';
 
+import type ToastService from '@nrg-ui/core/services/toast';
+
 export default class OnUpdateDemo extends Component {
   @service
-  toast;
+  declare toast: ToastService;
 
   @tracked
   value = 'Edit me!';
