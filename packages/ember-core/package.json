@@ -150,7 +150,7 @@
     "prettier-plugin-ember-template-tag": "^2.0.6",
     "rollup": "^4.44.1",
     "rollup-plugin-copy": "^3.5.0",
-    "tracked-built-ins": "^3.4.0",
+    "tracked-built-ins": "^4.0.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.35.1",
     "webpack": "^5.99.9"
@@ -166,7 +166,7 @@
     "ember-intl": "^7.0.4",
     "ember-source": "^5.9.0 || ^6.0.0",
     "ember-truth-helpers": "^4.0.3",
-    "tracked-built-ins": "^3.4.0",
+    "tracked-built-ins": "^4.0.0",
     "webpack": "^5.0.0"
   },
   "publishConfig": {
