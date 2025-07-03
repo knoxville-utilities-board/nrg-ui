@@ -92,7 +92,7 @@
     "eslint-plugin-qunit": "^8.2.2",
     "ismobilejs": "^1.1.1",
     "loader.js": "^4.7.0",
-    "prettier": "^3.3.3",
+    "prettier": "^3.6.2",
     "qunit": "^2.24.1",
     "qunit-dom": "^3.2.1",
     "stylelint": "^15.11.0",
