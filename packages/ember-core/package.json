@@ -24,6 +24,10 @@
       "types": "./declarations/index.d.ts",
       "default": "./dist/index.js"
     },
+    "./test-support": {
+      "types": "./declarations/test-support/index.d.ts",
+      "default": "./dist/test-support/index.js"
+    },
     "./*": {
       "types": "./declarations/*.d.ts",
       "default": "./dist/*.js"
@@ -96,6 +100,8 @@
     "test": "echo 'A v2 addon does not have tests, run tests in docs'"
   },
   "dependencies": {
+    "@ember/string": "^4.0.1",
+    "@ember/test-helpers": "^5.2.2",
     "@embroider/addon-shim": "^1.10.0",
     "@embroider/macros": "^1.18.0",
     "@floating-ui/dom": "^1.7.2",
@@ -158,7 +164,6 @@
     "ember-concurrency": "^4.0.4",
     "ember-css-transitions": "^4.4.0",
     "ember-intl": "^7.0.4",
-    "ember-responsive": "^5.0.0",
     "ember-source": "^5.9.0 || ^6.0.0",
     "ember-truth-helpers": "^4.0.3",
     "tracked-built-ins": "^3.4.0",
@@ -240,6 +245,7 @@
       "./modifiers/on-insert.js": "./dist/_app_/modifiers/on-insert.js",
       "./modifiers/on-update.js": "./dist/_app_/modifiers/on-update.js",
       "./services/context-menu.js": "./dist/_app_/services/context-menu.js",
+      "./services/media.js": "./dist/_app_/services/media.js",
       "./services/modal.js": "./dist/_app_/services/modal.js",
       "./services/responsive.js": "./dist/_app_/services/responsive.js",
       "./services/theme.js": "./dist/_app_/services/theme.js",
@@ -252,5 +258,10 @@
       "./utils/string.js": "./dist/_app_/utils/string.js"
     },
     "defaultBlueprint": "@nrg-ui-core"
+  },
+  "release-plan": {
+    "semverIncrementAs": {
+      "major": "minor"
+    }
   }
 }

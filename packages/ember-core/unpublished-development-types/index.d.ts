@@ -29,10 +29,18 @@ declare module '@ember/service' {
   }
 }
 
+export interface EmbroiderConfig {
+  appVersion: string;
+  breakpoints: {
+    xsmall: string;
+    small: string;
+    medium: string;
+    large: string;
+    xlarge: string;
+    xxlarge: string;
+  };
+}
+
 declare module '@embroider/macros' {
-  export function getOwnConfig():
-    | Partial<{
-        appVersion: string;
-      }>
-    | undefined;
+  export function getOwnConfig(): Partial<EmbroiderConfig> | undefined;
 }
