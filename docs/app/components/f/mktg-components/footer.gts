@@ -1,5 +1,3 @@
-// @ts-nocheck - TODO
-
 import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
@@ -17,12 +15,15 @@ export default class FooterDemo extends Component {
 
   @action
   update(key: string, value: unknown) {
+    // @ts-expect-error - TODO
     this[key] = value;
   }
 
   <template>
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="Footer" as |Section|>
       <Section.subsection @name="Basics">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <MktgFooter class={{this.class}} @hasDivider={{this.hasDivider}}>

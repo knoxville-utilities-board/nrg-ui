@@ -1,5 +1,3 @@
-// @ts-nocheck - TODO
-
 import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
@@ -65,12 +63,15 @@ export default class IconDemo extends Component {
     if (key === 'circular' && value === false) {
       this.backgroundColor = undefined;
     }
+    // @ts-expect-error - TODO
     this[key] = value;
   }
 
   <template>
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="Icon" as |Section|>
       <Section.subsection @name="Basics">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <Icon

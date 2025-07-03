@@ -1,17 +1,15 @@
-// @ts-nocheck - TODO
-
 import { array, fn } from '@ember/helper';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { Toaster, Tooltip } from '@nrg-ui/core';
+import { Tooltip } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 import CodeBlock from '../../code-block';
 
 import type { Alignment, Side } from '@floating-ui/dom';
-import type { ToastService } from '@nrg-ui/core/services/toast';
+import type ToastService from '@nrg-ui/core/services/toast';
 
 export default class TooltipDemo extends Component {
   @service
@@ -33,13 +31,15 @@ export default class TooltipDemo extends Component {
   side?: Side;
 
   update = (key: string, value: unknown) => {
+    // @ts-expect-error - TODO
     this[key] = value;
   };
 
   <template>
-    <Toaster />
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="Tooltip" as |Section|>
       <Section.subsection @name="Basics">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <div class="p-2">

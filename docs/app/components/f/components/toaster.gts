@@ -1,5 +1,3 @@
-// @ts-nocheck - TODO
-
 import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
@@ -20,6 +18,7 @@ export default class ToasterDemo extends Component {
 
   @action
   update(key: string, value: unknown) {
+    // @ts-expect-error - TODO
     this[key] = value;
   }
 
@@ -56,8 +55,10 @@ export default class ToasterDemo extends Component {
   }
 
   <template>
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="Toaster" as |Section|>
       <Section.subsection @name="Basics">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <Button @onClick={{this.createToast}} class="btn-primary">

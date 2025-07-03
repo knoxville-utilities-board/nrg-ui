@@ -1,5 +1,3 @@
-// @ts-nocheck - TODO
-
 import { fn } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
@@ -10,18 +8,16 @@ import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 import CodeBlock from '../../../code-block';
 
-// TypeScript doesn't recognize that this function is used in the template
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function log(...msg: string[]) {
-  console.log(msg.join(' '));
-}
-
 class Model {
   @tracked
   property = '';
 }
 
 export default class TextAreaDemo extends Component {
+  log(...msg: string[]) {
+    console.log(msg.join(' '));
+  }
+
   @tracked
   class = '';
 
@@ -45,8 +41,10 @@ export default class TextAreaDemo extends Component {
   }
 
   <template>
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="Text Area" as |Section|>
       <Section.subsection @name="Basic">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <TextArea
@@ -55,17 +53,10 @@ export default class TextAreaDemo extends Component {
               @binding={{bind this.model "property"}}
               @disabled={{this.disabled}}
               @readonly={{this.readonly}}
-              @onChange={{fn log "The value changed to"}}
+              @onChange={{fn this.log "The value changed to"}}
             />
           </:example>
           <:api as |Args|>
-            <Args.String
-              @name="class"
-              @description="The class to apply to the textarea. Note that this is not an argument but rather a class applied directly to the textarea"
-              @value={{this.class}}
-              @onInput={{fn this.update "class"}}
-              @options={{this.classOptions}}
-            />
             <Args.Bool
               @name="basic"
               @defaultValue={{false}}

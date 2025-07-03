@@ -1,5 +1,3 @@
-// @ts-nocheck - TODO
-
 import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
@@ -20,11 +18,14 @@ export default class PromoDemo extends Component {
 
   @action
   update(key: string, value: unknown) {
+    // @ts-expect-error - TODO
     this[key] = value;
   }
   <template>
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="Promo" as |Section|>
       <Section.subsection @name="Horizontal Promo">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <MktgPromo class={{this.class}} @productName={{this.productName}}>
@@ -86,6 +87,7 @@ export default class PromoDemo extends Component {
         </FreestyleUsage>
       </Section.subsection>
       <Section.subsection @name="Vertical Promo">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <MktgPromo

@@ -1,11 +1,9 @@
-// @ts-nocheck - TODO
-
 import { array, fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { Button, Popover, Toaster, onClickOutside } from '@nrg-ui/core';
+import { Button, Popover, onClickOutside } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
@@ -13,7 +11,7 @@ import CodeBlock from '../../code-block';
 
 import type { TOC } from '@ember/component/template-only';
 import type { Alignment, Side } from '@floating-ui/dom';
-import type { ToastService } from '@nrg-ui/core/services/toast';
+import type ToastService from '@nrg-ui/core/services/toast';
 
 interface PopoverBlockSignature {
   Element: HTMLDivElement;
@@ -51,6 +49,7 @@ export default class PopoverDemo extends Component {
   side?: Side;
 
   update = (key: string, value: unknown) => {
+    // @ts-expect-error - TODO
     this[key] = value;
   };
 
@@ -59,9 +58,10 @@ export default class PopoverDemo extends Component {
   };
 
   <template>
-    <Toaster />
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="Popover" as |Section|>
       <Section.subsection @name="Button">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <Popover
@@ -155,6 +155,7 @@ export default class PopoverDemo extends Component {
         </FreestyleUsage>
       </Section.subsection>
       <Section.subsection @name="Hoverable Block">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <Popover

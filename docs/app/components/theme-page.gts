@@ -1,10 +1,7 @@
-// @ts-nocheck - TODO
-
 import { array } from '@ember/helper';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import {
-  Button,
   Footer,
   Form,
   Icon,
@@ -23,7 +20,7 @@ export default class ThemePage extends Component {
   customerClass = 'residential';
 
   @tracked
-  number;
+  number = 0;
 
   @tracked
   text = '';
@@ -41,7 +38,7 @@ export default class ThemePage extends Component {
   radio = '';
 
   @tracked
-  checkbox;
+  checkbox = false;
 
   @tracked
   checkboxGroup = autoTrack(new Array(3));
@@ -223,19 +220,6 @@ export default class ThemePage extends Component {
                     </Field.Checkbox>
                   </Form.Field>
                   <Form.SubmitButton class="btn-primary" />
-                  <Button
-                    class="btn{{unless true '-outline'}}-secondary mt-3"
-                    @text="Toggle Required"
-                    @onClick={{this.toggleRequired}}
-                  />
-                  <Button
-                    class="btn{{unless
-                        this.requirePhoneLength
-                        '-outline'
-                      }}-secondary mt-3"
-                    @text="Toggle Phone Length"
-                    @onClick={{this.toggleRequirePhoneLength}}
-                  />
                 </Form>
               </:body>
             </Container.Card>
