@@ -258,5 +258,10 @@
       "./utils/string.js": "./dist/_app_/utils/string.js"
     },
     "defaultBlueprint": "@nrg-ui-core"
+  },
+  "release-plan": {
+    "semverIncrementAs": {
+      "major": "minor"
+    }
   }
 }
