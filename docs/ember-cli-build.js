@@ -2,12 +2,11 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 
 const sideWatch = require('@embroider/broccoli-side-watch');
+const { compatBuild } = require('@embroider/compat');
 const { getTag } = require('@nrg-ui/version');
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 const version = getTag({ tagPattern: /v?(.+)-@nrg-ui\/core/ });
-
-const { compatBuild } = require('@embroider/compat');
 
 module.exports = async function (defaults) {
   const { buildOnce } = await import('@embroider/vite');
