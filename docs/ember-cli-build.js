@@ -7,7 +7,11 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 const version = getTag({ tagPattern: /v?(.+)-@nrg-ui\/core/ });
 
+const { compatBuild } = require('@embroider/compat');
+
 module.exports = async function (defaults) {
+  const { buildOnce } = await import('@embroider/vite');
+
   const app = new EmberApp(defaults, {
     minifyCSS: {
       enabled: false,
@@ -55,32 +59,5 @@ module.exports = async function (defaults) {
     ] = 'version-v1';
   }
 
-  const { Webpack } = require('@embroider/webpack');
-  return require('@embroider/compat').compatBuild(app, Webpack, {
-    staticEmberSource: true,
-    staticAddonTrees: true,
-    staticAddonTestSupportTrees: true,
-    packagerOptions: {
-      webpackConfig: {
-        module: {
-          rules: [
-            {
-              test: /\.(woff|woff2|eot|ttf|otf)$/i,
-              type: 'asset/resource',
-              generator: {
-                filename: 'assets/fonts/[name].[hash][ext]',
-              },
-            },
-            {
-              test: /\.(svg)/,
-              type: 'asset/resource',
-              generator: {
-                filename: 'assets/[name].[hash][ext][query]',
-              },
-            },
-          ],
-        },
-      },
-    },
-  });
+  return compatBuild(app, buildOnce);
 };
