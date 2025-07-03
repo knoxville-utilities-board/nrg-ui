@@ -57,6 +57,17 @@ export class Config {
     return 'ember-addon' in packageJson;
   }
 
+  get supportsEmberTemplateTags() {
+    // Webpack and classic apps require ember-template-imports to support
+    // .gjs/.gts files.
+    if (this.hasDependency('ember-template-imports')) {
+      return true;
+    }
+
+    // Vite apps do not require ember-template-imports to support .gjs/.gts
+    return this.hasDependencies(['vite', 'ember-source']);
+  }
+
   hasDependency(dep: string, message?: string) {
     if (!this.#deps.has(dep)) {
       if (message) {
