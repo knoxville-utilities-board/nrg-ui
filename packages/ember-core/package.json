@@ -105,7 +105,7 @@
     "@embroider/addon-shim": "^1.10.0",
     "@embroider/macros": "^1.18.0",
     "@floating-ui/dom": "^1.7.2",
-    "chalk": "^4.1.2",
+    "chalk": "^5.4.1",
     "decorator-transforms": "^2.3.0",
     "ember-css-transitions": "^4.5.0",
     "ember-intl": "^7.3.1",
