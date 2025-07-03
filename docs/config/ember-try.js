@@ -2,7 +2,7 @@
 
 module.exports = async function () {
   return {
-    usePnpm: true,
+    packageManager: 'pnpm',
     scenarios: [
       {
         name: 'ember-5.9',
