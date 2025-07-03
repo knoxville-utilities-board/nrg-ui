@@ -137,5 +137,5 @@ Since this package uses ESLint v9, various plugins have a minimum version requir
 | `eslint-plugin-decorator-position` | `^6.0.0`  |
 | `eslint-plugin-ember`              | `^12.2.0` |
 | `eslint-plugin-import`             | `^2.31.0` |
-| `eslint-plugin-n`                  | `^16.0.0` |
+| `eslint-plugin-n`                  | `^17.0.0` |
 | `eslint-plugin-qunit`              | `^8.1.2`  |

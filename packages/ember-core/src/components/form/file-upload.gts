@@ -17,6 +17,7 @@ import { FileValidator } from '../../validation/index.ts';
 import Button from '../button.gts';
 
 import type { FormType } from './index.gts';
+import type Owner from '@ember/owner';
 
 export interface SelectedFileListSignature {
   Args: {
@@ -89,7 +90,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
   isDraggingOver = false;
 
 
-  constructor(owner: unknown, args: FileUploadSignature['Args']) {
+  constructor(owner: Owner, args: FileUploadSignature['Args']) {
     super(owner, args);
     registerDestructor(this, () => {
       this.setupValidator();

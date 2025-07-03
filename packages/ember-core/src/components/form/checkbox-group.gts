@@ -8,6 +8,7 @@ import { bind } from '../../helpers/bind.ts';
 
 import type { CheckboxSignature } from './checkbox';
 import type { Binding } from '../../';
+import type Owner from '@ember/owner';
 import type { ComponentLike } from '@glint/template';
 
 export interface CheckboxGroupSignature {
@@ -33,7 +34,7 @@ export interface CheckboxGroupSignature {
 export default class CheckboxGroup extends Component<CheckboxGroupSignature> {
   boxes = new TrackedSet<Checkbox>();
 
-  constructor(owner: unknown, args: CheckboxGroupSignature['Args']) {
+  constructor(owner: Owner, args: CheckboxGroupSignature['Args']) {
     super(owner, args);
 
     args.onInitBinding?.(bind(this, 'value'));
