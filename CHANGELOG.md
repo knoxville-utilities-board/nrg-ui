@@ -1,5 +1,32 @@
 # Changelog
 
+## Release (2025-07-03)
+
+* @nrg-ui/version 0.3.1 (patch)
+* @nrg-ui/css 0.22.1 (patch)
+* @nrg-ui/core 0.38.0 (major)
+* @nrg-ui/standards 0.5.1 (patch)
+* @nrg-ui/theme-generator 0.3.1 (patch)
+
+#### :boom: Breaking Change
+* `@nrg-ui/core`
+  * [#496](https://github.com/knoxville-utilities-board/nrg-ui/pull/496) feat: Import media service from ember-responsive ([@TSenter](https://github.com/TSenter))
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#496](https://github.com/knoxville-utilities-board/nrg-ui/pull/496) feat: Import media service from ember-responsive ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `@nrg-ui/version`, `@nrg-ui/css`, `@nrg-ui/core`, `@nrg-ui/standards`, `@nrg-ui/theme-generator`
+  * [#499](https://github.com/knoxville-utilities-board/nrg-ui/pull/499) chore(dependabot): Allow major version upgrades ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`
+  * [#498](https://github.com/knoxville-utilities-board/nrg-ui/pull/498) chore(stacked-pane): Use relative import ([@TSenter](https://github.com/TSenter))
+  * [#497](https://github.com/knoxville-utilities-board/nrg-ui/pull/497) chore: Bump ember-keyboard ([@TSenter](https://github.com/TSenter))
+  * [#493](https://github.com/knoxville-utilities-board/nrg-ui/pull/493) chore: Remove eslint-plugin-prettier ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-06-16)
 
 * @nrg-ui/core 0.37.0 (minor)
