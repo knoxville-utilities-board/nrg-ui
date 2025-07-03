@@ -62,8 +62,10 @@ export default class MultiSelectDemo extends Component {
   };
 
   <template>
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="Multi Select" as |Section|>
       <Section.subsection @name="String Options">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <MultiSelect
@@ -133,6 +135,7 @@ export default class MultiSelectDemo extends Component {
       </Section.subsection>
 
       <Section.subsection @name="Object Options">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <MultiSelect
@@ -166,6 +169,7 @@ export default class MultiSelectDemo extends Component {
       </Section.subsection>
 
       <Section.subsection @name="Yielded Options">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <MultiSelect

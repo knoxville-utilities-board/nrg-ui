@@ -9,8 +9,10 @@ export default class CardContainerDemo extends Component {
   class = '';
 
   <template>
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="Card Container" as |Section|>
       <Section.subsection @name="Basics">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <MktgCardContainer as |Container|>

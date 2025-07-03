@@ -48,8 +48,10 @@ export default class ContextMenuDemo extends Component {
   }
 
   <template>
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="Context Menu" as |Section|>
       <Section.subsection @name="Basics">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <ContextMenu
