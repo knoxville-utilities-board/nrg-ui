@@ -87,7 +87,7 @@
     "eslint-plugin-decorator-position": "^6.0.0",
     "eslint-plugin-ember": "^12.5.0",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-n": "^17.20.0",
     "eslint-plugin-qunit": "^8.2.2",
     "ismobilejs": "^1.1.1",
     "loader.js": "^4.7.0",
