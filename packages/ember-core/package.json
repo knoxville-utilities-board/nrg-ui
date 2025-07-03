@@ -24,6 +24,10 @@
       "types": "./declarations/index.d.ts",
       "default": "./dist/index.js"
     },
+    "./test-support": {
+      "types": "./declarations/test-support/index.d.ts",
+      "default": "./dist/test-support/index.js"
+    },
     "./*": {
       "types": "./declarations/*.d.ts",
       "default": "./dist/*.js"
@@ -97,6 +101,7 @@
   },
   "dependencies": {
     "@ember/string": "^4.0.1",
+    "@ember/test-helpers": "^5.2.2",
     "@embroider/addon-shim": "^1.10.0",
     "@embroider/macros": "^1.18.0",
     "@floating-ui/dom": "^1.7.2",

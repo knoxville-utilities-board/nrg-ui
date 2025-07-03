@@ -1,7 +1,7 @@
 import { click } from '@ember/test-helpers';
 import { render } from '@ember/test-helpers';
 import Scaffold from '@nrg-ui/core/components/scaffold';
-import { setBreakpoint } from 'ember-responsive/test-support';
+import { setBreakpoint } from '@nrg-ui/core/test-support';
 import { module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../helpers';
@@ -66,7 +66,7 @@ module('Integration | Component | scaffold', function (hooks) {
     const emptyClickHandler = () => {
       /* only present to make item clickable */
     };
-    setBreakpoint('desktop');
+    setBreakpoint('large');
     await render(<template>
       <Scaffold>
         <:sidebar as |Menu|>
@@ -85,7 +85,7 @@ module('Integration | Component | scaffold', function (hooks) {
         'Sidebar should not close when clicking on an item in large screens',
       );
 
-    setBreakpoint('mobile');
+    await setBreakpoint('small');
 
     assert
       .dom('.sidebar')
