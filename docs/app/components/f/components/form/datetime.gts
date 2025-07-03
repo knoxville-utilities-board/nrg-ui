@@ -1,5 +1,3 @@
-// @ts-nocheck - TODO
-
 import { A } from '@ember/array';
 import { array, fn, hash } from '@ember/helper';
 import { on } from '@ember/modifier';
@@ -7,69 +5,80 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import Datetime from '@nrg-ui/core/components/form/datetime';
-import bind from '@nrg-ui/core/helpers/bind';
+import { bind } from '@nrg-ui/core/helpers/bind';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 import CodeBlock from '../../../code-block';
 
+class Model {
+  @tracked
+  property: Date | null = null;
+}
+
 export default class DatetimeDemo extends Component {
+  model = new Model();
+
   @tracked
   allowMinuteSelection = true;
 
   @tracked
-  basic;
+  basic = false;
 
   @tracked
-  dateFormat;
+  declare dateFormat: string;
 
   @tracked
-  disabled;
+  disabled = false;
 
   @tracked
-  maxDate;
+  declare maxDate: Date;
 
   @tracked
-  minDate;
+  declare minDate: Date;
 
   @tracked
   parseFormat: string[] = A();
 
   @tracked
-  placeholder;
+  declare placeholder: string;
 
   @tracked
-  readonly;
+  readonly = false;
 
   @tracked
-  showNowShortcut;
+  declare showNowShortcut: boolean;
 
   @tracked
-  timeFormat;
+  declare timeFormat: string;
 
   @tracked
-  type;
+  declare type: 'date' | 'datetime' | 'time';
 
   @tracked
-  value;
+  declare value: Date | string;
 
   @action
-  update(key, value) {
+  update(key: string, value: Date | Event | string) {
     if (value instanceof Event) {
-      value = value.target.value;
+      value = (value.target as HTMLInputElement).value;
     }
+    // @ts-expect-error - TODO
     this[key] = value;
   }
 
   <template>
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="Datetime" as |Section|>
       <Section.subsection @name="Basic">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <Datetime
               @allowMinuteSelection={{this.allowMinuteSelection}}
               @basic={{this.basic}}
-              @binding={{bind this "value"}}
+              {{! @glint-expect-error - Binding types are currently not supported }}
+              @binding={{bind this.model "property"}}
               @dateFormat={{this.dateFormat}}
               @fieldOptions={{hash disabled=this.disabled}}
               @maxDate={{this.maxDate}}

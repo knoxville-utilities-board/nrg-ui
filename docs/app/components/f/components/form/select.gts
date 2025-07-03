@@ -1,5 +1,3 @@
-// @ts-nocheck - TODO
-
 import { fn, hash } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
@@ -10,7 +8,7 @@ import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 import CodeBlock from '../../../code-block';
 
-export default class extends Component {
+export default class SelectDemo extends Component {
   @tracked
   closeOnSelect = true;
 
@@ -24,7 +22,7 @@ export default class extends Component {
   scrollable = true;
 
   @tracked
-  selectValue;
+  declare selectValue: string;
 
   @tracked
   stringOptions = [
@@ -48,6 +46,7 @@ export default class extends Component {
 
   @action
   update(key: string, value: unknown) {
+    // @ts-expect-error - TODO
     this[key] = value;
   }
 
@@ -60,8 +59,10 @@ export default class extends Component {
   }
 
   <template>
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="Select" as |Section|>
       <Section.subsection @name="String Options">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <Select
@@ -107,6 +108,7 @@ export default class extends Component {
       </Section.subsection>
 
       <Section.subsection @name="Object Options">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <Select
@@ -123,6 +125,7 @@ export default class extends Component {
       </Section.subsection>
 
       <Section.subsection @name="Yielded Options">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <Select

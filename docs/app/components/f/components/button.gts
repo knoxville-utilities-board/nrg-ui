@@ -1,5 +1,3 @@
-// @ts-nocheck - TODO
-
 import { array, fn } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
@@ -42,14 +40,20 @@ export default class ButtonDemo extends Component {
   @tracked
   iconPosition = 'left';
 
+  @tracked
+  type: 'button' | 'submit' = 'button';
+
   @action
   update(key: string, value: unknown) {
+    // @ts-expect-error - TODO
     this[key] = value;
   }
 
   <template>
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="Button" as |Section|>
       <Section.subsection @name="Basics">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <Button
@@ -101,6 +105,7 @@ export default class ButtonDemo extends Component {
       </Section.subsection>
 
       <Section.subsection @name="Icon">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <Button
@@ -138,6 +143,7 @@ export default class ButtonDemo extends Component {
       </Section.subsection>
 
       <Section.subsection @name="Icon-Only Button">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <Button

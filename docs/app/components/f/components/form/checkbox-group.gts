@@ -1,5 +1,3 @@
-// @ts-nocheck - TODO
-
 import { array, fn, hash } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
@@ -17,13 +15,16 @@ export default class CheckboxGroupDemo extends Component {
   model = new Model();
 
   @tracked
-  class = '';
-
-  @tracked
   disabled = false;
 
   @tracked
-  inline;
+  basic = false;
+
+  @tracked
+  reverse = false;
+
+  @tracked
+  inline = false;
 
   @tracked
   label = 'Checkbox label';
@@ -46,12 +47,13 @@ export default class CheckboxGroupDemo extends Component {
   }
 
   <template>
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="Checkbox Group" as |Section|>
       <Section.subsection @name="Basic">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <CheckboxGroup
-              class={{this.class}}
               @basic={{this.basic}}
               @fieldOptions={{hash disabled=this.disabled}}
               @inline={{this.inline}}
@@ -66,13 +68,6 @@ export default class CheckboxGroupDemo extends Component {
             </CheckboxGroup>
           </:example>
           <:api as |Args|>
-            <Args.String
-              @name="class"
-              @description="The class to apply to the group <div>. Note that this is not an argument but rather a class applied directly to the <div>"
-              @value={{this.class}}
-              @onInput={{fn this.update "class"}}
-              @options={{this.classOptions}}
-            />
             <Args.Bool
               @name="basic"
               @defaultValue={{false}}

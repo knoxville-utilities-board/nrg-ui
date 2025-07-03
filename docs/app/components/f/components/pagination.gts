@@ -1,5 +1,3 @@
-// @ts-nocheck - TODO
-
 import { A } from '@ember/array';
 import { fn } from '@ember/helper';
 import { action } from '@ember/object';
@@ -10,6 +8,8 @@ import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 export default class PaginationDemo extends Component {
+  declare pageSize: number;
+
   @tracked
   start = 0;
 
@@ -40,6 +40,7 @@ export default class PaginationDemo extends Component {
 
   @action
   update(key: string, value: unknown) {
+    // @ts-expect-error - TODO
     this[key] = value;
   }
 
@@ -51,8 +52,10 @@ export default class PaginationDemo extends Component {
   }
 
   <template>
+    {{! @glint-expect-error - Freestyle doesn't have great types }}
     <FreestyleSection @name="Pagination" as |Section|>
       <Section.subsection @name="Basics">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <Pagination
@@ -91,6 +94,7 @@ export default class PaginationDemo extends Component {
         </FreestyleUsage>
       </Section.subsection>
       <Section.subsection @name="Advanced">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <Pagination
@@ -145,6 +149,7 @@ export default class PaginationDemo extends Component {
         </FreestyleUsage>
       </Section.subsection>
       <Section.subsection @name="Jump to Page">
+        {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
             <Pagination
