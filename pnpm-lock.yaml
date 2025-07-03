@@ -154,8 +154,8 @@ importers:
         specifier: ^7.3.1
         version: 7.3.1(@ember/test-helpers@5.2.2(@babel/core@7.27.7)(@glint/template@1.5.2))(@glint/template@1.5.2)(typescript@5.8.3)(webpack@5.99.9)
       ember-keyboard:
-        specifier: ^8.2.0
-        version: 8.2.1(@babel/core@7.27.7)(@ember/test-helpers@5.2.2(@babel/core@7.27.7)(@glint/template@1.5.2))
+        specifier: ^9.0.2
+        version: 9.0.2(@babel/core@7.27.7)(@ember/test-helpers@5.2.2(@babel/core@7.27.7)(@glint/template@1.5.2))
       ember-lifeline:
         specifier: ^7.0.0
         version: 7.0.0(@ember/test-helpers@5.2.2(@babel/core@7.27.7)(@glint/template@1.5.2))
@@ -333,8 +333,8 @@ importers:
         specifier: ^7.3.1
         version: 7.3.1(@ember/test-helpers@5.2.2(@babel/core@7.27.7)(@glint/template@1.5.2))(@glint/template@1.5.2)(typescript@5.8.3)(webpack@5.99.9)
       ember-keyboard:
-        specifier: ^8.2.1
-        version: 8.2.1(@babel/core@7.27.7)(@ember/test-helpers@5.2.2(@babel/core@7.27.7)(@glint/template@1.5.2))
+        specifier: ^9.0.2
+        version: 9.0.2(@babel/core@7.27.7)(@ember/test-helpers@5.2.2(@babel/core@7.27.7)(@glint/template@1.5.2))
       ember-lifeline:
         specifier: ^7.0.0
         version: 7.0.0(@ember/test-helpers@5.2.2(@babel/core@7.27.7)(@glint/template@1.5.2))
@@ -3886,10 +3886,10 @@ packages:
       typescript:
         optional: true
 
-  ember-keyboard@8.2.1:
-    resolution: {integrity: sha512-wT9xpt3GKsiodGZoifKU4OyeRjXWlmKV9ZHHsp6wJBwMFpl4wWPjTNdINxivk2qg/WFNIh8nUiwuG4+soWXPdw==}
+  ember-keyboard@9.0.2:
+    resolution: {integrity: sha512-+CT3k3Wj1rd/eluijOWxDZdHxrjZa08+jtNop60jclGcxIaMlZahesVRBk3XU3yX/Z+VyoyQ6/7N1P5GWGvLug==}
     peerDependencies:
-      '@ember/test-helpers': ^2.6.0 || ^3.0.0
+      '@ember/test-helpers': ^2.6.0 || ^3.0.0 || >= 4.0.0
     peerDependenciesMeta:
       '@ember/test-helpers':
         optional: true
@@ -12169,7 +12169,7 @@ snapshots:
       - supports-color
       - webpack
 
-  ember-keyboard@8.2.1(@babel/core@7.27.7)(@ember/test-helpers@5.2.2(@babel/core@7.27.7)(@glint/template@1.5.2)):
+  ember-keyboard@9.0.2(@babel/core@7.27.7)(@ember/test-helpers@5.2.2(@babel/core@7.27.7)(@glint/template@1.5.2)):
     dependencies:
       '@embroider/addon-shim': 1.10.0
       ember-destroyable-polyfill: 2.0.3(@babel/core@7.27.7)
