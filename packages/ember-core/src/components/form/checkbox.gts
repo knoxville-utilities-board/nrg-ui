@@ -6,6 +6,7 @@ import BoundValue from './bound-value.ts';
 
 import type { BoundValueSignature } from './bound-value';
 import type { Optional } from '../../';
+import type Owner from '@ember/owner';
 
 export interface CheckboxSignature {
   Element: HTMLInputElement;
@@ -33,7 +34,7 @@ export default class Checkbox extends BoundValue<CheckboxSignature, boolean> {
   internalId = crypto.randomUUID();
 
   constructor(
-    owner: unknown,
+    owner: Owner,
     args: BoundValueSignature<CheckboxSignature, Optional<boolean>>['Args'],
   ) {
     super(owner, args);

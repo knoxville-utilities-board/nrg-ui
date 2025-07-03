@@ -7,6 +7,7 @@ import Component from '@glimmer/component';
 import { classes } from '../helpers/classes.ts';
 
 import type { TOC } from '@ember/component/template-only';
+import type Owner from '@ember/owner';
 import type { ComponentLike, WithBoundArgs } from '@glint/template';
 
 interface LinkToArgs {
@@ -37,7 +38,7 @@ export interface ItemSignature {
 }
 
 export class Item extends Component<ItemSignature> {
-  constructor(owner: unknown, args: ItemSignature['Args']) {
+  constructor(owner: Owner, args: ItemSignature['Args']) {
     super(owner, args);
     assert(
       'You cannot provide both the `@model` and `@models` arguments to the <Item> component.',
@@ -155,7 +156,7 @@ export interface GroupSignature {
 }
 
 export class Group extends Component<GroupSignature> {
-    constructor(owner: unknown, args: GroupSignature['Args']) {
+  constructor(owner: Owner, args: GroupSignature['Args']) {
     super(owner, args);
     assert(
       'You cannot provide both the `@model` and `@models` arguments to the <Group> component.',

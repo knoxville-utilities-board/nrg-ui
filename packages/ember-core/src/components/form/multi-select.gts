@@ -14,6 +14,7 @@ import { bind } from '../../helpers/bind.ts';
 import type { DropdownSignature, Optional } from '../../index.ts';
 import type { PopoverVisibility } from '../popover.gts';
 import type { TOC } from '@ember/component/template-only';
+import type Owner from '@ember/owner';
 import type { WithBoundArgs } from '@glint/template';
 import type { IntlService } from 'ember-intl';
 
@@ -94,7 +95,7 @@ export default class MultiSelect<T> extends BoundValue<
   self: Record<'value', Optional<T[]>> = this;
   TypedSelect = Select;
 
-  constructor(owner: unknown, args: MultiSelectSignature<T>['Args']) {
+  constructor(owner: Owner, args: MultiSelectSignature<T>['Args']) {
     super(owner, args);
 
     if (!(this.value instanceof TrackedArray)) {

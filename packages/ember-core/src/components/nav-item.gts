@@ -5,6 +5,8 @@ import Component from '@glimmer/component';
 
 import ResponsiveService from '../services/responsive.ts';
 
+import type Owner from '@ember/owner';
+
 export interface NavItemSignature {
   Element: HTMLLIElement;
   Args: {
@@ -19,7 +21,7 @@ export default class NrgNavItem extends Component<NavItemSignature> {
   @service
   declare responsive: ResponsiveService;
 
-  constructor(owner: unknown, args: NavItemSignature['Args']) {
+  constructor(owner: Owner, args: NavItemSignature['Args']) {
     super(owner, args);
     assert(
       'You must provide either a `url` or a `route` to the nav-item component',

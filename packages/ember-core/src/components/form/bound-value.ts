@@ -8,6 +8,11 @@ import { ensurePathExists } from '../../utils/ensure-path-exists.ts';
 import type { Binding, Optional } from '../../';
 import type Owner from '@ember/owner';
 
+type AllowChangeFn<T> = (
+  newValue: Optional<T>,
+  oldValue: Optional<T>,
+) => boolean;
+
 export type BoundValueSignature<Signature, Type> = {
   Args: {
     binding?: Binding;
@@ -15,7 +20,7 @@ export type BoundValueSignature<Signature, Type> = {
     defaultValue?: Type;
     useDefaultValue?: boolean;
 
-    allowChange?: (newValue: Type, oldValue: Type) => boolean;
+    allowChange?: AllowChangeFn<Type>;
     initBinding?: (binding: Binding) => void;
     onChange?: (value: Type, ...args: unknown[]) => void;
   };
@@ -69,7 +74,7 @@ export default class BoundValue<Signature, T> extends Component<
     set(this.model, this.valuePath, newValue);
   }
 
-  get useDefaultValue() {
+  get useDefaultValue(): boolean {
     return this.args.useDefaultValue ?? false;
   }
 
@@ -80,7 +85,7 @@ export default class BoundValue<Signature, T> extends Component<
     return this.getDefaultValue?.() ?? null;
   }
 
-  get allowChange() {
+  get allowChange(): AllowChangeFn<T> {
     if (this.args.allowChange) {
       return this.args.allowChange;
     }
