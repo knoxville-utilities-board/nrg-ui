@@ -291,7 +291,7 @@ importers:
         version: 3.5.3
     devDependencies:
       bootstrap:
-        specifier: 5.3.7
+        specifier: ^5.3.7
         version: 5.3.7
       bootstrap-icons:
         specifier: ^1.13.1
@@ -522,7 +522,7 @@ importers:
   packages/theme-generator:
     dependencies:
       bootstrap:
-        specifier: 5.3.7
+        specifier: ^5.3.7
         version: 5.3.7
       bootstrap-icons:
         specifier: ^1.13.1
