@@ -1,9 +1,10 @@
 import { LinkTo } from '@ember/routing';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import { classes } from '@nrg-ui/core';
 import { t } from 'ember-intl';
 import { eq } from 'ember-truth-helpers';
+
+import { classes } from '../helpers/classes.ts';
 
 import type { TOC } from '@ember/component/template-only';
 import type RouterService from '@ember/routing/router-service';
