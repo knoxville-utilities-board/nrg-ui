@@ -6,6 +6,7 @@ import { scheduleTask } from 'ember-lifeline';
 import { ensurePathExists } from '../../utils/ensure-path-exists.ts';
 
 import type { Binding, Optional } from '../../';
+import type Owner from '@ember/owner';
 
 export type BoundValueSignature<Signature, Type> = {
   Args: {
@@ -24,7 +25,7 @@ export default class BoundValue<Signature, T> extends Component<
   BoundValueSignature<Signature, Optional<T>>
 > {
   constructor(
-    owner: unknown,
+    owner: Owner,
     args: BoundValueSignature<Signature, Optional<T>>['Args'],
   ) {
     super(owner, args);
