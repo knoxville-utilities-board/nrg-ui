@@ -78,6 +78,17 @@ export class Config {
     return true;
   }
 
+  get supportsEmberTemplateTags() {
+    // Webpack and classic apps require ember-template-imports to support
+    // .gjs/.gts files.
+    if (this.hasDependency('ember-template-imports')) {
+      return true;
+    }
+
+    // Vite apps do not require ember-template-imports to support .gjs/.gts
+    return this.hasDependencies(['vite', 'ember-source']);
+  }
+
   rules = {
     ignore: (files: string[] = []): Linter.Config[] => {
       const globs = new Set<string>(
@@ -302,12 +313,14 @@ export class Config {
     gjs: async (rules?: Linter.RulesRecord): Promise<Linter.Config[]> => {
       const objects: Linter.Config[] = [];
 
-      if (
-        !this.hasDependencies(
-          ['ember-template-imports', 'eslint-plugin-ember'],
-          'gjs',
-        )
-      ) {
+      if (!this.supportsEmberTemplateTags) {
+        logger.warn(
+          'This application does not support GJS files. One of the following is required:',
+          'ember-template-imports',
+          'ember-source and vite',
+        );
+        logger.warn(`  Called from .rules.gjs()`);
+
         return objects;
       }
 
@@ -346,8 +359,16 @@ export class Config {
       const objects: Linter.Config[] = [];
 
       if (
-        !this.hasDependencies(['ember-template-imports', 'typescript'], 'gts')
+        !this.supportsEmberTemplateTags ||
+        !this.hasDependency('typescript', 'gts')
       ) {
+        logger.warn(
+          'This application does not support GTS files. In addition to typescript, one of the following is required:',
+          'ember-template-imports',
+          'ember-source and vite',
+        );
+        logger.warn(`  Called from .rules.gts()`);
+
         return objects;
       }
 
