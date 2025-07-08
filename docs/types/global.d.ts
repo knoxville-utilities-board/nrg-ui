@@ -7,6 +7,8 @@ import NrgServiceRegistry from '@nrg-ui/core/service-registry';
 import NrgTemplateRegistry from '@nrg-ui/core/template-registry';
 import PageTitleRegistry from 'ember-page-title/template-registry';
 
+import ValidationBinding from '../app/components/validation-binding';
+
 // Adding Dayjs plugins for TypeScript
 import 'dayjs';
 import 'dayjs/plugin/customParseFormat';
@@ -36,6 +38,7 @@ declare module '@glint/environment-ember-loose/registry' {
     extends NrgTemplateRegistry,
       PageTitleRegistry {
     'get-code-snippet': GetCodeSnippet;
+    ValidationBinding: typeof ValidationBinding;
   }
 }
 

@@ -102,4 +102,5 @@ Router.map(function () {
       );
     },
   );
+  this.route('validation-binding');
 });
