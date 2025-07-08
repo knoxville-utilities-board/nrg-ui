@@ -174,7 +174,7 @@ export default class Field extends Component<FieldSignature> {
   }
 
   get validatorKey() {
-    return this.args.validatorKey ?? this.binding.valuePath;
+    return this.args.validatorKey ?? this.binding?.valuePath;
   }
 
   get describedBy() {

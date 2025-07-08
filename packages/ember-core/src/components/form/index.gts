@@ -82,7 +82,7 @@ export default class Form extends Component<FormSignature> implements FormType {
     super(owner, args);
 
     this.staticValidations = new TrackedMap();
-    this.bindings = new Map();
+    this.bindings = new TrackedMap();
   }
 
   get didValidate() {
