@@ -110,9 +110,9 @@ module('Integration | Component | tooltip', function (hooks) {
       assert.step('hide');
     };
 
-    await render(<template>
-      <Tooltip @onShow={{show}} @onHide={{hide}} />
-    </template>);
+    await render(
+      <template><Tooltip @onShow={{show}} @onHide={{hide}} /></template>,
+    );
 
     assert.dom('.tooltip').hasClass('hidden');
 

@@ -43,9 +43,9 @@ module('Integration | Component | form/multi-select', function (hooks) {
   test('it renders when empty', async function (assert) {
     const model = new Model();
 
-    await render(<template>
-      <MultiSelect @binding={{bind model "value"}} />
-    </template>);
+    await render(
+      <template><MultiSelect @binding={{bind model "value"}} /></template>,
+    );
 
     assert.dom('.selected-display').hasText('Select at least one option');
   });
@@ -54,13 +54,15 @@ module('Integration | Component | form/multi-select', function (hooks) {
     const model = new Model();
     model.value = [];
 
-    await render(<template>
-      <MultiSelect @binding={{bind model "value"}}>
-        <:empty>
-          Custom Empty Block
-        </:empty>
-      </MultiSelect>
-    </template>);
+    await render(
+      <template>
+        <MultiSelect @binding={{bind model "value"}}>
+          <:empty>
+            Custom Empty Block
+          </:empty>
+        </MultiSelect>
+      </template>,
+    );
 
     assert.dom('.selected-display').hasText('Custom Empty Block');
   });
@@ -68,9 +70,14 @@ module('Integration | Component | form/multi-select', function (hooks) {
   test('it opens when clicked', async function (assert) {
     const model = new Model();
 
-    await render(<template>
-      <MultiSelect @binding={{bind model "value"}} @options={{stringOptions}} />
-    </template>);
+    await render(
+      <template>
+        <MultiSelect
+          @binding={{bind model "value"}}
+          @options={{stringOptions}}
+        />
+      </template>,
+    );
 
     await click('button');
     assert.dom('.dropdown-menu').doesNotHaveClass('hidden');
@@ -78,9 +85,14 @@ module('Integration | Component | form/multi-select', function (hooks) {
 
   test('it renders string options', async function (assert) {
     const model = new Model();
-    await render(<template>
-      <MultiSelect @binding={{bind model "value"}} @options={{stringOptions}} />
-    </template>);
+    await render(
+      <template>
+        <MultiSelect
+          @binding={{bind model "value"}}
+          @options={{stringOptions}}
+        />
+      </template>,
+    );
 
     assert.dom('.selected-display').hasText('Select at least one option');
 
@@ -98,9 +110,14 @@ module('Integration | Component | form/multi-select', function (hooks) {
 
   test('it renders label-value options', async function (assert) {
     const model = new Model();
-    await render(<template>
-      <MultiSelect @binding={{bind model "value"}} @options={{objectOptions}} />
-    </template>);
+    await render(
+      <template>
+        <MultiSelect
+          @binding={{bind model "value"}}
+          @options={{objectOptions}}
+        />
+      </template>,
+    );
 
     assert.dom('.selected-display').hasText('Select at least one option');
 
@@ -118,14 +135,16 @@ module('Integration | Component | form/multi-select', function (hooks) {
 
   test('it renders custom object options', async function (assert) {
     const model = new Model();
-    await render(<template>
-      <MultiSelect
-        @binding={{bind model "value"}}
-        @options={{objectOptions}}
-        @displayPath="key"
-        @serializationPath="id"
-      />
-    </template>);
+    await render(
+      <template>
+        <MultiSelect
+          @binding={{bind model "value"}}
+          @options={{objectOptions}}
+          @displayPath="key"
+          @serializationPath="id"
+        />
+      </template>,
+    );
 
     assert.dom('.selected-display').hasText('Select at least one option');
 
@@ -143,13 +162,15 @@ module('Integration | Component | form/multi-select', function (hooks) {
 
   test('it renders yielded options', async function (assert) {
     const model = new Model();
-    await render(<template>
-      <MultiSelect @binding={{bind model "value"}} @options={{objectOptions}}>
-        <:option as |option|>
-          {{option.key}}
-        </:option>
-      </MultiSelect>
-    </template>);
+    await render(
+      <template>
+        <MultiSelect @binding={{bind model "value"}} @options={{objectOptions}}>
+          <:option as |option|>
+            {{option.key}}
+          </:option>
+        </MultiSelect>
+      </template>,
+    );
 
     assert.dom('.selected-display').hasText('Select at least one option');
 
@@ -168,16 +189,18 @@ module('Integration | Component | form/multi-select', function (hooks) {
   test('it renders custom display', async function (assert) {
     const model = new Model();
     model.value = [objectOptions[1]];
-    await render(<template>
-      <MultiSelect @binding={{bind model "value"}} @options={{objectOptions}}>
-        <:display as |option|>
-          {{#each option as |o|}}
-            Custom Display
-            {{o.id}}
-          {{/each}}
-        </:display>
-      </MultiSelect>
-    </template>);
+    await render(
+      <template>
+        <MultiSelect @binding={{bind model "value"}} @options={{objectOptions}}>
+          <:display as |option|>
+            {{#each option as |o|}}
+              Custom Display
+              {{o.id}}
+            {{/each}}
+          </:display>
+        </MultiSelect>
+      </template>,
+    );
 
     assert.dom('.selected-display').hasText('Custom Display 2');
 
@@ -191,9 +214,14 @@ module('Integration | Component | form/multi-select', function (hooks) {
 
   test('it opens and closes via keyboard when focused', async function (assert) {
     const model = new Model();
-    await render(<template>
-      <MultiSelect @binding={{bind model "value"}} @options={{objectOptions}} />
-    </template>);
+    await render(
+      <template>
+        <MultiSelect
+          @binding={{bind model "value"}}
+          @options={{objectOptions}}
+        />
+      </template>,
+    );
 
     await click('button');
     assert.dom('.dropdown-menu').doesNotHaveClass('hidden');
@@ -216,9 +244,14 @@ module('Integration | Component | form/multi-select', function (hooks) {
 
   test('it allows items to be selected via keyboard', async function (assert) {
     const model = new Model();
-    await render(<template>
-      <MultiSelect @binding={{bind model "value"}} @options={{objectOptions}} />
-    </template>);
+    await render(
+      <template>
+        <MultiSelect
+          @binding={{bind model "value"}}
+          @options={{objectOptions}}
+        />
+      </template>,
+    );
     assert.dom('.selected-display').hasText('Select at least one option');
 
     await click('button');

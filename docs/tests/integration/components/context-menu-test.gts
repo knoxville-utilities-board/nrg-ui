@@ -20,17 +20,19 @@ module('Integration | Component | context-menu', function (hooks) {
       assert.step(message);
     };
 
-    await render(<template>
-      <ContextMenu @id="context-menu-id" as |Menu|>
-        <Menu.Item @onSelect={{fn onSelect "Item 1"}}>
-          I'm a regular item
-        </Menu.Item>
-        <Menu.Divider />
-        <Menu.Item @disabled={{true}} @onSelect={{fn onSelect "Item 2"}}>
-          I'm a disabled item
-        </Menu.Item>
-      </ContextMenu>
-    </template>);
+    await render(
+      <template>
+        <ContextMenu @id="context-menu-id" as |Menu|>
+          <Menu.Item @onSelect={{fn onSelect "Item 1"}}>
+            I'm a regular item
+          </Menu.Item>
+          <Menu.Divider />
+          <Menu.Item @disabled={{true}} @onSelect={{fn onSelect "Item 2"}}>
+            I'm a disabled item
+          </Menu.Item>
+        </ContextMenu>
+      </template>,
+    );
 
     await openMenu();
 
@@ -57,22 +59,24 @@ module('Integration | Component | context-menu', function (hooks) {
       assert.step(message);
     };
 
-    await render(<template>
-      <ContextMenu @id="context-menu-id" as |Menu|>
-        <Menu.Item @onSelect={{fn onSelect "Item 1"}}>
-          I'm a regular item
-        </Menu.Item>
-        <Menu.Item @disabled={{true}} @onSelect={{fn onSelect "Item 2"}}>
-          I'm a disabled item
-        </Menu.Item>
-      </ContextMenu>
-      <ContextMenuItem
-        @menuId="context-menu-id"
-        @onSelect={{fn onSelect "Item 3"}}
-      >
-        I'm an external item
-      </ContextMenuItem>
-    </template>);
+    await render(
+      <template>
+        <ContextMenu @id="context-menu-id" as |Menu|>
+          <Menu.Item @onSelect={{fn onSelect "Item 1"}}>
+            I'm a regular item
+          </Menu.Item>
+          <Menu.Item @disabled={{true}} @onSelect={{fn onSelect "Item 2"}}>
+            I'm a disabled item
+          </Menu.Item>
+        </ContextMenu>
+        <ContextMenuItem
+          @menuId="context-menu-id"
+          @onSelect={{fn onSelect "Item 3"}}
+        >
+          I'm an external item
+        </ContextMenuItem>
+      </template>,
+    );
 
     await openMenu();
 
@@ -101,29 +105,31 @@ module('Integration | Component | context-menu', function (hooks) {
       assert.step(message);
     };
 
-    await render(<template>
-      <ContextMenu @id="context-menu-id" as |Menu|>
-        <Menu.Item @onSelect={{fn onSelect "Item 1"}}>
-          I'm a regular item
-        </Menu.Item>
-        <Menu.Item @disabled={{true}} @onSelect={{fn onSelect "Item 2"}}>
-          I'm a disabled item
-        </Menu.Item>
-      </ContextMenu>
-      <ContextMenuItem
-        @bottom={{true}}
-        @menuId="context-menu-id"
-        @onSelect={{fn onSelect "Item 3"}}
-      >
-        I'm an external item
-      </ContextMenuItem>
-      <ContextMenuItem
-        @menuId="context-menu-id"
-        @onSelect={{fn onSelect "Item 4"}}
-      >
-        I'm an external item, but on top
-      </ContextMenuItem>
-    </template>);
+    await render(
+      <template>
+        <ContextMenu @id="context-menu-id" as |Menu|>
+          <Menu.Item @onSelect={{fn onSelect "Item 1"}}>
+            I'm a regular item
+          </Menu.Item>
+          <Menu.Item @disabled={{true}} @onSelect={{fn onSelect "Item 2"}}>
+            I'm a disabled item
+          </Menu.Item>
+        </ContextMenu>
+        <ContextMenuItem
+          @bottom={{true}}
+          @menuId="context-menu-id"
+          @onSelect={{fn onSelect "Item 3"}}
+        >
+          I'm an external item
+        </ContextMenuItem>
+        <ContextMenuItem
+          @menuId="context-menu-id"
+          @onSelect={{fn onSelect "Item 4"}}
+        >
+          I'm an external item, but on top
+        </ContextMenuItem>
+      </template>,
+    );
 
     await openMenu();
 

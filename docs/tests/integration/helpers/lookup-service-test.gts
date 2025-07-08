@@ -29,9 +29,9 @@ module('Integration | Helper | lookup-service', function (hooks) {
         assert.strictEqual(service, undefined);
       }
 
-      await render(<template>
-        {{compare (lookupService "i-don't-exist")}}
-      </template>);
+      await render(
+        <template>{{compare (lookupService "i-don't-exist")}}</template>,
+      );
     });
   }
 });

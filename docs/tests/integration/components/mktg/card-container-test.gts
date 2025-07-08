@@ -8,13 +8,15 @@ module('Integration | Component | mktg/card-container', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function () {
-    await render(<template>
-      <MktgCardContainer class="bg-info rounded" as |Container|>
-        <Container.Card class="first g-col-12 g-col-md-4" />
-        <Container.Card class="second g-col-12 g-col-md-4" />
-        <Container.Card class="third g-col-12 g-col-md-4" />
-      </MktgCardContainer>
-    </template>);
+    await render(
+      <template>
+        <MktgCardContainer class="bg-info rounded" as |Container|>
+          <Container.Card class="first g-col-12 g-col-md-4" />
+          <Container.Card class="second g-col-12 g-col-md-4" />
+          <Container.Card class="third g-col-12 g-col-md-4" />
+        </MktgCardContainer>
+      </template>,
+    );
 
     assert.dom('.grid').exists('Card container renders');
     assert

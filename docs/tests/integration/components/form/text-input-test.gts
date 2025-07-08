@@ -23,9 +23,14 @@ module('Integration | Component | form/text-input', function (hooks) {
       assert.strictEqual(text, 'Foo bar');
     };
 
-    await render(<template>
-      <TextInput @binding={{bind model "value"}} @onChange={{actionHandler}} />
-    </template>);
+    await render(
+      <template>
+        <TextInput
+          @binding={{bind model "value"}}
+          @onChange={{actionHandler}}
+        />
+      </template>,
+    );
 
     assert
       .dom('input')
@@ -37,13 +42,15 @@ module('Integration | Component | form/text-input', function (hooks) {
 
     assert.dom('div > input').hasValue('Foo bar');
 
-    await render(<template>
-      <TextInput
-        @binding={{bind model "value"}}
-        @basic={{true}}
-        @onChange={{actionHandler}}
-      />
-    </template>);
+    await render(
+      <template>
+        <TextInput
+          @binding={{bind model "value"}}
+          @basic={{true}}
+          @onChange={{actionHandler}}
+        />
+      </template>,
+    );
 
     assert.dom('div > input').hasClass('form-control-plaintext');
   });
@@ -53,9 +60,11 @@ module('Integration | Component | form/text-input', function (hooks) {
 
     const format = (value: string) => value.toUpperCase();
 
-    await render(<template>
-      <TextInput @binding={{bind model "value"}} @format={{format}} />
-    </template>);
+    await render(
+      <template>
+        <TextInput @binding={{bind model "value"}} @format={{format}} />
+      </template>,
+    );
 
     assert
       .dom('input')

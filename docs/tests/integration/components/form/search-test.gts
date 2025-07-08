@@ -39,9 +39,11 @@ module('Integration | Component | form/search', function (hooks) {
 
     const model = new Model();
 
-    await render(<template>
-      <Search @binding={{bind model "value"}} @onQuery={{actionHandler}} />
-    </template>);
+    await render(
+      <template>
+        <Search @binding={{bind model "value"}} @onQuery={{actionHandler}} />
+      </template>,
+    );
 
     assert.dom('div > input').hasClass('form-control').hasValue('');
 
@@ -75,9 +77,11 @@ module('Integration | Component | form/search', function (hooks) {
 
     const model = new Model();
 
-    await render(<template>
-      <Search @binding={{bind model "value"}} @onQuery={{actionHandler}} />
-    </template>);
+    await render(
+      <template>
+        <Search @binding={{bind model "value"}} @onQuery={{actionHandler}} />
+      </template>,
+    );
 
     assert.dom('div > input').hasClass('form-control').hasValue('');
 
@@ -96,20 +100,24 @@ module('Integration | Component | form/search', function (hooks) {
 
     const model = new Model();
 
-    await render(<template>
-      <Search @binding={{bind model "value"}} @query={{actionHandler}} />
-    </template>);
+    await render(
+      <template>
+        <Search @binding={{bind model "value"}} @query={{actionHandler}} />
+      </template>,
+    );
 
     assert.dom('.spinner-border').doesNotExist();
     assert.dom('.bi-search').exists();
 
-    await render(<template>
-      <Search
-        @binding={{bind model "value"}}
-        @loading={{true}}
-        @onQuery={{actionHandler}}
-      />
-    </template>);
+    await render(
+      <template>
+        <Search
+          @binding={{bind model "value"}}
+          @loading={{true}}
+          @onQuery={{actionHandler}}
+        />
+      </template>,
+    );
 
     assert.dom('.spinner-border').exists();
     assert.dom('.bi-search').doesNotExist();
@@ -120,13 +128,15 @@ module('Integration | Component | form/search', function (hooks) {
 
     const model = new Model();
 
-    await render(<template>
-      <Search
-        @binding={{bind model "value"}}
-        @basic={{true}}
-        @onQuery={{actionHandler}}
-      />
-    </template>);
+    await render(
+      <template>
+        <Search
+          @binding={{bind model "value"}}
+          @basic={{true}}
+          @onQuery={{actionHandler}}
+        />
+      </template>,
+    );
 
     assert.dom('.spinner-border').doesNotExist();
     assert.dom('.bi-search').doesNotExist();
@@ -138,13 +148,15 @@ module('Integration | Component | form/search', function (hooks) {
 
     const model = new Model();
 
-    await render(<template>
-      <Search
-        @binding={{bind model "value"}}
-        @clearable={{true}}
-        @onQuery={{actionHandler}}
-      />
-    </template>);
+    await render(
+      <template>
+        <Search
+          @binding={{bind model "value"}}
+          @clearable={{true}}
+          @onQuery={{actionHandler}}
+        />
+      </template>,
+    );
 
     assert.dom('div > input').hasClass('form-control').hasValue('');
 

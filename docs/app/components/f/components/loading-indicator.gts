@@ -32,7 +32,11 @@ export default class LoadingIndicatorDemo extends Component {
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
-            <LoadingIndicator @label={{this.label}} @showLabel={{this.showLabel}} @type={{this.type}} />
+            <LoadingIndicator
+              @label={{this.label}}
+              @showLabel={{this.showLabel}}
+              @type={{this.type}}
+            />
           </:example>
           <:api as |Args|>
             <Args.String

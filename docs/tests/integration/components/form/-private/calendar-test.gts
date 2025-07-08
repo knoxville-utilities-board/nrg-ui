@@ -36,9 +36,15 @@ module(
         model.value = date;
       };
 
-      await render(<template>
-        <Calendar @type="date" @value={{model.value}} @onSelect={{onSelect}} />
-      </template>);
+      await render(
+        <template>
+          <Calendar
+            @type="date"
+            @value={{model.value}}
+            @onSelect={{onSelect}}
+          />
+        </template>,
+      );
 
       await triggerKeyEvent('.calendar', 'keydown', 'ArrowLeft');
       await triggerKeyEvent('.calendar', 'keydown', 'Enter');
@@ -55,9 +61,15 @@ module(
         model.value = date;
       };
 
-      await render(<template>
-        <Calendar @type="date" @value={{model.value}} @onSelect={{onSelect}} />
-      </template>);
+      await render(
+        <template>
+          <Calendar
+            @type="date"
+            @value={{model.value}}
+            @onSelect={{onSelect}}
+          />
+        </template>,
+      );
 
       await triggerKeyEvent('.calendar', 'keydown', 'ArrowRight');
       await triggerKeyEvent('.calendar', 'keydown', 'Enter');
@@ -76,14 +88,16 @@ module(
         model.value = date;
       };
 
-      await render(<template>
-        <Calendar
-          @type="date"
-          @value={{model.value}}
-          @maxDate={{model.value}}
-          @onSelect={{onSelect}}
-        />
-      </template>);
+      await render(
+        <template>
+          <Calendar
+            @type="date"
+            @value={{model.value}}
+            @maxDate={{model.value}}
+            @onSelect={{onSelect}}
+          />
+        </template>,
+      );
 
       await triggerKeyEvent('.calendar', 'keydown', 'ArrowRight');
       await triggerKeyEvent('.calendar', 'keydown', 'Enter');
@@ -100,14 +114,16 @@ module(
         model.value = date;
       };
 
-      await render(<template>
-        <Calendar
-          @type="date"
-          @value={{model.value}}
-          @minDate={{model.value}}
-          @onSelect={{onSelect}}
-        />
-      </template>);
+      await render(
+        <template>
+          <Calendar
+            @type="date"
+            @value={{model.value}}
+            @minDate={{model.value}}
+            @onSelect={{onSelect}}
+          />
+        </template>,
+      );
 
       await triggerKeyEvent('.calendar', 'keydown', 'ArrowLeft');
       await triggerKeyEvent('.calendar', 'keydown', 'Enter');
@@ -136,16 +152,18 @@ module(
       const minDate = expectedDate.day(1).toDate();
       const maxDate = expectedDate.day(5).toDate();
 
-      await render(<template>
-        <Calendar
-          @type="date"
-          @value={{model.value}}
-          @minDate={{minDate}}
-          @maxDate={{maxDate}}
-          @isDateDisabled={{isDateDisabled}}
-          @onSelect={{onSelect}}
-        />
-      </template>);
+      await render(
+        <template>
+          <Calendar
+            @type="date"
+            @value={{model.value}}
+            @minDate={{minDate}}
+            @maxDate={{maxDate}}
+            @isDateDisabled={{isDateDisabled}}
+            @onSelect={{onSelect}}
+          />
+        </template>,
+      );
 
       await triggerKeyEvent('.calendar', 'keydown', 'ArrowLeft');
       await triggerKeyEvent('.calendar', 'keydown', 'Enter');
@@ -174,16 +192,18 @@ module(
       const minDate = expectedDate.day(1).toDate();
       const maxDate = expectedDate.day(5).toDate();
 
-      await render(<template>
-        <Calendar
-          @type="date"
-          @value={{model.value}}
-          @minDate={{minDate}}
-          @maxDate={{maxDate}}
-          @isDateDisabled={{isDateDisabled}}
-          @onSelect={{onSelect}}
-        />
-      </template>);
+      await render(
+        <template>
+          <Calendar
+            @type="date"
+            @value={{model.value}}
+            @minDate={{minDate}}
+            @maxDate={{maxDate}}
+            @isDateDisabled={{isDateDisabled}}
+            @onSelect={{onSelect}}
+          />
+        </template>,
+      );
 
       const availableDateCells = findAll('.calendar tbody td.cell');
 
@@ -211,9 +231,15 @@ module(
         year: 2020,
       });
 
-      await render(<template>
-        <Calendar @type="date" @value={{model.value}} @onSelect={{onSelect}} />
-      </template>);
+      await render(
+        <template>
+          <Calendar
+            @type="date"
+            @value={{model.value}}
+            @onSelect={{onSelect}}
+          />
+        </template>,
+      );
 
       const availableDateCells = findAll('.calendar tbody td.cell');
 
@@ -241,9 +267,15 @@ module(
         year: 2020,
       });
 
-      await render(<template>
-        <Calendar @type="date" @value={{model.value}} @onSelect={{onSelect}} />
-      </template>);
+      await render(
+        <template>
+          <Calendar
+            @type="date"
+            @value={{model.value}}
+            @onSelect={{onSelect}}
+          />
+        </template>,
+      );
 
       const availableDateCells = findAll('.calendar tbody td.cell');
 
@@ -259,13 +291,15 @@ module(
         model.value = date;
       };
 
-      await render(<template>
-        <Calendar
-          @type="datetime"
-          @value={{model.value}}
-          @onSelect={{onSelect}}
-        />
-      </template>);
+      await render(
+        <template>
+          <Calendar
+            @type="datetime"
+            @value={{model.value}}
+            @onSelect={{onSelect}}
+          />
+        </template>,
+      );
 
       await triggerKeyEvent('.calendar', 'keydown', 'ArrowRight');
       await triggerKeyEvent('.calendar', 'keydown', 'Enter');
@@ -285,9 +319,15 @@ module(
         model.value = date;
       };
 
-      await render(<template>
-        <Calendar @type="time" @value={{model.value}} @onSelect={{onSelect}} />
-      </template>);
+      await render(
+        <template>
+          <Calendar
+            @type="time"
+            @value={{model.value}}
+            @onSelect={{onSelect}}
+          />
+        </template>,
+      );
 
       await click('tbody tr:first-child td:first-child');
       await click('tbody tr:nth-child(4) td:last-child');
@@ -304,9 +344,15 @@ module(
         model.value = date;
       };
 
-      await render(<template>
-        <Calendar @type="date" @value={{model.value}} @onSelect={{onSelect}} />
-      </template>);
+      await render(
+        <template>
+          <Calendar
+            @type="date"
+            @value={{model.value}}
+            @onSelect={{onSelect}}
+          />
+        </template>,
+      );
 
       await click('.bi-chevron-right');
       await triggerKeyEvent('.calendar', 'keydown', 'Enter');
@@ -327,9 +373,11 @@ module(
 
       const maxDate = model.value;
 
-      await render(<template>
-        <Calendar @type="date" @value={{model.value}} @maxDate={{maxDate}} />
-      </template>);
+      await render(
+        <template>
+          <Calendar @type="date" @value={{model.value}} @maxDate={{maxDate}} />
+        </template>,
+      );
 
       assert.dom('tbody tr:nth-child(7)').doesNotExist();
     });
@@ -364,13 +412,15 @@ module(
         return dayjs(date).isSameOrBefore(minDate, precision);
       };
 
-      await render(<template>
-        <Calendar
-          @type="time"
-          @value={{model.value}}
-          @isDateDisabled={{isDateDisabled}}
-        />
-      </template>);
+      await render(
+        <template>
+          <Calendar
+            @type="time"
+            @value={{model.value}}
+            @isDateDisabled={{isDateDisabled}}
+          />
+        </template>,
+      );
 
       await click(findAll('tbody tr td.cell')[hour]!);
 
@@ -386,14 +436,16 @@ module(
         model.value = date;
       };
 
-      await render(<template>
-        <Calendar
-          @type="datetime"
-          @value={{model.value}}
-          @onSelect={{onSelect}}
-          @allowMinuteSelection={{false}}
-        />
-      </template>);
+      await render(
+        <template>
+          <Calendar
+            @type="datetime"
+            @value={{model.value}}
+            @onSelect={{onSelect}}
+            @allowMinuteSelection={{false}}
+          />
+        </template>,
+      );
 
       await triggerKeyEvent('.calendar', 'keydown', 'ArrowRight');
       await triggerKeyEvent('.calendar', 'keydown', 'Enter');
@@ -411,14 +463,16 @@ module(
         model.value = date;
       };
 
-      await render(<template>
-        <Calendar
-          @type="time"
-          @value={{model.value}}
-          @onSelect={{onSelect}}
-          @allowMinuteSelection={{false}}
-        />
-      </template>);
+      await render(
+        <template>
+          <Calendar
+            @type="time"
+            @value={{model.value}}
+            @onSelect={{onSelect}}
+            @allowMinuteSelection={{false}}
+          />
+        </template>,
+      );
 
       await click('tbody tr:first-child td:first-child');
 

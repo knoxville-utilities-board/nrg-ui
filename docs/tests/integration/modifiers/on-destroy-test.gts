@@ -24,9 +24,11 @@ module('Integration | Modifier | on-destroy', function (hooks) {
 
     assert.step('before render');
 
-    await render(<template>
-      <div {{onDestroy callback 5 "foo" "BAR"}}></div>
-    </template>);
+    await render(
+      <template>
+        <div {{onDestroy callback 5 "foo" "BAR"}}></div>
+      </template>,
+    );
 
     assert.step('after render');
 

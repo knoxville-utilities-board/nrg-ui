@@ -23,12 +23,14 @@ module('Integration | Component | form/number-input', function (hooks) {
       assert.strictEqual(num, 36);
     };
 
-    await render(<template>
-      <NumberInput
-        @binding={{bind model "value"}}
-        @onChange={{actionHandler}}
-      />
-    </template>);
+    await render(
+      <template>
+        <NumberInput
+          @binding={{bind model "value"}}
+          @onChange={{actionHandler}}
+        />
+      </template>,
+    );
 
     assert
       .dom('input')
@@ -40,13 +42,15 @@ module('Integration | Component | form/number-input', function (hooks) {
 
     assert.dom('div > input').hasValue('36');
 
-    await render(<template>
-      <NumberInput
-        @binding={{bind model "value"}}
-        @basic={{true}}
-        @onChange={{actionHandler}}
-      />
-    </template>);
+    await render(
+      <template>
+        <NumberInput
+          @binding={{bind model "value"}}
+          @basic={{true}}
+          @onChange={{actionHandler}}
+        />
+      </template>,
+    );
 
     assert.dom('div > input').hasClass('form-control-plaintext');
 
@@ -63,12 +67,14 @@ module('Integration | Component | form/number-input', function (hooks) {
       assert.strictEqual(num, 3600);
     };
 
-    await render(<template>
-      <NumberInput
-        @binding={{bind model "value"}}
-        @onChange={{actionHandler}}
-      />
-    </template>);
+    await render(
+      <template>
+        <NumberInput
+          @binding={{bind model "value"}}
+          @onChange={{actionHandler}}
+        />
+      </template>,
+    );
 
     assert
       .dom('input')
@@ -85,13 +91,15 @@ module('Integration | Component | form/number-input', function (hooks) {
 
     assert.dom('div > input').hasValue('3600');
 
-    await render(<template>
-      <NumberInput
-        @binding={{bind model "value"}}
-        @formatPrecision={{2}}
-        @onChange={{actionHandler}}
-      />
-    </template>);
+    await render(
+      <template>
+        <NumberInput
+          @binding={{bind model "value"}}
+          @formatPrecision={{2}}
+          @onChange={{actionHandler}}
+        />
+      </template>,
+    );
 
     assert.dom('div > input').hasValue('3,600.00');
 
@@ -108,13 +116,15 @@ module('Integration | Component | form/number-input', function (hooks) {
       assert.strictEqual(num, 3600);
     };
 
-    await render(<template>
-      <NumberInput
-        @binding={{bind model "value"}}
-        @format="currency"
-        @onChange={{actionHandler}}
-      />
-    </template>);
+    await render(
+      <template>
+        <NumberInput
+          @binding={{bind model "value"}}
+          @format="currency"
+          @onChange={{actionHandler}}
+        />
+      </template>,
+    );
 
     assert
       .dom('input')
@@ -131,14 +141,16 @@ module('Integration | Component | form/number-input', function (hooks) {
 
     assert.dom('div > input').hasValue('3600');
 
-    await render(<template>
-      <NumberInput
-        @binding={{bind model "value"}}
-        @format="currency"
-        @formatPrecision={{6}}
-        @onChange={{actionHandler}}
-      />
-    </template>);
+    await render(
+      <template>
+        <NumberInput
+          @binding={{bind model "value"}}
+          @format="currency"
+          @formatPrecision={{6}}
+          @onChange={{actionHandler}}
+        />
+      </template>,
+    );
 
     assert.dom('div > input').hasValue('$3,600.000000');
 
@@ -155,13 +167,15 @@ module('Integration | Component | form/number-input', function (hooks) {
       assert.strictEqual(num, 36);
     };
 
-    await render(<template>
-      <NumberInput
-        @binding={{bind model "value"}}
-        @format="percent"
-        @onChange={{actionHandler}}
-      />
-    </template>);
+    await render(
+      <template>
+        <NumberInput
+          @binding={{bind model "value"}}
+          @format="percent"
+          @onChange={{actionHandler}}
+        />
+      </template>,
+    );
 
     assert
       .dom('input')
@@ -178,14 +192,16 @@ module('Integration | Component | form/number-input', function (hooks) {
 
     assert.dom('div > input').hasValue('36');
 
-    await render(<template>
-      <NumberInput
-        @binding={{bind model "value"}}
-        @format="percent"
-        @formatPrecision={{3}}
-        @onChange={{actionHandler}}
-      />
-    </template>);
+    await render(
+      <template>
+        <NumberInput
+          @binding={{bind model "value"}}
+          @format="percent"
+          @formatPrecision={{3}}
+          @onChange={{actionHandler}}
+        />
+      </template>,
+    );
 
     assert.dom('div > input').hasValue('36.000%');
 
@@ -206,13 +222,15 @@ module('Integration | Component | form/number-input', function (hooks) {
       assert.strictEqual(num, 36);
     };
 
-    await render(<template>
-      <NumberInput
-        @binding={{bind model "value"}}
-        @format={{format}}
-        @onChange={{actionHandler}}
-      />
-    </template>);
+    await render(
+      <template>
+        <NumberInput
+          @binding={{bind model "value"}}
+          @format={{format}}
+          @onChange={{actionHandler}}
+        />
+      </template>,
+    );
 
     assert
       .dom('input')
@@ -229,14 +247,16 @@ module('Integration | Component | form/number-input', function (hooks) {
 
     assert.dom('div > input').hasValue('36');
 
-    await render(<template>
-      <NumberInput
-        @binding={{bind model "value"}}
-        @format={{format}}
-        @formatPrecision={{3}}
-        @onChange={{actionHandler}}
-      />
-    </template>);
+    await render(
+      <template>
+        <NumberInput
+          @binding={{bind model "value"}}
+          @format={{format}}
+          @formatPrecision={{3}}
+          @onChange={{actionHandler}}
+        />
+      </template>,
+    );
 
     assert.dom('div > input').hasValue('#36 units');
 

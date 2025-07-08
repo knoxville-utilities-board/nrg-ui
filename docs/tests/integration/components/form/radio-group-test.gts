@@ -23,34 +23,38 @@ module('Integration | Component | form/radio-group', function (hooks) {
       assert.strictEqual(value, '1');
     };
 
-    await render(<template>
-      <RadioGroup
-        @name="test"
-        @binding={{bind model "value"}}
-        @onChange={{actionHandler}}
-        as |Group|
-      >
-        <Group.Radio @option="1" />
-        <Group.Radio @option="2" />
-      </RadioGroup>
-    </template>);
+    await render(
+      <template>
+        <RadioGroup
+          @name="test"
+          @binding={{bind model "value"}}
+          @onChange={{actionHandler}}
+          as |Group|
+        >
+          <Group.Radio @option="1" />
+          <Group.Radio @option="2" />
+        </RadioGroup>
+      </template>,
+    );
 
     await click('input');
 
     assert.dom('div').hasClass('form-control');
 
-    await render(<template>
-      <RadioGroup
-        @name="test"
-        @basic={{true}}
-        @binding={{bind model "value"}}
-        @onChange={{actionHandler}}
-        as |Group|
-      >
-        <Group.Radio @option="1" />
-        <Group.Radio @option="2" />
-      </RadioGroup>
-    </template>);
+    await render(
+      <template>
+        <RadioGroup
+          @name="test"
+          @basic={{true}}
+          @binding={{bind model "value"}}
+          @onChange={{actionHandler}}
+          as |Group|
+        >
+          <Group.Radio @option="1" />
+          <Group.Radio @option="2" />
+        </RadioGroup>
+      </template>,
+    );
 
     assert.dom('div').hasClass('form-control-plaintext');
   });
@@ -63,16 +67,18 @@ module('Integration | Component | form/radio-group', function (hooks) {
       assert.strictEqual(value, '1');
     };
 
-    await render(<template>
-      <RadioGroup
-        @binding={{bind model "value"}}
-        @onChange={{actionHandler}}
-        as |Group|
-      >
-        <Group.Radio @option="1" />
-        <Group.Radio @option="2" />
-      </RadioGroup>
-    </template>);
+    await render(
+      <template>
+        <RadioGroup
+          @binding={{bind model "value"}}
+          @onChange={{actionHandler}}
+          as |Group|
+        >
+          <Group.Radio @option="1" />
+          <Group.Radio @option="2" />
+        </RadioGroup>
+      </template>,
+    );
 
     await click('input');
 
@@ -86,12 +92,14 @@ module('Integration | Component | form/radio-group', function (hooks) {
 
     model.value = '1';
 
-    await render(<template>
-      <RadioGroup @binding={{bind model "value"}} as |Group|>
-        <Group.Radio @option="1" />
-        <Group.Radio @option="2" />
-      </RadioGroup>
-    </template>);
+    await render(
+      <template>
+        <RadioGroup @binding={{bind model "value"}} as |Group|>
+          <Group.Radio @option="1" />
+          <Group.Radio @option="2" />
+        </RadioGroup>
+      </template>,
+    );
 
     assert.dom('.form-check > input').isChecked();
   });

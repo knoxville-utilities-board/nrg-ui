@@ -8,13 +8,15 @@ module('Integration | Component | mktg/faq', function (hooks) {
   setupRenderingTest(hooks);
 
   test('faq renders', async function () {
-    await render(<template>
-      <MktgFaq class="test" @question="Question">
-        <:answer>
-          <p>Answer</p>
-        </:answer>
-      </MktgFaq>
-    </template>);
+    await render(
+      <template>
+        <MktgFaq class="test" @question="Question">
+          <:answer>
+            <p>Answer</p>
+          </:answer>
+        </MktgFaq>
+      </template>,
+    );
 
     assert
       .dom('.d-flex.flex-column.p-2.m-2.rounded.test')
@@ -46,13 +48,15 @@ module('Integration | Component | mktg/faq', function (hooks) {
       .dom('div div button i')
       .hasClass('bi-dash', 'Icon switches to dash after clicking button');
 
-    await render(<template>
-      <MktgFaq @defaultOpen={{true}} @question="Question">
-        <:answer>
-          <p>Answer</p>
-        </:answer>
-      </MktgFaq>
-    </template>);
+    await render(
+      <template>
+        <MktgFaq @defaultOpen={{true}} @question="Question">
+          <:answer>
+            <p>Answer</p>
+          </:answer>
+        </MktgFaq>
+      </template>,
+    );
 
     assert
       .dom('div div div:nth-of-type(2)')

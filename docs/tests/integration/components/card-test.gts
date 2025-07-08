@@ -8,16 +8,18 @@ module('Integration | Component | card', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders the card with the correct content', async function () {
-    await render(<template>
-      <Card>
-        <:header>
-          <p>Header content</p>
-        </:header>
-        <:body>
-          <p>Body content</p>
-        </:body>
-      </Card>
-    </template>);
+    await render(
+      <template>
+        <Card>
+          <:header>
+            <p>Header content</p>
+          </:header>
+          <:body>
+            <p>Body content</p>
+          </:body>
+        </Card>
+      </template>,
+    );
 
     assert.dom('.card').exists('Card is rendered');
     assert
@@ -29,16 +31,18 @@ module('Integration | Component | card', function (hooks) {
     assert
       .dom('.card .card-body p')
       .hasText('Body content', 'Correct content is rendered in card body');
-    await render(<template>
-      <Card @hasBorder={{false}}>
-        <:header>
-          <p>Header content</p>
-        </:header>
-        <:body>
-          <p>Body content</p>
-        </:body>
-      </Card>
-    </template>);
+    await render(
+      <template>
+        <Card @hasBorder={{false}}>
+          <:header>
+            <p>Header content</p>
+          </:header>
+          <:body>
+            <p>Body content</p>
+          </:body>
+        </Card>
+      </template>,
+    );
     assert
       .dom('.card.border-0')
       .exists('Card has class of border-0 if hasBorder is false');

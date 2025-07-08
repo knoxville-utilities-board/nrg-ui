@@ -15,19 +15,21 @@ module('Integration | Component | modal', function (hooks) {
     assert.dom('.modal-body').exists();
     assert.dom('.modal-footer').doesNotExist();
 
-    await render(<template>
-      <Modal>
-        <:header>
-          <div>Header</div>
-        </:header>
-        <:default>
-          <div>Body</div>
-        </:default>
-        <:footer>
-          <div>Footer</div>
-        </:footer>
-      </Modal>
-    </template>);
+    await render(
+      <template>
+        <Modal>
+          <:header>
+            <div>Header</div>
+          </:header>
+          <:default>
+            <div>Body</div>
+          </:default>
+          <:footer>
+            <div>Footer</div>
+          </:footer>
+        </Modal>
+      </template>,
+    );
     assert.dom('dialog').exists();
     assert.dom('.modal-content').exists();
     assert.dom('.modal-header').exists();
@@ -42,36 +44,44 @@ module('Integration | Component | modal', function (hooks) {
       assert.ok(true, 'action is fired with event');
     };
 
-    await render(<template>
-      <Modal @isOpen={{true}} @onDismiss={{onDismiss}} @dismissible={{true}} />
-    </template>);
+    await render(
+      <template>
+        <Modal
+          @isOpen={{true}}
+          @onDismiss={{onDismiss}}
+          @dismissible={{true}}
+        />
+      </template>,
+    );
 
     assert.dom('.btn-close').exists();
     await click('.btn-close');
   });
 
   test('close button does not display when not dismissible', async function (assert) {
-    await render(<template>
-      <Modal @isOpen={{true}} @dismissible={{false}} />
-    </template>);
+    await render(
+      <template><Modal @isOpen={{true}} @dismissible={{false}} /></template>,
+    );
 
     assert.dom('.btn-close').doesNotExist();
   });
 
   test('it can have custom header, body, and footer', async function (assert) {
-    await render(<template>
-      <Modal>
-        <:header>
-          <div data-test-header>Header</div>
-        </:header>
-        <:default>
-          <div data-test-body>Body</div>
-        </:default>
-        <:footer>
-          <div data-test-footer>Footer</div>
-        </:footer>
-      </Modal>
-    </template>);
+    await render(
+      <template>
+        <Modal>
+          <:header>
+            <div data-test-header>Header</div>
+          </:header>
+          <:default>
+            <div data-test-body>Body</div>
+          </:default>
+          <:footer>
+            <div data-test-footer>Footer</div>
+          </:footer>
+        </Modal>
+      </template>,
+    );
 
     assert.dom('[data-test-header]').exists().hasText('Header');
     assert.dom('[data-test-body]').exists().hasText('Body');

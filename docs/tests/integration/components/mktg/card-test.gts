@@ -8,21 +8,23 @@ module('Integration | Component | mktg/card', function (hooks) {
   setupRenderingTest(hooks);
 
   test('card correctly renders vertical as default', async function () {
-    await render(<template>
-      <MktgCard class="g-col-12" @title="Title" @subtitle="Subtitle">
-        <:callout>
-          <p>Callout</p>
-        </:callout>
-        <:start>
-          <div>
-            <p>Start section content</p>
-          </div>
-        </:start>
-        <:end>
-          <p>End section content</p>
-        </:end>
-      </MktgCard>
-    </template>);
+    await render(
+      <template>
+        <MktgCard class="g-col-12" @title="Title" @subtitle="Subtitle">
+          <:callout>
+            <p>Callout</p>
+          </:callout>
+          <:start>
+            <div>
+              <p>Start section content</p>
+            </div>
+          </:start>
+          <:end>
+            <p>End section content</p>
+          </:end>
+        </MktgCard>
+      </template>,
+    );
 
     assert
       .dom('.card.g-col-12')
@@ -70,26 +72,28 @@ module('Integration | Component | mktg/card', function (hooks) {
         'End section renders when block is present',
       );
 
-    await render(<template>
-      <MktgCard
-        class="g-col-12"
-        @title="Title"
-        @subtitle="Subtitle"
-        @leftAlignCallout={{true}}
-      >
-        <:callout>
-          <p>Callout</p>
-        </:callout>
-        <:start>
-          <div>
-            <p>Start section content</p>
-          </div>
-        </:start>
-        <:end>
-          <p>End section content</p>
-        </:end>
-      </MktgCard>
-    </template>);
+    await render(
+      <template>
+        <MktgCard
+          class="g-col-12"
+          @title="Title"
+          @subtitle="Subtitle"
+          @leftAlignCallout={{true}}
+        >
+          <:callout>
+            <p>Callout</p>
+          </:callout>
+          <:start>
+            <div>
+              <p>Start section content</p>
+            </div>
+          </:start>
+          <:end>
+            <p>End section content</p>
+          </:end>
+        </MktgCard>
+      </template>,
+    );
 
     assert
       .dom(
@@ -113,26 +117,28 @@ module('Integration | Component | mktg/card', function (hooks) {
   });
 
   test('card correctly renders horizontal when @horizontal is true', async function () {
-    await render(<template>
-      <MktgCard
-        class="g-col-12"
-        @title="Title"
-        @subtitle="Subtitle"
-        @horizontal={{true}}
-      >
-        <:callout>
-          <p>Callout</p>
-        </:callout>
-        <:start>
-          <div>
-            <p>Start section content</p>
-          </div>
-        </:start>
-        <:end>
-          <p>End section content</p>
-        </:end>
-      </MktgCard>
-    </template>);
+    await render(
+      <template>
+        <MktgCard
+          class="g-col-12"
+          @title="Title"
+          @subtitle="Subtitle"
+          @horizontal={{true}}
+        >
+          <:callout>
+            <p>Callout</p>
+          </:callout>
+          <:start>
+            <div>
+              <p>Start section content</p>
+            </div>
+          </:start>
+          <:end>
+            <p>End section content</p>
+          </:end>
+        </MktgCard>
+      </template>,
+    );
 
     assert.notOk(
       document.querySelector('.card-header'),
@@ -165,26 +171,28 @@ module('Integration | Component | mktg/card', function (hooks) {
   });
 
   test('Card passes hasBorder param correctly', async function () {
-    await render(<template>
-      <MktgCard
-        class="g-col-12"
-        @title="Title"
-        @subtitle="Subtitle"
-        @hasBorder={{false}}
-      >
-        <:callout>
-          <p>Callout</p>
-        </:callout>
-        <:start>
-          <div>
-            <p>Start section content</p>
-          </div>
-        </:start>
-        <:end>
-          <p>End section content</p>
-        </:end>
-      </MktgCard>
-    </template>);
+    await render(
+      <template>
+        <MktgCard
+          class="g-col-12"
+          @title="Title"
+          @subtitle="Subtitle"
+          @hasBorder={{false}}
+        >
+          <:callout>
+            <p>Callout</p>
+          </:callout>
+          <:start>
+            <div>
+              <p>Start section content</p>
+            </div>
+          </:start>
+          <:end>
+            <p>End section content</p>
+          </:end>
+        </MktgCard>
+      </template>,
+    );
     assert
       .dom('.card')
       .hasClass('border-0', 'Base card is passed hasBorder param');

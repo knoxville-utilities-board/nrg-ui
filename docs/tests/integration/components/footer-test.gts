@@ -18,13 +18,15 @@ module('Integration | Component | footer', function (hooks) {
   test('it renders the left content', async function (assert) {
     assert.expect(1);
 
-    await render(<template>
-      <Footer>
-        <:left>
-          Left Content Test
-        </:left>
-      </Footer>
-    </template>);
+    await render(
+      <template>
+        <Footer>
+          <:left>
+            Left Content Test
+          </:left>
+        </Footer>
+      </template>,
+    );
 
     assert.dom('footer div div div:first-child').hasText('Left Content Test');
   });
@@ -32,13 +34,15 @@ module('Integration | Component | footer', function (hooks) {
   test('it renders the right content', async function (assert) {
     assert.expect(1);
 
-    await render(<template>
-      <Footer>
-        <:right>
-          Right Content Test
-        </:right>
-      </Footer>
-    </template>);
+    await render(
+      <template>
+        <Footer>
+          <:right>
+            Right Content Test
+          </:right>
+        </Footer>
+      </template>,
+    );
 
     assert.dom('footer div div div:nth-child(1)').hasText('Right Content Test');
   });
@@ -46,16 +50,18 @@ module('Integration | Component | footer', function (hooks) {
   test('it renders both the left and right content', async function (assert) {
     assert.expect(2);
 
-    await render(<template>
-      <Footer>
-        <:left>
-          Left Content Test
-        </:left>
-        <:right>
-          Right Content Test
-        </:right>
-      </Footer>
-    </template>);
+    await render(
+      <template>
+        <Footer>
+          <:left>
+            Left Content Test
+          </:left>
+          <:right>
+            Right Content Test
+          </:right>
+        </Footer>
+      </template>,
+    );
 
     assert.dom('footer div div div:first-child').hasText('Left Content Test');
     assert.dom('footer div div div:nth-child(2)').hasText('Right Content Test');

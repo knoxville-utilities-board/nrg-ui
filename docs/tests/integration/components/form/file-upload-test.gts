@@ -17,26 +17,28 @@ module('Integration | Component | form/file-upload', function (hooks) {
 
   test('it renders', async function (assert) {
     const model = new Model();
-    await render(<template>
-      <FileUpload @binding={{bind model "files"}} />
-    </template>);
+    await render(
+      <template><FileUpload @binding={{bind model "files"}} /></template>,
+    );
     assert.dom('input').hasAttribute('type', 'file');
-    assert.dom('[data-test-drop-zone]').containsText('Drop files here or click to browse');
+    assert
+      .dom('[data-test-drop-zone]')
+      .containsText('Drop files here or click to browse');
   });
 
   test('it displays message when no files are selected', async function (assert) {
     const model = new Model();
-    await render(<template>
-      <FileUpload @binding={{bind model "files"}} />
-    </template>);
+    await render(
+      <template><FileUpload @binding={{bind model "files"}} /></template>,
+    );
     assert.dom('p.text-muted').hasText('No files selected');
   });
 
   test('it displays and removes selected files', async function (assert) {
     const model = new Model();
-    await render(<template>
-      <FileUpload @binding={{bind model "files"}} />
-    </template>);
+    await render(
+      <template><FileUpload @binding={{bind model "files"}} /></template>,
+    );
 
     await click('[data-test-open="input"]');
 
@@ -63,16 +65,22 @@ module('Integration | Component | form/file-upload', function (hooks) {
   test('it accepts arguments properly', async function (assert) {
     assert.expect(3);
     const model = new Model();
-    const onAdd = function() {
+    const onAdd = function () {
       assert.ok(true, 'onAdd called');
-    }
-    const onRemove = function() {
+    };
+    const onRemove = function () {
       assert.ok(true, 'onRemove called');
-    }
+    };
 
-    await render(<template>
-      <FileUpload @binding={{bind model "files"}} @onAdd={{onAdd}} @onRemove={{onRemove}} />
-    </template>);
+    await render(
+      <template>
+        <FileUpload
+          @binding={{bind model "files"}}
+          @onAdd={{onAdd}}
+          @onRemove={{onRemove}}
+        />
+      </template>,
+    );
 
     const file = new File(['test'], 'test.txt', { type: 'text/plain' });
     const input = find('input[type="file"]') as HTMLInputElement;
@@ -85,10 +93,12 @@ module('Integration | Component | form/file-upload', function (hooks) {
     await settled();
     await click('[data-test-remove]');
 
-    await render(<template>
-      <FileUpload @binding={{bind model "files"}} @disabled={{true}} />
-    </template>);
+    await render(
+      <template>
+        <FileUpload @binding={{bind model "files"}} @disabled={{true}} />
+      </template>,
+    );
 
     assert.dom('input').hasAttribute('disabled');
   });
-})
+});

@@ -14,13 +14,15 @@ module('Integration | Component | alert', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(<template>
-      <Alert
-        @dismissible={{true}}
-        @icon="bi-exclamation-triangle-fill"
-        @text="Foo bar"
-      />
-    </template>);
+    await render(
+      <template>
+        <Alert
+          @dismissible={{true}}
+          @icon="bi-exclamation-triangle-fill"
+          @text="Foo bar"
+        />
+      </template>,
+    );
 
     assert
       .dom('div.alert')
@@ -36,15 +38,17 @@ module('Integration | Component | alert', function (hooks) {
       .hasAttribute('type', 'button')
       .hasClass('btn-close');
 
-    await render(<template>
-      <Alert
-        @dismissible={{true}}
-        @icon="bi-exclamation-triangle-fill"
-        @type="success"
-      >
-        Baz
-      </Alert>
-    </template>);
+    await render(
+      <template>
+        <Alert
+          @dismissible={{true}}
+          @icon="bi-exclamation-triangle-fill"
+          @type="success"
+        >
+          Baz
+        </Alert>
+      </template>,
+    );
 
     assert
       .dom('div.alert')
@@ -72,13 +76,15 @@ module('Integration | Component | alert', function (hooks) {
       actionFired = true;
     };
 
-    await render(<template>
-      <Alert
-        @dismissible={{true}}
-        @type="success"
-        @onDismiss={{dismissHandler}}
-      />
-    </template>);
+    await render(
+      <template>
+        <Alert
+          @dismissible={{true}}
+          @type="success"
+          @onDismiss={{dismissHandler}}
+        />
+      </template>,
+    );
 
     await click('button');
     await clearRender();
