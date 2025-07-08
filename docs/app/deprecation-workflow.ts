@@ -10,15 +10,10 @@ setupDeprecationWorkflow({
   */
   throwOnUnhandled: false,
   workflow: [
-    /* ... handlers ... */
-    /* to generate this list, run your app for a while (or run the test suite),
-     * and then run in the browser console:
-     *
-     *    deprecationWorkflow.flushDeprecations()
-     *
-     * And copy the handlers here
-     */
-    /* example: */
-    /* { handler: 'silence', matchId: 'template-action' }, */
+    {
+      // ember-freestyle still uses `import { inject as service } from '@ember/service';`
+      handler: 'silence',
+      matchId: 'importing-inject-from-ember-service',
+    },
   ],
 });
