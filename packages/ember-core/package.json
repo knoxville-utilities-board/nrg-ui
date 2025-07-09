@@ -130,7 +130,7 @@
     "@nrg-ui/standards": "workspace:^",
     "@rollup/plugin-babel": "^6.0.4",
     "@tsconfig/ember": "^3.0.10",
-    "babel-plugin-ember-template-compilation": "^2.4.1",
+    "babel-plugin-ember-template-compilation": "^3.0.0",
     "concurrently": "^9.2.0",
     "dayjs": "^1.11.13",
     "ember-cli": "~5.12.0",
