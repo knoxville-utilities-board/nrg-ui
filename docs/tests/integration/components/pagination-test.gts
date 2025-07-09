@@ -65,9 +65,11 @@ module(
 
       meta.total = 120;
 
-      await render(<template>
-        <Pagination @meta={{meta}} @onChangePage={{setPage}} />
-      </template>);
+      await render(
+        <template>
+          <Pagination @meta={{meta}} @onChangePage={{setPage}} />
+        </template>,
+      );
 
       assert
         .dom('[data-test-previous]')
@@ -268,14 +270,16 @@ module(
         assert.step(`count: ${count}`);
       };
 
-      await render(<template>
-        <Pagination
-          @meta={{meta}}
-          @pageSizes={{pageSizes}}
-          @onChangePage={{setPage}}
-          @onChangePageSize={{setPageSize}}
-        />
-      </template>);
+      await render(
+        <template>
+          <Pagination
+            @meta={{meta}}
+            @pageSizes={{pageSizes}}
+            @onChangePage={{setPage}}
+            @onChangePageSize={{setPageSize}}
+          />
+        </template>,
+      );
 
       assert
         .dom('.selected-display')
@@ -306,13 +310,15 @@ module(
         assert.step(`start: ${start}`);
       };
 
-      await render(<template>
-        <Pagination
-          @meta={{meta}}
-          @enablePageJump={{true}}
-          @onChangePage={{setPage}}
-        />
-      </template>);
+      await render(
+        <template>
+          <Pagination
+            @meta={{meta}}
+            @enablePageJump={{true}}
+            @onChangePage={{setPage}}
+          />
+        </template>,
+      );
 
       await fillIn('[data-test-jump-to] input', '4');
 

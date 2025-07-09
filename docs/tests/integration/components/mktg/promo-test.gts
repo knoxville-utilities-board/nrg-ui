@@ -8,19 +8,21 @@ module('Integration | Component | mktg/promo', function (hooks) {
   setupRenderingTest(hooks);
 
   test('Promo component renders', async function () {
-    await render(<template>
-      <MktgPromo class="promo" @productName="Product name">
-        <:img>
-          <img src="https://place-hold.it/700x700" alt="Placeholder" />
-        </:img>
-        <:header>
-          <p class="m-0 p-0">Header Text</p>
-        </:header>
-        <:description>
-          <p>Description</p>
-        </:description>
-      </MktgPromo>
-    </template>);
+    await render(
+      <template>
+        <MktgPromo class="promo" @productName="Product name">
+          <:img>
+            <img src="https://place-hold.it/700x700" alt="Placeholder" />
+          </:img>
+          <:header>
+            <p class="m-0 p-0">Header Text</p>
+          </:header>
+          <:description>
+            <p>Description</p>
+          </:description>
+        </MktgPromo>
+      </template>,
+    );
 
     assert.dom('.row.promo').exists('Promo renders default horizontal');
     assert
@@ -49,19 +51,21 @@ module('Integration | Component | mktg/promo', function (hooks) {
       'The img alt tag renders correctly',
     );
 
-    await render(<template>
-      <MktgPromo class="promo" @vertical={{true}} @productName="Product name">
-        <:img>
-          <img src="https://place-hold.it/700x700" alt="Placeholder" />
-        </:img>
-        <:header>
-          <p class="m-0 p-0">Header Text</p>
-        </:header>
-        <:description>
-          <p>Description</p>
-        </:description>
-      </MktgPromo>
-    </template>);
+    await render(
+      <template>
+        <MktgPromo class="promo" @vertical={{true}} @productName="Product name">
+          <:img>
+            <img src="https://place-hold.it/700x700" alt="Placeholder" />
+          </:img>
+          <:header>
+            <p class="m-0 p-0">Header Text</p>
+          </:header>
+          <:description>
+            <p>Description</p>
+          </:description>
+        </MktgPromo>
+      </template>,
+    );
 
     assert.dom('.promo').exists('Promo renders vertical when param is true');
     assert

@@ -21,13 +21,15 @@ module('Integration | Component | form/checkbox', function (hooks) {
 
   test('it renders', async function (this: TestContext, assert) {
     const model = new Model();
-    await render(<template>
-      <Checkbox
-        @binding={{bind model "value"}}
-        @id="my-id"
-        @label="This is a checkbox"
-      />
-    </template>);
+    await render(
+      <template>
+        <Checkbox
+          @binding={{bind model "value"}}
+          @id="my-id"
+          @label="This is a checkbox"
+        />
+      </template>,
+    );
 
     assert
       .dom('.form-check > input')
@@ -52,11 +54,13 @@ module('Integration | Component | form/checkbox', function (hooks) {
 
   test('it renders (block)', async function (this: TestContext, assert) {
     const model = new Model();
-    await render(<template>
-      <Checkbox @binding={{bind model "value"}} @id="my-id">
-        <span>This is a checkbox</span>
-      </Checkbox>
-    </template>);
+    await render(
+      <template>
+        <Checkbox @binding={{bind model "value"}} @id="my-id">
+          <span>This is a checkbox</span>
+        </Checkbox>
+      </template>,
+    );
 
     assert
       .dom('.form-check > input')
@@ -79,14 +83,16 @@ module('Integration | Component | form/checkbox', function (hooks) {
 
   test('it renders (switch)', async function (this: TestContext, assert) {
     const model = new Model();
-    await render(<template>
-      <Checkbox
-        @binding={{bind model "value"}}
-        @id="my-id"
-        @label="This is a checkbox"
-        @type="switch"
-      />
-    </template>);
+    await render(
+      <template>
+        <Checkbox
+          @binding={{bind model "value"}}
+          @id="my-id"
+          @label="This is a checkbox"
+          @type="switch"
+        />
+      </template>,
+    );
 
     assert.dom('div').hasClass('form-switch');
 
@@ -113,9 +119,11 @@ module('Integration | Component | form/checkbox', function (hooks) {
 
   test('it works', async function (assert) {
     const model = new Model();
-    await render(<template>
-      <Checkbox @binding={{bind model "value"}} @label="This is a checkbox" />
-    </template>);
+    await render(
+      <template>
+        <Checkbox @binding={{bind model "value"}} @label="This is a checkbox" />
+      </template>,
+    );
 
     assert.dom('.form-check > input').hasValue('false').isNotChecked();
 

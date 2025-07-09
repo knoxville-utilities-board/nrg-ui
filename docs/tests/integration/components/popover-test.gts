@@ -30,23 +30,25 @@ module('Integration | Component | popover', function (hooks) {
   test('`direction` works', async function (this: TestContext, assert) {
     const { model } = this;
 
-    await render(<template>
-      <Popover @side={{model.side}}>
-        <:control as |actions|>
-          <Button @onClick={{actions.toggle}}>
-            toggle
-          </Button>
-        </:control>
-        <:content as |Content|>
-          <Content.Header>
-            header
-          </Content.Header>
-          <Content.Body>
-            body
-          </Content.Body>
-        </:content>
-      </Popover>
-    </template>);
+    await render(
+      <template>
+        <Popover @side={{model.side}}>
+          <:control as |actions|>
+            <Button @onClick={{actions.toggle}}>
+              toggle
+            </Button>
+          </:control>
+          <:content as |Content|>
+            <Content.Header>
+              header
+            </Content.Header>
+            <Content.Body>
+              body
+            </Content.Body>
+          </:content>
+        </Popover>
+      </template>,
+    );
     assert.dom('.popover').hasClass('bs-popover-bottom');
 
     this.model.side = 'top';
@@ -71,23 +73,25 @@ module('Integration | Component | popover', function (hooks) {
       assert.step('onHide');
     };
 
-    await render(<template>
-      <Popover @onShow={{onShow}} @onHide={{onHide}}>
-        <:control as |actions|>
-          <Button @onClick={{actions.toggle}}>
-            toggle
-          </Button>
-        </:control>
-        <:content as |Content|>
-          <Content.Header>
-            header
-          </Content.Header>
-          <Content.Body>
-            body
-          </Content.Body>
-        </:content>
-      </Popover>
-    </template>);
+    await render(
+      <template>
+        <Popover @onShow={{onShow}} @onHide={{onHide}}>
+          <:control as |actions|>
+            <Button @onClick={{actions.toggle}}>
+              toggle
+            </Button>
+          </:control>
+          <:content as |Content|>
+            <Content.Header>
+              header
+            </Content.Header>
+            <Content.Body>
+              body
+            </Content.Body>
+          </:content>
+        </Popover>
+      </template>,
+    );
 
     assert.dom('.popover').hasClass('hidden');
 
@@ -97,26 +101,28 @@ module('Integration | Component | popover', function (hooks) {
 
     await click('button');
 
-    await render(<template>
-      <Popover @onShow={{onShow}} @onHide={{onHide}}>
-        <:control as |actions|>
-          <Button class="open" @onClick={{actions.show}}>
-            show
-          </Button>
-          <Button class="hide" @onClick={{actions.hide}}>
-            hide
-          </Button>
-        </:control>
-        <:content as |Content|>
-          <Content.Header>
-            header
-          </Content.Header>
-          <Content.Body>
-            body
-          </Content.Body>
-        </:content>
-      </Popover>
-    </template>);
+    await render(
+      <template>
+        <Popover @onShow={{onShow}} @onHide={{onHide}}>
+          <:control as |actions|>
+            <Button class="open" @onClick={{actions.show}}>
+              show
+            </Button>
+            <Button class="hide" @onClick={{actions.hide}}>
+              hide
+            </Button>
+          </:control>
+          <:content as |Content|>
+            <Content.Header>
+              header
+            </Content.Header>
+            <Content.Body>
+              body
+            </Content.Body>
+          </:content>
+        </Popover>
+      </template>,
+    );
 
     await click('button.open');
     await click('button.open');

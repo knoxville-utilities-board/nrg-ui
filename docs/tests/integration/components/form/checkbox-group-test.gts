@@ -24,20 +24,22 @@ module('Integration | Component | form/checkbox-group', function (hooks) {
 
   test('it renders', async function (this: TestContext, assert) {
     const model = new Model();
-    await render(<template>
-      <CheckboxGroup as |Item|>
-        <Item
-          @binding={{bind model "v1"}}
-          @id="my-id-1"
-          @label="This is checkbox 1"
-        />
-        <Item
-          @binding={{bind model "v2"}}
-          @id="my-id-2"
-          @label="This is checkbox 2"
-        />
-      </CheckboxGroup>
-    </template>);
+    await render(
+      <template>
+        <CheckboxGroup as |Item|>
+          <Item
+            @binding={{bind model "v1"}}
+            @id="my-id-1"
+            @label="This is checkbox 1"
+          />
+          <Item
+            @binding={{bind model "v2"}}
+            @id="my-id-2"
+            @label="This is checkbox 2"
+          />
+        </CheckboxGroup>
+      </template>,
+    );
 
     const [cb1, cb2] = Array.from(
       this.element.querySelectorAll('.form-control > .form-check > input'),
@@ -86,16 +88,18 @@ module('Integration | Component | form/checkbox-group', function (hooks) {
 
   test('it renders (block)', async function (this: TestContext, assert) {
     const model = new Model();
-    await render(<template>
-      <CheckboxGroup as |Item|>
-        <Item @binding={{bind model "v1"}} @id="my-id-1">
-          <span>This is checkbox 1</span>
-        </Item>
-        <Item @binding={{bind model "v2"}} @id="my-id-2">
-          <span>This is checkbox 2</span>
-        </Item>
-      </CheckboxGroup>
-    </template>);
+    await render(
+      <template>
+        <CheckboxGroup as |Item|>
+          <Item @binding={{bind model "v1"}} @id="my-id-1">
+            <span>This is checkbox 1</span>
+          </Item>
+          <Item @binding={{bind model "v2"}} @id="my-id-2">
+            <span>This is checkbox 2</span>
+          </Item>
+        </CheckboxGroup>
+      </template>,
+    );
 
     const [cb1, cb2] = Array.from(
       this.element.querySelectorAll('.form-control > .form-check > input'),
@@ -144,20 +148,22 @@ module('Integration | Component | form/checkbox-group', function (hooks) {
 
   test('it renders (switch)', async function (this: TestContext, assert) {
     const model = new Model();
-    await render(<template>
-      <CheckboxGroup @type="switch" as |Item|>
-        <Item
-          @binding={{bind model "v1"}}
-          @id="my-id-1"
-          @label="This is checkbox 1"
-        />
-        <Item
-          @binding={{bind model "v2"}}
-          @id="my-id-2"
-          @label="This is checkbox 2"
-        />
-      </CheckboxGroup>
-    </template>);
+    await render(
+      <template>
+        <CheckboxGroup @type="switch" as |Item|>
+          <Item
+            @binding={{bind model "v1"}}
+            @id="my-id-1"
+            @label="This is checkbox 1"
+          />
+          <Item
+            @binding={{bind model "v2"}}
+            @id="my-id-2"
+            @label="This is checkbox 2"
+          />
+        </CheckboxGroup>
+      </template>,
+    );
 
     assert.dom('.form-control > div').hasClass('form-switch');
 
@@ -208,20 +214,22 @@ module('Integration | Component | form/checkbox-group', function (hooks) {
 
   test('it works', async function (this: TestContext, assert) {
     const model = new Model();
-    await render(<template>
-      <CheckboxGroup as |Item|>
-        <Item
-          @binding={{bind model "v1"}}
-          @id="my-id-1"
-          @label="This is checkbox 1"
-        />
-        <Item
-          @binding={{bind model "v2"}}
-          @id="my-id-2"
-          @label="This is checkbox 2"
-        />
-      </CheckboxGroup>
-    </template>);
+    await render(
+      <template>
+        <CheckboxGroup as |Item|>
+          <Item
+            @binding={{bind model "v1"}}
+            @id="my-id-1"
+            @label="This is checkbox 1"
+          />
+          <Item
+            @binding={{bind model "v2"}}
+            @id="my-id-2"
+            @label="This is checkbox 2"
+          />
+        </CheckboxGroup>
+      </template>,
+    );
 
     const [cb1, cb2] = Array.from(
       this.element.querySelectorAll('.form-control > .form-check > input'),

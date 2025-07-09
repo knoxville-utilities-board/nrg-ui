@@ -45,24 +45,26 @@ module('Integration | Component | form', function (hooks) {
   test('it renders', async function (this: TestContext, assert) {
     const model = this.model;
 
-    await render(<template>
-      <Form as |Form|>
-        <Form.Field @label="Text Input" @required={{true}} as |Field|>
-          <Field.TextInput @binding={{bind model "textInput"}} />
-        </Form.Field>
-        <Form.Field
-          @label="Text Area (with additional text)"
-          @required={{true}}
-          as |Field|
-        >
-          <Field.TextArea @binding={{bind model "textArea"}} />
-          <Field.Text>
-            Here's some extra context for this field
-          </Field.Text>
-        </Form.Field>
-        <Form.SubmitButton />
-      </Form>
-    </template>);
+    await render(
+      <template>
+        <Form as |Form|>
+          <Form.Field @label="Text Input" @required={{true}} as |Field|>
+            <Field.TextInput @binding={{bind model "textInput"}} />
+          </Form.Field>
+          <Form.Field
+            @label="Text Area (with additional text)"
+            @required={{true}}
+            as |Field|
+          >
+            <Field.TextArea @binding={{bind model "textArea"}} />
+            <Field.Text>
+              Here's some extra context for this field
+            </Field.Text>
+          </Form.Field>
+          <Form.SubmitButton />
+        </Form>
+      </template>,
+    );
 
     assert.dom('form').exists();
 
@@ -128,34 +130,36 @@ module('Integration | Component | form', function (hooks) {
       didSubmit = true;
     };
 
-    await render(<template>
-      <Form @validators={{Validators}} @onSubmit={{actionHandler}} as |Form|>
-        <Form.Field @label="Text Input" @required={{true}} as |Field|>
-          <Field.TextInput @binding={{bind model "textInput"}} />
-        </Form.Field>
-        <Form.Field
-          @label="Text Area (with additional text)"
-          @required={{true}}
-          as |Field|
-        >
-          <Field.TextArea @binding={{bind model "textArea"}} />
-          <Field.Text>
-            Here's some extra context for this field
-          </Field.Text>
-        </Form.Field>
-        <Form.Field
-          @label="Select"
-          @validatorKey="selectByAnotherProperty"
-          as |Field|
-        >
-          <Field.Select
-            @binding={{bind model "select"}}
-            @options={{array "A" "B" "C"}}
-          />
-        </Form.Field>
-        <Form.SubmitButton />
-      </Form>
-    </template>);
+    await render(
+      <template>
+        <Form @validators={{Validators}} @onSubmit={{actionHandler}} as |Form|>
+          <Form.Field @label="Text Input" @required={{true}} as |Field|>
+            <Field.TextInput @binding={{bind model "textInput"}} />
+          </Form.Field>
+          <Form.Field
+            @label="Text Area (with additional text)"
+            @required={{true}}
+            as |Field|
+          >
+            <Field.TextArea @binding={{bind model "textArea"}} />
+            <Field.Text>
+              Here's some extra context for this field
+            </Field.Text>
+          </Form.Field>
+          <Form.Field
+            @label="Select"
+            @validatorKey="selectByAnotherProperty"
+            as |Field|
+          >
+            <Field.Select
+              @binding={{bind model "select"}}
+              @options={{array "A" "B" "C"}}
+            />
+          </Form.Field>
+          <Form.SubmitButton />
+        </Form>
+      </template>,
+    );
 
     // Select
     const select = this.element.querySelector('label + .dropdown > button')!;

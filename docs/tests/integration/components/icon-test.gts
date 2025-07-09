@@ -8,9 +8,9 @@ module('Integration | Component | icon', function (hooks) {
   setupRenderingTest(hooks);
 
   test('icon renders without circular background', async function () {
-    await render(<template>
-      <Icon class="test" @type="icon" @color="primary" />
-    </template>);
+    await render(
+      <template><Icon class="test" @type="icon" @color="primary" /></template>,
+    );
 
     assert.dom('.d-flex.test').exists('Icon renders passed attributes');
     assert.notOk(
@@ -26,9 +26,11 @@ module('Integration | Component | icon', function (hooks) {
   });
 
   test('icon renders with circular background', async function () {
-    await render(<template>
-      <Icon class="test" @type="icon" @color="warning" @circular={{true}} />
-    </template>);
+    await render(
+      <template>
+        <Icon class="test" @type="icon" @color="warning" @circular={{true}} />
+      </template>,
+    );
     assert
       .dom('.test div')
       .hasClass(
@@ -41,9 +43,11 @@ module('Integration | Component | icon', function (hooks) {
   });
 
   test('icon renders at a diffrent size background', async function () {
-    await render(<template>
-      <Icon class="test" @type="icon" @color="primary" @size={{3}} />
-    </template>);
+    await render(
+      <template>
+        <Icon class="test" @type="icon" @color="primary" @size={{3}} />
+      </template>,
+    );
 
     assert
       .dom('.test div')

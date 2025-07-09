@@ -16,9 +16,9 @@ module('Integration | Component | form/phone-input', function (hooks) {
   test('it renders', async function (assert) {
     const model = new Model();
 
-    await render(<template>
-      <PhoneInput @binding={{bind model "value"}} />
-    </template>);
+    await render(
+      <template><PhoneInput @binding={{bind model "value"}} /></template>,
+    );
 
     assert.dom('input').hasAttribute('type', 'tel').hasClass('form-control');
   });
@@ -26,9 +26,9 @@ module('Integration | Component | form/phone-input', function (hooks) {
   test('it formats (default)', async function (assert) {
     const model = new Model();
 
-    await render(<template>
-      <PhoneInput @binding={{bind model "value"}} />
-    </template>);
+    await render(
+      <template><PhoneInput @binding={{bind model "value"}} /></template>,
+    );
 
     await fillIn('input', '1111234567890123456789');
     await blur('input');
@@ -68,9 +68,11 @@ module('Integration | Component | form/phone-input', function (hooks) {
       return value.replace(/(\d)(\d+)/, '$1 $2');
     };
 
-    await render(<template>
-      <PhoneInput @binding={{bind model "value"}} @format={{format}} />
-    </template>);
+    await render(
+      <template>
+        <PhoneInput @binding={{bind model "value"}} @format={{format}} />
+      </template>,
+    );
 
     await fillIn('input', '1111234567890123456789');
     await blur('input');
@@ -106,9 +108,9 @@ module('Integration | Component | form/phone-input', function (hooks) {
   test('it allows unformatted input', async function (assert) {
     const model = new Model();
 
-    await render(<template>
-      <PhoneInput @binding={{bind model "value"}} />
-    </template>);
+    await render(
+      <template><PhoneInput @binding={{bind model "value"}} /></template>,
+    );
 
     await fillIn('input', '1-12a345(6)78_90 ');
     await blur('input');

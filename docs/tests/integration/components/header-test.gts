@@ -8,22 +8,24 @@ module('Integration | Component | header', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders content within the correct named blocks', async function () {
-    await render(<template>
-      <Header>
-        <:left>
-          <p class="m-0">Left side content</p>
-        </:left>
-        <:center>
-          <p class="m-0">center content</p>
-        </:center>
-        <:right>
-          <p class="m-0">right side content</p>
-        </:right>
-        <:mobile-drop-section>
-          <p class="m-0">mobile drop section content</p>
-        </:mobile-drop-section>
-      </Header>
-    </template>);
+    await render(
+      <template>
+        <Header>
+          <:left>
+            <p class="m-0">Left side content</p>
+          </:left>
+          <:center>
+            <p class="m-0">center content</p>
+          </:center>
+          <:right>
+            <p class="m-0">right side content</p>
+          </:right>
+          <:mobile-drop-section>
+            <p class="m-0">mobile drop section content</p>
+          </:mobile-drop-section>
+        </Header>
+      </template>,
+    );
 
     assert
       .dom('.col.d-flex.app-bar-left p')
@@ -52,22 +54,24 @@ module('Integration | Component | header', function (hooks) {
   });
 
   test('it renders content in the correct order', async function () {
-    await render(<template>
-      <Header>
-        <:left>
-          <p class="m-0">Left side content</p>
-        </:left>
-        <:center>
-          <p class="m-0">center content</p>
-        </:center>
-        <:right>
-          <p class="m-0">right side content</p>
-        </:right>
-        <:mobile-drop-section>
-          <p class="m-0">mobile drop section content</p>
-        </:mobile-drop-section>
-      </Header>
-    </template>);
+    await render(
+      <template>
+        <Header>
+          <:left>
+            <p class="m-0">Left side content</p>
+          </:left>
+          <:center>
+            <p class="m-0">center content</p>
+          </:center>
+          <:right>
+            <p class="m-0">right side content</p>
+          </:right>
+          <:mobile-drop-section>
+            <p class="m-0">mobile drop section content</p>
+          </:mobile-drop-section>
+        </Header>
+      </template>,
+    );
 
     assert.dom('div div p').hasText('Left side content');
     assert.dom('div div:nth-of-type(2) p').hasText('center content');

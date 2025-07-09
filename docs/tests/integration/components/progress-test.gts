@@ -14,9 +14,11 @@ module('Integration | Component | progress', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders (inline)', async function (this: Context, assert) {
-    await render(<template>
-      <Progress @animated={{true}} @progress={{40}} @striped={{true}} />
-    </template>);
+    await render(
+      <template>
+        <Progress @animated={{true}} @progress={{40}} @striped={{true}} />
+      </template>,
+    );
 
     assert
       .dom('div:has(> div)')
@@ -46,12 +48,14 @@ module('Integration | Component | progress', function (hooks) {
   });
 
   test('it renders (stacked)', async function (this: Context, assert) {
-    await render(<template>
-      <Progress @stacked={{true}} as |Segment|>
-        <Segment @progress={{40}} @striped={{true}} @animated={{true}} />
-        <Segment class="bg-warning" @title="foo bar" @progress={{60}} />
-      </Progress>
-    </template>);
+    await render(
+      <template>
+        <Progress @stacked={{true}} as |Segment|>
+          <Segment @progress={{40}} @striped={{true}} @animated={{true}} />
+          <Segment class="bg-warning" @title="foo bar" @progress={{60}} />
+        </Progress>
+      </template>,
+    );
 
     const container = find('div.progress-stacked') as HTMLDivElement;
     let segment = container.querySelector(

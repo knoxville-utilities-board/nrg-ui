@@ -12,28 +12,30 @@ module('Integration | Component | dropdown', function (hooks) {
       assert.step(val);
     };
 
-    await render(<template>
-      <Dropdown>
-        <:control>
-          This is the button
-        </:control>
-        <:menu as |Menu|>
-          <Menu.Item @onSelect={{fn clickHandler "item1"}}>
-            Item 1
-          </Menu.Item>
-          <Menu.Item @onSelect={{fn clickHandler "item2"}}>
-            Item 2
-          </Menu.Item>
-          <Menu.Item @disabled={{true}} @onSelect={{fn clickHandler "item3"}}>
-            Item 3 (disabled)
-          </Menu.Item>
-          <Menu.Divider />
-          <Menu.Header>
-            Header
-          </Menu.Header>
-        </:menu>
-      </Dropdown>
-    </template>);
+    await render(
+      <template>
+        <Dropdown>
+          <:control>
+            This is the button
+          </:control>
+          <:menu as |Menu|>
+            <Menu.Item @onSelect={{fn clickHandler "item1"}}>
+              Item 1
+            </Menu.Item>
+            <Menu.Item @onSelect={{fn clickHandler "item2"}}>
+              Item 2
+            </Menu.Item>
+            <Menu.Item @disabled={{true}} @onSelect={{fn clickHandler "item3"}}>
+              Item 3 (disabled)
+            </Menu.Item>
+            <Menu.Divider />
+            <Menu.Header>
+              Header
+            </Menu.Header>
+          </:menu>
+        </Dropdown>
+      </template>,
+    );
 
     await click('.btn.dropdown');
     await click('.dropdown-menu > li:nth-child(1)');

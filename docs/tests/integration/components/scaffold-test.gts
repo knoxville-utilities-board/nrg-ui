@@ -10,45 +10,47 @@ module('Integration | Component | scaffold', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(<template>
-      <Scaffold>
-        <:app-bar-left>
-          Appbar Left
-        </:app-bar-left>
-        <:app-bar-right>
-          Appbar Right
-        </:app-bar-right>
-        <:sidebar as |Menu|>
-          <Menu.Item>
-            Sidebar Item
-          </Menu.Item>
-          <Menu.Group>
-            <:header>
-              Sidebar Group
-            </:header>
-            <:items as |Item|>
-              <Item>
-                Sidebar Group Item
-              </Item>
-            </:items>
-          </Menu.Group>
-        </:sidebar>
-        <:sidebar-footer as |Item|>
-          <Item>
-            Sidebar Footer Item
-          </Item>
-        </:sidebar-footer>
-        <:default>
-          Main Content
-        </:default>
-        <:footer-left>
-          Footer Left
-        </:footer-left>
-        <:footer-right>
-          Footer Right
-        </:footer-right>
-      </Scaffold>
-    </template>);
+    await render(
+      <template>
+        <Scaffold>
+          <:app-bar-left>
+            Appbar Left
+          </:app-bar-left>
+          <:app-bar-right>
+            Appbar Right
+          </:app-bar-right>
+          <:sidebar as |Menu|>
+            <Menu.Item>
+              Sidebar Item
+            </Menu.Item>
+            <Menu.Group>
+              <:header>
+                Sidebar Group
+              </:header>
+              <:items as |Item|>
+                <Item>
+                  Sidebar Group Item
+                </Item>
+              </:items>
+            </Menu.Group>
+          </:sidebar>
+          <:sidebar-footer as |Item|>
+            <Item>
+              Sidebar Footer Item
+            </Item>
+          </:sidebar-footer>
+          <:default>
+            Main Content
+          </:default>
+          <:footer-left>
+            Footer Left
+          </:footer-left>
+          <:footer-right>
+            Footer Right
+          </:footer-right>
+        </Scaffold>
+      </template>,
+    );
     assert
       .dom()
       .containsText('Appbar Left', 'renders app bar left section')
@@ -67,15 +69,17 @@ module('Integration | Component | scaffold', function (hooks) {
       /* only present to make item clickable */
     };
     setBreakpoint('large');
-    await render(<template>
-      <Scaffold>
-        <:sidebar as |Menu|>
-          <Menu.Item @onClick={{emptyClickHandler}}>
-            Sidebar Item
-          </Menu.Item>
-        </:sidebar>
-      </Scaffold>
-    </template>);
+    await render(
+      <template>
+        <Scaffold>
+          <:sidebar as |Menu|>
+            <Menu.Item @onClick={{emptyClickHandler}}>
+              Sidebar Item
+            </Menu.Item>
+          </:sidebar>
+        </Scaffold>
+      </template>,
+    );
 
     await click('.sidebar .list-group-item');
 
@@ -105,13 +109,15 @@ module('Integration | Component | scaffold', function (hooks) {
   });
 
   test('it renders about section', async function (assert) {
-    await render(<template>
-      <Scaffold>
-        <:about>
-          About Modal Content
-        </:about>
-      </Scaffold>
-    </template>);
+    await render(
+      <template>
+        <Scaffold>
+          <:about>
+            About Modal Content
+          </:about>
+        </Scaffold>
+      </template>,
+    );
 
     await click('i.bi-three-dots-vertical');
     await click('[data-test-dropdown-item]:last-child');
@@ -127,15 +133,17 @@ module('Integration | Component | scaffold', function (hooks) {
   });
 
   test('it renders the context menu', async function (assert) {
-    await render(<template>
-      <Scaffold>
-        <:context-menu as |Menu|>
-          <Menu.Item class="context-menu-item-1">
-            Context Menu Item
-          </Menu.Item>
-        </:context-menu>
-      </Scaffold>
-    </template>);
+    await render(
+      <template>
+        <Scaffold>
+          <:context-menu as |Menu|>
+            <Menu.Item class="context-menu-item-1">
+              Context Menu Item
+            </Menu.Item>
+          </:context-menu>
+        </Scaffold>
+      </template>,
+    );
 
     await click('i.bi-three-dots-vertical');
     assert

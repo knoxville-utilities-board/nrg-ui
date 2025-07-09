@@ -9,19 +9,21 @@ module('Integration | Component | mktg/feature-list', function (hooks) {
 
   test('it renders', async function (assert) {
     assert.expect(4);
-    await render(<template>
-      <MktgFeatureList @columns="2">
-        <:label>
-          <p class="mt-2">Includes:</p>
-        </:label>
-        <:features as |Feature|>
-          <Feature @icon="bi-check2" @text="Feature 1" />
-          <Feature @icon="bi-check2" @text="Feature 1" />
-          <Feature @icon="bi-check2" @text="Feature 1" />
-          <Feature @icon="bi-check2" @text="Feature 1" />
-        </:features>
-      </MktgFeatureList>
-    </template>);
+    await render(
+      <template>
+        <MktgFeatureList @columns="2">
+          <:label>
+            <p class="mt-2">Includes:</p>
+          </:label>
+          <:features as |Feature|>
+            <Feature @icon="bi-check2" @text="Feature 1" />
+            <Feature @icon="bi-check2" @text="Feature 1" />
+            <Feature @icon="bi-check2" @text="Feature 1" />
+            <Feature @icon="bi-check2" @text="Feature 1" />
+          </:features>
+        </MktgFeatureList>
+      </template>,
+    );
 
     assert.dom('div p').exists('Feature list label renders');
     assert.dom('div div').hasClass('grid');

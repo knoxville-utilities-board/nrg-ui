@@ -22,11 +22,13 @@ module('Integration | Component | button-group', function (hooks) {
       assert.ok(evt, 'action is fired with event');
     };
 
-    await render(<template>
-      <ButtonGroup @onClick={{fn clickHandler "group"}} as |Group|>
-        <Group.Button @text="Foo bar" @onClick={{fn clickHandler "button"}} />
-      </ButtonGroup>
-    </template>);
+    await render(
+      <template>
+        <ButtonGroup @onClick={{fn clickHandler "group"}} as |Group|>
+          <Group.Button @text="Foo bar" @onClick={{fn clickHandler "button"}} />
+        </ButtonGroup>
+      </template>,
+    );
 
     assert.dom('div:has(button)').hasAttribute('role', 'group');
 
@@ -52,16 +54,18 @@ module('Integration | Component | button-group', function (hooks) {
       assert.notOk(evt, 'action is fired with event');
     };
 
-    await render(<template>
-      <ButtonGroup
-        @disabled={{true}}
-        @onClick={{fn clickHandler "group"}}
-        as |Group|
-      >
-        <Group.Button @text="Foo" @onClick={{fn clickHandler "foo"}} />
-        <Group.Button @text="Bar" @onClick={{fn clickHandler "bar"}} />
-      </ButtonGroup>
-    </template>);
+    await render(
+      <template>
+        <ButtonGroup
+          @disabled={{true}}
+          @onClick={{fn clickHandler "group"}}
+          as |Group|
+        >
+          <Group.Button @text="Foo" @onClick={{fn clickHandler "foo"}} />
+          <Group.Button @text="Bar" @onClick={{fn clickHandler "bar"}} />
+        </ButtonGroup>
+      </template>,
+    );
 
     assert
       .dom('div:has(button)')
@@ -90,31 +94,33 @@ module('Integration | Component | button-group', function (hooks) {
       assert.ok(evt, 'action is fired with event');
     };
 
-    await render(<template>
-      <ButtonGroup @onClick={{fn clickHandler "group"}} as |Group|>
-        <Group.Button
-          class="btn-primary"
-          @text="Foo"
-          @onClick={{fn clickHandler "foo"}}
-        />
-        <Group.SubGroup
-          @onClick={{fn clickHandler "subgroup"}}
-          data-test-subgroup
-          as |SubGroup|
-        >
-          <SubGroup.Button
+    await render(
+      <template>
+        <ButtonGroup @onClick={{fn clickHandler "group"}} as |Group|>
+          <Group.Button
             class="btn-primary"
-            @text="Bar"
-            @onClick={{fn clickHandler "bar"}}
+            @text="Foo"
+            @onClick={{fn clickHandler "foo"}}
           />
-          <SubGroup.Button
-            class="btn-primary"
-            @text="Baz"
-            @onClick={{fn clickHandler "baz"}}
-          />
-        </Group.SubGroup>
-      </ButtonGroup>
-    </template>);
+          <Group.SubGroup
+            @onClick={{fn clickHandler "subgroup"}}
+            data-test-subgroup
+            as |SubGroup|
+          >
+            <SubGroup.Button
+              class="btn-primary"
+              @text="Bar"
+              @onClick={{fn clickHandler "bar"}}
+            />
+            <SubGroup.Button
+              class="btn-primary"
+              @text="Baz"
+              @onClick={{fn clickHandler "baz"}}
+            />
+          </Group.SubGroup>
+        </ButtonGroup>
+      </template>,
+    );
 
     assert.dom('div:has(button)').hasAttribute('role', 'group');
 
@@ -146,15 +152,17 @@ module('Integration | Component | button-group', function (hooks) {
       assert.ok(evt, 'action is fired with event');
     };
 
-    await render(<template>
-      <ButtonGroup @onClick={{fn clickHandler "group"}} as |Group|>
-        <Group.SubGroup as |SubGroup|>
-          <SubGroup.SubGroup as |SubGroup2|>
-            <SubGroup2.Button />
-          </SubGroup.SubGroup>
-        </Group.SubGroup>
-      </ButtonGroup>
-    </template>);
+    await render(
+      <template>
+        <ButtonGroup @onClick={{fn clickHandler "group"}} as |Group|>
+          <Group.SubGroup as |SubGroup|>
+            <SubGroup.SubGroup as |SubGroup2|>
+              <SubGroup2.Button />
+            </SubGroup.SubGroup>
+          </Group.SubGroup>
+        </ButtonGroup>
+      </template>,
+    );
 
     await click('button');
   });

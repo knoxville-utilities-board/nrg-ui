@@ -20,9 +20,9 @@ module('Integration | Component | button', function (hooks) {
       assert.ok(evt, 'action is fired with event');
     };
 
-    await render(<template>
-      <Button @text="Foo bar" @onClick={{clickHandler}} />
-    </template>);
+    await render(
+      <template><Button @text="Foo bar" @onClick={{clickHandler}} /></template>,
+    );
 
     assert
       .dom('button')
@@ -34,11 +34,13 @@ module('Integration | Component | button', function (hooks) {
 
     await click('button');
 
-    await render(<template>
-      <Button @onClick={{clickHandler}}>
-        <div>Inner content</div>
-      </Button>
-    </template>);
+    await render(
+      <template>
+        <Button @onClick={{clickHandler}}>
+          <div>Inner content</div>
+        </Button>
+      </template>,
+    );
 
     assert
       .dom('button')
@@ -59,9 +61,11 @@ module('Integration | Component | button', function (hooks) {
       assert.notOk(evt, 'action is fired with event');
     };
 
-    await render(<template>
-      <Button @disabled={{true}} @onClick={{clickHandler}} />
-    </template>);
+    await render(
+      <template>
+        <Button @disabled={{true}} @onClick={{clickHandler}} />
+      </template>,
+    );
 
     assert
       .dom('button')
@@ -84,9 +88,11 @@ module('Integration | Component | button', function (hooks) {
       assert.notOk(evt, 'action is fired with event');
     };
 
-    await render(<template>
-      <Button @loading={{true}} @onClick={{clickHandler}} />
-    </template>);
+    await render(
+      <template>
+        <Button @loading={{true}} @onClick={{clickHandler}} />
+      </template>,
+    );
 
     assert
       .dom('button')
@@ -119,29 +125,35 @@ module('Integration | Component | button', function (hooks) {
   test('it can have an icon', async function (assert) {
     assert.expect(9);
 
-    await render(<template>
-      <Button @icon="bi-suitcase">
-        <span>Text</span>
-      </Button>
-    </template>);
+    await render(
+      <template>
+        <Button @icon="bi-suitcase">
+          <span>Text</span>
+        </Button>
+      </template>,
+    );
 
     assert.dom('button > i:first-child').hasClass('bi-suitcase');
     assert.dom('button > span:last-child').containsText('Text');
 
-    await render(<template>
-      <Button @icon="bi-suitcase" @iconPosition="right">
-        <span>Text</span>
-      </Button>
-    </template>);
+    await render(
+      <template>
+        <Button @icon="bi-suitcase" @iconPosition="right">
+          <span>Text</span>
+        </Button>
+      </template>,
+    );
 
     assert.dom('button > span:first-child').containsText('Text');
     assert.dom('button > i:last-child').hasClass('bi-suitcase');
 
-    await render(<template>
-      <Button @icon="bi-suitcase" @iconLabel="Suitcase">
-        <span>Text</span>
-      </Button>
-    </template>);
+    await render(
+      <template>
+        <Button @icon="bi-suitcase" @iconLabel="Suitcase">
+          <span>Text</span>
+        </Button>
+      </template>,
+    );
 
     assert
       .dom('button > i:first-child')
@@ -149,13 +161,15 @@ module('Integration | Component | button', function (hooks) {
       .hasAria('label', 'Suitcase');
     assert.dom('button > span:last-child').containsText('Text');
 
-    await render(<template>
-      <Button
-        @icon="bi-suitcase"
-        @iconLabel="Suitcase"
-        @iconPosition="center"
-      />
-    </template>);
+    await render(
+      <template>
+        <Button
+          @icon="bi-suitcase"
+          @iconLabel="Suitcase"
+          @iconPosition="center"
+        />
+      </template>,
+    );
 
     assert
       .dom('button > span > i:first-child')

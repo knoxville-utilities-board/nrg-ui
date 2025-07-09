@@ -8,17 +8,19 @@ module('Integration | Component | mktg/section-header', function (hooks) {
   setupRenderingTest(hooks);
 
   test('Section header renders', async function () {
-    await render(<template>
-      <MktgSectionHeader
-        class="section-header"
-        @title="Title"
-        @subject="Subject"
-      >
-        <:subheader>
-          <p>subheader</p>
-        </:subheader>
-      </MktgSectionHeader>,
-    </template>);
+    await render(
+      <template>
+        <MktgSectionHeader
+          class="section-header"
+          @title="Title"
+          @subject="Subject"
+        >
+          <:subheader>
+            <p>subheader</p>
+          </:subheader>
+        </MktgSectionHeader>,
+      </template>,
+    );
 
     assert
       .dom(

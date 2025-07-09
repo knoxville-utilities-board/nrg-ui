@@ -10,40 +10,42 @@ module('Integration | Component | sidebar', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(<template>
-      <Sidebar>
-        <:default as |Menu|>
-          <Menu.Group>
-            <:badge>I'm a badge!</:badge>
-            <:header>
-              Section 1
-            </:header>
-            <:items as |Item|>
-              <Item @url="https://example.com">Item 1</Item>
-            </:items>
-          </Menu.Group>
-          <Menu.Group>
-            <:header>
-              Section 2
-            </:header>
-            <:items as |Item|>
-              <Item class="custom-class">
-                <:badge>I'm a badge too!</:badge>
-                <:default>
-                  Item 2
-                </:default>
-              </Item>
-            </:items>
-          </Menu.Group>
-        </:default>
-        <:footer as |Item|>
-          <Item @url="https://example.com">
-            <:badge>I'm a footer badge!</:badge>
-            <:default>Footer Item</:default>
-          </Item>
-        </:footer>
-      </Sidebar>
-    </template>);
+    await render(
+      <template>
+        <Sidebar>
+          <:default as |Menu|>
+            <Menu.Group>
+              <:badge>I'm a badge!</:badge>
+              <:header>
+                Section 1
+              </:header>
+              <:items as |Item|>
+                <Item @url="https://example.com">Item 1</Item>
+              </:items>
+            </Menu.Group>
+            <Menu.Group>
+              <:header>
+                Section 2
+              </:header>
+              <:items as |Item|>
+                <Item class="custom-class">
+                  <:badge>I'm a badge too!</:badge>
+                  <:default>
+                    Item 2
+                  </:default>
+                </Item>
+              </:items>
+            </Menu.Group>
+          </:default>
+          <:footer as |Item|>
+            <Item @url="https://example.com">
+              <:badge>I'm a footer badge!</:badge>
+              <:default>Footer Item</:default>
+            </Item>
+          </:footer>
+        </Sidebar>
+      </template>,
+    );
 
     assert
       .dom('.sidebar > .list-group')
@@ -112,27 +114,29 @@ module('Integration | Component | sidebar', function (hooks) {
       assert.step(message);
     }
 
-    await render(<template>
-      <Sidebar as |Menu|>
-        <Menu.Item @onClick={{fn onClick "top-level item"}}>Item 1</Menu.Item>
-        <Menu.Group @onClick={{fn onClick "group header"}}>
-          <:header>
-            Group
-          </:header>
-          <:items as |Item|>
-            <Item @onClick={{fn onClick "nested item"}}>
-              Item 2
-            </Item>
-            <Item @disabled={{true}} @onClick={{fn onClick "disabled item"}}>
-              Item 3
-            </Item>
-            <Item @active={{true}} @onClick={{fn onClick "active item"}}>
-              Item 4
-            </Item>
-          </:items>
-        </Menu.Group>
-      </Sidebar>
-    </template>);
+    await render(
+      <template>
+        <Sidebar as |Menu|>
+          <Menu.Item @onClick={{fn onClick "top-level item"}}>Item 1</Menu.Item>
+          <Menu.Group @onClick={{fn onClick "group header"}}>
+            <:header>
+              Group
+            </:header>
+            <:items as |Item|>
+              <Item @onClick={{fn onClick "nested item"}}>
+                Item 2
+              </Item>
+              <Item @disabled={{true}} @onClick={{fn onClick "disabled item"}}>
+                Item 3
+              </Item>
+              <Item @active={{true}} @onClick={{fn onClick "active item"}}>
+                Item 4
+              </Item>
+            </:items>
+          </Menu.Group>
+        </Sidebar>
+      </template>,
+    );
 
     const items = findAll('.sidebar > .list-group > .list-group-item');
     const [item1, header1, item2, item3, item4] = items;

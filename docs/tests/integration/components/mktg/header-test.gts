@@ -8,23 +8,25 @@ module('Integration | Component | mktg/header', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function () {
-    await render(<template>
-      <MktgHeader @dropSection={{true}}>
-        <:brand>
-          <img src="https://imageplaceholder.net/50" alt="Icon" />
-        </:brand>
-        <:title>
-          <p class="m-0">Title</p>
-        </:title>
-        <:nav>
-          <Button class="btn-outline-light me-1 rounded-pill">Prev</Button>
-          <Button class="btn-outline-light me-1 rounded-pill">Next</Button>
-        </:nav>
-        <:options>
-          <p class="my-0 me-2 fw-bold">Options content</p>
-        </:options>
-      </MktgHeader>
-    </template>);
+    await render(
+      <template>
+        <MktgHeader @dropSection={{true}}>
+          <:brand>
+            <img src="https://imageplaceholder.net/50" alt="Icon" />
+          </:brand>
+          <:title>
+            <p class="m-0">Title</p>
+          </:title>
+          <:nav>
+            <Button class="btn-outline-light me-1 rounded-pill">Prev</Button>
+            <Button class="btn-outline-light me-1 rounded-pill">Next</Button>
+          </:nav>
+          <:options>
+            <p class="my-0 me-2 fw-bold">Options content</p>
+          </:options>
+        </MktgHeader>
+      </template>,
+    );
 
     assert.dom('div div img').exists('Brand renders content');
     assert

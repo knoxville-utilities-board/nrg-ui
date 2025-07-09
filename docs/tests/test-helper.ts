@@ -9,7 +9,6 @@ import { setup } from 'qunit-dom';
 setApplication(Application.create(config.APP));
 
 setup(QUnit.assert);
-
 setupEmberOnerrorValidation();
 loadTests();
 start();
