@@ -1,6 +1,7 @@
 import { action } from '@ember/object';
 import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
+import { runTask } from 'ember-lifeline';
 import { TrackedSet } from 'tracked-built-ins';
 
 import Checkbox from './checkbox.gts';
@@ -37,7 +38,9 @@ export default class CheckboxGroup extends Component<CheckboxGroupSignature> {
   constructor(owner: Owner, args: CheckboxGroupSignature['Args']) {
     super(owner, args);
 
-    args.onInitBinding?.(bind(this, 'value'));
+    runTask(this, () => {
+      args.onInitBinding?.(bind(this, 'value'));
+    });
   }
 
   get value() {

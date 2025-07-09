@@ -25,7 +25,7 @@ const Validators = {
   textArea: [
     validator('custom', {
       validate(value) {
-        console.log('Validating: ' + value);
+        console.log(`Validating: '${value}'`);
         return value !== 'foo';
       },
       isWarning: true,
@@ -90,8 +90,18 @@ const Validators = {
     validator('length', {
       between: [1, 4],
       message: 'No more than 4 files can be uploaded',
-    })
-  ]
+    }),
+  ],
+  checkbox2: [
+    validator('custom', {
+      validate(value) {
+        if (value != 'because') {
+          return 'You must provide a reason';
+        }
+        return true;
+      },
+    }),
+  ],
 };
 
 class Model {
@@ -299,7 +309,7 @@ export default class FormDemo extends Component {
           </Field.Checkbox>
         </Form.Field>
         {{#if this.model.checkbox}}
-          <Form.Field @required={{true}} as |Field|>
+          <Form.Field @label="Why not?" @required={{this.required}} as |Field|>
             <Field.TextInput @binding={{bind this.model "checkbox2"}} />
           </Form.Field>
         {{/if}}

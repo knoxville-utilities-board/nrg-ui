@@ -1,7 +1,7 @@
 import { assert } from '@ember/debug';
 import { action, get, set } from '@ember/object';
 import Component from '@glimmer/component';
-import { scheduleTask } from 'ember-lifeline';
+import { runTask, scheduleTask } from 'ember-lifeline';
 
 import { ensurePathExists } from '../../utils/ensure-path-exists.ts';
 
@@ -54,7 +54,9 @@ export default class BoundValue<Signature, T> extends Component<
       });
     }
 
-    this.args.initBinding?.(binding);
+    runTask(this, () => {
+      this.args.initBinding?.(binding);
+    });
   }
 
   get model() {
