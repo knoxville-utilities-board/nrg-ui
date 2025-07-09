@@ -27,8 +27,15 @@ updates:
           - 'patch'
           - 'minor'
     ignore:
+      - dependency-name: '@types/*'
+        update-types:
+          - 'version-update:semver-major'
       - dependency-name: 'chalk'
         update-types:
+          - 'version-update:semver-major'
+      - dependency-name: 'ember-cli'
+        update-types:
+          - 'version-update:semver-minor'
           - 'version-update:semver-major'
       - dependency-name: 'ember-source'
         update-types:
