@@ -151,8 +151,8 @@
     "rollup-plugin-copy": "^3.5.0",
     "tracked-built-ins": "^4.0.0",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.35.1",
-    "webpack": "^5.99.9"
+    "typescript-eslint": "^8.36.0",
+    "webpack": "^5.100.0"
   },
   "peerDependencies": {
     "@glimmer/component": "^2.0.0",
