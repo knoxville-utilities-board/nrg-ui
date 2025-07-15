@@ -9,13 +9,11 @@ import { format as defaultFormat } from '../../utils/phone.ts';
 
 import type { Optional } from '../../';
 
-export interface PhoneInputSignature {
-  Args: {
-    format?: ((value: Optional<string>) => string) | false;
-  };
+export interface PhoneInputArgs {
+  format?: ((value: Optional<string>) => string) | false;
 }
 
-export default class PhoneField extends InputField<PhoneInputSignature> {
+export default class PhoneField extends InputField<PhoneInputArgs> {
   @tracked
   isFocused = false;
 

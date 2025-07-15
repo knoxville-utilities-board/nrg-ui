@@ -26,13 +26,15 @@ import type { DatetimeSignature } from './datetime.gts';
 import type { FileUploadSignature } from './file-upload.gts';
 import type { FormType } from './index.gts';
 import type { MultiSelectSignature } from './multi-select.gts';
-import type { NumberInputSignature } from './number-input.gts';
+import type { NumberInputArgs } from './number-input.gts';
+import type { PhoneInputArgs } from './phone-input.gts';
 import type { RadioGroupSignature } from './radio-group.gts';
 import type { SearchSignature } from './search.gts';
 import type { SelectSignature } from './select.gts';
 import type { TextAreaSignature } from './text-area.gts';
-import type { TextInputSignature } from './text-input.gts';
 import type { Binding } from '../../';
+import type { InputFieldSignature } from './-private/input-field.ts';
+import type { TextInputArgs } from './text-input.gts';
 import type Owner from '@ember/owner';
 import type { ComponentLike } from '@glint/template';
 
@@ -65,8 +67,8 @@ export interface FieldSignature {
         FileUpload: ComponentLike<FileUploadSignature>;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         MultiSelect: ComponentLike<MultiSelectSignature<any>>;
-        NumberInput: ComponentLike<NumberInputSignature>;
-        PhoneInput: ComponentLike<TextInputSignature>;
+        NumberInput: ComponentLike<NumberInputArgs>;
+        PhoneInput: ComponentLike<InputFieldSignature<PhoneInputArgs>>;
         RadioGroup: ComponentLike<RadioGroupSignature>;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         Search: ComponentLike<SearchSignature<any>>;
@@ -74,7 +76,7 @@ export interface FieldSignature {
         Select: ComponentLike<SelectSignature<any>>;
         Text: ComponentLike<TextSignature>;
         TextArea: ComponentLike<TextAreaSignature>;
-        TextInput: ComponentLike<TextInputSignature>;
+        TextInput: ComponentLike<InputFieldSignature<TextInputArgs>>;
       },
     ];
   };

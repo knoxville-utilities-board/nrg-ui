@@ -14,8 +14,8 @@ export type InputFieldSignature<S> = {
     isInvalid?: boolean;
     isWarning?: boolean;
     readonly?: boolean;
-  };
-} & S;
+  } & S;
+};
 
 export default class InputField<
   S = object,

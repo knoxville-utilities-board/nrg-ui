@@ -12,24 +12,19 @@ import InputField from './-private/input-field.ts';
 import type { Optional } from '../../';
 import type { IntlService } from 'ember-intl';
 
-export interface NumberInputSignature {
-  Args: {
-    allowBlank?: boolean;
-    allowDecimals?: boolean;
-    format?:
-      | ((value: Optional<number>) => string)
-      | 'number'
-      | 'currency'
-      | 'percent'
-      | false;
-    formatPrecision?: number;
-  };
+export interface NumberInputArgs {
+  allowBlank?: boolean;
+  allowDecimals?: boolean;
+  format?:
+    | ((value: Optional<number>) => string)
+    | 'number'
+    | 'currency'
+    | 'percent'
+    | false;
+  formatPrecision?: number;
 }
 
-export default class NumberInput extends InputField<
-  NumberInputSignature,
-  number
-> {
+export default class NumberInput extends InputField<NumberInputArgs, number> {
   @tracked
   isFocused = false;
 
