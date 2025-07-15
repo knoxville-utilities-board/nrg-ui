@@ -298,6 +298,30 @@ export class Config {
       objects.push(...tseslint.configs.recommended);
       objects.push(tseslint.configs.eslintRecommended);
 
+      if (this.hasDependency('eslint-plugin-import', 'ts')) {
+        const importPlugin = await load('eslint-plugin-import');
+
+        objects.push({
+          name: '@nrg-ui/standards/eslint/ts/import',
+          files,
+          languageOptions: {
+            parser: tseslint.parser,
+          },
+          plugins: {
+            import: importPlugin,
+          },
+          rules: {
+            'import/extensions': [
+              'error',
+              'always',
+              {
+                ignorePackages: true,
+              },
+            ],
+          },
+        });
+      }
+
       if (rules) {
         objects.push({
           name: '@nrg-ui/standards/eslint/ts/custom',
