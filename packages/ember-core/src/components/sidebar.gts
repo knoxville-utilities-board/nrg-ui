@@ -42,7 +42,9 @@ export class Item extends Component<ItemSignature> {
     super(owner, args);
     assert(
       'You cannot provide both the `@model` and `@models` arguments to the <Item> component.',
-      (!args.models && args.model) || (args.models && !args.model) || (!args.model && !args.models),
+      (!args.models && args.model) ||
+        (args.models && !args.model) ||
+        (!args.model && !args.models),
     );
   }
 
@@ -106,11 +108,7 @@ export class Item extends Component<ItemSignature> {
         {{/if}}
       </LinkTo>
     {{else if @url}}
-      <a
-        class={{this.classes}}
-        href={{@url}}
-        ...attributes
-      >
+      <a class={{this.classes}} href={{@url}} ...attributes>
         <span>
           {{yield}}
         </span>
@@ -160,7 +158,9 @@ export class Group extends Component<GroupSignature> {
     super(owner, args);
     assert(
       'You cannot provide both the `@model` and `@models` arguments to the <Group> component.',
-      (!args.models && args.model) || (args.models && !args.model) || (!args.model && !args.models),
+      (!args.models && args.model) ||
+        (args.models && !args.model) ||
+        (!args.model && !args.models),
     );
   }
 

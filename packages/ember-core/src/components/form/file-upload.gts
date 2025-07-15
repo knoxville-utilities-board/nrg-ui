@@ -57,26 +57,49 @@ class SelectedFileList extends Component<SelectedFileListSignature> {
   <template>
     {{#if @files}}
       <div class="m-0 p-0 col-12">
-        <ul class={{classes "list-group list-group-flush rounded p-0 col-12 form-control" (if @isInvalid "is-invalid") (if @isWarning "is-warning")}}>
+        <ul
+          class={{classes
+            "list-group list-group-flush rounded p-0 col-12 form-control"
+            (if @isInvalid "is-invalid")
+            (if @isWarning "is-warning")
+          }}
+        >
           {{#each @files as |file index|}}
-            <li class="col-12 list-group-item d-flex flex-row align-items-center justify-content-between">
+            <li
+              class="col-12 list-group-item d-flex flex-row align-items-center justify-content-between"
+            >
               {{file.name}}
               {{#unless @disabled}}
-              <Button data-test-remove class="btn-link" @onClick={{fn this.removeFile index}}>{{t "nrg.file-upload.remove"}}</Button>
+                <Button
+                  data-test-remove
+                  class="btn-link"
+                  @onClick={{fn this.removeFile index}}
+                >
+                  {{t "nrg.file-upload.remove"}}
+                </Button>
               {{/unless}}
             </li>
           {{/each}}
         </ul>
       </div>
     {{else}}
-      <div class={{classes "form-control" (if @isInvalid "is-invalid") (if @isWarning "is-warning")}}>
+      <div
+        class={{classes
+          "form-control"
+          (if @isInvalid "is-invalid")
+          (if @isWarning "is-warning")
+        }}
+      >
         <p class="text-muted m-0">{{t "nrg.file-upload.noFiles"}}</p>
       </div>
     {{/if}}
   </template>
 }
 
-export default class FileUpload extends BoundValue<FileUploadSignature, File[]> {
+export default class FileUpload extends BoundValue<
+  FileUploadSignature,
+  File[]
+> {
   validatorId?: string;
 
   @tracked
@@ -84,7 +107,6 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
 
   @tracked
   isDraggingOver = false;
-
 
   constructor(owner: Owner, args: FileUploadSignature['Args']) {
     super(owner, args);
@@ -104,9 +126,9 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
   }
 
   get dropzoneStyling() {
-    let style = "border-style: dashed !important;";
+    let style = 'border-style: dashed !important;';
     if (this.args.fieldOptions?.disabled) {
-      style += "cursor: not-allowed !important;";
+      style += 'cursor: not-allowed !important;';
     }
     return style;
   }
@@ -117,7 +139,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
     }
     const filteredFiles = [];
     for (const newFile of files) {
-      if (!this.value!.some(file => file.name === newFile.name)) {
+      if (!this.value!.some((file) => file.name === newFile.name)) {
         filteredFiles.push(newFile);
       }
     }
@@ -150,7 +172,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
     this.isDraggingOver = false;
 
     const files = event.dataTransfer?.files;
-    this.change(files!)
+    this.change(files!);
   }
 
   @action
@@ -187,7 +209,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
     if (this.args.fieldOptions?.disabled) {
       return;
     }
-    const [ removedFile ] = this.value!.splice(index, 1);
+    const [removedFile] = this.value!.splice(index, 1);
     this.onChange(this.value);
     this.args.onRemove?.(removedFile!);
   }
@@ -206,7 +228,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
       binding,
       { acceptedTypes: accept },
       binding.model,
-    )
+    );
     form.registerValidator(fileValidator, validatorKey);
   }
 
@@ -229,22 +251,32 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
 
   <template>
     <div
-      class={{classes "form-control-plaintext p-0" (if @fieldOptions.isInvalid "is-invalid") (if @fieldOptions.isWarning "is-warning")}}
+      class={{classes
+        "form-control-plaintext p-0"
+        (if @fieldOptions.isInvalid "is-invalid")
+        (if @fieldOptions.isWarning "is-warning")
+      }}
       {{onUpdate this.setupValidator @accept}}
       ...attributes
     >
       <div
         style={{htmlSafe this.dropzoneStyling}}
         class="p-4 border border-2 rounded-3 d-flex flex-row align-items-center
-        {{if @fieldOptions.disabled "bg-body-secondary"}}
-        {{if this.isDraggingOver "bg-body-tertiary"}}"
+          {{if @fieldOptions.disabled 'bg-body-secondary'}}
+          {{if this.isDraggingOver 'bg-body-tertiary'}}"
         {{on "dragover" this.handleDragover}}
         {{on "dragenter" (fn this.toggleIsDragging true)}}
         {{on "dragend" (fn this.toggleIsDragging false)}}
         {{on "dragleave" (fn this.toggleIsDragging false)}}
         {{on "drop" this.handleDrop}}
       >
-        <div class={{classes "w-100 d-flex flex-column flex-md-row align-items-center justify-content-center my-4" (if @fieldOptions.disabled "text-body-tertiary")}} data-test-drop-zone>
+        <div
+          class={{classes
+            "w-100 d-flex flex-column flex-md-row align-items-center justify-content-center my-4"
+            (if @fieldOptions.disabled "text-body-tertiary")
+          }}
+          data-test-drop-zone
+        >
           <i class="bi bi-file-earmark-text mx-2 fs-4" />
           <p class="m-0">
             {{t "nrg.file-upload.dragAndDrop"}}
