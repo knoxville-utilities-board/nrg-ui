@@ -37,10 +37,10 @@ export default class TextInput extends InputField<TextInputArgs> {
 
   <template>
     <input
-      aria-describedby={{@describedBy}}
+      aria-describedby={{@fieldOptions.describedBy}}
       class={{this.classList}}
-      disabled={{@disabled}}
-      id={{@id}}
+      disabled={{@fieldOptions.disabled}}
+      id={{@fieldOptions.id}}
       readonly={{@readonly}}
       type="text"
       value={{this.displayValue}}

@@ -8,6 +8,7 @@ import Checkbox from './checkbox.gts';
 import { bind } from '../../helpers/bind.ts';
 
 import type { CheckboxSignature } from './checkbox';
+import type { FieldOptions } from './field.gts';
 import type { Binding } from '../../';
 import type Owner from '@ember/owner';
 import type { ComponentLike } from '@glint/template';
@@ -16,14 +17,11 @@ export interface CheckboxGroupSignature {
   Element: HTMLDivElement;
   Args: {
     basic?: boolean;
-    describedBy?: string;
-    disabled?: boolean;
-    id?: string;
     inline?: boolean;
-    isInvalid?: boolean;
-    isWarning?: boolean;
     reverse?: boolean;
     type?: 'checkbox' | 'switch';
+
+    fieldOptions?: FieldOptions;
 
     onInitBinding?: (binding: Binding<object>) => void;
   };
@@ -56,9 +54,9 @@ export default class CheckboxGroup extends Component<CheckboxGroupSignature> {
       classList[0] += '-plaintext';
     }
 
-    if (this.args.isInvalid) {
+    if (this.args.fieldOptions?.isInvalid) {
       classList.push('is-invalid');
-    } else if (this.args.isWarning) {
+    } else if (this.args.fieldOptions?.isWarning) {
       classList.push('is-warning');
     }
 
@@ -84,10 +82,8 @@ export default class CheckboxGroup extends Component<CheckboxGroupSignature> {
       {{yield
         (component
           Checkbox
-          disabled=@disabled
+          fieldOptions=@fieldOptions
           inline=@inline
-          isInvalid=@isInvalid
-          isWarning=@isWarning
           reverse=@reverse
           type=@type
           onDestroy=this.unregisterCheckbox

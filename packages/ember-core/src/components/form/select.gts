@@ -17,6 +17,7 @@ import { collapseWhitespace } from '../../utils/string.ts';
 
 import type { DropdownSignature, Optional } from '../../';
 import type { Direction, PopoverVisibility } from '../popover.gts';
+import type { FieldOptions } from './field.gts';
 import type IntlService from 'ember-intl/services/intl';
 
 declare type SelectOption<T> = {
@@ -45,12 +46,7 @@ export interface SelectSignature<T> {
     closeOnSelect?: boolean;
     defaultText?: string;
     defaultTextKey?: string;
-    describedBy?: string;
-    disabled?: boolean;
     displayPath?: string;
-    id?: string;
-    isInvalid?: boolean;
-    isWarning?: boolean;
     loading?: boolean;
     noOptionsText?: string;
     noOptionsTextKey?: string;
@@ -58,6 +54,8 @@ export interface SelectSignature<T> {
     scrollable?: boolean;
     serializationPath?: string | null;
     side?: Direction;
+
+    fieldOptions?: FieldOptions;
   };
   Blocks: {
     control?: [PopoverVisibility];
@@ -94,9 +92,9 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
       classes.push('scrollable');
     }
 
-    if (this.args.isInvalid) {
+    if (this.args.fieldOptions?.isInvalid) {
       classes.push('is-invalid');
-    } else if (this.args.isWarning) {
+    } else if (this.args.fieldOptions?.isWarning) {
       classes.push('is-warning');
     }
 
@@ -170,7 +168,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   }
 
   get disabled() {
-    return this.args.disabled || this.args.loading;
+    return this.args.fieldOptions?.disabled || this.args.loading;
   }
 
   get noOptionsText() {
@@ -376,12 +374,12 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
         {{else}}
           <button
             class={{this.classList}}
-            id={{@id}}
+            id={{@fieldOptions.id}}
             type="button"
             role="combobox"
             disabled={{this.disabled}}
             aria-controls={{this.menuId}}
-            aria-describedby={{@describedBy}}
+            aria-describedby={{@fieldOptions.describedBy}}
             aria-expanded={{visibility.isShown}}
             aria-haspopup="listbox"
             {{on "click" this.toggleSelect}}

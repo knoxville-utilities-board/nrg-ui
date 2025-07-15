@@ -21,6 +21,7 @@ import Button from '../button.gts';
 
 import type { Optional } from '../../';
 import type { Direction, PopoverVisibility } from '../popover.ts';
+import type { FieldOptions } from './field.gts';
 import type IntlService from 'ember-intl/services/intl';
 
 declare type SearchOption<T> = {
@@ -34,14 +35,9 @@ export interface SearchSignature<T> {
   Args: {
     basic?: boolean;
     clearable?: boolean;
-    describedBy?: string;
-    disabled?: boolean;
     displayPath?: string;
     format?: ((value: Optional<string>) => string) | false;
     hideSearchIcon?: boolean;
-    id?: string;
-    isInvalid?: boolean;
-    isWarning?: boolean;
     loading?: boolean;
     minCharacters?: number;
     noResultsLabel?: string;
@@ -51,6 +47,8 @@ export interface SearchSignature<T> {
     searchTimeout?: number;
     serializationPath?: string;
     side?: Direction;
+
+    fieldOptions?: FieldOptions;
 
     onShow?: () => unknown | Promise<unknown>;
     onHide?: () => unknown | Promise<unknown>;
@@ -141,9 +139,9 @@ export default class Search<T> extends BoundValue<
       classes[0] += '-plaintext';
     }
 
-    if (this.args.isInvalid) {
+    if (this.args.fieldOptions?.isInvalid) {
       classes.push('is-invalid');
-    } else if (this.args.isWarning) {
+    } else if (this.args.fieldOptions?.isWarning) {
       classes.push('is-warning');
     }
 
@@ -368,8 +366,8 @@ export default class Search<T> extends BoundValue<
         <div
           class={{classes
             "search"
-            (if @isInvalid "is-invalid")
-            (if @isWarning "is-warning")
+            (if @fieldOptions.isInvalid "is-invalid")
+            (if @fieldOptions.isWarning "is-warning")
           }}
           {{onInsert (fn this.setVisibility visibility)}}
           ...attributes
@@ -389,8 +387,7 @@ export default class Search<T> extends BoundValue<
               placeholder={{this.placeholder}}
               @basic={{@basic}}
               @binding={{bind this.self "inputValue"}}
-              @disabled={{@disabled}}
-              @id={{@id}}
+              @fieldOptions={{@fieldOptions}}
               @readonly={{@readonly}}
               {{on "focus" this.onFocus}}
               {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}

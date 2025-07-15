@@ -9,6 +9,7 @@ import TextInput from './text-input.gts';
 import { bind } from '../../helpers/bind.ts';
 import onClickOutside from '../../modifiers/on-click-outside.ts';
 
+import type { FieldOptions } from './field.gts';
 import type { IconType } from '../../';
 import type { OpUnitType } from 'dayjs';
 
@@ -20,7 +21,6 @@ export interface DatetimeSignature {
   Args: {
     allowMinuteSelection?: boolean;
     dateFormat?: string;
-    disabled?: boolean;
     maxDate?: Date;
     minDate?: Date;
     parseFormat?: string | string[];
@@ -32,10 +32,7 @@ export interface DatetimeSignature {
 
     // Required by form fields
     basic?: boolean;
-    describedBy?: string;
-    id?: string;
-    isInvalid?: boolean;
-    isWarning?: boolean;
+    fieldOptions?: FieldOptions;
 
     _class?: string;
 
@@ -147,7 +144,11 @@ export default class Datetime extends BoundValue<DatetimeSignature, Date> {
     evt.preventDefault();
     evt.stopPropagation();
 
-    if (this.isFocused || this.args.disabled || this.args.readonly) {
+    if (
+      this.isFocused ||
+      this.args.fieldOptions?.disabled ||
+      this.args.readonly
+    ) {
       return;
     }
 
@@ -179,15 +180,12 @@ export default class Datetime extends BoundValue<DatetimeSignature, Date> {
       {{/unless}}
       {{#unless (has-block)}}
         <TextInput
-          aria-describedby={{@describedBy}}
+          aria-describedby={{@fieldOptions.describedBy}}
           class="border-start-0 rounded-end"
-          id={{@id}}
           placeholder={{@placeholder}}
           @basic={{@basic}}
           @binding={{bind this.self "displayValue"}}
-          @disabled={{@disabled}}
-          @isInvalid={{@isInvalid}}
-          @isWarning={{@isWarning}}
+          @fieldOptions={{@fieldOptions}}
           @readonly={{@readonly}}
         />
       {{/unless}}

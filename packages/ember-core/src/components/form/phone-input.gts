@@ -48,10 +48,10 @@ export default class PhoneField extends InputField<PhoneInputArgs> {
 
   <template>
     <input
-      aria-describedby={{@describedBy}}
+      aria-describedby={{@fieldOptions.describedBy}}
       class={{this.classList}}
-      disabled={{@disabled}}
-      id={{@id}}
+      disabled={{@fieldOptions.disabled}}
+      id={{@fieldOptions.id}}
       readonly={{@readonly}}
       type="tel"
       value={{this.displayValue}}

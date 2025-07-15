@@ -3,16 +3,15 @@ import { action } from '@ember/object';
 
 import BoundValue from './bound-value.ts';
 
+import type { FieldOptions } from './field.gts';
+
 export interface TextAreaSignature {
   Element: HTMLTextAreaElement;
   Args: {
     basic?: boolean;
-    describedBy?: string;
-    disabled?: boolean;
-    id?: string;
-    isInvalid?: boolean;
-    isWarning?: boolean;
     readonly?: boolean;
+
+    fieldOptions?: FieldOptions;
   };
 }
 
@@ -24,9 +23,9 @@ export default class TextArea extends BoundValue<TextAreaSignature, string> {
       classes[0] += '-plaintext';
     }
 
-    if (this.args.isInvalid) {
+    if (this.args.fieldOptions?.isInvalid) {
       classes.push('is-invalid');
-    } else if (this.args.isWarning) {
+    } else if (this.args.fieldOptions?.isWarning) {
       classes.push('is-warning');
     }
 
@@ -41,10 +40,10 @@ export default class TextArea extends BoundValue<TextAreaSignature, string> {
 
   <template>
     <textarea
-      aria-describedby={{@describedBy}}
-      id={{@id}}
+      aria-describedby={{@fieldOptions.describedBy}}
+      id={{@fieldOptions.id}}
       class={{this.classList}}
-      disabled={{@disabled}}
+      disabled={{@fieldOptions.disabled}}
       readonly={{@readonly}}
       type="text"
       value={{this.value}}

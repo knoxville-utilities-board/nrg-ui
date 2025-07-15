@@ -123,10 +123,10 @@ export default class NumberInput extends InputField<NumberInputArgs, number> {
 
   <template>
     <input
-      aria-describedby={{@describedBy}}
+      aria-describedby={{@fieldOptions.describedBy}}
       class={{this.classList}}
-      disabled={{@disabled}}
-      id={{@id}}
+      disabled={{@fieldOptions.disabled}}
+      id={{@fieldOptions.id}}
       readonly={{@readonly}}
       type={{if this.isFocused "number" "text"}}
       value={{this.displayValue}}

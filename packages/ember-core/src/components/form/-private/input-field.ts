@@ -2,18 +2,16 @@ import { action } from '@ember/object';
 
 import BoundValue from '../bound-value.ts';
 
+import type { FieldOptions } from '../field.gts';
 import type { AttrValue } from '@glint/template';
 
 export type InputFieldSignature<S> = {
   Element: HTMLInputElement;
   Args: {
     basic?: boolean;
-    describedBy?: string;
-    disabled?: boolean;
-    id?: string;
-    isInvalid?: boolean;
-    isWarning?: boolean;
     readonly?: boolean;
+
+    fieldOptions?: FieldOptions;
   } & S;
 };
 
@@ -28,9 +26,9 @@ export default class InputField<
       classes[0] += '-plaintext';
     }
 
-    if (this.args.isInvalid) {
+    if (this.args.fieldOptions?.isInvalid) {
       classes.push('is-invalid');
-    } else if (this.args.isWarning) {
+    } else if (this.args.fieldOptions?.isWarning) {
       classes.push('is-warning');
     }
 

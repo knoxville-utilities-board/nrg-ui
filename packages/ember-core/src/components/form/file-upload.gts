@@ -16,7 +16,7 @@ import onUpdate from '../../modifiers/on-update.ts';
 import { FileValidator } from '../../validation/index.ts';
 import Button from '../button.gts';
 
-import type { FormType } from './index.gts';
+import type { FieldOptions } from './field.gts';
 import type Owner from '@ember/owner';
 
 export interface SelectedFileListSignature {
@@ -36,13 +36,9 @@ export interface SelectedFileListSignature {
 export interface FileUploadSignature {
   Args: {
     accept?: string[];
-    describedBy?: string;
-    disabled?: boolean;
-    form?: FormType;
-    id?: string;
-    isInvalid?: boolean;
-    isWarning?: boolean;
-    validatorKey?: string;
+
+    fieldOptions?: FieldOptions;
+
     onAdd?: (files: File[]) => unknown;
     onRemove?: (file: File) => unknown;
   };
@@ -109,7 +105,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
 
   get dropzoneStyling() {
     let style = "border-style: dashed !important;";
-    if (this.args.disabled) {
+    if (this.args.fieldOptions?.disabled) {
       style += "cursor: not-allowed !important;";
     }
     return style;
@@ -138,7 +134,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
   handleDragover(event: DragEvent) {
     event.preventDefault();
     event.stopPropagation();
-    if (this.args.disabled) {
+    if (this.args.fieldOptions?.disabled) {
       return;
     }
     this.isDraggingOver = true;
@@ -148,7 +144,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
   handleDrop(event: DragEvent) {
     event.preventDefault();
     event.stopPropagation();
-    if (this.args.disabled) {
+    if (this.args.fieldOptions?.disabled) {
       return;
     }
     this.isDraggingOver = false;
@@ -164,7 +160,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
 
   @action
   change(files: FileList) {
-    if (this.args.disabled) {
+    if (this.args.fieldOptions?.disabled) {
       return;
     }
 
@@ -188,7 +184,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
 
   @action
   removeFile(index: number) {
-    if (this.args.disabled) {
+    if (this.args.fieldOptions?.disabled) {
       return;
     }
     const [ removedFile ] = this.value!.splice(index, 1);
@@ -198,7 +194,8 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
 
   @action
   setupValidator() {
-    const { binding, form, accept, validatorKey } = this.args;
+    const { binding, accept } = this.args;
+    const { form, validatorKey } = this.args.fieldOptions ?? {};
     if (!binding || !form || !accept || !validatorKey) {
       return;
     }
@@ -215,7 +212,7 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
 
   @action
   toggleIsDragging(isDragging: boolean) {
-    if (this.args.disabled) {
+    if (this.args.fieldOptions?.disabled) {
       return;
     }
     this.isDraggingOver = isDragging;
@@ -232,14 +229,14 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
 
   <template>
     <div
-    class={{classes "form-control-plaintext p-0" (if @isInvalid "is-invalid") (if @isWarning "is-warning")}}
-    {{onUpdate this.setupValidator @accept}}
-    ...attributes
+      class={{classes "form-control-plaintext p-0" (if @fieldOptions.isInvalid "is-invalid") (if @fieldOptions.isWarning "is-warning")}}
+      {{onUpdate this.setupValidator @accept}}
+      ...attributes
     >
       <div
         style={{htmlSafe this.dropzoneStyling}}
         class="p-4 border border-2 rounded-3 d-flex flex-row align-items-center
-        {{if @disabled "bg-body-secondary"}}
+        {{if @fieldOptions.disabled "bg-body-secondary"}}
         {{if this.isDraggingOver "bg-body-tertiary"}}"
         {{on "dragover" this.handleDragover}}
         {{on "dragenter" (fn this.toggleIsDragging true)}}
@@ -247,24 +244,24 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
         {{on "dragleave" (fn this.toggleIsDragging false)}}
         {{on "drop" this.handleDrop}}
       >
-        <div class={{classes "w-100 d-flex flex-column flex-md-row align-items-center justify-content-center my-4" (if @disabled "text-body-tertiary")}} data-test-drop-zone>
+        <div class={{classes "w-100 d-flex flex-column flex-md-row align-items-center justify-content-center my-4" (if @fieldOptions.disabled "text-body-tertiary")}} data-test-drop-zone>
           <i class="bi bi-file-earmark-text mx-2 fs-4" />
           <p class="m-0">
             {{t "nrg.file-upload.dragAndDrop"}}
           </p>
           <Button
             class="btn btn-link p-0 m-0 ms-1 fst-italic"
-            @disabled={{@disabled}}
+            @disabled={{@fieldOptions.disabled}}
             @onClick={{this.openInput}}
             @text={{t "nrg.file-upload.selectFiles"}}
             data-test-open="input"
           />
           <input
             accept={{this.accept}}
-            aria-describedby={{@describedBy}}
-            disabled={{@disabled}}
+            aria-describedby={{@fieldOptions.describedBy}}
+            disabled={{@fieldOptions.disabled}}
             hidden
-            id={{@id}}
+            id={{@fieldOptions.id}}
             multiple
             type="file"
             {{on "change" this.updateValue}}
@@ -275,10 +272,10 @@ export default class FileUpload extends BoundValue<FileUploadSignature, File[]> 
       </div>
       <div class="d-flex flex-column align-items-center p-0 mt-1">
         <SelectedFileList
-          @disabled={{@disabled}}
+          @disabled={{@fieldOptions.disabled}}
           @files={{this.value}}
-          @isInvalid={{@isInvalid}}
-          @isWarning={{@isWarning}}
+          @isInvalid={{@fieldOptions.isInvalid}}
+          @isWarning={{@fieldOptions.isWarning}}
           @onRemove={{this.removeFile}}
         />
       </div>

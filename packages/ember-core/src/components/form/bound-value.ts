@@ -5,6 +5,7 @@ import { runTask, scheduleTask } from 'ember-lifeline';
 
 import { ensurePathExists } from '../../utils/ensure-path-exists.ts';
 
+import type { FieldOptions } from './field.gts';
 import type { Binding, Optional } from '../../';
 import type Owner from '@ember/owner';
 
@@ -19,6 +20,8 @@ export type BoundValueSignature<Signature, Type> = {
 
     defaultValue?: Type;
     useDefaultValue?: boolean;
+
+    fieldOptions?: FieldOptions;
 
     allowChange?: AllowChangeFn<Type>;
     initBinding?: (binding: Binding) => void;
@@ -55,7 +58,9 @@ export default class BoundValue<Signature, T> extends Component<
     }
 
     runTask(this, () => {
-      this.args.initBinding?.(binding);
+      const initFn = args.fieldOptions?.initBinding ?? args.initBinding;
+
+      initFn?.(binding);
     });
   }
 
