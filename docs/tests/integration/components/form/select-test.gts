@@ -13,6 +13,8 @@ module('Integration | Component | form/select', function (hooks) {
   setupIntl(hooks, 'en-us');
 
   class Model {
+    [key: string]: unknown;
+
     @tracked
     value: unknown = 'Hello, world!';
   }

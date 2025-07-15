@@ -34,7 +34,7 @@ import type { TextAreaSignature } from './text-area.gts';
 import type { TextInputSignature } from './text-input.gts';
 import type { Binding } from '../../';
 import type Owner from '@ember/owner';
-import type { ComponentLike } from '@glint/template';
+import type { ComponentLike, WithBoundArgs } from '@glint/template';
 
 declare interface TextSignature {
   Element: HTMLDivElement;
@@ -72,7 +72,7 @@ export interface FieldSignature {
         Search: ComponentLike<SearchSignature<any>>;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         Select: ComponentLike<SelectSignature<any>>;
-        Text: ComponentLike<TextSignature>;
+        Text: WithBoundArgs<typeof Text, 'field'>;
         TextArea: ComponentLike<TextAreaSignature>;
         TextInput: ComponentLike<TextInputSignature>;
       },
