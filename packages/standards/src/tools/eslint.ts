@@ -255,15 +255,22 @@ export class Config {
                 ignorePackages: true,
               },
             ],
-            ...rules,
           },
         });
       }
 
       if (rules) {
+        const importPlugin = await load('eslint-plugin-import');
+
         objects.push({
           name: '@nrg-ui/standards/eslint/js/custom',
           files,
+          languageOptions: {
+            parser: defaultParser,
+          },
+          plugins: {
+            import: importPlugin,
+          },
           rules: {
             ...rules,
           },
