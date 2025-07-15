@@ -62,10 +62,10 @@ module('Integration | Component | form/checkbox-group', function (hooks) {
       .isNotChecked();
 
     let labelId = cb1.id;
-    assert.dom(`[for=${labelId}]`).hasText('This is checkbox 1');
+    assert.dom(`[for='${labelId}']`).hasText('This is checkbox 1');
 
     labelId = cb2.id;
-    assert.dom(`[for=${labelId}]`).hasText('This is checkbox 2');
+    assert.dom(`[for='${labelId}']`).hasText('This is checkbox 2');
 
     model.v1 = true;
     await settled();
@@ -123,10 +123,10 @@ module('Integration | Component | form/checkbox-group', function (hooks) {
       .isNotChecked();
 
     let labelId = cb1.id;
-    assert.dom(`[for=${labelId}] > span`).hasText('This is checkbox 1');
+    assert.dom(`[for='${labelId}'] > span`).hasText('This is checkbox 1');
 
     labelId = cb2.id;
-    assert.dom(`[for=${labelId}] > span`).hasText('This is checkbox 2');
+    assert.dom(`[for='${labelId}'] > span`).hasText('This is checkbox 2');
 
     model.v1 = true;
     await settled();
@@ -188,10 +188,10 @@ module('Integration | Component | form/checkbox-group', function (hooks) {
       .isNotChecked();
 
     let labelId = cb1.id;
-    assert.dom(`[for=${labelId}]`).hasText('This is checkbox 1');
+    assert.dom(`[for='${labelId}']`).hasText('This is checkbox 1');
 
     labelId = cb2.id;
-    assert.dom(`[for=${labelId}]`).hasText('This is checkbox 2');
+    assert.dom(`[for='${labelId}']`).hasText('This is checkbox 2');
 
     model.v1 = true;
     await settled();
