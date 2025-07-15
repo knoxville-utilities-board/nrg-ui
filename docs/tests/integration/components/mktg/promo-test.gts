@@ -1,8 +1,7 @@
 import { find, render } from '@ember/test-helpers';
 import { MktgPromo } from '@nrg-ui/core';
+import { setupRenderingTest } from 'docs/tests/helpers';
 import { assert, module, test } from 'qunit';
-
-import { setupRenderingTest } from '../../../helpers';
 
 module('Integration | Component | mktg/promo', function (hooks) {
   setupRenderingTest(hooks);

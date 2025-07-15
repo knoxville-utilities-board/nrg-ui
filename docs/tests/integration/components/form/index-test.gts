@@ -4,10 +4,9 @@ import { click, fillIn, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import { Form, bind } from '@nrg-ui/core';
 import { validator } from '@nrg-ui/core/validation';
+import { setupRenderingTest } from 'docs/tests/helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';
-
-import { setupRenderingTest } from '../../../helpers';
 
 import type { TestContext as BaseContext } from '@ember/test-helpers';
 

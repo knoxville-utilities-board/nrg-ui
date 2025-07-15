@@ -1,8 +1,7 @@
 import { render } from '@ember/test-helpers';
 import { Card } from '@nrg-ui/core';
+import { setupRenderingTest } from 'docs/tests/helpers';
 import { assert, module, test } from 'qunit';
-
-import { setupRenderingTest } from '../../helpers';
 
 module('Integration | Component | card', function (hooks) {
   setupRenderingTest(hooks);

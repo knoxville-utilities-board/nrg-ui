@@ -1,8 +1,7 @@
 import { render } from '@ember/test-helpers';
 import { MktgFeatureList } from '@nrg-ui/core';
+import { setupRenderingTest } from 'docs/tests/helpers';
 import { module, test } from 'qunit';
-
-import { setupRenderingTest } from '../../../helpers';
 
 module('Integration | Component | mktg/feature-list', function (hooks) {
   setupRenderingTest(hooks);

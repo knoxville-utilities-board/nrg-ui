@@ -2,9 +2,8 @@ import { click, findAll, render, triggerKeyEvent } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import Calendar from '@nrg-ui/core/components/form/-private/calendar';
 import dayjs from 'dayjs';
+import { setupRenderingTest } from 'docs/tests/helpers';
 import { module, test } from 'qunit';
-
-import { setupRenderingTest } from '../../../../helpers';
 
 import type { TestContext as BaseContext } from '@ember/test-helpers';
 import type { OpUnitType } from 'dayjs';

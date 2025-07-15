@@ -1,8 +1,7 @@
 import { click, render } from '@ember/test-helpers';
 import { Modal } from '@nrg-ui/core';
+import { setupRenderingTest } from 'docs/tests/helpers';
 import { module, test } from 'qunit';
-
-import { setupRenderingTest } from '../../helpers';
 
 module('Integration | Component | modal', function (hooks) {
   setupRenderingTest(hooks);

@@ -1,9 +1,8 @@
 import { click, fillIn, find, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import { Search, bind } from '@nrg-ui/core';
+import { setupRenderingTest } from 'docs/tests/helpers';
 import { module, test } from 'qunit';
-
-import { setupRenderingTest } from '../../../helpers';
 
 class Model {
   @tracked

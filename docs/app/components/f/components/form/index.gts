@@ -10,7 +10,7 @@ import { validator } from '@nrg-ui/core/validation';
 import dayjs from 'dayjs';
 import { tracked as autoTrack } from 'tracked-built-ins';
 
-import CodeBlock from '../../../code-block';
+import CodeBlock from '../../../code-block.gts';
 
 const Validators = {
   select: validator('inclusion', { in: ['A', 'C'] }),

@@ -1,13 +1,12 @@
 import { click, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import { MultiSelect, bind } from '@nrg-ui/core';
+import { setupRenderingTest } from 'docs/tests/helpers';
 import { setupIntl } from 'ember-intl/test-support';
 // @ts-expect-error Ember keyboard doesn't currently ship types
 // https://github.com/adopted-ember-addons/ember-keyboard/issues/464
 import { triggerKeyDown } from 'ember-keyboard';
 import { module, test } from 'qunit';
-
-import { setupRenderingTest } from '../../../helpers';
 
 module('Integration | Component | form/multi-select', function (hooks) {
   setupRenderingTest(hooks);

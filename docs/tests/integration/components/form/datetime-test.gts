@@ -2,9 +2,8 @@ import { render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import { Datetime, bind } from '@nrg-ui/core';
 import dayjs from 'dayjs';
+import { setupRenderingTest } from 'docs/tests/helpers';
 import { module, test } from 'qunit';
-
-import { setupRenderingTest } from '../../../helpers';
 
 import type { TestContext as BaseContext } from '@ember/test-helpers';
 

@@ -1,8 +1,7 @@
 import { render } from '@ember/test-helpers';
 import { MktgSectionHeader } from '@nrg-ui/core';
+import { setupRenderingTest } from 'docs/tests/helpers';
 import { assert, module, test } from 'qunit';
-
-import { setupRenderingTest } from '../../../helpers';
 
 module('Integration | Component | mktg/section-header', function (hooks) {
   setupRenderingTest(hooks);

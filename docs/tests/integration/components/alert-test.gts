@@ -1,8 +1,7 @@
 import { clearRender, click, render, waitUntil } from '@ember/test-helpers';
 import { Alert } from '@nrg-ui/core';
+import { setupRenderingTest } from 'docs/tests/helpers';
 import { module, test } from 'qunit';
-
-import { setupRenderingTest } from '../../helpers';
 
 import type { TestContext } from '@ember/test-helpers';
 

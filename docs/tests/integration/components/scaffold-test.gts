@@ -2,9 +2,9 @@ import { click } from '@ember/test-helpers';
 import { render } from '@ember/test-helpers';
 import Scaffold from '@nrg-ui/core/components/scaffold';
 import { setBreakpoint } from '@nrg-ui/core/test-support';
+import { setupRenderingTest } from 'docs/tests/helpers';
 import { module, test } from 'qunit';
 
-import { setupRenderingTest } from '../../helpers';
 
 module('Integration | Component | scaffold', function (hooks) {
   setupRenderingTest(hooks);

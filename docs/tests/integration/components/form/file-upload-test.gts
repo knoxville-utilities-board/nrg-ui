@@ -1,14 +1,11 @@
 import { click, find, render, settled } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import { FileUpload, bind } from '@nrg-ui/core';
-import { setupIntl } from 'ember-intl/test-support';
+import { setupRenderingTest } from 'docs/tests/helpers';
 import { module, test } from 'qunit';
-
-import { setupRenderingTest } from '../../../helpers';
 
 module('Integration | Component | form/file-upload', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks, 'en-us');
 
   class Model {
     @tracked

@@ -8,7 +8,7 @@ import { Toaster, Tooltip } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
-import CodeBlock from '../../code-block';
+import CodeBlock from '../../code-block.gts';
 
 import type { Alignment, Side } from '@floating-ui/dom';
 import type { ToastService } from '@nrg-ui/core/services/toast';
