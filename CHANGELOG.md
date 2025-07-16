@@ -1,5 +1,24 @@
 # Changelog
 
+## Release (2025-07-16)
+
+* @nrg-ui/core 0.39.0 (major)
+
+#### :boom: Breaking Change
+* `@nrg-ui/core`
+  * [#524](https://github.com/knoxville-utilities-board/nrg-ui/pull/524) feat: Extract and expose form field options ([@TSenter](https://github.com/TSenter))
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#524](https://github.com/knoxville-utilities-board/nrg-ui/pull/524) feat: Extract and expose form field options ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#525](https://github.com/knoxville-utilities-board/nrg-ui/pull/525) fix(scaffold): Treat medium screens as mobile ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-07-09)
 
 * @nrg-ui/version 0.3.1 (patch)
