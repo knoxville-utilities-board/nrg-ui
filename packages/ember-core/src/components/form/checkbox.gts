@@ -5,22 +5,19 @@ import { action } from '@ember/object';
 import BoundValue from './bound-value.ts';
 
 import type { BoundValueSignature } from './bound-value';
+import type { FieldOptions } from './field.gts';
 import type { Optional } from '../../';
 import type Owner from '@ember/owner';
 
 export interface CheckboxSignature {
   Element: HTMLInputElement;
   Args: {
-    describedBy?: string;
-    disabled?: boolean;
-    id?: string;
     inline?: boolean;
-    isInvalid?: boolean;
-    isWarning?: boolean;
     label?: string;
-    required?: boolean;
     reverse?: boolean;
     type?: 'checkbox' | 'switch';
+
+    fieldOptions?: FieldOptions;
 
     onDestroy?: (checkbox: Checkbox) => void;
     onInit?: (checkbox: Checkbox) => void;
@@ -49,9 +46,9 @@ export default class Checkbox extends BoundValue<CheckboxSignature, boolean> {
   get classList() {
     const classes = ['form-check-input'];
 
-    if (this.args.isInvalid) {
+    if (this.args.fieldOptions?.isInvalid) {
       classes.push('is-invalid');
-    } else if (this.args.isWarning) {
+    } else if (this.args.fieldOptions?.isWarning) {
       classes.push('is-warning');
     }
 
@@ -81,7 +78,7 @@ export default class Checkbox extends BoundValue<CheckboxSignature, boolean> {
   }
 
   get id() {
-    return this.args.id ?? this.internalId;
+    return this.args.fieldOptions?.id ?? this.internalId;
   }
 
   @action
@@ -93,10 +90,10 @@ export default class Checkbox extends BoundValue<CheckboxSignature, boolean> {
   <template>
     <div class={{this.divClassList}}>
       <input
-        aria-describedby={{@describedBy}}
+        aria-describedby={{@fieldOptions.describedBy}}
         checked={{this.value}}
         class={{this.classList}}
-        disabled={{@disabled}}
+        disabled={{@fieldOptions.disabled}}
         id={{this.id}}
         role={{if this.isSwitch "switch" "checkbox"}}
         type="checkbox"
@@ -110,7 +107,7 @@ export default class Checkbox extends BoundValue<CheckboxSignature, boolean> {
         {{else}}
           {{@label}}
         {{/if}}
-        {{#if @required}}
+        {{#if @fieldOptions.required}}
           <span class="text-danger">*</span>
         {{/if}}
       </label>

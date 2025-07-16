@@ -7,11 +7,11 @@ import InputField from './-private/input-field.ts';
 
 import type { Optional } from '../../';
 
-export interface TextInputSignature {
+export interface TextInputArgs {
   format?: ((value: Optional<string>) => string) | false;
 }
 
-export default class TextInput extends InputField<TextInputSignature> {
+export default class TextInput extends InputField<TextInputArgs> {
   @tracked
   isFocused = false;
 
@@ -37,10 +37,10 @@ export default class TextInput extends InputField<TextInputSignature> {
 
   <template>
     <input
-      aria-describedby={{@describedBy}}
+      aria-describedby={{@fieldOptions.describedBy}}
       class={{this.classList}}
-      disabled={{@disabled}}
-      id={{@id}}
+      disabled={{@fieldOptions.disabled}}
+      id={{@fieldOptions.id}}
       readonly={{@readonly}}
       type="text"
       value={{this.displayValue}}

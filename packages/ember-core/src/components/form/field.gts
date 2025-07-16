@@ -26,13 +26,15 @@ import type { DatetimeSignature } from './datetime.gts';
 import type { FileUploadSignature } from './file-upload.gts';
 import type { FormType } from './index.gts';
 import type { MultiSelectSignature } from './multi-select.gts';
-import type { NumberInputSignature } from './number-input.gts';
+import type { NumberInputArgs } from './number-input.gts';
+import type { PhoneInputArgs } from './phone-input.gts';
 import type { RadioGroupSignature } from './radio-group.gts';
 import type { SearchSignature } from './search.gts';
 import type { SelectSignature } from './select.gts';
 import type { TextAreaSignature } from './text-area.gts';
-import type { TextInputSignature } from './text-input.gts';
 import type { Binding } from '../../';
+import type { InputFieldSignature } from './-private/input-field.ts';
+import type { TextInputArgs } from './text-input.gts';
 import type Owner from '@ember/owner';
 import type { ComponentLike } from '@glint/template';
 
@@ -65,8 +67,8 @@ export interface FieldSignature {
         FileUpload: ComponentLike<FileUploadSignature>;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         MultiSelect: ComponentLike<MultiSelectSignature<any>>;
-        NumberInput: ComponentLike<NumberInputSignature>;
-        PhoneInput: ComponentLike<TextInputSignature>;
+        NumberInput: ComponentLike<NumberInputArgs>;
+        PhoneInput: ComponentLike<InputFieldSignature<PhoneInputArgs>>;
         RadioGroup: ComponentLike<RadioGroupSignature>;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         Search: ComponentLike<SearchSignature<any>>;
@@ -74,8 +76,9 @@ export interface FieldSignature {
         Select: ComponentLike<SelectSignature<any>>;
         Text: ComponentLike<TextSignature>;
         TextArea: ComponentLike<TextAreaSignature>;
-        TextInput: ComponentLike<TextInputSignature>;
+        TextInput: ComponentLike<InputFieldSignature<TextInputArgs>>;
       },
+      FieldOptions,
     ];
   };
 }
@@ -98,6 +101,18 @@ class Text extends Component<TextSignature> {
       {{yield}}
     </div>
   </template>
+}
+
+export interface FieldOptions {
+  describedBy?: string;
+  disabled?: boolean;
+  form?: FormType;
+  id?: string;
+  initBinding?: (binding: Binding<object>) => void;
+  isInvalid?: boolean;
+  isWarning?: boolean;
+  required?: boolean;
+  validatorKey?: string;
 }
 
 export default class Field extends Component<FieldSignature> {
@@ -260,122 +275,45 @@ export default class Field extends Component<FieldSignature> {
         {{onUpdate this.setupValidator @required}}
       />
     {{/if}}
-    {{yield
+    {{#let
       (hash
-        Checkbox=(component
-          Checkbox
-          describedBy=this.describedBy
-          disabled=@disabled
-          id=this.fieldId
-          initBinding=this.initBinding
-          isInvalid=this.hasError
-          isWarning=this.hasWarning
-          required=@required
-        )
-        CheckboxGroup=(component
-          CheckboxGroup
-          describedBy=this.describedBy
-          disabled=@disabled
-          id=this.fieldId
-          onInitBinding=this.initBinding
-          isInvalid=this.hasError
-          isWarning=this.hasWarning
-        )
-        Datetime=(component
-          Datetime
-          describedBy=this.describedBy
-          disabled=@disabled
-          id=this.fieldId
-          initBinding=this.initBinding
-          isInvalid=this.hasError
-          isWarning=this.hasWarning
-        )
-        FileUpload=(component
-          FileUpload
-          describedBy=this.describedBy
-          disabled=@disabled
-          form=@form
-          id=this.fieldId
-          initBinding=this.initBinding
-          isInvalid=this.hasError
-          isWarning=this.hasWarning
-          validatorKey=this.validatorKey
-        )
-        MultiSelect=(component
-          this.TypedMultiSelect
-          describedBy=this.describedBy
-          disabled=@disabled
-          id=this.fieldId
-          initBinding=this.initBinding
-          isInvalid=this.hasError
-          isWarning=this.hasWarning
-        )
-        NumberInput=(component
-          NumberInput
-          describedBy=this.describedBy
-          disabled=@disabled
-          id=this.fieldId
-          initBinding=this.initBinding
-          isInvalid=this.hasError
-          isWarning=this.hasWarning
-        )
-        PhoneInput=(component
-          PhoneInput
-          describedBy=this.describedBy
-          disabled=@disabled
-          id=this.fieldId
-          initBinding=this.initBinding
-          isInvalid=this.hasError
-          isWarning=this.hasWarning
-        )
-        RadioGroup=(component
-          RadioGroup
-          describedBy=this.describedBy
-          disabled=@disabled
-          id=this.fieldId
-          initBinding=this.initBinding
-          isInvalid=this.hasError
-          isWarning=this.hasWarning
-        )
-        Search=(component
-          this.TypedSearch
-          describedBy=this.describedBy
-          disabled=@disabled
-          id=this.fieldId
-          initBinding=this.initBinding
-          isInvalid=this.hasError
-          isWarning=this.hasWarning
-        )
-        Select=(component
-          this.TypedSelect
-          describedBy=this.describedBy
-          disabled=@disabled
-          id=this.fieldId
-          initBinding=this.initBinding
-          isInvalid=this.hasError
-          isWarning=this.hasWarning
-        )
-        Text=(component Text field=this id=this.textId)
-        TextArea=(component
-          TextArea
-          describedBy=this.describedBy
-          disabled=@disabled
-          id=this.fieldId
-          initBinding=this.initBinding
-          isInvalid=this.hasError
-          isWarning=this.hasWarning
-        )
-        TextInput=(component
-          TextInput
-          describedBy=this.describedBy
-          disabled=@disabled
-          id=this.fieldId
-          initBinding=this.initBinding
-          isInvalid=this.hasError
-          isWarning=this.hasWarning
-        )
+        describedBy=this.describedBy
+        disabled=@disabled
+        form=@form
+        id=this.fieldId
+        initBinding=this.initBinding
+        isInvalid=this.hasError
+        isWarning=this.hasWarning
+        required=@required
+        validatorKey=this.validatorKey
       )
+      as |fieldOptions|
     }}
+      {{yield
+        (hash
+          Checkbox=(component Checkbox fieldOptions=fieldOptions)
+          CheckboxGroup=(component
+            CheckboxGroup
+            fieldOptions=fieldOptions
+            onInitBinding=this.initBinding
+          )
+          Datetime=(component Datetime fieldOptions=fieldOptions)
+          FileUpload=(component FileUpload fieldOptions=fieldOptions)
+          MultiSelect=(component
+            this.TypedMultiSelect fieldOptions=fieldOptions
+          )
+          NumberInput=(component NumberInput fieldOptions=fieldOptions)
+          PhoneInput=(component PhoneInput fieldOptions=fieldOptions)
+          RadioGroup=(component RadioGroup fieldOptions=fieldOptions)
+          Search=(component this.TypedSearch fieldOptions=fieldOptions)
+          Select=(component this.TypedSelect fieldOptions=fieldOptions)
+          Text=(component Text field=this id=this.textId)
+          TextArea=(component TextArea fieldOptions=fieldOptions)
+          TextInput=(component TextInput fieldOptions=fieldOptions)
+        )
+        fieldOptions
+      }}
+    {{/let}}
     {{#if this.hasError}}
       <div class="invalid-feedback" id={{this.describedBy}}>
         {{this.errorMessage}}

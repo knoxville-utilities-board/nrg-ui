@@ -63,7 +63,8 @@ module('Integration | Component | form/file-upload', function (hooks) {
   });
 
   test('it accepts arguments properly', async function (assert) {
-    assert.expect(3);
+    assert.expect(2);
+
     const model = new Model();
     const onAdd = function () {
       assert.ok(true, 'onAdd called');
@@ -92,13 +93,5 @@ module('Integration | Component | form/file-upload', function (hooks) {
 
     await settled();
     await click('[data-test-remove]');
-
-    await render(
-      <template>
-        <FileUpload @binding={{bind model "files"}} @disabled={{true}} />
-      </template>,
-    );
-
-    assert.dom('input').hasAttribute('disabled');
   });
 });

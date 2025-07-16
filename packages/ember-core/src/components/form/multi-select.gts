@@ -13,6 +13,7 @@ import { bind } from '../../helpers/bind.ts';
 
 import type { DropdownSignature, Optional } from '../../index.ts';
 import type { PopoverVisibility } from '../popover.gts';
+import type { FieldOptions } from './field.gts';
 import type { TOC } from '@ember/component/template-only';
 import type Owner from '@ember/owner';
 import type { WithBoundArgs } from '@glint/template';
@@ -49,18 +50,15 @@ export interface MultiSelectSignature<T> {
     closeOnSelect?: boolean;
     defaultText?: string;
     defaultTextKey?: string;
-    describedBy?: string;
-    disabled?: boolean;
     displayPath?: string;
-    id?: string;
-    isInvalid?: boolean;
-    isWarning?: boolean;
     loading?: boolean;
     noOptionsText?: string;
     noOptionsTextKey?: string;
     options: T[];
     scrollable?: boolean;
     serializationPath?: string | null;
+
+    fieldOptions?: FieldOptions;
 
     onAdd?: (value: T) => unknown;
     onRemove?: (value: T) => unknown;
@@ -201,10 +199,7 @@ export default class MultiSelect<T> extends BoundValue<
         @binding={{bind this.self "lastSelection"}}
         @closeOnSelect={{this.closeOnSelect}}
         @defaultTextKey="nrg.multi-select.defaultText"
-        @disabled={{@disabled}}
-        @id={{@id}}
-        @isInvalid={{@isInvalid}}
-        @isWarning={{@isWarning}}
+        @fieldOptions={{@fieldOptions}}
         @loading={{@loading}}
         @noOptionsText={{@noOptionsText}}
         @noOptionsTextKey={{@noOptionsTextKey}}
@@ -226,7 +221,7 @@ export default class MultiSelect<T> extends BoundValue<
                       value=option.raw
                       Remove=(component
                         RemoveButton
-                        disabled=@disabled
+                        disabled=@fieldOptions.disabled
                         onClick=(fn this.removeItem option i)
                       )
                     )
@@ -238,7 +233,7 @@ export default class MultiSelect<T> extends BoundValue<
                   >
                     {{option.label}}
                     <RemoveButton
-                      @disabled={{@disabled}}
+                      @disabled={{@fieldOptions.disabled}}
                       @onClick={{fn this.removeItem option i}}
                     />
                   </span>

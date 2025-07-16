@@ -72,6 +72,11 @@ export { default as onInsert } from './modifiers/on-insert.ts';
 export { default as onUpdate } from './modifiers/on-update.ts';
 
 /* Types - Components - Forms */
+import type { InputFieldSignature } from './components/form/-private/input-field.ts';
+import type { NumberInputArgs } from './components/form/number-input.gts';
+import type { PhoneInputArgs } from './components/form/phone-input.gts';
+import type { TextInputArgs } from './components/form/text-input.gts';
+
 export type { BoundValueSignature } from './components/form/bound-value.ts';
 export type { CheckboxGroupSignature } from './components/form/checkbox-group.gts';
 export type { CheckboxSignature } from './components/form/checkbox.gts';
@@ -80,13 +85,13 @@ export type { FieldSignature } from './components/form/field.gts';
 export type { FileUploadSignature } from './components/form/file-upload.gts';
 export type { FormSignature } from './components/form/index.gts';
 export type { MultiSelectSignature } from './components/form/multi-select.gts';
-export type { NumberInputSignature } from './components/form/number-input.gts';
-export type { PhoneInputSignature } from './components/form/phone-input.gts';
+export type NumberInputSignature = InputFieldSignature<NumberInputArgs>;
+export type PhoneInputSignature = InputFieldSignature<PhoneInputArgs>;
 export type { RadioGroupSignature } from './components/form/radio-group.gts';
 export type { SearchSignature } from './components/form/search.gts';
 export type { SelectSignature } from './components/form/select.gts';
 export type { TextAreaSignature } from './components/form/text-area.gts';
-export type { TextInputSignature } from './components/form/text-input.gts';
+export type TextInputSignature = InputFieldSignature<TextInputArgs>;
 
 /* Types - Components - Marketing */
 export type { MktgCardContainerSignature } from './components/mktg/card-container.gts';

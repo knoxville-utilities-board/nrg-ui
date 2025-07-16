@@ -5,6 +5,7 @@ import Component from '@glimmer/component';
 
 import BoundValue from './bound-value.ts';
 
+import type { FieldOptions } from './field.gts';
 import type { Optional } from '../../';
 import type { ComponentLike } from '@glint/template';
 
@@ -12,12 +13,9 @@ export interface RadioGroupSignature {
   Element: HTMLDivElement;
   Args: {
     basic?: boolean;
-    describedBy?: string;
-    disabled?: boolean;
-    id?: string;
-    isInvalid?: boolean;
-    isWarning?: boolean;
     name: string;
+
+    fieldOptions?: FieldOptions;
   };
   Blocks: {
     default: [{ Radio: ComponentLike<RadioSignature> }];
@@ -35,9 +33,9 @@ export default class RadioGroup extends BoundValue<
       classes[0] += '-plaintext';
     }
 
-    if (this.args.isInvalid) {
+    if (this.args.fieldOptions?.isInvalid) {
       classes.push('is-invalid');
-    } else if (this.args.isWarning) {
+    } else if (this.args.fieldOptions?.isWarning) {
       classes.push('is-warning');
     }
 
@@ -58,9 +56,9 @@ export default class RadioGroup extends BoundValue<
 
   <template>
     <div
-      aria-describedby={{@describedBy}}
+      aria-describedby={{@fieldOptions.describedBy}}
       class={{this.classList}}
-      id={{@id}}
+      id={{@fieldOptions.id}}
       ...attributes
     >
       {{yield
@@ -68,9 +66,9 @@ export default class RadioGroup extends BoundValue<
           Radio=(component
             Radio
             currentValue=this.value
-            disabled=@disabled
-            isInvalid=@isInvalid
-            isWarning=@isWarning
+            disabled=@fieldOptions.disabled
+            isInvalid=@fieldOptions.isInvalid
+            isWarning=@fieldOptions.isWarning
             name=this.name
             onChange=this.change
           )
