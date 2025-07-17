@@ -108,6 +108,10 @@ input::placeholder {
 .calendar {
   @extend .text-center;
 
+  div[role="dialog"]:has(> &) {
+    z-index: $zindex-tooltip;
+  }
+
   cursor: unset;
 
   & > thead > .header {
