@@ -5,6 +5,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { restartableTask, timeout } from 'ember-concurrency';
 import { formatNumber, t } from 'ember-intl';
+import { and, not } from 'ember-truth-helpers';
 import { TrackedArray } from 'tracked-built-ins';
 
 import { bind } from '../helpers/bind.ts';
@@ -29,6 +30,7 @@ export interface PaginationSignature {
     pageJumpDebounce?: number;
     pageSizes?: number[];
     showDetailedMeta?: boolean;
+    mobile?: boolean;
 
     onChangePage?: (start: number) => void;
     onChangePageSize?: (pageSize: number) => void;
@@ -228,8 +230,19 @@ export default class Pagination extends Component<PaginationSignature> {
   };
 
   <template>
+    {{#if @mobile}}
+      <p>
+         {{t
+              "nrg.pagination.detailedMeta"
+              start=this.currentPageStart
+              end=this.currentPageEnd
+              total=this.meta.total
+            }}
+      </p>
+    {{/if}}
+
     <ul class="pagination" role="navigation" ...attributes>
-      {{#if @showDetailedMeta}}
+      {{#if (and @showDetailedMeta (not @mobile))}}
         <li class="page-item disabled" data-test-meta>
           <span class="page-link">
             {{t
@@ -316,4 +329,9 @@ export default class Pagination extends Component<PaginationSignature> {
       {{/if}}
     </ul>
   </template>
+}
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Pagination': typeof Pagination;
+  }
 }

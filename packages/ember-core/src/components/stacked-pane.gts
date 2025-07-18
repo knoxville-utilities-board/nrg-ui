@@ -1,6 +1,7 @@
 import { LinkTo } from '@ember/routing';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
+import { Pagination } from '@nrg-ui/core';
 import { t } from 'ember-intl';
 import { eq } from 'ember-truth-helpers';
 
@@ -31,6 +32,14 @@ export interface PaneSignature {
     placeholder?: boolean;
     previousRoute?: string;
     ratio?: 'focused' | 'half' | 'full';
+    enablePagination?: boolean;
+    meta?: {
+      start?: number;
+      count?: number;
+      total?: number;
+    };
+    onChangePage?: (start: number) => void;
+    showDetailedMeta?: boolean;
   };
 }
 
@@ -64,7 +73,27 @@ class Pane extends Component<PaneSignature> {
           </LinkTo>
         </div>
       {{/if}}
+      {{#if @enablePagination}}
+       <div class="pagination-container mt-4">
+            <Pagination
+              @meta={{@meta}}
+              @onChangePage={{@onChangePage}}
+              @showDetailedMeta={{@showDetailedMeta}}
+              @mobile={{true}}
+            />
+          </div>
+      {{/if}}
       {{yield}}
+      {{#if @enablePagination}}
+       <div class="pagination-container mt-4">
+            <Pagination
+              @meta={{@meta}}
+              @onChangePage={{@onChangePage}}
+              @showDetailedMeta={{@showDetailedMeta}}
+              @mobile={{true}}
+            />
+          </div>
+      {{/if}}
     </div>
   </template>
 }
