@@ -73,7 +73,10 @@ export default class Scaffold extends Component<ScaffoldSignature> {
   _showSidebar?: boolean;
 
   get showSidebar() {
-    return this._showSidebar ?? !(this.responsive.isMobileScreenGroup || this.responsive.isMediumScreen);
+    return (
+      this._showSidebar ??
+      !(this.responsive.isMobileScreenGroup || this.responsive.isMediumScreen)
+    );
   }
 
   set showSidebar(value: boolean) {
@@ -95,7 +98,9 @@ export default class Scaffold extends Component<ScaffoldSignature> {
     if (!this.showSidebar) {
       return 'list';
     }
-    return (this.responsive.isMobileScreenGroup || this.responsive.isMediumScreen) ? 'x-lg' : 'list';
+    return this.responsive.isMobileScreenGroup || this.responsive.isMediumScreen
+      ? 'x-lg'
+      : 'list';
   }
 
   get isDark() {
