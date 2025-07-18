@@ -7,6 +7,7 @@ import { eq } from 'ember-truth-helpers';
 
 import { classes } from '../helpers/classes.ts';
 
+import type { Meta } from './pagination.gts';
 import type { TOC } from '@ember/component/template-only';
 import type RouterService from '@ember/routing/router-service';
 
@@ -33,11 +34,7 @@ export interface PaneSignature {
     previousRoute?: string;
     ratio?: 'focused' | 'half' | 'full';
     enablePagination?: boolean;
-    meta?: {
-      start?: number;
-      count?: number;
-      total?: number;
-    };
+    meta?: Meta;
     onChangePage?: (start: number) => void;
     showDetailedMeta?: boolean;
   };
