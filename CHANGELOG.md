@@ -1,5 +1,27 @@
 # Changelog
 
+## Release (2025-07-18)
+
+* @nrg-ui/css 0.22.2 (patch)
+* @nrg-ui/core 0.39.1 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#530](https://github.com/knoxville-utilities-board/nrg-ui/pull/530) fix(datetime): Adjust z-index to not show borders ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`
+  * [#529](https://github.com/knoxville-utilities-board/nrg-ui/pull/529) fix(checkbox-group): Pass correct options to checkbox ([@TSenter](https://github.com/TSenter))
+
+#### :memo: Documentation
+* [#527](https://github.com/knoxville-utilities-board/nrg-ui/pull/527) docs: Add code blocks to side-by-side and stacked-pane ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+
+#### :house: Internal
+* `@nrg-ui/core`
+  * [#526](https://github.com/knoxville-utilities-board/nrg-ui/pull/526) chore: Format repository ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-07-16)
 
 * @nrg-ui/core 0.39.0 (major)
