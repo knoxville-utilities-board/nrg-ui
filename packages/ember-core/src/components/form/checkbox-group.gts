@@ -1,3 +1,4 @@
+import { hash } from '@ember/helper';
 import { action } from '@ember/object';
 import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
@@ -82,7 +83,14 @@ export default class CheckboxGroup extends Component<CheckboxGroupSignature> {
       {{yield
         (component
           Checkbox
-          fieldOptions=@fieldOptions
+          fieldOptions=(hash
+            describedBy=@fieldOptions.describedBy
+            disabled=@fieldOptions.disabled
+            id=@fieldOptions.id
+            isInvalid=@fieldOptions.isInvalid
+            isWarning=@fieldOptions.isWarning
+            required=@fieldOptions.required
+          )
           inline=@inline
           reverse=@reverse
           type=@type
