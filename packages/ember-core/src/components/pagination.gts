@@ -128,7 +128,7 @@ export default class Pagination extends Component<PaginationSignature> {
   get pageItems(): Page[] {
     const pageList = new TrackedArray<Page>();
     const totalPages = this.totalPages;
-    const displayedPages = totalPages >= 5 ? 5 : 3;
+    const displayedPages = (!this.args.mobile && totalPages >= 5) ? 5 : 3;
     const pageRange = (displayedPages - 1) / 2;
     const first = this.currentPage - pageRange;
     const last = this.currentPage + pageRange;
