@@ -39,4 +39,14 @@
   &.full {
     @extend .col-12;
   }
+
+  .pagination-container {
+    container-type: inline-size;
+    container-name: pagination;
+  }
+  @container pagination (max-width: 275px) {
+    .pagination {
+      display: none;
+    }
+  }
 }
