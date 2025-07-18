@@ -145,6 +145,9 @@ class Model {
   datetime;
 
   @tracked
+  date;
+
+  @tracked
   fileUpload;
 
   toJSON() {
@@ -251,6 +254,19 @@ export default class FormDemo extends Component {
             <Group.Radio @option="C" />
           </Field.RadioGroup>
         </Form.Field>
+        <Form.Field @label="Datetime" @required={{this.required}} as |Field|>
+          <Field.Datetime
+            @binding={{bind this.model "datetime"}}
+            @minDate={{(dayjs)}}
+          />
+        </Form.Field>
+        <Form.Field @label="Date" @required={{this.required}} as |Field|>
+          <Field.Datetime
+            @binding={{bind this.model "date"}}
+            @maxDate={{(dayjs)}}
+            @type="date"
+          />
+        </Form.Field>
         <Form.Field
           @label="Phone Number"
           @required={{this.required}}
@@ -291,12 +307,6 @@ export default class FormDemo extends Component {
             @binding={{bind this.model "number"}}
             @format="currency"
             @formatPrecision={{3}}
-          />
-        </Form.Field>
-        <Form.Field @label="Datetime" @required={{this.required}} as |Field|>
-          <Field.Datetime
-            @binding={{bind this.model "datetime"}}
-            @minDate={{(dayjs)}}
           />
         </Form.Field>
         <Form.Field @required={{this.required}} as |Field|>
