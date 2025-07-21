@@ -1,5 +1,21 @@
 # Changelog
 
+## Release (2025-07-21)
+
+* @nrg-ui/core 0.39.2 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#537](https://github.com/knoxville-utilities-board/nrg-ui/pull/537) fix(form-control): Pass correct field options ([@TSenter](https://github.com/TSenter))
+  * [#535](https://github.com/knoxville-utilities-board/nrg-ui/pull/535) chore(datetime): Coerce default values to Dates ([@TSenter](https://github.com/TSenter))
+  * [#532](https://github.com/knoxville-utilities-board/nrg-ui/pull/532) fix(alert): Add splattributes ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* [#536](https://github.com/knoxville-utilities-board/nrg-ui/pull/536) chore: Override `on-headers` to patched version ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-07-18)
 
 * @nrg-ui/css 0.22.2 (patch)
