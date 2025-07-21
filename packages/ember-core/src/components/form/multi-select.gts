@@ -199,7 +199,14 @@ export default class MultiSelect<T> extends BoundValue<
         @binding={{bind this.self "lastSelection"}}
         @closeOnSelect={{this.closeOnSelect}}
         @defaultTextKey="nrg.multi-select.defaultText"
-        @fieldOptions={{@fieldOptions}}
+        @fieldOptions={{hash
+          describedBy=@fieldOptions.describedBy
+          disabled=@fieldOptions.disabled
+          id=@fieldOptions.id
+          isInvalid=@fieldOptions.isInvalid
+          isWarning=@fieldOptions.isWarning
+          required=@fieldOptions.required
+        }}
         @loading={{@loading}}
         @noOptionsText={{@noOptionsText}}
         @noOptionsTextKey={{@noOptionsTextKey}}

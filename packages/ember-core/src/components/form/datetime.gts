@@ -1,3 +1,4 @@
+import { hash } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
@@ -186,12 +187,18 @@ export default class Datetime extends BoundValue<DatetimeSignature, Date> {
       {{/unless}}
       {{#unless (has-block)}}
         <TextInput
-          aria-describedby={{@fieldOptions.describedBy}}
           class="border-start-0 rounded-end"
           placeholder={{@placeholder}}
           @basic={{@basic}}
           @binding={{bind this.self "displayValue"}}
-          @fieldOptions={{@fieldOptions}}
+          @fieldOptions={{hash
+            describedBy=@fieldOptions.describedBy
+            disabled=@fieldOptions.disabled
+            id=@fieldOptions.id
+            isInvalid=@fieldOptions.isInvalid
+            isWarning=@fieldOptions.isWarning
+            required=@fieldOptions.required
+          }}
           @readonly={{@readonly}}
         />
       {{/unless}}
