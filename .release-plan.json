@@ -4,31 +4,17 @@
       "oldVersion": "0.3.1"
     },
     "@nrg-ui/css": {
-      "impact": "patch",
-      "oldVersion": "0.22.1",
-      "newVersion": "0.22.2",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
-        }
-      ],
-      "pkgJSONPath": "./packages/design-system/package.json"
+      "oldVersion": "0.22.2"
     },
     "@nrg-ui/core": {
       "impact": "patch",
-      "oldVersion": "0.39.0",
-      "newVersion": "0.39.1",
+      "oldVersion": "0.39.1",
+      "newVersion": "0.39.2",
       "tagName": "latest",
       "constraints": [
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
@@ -40,5 +26,5 @@
       "oldVersion": "0.3.1"
     }
   },
-  "description": "## Release (2025-07-18)\n\n* @nrg-ui/css 0.22.2 (patch)\n* @nrg-ui/core 0.39.1 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#530](https://github.com/knoxville-utilities-board/nrg-ui/pull/530) fix(datetime): Adjust z-index to not show borders ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/core`\n  * [#529](https://github.com/knoxville-utilities-board/nrg-ui/pull/529) fix(checkbox-group): Pass correct options to checkbox ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* [#527](https://github.com/knoxville-utilities-board/nrg-ui/pull/527) docs: Add code blocks to side-by-side and stacked-pane ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n\n#### :house: Internal\n* `@nrg-ui/core`\n  * [#526](https://github.com/knoxville-utilities-board/nrg-ui/pull/526) chore: Format repository ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-07-21)\n\n* @nrg-ui/core 0.39.2 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#537](https://github.com/knoxville-utilities-board/nrg-ui/pull/537) fix(form-control): Pass correct field options ([@TSenter](https://github.com/TSenter))\n  * [#535](https://github.com/knoxville-utilities-board/nrg-ui/pull/535) chore(datetime): Coerce default values to Dates ([@TSenter](https://github.com/TSenter))\n  * [#532](https://github.com/knoxville-utilities-board/nrg-ui/pull/532) fix(alert): Add splattributes ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* [#536](https://github.com/knoxville-utilities-board/nrg-ui/pull/536) chore: Override `on-headers` to patched version ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
