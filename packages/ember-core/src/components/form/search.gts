@@ -1,4 +1,4 @@
-import { fn } from '@ember/helper';
+import { fn, hash } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { action, get } from '@ember/object';
 import { service } from '@ember/service';
@@ -387,7 +387,14 @@ export default class Search<T> extends BoundValue<
               placeholder={{this.placeholder}}
               @basic={{@basic}}
               @binding={{bind this.self "inputValue"}}
-              @fieldOptions={{@fieldOptions}}
+              @fieldOptions={{hash
+                describedBy=@fieldOptions.describedBy
+                disabled=@fieldOptions.disabled
+                id=@fieldOptions.id
+                isInvalid=@fieldOptions.isInvalid
+                isWarning=@fieldOptions.isWarning
+                required=@fieldOptions.required
+              }}
               @readonly={{@readonly}}
               {{on "focus" this.onFocus}}
               {{onKey "ArrowUp" this.moveUp onlyWhenFocused=true}}
