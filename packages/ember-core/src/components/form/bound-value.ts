@@ -87,7 +87,7 @@ export default class BoundValue<Signature, T> extends Component<
 
   get defaultValue(): Optional<T> {
     if (this.args.defaultValue !== undefined) {
-      return this.args.defaultValue ?? null;
+      return this.args.defaultValue;
     }
     return this.getDefaultValue?.() ?? null;
   }
