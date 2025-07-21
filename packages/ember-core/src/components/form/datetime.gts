@@ -118,7 +118,13 @@ export default class Datetime extends BoundValue<DatetimeSignature, Date> {
     return [this.displayFormat];
   }
 
-  getDefaultValue() {
+  get defaultValue() {
+    if (this.args.defaultValue !== undefined) {
+      return this.args.defaultValue
+        ? dayjs(this.args.defaultValue).toDate()
+        : null;
+    }
+
     return new Date();
   }
 
