@@ -18,7 +18,7 @@ declare type AlertType =
   | 'dark';
 
 export interface AlertSignature {
-  Element: HTMLDivElement | null;
+  Element: HTMLDivElement;
   Args: {
     dismissible?: boolean;
     icon?: IconType;
@@ -76,6 +76,7 @@ export default class AlertComponent extends Component<AlertSignature> {
           leaveToClass="hide"
           didTransitionOut=this.onDismissed
         }}
+        ...attributes
       >
         {{#if @icon}}
           <i class={{@icon}} />
