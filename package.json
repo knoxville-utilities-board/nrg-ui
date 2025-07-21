@@ -38,6 +38,7 @@
       "@types/eslint": "^9.6.1",
       "ansi-html": "^0.0.8",
       "brace-expansion": "^1.1.12 || ^2.0.1",
+      "on-headers": "^1.1.0",
       "sane": "^5.0.1"
     }
   }
