@@ -94,26 +94,33 @@ export default class PaginationDemo extends Component {
         <FreestyleUsage>
           <:example>
             <Pagination
+              @compact={{this.compact}}
               @meta={{this.meta}}
               @pageSizes={{this.pageSizes}}
               @showDetailedMeta={{this.showDetailedMeta}}
               @onChangePage={{fn this.update "start"}}
               @onChangePageSize={{this.changePageSize}}
-              @compact={{this.compact}}
             />
           </:example>
           <:api as |Args|>
-            <Args.Number
-              @description="Index of the first item"
-              @name="meta.start"
-              @value={{this.start}}
-              @onInput={{fn this.update "start"}}
+            <Args.Bool
+              @defaultValue={{false}}
+              @description="Shorten the number of pages displayed"
+              @name="compact"
+              @value={{this.compact}}
+              @onInput={{fn this.update "compact"}}
             />
             <Args.Number
               @description="Number of items per page"
               @name="meta.count"
               @value={{this.count}}
               @onInput={{fn this.update "count"}}
+            />
+            <Args.Number
+              @description="Index of the first item"
+              @name="meta.start"
+              @value={{this.start}}
+              @onInput={{fn this.update "start"}}
             />
             <Args.Number
               @description="Total number of items"
@@ -133,13 +140,6 @@ export default class PaginationDemo extends Component {
               @name="showDetailedMeta"
               @value={{this.showDetailedMeta}}
               @onInput={{fn this.update "showDetailedMeta"}}
-            />
-            <Args.Bool
-              @defaultValue={{false}}
-              @description="Shorten the number of pages displayed"
-              @name="compact"
-              @value={{this.compact}}
-              @onInput={{fn this.update "compact"}}
             />
           </:api>
         </FreestyleUsage>

@@ -52,16 +52,14 @@
 
       <StackedPane::Container style="min-height: fit-content;">
         <StackedPane
-          @enablePagination={{true}}
           @meta={{this.meta}}
           @onChangePage={{fn this.update "start"}}
-          @showDetailedMeta={{true}}
         >
           <Pagination
             class="pagination-container"
+            @compact={{true}}
             @meta={{this.meta}}
             @onChangePage={{fn this.update "start"}}
-            @compact={{true}}
           />
           <ul class="list-group">
             {{#each this.longRange as |item|}}
@@ -81,9 +79,9 @@
           </ul>
           <Pagination
             class="pagination-container"
+            @compact={{true}}
             @meta={{this.meta}}
             @onChangePage={{fn this.update "start"}}
-            @compact={{true}}
           />
         </StackedPane>
         {{outlet}}

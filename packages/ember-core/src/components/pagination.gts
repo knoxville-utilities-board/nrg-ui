@@ -23,13 +23,13 @@ export interface Meta {
 export interface PaginationSignature {
   Element: HTMLUListElement;
   Args: {
+    compact?: boolean;
     defaultPageSize?: number;
     enablePageJump?: boolean;
     meta?: Meta;
     pageJumpDebounce?: number;
     pageSizes?: number[];
     showDetailedMeta?: boolean;
-    compact?: boolean;
 
     onChangePage?: (start: number) => void;
     onChangePageSize?: (pageSize: number) => void;
@@ -127,7 +127,7 @@ export default class Pagination extends Component<PaginationSignature> {
   get pageItems(): Page[] {
     const pageList = new TrackedArray<Page>();
     const totalPages = this.totalPages;
-    const displayedPages = ( !this.args.compact && totalPages >= 5) ? 5 : 3;
+    const displayedPages = (!this.args.compact && totalPages >= 5) ? 5 : 3;
     const pageRange = (displayedPages - 1) / 2;
     const first = this.currentPage - pageRange;
     const last = this.currentPage + pageRange;
@@ -247,6 +247,7 @@ export default class Pagination extends Component<PaginationSignature> {
         role={{if this.canStepBackward "button"}}
         {{! @glint-expect-error - Known Glint issue - #661 }}
         {{(if this.canStepBackward (modifier on "click" this.stepBackward))}}
+        id="page-previous"
         data-test-previous
       >
         <span class="page-link">
@@ -278,6 +279,7 @@ export default class Pagination extends Component<PaginationSignature> {
         role={{if this.canStepForward "button"}}
         {{! @glint-expect-error - Known Glint issue - #661 }}
         {{(if this.canStepForward (modifier on "click" this.stepForward))}}
+        id="page-next"
         data-test-next
       >
         <span class="page-link">
@@ -317,9 +319,4 @@ export default class Pagination extends Component<PaginationSignature> {
       {{/if}}
     </ul>
   </template>
-}
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'Pagination': typeof Pagination;
-  }
 }

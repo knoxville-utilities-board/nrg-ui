@@ -49,7 +49,7 @@
       > p {
         display: none;
       }
-      li:not([data-test-previous]):not([data-test-next]) {
+      li:not(#page-previous):not(#page-next) {
         display: none;
       }
     }
