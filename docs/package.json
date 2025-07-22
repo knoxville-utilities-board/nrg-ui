@@ -52,7 +52,7 @@
     "@nrg-ui/css": "workspace:*",
     "@nrg-ui/standards": "workspace:*",
     "@nrg-ui/version": "workspace:*",
-    "@tsconfig/ember": "^3.0.10",
+    "@tsconfig/ember": "^3.0.11",
     "@types/qunit": "^2.19.12",
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^9.2.0",
@@ -101,7 +101,7 @@
     "stylelint-config-standard": "^38.0.0",
     "tracked-built-ins": "^4.0.0",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.37.0",
+    "typescript-eslint": "^8.38.0",
     "webpack": "^5.100.2"
   },
   "engines": {

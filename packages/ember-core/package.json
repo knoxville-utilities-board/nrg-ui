@@ -129,7 +129,7 @@
     "@nrg-ui/css": "workspace:^0",
     "@nrg-ui/standards": "workspace:^",
     "@rollup/plugin-babel": "^6.0.4",
-    "@tsconfig/ember": "^3.0.10",
+    "@tsconfig/ember": "^3.0.11",
     "babel-plugin-ember-template-compilation": "^3.0.0",
     "concurrently": "^9.2.0",
     "dayjs": "^1.11.13",
@@ -151,7 +151,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "tracked-built-ins": "^4.0.0",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.37.0",
+    "typescript-eslint": "^8.38.0",
     "webpack": "^5.100.2"
   },
   "peerDependencies": {
