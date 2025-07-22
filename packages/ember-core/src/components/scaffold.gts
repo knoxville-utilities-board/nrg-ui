@@ -35,6 +35,7 @@ export interface ScaffoldSignature {
   Args: {
     allowThemes?: boolean;
     environment?: string;
+    onSidebarToggle?: (open: boolean) => void;
   };
   Blocks: {
     'app-bar-left': [AppBarBlock];
@@ -113,6 +114,7 @@ export default class Scaffold extends Component<ScaffoldSignature> {
 
   toggleSidebar = () => {
     this.showSidebar = !this.showSidebar;
+    this.args.onSidebarToggle?.(this.showSidebar);
   };
 
   toggleAboutModal = (open: boolean) => {
