@@ -61,6 +61,7 @@
             class="pagination-container"
             @meta={{this.meta}}
             @onChangePage={{fn this.update "start"}}
+            @compact={{true}}
           />
           <ul class="list-group">
             {{#each this.longRange as |item|}}
@@ -82,6 +83,7 @@
             class="pagination-container"
             @meta={{this.meta}}
             @onChangePage={{fn this.update "start"}}
+            @compact={{true}}
           />
         </StackedPane>
         {{outlet}}

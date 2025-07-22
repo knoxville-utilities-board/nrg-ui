@@ -29,6 +29,7 @@ export interface PaginationSignature {
     pageJumpDebounce?: number;
     pageSizes?: number[];
     showDetailedMeta?: boolean;
+    compact?: boolean;
 
     onChangePage?: (start: number) => void;
     onChangePageSize?: (pageSize: number) => void;
@@ -126,7 +127,7 @@ export default class Pagination extends Component<PaginationSignature> {
   get pageItems(): Page[] {
     const pageList = new TrackedArray<Page>();
     const totalPages = this.totalPages;
-    const displayedPages = totalPages >= 5 ? 5 : 3;
+    const displayedPages = ( !this.args.compact && totalPages >= 5) ? 5 : 3;
     const pageRange = (displayedPages - 1) / 2;
     const first = this.currentPage - pageRange;
     const last = this.currentPage + pageRange;

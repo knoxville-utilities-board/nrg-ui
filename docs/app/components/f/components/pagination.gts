@@ -25,6 +25,9 @@ export default class PaginationDemo extends Component {
   @tracked
   showDetailedMeta = false;
 
+  @tracked
+  compact = false;
+
   pageSizes: number[] = A([25, 50, 100]);
 
   get meta() {
@@ -96,6 +99,7 @@ export default class PaginationDemo extends Component {
               @showDetailedMeta={{this.showDetailedMeta}}
               @onChangePage={{fn this.update "start"}}
               @onChangePageSize={{this.changePageSize}}
+              @compact={{this.compact}}
             />
           </:example>
           <:api as |Args|>
@@ -129,6 +133,13 @@ export default class PaginationDemo extends Component {
               @name="showDetailedMeta"
               @value={{this.showDetailedMeta}}
               @onInput={{fn this.update "showDetailedMeta"}}
+            />
+            <Args.Bool
+              @defaultValue={{false}}
+              @description="Shorten the number of pages displayed"
+              @name="compact"
+              @value={{this.compact}}
+              @onInput={{fn this.update "compact"}}
             />
           </:api>
         </FreestyleUsage>
