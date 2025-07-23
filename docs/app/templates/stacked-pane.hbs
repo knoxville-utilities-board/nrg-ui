@@ -51,10 +51,7 @@
       {{! BEGIN-SNIPPET stacked-pane-pagination-component }}
 
       <StackedPane::Container style="min-height: fit-content;">
-        <StackedPane
-          @meta={{this.meta}}
-          @onChangePage={{fn this.update "start"}}
-        >
+        <StackedPane>
           <Pagination
             class="pagination-container"
             @compact={{true}}

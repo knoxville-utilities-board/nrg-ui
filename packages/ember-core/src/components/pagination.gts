@@ -243,11 +243,10 @@ export default class Pagination extends Component<PaginationSignature> {
         </li>
       {{/if}}
       <li
-        class={{classes "page-item" (unless this.canStepBackward "disabled")}}
+        class={{classes "page-item page-previous" (unless this.canStepBackward "disabled")}}
         role={{if this.canStepBackward "button"}}
         {{! @glint-expect-error - Known Glint issue - #661 }}
         {{(if this.canStepBackward (modifier on "click" this.stepBackward))}}
-        id="page-previous"
         data-test-previous
       >
         <span class="page-link">
@@ -275,11 +274,10 @@ export default class Pagination extends Component<PaginationSignature> {
         </li>
       {{/each}}
       <li
-        class={{classes "page-item" (unless this.canStepForward "disabled")}}
+        class={{classes "page-item page-next" (unless this.canStepForward "disabled")}}
         role={{if this.canStepForward "button"}}
         {{! @glint-expect-error - Known Glint issue - #661 }}
         {{(if this.canStepForward (modifier on "click" this.stepForward))}}
-        id="page-next"
         data-test-next
       >
         <span class="page-link">
