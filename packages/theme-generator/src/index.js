@@ -93,7 +93,7 @@ export default async function run() {
     const diffedTheme = treeDiff(compiledTheme, rawNrgCSS);
 
     console.log(chalk.green(`  Writing output`));
-    const prettifiedTheme = prettify(cleanup(diffedTheme));
+    const prettifiedTheme = await prettify(cleanup(diffedTheme));
 
     const cssCommentHeader = `/* stylelint-disable */\n/* Generated using @nrg-ui/theme-generator */\n`;
     const themeOutputDirectory = path.join(
