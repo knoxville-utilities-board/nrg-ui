@@ -24128,6 +24128,19 @@ dialog .btn-close {
   overflow-y: auto;
   direction: ltr;
 }
+.stacked-pane .pagination-container {
+  container-type: inline-size;
+  container-name: pagination;
+}
+@container pagination (max-width: 275px) {
+  .stacked-pane .pagination-container > p {
+    display: none;
+  }
+  .stacked-pane .pagination-container li:not(.page-previous):not(.page-next) {
+    display: none;
+  }
+}
+
 body {
   scrollbar-color: rgba(var(--bs-body-color-rgb), 0.25) rgba(var(--bs-body-color-rgb), 0.1);
   scrollbar-width: thin;
