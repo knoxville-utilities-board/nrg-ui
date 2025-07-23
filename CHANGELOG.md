@@ -1,5 +1,29 @@
 # Changelog
 
+## Release (2025-07-23)
+
+* @nrg-ui/css 0.23.0 (minor)
+* @nrg-ui/core 0.40.0 (minor)
+* @nrg-ui/theme-generator 0.3.2 (patch)
+
+#### :rocket: Enhancement
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#531](https://github.com/knoxville-utilities-board/nrg-ui/pull/531) feat(stacked-pane): Add pagination usage example ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+* `@nrg-ui/core`
+  * [#541](https://github.com/knoxville-utilities-board/nrg-ui/pull/541) feat(scaffold): Add hook for when sidebar is toggled ([@DeanLongmire](https://github.com/DeanLongmire))
+
+#### :bug: Bug Fix
+* `@nrg-ui/theme-generator`
+  * [#542](https://github.com/knoxville-utilities-board/nrg-ui/pull/542) fix(theme-generator): Resolve Prettier promise ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* [#538](https://github.com/knoxville-utilities-board/nrg-ui/pull/538) chore: Override form-data to patched version ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 3
+- Dean Longmire ([@DeanLongmire](https://github.com/DeanLongmire))
+- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-07-21)
 
 * @nrg-ui/core 0.39.2 (patch)
