@@ -35,6 +35,7 @@ import MktgWorkflowTray from './components/mktg/workflow-tray.gts';
 import Modal from './components/modal.gts';
 import NavItem from './components/nav-item.gts';
 import PageNotFound from './components/page-not-found.gts';
+import Pagination from './components/pagination.gts';
 import Progress from './components/progress.gts';
 import Scaffold from './components/scaffold.gts';
 import Sidebar from './components/sidebar.gts';
@@ -64,6 +65,7 @@ export interface ComponentRegistry {
   Modal: typeof Modal;
   NavItem: typeof NavItem;
   PageNotFound: typeof PageNotFound;
+  Pagination: typeof Pagination;
   Progress: typeof Progress;
   Scaffold: typeof Scaffold;
   Sidebar: typeof Sidebar;

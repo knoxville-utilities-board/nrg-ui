@@ -23,6 +23,7 @@ export interface Meta {
 export interface PaginationSignature {
   Element: HTMLUListElement;
   Args: {
+    compact?: boolean;
     defaultPageSize?: number;
     enablePageJump?: boolean;
     meta?: Meta;
@@ -126,7 +127,7 @@ export default class Pagination extends Component<PaginationSignature> {
   get pageItems(): Page[] {
     const pageList = new TrackedArray<Page>();
     const totalPages = this.totalPages;
-    const displayedPages = totalPages >= 5 ? 5 : 3;
+    const displayedPages = (!this.args.compact && totalPages >= 5) ? 5 : 3;
     const pageRange = (displayedPages - 1) / 2;
     const first = this.currentPage - pageRange;
     const last = this.currentPage + pageRange;
@@ -242,7 +243,7 @@ export default class Pagination extends Component<PaginationSignature> {
         </li>
       {{/if}}
       <li
-        class={{classes "page-item" (unless this.canStepBackward "disabled")}}
+        class={{classes "page-item page-previous" (unless this.canStepBackward "disabled")}}
         role={{if this.canStepBackward "button"}}
         {{! @glint-expect-error - Known Glint issue - #661 }}
         {{(if this.canStepBackward (modifier on "click" this.stepBackward))}}
@@ -273,7 +274,7 @@ export default class Pagination extends Component<PaginationSignature> {
         </li>
       {{/each}}
       <li
-        class={{classes "page-item" (unless this.canStepForward "disabled")}}
+        class={{classes "page-item page-next" (unless this.canStepForward "disabled")}}
         role={{if this.canStepForward "button"}}
         {{! @glint-expect-error - Known Glint issue - #661 }}
         {{(if this.canStepForward (modifier on "click" this.stepForward))}}

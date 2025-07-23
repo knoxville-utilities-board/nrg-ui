@@ -1,64 +1,29 @@
-{{! BEGIN-SNIPPET stacked-pane-component }}
 {{! template-lint-disable no-inline-styles }}
+<div class="row g-0">
+  <div class="col px-md-0 py-3">
+    <div class="container mx-auto">
+      <h2>Stacked Pane</h2>
+    </div>
+  </div>
+</div>
+{{! BEGIN-SNIPPET stacked-pane-component }}
 <StackedPane::Container style="min-height: fit-content;">
   <StackedPane>
     <ul class="list-group">
-      <LinkTo
-        class="list-group-item"
-        @route="stacked-pane.selected-item"
-        @model={{1}}
-      >
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">Account 1</h5>
-          <small>Person Name</small>
-        </div>
-        <p class="mb-1">Email</p>
-        <small>Phone</small>
-      </LinkTo>
-      <LinkTo
-        class="list-group-item"
-        @route="stacked-pane.selected-item"
-        @model={{2}}
-      >
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">Account 2</h5>
-          <small>Person Name</small>
-        </div>
-        <p class="mb-1">Email</p>
-        <small>Phone</small></LinkTo>
-      <LinkTo
-        class="list-group-item"
-        @route="stacked-pane.selected-item"
-        @model={{3}}
-      >
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">Account 3</h5>
-          <small>Person Name</small>
-        </div>
-        <p class="mb-1">Email</p>
-        <small>Phone</small></LinkTo>
-      <LinkTo
-        class="list-group-item"
-        @route="stacked-pane.selected-item"
-        @model={{4}}
-      >
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">Account 4</h5>
-          <small>Person Name</small>
-        </div>
-        <p class="mb-1">Email</p>
-        <small>Phone</small></LinkTo>
-      <LinkTo
-        class="list-group-item"
-        @route="stacked-pane.selected-item"
-        @model={{5}}
-      >
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">Account 5</h5>
-          <small>Person Name</small>
-        </div>
-        <p class="mb-1">Email</p>
-        <small>Phone</small></LinkTo>
+      {{#each this.shortRange as |item|}}
+        <LinkTo
+          class="list-group-item"
+          @route="stacked-pane.selected-item"
+          @model={{item}}
+        >
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Account {{item}}</h5>
+            <small>Person Name</small>
+          </div>
+          <p class="mb-1">Email</p>
+          <small>Phone</small>
+        </LinkTo>
+      {{/each}}
     </ul>
   </StackedPane>
   {{outlet}}
@@ -69,6 +34,74 @@
   <div class="col px-md-0 py-3">
     <div class="container mx-auto">
       {{#let (get-code-snippet "stacked-pane-component.hbs") as |snippet|}}
+        <CodeBlock
+          class="border rounded simple p-3"
+          @lang={{snippet.language}}
+          @code={{snippet.source}}
+        />
+      {{/let}}
+    </div>
+  </div>
+</div>
+
+<div class="row g-0">
+  <div class="col px-md-0 py-3">
+    <div class="container mx-auto">
+      <h2>Stacked Pane with Pagination</h2>
+      {{! BEGIN-SNIPPET stacked-pane-pagination-component }}
+
+      <StackedPane::Container style="min-height: fit-content;">
+        <StackedPane>
+          <Pagination
+            class="pagination-container"
+            @compact={{true}}
+            @meta={{this.meta}}
+            @onChangePage={{fn this.update "start"}}
+          />
+          <ul class="list-group">
+            {{#each this.longRange as |item|}}
+              <LinkTo
+                class="list-group-item"
+                @route="stacked-pane.selected-item"
+                @model={{item}}
+              >
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">Account {{item}}</h5>
+                  <small>Person Name</small>
+                </div>
+                <p class="mb-1">Email</p>
+                <small>Phone</small>
+              </LinkTo>
+            {{/each}}
+          </ul>
+          <Pagination
+            class="pagination-container"
+            @compact={{true}}
+            @meta={{this.meta}}
+            @onChangePage={{fn this.update "start"}}
+          />
+        </StackedPane>
+        {{outlet}}
+      </StackedPane::Container>
+      {{! END-SNIPPET }}
+    </div>
+  </div>
+</div>
+
+<div class="row g-0">
+  <div class="col px-md-0 py-3">
+    <div class="container mx-auto">
+      {{#let (get-code-snippet "stacked-pane-controller.ts") as |snippet|}}
+        <CodeBlock
+          class="border rounded simple p-3"
+          @lang={{snippet.language}}
+          @code={{snippet.source}}
+        />
+      {{/let}}
+      {{#let
+        (get-code-snippet "stacked-pane-pagination-component.hbs")
+        as |snippet|
+      }}
         <CodeBlock
           class="border rounded simple p-3"
           @lang={{snippet.language}}
