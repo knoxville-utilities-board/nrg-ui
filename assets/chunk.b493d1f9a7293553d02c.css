@@ -14999,7 +14999,7 @@ div[role=dialog]:has(> .calendar) {
   background-color: var(--bs-secondary-bg);
 }
 .calendar .cell {
-  max-width: min-content;
+  min-width: 2ch;
 }
 .calendar .cell:not(.disabled) {
   cursor: pointer;
