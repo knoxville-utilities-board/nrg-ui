@@ -121,7 +121,7 @@ input::placeholder {
   }
 
   & .cell {
-    max-width: min-content;
+    min-width: 2ch;
 
     &:not(.disabled) {
       cursor: pointer;
