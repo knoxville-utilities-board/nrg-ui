@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2025-07-29)
+
+* @nrg-ui/css 0.23.1 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`
+  * [#545](https://github.com/knoxville-utilities-board/nrg-ui/pull/545) fix(datetime): Use appropriate sizing for calendar cells ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-07-23)
 
 * @nrg-ui/css 0.23.0 (minor)
