@@ -1,4 +1,4 @@
-import { runInDebug, assert } from '@ember/debug';
+import { assert, runInDebug } from '@ember/debug';
 import { registerDestructor } from '@ember/destroyable';
 import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
