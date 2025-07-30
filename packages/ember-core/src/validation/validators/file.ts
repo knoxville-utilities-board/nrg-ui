@@ -8,11 +8,11 @@ import type { BaseOptions, Computable, ValidateFnResponse } from '../types.ts';
 
 export type FileOptions = {
   /**
-   * Accepted file types, e.g. ['png', 'jpeg'].
+   * Accepted file types, e.g. ['png', '.jpeg', 'image/*'].
    */
   acceptedTypes?: string[];
   /**
-   * Unaccepted file types, e.g. ['png', 'jpeg'].
+   * Unaccepted file types, e.g. ['png', '.jpeg', 'image/*'].
    */
   unacceptedTypes?: string[];
 } & BaseOptions;
@@ -104,6 +104,7 @@ export default class FileValidator<
     const fileExtension = this.extractFileExtension(value);
     return options.some(
       (option) =>
+        option.split('.').pop()?.toLowerCase() === fileExtension ||
         option.toLowerCase() === fileExtension ||
         this.checkMimeType(option, value.type),
     );

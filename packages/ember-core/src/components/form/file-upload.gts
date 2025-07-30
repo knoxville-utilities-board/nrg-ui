@@ -1,3 +1,4 @@
+import { assert } from '@ember/debug';
 import { registerDestructor } from '@ember/destroyable';
 import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
@@ -122,7 +123,17 @@ export default class FileUpload extends BoundValue<
   }
 
   get accept() {
-    return (this.args.accept as string[])?.join(', ') ?? '';
+    if (this.args.accept) {
+      for (const type of this.args.accept) {
+        const fileExtension = type.startsWith('.')
+        const mimeType = type.includes('/');
+        if (!fileExtension && !mimeType) {
+          assert('The accept argument\'s file type strings should be in the format "image/png" or ".pdf" to be compatible with the input\'s \"accept\" attribute.', false);
+        }
+      }
+      return (this.args.accept as string[])?.join(', ');
+    }
+    return '';
   }
 
   get dropzoneStyling() {
