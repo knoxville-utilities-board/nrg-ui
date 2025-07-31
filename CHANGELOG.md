@@ -1,5 +1,22 @@
 # Changelog
 
+## Release (2025-07-31)
+
+* @nrg-ui/core 0.41.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#553](https://github.com/knoxville-utilities-board/nrg-ui/pull/553) feat(form): Allow custom submit button class ([@TSenter](https://github.com/TSenter))
+  * [#552](https://github.com/knoxville-utilities-board/nrg-ui/pull/552) fix: Strip period from accepted file types and add assertion ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#552](https://github.com/knoxville-utilities-board/nrg-ui/pull/552) fix: Strip period from accepted file types and add assertion ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+#### Committers: 2
+- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-07-29)
 
 * @nrg-ui/css 0.23.1 (patch)
