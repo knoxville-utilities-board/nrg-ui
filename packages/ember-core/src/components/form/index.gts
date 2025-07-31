@@ -53,6 +53,7 @@ export interface FormSignature {
     disabled?: boolean;
     loading?: boolean;
     preventScroll?: boolean;
+    submitClass?: string;
     validators?: ValidatorsObject;
 
     willValidate?: (event: SubmitEvent) => unknown;
@@ -142,6 +143,10 @@ export default class Form extends Component<FormSignature> implements FormType {
     return validations
       .filter((validator) => !validator.v.result.isWarning)
       .every((validator) => validator.v.result.isValid);
+  }
+
+  get submitButtonClass() {
+    return this.args.submitClass ?? 'btn-primary';
   }
 
   submit = dropTask(async (event: SubmitEvent) => {
@@ -301,7 +306,7 @@ export default class Form extends Component<FormSignature> implements FormType {
           Field=(component Field disabled=@disabled form=this)
           SubmitButton=(component
             Button
-            _class="btn-primary"
+            _class=this.submitButtonClass
             disabled=@disabled
             loading=this.loading
             text="Submit"
