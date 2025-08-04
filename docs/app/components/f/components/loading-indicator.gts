@@ -1,5 +1,5 @@
 // @ts-nocheck - TODO
-import { fn } from '@ember/helper';
+import { array, fn } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -20,6 +20,9 @@ export default class LoadingIndicatorDemo extends Component {
   @tracked
   label?: string;
 
+  @tracked
+  size?: string;
+
   typeOptions = ['border', 'grow'];
 
   @action
@@ -33,12 +36,21 @@ export default class LoadingIndicatorDemo extends Component {
         <FreestyleUsage>
           <:example>
             <LoadingIndicator
+              class={{this.size}}
               @label={{this.label}}
               @showLabel={{this.showLabel}}
               @type={{this.type}}
             />
           </:example>
           <:api as |Args|>
+            <Args.String
+              @defaultValue={{null}}
+              @description="This class determines the size of the loading indicator."
+              @name="class"
+              @options={{array null "spinner-sm" "spinner-lg"}}
+              @value={{this.size}}
+              @onInput={{fn this.update "size"}}
+            />
             <Args.String
               @name="label"
               @defaultValue="Loading..."
