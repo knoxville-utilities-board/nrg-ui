@@ -23614,6 +23614,17 @@ input.form-check-input.is-warning:focus:not([disabled])):not([disabled]) ~ .warn
   content: "爛";
 }
 
+.spinner-sm {
+  --bs-spinner-border-width: 0.15rem;
+  --bs-spinner-width: 1rem;
+  --bs-spinner-height: 1rem;
+}
+
+.spinner-lg {
+  --bs-spinner-width: 3rem;
+  --bs-spinner-height: 3rem;
+}
+
 dialog {
   --bs-modal-bg: var(--bs-body-bg);
   background-color: var(--bs-modal-bg);
