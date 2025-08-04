@@ -33,7 +33,7 @@
     "build:sass": "sass --load-path node_modules src:dist --no-source-map",
     "start": "concurrently pnpm:build:icons pnpm:*:sass",
     "build": "concurrently 'pnpm:build:*' --prefix-colors cyan,magenta,yellow",
-    "format": "prettier --write .",
+    "format": "prettier . --cache --write",
     "sasstest": "sass --help",
     "watch:sass": "sass --load-path node_modules --watch src:dist"
   },

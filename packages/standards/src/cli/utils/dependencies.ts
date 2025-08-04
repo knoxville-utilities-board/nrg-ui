@@ -93,26 +93,28 @@ export async function installMany(deps: { [dep: string]: string | undefined }) {
     return;
   }
 
-  const args = depEntries.map(([dep, version]) => {
-    const currentVersion = getVersion(dep)!;
-    if (version && satisfies(currentVersion, version)) {
-      logger.debug(
-        `Dependency '${dep}' satisfies the minimum version ${version}`,
-      );
-      return;
-    }
+  const args = depEntries
+    .map(([dep, version]) => {
+      const currentVersion = getVersion(dep)!;
+      if (version && satisfies(currentVersion, version)) {
+        logger.debug(
+          `Dependency '${dep}' satisfies the minimum version ${version}`,
+        );
+        return;
+      }
 
-    if (!version) {
-      logger.debug(`No version specified for '${dep}', installing latest`);
-      version = 'latest';
-    }
+      if (!version) {
+        logger.debug(`No version specified for '${dep}', installing latest`);
+        version = 'latest';
+      }
 
-    const arg = `${dep}@${version}`;
+      const arg = `${dep}@${version}`;
 
-    logger.info(`Installing '${arg}'`);
+      logger.info(`Installing '${arg}'`);
 
-    return arg;
-  }).filter(Boolean) as string[];
+      return arg;
+    })
+    .filter(Boolean) as string[];
 
   if (!args.length) {
     logger.debug('All dependencies are up to date, skipping installation');
