@@ -15,7 +15,11 @@ module.exports = {
   shouldTransformTypeScript: true,
 
   async afterInstall() {
-    await this.removePackagesFromProject([{ name: 'ember-welcome-page' }]);
+    await this.removePackagesFromProject([
+      // TODO: Remove before 1.0.0
+      { name: 'ember-responsive' },
+      { name: 'ember-welcome-page' },
+    ]);
     await this.addPackagesToProject([
       { name: '@ember/string', target: '^4.0.0' },
       { name: '@embroider/macros' },
