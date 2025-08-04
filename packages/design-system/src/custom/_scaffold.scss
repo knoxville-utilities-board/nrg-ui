@@ -70,7 +70,7 @@
     &.active {
       background: 0;
 
-      & > span {
+      & > span:not(.badge) {
         background-color: rgba(var(--bs-primary-rgb), 0.25);
         color: var(--bs-body-color);
       }
