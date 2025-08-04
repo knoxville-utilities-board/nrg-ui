@@ -23984,7 +23984,7 @@ dialog .btn-close {
 .sidebar .item.list-group-item.active {
   background: 0;
 }
-.sidebar .item.list-group-item.active > span {
+.sidebar .item.list-group-item.active > span:not(.badge) {
   background-color: rgba(var(--bs-primary-rgb), 0.25);
   color: var(--bs-body-color);
 }
