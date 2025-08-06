@@ -1,5 +1,30 @@
 # Changelog
 
+## Release (2025-08-06)
+
+* @nrg-ui/version 0.3.2 (patch)
+* @nrg-ui/css 0.24.0 (minor)
+* @nrg-ui/core 0.41.1 (patch)
+* @nrg-ui/standards 0.5.2 (patch)
+
+#### :rocket: Enhancement
+* `@nrg-ui/css`
+  * [#555](https://github.com/knoxville-utilities-board/nrg-ui/pull/555) feat: Add size classes for loading indicator ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`
+  * [#560](https://github.com/knoxville-utilities-board/nrg-ui/pull/560) fix(select): Allow custom button styles ([@TSenter](https://github.com/TSenter))
+  * [#554](https://github.com/knoxville-utilities-board/nrg-ui/pull/554) fix(sidebar): Don't change badge color when active ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`
+  * [#556](https://github.com/knoxville-utilities-board/nrg-ui/pull/556) chore(blueprint): Uninstall ember-responsive if previously installed ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `@nrg-ui/version`, `@nrg-ui/css`, `@nrg-ui/core`, `@nrg-ui/standards`
+  * [#557](https://github.com/knoxville-utilities-board/nrg-ui/pull/557) chore: Require Prettier formatting ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-07-31)
 
 * @nrg-ui/core 0.41.0 (minor)
