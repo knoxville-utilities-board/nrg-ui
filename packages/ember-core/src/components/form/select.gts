@@ -47,7 +47,6 @@ export interface SelectSignature<T> {
     defaultText?: string;
     defaultTextKey?: string;
     displayPath?: string;
-    fullWidth?: boolean;
     loading?: boolean;
     noOptionsText?: string;
     noOptionsTextKey?: string;
@@ -55,6 +54,7 @@ export interface SelectSignature<T> {
     scrollable?: boolean;
     serializationPath?: string | null;
     side?: Direction;
+    size?: 'fit' | 'full';
 
     fieldOptions?: FieldOptions;
   };
@@ -140,8 +140,8 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
     return !!this.selected;
   }
 
-  get fullWidth() {
-    return this.args.fullWidth ?? true;
+  get isFullWidth() {
+    return this.args.size !== 'fit';
   }
 
   @cached
@@ -365,8 +365,9 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
 
   <template>
     <Dropdown
+      class={{unless this.isFullWidth "dropdown-fit"}}
       @closeOnSelect={{@closeOnSelect}}
-      @fullWidth={{this.fullWidth}}
+      @fullWidth={{this.isFullWidth}}
       @scrollable={{this.scrollable}}
       @side={{@side}}
       @onHide={{this.onBlur}}
@@ -385,7 +386,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
             disabled={{this.disabled}}
             aria-controls={{this.menuId}}
             aria-describedby={{@fieldOptions.describedBy}}
-            aria-expanded={{visibility.isShown}}
+            aria-expanded="{{visibility.isShown}}"
             aria-haspopup="listbox"
             {{on "click" this.toggleSelect}}
             {{on "keydown" this.onKeyboardInput}}

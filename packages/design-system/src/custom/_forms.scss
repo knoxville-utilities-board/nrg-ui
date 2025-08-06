@@ -9,6 +9,19 @@
   overflow-y: auto;
 }
 
+.dropdown-fit {
+  &,
+  button.form-control {
+    // min-width: clamp($dropdown-min-width, 12rem, 100%);
+    min-width: 0;
+    width: max-content;
+  }
+}
+
+.dropdown > .dropdown > span.selected-display {
+  @extend .me-1;
+}
+
 /* I'm open to changing the color (it's the "orange" color from
  * Fomantic) but I think it's a good idea to have a color that's
  * different from the default "warning" color from Bootstrap.

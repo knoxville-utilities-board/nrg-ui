@@ -57,6 +57,7 @@ export interface MultiSelectSignature<T> {
     options: T[];
     scrollable?: boolean;
     serializationPath?: string | null;
+    size?: 'fit' | 'full';
 
     fieldOptions?: FieldOptions;
 
@@ -212,6 +213,7 @@ export default class MultiSelect<T> extends BoundValue<
         @noOptionsTextKey={{@noOptionsTextKey}}
         @options={{this.availableOptions}}
         @scrollable={{@scrollable}}
+        @size={{@size}}
         @onChange={{this.addItem}}
         ...attributes
         @serializationPath={{null}}

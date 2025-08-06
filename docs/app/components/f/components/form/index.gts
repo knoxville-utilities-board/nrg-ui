@@ -234,6 +234,7 @@ export default class FormDemo extends Component {
         <Form.Field @label="Select" @required={{this.required}} as |Field|>
           <Field.Select
             @binding={{bind this.model "select"}}
+            @size="fit"
             @options={{array "A" "B" "C"}}
           />
         </Form.Field>
@@ -245,6 +246,7 @@ export default class FormDemo extends Component {
           <Field.MultiSelect
             @binding={{bind this.model "multiSelect"}}
             @options={{array "Alpha" "Beta" "Charlie" "Delta" "Echo"}}
+            @size="fit"
           />
         </Form.Field>
         <Form.Field @label="Radio Group" @required={{this.required}} as |Field|>
