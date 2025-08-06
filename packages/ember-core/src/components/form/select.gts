@@ -47,6 +47,7 @@ export interface SelectSignature<T> {
     defaultText?: string;
     defaultTextKey?: string;
     displayPath?: string;
+    fullWidth?: boolean;
     loading?: boolean;
     noOptionsText?: string;
     noOptionsTextKey?: string;
@@ -137,6 +138,10 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
 
   get hasSelected() {
     return !!this.selected;
+  }
+
+  get fullWidth() {
+    return this.args.fullWidth ?? true;
   }
 
   @cached
@@ -361,7 +366,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   <template>
     <Dropdown
       @closeOnSelect={{@closeOnSelect}}
-      @fullWidth={{true}}
+      @fullWidth={{this.fullWidth}}
       @scrollable={{this.scrollable}}
       @side={{@side}}
       @onHide={{this.onBlur}}
