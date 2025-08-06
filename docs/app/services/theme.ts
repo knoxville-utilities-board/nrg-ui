@@ -3,15 +3,18 @@ import BaseService from '@nrg-ui/core/services/theme';
 
 import { syntaxThemes } from '../routes/application.ts';
 
-// This file needs to be a standard JS file - if it's TS, Babel
-// seems to ignore this one, therefore not overriding the service
+import type CodeBlock from '../components/code-block';
+import type { Theme } from '@nrg-ui/core';
+import type EmberFreestyleService from 'ember-freestyle/services/ember-freestyle';
+
 export default class ThemeService extends BaseService {
   @service('ember-freestyle')
-  freestyle;
+  declare freestyle: EmberFreestyleService;
 
-  codeBlocks = new Map();
+  codeBlocks = new Map<CodeBlock, HTMLElement>();
 
-  setTheme = (theme) => {
+  setTheme = (theme: Theme) => {
+    debugger;
     const previousTheme = this.preferredTheme;
 
     super.setTheme(theme);
@@ -31,7 +34,7 @@ export default class ThemeService extends BaseService {
       ?.remove();
 
     for (const [codeBlock, el] of Object.entries(this.codeBlocks)) {
-      codeBlock.highlight(el);
+      (codeBlock as unknown as CodeBlock).highlight(el);
     }
   };
 }
