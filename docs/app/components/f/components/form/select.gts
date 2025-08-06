@@ -24,6 +24,9 @@ export default class extends Component {
   scrollable = true;
 
   @tracked
+  fullWidth: boolean | undefined;
+
+  @tracked
   selectValue;
 
   @tracked
@@ -68,6 +71,7 @@ export default class extends Component {
               @binding={{bind this "selectValue"}}
               @closeOnSelect={{this.closeOnSelect}}
               @disabled={{this.disabled}}
+              @fullWidth={{this.fullWidth}}
               @loading={{this.loading}}
               @scrollable={{this.scrollable}}
               @options={{this.stringOptions}}
@@ -87,6 +91,13 @@ export default class extends Component {
               @description="When true, the button will be disabled"
               @value={{this.disabled}}
               @onInput={{fn this.update "disabled"}}
+            />
+            <Args.Bool
+              @name="fullWidth"
+              @defaultValue={{true}}
+              @description="When true, the select will take up the full width of its container"
+              @value={{this.fullWidth}}
+              @onInput={{fn this.update "fullWidth"}}
             />
             <Args.Bool
               @name="loading"
