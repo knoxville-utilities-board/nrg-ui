@@ -180,7 +180,9 @@ export default class Popover extends Component<PopoverSignature> {
     return this.args.side ?? 'bottom';
   }
 
-  hide = async () => {
+  hide = async (evt?: Event) => {
+    evt?.preventDefault();
+
     this.triggerDisplay.cancelAll();
 
     if (!this.isShown) {
