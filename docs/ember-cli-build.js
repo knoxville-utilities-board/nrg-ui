@@ -60,9 +60,6 @@ module.exports = async function (defaults) {
   }
 
   return compatBuild(app, buildOnce, {
-    staticEmberSource: true,
-    staticAddonTrees: true,
-    staticAddonTestSupportTrees: true,
     packagerOptions: {
       webpackConfig: {
         module: {

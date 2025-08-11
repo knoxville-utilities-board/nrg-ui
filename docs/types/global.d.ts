@@ -31,6 +31,10 @@ type GetCodeSnippet = HelperLike<{
   };
 }>;
 
+declare module 'ember-code-snippet/helpers/get-code-snippet' {
+  export default type = GetCodeSnippet;
+}
+
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry
     extends NrgTemplateRegistry,
