@@ -69,7 +69,7 @@
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
     "ember-code-snippet": "^3.0.0",
-    "ember-concurrency": "^4.0.6",
+    "ember-concurrency": "^5.1.0",
     "ember-css-transitions": "^4.5.0",
     "ember-freestyle": "^0.22.0",
     "ember-intl": "^7.3.1",
