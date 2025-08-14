@@ -1,0 +1,22 @@
+[data-bs-theme="dark"] {
+  --shadow-color: #{if(
+      variable-exists(box-shadow-color-dark),
+      $box-shadow-color-dark,
+      rgba(0, 0, 0, 0.075)
+    )};
+  .shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem var(--shadow-color) !important;
+  }
+
+  .shadow {
+    box-shadow: 0 0.5rem 1rem var(--shadow-color) !important;
+  }
+
+  .shadow-lg {
+    box-shadow: 0 1rem 3rem var(--shadow-color) !important;
+  }
+
+  .shadow-none {
+    box-shadow: none !important;
+  }
+}
