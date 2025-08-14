@@ -1,7 +1,7 @@
 // @ts-nocheck - TODO
 
 import { A } from '@ember/array';
-import { array, fn } from '@ember/helper';
+import { array, fn, hash } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
@@ -71,7 +71,7 @@ export default class DatetimeDemo extends Component {
               @basic={{this.basic}}
               @binding={{bind this "value"}}
               @dateFormat={{this.dateFormat}}
-              @disabled={{this.disabled}}
+              @fieldOptions={{hash disabled=this.disabled}}
               @maxDate={{this.maxDate}}
               @minDate={{this.minDate}}
               @parseFormat={{this.parseFormat}}
@@ -125,7 +125,7 @@ export default class DatetimeDemo extends Component {
               @onInput={{fn this.update "basic"}}
             />
             <Args.Bool
-              @name="disabled"
+              @name="fieldOptions.disabled"
               @description="Whether the input is disabled"
               @value={{this.disabled}}
               @onInput={{fn this.update "disabled"}}

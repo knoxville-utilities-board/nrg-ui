@@ -1,6 +1,6 @@
 // @ts-nocheck - TODO
 
-import { array, fn } from '@ember/helper';
+import { array, fn, hash } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -55,7 +55,7 @@ export default class CheckboxDemo extends Component {
             <Checkbox
               class={{this.class}}
               @binding={{bind this.model "property"}}
-              @disabled={{this.disabled}}
+              @fieldOptions={{hash disabled=this.disabled}}
               @inline={{this.inline}}
               @label={{this.label}}
               @reverse={{this.reverse}}
@@ -78,7 +78,7 @@ export default class CheckboxDemo extends Component {
               @onInput={{fn this.update "model.property"}}
             />
             <Args.Bool
-              @name="disabled"
+              @name="fieldOptions.disabled"
               @defaultValue={{false}}
               @description="When true, the input will be disabled"
               @value={{this.disabled}}

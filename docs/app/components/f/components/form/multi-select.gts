@@ -1,4 +1,4 @@
-import { array, fn } from '@ember/helper';
+import { array, fn, hash } from '@ember/helper';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import MultiSelect from '@nrg-ui/core/components/form/multi-select';
@@ -72,7 +72,7 @@ export default class MultiSelectDemo extends Component {
               {{! @glint-expect-error - Need to improve types for this }}
               @binding={{bind this "value"}}
               @closeOnSelect={{this.closeOnSelect}}
-              @disabled={{this.disabled}}
+              @fieldOptions={{hash disabled=this.disabled}}
               @loading={{this.loading}}
               @scrollable={{this.scrollable}}
               @options={{stringOptions}}
@@ -87,7 +87,7 @@ export default class MultiSelectDemo extends Component {
               @onInput={{fn this.update "closeOnSelect"}}
             />
             <Args.Bool
-              @name="disabled"
+              @name="fieldOptions.disabled"
               @description="When true, the button will be disabled"
               @value={{this.disabled}}
               @onInput={{fn this.update "disabled"}}

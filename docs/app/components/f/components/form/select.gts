@@ -1,6 +1,6 @@
 // @ts-nocheck - TODO
 
-import { fn } from '@ember/helper';
+import { fn, hash } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -67,7 +67,7 @@ export default class extends Component {
             <Select
               @binding={{bind this "selectValue"}}
               @closeOnSelect={{this.closeOnSelect}}
-              @disabled={{this.disabled}}
+              @fieldOptions={{hash disabled=this.disabled}}
               @loading={{this.loading}}
               @scrollable={{this.scrollable}}
               @options={{this.stringOptions}}
@@ -82,7 +82,7 @@ export default class extends Component {
               @onInput={{fn this.update "closeOnSelect"}}
             />
             <Args.Bool
-              @name="disabled"
+              @name="fieldOptions.disabled"
               @defaultValue={{false}}
               @description="When true, the button will be disabled"
               @value={{this.disabled}}
@@ -111,7 +111,7 @@ export default class extends Component {
           <:example>
             <Select
               @binding={{bind this "selectValue"}}
-              @disabled={{this.disabled}}
+              @fieldOptions={{hash disabled=this.disabled}}
               @loading={{this.loading}}
               @scrollable={{this.scrollable}}
               @options={{this.objectOptions}}
@@ -127,7 +127,7 @@ export default class extends Component {
           <:example>
             <Select
               @binding={{bind this "selectValue"}}
-              @disabled={{this.disabled}}
+              @fieldOptions={{hash disabled=this.disabled}}
               @loading={{this.loading}}
               @scrollable={{this.scrollable}}
               @options={{this.objectOptions}}

@@ -1,6 +1,6 @@
 // @ts-nocheck - TODO
 import { A } from '@ember/array';
-import { fn } from '@ember/helper';
+import { fn, hash } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -51,7 +51,7 @@ export default class FileUploadDemo extends Component {
             <FileUpload
               @accept={{this.accept}}
               @binding={{bind this.model "property"}}
-              @disabled={{this.disabled}}
+              @fieldOptions={{hash disabled=this.disabled}}
               @id="file-upload"
               @onSelect={{this.onSelect}}
               @onRemove={{this.onRemove}}
@@ -66,7 +66,7 @@ export default class FileUploadDemo extends Component {
               @type="String"
             />
             <Args.Bool
-              @name="disabled"
+              @name="fieldOptions.disabled"
               @description="Disables the file upload component"
               @defaultValue="false"
               @value={{this.disabled}}

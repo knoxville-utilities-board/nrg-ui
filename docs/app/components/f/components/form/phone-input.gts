@@ -1,6 +1,6 @@
 // @ts-nocheck - TODO
 
-import { fn } from '@ember/helper';
+import { fn, hash } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -53,7 +53,7 @@ export default class PhoneInputDemo extends Component {
               class={{this.class}}
               @basic={{this.basic}}
               @binding={{bind this.model "property"}}
-              @disabled={{this.disabled}}
+              @fieldOptions={{hash disabled=this.disabled}}
               @readonly={{this.readonly}}
               @onChange={{fn log "The value changed to"}}
             />
@@ -80,7 +80,7 @@ export default class PhoneInputDemo extends Component {
               @onInput={{fn this.update "model.property"}}
             />
             <Args.Bool
-              @name="disabled"
+              @name="fieldOptions.disabled"
               @defaultValue={{false}}
               @description="When true, the input will be disabled"
               @value={{this.disabled}}
