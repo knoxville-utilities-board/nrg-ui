@@ -1,6 +1,6 @@
 // @ts-nocheck - TODO
 
-import { fn } from '@ember/helper';
+import { fn, hash } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -58,7 +58,7 @@ export default class RadioGroupDemo extends Component {
               @name={{this.name}}
               @binding={{bind this.model "property"}}
               @basic={{this.basic}}
-              @disabled={{this.disabled}}
+              @fieldOptions={{hash disabled=this.disabled}}
               @onChange={{fn log "The value changed to"}}
               as |Group|
             >
@@ -95,7 +95,7 @@ export default class RadioGroupDemo extends Component {
               @onInput={{fn this.update "model.property"}}
             />
             <Args.Bool
-              @name="disabled"
+              @name="fieldOptions.disabled"
               @defaultValue={{false}}
               @description="When true, the input will be disabled"
               @value={{this.disabled}}

@@ -1,6 +1,6 @@
 // @ts-nocheck - TODO
 
-import { fn } from '@ember/helper';
+import { fn, hash } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -165,7 +165,7 @@ export default class SearchDemo extends Component {
               @basic={{this.basic}}
               @binding={{bind this.model "property"}}
               @clearable={{this.clearable}}
-              @disabled={{this.disabled}}
+              @fieldOptions={{hash disabled=this.disabled}}
               @hideSearchIcon={{this.hideSearchIcon}}
               @loading={{this.loading}}
               @minCharacters={{this.minCharacters}}
@@ -207,7 +207,7 @@ export default class SearchDemo extends Component {
               @onInput={{fn this.update "clearable"}}
             />
             <Args.Bool
-              @name="disabled"
+              @name="fieldOptions.disabled"
               @defaultValue={{false}}
               @description="When true, the input will be disabled"
               @value={{this.disabled}}
@@ -290,8 +290,8 @@ export default class SearchDemo extends Component {
               @basic={{this.basic}}
               @binding={{bind this.model "property"}}
               @clearable={{this.clearable}}
-              @disabled={{this.disabled}}
               @displayPath="fruit"
+              @fieldOptions={{hash disabled=this.disabled}}
               @hideSearchIcon={{this.hideSearchIcon}}
               @loading={{this.loading}}
               @minCharacters={{this.minCharacters}}

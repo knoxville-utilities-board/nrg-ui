@@ -1,6 +1,6 @@
 // @ts-nocheck - TODO
 
-import { array, fn } from '@ember/helper';
+import { array, fn, hash } from '@ember/helper';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -53,7 +53,7 @@ export default class CheckboxGroupDemo extends Component {
             <CheckboxGroup
               class={{this.class}}
               @basic={{this.basic}}
-              @disabled={{this.disabled}}
+              @fieldOptions={{hash disabled=this.disabled}}
               @inline={{this.inline}}
               @label={{this.label}}
               @reverse={{this.reverse}}
@@ -81,7 +81,7 @@ export default class CheckboxGroupDemo extends Component {
               @onInput={{fn this.update "basic"}}
             />
             <Args.Bool
-              @name="disabled"
+              @name="fieldOptions.disabled"
               @defaultValue={{false}}
               @description="When true, all checkboxes in this group will be disabled"
               @value={{this.disabled}}
