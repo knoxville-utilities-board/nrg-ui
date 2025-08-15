@@ -1,5 +1,5 @@
 import { fn } from '@ember/helper';
-import { action } from '@ember/object';
+import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { Button, MktgHeader } from '@nrg-ui/core';
@@ -8,9 +8,6 @@ import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 export default class HeaderDemo extends Component {
   @tracked
-  class = 'text-primary';
-
-  @tracked
   dropSection = false;
 
   @tracked
@@ -18,8 +15,7 @@ export default class HeaderDemo extends Component {
 
   @action
   update(key: string, value: unknown) {
-    // @ts-expect-error - TODO
-    this[key] = value;
+    set(this, key, value);
   }
 
   <template>
@@ -30,7 +26,6 @@ export default class HeaderDemo extends Component {
         <FreestyleUsage>
           <:example>
             <MktgHeader
-              class={{this.class}}
               @dropSection={{this.dropSection}}
               @flexCollapse={{this.flexCollapse}}
             >
@@ -52,12 +47,6 @@ export default class HeaderDemo extends Component {
             </MktgHeader>
           </:example>
           <:api as |Args|>
-            <Args.String
-              @description="The class to apply to the header. Note that this is not an argument but rather a class applied directly to the header"
-              @name="class"
-              @value={{this.class}}
-              @onInput={{fn this.update "class"}}
-            />
             <Args.Bool
               @defaultValue="false"
               @description="When true, the options block renders below the title on small screens."

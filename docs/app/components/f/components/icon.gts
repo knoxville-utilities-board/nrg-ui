@@ -1,5 +1,5 @@
 import { fn } from '@ember/helper';
-import { action } from '@ember/object';
+import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { Icon } from '@nrg-ui/core';
@@ -63,8 +63,7 @@ export default class IconDemo extends Component {
     if (key === 'circular' && value === false) {
       this.backgroundColor = undefined;
     }
-    // @ts-expect-error - TODO
-    this[key] = value;
+    set(this, key, value);
   }
 
   <template>

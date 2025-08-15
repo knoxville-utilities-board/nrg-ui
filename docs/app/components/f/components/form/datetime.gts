@@ -1,7 +1,7 @@
 import { A } from '@ember/array';
 import { array, fn, hash } from '@ember/helper';
 import { on } from '@ember/modifier';
-import { action } from '@ember/object';
+import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import Datetime from '@nrg-ui/core/components/form/datetime';
@@ -63,8 +63,8 @@ export default class DatetimeDemo extends Component {
     if (value instanceof Event) {
       value = (value.target as HTMLInputElement).value;
     }
-    // @ts-expect-error - TODO
-    this[key] = value;
+
+    set(this, key, value);
   }
 
   <template>

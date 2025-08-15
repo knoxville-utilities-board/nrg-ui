@@ -1,5 +1,5 @@
 import { array, fn } from '@ember/helper';
-import { action } from '@ember/object';
+import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { LoadingIndicator } from '@nrg-ui/core';
@@ -26,8 +26,7 @@ export default class LoadingIndicatorDemo extends Component {
 
   @action
   update(key: string, value: unknown) {
-    // @ts-expect-error - TODO
-    this[key] = value;
+    set(this, key, value);
   }
 
   <template>

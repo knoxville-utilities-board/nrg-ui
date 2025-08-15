@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { action } from '@ember/object';
+import { action, set } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 const range = (len: number) =>
@@ -35,8 +35,8 @@ export default class StackedPaneController extends Controller {
   }
 
   @action
-  update(key: 'start' | 'count' | 'total', value: number) {
-    this[key] = value;
+  update(key: string, value: number) {
+    set(this, key, value);
   }
 }
 // END-SNIPPET

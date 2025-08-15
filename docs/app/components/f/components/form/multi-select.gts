@@ -1,4 +1,5 @@
 import { array, fn, hash } from '@ember/helper';
+import { set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import MultiSelect from '@nrg-ui/core/components/form/multi-select';
@@ -56,9 +57,8 @@ export default class MultiSelectDemo extends Component {
     return JSON.stringify(objectOptions, null, 2);
   }
 
-  update = (key: keyof MultiSelectDemo, value: unknown) => {
-    // @ts-expect-error - Don't need type safety here
-    this[key] = value;
+  update = (key: string, value: unknown) => {
+    set(this, key, value);
   };
 
   <template>

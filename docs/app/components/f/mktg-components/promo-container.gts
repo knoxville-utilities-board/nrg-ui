@@ -1,19 +1,13 @@
-import { fn } from '@ember/helper';
-import { action } from '@ember/object';
+import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 import { Button, MktgPromoContainer } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 export default class PromoContainerDemo extends Component {
-  @tracked
-  class = 'bg-body';
-
   @action
   update(key: string, value: unknown) {
-    // @ts-expect-error - TODO
-    this[key] = value;
+    set(this, key, value);
   }
 
   <template>
@@ -33,11 +27,10 @@ export default class PromoContainerDemo extends Component {
               notation.</p>
           </:description>
           <:example>
-            <MktgPromoContainer class={{this.class}} as |Container|>
+            <MktgPromoContainer as |Container|>
               <Container.SectionHeader
                 @subject="Subject"
                 @title="Section Title"
-                class={{this.class}}
               >
                 <:subheader>
                   <p class="m-0">Here's some content to give context and
@@ -141,14 +134,6 @@ export default class PromoContainerDemo extends Component {
               </Container.Promo>
             </MktgPromoContainer>
           </:example>
-          <:api as |Args|>
-            <Args.String
-              @description="The class to apply to the promo container. Note that this is not an argument but rather a class applied directly to the promo container"
-              @name="class"
-              @value={{this.class}}
-              @onInput={{fn this.update "class"}}
-            />
-          </:api>
         </FreestyleUsage>
       </Section.subsection>
     </FreestyleSection>

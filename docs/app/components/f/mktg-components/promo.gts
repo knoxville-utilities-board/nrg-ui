@@ -1,5 +1,4 @@
-import { fn } from '@ember/helper';
-import { action } from '@ember/object';
+import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { Button, MktgPromo } from '@nrg-ui/core';
@@ -8,18 +7,11 @@ import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 export default class PromoDemo extends Component {
   @tracked
-  class = 'bg-primary text-white';
-
-  @tracked
-  verticalClass = 'col-12 col-md-6';
-
-  @tracked
   productName = 'Product';
 
   @action
   update(key: string, value: unknown) {
-    // @ts-expect-error - TODO
-    this[key] = value;
+    set(this, key, value);
   }
   <template>
     {{! @glint-expect-error - Freestyle doesn't have great types }}
@@ -28,7 +20,7 @@ export default class PromoDemo extends Component {
         {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
-            <MktgPromo class={{this.class}} @productName={{this.productName}}>
+            <MktgPromo @productName={{this.productName}}>
               <:img>
                 <img
                   src="https://place-hold.it/500x500"
@@ -57,12 +49,6 @@ export default class PromoDemo extends Component {
             </MktgPromo>
           </:example>
           <:api as |Args|>
-            <Args.String
-              @description="The class to apply to the promo. Note that this is not an argument but rather a class applied directly to the promo"
-              @name="class"
-              @value={{this.class}}
-              @onInput={{fn this.update "class"}}
-            />
             <Args.Base
               @defaultValue="false"
               @description="When true, the promo renders in a vertical orientation. Note that the default value is false, as shown in the above example."
@@ -90,11 +76,7 @@ export default class PromoDemo extends Component {
         {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
-            <MktgPromo
-              class={{this.verticalClass}}
-              @productName={{this.productName}}
-              @vertical={{true}}
-            >
+            <MktgPromo @productName={{this.productName}} @vertical={{true}}>
               <:img>
                 <img
                   src="https://place-hold.it/400x150"
@@ -120,20 +102,11 @@ export default class PromoDemo extends Component {
             </MktgPromo>
           </:example>
           <:api as |Args|>
-            <Args.String
-              @description="The class to apply to the promo. Note that this is not an argument but rather a class applied directly to the promo"
-              @name="class"
-              @value={{this.verticalClass}}
-              @onInput={{fn this.update "verticalClass"}}
-            />
-            <Args.Base
-              @defaultValue="false"
+            <Args.Bool
+              @defaultValue={{false}}
               @description="When true, the promo renders in a vertical orientation. Note that the default value is false, as shown in the above example."
               @name="vertical"
-              @type="Bool"
-            >
-              <p>true</p>
-            </Args.Base>
+            />
             <Args.Yield
               @description="Named yield block to render a description of the promo including any actionable items, such as buttons"
               @name="description"

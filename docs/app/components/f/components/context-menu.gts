@@ -1,5 +1,5 @@
 import { array, fn } from '@ember/helper';
-import { action } from '@ember/object';
+import { action, set } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -37,9 +37,8 @@ export default class ContextMenuDemo extends Component {
   showExternalButton = true;
 
   @action
-  update(key: keyof ContextMenuDemo, value: unknown) {
-    // @ts-expect-error - Don't need type safety here
-    this[key] = value;
+  update(key: string, value: unknown) {
+    set(this, key, value);
   }
 
   @action

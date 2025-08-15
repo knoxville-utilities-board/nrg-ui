@@ -1,5 +1,5 @@
 import { fn } from '@ember/helper';
-import { action } from '@ember/object';
+import { action, set } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -18,8 +18,7 @@ export default class ToasterDemo extends Component {
 
   @action
   update(key: string, value: unknown) {
-    // @ts-expect-error - TODO
-    this[key] = value;
+    set(this, key, value);
   }
 
   @action

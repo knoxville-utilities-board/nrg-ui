@@ -1,5 +1,5 @@
 import { fn } from '@ember/helper';
-import { action } from '@ember/object';
+import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { Button, MktgFooter } from '@nrg-ui/core';
@@ -8,15 +8,11 @@ import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 export default class FooterDemo extends Component {
   @tracked
-  class = 'bg-primary';
-
-  @tracked
   hasDivider = false;
 
   @action
   update(key: string, value: unknown) {
-    // @ts-expect-error - TODO
-    this[key] = value;
+    set(this, key, value);
   }
 
   <template>
@@ -26,7 +22,7 @@ export default class FooterDemo extends Component {
         {{! @glint-expect-error - Freestyle doesn't have great types }}
         <FreestyleUsage>
           <:example>
-            <MktgFooter class={{this.class}} @hasDivider={{this.hasDivider}}>
+            <MktgFooter @hasDivider={{this.hasDivider}}>
               <:nav>
                 <Button class="ms-2 rounded-pill btn-light">Nav 1</Button>
                 <a
@@ -77,12 +73,6 @@ export default class FooterDemo extends Component {
             </MktgFooter>
           </:example>
           <:api as |Args|>
-            <Args.String
-              @description="The class to apply to the footer. Note that this is not an argument but rather a class applied directly to the footer"
-              @name="class"
-              @value={{this.class}}
-              @onInput={{fn this.update "class"}}
-            />
             <Args.Bool
               @description="When true, the footer will render a divider between the top and bottom sections. Note that the default value is false"
               @name="hasDivider"

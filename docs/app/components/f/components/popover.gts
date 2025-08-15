@@ -1,5 +1,6 @@
 import { array, fn } from '@ember/helper';
 import { on } from '@ember/modifier';
+import { set } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -49,8 +50,7 @@ export default class PopoverDemo extends Component {
   side?: Side;
 
   update = (key: string, value: unknown) => {
-    // @ts-expect-error - TODO
-    this[key] = value;
+    set(this, key, value);
   };
 
   log = (...args: unknown[]) => {

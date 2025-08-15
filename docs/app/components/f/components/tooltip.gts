@@ -1,4 +1,5 @@
 import { array, fn } from '@ember/helper';
+import { set } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -31,8 +32,7 @@ export default class TooltipDemo extends Component {
   side?: Side;
 
   update = (key: string, value: unknown) => {
-    // @ts-expect-error - TODO
-    this[key] = value;
+    set(this, key, value);
   };
 
   <template>
