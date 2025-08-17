@@ -1,5 +1,19 @@
 # Changelog
 
+## Release (2025-08-14)
+
+* @nrg-ui/core 0.41.2 (patch)
+
+#### :memo: Documentation
+* [#565](https://github.com/knoxville-utilities-board/nrg-ui/pull/565) docs(form): Use correct disabled property ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `@nrg-ui/core`
+  * [#564](https://github.com/knoxville-utilities-board/nrg-ui/pull/564) chore: Upgrade ember-concurrency to v5 ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-08-06)
 
 * @nrg-ui/version 0.3.2 (patch)
