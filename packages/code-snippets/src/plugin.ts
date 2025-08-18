@@ -1,4 +1,5 @@
 import { createFilter } from '@rollup/pluginutils';
+import { cwd } from 'node:process';
 
 import { collectAllSnippets } from './collector.js';
 import { virtualModule } from './index.js';
@@ -14,6 +15,7 @@ import type { Plugin } from 'vite';
 const defaultOptions: DeepRequired<CodeSnippetsPluginOptions> = {
   include: ['**/*.{js,ts}'],
   exclude: [],
+  rootDir: cwd(),
   markers: {
     start: /\bBEGIN-SNIPPET\s+(\S+)\b/,
     end: /\bEND-SNIPPET\b/,

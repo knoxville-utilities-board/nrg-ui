@@ -23,7 +23,10 @@ export function collectAllSnippets(
   const filter = createFilter(include, exclude);
 
   const snippets = new Map<string, SnippetEntry>();
-  const files = globSync(include, { ignore: exclude });
+  const files = globSync(include, {
+    ignore: exclude,
+    cwd: options.rootDir,
+  });
 
   for (const file of files) {
     const abs = resolve(file);

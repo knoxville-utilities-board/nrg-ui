@@ -33,7 +33,9 @@ export type DeepRequired<T> = T extends Builtins
 export interface SnippetLocation {
   /**
    * The file in which the snippet is located, relative to
-   * the root of the project
+   * `options.rootDir`
+   *
+   * @see {@link CodeSnippetsPluginOptions.rootDir|`CodeSnippetsPluginOptions.rootDir`}
    */
   file: string;
 
@@ -121,4 +123,9 @@ export interface CodeSnippetsPluginOptions {
    * Glob patterns to exclude.
    */
   exclude?: string | string[];
+
+  /**
+   * The root directory to scan for snippets. Defaults to `process.cwd()`.
+   */
+  rootDir?: string;
 }

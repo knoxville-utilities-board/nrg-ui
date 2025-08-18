@@ -1,3 +1,4 @@
+import { cwd } from 'node:process';
 import { describe, expect, it, vi } from 'vitest';
 
 import { collectAllSnippets } from '../src/collector.js';
@@ -45,6 +46,7 @@ describe('collectAllSnippets', () => {
       start: /\bBEGIN-SNIPPET\s+(\S+)\b/,
       end: /\bEND-SNIPPET\b/,
     },
+    rootDir: cwd(),
   };
 
   it('exclude works', () => {
