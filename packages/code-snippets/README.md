@@ -38,6 +38,7 @@ The plugin can be used out-of-the-box, but can also be configured to suit your n
 | --------------- | ---------- | ----------------------------- | --------------------------------------------------- |
 | `include`       | `string[]` | `['src/**/*', 'app/**/*']`    | Files to include for snippet extraction.            |
 | `exclude`       | `string[]` | `['node_modules/**/*']`       | Files to exclude from snippet extraction.           |
+| `rootDir`       | `string`   | `process.cwd()`               | Root directory to scan for snippets.                |
 | `markers.start` | `RegExp`   | `/\bBEGIN-SNIPPET\s+(\S+)\b/` | Regular expression to match the start of a snippet. |
 | `markers.end`   | `RegExp`   | `/\bEND-SNIPPET\b/`           | Regular expression to match the end of a snippet.   |
 
