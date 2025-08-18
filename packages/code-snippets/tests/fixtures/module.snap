@@ -1,0 +1,18 @@
+export default [
+  {
+    "name": "demo",
+    "code": "console.log(\"demo\");",
+    "sources": [
+      {
+        "code": "console.log(\"demo\");",
+        "location": {
+          "file": "tests/fixtures/demo.js",
+          "lines": {
+            "start": 2,
+            "end": 2
+          }
+        }
+      }
+    ]
+  }
+];
