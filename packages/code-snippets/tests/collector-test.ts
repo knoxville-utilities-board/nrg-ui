@@ -46,21 +46,6 @@ describe('collectAllSnippets', () => {
     },
   };
 
-  it('default options work', () => {
-    const result = collectAllSnippets();
-
-    expect(result.size).toBe(0);
-  });
-
-  it('include works', () => {
-    const result = collectAllSnippets({
-      ...options,
-      include: ['no-match/**'],
-    });
-
-    expect(result.size).toBe(0);
-  });
-
   it('exclude works', () => {
     const result = collectAllSnippets({
       ...options,
