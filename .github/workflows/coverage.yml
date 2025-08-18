@@ -1,0 +1,47 @@
+name: Report Coverage
+
+on:
+  workflow_run:
+    workflows: ['CI']
+    types:
+      - completed
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --prefer-offline
+
+      - name: Run test coverage
+        run: pnpm test --coverage.enabled true
+        working-directory: ./packages/code-snippets
+
+      - name: Download coverage
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
+          path: coverage-pr
+
+      - name: Report Coverage
+        uses: davelosert/vitest-coverage-report-action@v2
+        with:
+          json-summary-path: coverage-pr/coverage/coverage-summary.json
+          json-final-path: coverage-pr/coverage/coverage-final.json
+          json-summary-compare-path: coverage/coverage-summary.json

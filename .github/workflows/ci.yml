@@ -41,6 +41,15 @@ jobs:
       - name: Run Tests
         run: pnpm test
 
+      - name: Generate coverage report
+        run: pnpm test --coverage.enabled true
+        working-directory: ./packages/code-snippets
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage
+
   floating:
     name: 'Floating Dependencies'
     runs-on: ubuntu-latest
