@@ -77,7 +77,7 @@ describe('vite-plugin-code-snippets', () => {
       logLevel: 'silent',
       plugins: [
         codeSnippetsPlugin({
-          include: ['**/*.js'],
+          include: ['tests/**/*.js'],
           exclude: [],
           markers: {
             start: /\bBEGIN-SNIPPET\s+(\S+)\b/,
@@ -98,15 +98,16 @@ describe('vite-plugin-code-snippets', () => {
     await standupServer(async (server, dir) => {
       let [snippets] = (await server.ssrLoadModule('virtual:code-snippets'))
         .default as SnippetEntry[];
+      expect(snippets.name).toBe('demo');
       expect(snippets.code).toContain(`console.log("A");`);
 
       await writeFile(
         join(dir, 'src/example.js'),
         `
-        // BEGIN-SNIPPET demo
+        // BEGIN-SNIPPET new-demo
         console.log("B");
         // END-SNIPPET
-        // BEGIN-SNIPPET demo
+        // BEGIN-SNIPPET new-demo
         console.log("C");
         // END-SNIPPET
         `,
@@ -119,6 +120,7 @@ describe('vite-plugin-code-snippets', () => {
       [snippets] = (await server.ssrLoadModule('virtual:code-snippets'))
         .default as SnippetEntry[];
 
+      expect(snippets.name).toBe('new-demo');
       expect(snippets.code).toContain(`console.log("B");`);
       expect(snippets.code).toContain(`console.log("C");`);
     });

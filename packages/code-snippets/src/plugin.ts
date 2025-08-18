@@ -1,4 +1,5 @@
 import { createFilter } from '@rollup/pluginutils';
+import { relative } from 'node:path';
 import { cwd } from 'node:process';
 
 import { collectAllSnippets } from './collector.js';
@@ -64,11 +65,12 @@ export default function codeSnippetsPlugin(
         return;
       }
 
+      const relativePath = relative(finalOptions.rootDir, ctx.file);
       const code = await ctx.read();
 
       for (const [name, entry] of snippets.entries()) {
         entry.sources = entry.sources.filter(
-          (s) => s.location.file !== ctx.file,
+          (s) => s.location.file !== relativePath,
         );
         entry.code = entry.sources.map((s) => s.code).join('\n');
 
