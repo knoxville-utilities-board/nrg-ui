@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import { collectAllSnippets } from '../src/collector.js';
 
-import type { CodeSnippetsPluginOptions } from '../src/types.ts';
+import type { CodeSnippetsPluginOptions, DeepRequired } from '../src/types.ts';
 
 const fsMocks = vi.hoisted(() => {
   return {
@@ -38,8 +38,9 @@ vi.mock('path', () => {
 });
 
 describe('collectAllSnippets', () => {
-  const options: CodeSnippetsPluginOptions = {
+  const options: DeepRequired<CodeSnippetsPluginOptions> = {
     include: ['**/*'],
+    exclude: [],
     markers: {
       start: /\bBEGIN-SNIPPET\s+(\S+)\b/,
       end: /\bEND-SNIPPET\b/,

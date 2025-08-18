@@ -1,3 +1,35 @@
+export type Builtins =
+  | Date
+  | RegExp
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+  | Function
+  | Error
+  | Map<never, never>
+  | Set<never>
+  | WeakMap<never, never>
+  | WeakSet<never>
+  | ArrayBuffer
+  | DataView
+  | Int8Array
+  | Uint8Array
+  | Uint8ClampedArray
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array
+  | BigInt64Array
+  | BigUint64Array;
+
+export type DeepRequired<T> = T extends Builtins
+  ? T
+  : T extends (infer U)[]
+    ? DeepRequired<U>[]
+    : T extends object
+      ? { [K in keyof T]-?: DeepRequired<T[K]> }
+      : T;
+
 export interface SnippetLocation {
   /**
    * The file in which the snippet is located, relative to
