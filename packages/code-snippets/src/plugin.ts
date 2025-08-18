@@ -1,15 +1,21 @@
 import { createFilter } from '@rollup/pluginutils';
+import { cwd } from 'node:process';
 
 import { collectAllSnippets } from './collector.js';
 import { virtualModule } from './index.js';
 import { extractSnippetsFromCode } from './parser.js';
 
-import type { CodeSnippetsPluginOptions, SnippetEntry } from './types.ts';
+import type {
+  CodeSnippetsPluginOptions,
+  DeepRequired,
+  SnippetEntry,
+} from './types.ts';
 import type { Plugin } from 'vite';
 
-const defaultOptions: Required<CodeSnippetsPluginOptions> = {
+const defaultOptions: DeepRequired<CodeSnippetsPluginOptions> = {
   include: ['**/*.{js,ts}'],
   exclude: [],
+  rootDir: cwd(),
   markers: {
     start: /\bBEGIN-SNIPPET\s+(\S+)\b/,
     end: /\bEND-SNIPPET\b/,
@@ -19,7 +25,7 @@ const defaultOptions: Required<CodeSnippetsPluginOptions> = {
 export default function codeSnippetsPlugin(
   options: CodeSnippetsPluginOptions = {},
 ): Plugin {
-  const finalOptions: Required<CodeSnippetsPluginOptions> = {
+  const finalOptions: DeepRequired<CodeSnippetsPluginOptions> = {
     ...defaultOptions,
     ...options,
     markers: {
@@ -31,17 +37,14 @@ export default function codeSnippetsPlugin(
   let snippets = new Map<string, SnippetEntry>();
   const resolvedVirtualModuleId = '\0' + virtualModule;
 
-  const filter = createFilter(
-    options.include ?? ['src/**/*', 'app/**/*'],
-    options.exclude ?? ['node_modules/**'],
-  );
+  const filter = createFilter(finalOptions.include, finalOptions.exclude);
 
   return {
     name: 'vite-plugin-code-snippets',
     enforce: 'pre',
 
     buildStart() {
-      snippets = collectAllSnippets(options);
+      snippets = collectAllSnippets(finalOptions);
     },
 
     resolveId: (id: string) => {

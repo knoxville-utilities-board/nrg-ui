@@ -5,20 +5,28 @@ import { globSync } from 'tinyglobby';
 
 import { extractSnippetsFromCode } from './parser.js';
 
-import type { CodeSnippetsPluginOptions, SnippetEntry } from './types.js';
+import type {
+  CodeSnippetsPluginOptions,
+  DeepRequired,
+  SnippetEntry,
+} from './types.js';
 
 export function collectAllSnippets(
-  options: CodeSnippetsPluginOptions = {},
+  options: DeepRequired<CodeSnippetsPluginOptions>,
 ): Map<string, SnippetEntry> {
-  const include = options.include ?? ['src/**/*', 'app/**/*'];
-  const exclude = options.exclude ?? ['node_modules/**'];
-  const startMarker = options.markers?.start ?? /\bBEGIN-SNIPPET\s+(\S+)\b/;
-  const endMarker = options.markers?.end ?? /\bEND-SNIPPET\b/;
+  const {
+    include,
+    exclude,
+    markers: { start, end },
+  } = options;
 
   const filter = createFilter(include, exclude);
 
   const snippets = new Map<string, SnippetEntry>();
-  const files = globSync(include, { ignore: exclude });
+  const files = globSync(include, {
+    ignore: exclude,
+    cwd: options.rootDir,
+  });
 
   for (const file of files) {
     const abs = resolve(file);
@@ -28,7 +36,7 @@ export function collectAllSnippets(
     }
 
     const code = readFileSync(abs, 'utf8');
-    const entries = extractSnippetsFromCode(file, code, startMarker, endMarker);
+    const entries = extractSnippetsFromCode(file, code, start, end);
 
     for (const entry of entries) {
       if (snippets.has(entry.name)) {
