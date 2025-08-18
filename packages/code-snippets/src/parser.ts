@@ -10,6 +10,7 @@ export function extractSnippetsFromCode(
   let currentName: string | null = null;
   let currentStart = -1;
   let buffer: string[] = [];
+  let whitespace: string | null = null;
   const results: Map<string, SnippetEntry> = new Map();
 
   for (let idx = 0; idx < lines.length; idx++) {
@@ -17,15 +18,27 @@ export function extractSnippetsFromCode(
     if (currentName === null) {
       const startMatch = line.match(startRegex);
       if (startMatch) {
+        const firstLine = lines[idx + 1];
         currentName = startMatch[1];
         currentStart = idx + 2;
         buffer = [];
+
+        whitespace = firstLine?.match(/^(\s+)/)?.[1] ?? '';
       }
 
       continue;
     }
 
     if (endRegex.test(line)) {
+      if (buffer.length === 0) {
+        console.warn(
+          `Snippet "${currentName}" in file "${file}" is empty. It will not be included in the output.`,
+        );
+
+        currentName = null;
+        continue;
+      }
+
       const sourceCode = buffer.join('\n');
       const location: SnippetLocation = {
         file,
@@ -51,7 +64,7 @@ export function extractSnippetsFromCode(
       continue;
     }
 
-    buffer.push(line);
+    buffer.push(line.replace(new RegExp('^' + whitespace), ''));
   }
 
   return Array.from(results.values());
