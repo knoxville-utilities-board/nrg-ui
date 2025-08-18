@@ -41,15 +41,6 @@ jobs:
       - name: Run Tests
         run: pnpm test
 
-      - name: Generate coverage report
-        run: pnpm test --coverage.enabled true
-        working-directory: ./packages/code-snippets
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: coverage
-          path: coverage
-
   floating:
     name: 'Floating Dependencies'
     runs-on: ubuntu-latest
@@ -76,6 +67,78 @@ jobs:
 
       - name: Run Tests
         run: pnpm test
+
+  compute-coverage:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    name: Code coverage - ${{ matrix.artifact }}
+    strategy:
+      matrix:
+        include:
+          - branch: main
+            artifact: main
+          - branch: ${{ github.head_ref }}
+            artifact: pull-request
+
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.branch }}
+          ## Set repository to correctly checkout from forks
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: pnpm
+
+      - name: Install Deps
+        run: pnpm install --frozen-lockfile --prefer-offline
+
+      - name: Test
+        run: pnpm test --coverage.enabled true
+        working-directory: ./packages/code-snippets
+
+      - name: Upload Coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ matrix.artifact }}
+          path: packages/code-snippets/coverage
+
+  report-coverage:
+    name: Report code coverage
+    needs: compute-coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download coverage artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage-pull-request
+          path: packages/code-snippets/coverage-pull-request
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: coverage-main
+          path: packages/code-snippets/coverage-main
+
+      - name: Generate coverage report
+        uses: davelosert/vitest-coverage-report-action@v2
+        with:
+          working-directory: packages/code-snippets
+          json-summary-path: coverage-pull-request/coverage-summary.json
+          json-final-path: coverage-pull-request/coverage-final.json
+          json-summary-compare-path: coverage-main/coverage-summary.json
 
   try-scenarios:
     name: ${{ matrix.try-scenario }}
