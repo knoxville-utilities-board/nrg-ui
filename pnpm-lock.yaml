@@ -422,6 +422,9 @@ importers:
       '@glint/template':
         specifier: ^1.5.2
         version: 1.5.2
+      '@nrg-ui/code-snippets':
+        specifier: workspace:*
+        version: link:../code-snippets
       '@nrg-ui/css':
         specifier: workspace:^0
         version: link:../design-system
@@ -521,25 +524,6 @@ importers:
       yargs:
         specifier: ^18.0.0
         version: 18.0.0
-    optionalDependencies:
-      eslint-plugin-decorator-position:
-        specifier: ^6.0.0
-        version: 6.0.0(@babel/eslint-parser@7.28.0(@babel/core@7.28.3)(eslint@9.33.0))(eslint@9.33.0)
-      eslint-plugin-ember:
-        specifier: ^12.7.0
-        version: 12.7.0(@babel/core@7.28.3)(@typescript-eslint/parser@8.40.0(eslint@9.33.0)(typescript@5.9.2))(eslint@9.33.0)
-      eslint-plugin-import:
-        specifier: ^2.32.0
-        version: 2.32.0(@typescript-eslint/parser@8.40.0(eslint@9.33.0)(typescript@5.9.2))(eslint-import-resolver-webpack@0.13.10)(eslint@9.33.0)
-      eslint-plugin-n:
-        specifier: ^17.21.3
-        version: 17.21.3(eslint@9.33.0)(typescript@5.9.2)
-      eslint-plugin-qunit:
-        specifier: 8.2.5
-        version: 8.2.5(eslint@9.33.0)
-      typescript-eslint:
-        specifier: ^8.40.0
-        version: 8.40.0(eslint@9.33.0)(typescript@5.9.2)
     devDependencies:
       '@types/eslint':
         specifier: ^9.6.1
@@ -562,6 +546,25 @@ importers:
       typescript:
         specifier: ^5.9.2
         version: 5.9.2
+    optionalDependencies:
+      eslint-plugin-decorator-position:
+        specifier: ^6.0.0
+        version: 6.0.0(@babel/eslint-parser@7.28.0(@babel/core@7.28.3)(eslint@9.33.0))(eslint@9.33.0)
+      eslint-plugin-ember:
+        specifier: ^12.7.0
+        version: 12.7.0(@babel/core@7.28.3)(@typescript-eslint/parser@8.40.0(eslint@9.33.0)(typescript@5.9.2))(eslint@9.33.0)
+      eslint-plugin-import:
+        specifier: ^2.32.0
+        version: 2.32.0(@typescript-eslint/parser@8.40.0(eslint@9.33.0)(typescript@5.9.2))(eslint-import-resolver-webpack@0.13.10)(eslint@9.33.0)
+      eslint-plugin-n:
+        specifier: ^17.21.3
+        version: 17.21.3(eslint@9.33.0)(typescript@5.9.2)
+      eslint-plugin-qunit:
+        specifier: 8.2.5
+        version: 8.2.5(eslint@9.33.0)
+      typescript-eslint:
+        specifier: ^8.40.0
+        version: 8.40.0(eslint@9.33.0)(typescript@5.9.2)
 
   packages/theme-generator:
     dependencies:
