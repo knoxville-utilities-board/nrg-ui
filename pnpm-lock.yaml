@@ -52,16 +52,16 @@ importers:
         version: 1.1.0
       '@embroider/compat':
         specifier: ^3.9.1
-        version: 3.9.1(@embroider/core@3.5.7(@glint/template@1.5.2))(@glint/template@1.5.2)
+        version: 3.9.1(@embroider/core@4.1.3(@glint/template@1.5.2))(@glint/template@1.5.2)
       '@embroider/core':
-        specifier: ^3.5.7
-        version: 3.5.7(@glint/template@1.5.2)
+        specifier: ^4.1.3
+        version: 4.1.3(@glint/template@1.5.2)
       '@embroider/macros':
         specifier: ^1.18.1
         version: 1.18.1(@glint/template@1.5.2)
       '@embroider/webpack':
         specifier: ^4.1.1
-        version: 4.1.1(@embroider/core@3.5.7(@glint/template@1.5.2))(webpack@5.101.3)
+        version: 4.1.1(@embroider/core@4.1.3(@glint/template@1.5.2))(webpack@5.101.3)
       '@floating-ui/dom':
         specifier: ^1.7.3
         version: 1.7.3
@@ -706,11 +706,6 @@ packages:
     resolution: {integrity: sha512-PTNtvUQihsAsDHMOP5pfobP8C6CM4JWXmP8DrEIt46c3r2bf87Ua1zoqevsMo9g+tWDwgWrFP5EIxuBx5RudAw==}
     engines: {node: '>=6.9.0'}
 
-  '@babel/parser@7.28.0':
-    resolution: {integrity: sha512-jVZGvOxOuNSsuQuLRTh13nU0AogFlw32w/MT+LV6D3sP5WdbW61E77RnkbaO2dUvmPAYrBDJXGn5gGS6tH4j8g==}
-    engines: {node: '>=6.0.0'}
-    hasBin: true
-
   '@babel/parser@7.28.3':
     resolution: {integrity: sha512-7+Ey1mAgYqFAx2h0RuoxcQT5+MlG3GTV0TQrgr7/ZliKsm/MNDxVVutlWaziMq7wJNAz8MTqz55XLpWvva6StA==}
     engines: {node: '>=6.0.0'}
@@ -1293,12 +1288,8 @@ packages:
     peerDependencies:
       '@embroider/core': ^3.5.7
 
-  '@embroider/core@3.5.7':
-    resolution: {integrity: sha512-0oytko2+iaYS31TG9Axj7Py0e0FAccUhu9J1h7ldEnQegK+Eu5+OINU0dYQgt0ijp6f2yF4+o3J7u9CJCLZ1gw==}
-    engines: {node: 12.* || 14.* || >= 16}
-
-  '@embroider/core@4.1.1':
-    resolution: {integrity: sha512-ds4Bf+ORxmcVjVQy6mUQHRHpioF79MdFJ5AyVK5wmz7Cn7omwYfsLSmM1kZZtQfcDgQqOI7Kf/Z4jKwBdFD2Vg==}
+  '@embroider/core@4.1.3':
+    resolution: {integrity: sha512-8gdwI71EUOg6CzbUFI/Q6VOWBqyo5Qv1kDz/0Nj9C7JOjgfLYc7NCZwZNKG93yc0qwUGEBxf4TJ3WZDnJD/4Sw==}
     engines: {node: 12.* || 14.* || >= 16}
 
   '@embroider/hbs-loader@3.0.4':
@@ -1310,15 +1301,6 @@ packages:
 
   '@embroider/macros@1.16.13':
     resolution: {integrity: sha512-2oGZh0m1byBYQFWEa8b2cvHJB2LzaF3DdMCLCqcRAccABMROt1G3sultnNCT30NhfdGWMEsJOT3Jm4nFxXmTRw==}
-    engines: {node: 12.* || 14.* || >= 16}
-    peerDependencies:
-      '@glint/template': ^1.0.0
-    peerDependenciesMeta:
-      '@glint/template':
-        optional: true
-
-  '@embroider/macros@1.18.0':
-    resolution: {integrity: sha512-KanP80XxNK4bmQ1HKTcUjy/cdCt9n7knPMLK1vzHdOFymACHo+GbhgUjXjYdOCuBTv+ZwcjL2P2XDmBcYS9r8g==}
     engines: {node: 12.* || 14.* || >= 16}
     peerDependencies:
       '@glint/template': ^1.0.0
@@ -1757,6 +1739,14 @@ packages:
   '@inquirer/figures@1.0.9':
     resolution: {integrity: sha512-BXvGj0ehzrngHTPTDqUoDT3NXL8U0RxUk2zJm2A66RhCEIWdtU1v6GuUqNAgArW4PQ9CinqIWyHdQgdwOj06zQ==}
     engines: {node: '>=18'}
+
+  '@isaacs/balanced-match@4.0.1':
+    resolution: {integrity: sha512-yzMTt9lEb8Gv7zRioUilSglI0c0smZ9k5D65677DLWLtWJaXIS3CqcGyUFByYKlnUj6TkjLVs54fBl6+TiGQDQ==}
+    engines: {node: 20 || >=22}
+
+  '@isaacs/brace-expansion@5.0.0':
+    resolution: {integrity: sha512-ZT55BDLV0yv0RBm2czMiZ+SqCGO7AvmOM3G/w2xhVPH+te0aKgFjmBvGlL1dH+ql2tgGO3MVrbb3jCKyvpgnxA==}
+    engines: {node: 20 || >=22}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -2353,6 +2343,10 @@ packages:
   '@types/minimatch@5.1.2':
     resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
 
+  '@types/minimatch@6.0.0':
+    resolution: {integrity: sha512-zmPitbQ8+6zNutpwgcQuLcsEpn/Cj54Kbn7L5pX0Os5kdWplB7xPgEh/g+SWOB/qmows2gpuCaPyduq8ZZRnxA==}
+    deprecated: This is a stub types definition. minimatch provides its own type definitions, so you do not need this installed.
+
   '@types/node@22.17.2':
     resolution: {integrity: sha512-gL6z5N9Jm9mhY+U2KXZpteb+09zyffliRkZyZOHODGATyC5B1Jt/7TzuuiLkFsSUMLbS1OLmlj/E+/3KF4Q/4w==}
 
@@ -2571,8 +2565,8 @@ packages:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
     engines: {node: '>= 6.0.0'}
 
-  agent-base@7.1.3:
-    resolution: {integrity: sha512-jRR5wdylq8CkOe6hei19GGZnxM6rBGwFl3Bg0YItGDimvjGtAvdZk4Pu6Cl4u4Igsws4a1fd1Vq3ezrhn4KmFw==}
+  agent-base@7.1.4:
+    resolution: {integrity: sha512-MnA+YT8fwfJPgBx3m60MNqakm30XOkyIoH1y6huTQvC0PwZG7ki8NacLBcrPbNoo8vEZy7Jpuk7+jMO+CUovTQ==}
     engines: {node: '>= 14'}
 
   agentkeepalive@4.6.0:
@@ -3625,8 +3619,8 @@ packages:
     resolution: {integrity: sha512-wvlcdIbf6pwKEk7vHj8/Bkc0B4ylXZruLvOgs9doS5eOsOpuodOV2zJChSpkp+pRpYQLQMeF04nr3Z68Sta9jA==}
     engines: {node: '>=8.0.0'}
 
-  cssstyle@4.5.0:
-    resolution: {integrity: sha512-/7gw8TGrvH/0g564EnhgFZogTMVe+lifpB7LWU+PEsiq5o83TUXR3fDbzTRXOJhoJwck5IS9ez3Em5LNMMO2aw==}
+  cssstyle@4.6.0:
+    resolution: {integrity: sha512-2z+rWdzbbSZv6/rhtvzvqeZQHrBaqgogqt85sqFNbabZOuFbCVFb8kPeEtZjiKkbrm395irpNKiYeFeLiQnFPg==}
     engines: {node: '>=18'}
 
   dag-map@2.0.2:
@@ -3685,8 +3679,8 @@ packages:
       supports-color:
         optional: true
 
-  decimal.js@10.5.0:
-    resolution: {integrity: sha512-8vDa8Qxvr/+d94hSh5P3IJwI5t8/c0KsMp+g8bNw9cY2icONa5aPfvKeieW1WlG0WQYwwhJ7mjui2xtiePQSXw==}
+  decimal.js@10.6.0:
+    resolution: {integrity: sha512-YpgQiITW3JXGntzdUmyUR1V812Hn8T1YVXhCu+wO3OpS4eU9l4YdD3qjyiKdV6mvV29zapkMeD390UVEf2lkUg==}
 
   decompress-response@3.3.0:
     resolution: {integrity: sha512-BzRPQuY1ip+qDonAOz42gRm/pg9F768C+npV/4JOsxRC2sq+Rlk+Q4ZCAsOhnIaMrgarILY+RMUIvMmmX1qAEA==}
@@ -5486,6 +5480,9 @@ packages:
   jsonfile@6.1.0:
     resolution: {integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==}
 
+  jsonfile@6.2.0:
+    resolution: {integrity: sha512-FGuPw30AdOIUTRMC2OMRtQV+jkVj2cfPqSeWXv1NEAJ1qZ5zb1X6z1mFhbfOB/iy3ssJCD+3KuZ8r8C3uVFlAg==}
+
   jsonify@0.0.1:
     resolution: {integrity: sha512-2/Ki0GcmuqSrgFyelQq9M05y7PS0mEwuIzrf3f1fPqkVDVRvZrPZtVSMHxdgo8Aq0sxAOb/cr2aqqA3LeWHVPg==}
 
@@ -5808,6 +5805,10 @@ packages:
     peerDependencies:
       webpack: ^5.0.0
 
+  minimatch@10.0.3:
+    resolution: {integrity: sha512-IPZ167aShDZZUMdRk66cyQAW3qr0WzbHkPdMYa8bzZhlHhO3jALbKdxcaak7W9FfT2rZNpQuUu4Od7ILEpXSaw==}
+    engines: {node: 20 || >=22}
+
   minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
 
@@ -6021,8 +6022,8 @@ packages:
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     deprecated: This package is no longer supported.
 
-  nwsapi@2.2.20:
-    resolution: {integrity: sha512-/ieB+mDe4MrrKMT8z+mQL8klXydZWGR5Dowt4RAGKbJ3kIGEx3X4ljUo+6V73IXtUPWgfOlU5B9MlGxFO5T+cA==}
+  nwsapi@2.2.21:
+    resolution: {integrity: sha512-o6nIY3qwiSXl7/LuOU0Dmuctd34Yay0yeuZRLFmDPrrdHpXKFndPj3hM+YEPVHYC5fx2otBx4Ilc/gyYSAUaIA==}
 
   object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
@@ -7845,8 +7846,8 @@ packages:
       utf-8-validate:
         optional: true
 
-  ws@8.18.2:
-    resolution: {integrity: sha512-DMricUmwGZUVr++AEAe2uiVM7UoO9MAVZMDu05UQOaUII0lp+zOzLLU4Xqh/JvTqklB1T4uELaaPBKyjE1r4fQ==}
+  ws@8.18.3:
+    resolution: {integrity: sha512-PEIGCY5tSlUt50cqyMXfCzX+oOPqN0vuGqWzbcJ2xvnkzkq46oOpz7dQaTDBdfICb4N14+GARUDw2XV2N4tvzg==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -8097,10 +8098,6 @@ snapshots:
   '@babel/helpers@7.28.3':
     dependencies:
       '@babel/template': 7.27.2
-      '@babel/types': 7.28.2
-
-  '@babel/parser@7.28.0':
-    dependencies:
       '@babel/types': 7.28.2
 
   '@babel/parser@7.28.3':
@@ -8799,7 +8796,7 @@ snapshots:
 
   '@embroider/addon-dev@8.1.0(@glint/template@1.5.2)(rollup@4.46.3)':
     dependencies:
-      '@embroider/core': 4.1.1(@glint/template@1.5.2)
+      '@embroider/core': 4.1.3(@glint/template@1.5.2)
       '@rollup/pluginutils': 5.2.0(rollup@4.46.3)
       content-tag: 3.1.3
       execa: 5.1.1
@@ -8826,10 +8823,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@embroider/babel-loader-9@3.1.2(@embroider/core@3.5.7(@glint/template@1.5.2))(supports-color@8.1.1)(webpack@5.101.3)':
+  '@embroider/babel-loader-9@3.1.2(@embroider/core@4.1.3(@glint/template@1.5.2))(supports-color@8.1.1)(webpack@5.101.3)':
     dependencies:
       '@babel/core': 7.28.3(supports-color@8.1.1)
-      '@embroider/core': 3.5.7(@glint/template@1.5.2)
+      '@embroider/core': 4.1.3(@glint/template@1.5.2)
       babel-loader: 9.2.1(@babel/core@7.28.3)(webpack@5.101.3)
     transitivePeerDependencies:
       - supports-color
@@ -8845,7 +8842,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@embroider/compat@3.9.1(@embroider/core@3.5.7(@glint/template@1.5.2))(@glint/template@1.5.2)':
+  '@embroider/compat@3.9.1(@embroider/core@4.1.3(@glint/template@1.5.2))(@glint/template@1.5.2)':
     dependencies:
       '@babel/code-frame': 7.27.1
       '@babel/core': 7.28.3(supports-color@8.1.1)
@@ -8856,7 +8853,7 @@ snapshots:
       '@babel/preset-env': 7.28.0(@babel/core@7.28.3)(supports-color@8.1.1)
       '@babel/runtime': 7.28.2
       '@babel/traverse': 7.28.0
-      '@embroider/core': 3.5.7(@glint/template@1.5.2)
+      '@embroider/core': 4.1.3(@glint/template@1.5.2)
       '@embroider/macros': 1.16.13(@glint/template@1.5.2)
       '@types/babel__code-frame': 7.0.6
       '@types/yargs': 17.0.33
@@ -8898,46 +8895,12 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@embroider/core@3.5.7(@glint/template@1.5.2)':
-    dependencies:
-      '@babel/core': 7.28.3(supports-color@8.1.1)
-      '@babel/parser': 7.28.0
-      '@babel/traverse': 7.28.0
-      '@embroider/macros': 1.16.13(@glint/template@1.5.2)
-      '@embroider/shared-internals': 2.9.1(supports-color@8.1.1)
-      assert-never: 1.4.0
-      babel-plugin-ember-template-compilation: 2.3.0
-      broccoli-node-api: 1.7.0
-      broccoli-persistent-filter: 3.1.3
-      broccoli-plugin: 4.0.7
-      broccoli-source: 3.0.1
-      debug: 4.4.1(supports-color@8.1.1)
-      fast-sourcemap-concat: 2.1.1
-      filesize: 10.1.6
-      fs-extra: 9.1.0
-      fs-tree-diff: 2.0.1
-      handlebars: 4.7.8
-      js-string-escape: 1.0.1
-      jsdom: 25.0.1(supports-color@8.1.1)
-      lodash: 4.17.21
-      resolve: 1.22.10
-      resolve-package-path: 4.0.3
-      semver: 7.7.2
-      typescript-memoize: 1.1.1
-      walk-sync: 3.0.0
-    transitivePeerDependencies:
-      - '@glint/template'
-      - bufferutil
-      - canvas
-      - supports-color
-      - utf-8-validate
-
-  '@embroider/core@4.1.1(@glint/template@1.5.2)':
+  '@embroider/core@4.1.3(@glint/template@1.5.2)':
     dependencies:
       '@babel/core': 7.28.3(supports-color@8.1.1)
       '@babel/parser': 7.28.3
       '@babel/traverse': 7.28.3(supports-color@8.1.1)
-      '@embroider/macros': 1.18.0(@glint/template@1.5.2)
+      '@embroider/macros': 1.18.1(@glint/template@1.5.2)
       '@embroider/reverse-exports': 0.1.2
       '@embroider/shared-internals': 3.0.0
       assert-never: 1.4.0
@@ -8968,9 +8931,9 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@embroider/hbs-loader@3.0.4(@embroider/core@3.5.7(@glint/template@1.5.2))(webpack@5.101.3)':
+  '@embroider/hbs-loader@3.0.4(@embroider/core@4.1.3(@glint/template@1.5.2))(webpack@5.101.3)':
     dependencies:
-      '@embroider/core': 3.5.7(@glint/template@1.5.2)
+      '@embroider/core': 4.1.3(@glint/template@1.5.2)
       webpack: 5.101.3
 
   '@embroider/macros@1.16.13(@glint/template@1.5.2)':
@@ -8978,21 +8941,6 @@ snapshots:
       '@embroider/shared-internals': 2.9.0
       assert-never: 1.4.0
       babel-import-util: 2.1.1
-      ember-cli-babel: 7.26.11
-      find-up: 5.0.0
-      lodash: 4.17.21
-      resolve: 1.22.10
-      semver: 7.7.2
-    optionalDependencies:
-      '@glint/template': 1.5.2
-    transitivePeerDependencies:
-      - supports-color
-
-  '@embroider/macros@1.18.0(@glint/template@1.5.2)':
-    dependencies:
-      '@embroider/shared-internals': 3.0.0
-      assert-never: 1.4.0
-      babel-import-util: 3.0.1
       ember-cli-babel: 7.26.11
       find-up: 5.0.0
       lodash: 4.17.21
@@ -9075,13 +9023,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@embroider/webpack@4.1.1(@embroider/core@3.5.7(@glint/template@1.5.2))(webpack@5.101.3)':
+  '@embroider/webpack@4.1.1(@embroider/core@4.1.3(@glint/template@1.5.2))(webpack@5.101.3)':
     dependencies:
       '@babel/core': 7.28.3(supports-color@8.1.1)
       '@babel/preset-env': 7.28.0(@babel/core@7.28.3)(supports-color@8.1.1)
-      '@embroider/babel-loader-9': 3.1.2(@embroider/core@3.5.7(@glint/template@1.5.2))(supports-color@8.1.1)(webpack@5.101.3)
-      '@embroider/core': 3.5.7(@glint/template@1.5.2)
-      '@embroider/hbs-loader': 3.0.4(@embroider/core@3.5.7(@glint/template@1.5.2))(webpack@5.101.3)
+      '@embroider/babel-loader-9': 3.1.2(@embroider/core@4.1.3(@glint/template@1.5.2))(supports-color@8.1.1)(webpack@5.101.3)
+      '@embroider/core': 4.1.3(@glint/template@1.5.2)
+      '@embroider/hbs-loader': 3.0.4(@embroider/core@4.1.3(@glint/template@1.5.2))(webpack@5.101.3)
       '@embroider/shared-internals': 2.9.1(supports-color@8.1.1)
       '@types/supports-color': 8.1.3
       assert-never: 1.4.0
@@ -9240,7 +9188,7 @@ snapshots:
     dependencies:
       '@formatjs/fast-memoize': 2.2.7
       '@formatjs/intl-localematcher': 0.6.1
-      decimal.js: 10.5.0
+      decimal.js: 10.6.0
       tslib: 2.8.1
 
   '@formatjs/fast-memoize@2.2.7':
@@ -9500,6 +9448,12 @@ snapshots:
   '@humanwhocodes/retry@0.4.3': {}
 
   '@inquirer/figures@1.0.9': {}
+
+  '@isaacs/balanced-match@4.0.1': {}
+
+  '@isaacs/brace-expansion@5.0.0':
+    dependencies:
+      '@isaacs/balanced-match': 4.0.1
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -10009,7 +9963,7 @@ snapshots:
 
   '@types/glob@7.2.0':
     dependencies:
-      '@types/minimatch': 5.1.2
+      '@types/minimatch': 6.0.0
       '@types/node': 22.17.2
 
   '@types/glob@8.1.0':
@@ -10032,6 +9986,10 @@ snapshots:
   '@types/minimatch@3.0.5': {}
 
   '@types/minimatch@5.1.2': {}
+
+  '@types/minimatch@6.0.0':
+    dependencies:
+      minimatch: 10.0.3
 
   '@types/node@22.17.2':
     dependencies:
@@ -10334,7 +10292,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  agent-base@7.1.3: {}
+  agent-base@7.1.4: {}
 
   agentkeepalive@4.6.0:
     dependencies:
@@ -11568,7 +11526,7 @@ snapshots:
     dependencies:
       css-tree: 1.1.3
 
-  cssstyle@4.5.0:
+  cssstyle@4.6.0:
     dependencies:
       '@asamuzakjp/css-color': 3.2.0
       rrweb-cssom: 0.8.0
@@ -11618,7 +11576,7 @@ snapshots:
     optionalDependencies:
       supports-color: 8.1.1
 
-  decimal.js@10.5.0: {}
+  decimal.js@10.6.0: {}
 
   decompress-response@3.3.0:
     dependencies:
@@ -13496,7 +13454,7 @@ snapshots:
     dependencies:
       at-least-node: 1.0.0
       graceful-fs: 4.2.11
-      jsonfile: 6.1.0
+      jsonfile: 6.2.0
       universalify: 2.0.1
 
   fs-merger@3.2.1:
@@ -13920,7 +13878,7 @@ snapshots:
 
   http-proxy-agent@7.0.2(supports-color@8.1.1):
     dependencies:
-      agent-base: 7.1.3
+      agent-base: 7.1.4
       debug: 4.4.1(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
@@ -13942,7 +13900,7 @@ snapshots:
 
   https-proxy-agent@7.0.6(supports-color@8.1.1):
     dependencies:
-      agent-base: 7.1.3
+      agent-base: 7.1.4
       debug: 4.4.1(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
@@ -14325,15 +14283,15 @@ snapshots:
 
   jsdom@25.0.1(supports-color@8.1.1):
     dependencies:
-      cssstyle: 4.5.0
+      cssstyle: 4.6.0
       data-urls: 5.0.0
-      decimal.js: 10.5.0
+      decimal.js: 10.6.0
       form-data: 4.0.4
       html-encoding-sniffer: 4.0.0
       http-proxy-agent: 7.0.2(supports-color@8.1.1)
       https-proxy-agent: 7.0.6(supports-color@8.1.1)
       is-potential-custom-element-name: 1.0.1
-      nwsapi: 2.2.20
+      nwsapi: 2.2.21
       parse5: 7.3.0
       rrweb-cssom: 0.7.1
       saxes: 6.0.0
@@ -14344,7 +14302,7 @@ snapshots:
       whatwg-encoding: 3.1.1
       whatwg-mimetype: 4.0.0
       whatwg-url: 14.2.0
-      ws: 8.18.2
+      ws: 8.18.3
       xml-name-validator: 5.0.0
     transitivePeerDependencies:
       - bufferutil
@@ -14396,6 +14354,12 @@ snapshots:
       graceful-fs: 4.2.11
 
   jsonfile@6.1.0:
+    dependencies:
+      universalify: 2.0.1
+    optionalDependencies:
+      graceful-fs: 4.2.11
+
+  jsonfile@6.2.0:
     dependencies:
       universalify: 2.0.1
     optionalDependencies:
@@ -14729,6 +14693,10 @@ snapshots:
       tapable: 2.2.2
       webpack: 5.101.3
 
+  minimatch@10.0.3:
+    dependencies:
+      '@isaacs/brace-expansion': 5.0.0
+
   minimatch@3.1.2:
     dependencies:
       brace-expansion: 2.0.2
@@ -14933,7 +14901,7 @@ snapshots:
       gauge: 4.0.4
       set-blocking: 2.0.0
 
-  nwsapi@2.2.20: {}
+  nwsapi@2.2.21: {}
 
   object-assign@4.1.1: {}
 
@@ -17028,7 +16996,7 @@ snapshots:
 
   ws@8.17.1: {}
 
-  ws@8.18.2: {}
+  ws@8.18.3: {}
 
   xdg-basedir@4.0.0: {}
 
