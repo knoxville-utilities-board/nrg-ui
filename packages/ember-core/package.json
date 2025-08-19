@@ -125,6 +125,7 @@
     "@glimmer/tracking": "^1.1.2",
     "@glint/ember-tsc": "^1.0.4",
     "@glint/template": "^1.6.2",
+    "@nrg-ui/code-snippets": "workspace:*",
     "@nrg-ui/css": "workspace:^0",
     "@nrg-ui/standards": "workspace:^",
     "@rollup/plugin-babel": "^6.1.0",
@@ -156,6 +157,7 @@
   "peerDependencies": {
     "@glimmer/component": "^2.0.0",
     "@glimmer/tracking": "^1.1.2",
+    "@nrg-ui/code-snippets": "workspace:*",
     "@nrg-ui/css": "workspace:^0",
     "dayjs": "^1.11.18",
     "ember-auto-import": "^2.0.0",
@@ -166,6 +168,11 @@
     "ember-truth-helpers": "^5.0.0",
     "tracked-built-ins": "^4.0.0",
     "webpack": "^5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@nrg-ui/code-snippets": {
+      "optional": true
+    }
   },
   "publishConfig": {
     "access": "public",
