@@ -32,7 +32,7 @@
     "test:ember": "ember test"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.0",
+    "@babel/core": "^7.28.3",
     "@ember/optional-features": "^2.2.0",
     "@ember/string": "^4.0.1",
     "@ember/test-helpers": "^5.2.2",
@@ -82,7 +82,7 @@
     "ember-resolver": "^13.1.1",
     "ember-source": "~6.4.0",
     "ember-template-imports": "^4.3.0",
-    "ember-template-lint": "^7.9.2",
+    "ember-template-lint": "^7.9.3",
     "ember-try": "^4.0.0",
     "eslint": "^9.33.0",
     "eslint-import-resolver-webpack": "^0.13.10",
@@ -101,8 +101,8 @@
     "stylelint-config-standard": "^39.0.0",
     "tracked-built-ins": "^4.0.0",
     "typescript": "^5.9.2",
-    "typescript-eslint": "^8.39.0",
-    "webpack": "^5.101.0"
+    "typescript-eslint": "^8.40.0",
+    "webpack": "^5.101.3"
   },
   "engines": {
     "node": ">= 18"
