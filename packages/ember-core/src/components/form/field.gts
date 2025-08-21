@@ -111,6 +111,7 @@ export interface FieldOptions {
   initBinding?: (binding: Binding<object>) => void;
   isInvalid?: boolean;
   isWarning?: boolean;
+  placeholder?: string;
   required?: boolean;
   validatorKey?: string;
 }
