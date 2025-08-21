@@ -56,7 +56,10 @@ export default class TextInputDemo extends Component {
               class={{this.class}}
               @basic={{this.basic}}
               @binding={{bind this.model "property"}}
-              @fieldOptions={{hash disabled=this.disabled placeholder=this.placeholder}}
+              @fieldOptions={{hash
+                disabled=this.disabled
+                placeholder=this.placeholder
+              }}
               @readonly={{this.readonly}}
               @onChange={{fn log "The value changed to"}}
             />
