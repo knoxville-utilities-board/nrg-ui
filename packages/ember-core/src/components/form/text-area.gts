@@ -44,6 +44,7 @@ export default class TextArea extends BoundValue<TextAreaSignature, string> {
       id={{@fieldOptions.id}}
       class={{this.classList}}
       disabled={{@fieldOptions.disabled}}
+      placeholder={{@fieldOptions.placeholder}}
       readonly={{@readonly}}
       type="text"
       value={{this.value}}

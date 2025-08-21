@@ -34,6 +34,9 @@ export default class TextAreaDemo extends Component {
   disabled = false;
 
   @tracked
+  placeholder = 'Enter text';
+
+  @tracked
   readonly = false;
 
   @tracked
@@ -53,7 +56,7 @@ export default class TextAreaDemo extends Component {
               class={{this.class}}
               @basic={{this.basic}}
               @binding={{bind this.model "property"}}
-              @fieldOptions={{hash disabled=this.disabled}}
+              @fieldOptions={{hash placeholder=this.placeholder}}
               @readonly={{this.readonly}}
               @onChange={{fn log "The value changed to"}}
             />
@@ -85,6 +88,12 @@ export default class TextAreaDemo extends Component {
               @description="When true, the textarea will be disabled"
               @value={{this.disabled}}
               @onInput={{fn this.update "disabled"}}
+            />
+            <Args.String
+              @name="fieldOptions.placeholder"
+              @description="The placeholder text for the textarea"
+              @value={{this.placeholder}}
+              @onInput={{fn this.update "placeholder"}}
             />
             <Args.Bool
               @name="readonly"
