@@ -41,6 +41,7 @@ export default class TextInput extends InputField<TextInputArgs> {
       class={{this.classList}}
       disabled={{@fieldOptions.disabled}}
       id={{@fieldOptions.id}}
+      placeholder={{@fieldOptions.placeholder}}
       readonly={{@readonly}}
       type="text"
       value={{this.displayValue}}
