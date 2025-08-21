@@ -1,3 +1,4 @@
+import { hash } from '@ember/helper';
 import { fillIn, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import { TextArea, bind } from '@nrg-ui/core';
@@ -16,7 +17,7 @@ module('Integration | Component | form/text-area', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders (inline)', async function (assert) {
-    assert.expect(5);
+    assert.expect(6);
 
     const model = new Model();
     const actionHandler = (text: Optional<string>) => {
@@ -25,11 +26,19 @@ module('Integration | Component | form/text-area', function (hooks) {
 
     await render(
       <template>
-        <TextArea @binding={{bind model "value"}} @onChange={{actionHandler}} />
+        <TextArea
+          @binding={{bind model "value"}}
+          @fieldOptions={{hash placeholder="Enter text"}}
+          @onChange={{actionHandler}}
+        />
       </template>,
     );
 
-    assert.dom('textarea').hasClass('form-control').hasValue('Hello, world!');
+    assert
+      .dom('textarea')
+      .hasProperty('placeholder', 'Enter text')
+      .hasClass('form-control')
+      .hasValue('Hello, world!');
 
     await fillIn('div > textarea', 'Foo bar');
 

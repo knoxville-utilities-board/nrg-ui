@@ -1,3 +1,4 @@
+import { hash } from '@ember/helper';
 import { fillIn, render, triggerEvent } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import { TextInput, bind } from '@nrg-ui/core';
@@ -16,7 +17,7 @@ module('Integration | Component | form/text-input', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    assert.expect(6);
+    assert.expect(7);
     const model = new Model();
 
     const actionHandler = (text: Optional<string>) => {
@@ -27,6 +28,7 @@ module('Integration | Component | form/text-input', function (hooks) {
       <template>
         <TextInput
           @binding={{bind model "value"}}
+          @fieldOptions={{hash placeholder="Enter text"}}
           @onChange={{actionHandler}}
         />
       </template>,
@@ -34,6 +36,7 @@ module('Integration | Component | form/text-input', function (hooks) {
 
     assert
       .dom('input')
+      .hasProperty('placeholder', 'Enter text')
       .hasAttribute('type', 'text')
       .hasClass('form-control')
       .hasValue('Hello, world!');
