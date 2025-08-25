@@ -1,6 +1,6 @@
 {
   "name": "@nrg-ui/code-snippets",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Extract code snippets from your source files for runtime rendering in Vite-powered apps.",
   "keywords": [
     "vite",
