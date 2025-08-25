@@ -1,0 +1,17 @@
+.toaster {
+  width: 400px;
+}
+
+.toaster.fixed {
+  padding: 1em;
+  max-width: calc(100vw - 1em);
+  top: var(--app-bar-height);
+  right: 0;
+  position: fixed;
+  z-index: 5000;
+  pointer-events: none;
+
+  & * {
+    pointer-events: auto;
+  }
+}
