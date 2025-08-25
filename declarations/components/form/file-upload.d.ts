@@ -1,0 +1,47 @@
+import BoundValue from './bound-value.ts';
+import type { FieldOptions } from './field.gts';
+import type Owner from '@ember/owner';
+export interface SelectedFileListSignature {
+    Args: {
+        disabled?: boolean;
+        files: File[] | null;
+        isInvalid?: boolean;
+        isWarning?: boolean;
+        onRemove?: (index: number) => void;
+    };
+    Element: HTMLUListElement;
+    Blocks: {
+        default: [];
+    };
+}
+export interface FileUploadSignature {
+    Args: {
+        accept?: string[];
+        fieldOptions?: FieldOptions;
+        onAdd?: (files: File[]) => unknown;
+        onRemove?: (file: File) => unknown;
+    };
+    Blocks: {
+        default: [];
+    };
+    Element: HTMLDivElement;
+}
+export default class FileUpload extends BoundValue<FileUploadSignature, File[]> {
+    validatorId?: string;
+    inputElement?: HTMLInputElement;
+    isDraggingOver: boolean;
+    constructor(owner: Owner, args: FileUploadSignature['Args']);
+    get accept(): string;
+    get dropzoneStyling(): string;
+    filterDuplicateFiles(files: FileList): File[];
+    handleCancel(event: Event): void;
+    handleDragover(event: DragEvent): void;
+    handleDrop(event: DragEvent): void;
+    initInput(element: HTMLElement): void;
+    change(files: FileList): void;
+    openInput(event: MouseEvent): void;
+    removeFile(index: number): void;
+    setupValidator(): void;
+    toggleIsDragging(isDragging: boolean): void;
+    updateValue(event: Event): void;
+}
