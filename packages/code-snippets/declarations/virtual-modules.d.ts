@@ -1,4 +1,4 @@
-import { SnippetEntry } from '../src/types.ts';
+import type { SnippetEntry } from './types';
 
 declare module 'virtual:code-snippets' {
   const snippets: Record<string, SnippetEntry>;

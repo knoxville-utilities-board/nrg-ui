@@ -1,14 +1,10 @@
 export const virtualModule = 'virtual:code-snippets';
 
-import codeSnippetsPlugin from './plugin.js';
-
-export default codeSnippetsPlugin;
-
-export { codeSnippetsPlugin };
+export { default as codeSnippetsPlugin } from './plugin.js';
 
 export type {
   CodeSnippetsPluginOptions,
   SnippetEntry,
   SnippetLocation,
   SnippetSource,
-} from './types.js';
+} from './types.ts';
