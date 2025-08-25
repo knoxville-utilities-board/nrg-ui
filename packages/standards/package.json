@@ -52,23 +52,23 @@
   },
   "optionalDependencies": {
     "eslint-plugin-decorator-position": "^6.0.0",
-    "eslint-plugin-ember": "^12.7.0",
+    "eslint-plugin-ember": "^12.7.3",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-n": "^17.21.3",
     "eslint-plugin-qunit": "8.2.5",
-    "typescript-eslint": "^8.40.0"
+    "typescript-eslint": "^8.41.0"
   },
   "devDependencies": {
     "@types/eslint": "^9.6.1",
-    "@types/node": "^22.17.2",
+    "@types/node": "^22.18.0",
     "@types/semver": "^7.7.0",
     "@types/yargs": "^17.0.33",
-    "eslint": "^9.33.0",
+    "eslint": "^9.34.0",
     "eslint-plugin-decorator-position": "^6.0.0",
     "eslint-plugin-import": "^2.32.0",
     "prettier": "^3.6.2",
     "typescript": "^5.9.2",
-    "typescript-eslint": "^8.40.0"
+    "typescript-eslint": "^8.41.0"
   },
   "engines": {
     "node": "^20.19.0"
