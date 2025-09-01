@@ -38,7 +38,7 @@
     "watch:sass": "sass --load-path node_modules --watch src:dist"
   },
   "devDependencies": {
-    "bootstrap": "^5.3.7",
+    "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
     "concurrently": "^9.2.1",
     "sass": "^1.91.0"
