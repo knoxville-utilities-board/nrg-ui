@@ -543,6 +543,10 @@ legend + * {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
+[type=search]::-webkit-search-cancel-button {
+  cursor: pointer;
+  filter: grayscale(1);
+}
 
 /* rtl:raw:
 [type="tel"],
@@ -7704,6 +7708,7 @@ select.carousel-control-next.form-select.is-warning:focus:not([disabled]),
 .spinner-grow,
 .spinner-border {
   display: inline-block;
+  flex-shrink: 0;
   width: var(--bs-spinner-width);
   height: var(--bs-spinner-height);
   vertical-align: var(--bs-spinner-vertical-align);
