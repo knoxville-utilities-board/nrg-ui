@@ -1,5 +1,33 @@
 # Changelog
 
+## Release (2025-09-02)
+
+* @nrg-ui/code-snippets 0.1.0 (minor)
+* @nrg-ui/core 0.42.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#584](https://github.com/knoxville-utilities-board/nrg-ui/pull/584) feat(datetime): Expose onShow and onHide arguments ([@ChesneyJulian](https://github.com/ChesneyJulian))
+* `@nrg-ui/code-snippets`
+  * [#575](https://github.com/knoxville-utilities-board/nrg-ui/pull/575) feat: Trim leading whitespace to match first line ([@TSenter](https://github.com/TSenter))
+  * [#568](https://github.com/knoxville-utilities-board/nrg-ui/pull/568) feat: Add option for root directory ([@TSenter](https://github.com/TSenter))
+  * [#566](https://github.com/knoxville-utilities-board/nrg-ui/pull/566) feat: Create Vite plugin to extract code snippets ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/code-snippets`
+  * [#569](https://github.com/knoxville-utilities-board/nrg-ui/pull/569) fix: Use relative paths when handling updates ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* Other
+  * [#574](https://github.com/knoxville-utilities-board/nrg-ui/pull/574) refactor(ci): Move all code coverage into CI check ([@TSenter](https://github.com/TSenter))
+  * [#572](https://github.com/knoxville-utilities-board/nrg-ui/pull/572) fix(ci): Specify working directory for code coverage ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/code-snippets`
+  * [#571](https://github.com/knoxville-utilities-board/nrg-ui/pull/571) chore(ci): Add code coverage report ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-08-14)
 
 * @nrg-ui/core 0.41.2 (patch)
