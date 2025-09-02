@@ -54,6 +54,16 @@ export default class DatetimeDemo extends Component {
   value;
 
   @action
+  onHide() {
+    console.log('Datetime closed');
+  }
+
+  @action
+  onShow() {
+    console.log('Datetime opened');
+  }
+
+  @action
   update(key, value) {
     if (value instanceof Event) {
       value = value.target.value;
@@ -74,6 +84,8 @@ export default class DatetimeDemo extends Component {
               @fieldOptions={{hash disabled=this.disabled}}
               @maxDate={{this.maxDate}}
               @minDate={{this.minDate}}
+              @onHide={{this.onHide}}
+              @onShow={{this.onShow}}
               @parseFormat={{this.parseFormat}}
               @placeholder={{this.placeholder}}
               @readonly={{this.readonly}}
@@ -177,6 +189,18 @@ export default class DatetimeDemo extends Component {
                 @lang="typescript"
                 @code="(date: Date, precision?: OpUnitType) => boolean"
               />
+            </Args.Action>
+            <Args.Action
+              @name="onHide"
+              @description="Action called when the datetime calendar is closed"
+            >
+              <CodeBlock @lang="typescript" @code="() => void" />
+            </Args.Action>
+            <Args.Action
+              @name="onShow"
+              @description="Action called when the datetime calendar is opened"
+            >
+              <CodeBlock @lang="typescript" @code="() => void" />
             </Args.Action>
           </:api>
         </FreestyleUsage>
