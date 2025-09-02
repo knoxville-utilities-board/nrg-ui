@@ -38,6 +38,9 @@ export interface DatetimeSignature {
     _class?: string;
 
     isDateDisabled?: (date: Date, precision?: OpUnitType) => boolean;
+
+    onHide?: () => void;
+    onShow?: () => void;
   };
   Blocks: {
     default: [];
@@ -144,6 +147,7 @@ export default class Datetime extends BoundValue<DatetimeSignature, Date> {
 
       this.inputValue = '';
     }
+    this.args.onHide?.();
   }
 
   @action
@@ -165,6 +169,7 @@ export default class Datetime extends BoundValue<DatetimeSignature, Date> {
     const focusTarget = target.querySelector('input') as HTMLInputElement;
 
     focusTarget?.focus();
+    this.args.onShow?.();
   }
 
   @action
