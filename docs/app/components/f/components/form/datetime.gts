@@ -39,6 +39,9 @@ export default class DatetimeDemo extends Component {
   placeholder;
 
   @tracked
+  preventAutoSelect = false;
+
+  @tracked
   readonly;
 
   @tracked
@@ -76,6 +79,7 @@ export default class DatetimeDemo extends Component {
               @minDate={{this.minDate}}
               @parseFormat={{this.parseFormat}}
               @placeholder={{this.placeholder}}
+              @preventAutoSelect={{this.preventAutoSelect}}
               @readonly={{this.readonly}}
               @showNowShortcut={{this.showNowShortcut}}
               @timeFormat={{this.timeFormat}}
@@ -110,6 +114,13 @@ export default class DatetimeDemo extends Component {
               @description="When provided, no dates before this point can be selected"
               @items={{this.parseFormat}}
               @type="String"
+            />
+            <Args.Bool
+              @name="preventAutoSelect"
+              @defaultValue={{false}}
+              @description="When true, the value will not be selected when the calendar is moved; a day cell must be clicked to update the value"
+              @value={{this.preventAutoSelect}}
+              @onInput={{fn this.update "preventAutoSelect"}}
             />
             <Args.Bool
               @name="allowMinuteSelection"

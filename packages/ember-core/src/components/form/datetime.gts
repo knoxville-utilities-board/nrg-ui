@@ -22,6 +22,7 @@ export interface DatetimeSignature {
   Args: {
     allowMinuteSelection?: boolean;
     dateFormat?: string;
+    preventAutoSelect?: boolean;
     maxDate?: Date;
     minDate?: Date;
     parseFormat?: string | string[];
@@ -52,6 +53,9 @@ export default class Datetime extends BoundValue<DatetimeSignature, Date> {
 
   @tracked
   inputValue = '';
+
+  @tracked
+  temporaryDate = undefined as Date | undefined;
 
   get dateFormat() {
     return this.args.dateFormat ?? defaultDateFormat;
@@ -129,6 +133,16 @@ export default class Datetime extends BoundValue<DatetimeSignature, Date> {
     return new Date();
   }
 
+  get currentValue() {
+    return (
+      this.temporaryDate ?? this.value ?? this.defaultValue ?? dayjs().toDate()
+    );
+  }
+
+  set currentValue(value: Date) {
+    this.onDateSelect(value);
+  }
+
   @action
   onBlur() {
     const { inputValue } = this;
@@ -159,6 +173,7 @@ export default class Datetime extends BoundValue<DatetimeSignature, Date> {
       return;
     }
 
+    this.temporaryDate = this.value ?? undefined;
     this.isFocused = true;
 
     const target = evt.currentTarget as HTMLElement;
@@ -169,7 +184,13 @@ export default class Datetime extends BoundValue<DatetimeSignature, Date> {
 
   @action
   onDateSelect(value: Date) {
+    this.temporaryDate = undefined;
     this.onChange(value);
+  }
+
+  @action
+  onTemporarySelect(value: Date) {
+    this.temporaryDate = value;
   }
 
   <template>
@@ -205,15 +226,17 @@ export default class Datetime extends BoundValue<DatetimeSignature, Date> {
       {{yield}}
       {{#if this.isFocused}}
         <DatetimeCalendar
-          @minDate={{@minDate}}
-          @maxDate={{@maxDate}}
-          @type={{this.type}}
-          @value={{this.value}}
-          @showNowShortcut={{this.showNowShortcut}}
-          @isDateDisabled={{@isDateDisabled}}
           @allowMinuteSelection={{@allowMinuteSelection}}
-          @onSelect={{this.onDateSelect}}
+          @isDateDisabled={{@isDateDisabled}}
+          @maxDate={{@maxDate}}
+          @minDate={{@minDate}}
           @onClose={{this.onBlur}}
+          @onSelect={{this.onDateSelect}}
+          @onTemporarySelect={{this.onTemporarySelect}}
+          @preventAutoSelect={{@preventAutoSelect}}
+          @showNowShortcut={{this.showNowShortcut}}
+          @type={{this.type}}
+          @value={{this.currentValue}}
         />
       {{/if}}
     </div>

@@ -258,6 +258,7 @@ export default class FormDemo extends Component {
           <Field.Datetime
             @binding={{bind this.model "datetime"}}
             @minDate={{(dayjs)}}
+            @preventAutoSelect={{true}}
           />
         </Form.Field>
         <Form.Field @label="Date" @required={{this.required}} as |Field|>

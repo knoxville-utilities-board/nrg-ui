@@ -33,6 +33,7 @@ export interface DatetimeCalendarSignature {
     allowMinuteSelection?: boolean;
     maxDate?: Date;
     minDate?: Date;
+    preventAutoSelect?: boolean;
     showNowShortcut?: boolean;
     type?: 'datetime' | 'date' | 'time';
     value?: Date | Dayjs | null;
@@ -41,6 +42,7 @@ export interface DatetimeCalendarSignature {
 
     onClose?: () => void;
     onSelect?: (date: Date) => void;
+    onTemporarySelect?: (date: Date) => void;
   };
   Blocks: {
     default: [];
@@ -99,6 +101,10 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
   get selectedMonthIndex() {
     const value = this.currentValue;
     return dayjs(value).month();
+  }
+
+  get preventAutoSelect() {
+    return this.args.preventAutoSelect ?? false;
   }
 
   get selectedYearIndex() {
@@ -334,6 +340,10 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     return this.args.allowMinuteSelection !== false;
   }
 
+  get persistence() {
+    return this.preventAutoSelect ? 'temp' : 'value';
+  }
+
   isBeyondDateRange(date: Date | Dayjs, precision: OpUnitType) {
     date = dayjs(date);
     let valid = true;
@@ -355,6 +365,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
   manipulateDate(
     operation: 'add' | 'subtract' | 'set',
     dateTransformation: TransformData,
+    persistence: 'temp' | 'value' | undefined = undefined,
   ) {
     let date = dayjs({
       day: this.selectedDayIndex,
@@ -383,7 +394,11 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
 
     const userDisabled = this.args.isDateDisabled?.(date.toDate(), precision);
     if (userDisabled) {
-      this.onSelect(currentDate.toDate());
+      if (persistence === 'temp') {
+        this.args.onTemporarySelect?.(currentDate.toDate());
+      } else {
+        this.onSelect(currentDate.toDate());
+      }
       return;
     }
 
@@ -402,6 +417,10 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       date = date.subtract(remainder, 'minute');
     }
 
+    if (persistence === 'temp') {
+      this.args.onTemporarySelect?.(date.toDate());
+      return;
+    }
     this.onSelect(date.toDate());
   }
 
@@ -430,15 +449,19 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     evt.stopPropagation();
 
     if (this.isSelectingDays) {
-      this.manipulateDate('subtract', { day: 1 });
+      this.manipulateDate('subtract', { day: 1 }, this.persistence);
     } else if (this.isSelectingMonths) {
-      this.manipulateDate('subtract', { month: 1 });
+      this.manipulateDate('subtract', { month: 1 }, this.persistence);
     } else if (this.isSelectingYears) {
-      this.manipulateDate('subtract', { year: 1 });
+      this.manipulateDate('subtract', { year: 1 }, this.persistence);
     } else if (this.isSelectingMinutes) {
-      this.manipulateDate('subtract', { minute: MINUTE_INTERVAL });
+      this.manipulateDate(
+        'subtract',
+        { minute: MINUTE_INTERVAL },
+        this.persistence,
+      );
     } else if (this.isSelectingHours) {
-      this.manipulateDate('subtract', { hour: 1 });
+      this.manipulateDate('subtract', { hour: 1 }, this.persistence);
     }
   }
 
@@ -448,15 +471,15 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     evt.stopPropagation();
 
     if (this.isSelectingDays) {
-      this.manipulateDate('add', { day: 1 });
+      this.manipulateDate('add', { day: 1 }, this.persistence);
     } else if (this.isSelectingMonths) {
-      this.manipulateDate('add', { month: 1 });
+      this.manipulateDate('add', { month: 1 }, this.persistence);
     } else if (this.isSelectingYears) {
-      this.manipulateDate('add', { year: 1 });
+      this.manipulateDate('add', { year: 1 }, this.persistence);
     } else if (this.isSelectingMinutes) {
-      this.manipulateDate('add', { minute: MINUTE_INTERVAL });
+      this.manipulateDate('add', { minute: MINUTE_INTERVAL }, this.persistence);
     } else if (this.isSelectingHours) {
-      this.manipulateDate('add', { hour: 1 });
+      this.manipulateDate('add', { hour: 1 }, this.persistence);
     }
   }
 
@@ -466,15 +489,19 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     evt.stopPropagation();
 
     if (this.isSelectingDays) {
-      this.manipulateDate('subtract', { week: 1 });
+      this.manipulateDate('subtract', { week: 1 }, this.persistence);
     } else if (this.isSelectingMonths) {
-      this.manipulateDate('subtract', { month: 3 });
+      this.manipulateDate('subtract', { month: 3 }, this.persistence);
     } else if (this.isSelectingYears) {
-      this.manipulateDate('subtract', { year: 2 });
+      this.manipulateDate('subtract', { year: 2 }, this.persistence);
     } else if (this.isSelectingMinutes) {
-      this.manipulateDate('subtract', { minute: MINUTE_INTERVAL * 3 });
+      this.manipulateDate(
+        'subtract',
+        { minute: MINUTE_INTERVAL * 3 },
+        this.persistence,
+      );
     } else if (this.isSelectingHours) {
-      this.manipulateDate('subtract', { hour: 4 });
+      this.manipulateDate('subtract', { hour: 4 }, this.persistence);
     }
   }
 
@@ -484,15 +511,19 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     evt.stopPropagation();
 
     if (this.isSelectingDays) {
-      this.manipulateDate('add', { week: 1 });
+      this.manipulateDate('add', { week: 1 }, this.persistence);
     } else if (this.isSelectingMonths) {
-      this.manipulateDate('add', { month: 3 });
+      this.manipulateDate('add', { month: 3 }, this.persistence);
     } else if (this.isSelectingYears) {
-      this.manipulateDate('add', { year: 2 });
+      this.manipulateDate('add', { year: 2 }, this.persistence);
     } else if (this.isSelectingMinutes) {
-      this.manipulateDate('add', { minute: MINUTE_INTERVAL * 3 });
+      this.manipulateDate(
+        'add',
+        { minute: MINUTE_INTERVAL * 3 },
+        this.persistence,
+      );
     } else if (this.isSelectingHours) {
-      this.manipulateDate('add', { hour: 4 });
+      this.manipulateDate('add', { hour: 4 }, this.persistence);
     }
   }
 
@@ -532,11 +563,11 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       this.manipulateDate('set', {
         hour: cell.hour,
         minute: 0,
-      });
+      }, this.persistence);
     } else if (this.isSelectingMonths) {
-      this.manipulateDate('set', { month: cell.month });
+      this.manipulateDate('set', { month: cell.month }, this.persistence);
     } else if (this.isSelectingYears) {
-      this.manipulateDate('set', { year: cell.year });
+      this.manipulateDate('set', { year: cell.year }, this.persistence);
     } else if (this.isSelectingDays) {
       this.manipulateDate('set', {
         date: cell.date,
@@ -580,10 +611,16 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
         if (this.allowMinuteSelection) {
           this.isSelectingMinutes = true;
         } else {
+          if (this.preventAutoSelect) {
+            this.selectDate();
+          }
           this.close();
         }
         return;
       } else if (this.isSelectingMinutes) {
+        if (this.preventAutoSelect) {
+          this.selectDate();
+        }
         this.close();
         return;
       }
@@ -592,6 +629,9 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       this.isSelectingDays = false;
       this.isSelectingHours = true;
     } else if (this.args.type === 'date') {
+      if (this.preventAutoSelect) {
+        this.selectDate();
+      }
       this.close();
     }
   }
@@ -599,26 +639,26 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
   @action
   onPrevious() {
     if (this.isSelectingDays) {
-      this.manipulateDate('subtract', { month: 1 });
+      this.manipulateDate('subtract', { month: 1 }, this.persistence);
     } else if (this.isSelectingMonths) {
-      this.manipulateDate('subtract', { year: 1 });
+      this.manipulateDate('subtract', { year: 1 }, this.persistence);
     } else if (this.isSelectingYears) {
-      this.manipulateDate('subtract', { year: 10 });
+      this.manipulateDate('subtract', { year: 10 }, this.persistence);
     } else if (this.isSelectingHours || this.isSelectingMinutes) {
-      this.manipulateDate('subtract', { day: 1 });
+      this.manipulateDate('subtract', { day: 1 }, this.persistence);
     }
   }
 
   @action
   onNext() {
     if (this.isSelectingDays) {
-      this.manipulateDate('add', { month: 1 });
+      this.manipulateDate('add', { month: 1 }, this.persistence);
     } else if (this.isSelectingMonths) {
-      this.manipulateDate('add', { year: 1 });
+      this.manipulateDate('add', { year: 1 }, this.persistence);
     } else if (this.isSelectingYears) {
-      this.manipulateDate('add', { year: 10 });
+      this.manipulateDate('add', { year: 10 }, this.persistence);
     } else if (this.isSelectingHours || this.isSelectingMinutes) {
-      this.manipulateDate('add', { day: 1 });
+      this.manipulateDate('add', { day: 1 }, this.persistence);
     }
   }
 
