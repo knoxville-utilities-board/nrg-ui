@@ -3,18 +3,39 @@
     "@nrg-ui/version": {
       "oldVersion": "0.3.2"
     },
+    "@nrg-ui/code-snippets": {
+      "impact": "minor",
+      "oldVersion": "0.0.0",
+      "newVersion": "0.1.0",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./packages/code-snippets/package.json"
+    },
     "@nrg-ui/css": {
       "oldVersion": "0.24.0"
     },
     "@nrg-ui/core": {
-      "impact": "patch",
-      "oldVersion": "0.41.1",
-      "newVersion": "0.41.2",
+      "impact": "minor",
+      "oldVersion": "0.41.2",
+      "newVersion": "0.42.0",
       "tagName": "latest",
       "constraints": [
         {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
@@ -26,5 +47,5 @@
       "oldVersion": "0.3.2"
     }
   },
-  "description": "## Release (2025-08-14)\n\n* @nrg-ui/core 0.41.2 (patch)\n\n#### :memo: Documentation\n* [#565](https://github.com/knoxville-utilities-board/nrg-ui/pull/565) docs(form): Use correct disabled property ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/core`\n  * [#564](https://github.com/knoxville-utilities-board/nrg-ui/pull/564) chore: Upgrade ember-concurrency to v5 ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-09-02)\n\n* @nrg-ui/code-snippets 0.1.0 (minor)\n* @nrg-ui/core 0.42.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#584](https://github.com/knoxville-utilities-board/nrg-ui/pull/584) feat(datetime): Expose onShow and onHide arguments ([@ChesneyJulian](https://github.com/ChesneyJulian))\n* `@nrg-ui/code-snippets`\n  * [#575](https://github.com/knoxville-utilities-board/nrg-ui/pull/575) feat: Trim leading whitespace to match first line ([@TSenter](https://github.com/TSenter))\n  * [#568](https://github.com/knoxville-utilities-board/nrg-ui/pull/568) feat: Add option for root directory ([@TSenter](https://github.com/TSenter))\n  * [#566](https://github.com/knoxville-utilities-board/nrg-ui/pull/566) feat: Create Vite plugin to extract code snippets ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/code-snippets`\n  * [#569](https://github.com/knoxville-utilities-board/nrg-ui/pull/569) fix: Use relative paths when handling updates ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* Other\n  * [#574](https://github.com/knoxville-utilities-board/nrg-ui/pull/574) refactor(ci): Move all code coverage into CI check ([@TSenter](https://github.com/TSenter))\n  * [#572](https://github.com/knoxville-utilities-board/nrg-ui/pull/572) fix(ci): Specify working directory for code coverage ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/code-snippets`\n  * [#571](https://github.com/knoxville-utilities-board/nrg-ui/pull/571) chore(ci): Add code coverage report ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
