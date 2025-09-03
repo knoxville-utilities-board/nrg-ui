@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2025-09-03)
+
+* @nrg-ui/core 0.42.1 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#585](https://github.com/knoxville-utilities-board/nrg-ui/pull/585) fix(datetime): Only run onBlur if isFocused true ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+#### Committers: 1
+- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
 ## Release (2025-09-02)
 
 * @nrg-ui/code-snippets 0.1.0 (minor)
