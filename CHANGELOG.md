@@ -2,6 +2,17 @@
 
 ## Release (2025-09-03)
 
+* @nrg-ui/standards 0.5.3 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/standards`
+  * [#587](https://github.com/knoxville-utilities-board/nrg-ui/pull/587) fix(standards): Specify tsconfigRootDir parser option ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
+## Release (2025-09-03)
+
 * @nrg-ui/core 0.42.1 (patch)
 
 #### :bug: Bug Fix
