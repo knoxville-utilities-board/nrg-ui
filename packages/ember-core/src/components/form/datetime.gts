@@ -134,6 +134,9 @@ export default class Datetime extends BoundValue<DatetimeSignature, Date> {
 
   @action
   onBlur() {
+    if (!this.isFocused) {
+      return;
+    }
     const { inputValue } = this;
     this.isFocused = false;
     if (inputValue) {
