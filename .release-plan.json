@@ -10,9 +10,12 @@
       "oldVersion": "0.24.0"
     },
     "@nrg-ui/core": {
+      "oldVersion": "0.42.1"
+    },
+    "@nrg-ui/standards": {
       "impact": "patch",
-      "oldVersion": "0.42.0",
-      "newVersion": "0.42.1",
+      "oldVersion": "0.5.2",
+      "newVersion": "0.5.3",
       "tagName": "latest",
       "constraints": [
         {
@@ -20,14 +23,11 @@
           "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
-      "pkgJSONPath": "./packages/ember-core/package.json"
-    },
-    "@nrg-ui/standards": {
-      "oldVersion": "0.5.2"
+      "pkgJSONPath": "./packages/standards/package.json"
     },
     "@nrg-ui/theme-generator": {
       "oldVersion": "0.3.2"
     }
   },
-  "description": "## Release (2025-09-03)\n\n* @nrg-ui/core 0.42.1 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#585](https://github.com/knoxville-utilities-board/nrg-ui/pull/585) fix(datetime): Only run onBlur if isFocused true ([@ChesneyJulian](https://github.com/ChesneyJulian))\n\n#### Committers: 1\n- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))\n"
+  "description": "## Release (2025-09-03)\n\n* @nrg-ui/standards 0.5.3 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/standards`\n  * [#587](https://github.com/knoxville-utilities-board/nrg-ui/pull/587) fix(standards): Specify tsconfigRootDir parser option ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
