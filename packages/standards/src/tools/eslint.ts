@@ -1,5 +1,6 @@
 import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
+import { cwd } from 'process';
 
 import logger from '../logging.js';
 import { getDependenciesFromPackage, load } from '../utils.js';
@@ -297,6 +298,9 @@ export class Config {
           files,
           languageOptions: {
             parser: tseslint.parser,
+            parserOptions: {
+              tsconfigRootDir: cwd(),
+            },
           },
           plugins: {
             '@typescript-eslint': tseslint.plugin,
