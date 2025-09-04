@@ -1,33 +1,33 @@
 import { click, render } from '@ember/test-helpers';
-import { MktgFaq } from '@nrg-ui/core';
+import { Accordion } from '@nrg-ui/core';
 import { assert, module, test } from 'qunit';
 
-import { setupRenderingTest } from '../../../helpers';
+import { setupRenderingTest } from '../../helpers';
 
-module('Integration | Component | mktg/faq', function (hooks) {
+module('Integration | Component | Accordion', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('faq renders', async function () {
+  test('accordion renders', async function () {
     await render(
       <template>
-        <MktgFaq class="test" @question="Question">
+        <Accordion class="test" @question="Question">
           <:answer>
             <p>Answer</p>
           </:answer>
-        </MktgFaq>
+        </Accordion>
       </template>,
     );
 
     assert
       .dom('.d-flex.flex-column.p-2.m-2.rounded.test')
-      .exists('FAQ renders with passed attributes');
+      .exists('Accordion renders with passed attributes');
 
     assert
       .dom('div div p')
       .hasText('Question', 'Question parameter renders correct content');
     assert
       .dom('div div button i')
-      .hasClass('bi-plus', 'Icon has correct class when FAQ is closed');
+      .hasClass('bi-plus', 'Icon has correct class when Accordion is closed');
 
     assert
       .dom('div div div:nth-of-type(2) p')
@@ -50,13 +50,15 @@ module('Integration | Component | mktg/faq', function (hooks) {
 
     await render(
       <template>
-        <MktgFaq @defaultOpen={{true}} @question="Question">
+        <Accordion @defaultOpen={{true}} @question="Question">
           <:answer>
             <p>Answer</p>
           </:answer>
-        </MktgFaq>
+        </Accordion>
       </template>,
     );
+
+    await this.pauseTest();
 
     assert
       .dom('div div div:nth-of-type(2)')

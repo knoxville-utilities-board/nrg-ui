@@ -26,6 +26,9 @@
         Components
       </:header>
       <:items as |Item|>
+        <Item @route="components.accordion">
+          Accordion
+        </Item>
         <Item @route="components.button">
           Button
         </Item>
@@ -115,7 +118,7 @@
     </Menu.Group>
     <Menu.Group @route="mktg-components.index">
       <:badge>
-        9
+        8
       </:badge>
       <:header>
         Marketing Components
@@ -126,9 +129,6 @@
         </Item>
         <Item @route="mktg-components.card">
           Card
-        </Item>
-        <Item @route="mktg-components.faq">
-          FAQ
         </Item>
         <Item @route="mktg-components.footer">
           Footer

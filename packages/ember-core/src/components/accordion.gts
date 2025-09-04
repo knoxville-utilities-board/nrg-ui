@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
-export interface MktgFaqSignature {
+export interface AccordionSignature {
   Element: HTMLDivElement;
   Args: {
     question: string;
@@ -14,7 +14,7 @@ export interface MktgFaqSignature {
   };
 }
 
-export default class FaqComponent extends Component<MktgFaqSignature> {
+export default class AccordionComponent extends Component<AccordionSignature> {
   @tracked
   isMenuOpen = this.args.defaultOpen || false;
 

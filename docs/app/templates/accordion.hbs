@@ -1,11 +1,11 @@
-{{page-title "FAQs"}}
+{{page-title "Accordion"}}
 <main data-theme="marketing" class="bg-primary-subtle vh-100 text-primary">
   <div class="container p-5">
     <div class="row">
       <Mktg::SectionHeader
         class="col-12 col-lg-6"
         @title="We're here to answer all of your questions!"
-        @subject="FAQs"
+        @subject="Accordion Component"
       >
         <:subheader>
           <div class="d-flex justify-content-center mb-4">
@@ -19,7 +19,7 @@
         </:subheader>
       </Mktg::SectionHeader>
     </div>
-    <Mktg::Faq @defaultOpen={{true}} @question="How does a FAQ Component work?">
+    <Accordion @defaultOpen={{true}} @question="How does an Accordion Component work?">
       <:answer>
         <p>
           Once you click the icon in the upper right corner, this answer will
@@ -27,34 +27,34 @@
           and voila! Pretty neat!
         </p>
       </:answer>
-    </Mktg::Faq>
-    <Mktg::Faq @question="Question?">
+    </Accordion>
+    <Accordion @question="Question?">
       <:answer>
         <p>
           Answer
         </p>
       </:answer>
-    </Mktg::Faq>
-    <Mktg::Faq @question="Question?">
+    </Accordion>
+    <Accordion @question="Question?">
       <:answer>
         <p>
           Answer
         </p>
       </:answer>
-    </Mktg::Faq>
-    <Mktg::Faq @question="Question?">
+    </Accordion>
+    <Accordion @question="Question?">
       <:answer>
         <p>
           Answer
         </p>
       </:answer>
-    </Mktg::Faq>
-    <Mktg::Faq @question="Question?">
+    </Accordion>
+    <Accordion @question="Question?">
       <:answer>
         <p>
           Answer
         </p>
       </:answer>
-    </Mktg::Faq>
+    </Accordion>
   </div>
 </main>

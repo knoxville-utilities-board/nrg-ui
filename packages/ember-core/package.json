@@ -181,6 +181,7 @@
     "type": "addon",
     "main": "addon-main.cjs",
     "app-js": {
+      "./components/accordion.js": "./dist/_app_/components/accordion.js",
       "./components/alert.js": "./dist/_app_/components/alert.js",
       "./components/app-bar.js": "./dist/_app_/components/app-bar.js",
       "./components/button-group.js": "./dist/_app_/components/button-group.js",
@@ -212,7 +213,6 @@
       "./components/loading-indicator.js": "./dist/_app_/components/loading-indicator.js",
       "./components/mktg/card-container.js": "./dist/_app_/components/mktg/card-container.js",
       "./components/mktg/card.js": "./dist/_app_/components/mktg/card.js",
-      "./components/mktg/faq.js": "./dist/_app_/components/mktg/faq.js",
       "./components/mktg/feature-list.js": "./dist/_app_/components/mktg/feature-list.js",
       "./components/mktg/footer.js": "./dist/_app_/components/mktg/footer.js",
       "./components/mktg/header.js": "./dist/_app_/components/mktg/header.js",
