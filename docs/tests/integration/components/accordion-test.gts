@@ -10,10 +10,10 @@ module('Integration | Component | Accordion', function (hooks) {
   test('accordion renders', async function () {
     await render(
       <template>
-        <Accordion class="test" @question="Question">
-          <:answer>
-            <p>Answer</p>
-          </:answer>
+        <Accordion class="test" @title="Title">
+          <:content>
+            <p>Content</p>
+          </:content>
         </Accordion>
       </template>,
     );
@@ -23,30 +23,25 @@ module('Integration | Component | Accordion', function (hooks) {
       .exists('Accordion renders with passed attributes');
 
     assert
-      .dom('div div p')
-      .hasText('Question', 'Question parameter renders correct content');
+      .dom('div button p')
+      .hasText('Title', 'Title parameter renders correct content');
     assert
       .dom('div div button i')
-      .hasClass('bi-plus', 'Icon has correct class when Accordion is closed');
-
+      .hasClass('bi-caret-left-fill', 'Icon has correct class when Accordion is closed');
     assert
-      .dom('div div div:nth-of-type(2) p')
-      .hasText('Answer', 'Answer parameter renders correct content');
-    assert
-      .dom('div div div:nth-of-type(2)')
-      .hasClass('collapse', 'Div containing answer has collapse class');
-
+      .dom('.rounded div')
+      .hasClass('collapse', 'Div containing content contains collapse class');
     await click('button');
 
     assert
-      .dom('div div div:nth-of-type(2)')
+      .dom('.rounded div')
       .hasClass(
         'show',
         'Div containing answer has show class after clicking button',
       );
     assert
-      .dom('div div button i')
-      .hasClass('bi-dash', 'Icon switches to dash after clicking button');
+      .dom('.rounded button i')
+      .hasClass('bi-caret-down-fill', 'Icon switches to down caret after clicking button');
 
     await render(
       <template>
@@ -58,19 +53,17 @@ module('Integration | Component | Accordion', function (hooks) {
       </template>,
     );
 
-    await this.pauseTest();
-
     assert
-      .dom('div div div:nth-of-type(2)')
+      .dom('.rounded div')
       .hasClass(
         'show',
         'Div containing answer has class show when defaultOpen parameter is true',
       );
     assert
-      .dom('div div button i')
+      .dom('.rounded button i')
       .hasClass(
-        'bi-dash',
-        'Icon starts as dash when defaultOpen parameter is true',
+        'bi-caret-down-fill',
+        'Icon starts as down caret when defaultOpen parameter is true',
       );
   });
 });
