@@ -36,7 +36,7 @@ export default class AccordionComponent extends Component<AccordionSignature> {
   }
 
   get menuIcon() {
-    return this.isMenuOpen ? 'bi-dash' : 'bi-plus';
+    return this.isMenuOpen ? 'bi-caret-down-fill' : 'bi-caret-left-fill';
   }
 
   <template>
