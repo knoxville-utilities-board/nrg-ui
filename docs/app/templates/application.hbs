@@ -118,12 +118,15 @@
     </Menu.Group>
     <Menu.Group @route="mktg-components.index">
       <:badge>
-        8
+        9
       </:badge>
       <:header>
         Marketing Components
       </:header>
       <:items as |Item|>
+      <Item @route="marketing">
+          Example
+        </Item>
         <Item @route="mktg-components.card-container">
           Card Container
         </Item>
