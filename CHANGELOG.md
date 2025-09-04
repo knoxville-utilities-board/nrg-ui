@@ -1,5 +1,15 @@
 # Changelog
 
+## Release (2025-09-04)
+
+
+
+#### :memo: Documentation
+* [#590](https://github.com/knoxville-utilities-board/nrg-ui/pull/590) feat: Make components easily accessible from navigation ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+
+#### Committers: 1
+- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+
 ## Release (2025-09-03)
 
 * @nrg-ui/standards 0.5.3 (patch)
