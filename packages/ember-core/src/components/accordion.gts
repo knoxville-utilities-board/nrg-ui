@@ -6,11 +6,11 @@ import { tracked } from '@glimmer/tracking';
 export interface AccordionSignature {
   Element: HTMLDivElement;
   Args: {
-    question: string;
+    title: string;
     defaultOpen?: boolean;
   };
   Blocks: {
-    answer: [];
+    content: [];
   };
 }
 
@@ -23,8 +23,8 @@ export default class AccordionComponent extends Component<AccordionSignature> {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  get question() {
-    return this.args.question;
+  get title() {
+    return this.args.title;
   }
 
   get classList() {
@@ -48,7 +48,7 @@ export default class AccordionComponent extends Component<AccordionSignature> {
           /></button>
       </div>
       <div class="mx-2 mb-0 mt-2 {{this.classList}}">
-        {{yield to="answer"}}
+        {{yield to="content"}}
       </div>
     </div>
   </template>

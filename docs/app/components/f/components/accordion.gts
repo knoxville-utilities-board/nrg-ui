@@ -13,7 +13,7 @@ export default class AccordionDemo extends Component {
   class = 'border';
 
   @tracked
-  question = 'What is your question?';
+  title = 'Accordion Title';
 
   @action
   update(key: string, value: unknown) {
@@ -28,11 +28,11 @@ export default class AccordionDemo extends Component {
             <Accordion
               class={{this.class}}
               @defaultOpen={{this.defaultOpen}}
-              @question={{this.question}}
+              @title={{this.title}}
             >
-              <:answer>
-                <p>Your answer goes here</p>
-              </:answer>
+              <:content>
+                <p>Your content goes here</p>
+              </:content>
             </Accordion>
           </:example>
           <:api as |Args|>
@@ -49,15 +49,15 @@ export default class AccordionDemo extends Component {
               @hideControls={{true}}
             />
             <Args.String
-              @name="question"
-              @description="The question for each Accordion"
-              @value={{this.question}}
-              @onInput={{fn this.update "question"}}
+              @name="title"
+              @description="The title for each Accordion"
+              @value={{this.title}}
+              @onInput={{fn this.update "title"}}
               @required={{true}}
             />
             <Args.Yield
-              @description="Named yield block to render the answer to the question"
-              @name="answer"
+              @description="Named yield block to render the hidden content"
+              @name="content"
             />
           </:api>
         </FreestyleUsage>
