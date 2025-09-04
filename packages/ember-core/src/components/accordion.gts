@@ -41,9 +41,13 @@ export default class AccordionComponent extends Component<AccordionSignature> {
 
   <template>
     <div class="d-flex flex-column p-2 m-2 rounded" ...attributes>
-      <button class="d-flex justify-content-between align-items-center p-0 border-0 bg-transparent" type="button" {{on "click" this.toggleMenu}}>
+      <button
+        class="d-flex justify-content-between align-items-center p-0 border-0 bg-transparent"
+        type="button"
+        {{on "click" this.toggleMenu}}
+      >
         <p class="fw-bold m-2">{{this.title}}</p>
-        <i class="p {{this.menuIcon}}"/>
+        <i class="p {{this.menuIcon}}" />
       </button>
       <div class="mx-2 mb-0 mt-2 {{this.classList}}">
         {{yield to="content"}}
