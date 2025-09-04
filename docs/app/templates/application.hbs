@@ -113,6 +113,44 @@
         </Item>
       </:items>
     </Menu.Group>
+    <Menu.Group>
+      <:badge>
+        9
+      </:badge>
+      <:header>
+        Marketing Components
+      </:header>
+      <:items as |Item|>
+        <Item @route="mktg-components.card-container">
+          Card Container
+        </Item>
+        <Item @route="mktg-components.card">
+          Card
+        </Item>
+        <Item @route="mktg-components.faq">
+          FAQ
+        </Item>
+        <Item @route="mktg-components.footer">
+          Footer
+        </Item>
+        <Item @route="mktg-components.header">
+          Header
+        </Item>
+        <Item @route="mktg-components.promo-container">
+          Promo Container
+        </Item>
+        <Item @route="mktg-components.promo">
+          Promo
+        </Item>
+        <Item @route="mktg-components.section-header">
+          Section Header
+        </Item>
+        <Item @route="mktg-components.service-pricing">
+          Service Pricing
+        </Item>
+      </:items>
+    </Menu.Group>
+
   </:sidebar>
   <:sidebar-footer as |Item|>
     <Item
