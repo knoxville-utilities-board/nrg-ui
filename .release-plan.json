@@ -13,21 +13,11 @@
       "oldVersion": "0.42.1"
     },
     "@nrg-ui/standards": {
-      "impact": "patch",
-      "oldVersion": "0.5.2",
-      "newVersion": "0.5.3",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
-        }
-      ],
-      "pkgJSONPath": "./packages/standards/package.json"
+      "oldVersion": "0.5.3"
     },
     "@nrg-ui/theme-generator": {
       "oldVersion": "0.3.2"
     }
   },
-  "description": "## Release (2025-09-03)\n\n* @nrg-ui/standards 0.5.3 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/standards`\n  * [#587](https://github.com/knoxville-utilities-board/nrg-ui/pull/587) fix(standards): Specify tsconfigRootDir parser option ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-09-10)\n\n\n\n#### :memo: Documentation\n* [#590](https://github.com/knoxville-utilities-board/nrg-ui/pull/590) feat: Make components easily accessible from navigation ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n\n#### Committers: 1\n- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n"
 }
