@@ -40,13 +40,13 @@
   "devDependencies": {
     "@nrg-ui/standards": "workspace:*",
     "@types/eslint": "^9.6.1",
-    "@types/node": "^22.18.0",
-    "eslint": "^9.34.0",
+    "@types/node": "^22.18.1",
+    "eslint": "^9.35.0",
     "eslint-plugin-decorator-position": "^6.0.0",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-n": "^17.21.3",
     "typescript": "^5.9.2",
-    "typescript-eslint": "^8.41.0",
+    "typescript-eslint": "^8.43.0",
     "vitest": "^3.2.4"
   }
 }
