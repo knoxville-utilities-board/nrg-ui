@@ -82,5 +82,13 @@ module.exports = async function (defaults) {
         },
       },
     },
+    packageRules: [
+      {
+        package: 'ember-table',
+        dependencies: {
+          '@ember/string': '*',
+        },
+      },
+    ],
   });
 };

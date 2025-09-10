@@ -56,6 +56,7 @@ export {
   Container as StackedPaneContainer,
   Pane as StackedPane,
 } from './components/stacked-pane.gts';
+export { default as Table } from './components/table.gts';
 export { default as Toaster } from './components/toaster.gts';
 export { default as Tooltip } from './components/tooltip.gts';
 
@@ -142,6 +143,7 @@ export type {
   ContainerSignature as StackedPaneContainerSignature,
   PaneSignature as StackedPaneSignature,
 } from './components/stacked-pane.gts';
+export type { TableSignature } from './components/table.gts';
 export type { ToasterSignature } from './components/toaster.gts';
 
 export type Binding<Model extends object = Record<string, unknown>> = {
