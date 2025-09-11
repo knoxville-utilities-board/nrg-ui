@@ -18,7 +18,6 @@ export { default as TextInput } from './components/form/text-input.gts';
 /* Components - Marketing */
 export { default as MktgCardContainer } from './components/mktg/card-container.gts';
 export { default as MktgCard } from './components/mktg/card.gts';
-export { default as MktgFaq } from './components/mktg/faq.gts';
 export { default as MktgFeatureList } from './components/mktg/feature-list.gts';
 export { default as MktgFooter } from './components/mktg/footer.gts';
 export { default as MktgHeader } from './components/mktg/header.gts';
@@ -30,6 +29,7 @@ export { default as MktgServicePricing } from './components/mktg/service-pricing
 export { default as MktgWorkflowTray } from './components/mktg/workflow-tray.gts';
 
 /* Components - Core */
+export { default as Accordion } from './components/accordion.gts';
 export { default as Alert } from './components/alert.gts';
 export { default as AppBar } from './components/app-bar.gts';
 export { default as Button } from './components/button.gts';
@@ -96,7 +96,6 @@ export type TextInputSignature = InputFieldSignature<TextInputArgs>;
 /* Types - Components - Marketing */
 export type { MktgCardContainerSignature } from './components/mktg/card-container.gts';
 export type { MktgCardSignature } from './components/mktg/card.gts';
-export type { MktgFaqSignature } from './components/mktg/faq.gts';
 export type {
   MktgFeatureListSignature,
   MktgFeatureSignature,
@@ -114,6 +113,7 @@ export type {
 export type { MktgWorkflowTraySignature } from './components/mktg/workflow-tray.gts';
 
 /* Types - Components - Core */
+export type { AccordionSignature } from './components/accordion.gts';
 export type { AlertSignature } from './components/alert.gts';
 export type { AppBarSignature } from './components/app-bar.gts';
 export type { ButtonGroupSignature } from './components/button-group.gts';

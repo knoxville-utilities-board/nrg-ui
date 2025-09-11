@@ -1,3 +1,4 @@
+import Accordion from './components/accordion.gts';
 import Alert from './components/alert.gts';
 import AppBar from './components/app-bar.gts';
 import ButtonGroup from './components/button-group.gts';
@@ -22,7 +23,6 @@ import Icon from './components/icon.gts';
 import LoadingIndicator from './components/loading-indicator.gts';
 import MktgCardContainer from './components/mktg/card-container.gts';
 import MktgCard from './components/mktg/card.gts';
-import MktgFaq from './components/mktg/faq.gts';
 import MktgFeatureList from './components/mktg/feature-list.gts';
 import MktgFooter from './components/mktg/footer.gts';
 import MktgHeader from './components/mktg/header.gts';
@@ -53,6 +53,7 @@ import OnUpdate from './modifiers/on-update.ts';
 
 export interface ComponentRegistry {
   // Core components
+  Accordion: typeof Accordion;
   Alert: typeof Alert;
   AppBar: typeof AppBar;
   ButtonGroup: typeof ButtonGroup;
@@ -91,7 +92,6 @@ export interface ComponentRegistry {
   // Marketing components
   'Mktg::CardContainer': typeof MktgCardContainer;
   'Mktg::Card': typeof MktgCard;
-  'Mktg::Faq': typeof MktgFaq;
   'Mktg::FeatureList': typeof MktgFeatureList;
   'Mktg::Footer': typeof MktgFooter;
   'Mktg::Header': typeof MktgHeader;

@@ -3,18 +3,18 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
-export interface MktgFaqSignature {
+export interface AccordionSignature {
   Element: HTMLDivElement;
   Args: {
-    question: string;
+    title: string;
     defaultOpen?: boolean;
   };
   Blocks: {
-    answer: [];
+    content: [];
   };
 }
 
-export default class FaqComponent extends Component<MktgFaqSignature> {
+export default class AccordionComponent extends Component<AccordionSignature> {
   @tracked
   isMenuOpen = this.args.defaultOpen || false;
 
@@ -23,8 +23,8 @@ export default class FaqComponent extends Component<MktgFaqSignature> {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  get question() {
-    return this.args.question;
+  get title() {
+    return this.args.title;
   }
 
   get classList() {
@@ -36,19 +36,21 @@ export default class FaqComponent extends Component<MktgFaqSignature> {
   }
 
   get menuIcon() {
-    return this.isMenuOpen ? 'bi-dash' : 'bi-plus';
+    return this.isMenuOpen ? 'bi-caret-down-fill' : 'bi-caret-left-fill';
   }
 
   <template>
     <div class="d-flex flex-column p-2 m-2 rounded" ...attributes>
-      <div class="d-flex justify-content-between align-items-center">
-        <p class="fw-bold m-2">{{this.question}}</p>
-        <button type="button" class="btn" {{on "click" this.toggleMenu}}><i
-            class="h2 {{this.menuIcon}}"
-          /></button>
-      </div>
+      <button
+        class="d-flex justify-content-between align-items-center p-0 border-0 bg-transparent"
+        type="button"
+        {{on "click" this.toggleMenu}}
+      >
+        <p class="fw-bold m-2">{{this.title}}</p>
+        <i class="p {{this.menuIcon}}" />
+      </button>
       <div class="mx-2 mb-0 mt-2 {{this.classList}}">
-        {{yield to="answer"}}
+        {{yield to="content"}}
       </div>
     </div>
   </template>

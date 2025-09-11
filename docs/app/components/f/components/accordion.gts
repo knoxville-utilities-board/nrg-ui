@@ -4,16 +4,16 @@ import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { MktgFaq } from '@nrg-ui/core';
+import { Accordion } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
-export default class FaqDemo extends Component {
+export default class AccordionDemo extends Component {
   @tracked
   class = 'border';
 
   @tracked
-  question = 'What is your question?';
+  title = 'Accordion Title';
 
   @action
   update(key: string, value: unknown) {
@@ -21,43 +21,43 @@ export default class FaqDemo extends Component {
   }
 
   <template>
-    <FreestyleSection @name="FAQ" as |Section|>
+    <FreestyleSection @name="Accordion" as |Section|>
       <Section.subsection @name="Basics">
         <FreestyleUsage>
           <:example>
-            <MktgFaq
+            <Accordion
               class={{this.class}}
               @defaultOpen={{this.defaultOpen}}
-              @question={{this.question}}
+              @title={{this.title}}
             >
-              <:answer>
-                <p>Your answer goes here</p>
-              </:answer>
-            </MktgFaq>
+              <:content>
+                <p>Your content goes here</p>
+              </:content>
+            </Accordion>
           </:example>
           <:api as |Args|>
             <Args.String
               @name="class"
-              @description="The class to apply to the FAQ. Note that this is not an argument but rather a class applied directly to the FAQ."
+              @description="The class to apply to the Accordion. Note that this is not an argument but rather a class applied directly to the Accordion."
               @value={{this.class}}
               @onInput={{fn this.update "class"}}
             />
             <Args.Bool
               @name="defaultOpen"
-              @description="When true, the FAQ will default to being open on render"
+              @description="When true, the Accordion will default to being open on render"
               @defaultValue={{false}}
               @hideControls={{true}}
             />
             <Args.String
-              @name="question"
-              @description="The question for each FAQ"
-              @value={{this.question}}
-              @onInput={{fn this.update "question"}}
+              @name="title"
+              @description="The title for each Accordion"
+              @value={{this.title}}
+              @onInput={{fn this.update "title"}}
               @required={{true}}
             />
             <Args.Yield
-              @description="Named yield block to render the answer to the question"
-              @name="answer"
+              @description="Named yield block to render the hidden content"
+              @name="content"
             />
           </:api>
         </FreestyleUsage>
@@ -68,6 +68,6 @@ export default class FaqDemo extends Component {
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'F::MktgComponents::Faq': typeof FaqDemo;
+    'F::Components::Accordion': typeof AccordionDemo;
   }
 }

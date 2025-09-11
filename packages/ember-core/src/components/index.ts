@@ -1,3 +1,4 @@
+import Accordion from './accordion.gts';
 import Alert from './alert.gts';
 import AppBar from './app-bar.gts';
 import ButtonGroup from './button-group.gts';
@@ -26,7 +27,6 @@ import Icon from './icon.gts';
 import LoadingIndicator from './loading-indicator.gts';
 import MktgCardContainer from './mktg/card-container.gts';
 import MktgCard from './mktg/card.gts';
-import MktgFaq from './mktg/faq.gts';
 import MktgFeatureList from './mktg/feature-list.gts';
 import MktgFooter from './mktg/footer.gts';
 import MktgHeader from './mktg/header.gts';
@@ -67,6 +67,7 @@ export default {
   TextInput,
   Form,
   /* Core */
+  Accordion,
   Alert,
   AppBar,
   Card,
@@ -90,7 +91,6 @@ export default {
   /* Marketing */
   MktgCardContainer,
   MktgCard,
-  MktgFaq,
   MktgFeatureList,
   MktgFooter,
   MktgHeader,
