@@ -152,8 +152,14 @@ async function createNewConfigFile(priorConfig?: Linter.Config[]) {
     ruleSets.set('ts', null);
   }
 
-  if (hasDependency('ember-template-imports')) {
-    logger.debug('Found ember-template-lint, adding .gjs rule sets');
+  const hasTemplateImports = hasDependency('ember-template-imports');
+  const hasVite = hasDependency('vite');
+  if (hasTemplateImports || hasVite) {
+    if (hasTemplateImports) {
+      logger.debug('Found ember-template-imports, adding .gjs rule sets');
+    } else if (hasVite) {
+      logger.debug('Found Vite, adding .gjs rule sets');
+    }
 
     ruleSets.set('gjs', null);
 
