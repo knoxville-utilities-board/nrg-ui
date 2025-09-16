@@ -516,14 +516,33 @@ importers:
         specifier: ^9.5.3
         version: 9.6.0
       find-up:
-        specifier: ^7.0.0
-        version: 7.0.0
+        specifier: ^8.0.0
+        version: 8.0.0
       semver:
         specifier: ^7.7.2
         version: 7.7.2
       yargs:
         specifier: ^18.0.0
         version: 18.0.0
+    optionalDependencies:
+      eslint-plugin-decorator-position:
+        specifier: ^6.0.0
+        version: 6.0.0(@babel/eslint-parser@7.28.0(@babel/core@7.28.4)(eslint@9.35.0))(eslint@9.35.0)
+      eslint-plugin-ember:
+        specifier: ^12.7.4
+        version: 12.7.4(@babel/core@7.28.4)(@typescript-eslint/parser@8.44.0(eslint@9.35.0)(typescript@5.9.2))(eslint@9.35.0)(typescript@5.9.2)
+      eslint-plugin-import:
+        specifier: ^2.32.0
+        version: 2.32.0(@typescript-eslint/parser@8.44.0(eslint@9.35.0)(typescript@5.9.2))(eslint-import-resolver-webpack@0.13.10)(eslint@9.35.0)
+      eslint-plugin-n:
+        specifier: ^17.23.0
+        version: 17.23.0(eslint@9.35.0)(typescript@5.9.2)
+      eslint-plugin-qunit:
+        specifier: 8.2.5
+        version: 8.2.5(eslint@9.35.0)
+      typescript-eslint:
+        specifier: ^8.44.0
+        version: 8.44.0(eslint@9.35.0)(typescript@5.9.2)
     devDependencies:
       '@types/eslint':
         specifier: ^9.6.1
@@ -546,25 +565,6 @@ importers:
       typescript:
         specifier: ^5.9.2
         version: 5.9.2
-    optionalDependencies:
-      eslint-plugin-decorator-position:
-        specifier: ^6.0.0
-        version: 6.0.0(@babel/eslint-parser@7.28.0(@babel/core@7.28.4)(eslint@9.35.0))(eslint@9.35.0)
-      eslint-plugin-ember:
-        specifier: ^12.7.4
-        version: 12.7.4(@babel/core@7.28.4)(@typescript-eslint/parser@8.44.0(eslint@9.35.0)(typescript@5.9.2))(eslint@9.35.0)(typescript@5.9.2)
-      eslint-plugin-import:
-        specifier: ^2.32.0
-        version: 2.32.0(@typescript-eslint/parser@8.44.0(eslint@9.35.0)(typescript@5.9.2))(eslint-import-resolver-webpack@0.13.10)(eslint@9.35.0)
-      eslint-plugin-n:
-        specifier: ^17.23.0
-        version: 17.23.0(eslint@9.35.0)(typescript@5.9.2)
-      eslint-plugin-qunit:
-        specifier: 8.2.5
-        version: 8.2.5(eslint@9.35.0)
-      typescript-eslint:
-        specifier: ^8.44.0
-        version: 8.44.0(eslint@9.35.0)(typescript@5.9.2)
 
   packages/theme-generator:
     dependencies:
@@ -4549,6 +4549,10 @@ packages:
     resolution: {integrity: sha512-YyZM99iHrqLKjmt4LJDj58KI+fYyufRLBSYcqycxf//KpBk9FoewoGX0450m9nB44qrZnovzC2oeP5hUibxc/g==}
     engines: {node: '>=18'}
 
+  find-up@8.0.0:
+    resolution: {integrity: sha512-JGG8pvDi2C+JxidYdIwQDyS/CgcrIdh18cvgxcBge3wSHRQOrooMD3GlFBcmMJAN9M42SAZjDp5zv1dglJjwww==}
+    engines: {node: '>=20'}
+
   find-yarn-workspace-root@2.0.0:
     resolution: {integrity: sha512-1IMnbjt4KzsQfnhnzNd8wUEgXZ44IzZaZmnLYx7D5FZlaHt2gW20Cri8Q+E/t5tIj4+epTBub+2Zxu/vNILzqQ==}
 
@@ -5520,6 +5524,10 @@ packages:
   locate-path@7.2.0:
     resolution: {integrity: sha512-gvVijfZvn7R+2qyPX8mAuKcFGDf6Nc61GdvGafQsHL0sBIxfKzA+usWn4GFC/bk+QdwPUD4kWFJLhElipq+0VA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
+  locate-path@8.0.0:
+    resolution: {integrity: sha512-XT9ewWAC43tiAV7xDAPflMkG0qOPn2QjHqlgX8FOqmWa/rxnyYDulF9T0F7tRy1u+TVTmK/M//6VIOye+2zDXg==}
+    engines: {node: '>=20'}
 
   lodash._baseflatten@3.1.4:
     resolution: {integrity: sha512-fESngZd+X4k+GbTxdMutf8ohQa0s3sJEHIcwtu4/LsIQ2JTDzdRxDCMQjW+ezzwRitLmHnacVVmosCbxifefbw==}
@@ -7819,8 +7827,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  yocto-queue@1.1.1:
-    resolution: {integrity: sha512-b4JR1PFR10y1mKjhHY9LaGo6tmrgjit7hxVIeAmyMw3jegXR4dhYqLaQF5zMXZxY7tLpMyJeLjr1C4rLmkVe8g==}
+  yocto-queue@1.2.1:
+    resolution: {integrity: sha512-AyeEbWOu/TAXdxlV9wmGcR0+yh2j3vYPGOECcIj2S7MkrLyC7ne+oye2BKTItt0ii2PHk4cDy+95+LshzbXnGg==}
     engines: {node: '>=12.20'}
 
   yoctocolors-cjs@2.1.2:
@@ -13226,6 +13234,11 @@ snapshots:
       path-exists: 5.0.0
       unicorn-magic: 0.1.0
 
+  find-up@8.0.0:
+    dependencies:
+      locate-path: 8.0.0
+      unicorn-magic: 0.3.0
+
   find-yarn-workspace-root@2.0.0:
     dependencies:
       micromatch: 4.0.8
@@ -14353,6 +14366,10 @@ snapshots:
     dependencies:
       p-locate: 6.0.0
 
+  locate-path@8.0.0:
+    dependencies:
+      p-locate: 6.0.0
+
   lodash._baseflatten@3.1.4:
     dependencies:
       lodash.isarguments: 3.1.0
@@ -14934,7 +14951,7 @@ snapshots:
 
   p-limit@4.0.0:
     dependencies:
-      yocto-queue: 1.1.1
+      yocto-queue: 1.2.1
 
   p-locate@2.0.0:
     dependencies:
@@ -16915,7 +16932,7 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  yocto-queue@1.1.1: {}
+  yocto-queue@1.2.1: {}
 
   yoctocolors-cjs@2.1.2: {}
 
