@@ -529,8 +529,8 @@ importers:
         specifier: ^22.18.4
         version: 22.18.4
       '@types/semver':
-        specifier: ^7.7.0
-        version: 7.7.0
+        specifier: ^7.7.1
+        version: 7.7.1
       '@types/yargs':
         specifier: ^17.0.33
         version: 17.0.33
@@ -2464,8 +2464,8 @@ packages:
   '@types/rimraf@2.0.5':
     resolution: {integrity: sha512-YyP+VfeaqAyFmXoTh3HChxOQMyjByRMsHU7kc5KOJkSlXudhMhQIALbYV7rHh/l8d2lX3VUQzprrcAgWdRuU8g==}
 
-  '@types/semver@7.7.0':
-    resolution: {integrity: sha512-k107IF4+Xr7UHjwDc7Cfd6PRQfbdkiRabXGRjo07b4WyPahFBZCZ1sE+BNxYIJPPg73UkfOsVOLwqVc/6ETrIA==}
+  '@types/semver@7.7.1':
+    resolution: {integrity: sha512-FmgJfu+MOcQ370SD0ev7EI8TlCAfKYU+B4m5T3yXc1CiRN94g/SZPtsCkk506aUDtlMnFZvasDwHHUcZUEaYuA==}
 
   '@types/send@0.17.5':
     resolution: {integrity: sha512-z6F2D3cOStZvuk2SaP6YrwkNO65iTZcwA2ZkSABegdkAh/lf+Aa/YQndZVfmEXT5vgAp6zv06VQ3ejSVjAny4w==}
@@ -10260,7 +10260,7 @@ snapshots:
       '@types/glob': 8.1.0
       '@types/node': 22.18.4
 
-  '@types/semver@7.7.0': {}
+  '@types/semver@7.7.1': {}
 
   '@types/send@0.17.5':
     dependencies:
