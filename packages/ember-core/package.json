@@ -118,7 +118,7 @@
   "devDependencies": {
     "@babel/core": "^7.28.4",
     "@babel/plugin-transform-typescript": "^7.28.0",
-    "@babel/runtime": "^7.28.3",
+    "@babel/runtime": "7.28.4",
     "@bertdeblock/gember": "^1.1.0",
     "@embroider/addon-dev": "^8.1.0",
     "@glimmer/component": "^2.0.0",

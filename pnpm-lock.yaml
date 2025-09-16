@@ -396,8 +396,8 @@ importers:
         specifier: ^7.28.0
         version: 7.28.0(@babel/core@7.28.4)
       '@babel/runtime':
-        specifier: ^7.26.10 || ^8.0.0
-        version: 7.28.3
+        specifier: 7.28.4
+        version: 7.28.4
       '@bertdeblock/gember':
         specifier: ^1.1.0
         version: 1.1.0
@@ -1167,8 +1167,8 @@ packages:
     resolution: {integrity: sha512-KHp2IflsnGywDjBWDkR9iEqiWSpc8GIi0lgTT3mOElT0PP1tG26P4tmFI2YvAdzgq9RGyoHZQEIEdZy6Ec5xCA==}
     engines: {node: '>=6.9.0'}
 
-  '@babel/runtime@7.28.3':
-    resolution: {integrity: sha512-9uIQ10o0WGdpP6GDhXcdOJPJuDgFtIDtN/9+ArJQ2NAfAmiuhTQdzkaTGR33v43GYS2UrSA0eX2pPPHoFVvpxA==}
+  '@babel/runtime@7.28.4':
+    resolution: {integrity: sha512-Q/N6JNWvIvPnLDvjlE1OUBLPQHH6l3CltCEsHIujp45zQUSSh8K+gHnaEX45yAT1nyngnINhvWtzN+Nb9D8RAQ==}
     engines: {node: '>=6.9.0'}
 
   '@babel/template@7.27.2':
@@ -8796,7 +8796,7 @@ snapshots:
 
   '@babel/runtime@7.28.2': {}
 
-  '@babel/runtime@7.28.3': {}
+  '@babel/runtime@7.28.4': {}
 
   '@babel/template@7.27.2':
     dependencies:
@@ -12012,7 +12012,7 @@ snapshots:
       '@babel/plugin-transform-typescript': 7.28.0(@babel/core@7.28.4)
       '@babel/polyfill': 7.12.1
       '@babel/preset-env': 7.28.0(@babel/core@7.28.4)(supports-color@8.1.1)
-      '@babel/runtime': 7.28.3
+      '@babel/runtime': 7.28.4
       amd-name-resolver: 1.3.1
       babel-plugin-debug-macros: 0.3.4(@babel/core@7.28.4)
       babel-plugin-ember-data-packages-polyfill: 0.1.2
@@ -14373,7 +14373,7 @@ snapshots:
 
   is-language-code@3.1.0:
     dependencies:
-      '@babel/runtime': 7.28.3
+      '@babel/runtime': 7.28.4
 
   is-map@2.0.3: {}
 
