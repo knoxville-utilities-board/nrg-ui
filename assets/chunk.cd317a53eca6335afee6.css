@@ -14994,11 +14994,11 @@ input::placeholder {
 }
 
 /* Datetime calendar */
-.calendar {
-  cursor: unset;
-}
 div[role=dialog]:has(> .calendar) {
   z-index: 1080;
+}
+.calendar {
+  cursor: unset;
 }
 .calendar > thead > .header :hover {
   background-color: var(--bs-secondary-bg);
