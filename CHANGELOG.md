@@ -2,6 +2,22 @@
 
 ## Release (2025-09-17)
 
+* @nrg-ui/version 0.3.4 (patch)
+* @nrg-ui/code-snippets 0.1.2 (patch)
+* @nrg-ui/css 0.24.2 (patch)
+* @nrg-ui/core 0.42.3 (patch)
+* @nrg-ui/standards 0.5.5 (patch)
+* @nrg-ui/theme-generator 0.3.4 (patch)
+
+#### :house: Internal
+* `@nrg-ui/version`, `@nrg-ui/code-snippets`, `@nrg-ui/css`, `@nrg-ui/core`, `@nrg-ui/standards`, `@nrg-ui/theme-generator`
+  * [#604](https://github.com/knoxville-utilities-board/nrg-ui/pull/604) fix(ci): Publish all packages as public ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
+## Release (2025-09-17)
+
 * @nrg-ui/version 0.3.3 (patch)
 * @nrg-ui/code-snippets 0.1.1 (patch)
 * @nrg-ui/css 0.24.1 (patch)
