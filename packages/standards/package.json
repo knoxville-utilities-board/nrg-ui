@@ -1,6 +1,6 @@
 {
   "name": "@nrg-ui/standards",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Composable standards for NRG UI packages",
   "keywords": [
     "eslint",

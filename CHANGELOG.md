@@ -1,5 +1,29 @@
 # Changelog
 
+## Release (2025-09-17)
+
+* @nrg-ui/version 0.3.3 (patch)
+* @nrg-ui/code-snippets 0.1.1 (patch)
+* @nrg-ui/css 0.24.1 (patch)
+* @nrg-ui/core 0.42.2 (patch)
+* @nrg-ui/standards 0.5.4 (patch)
+* @nrg-ui/theme-generator 0.3.3 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/standards`
+  * [#601](https://github.com/knoxville-utilities-board/nrg-ui/pull/601) fix(standards): Qunit plugin and template tags with migration ([@TSenter](https://github.com/TSenter))
+
+#### :memo: Documentation
+* [#590](https://github.com/knoxville-utilities-board/nrg-ui/pull/590) feat: Make components easily accessible from navigation ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+
+#### :house: Internal
+* `@nrg-ui/version`, `@nrg-ui/code-snippets`, `@nrg-ui/css`, `@nrg-ui/core`, `@nrg-ui/standards`, `@nrg-ui/theme-generator`
+  * [#602](https://github.com/knoxville-utilities-board/nrg-ui/pull/602) chore(deps): Bump the version group with 15 updates ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-09-03)
 
 * @nrg-ui/standards 0.5.3 (patch)
