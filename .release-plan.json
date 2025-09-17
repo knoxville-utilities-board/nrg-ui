@@ -1,33 +1,87 @@
 {
   "solution": {
     "@nrg-ui/version": {
-      "oldVersion": "0.3.2"
+      "impact": "patch",
+      "oldVersion": "0.3.2",
+      "newVersion": "0.3.3",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./packages/app-version/package.json"
     },
     "@nrg-ui/code-snippets": {
-      "oldVersion": "0.1.0"
+      "impact": "patch",
+      "oldVersion": "0.1.0",
+      "newVersion": "0.1.1",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./packages/code-snippets/package.json"
     },
     "@nrg-ui/css": {
-      "oldVersion": "0.24.0"
+      "impact": "patch",
+      "oldVersion": "0.24.0",
+      "newVersion": "0.24.1",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./packages/design-system/package.json"
     },
     "@nrg-ui/core": {
-      "oldVersion": "0.42.1"
+      "impact": "patch",
+      "oldVersion": "0.42.1",
+      "newVersion": "0.42.2",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./packages/ember-core/package.json"
     },
     "@nrg-ui/standards": {
       "impact": "patch",
-      "oldVersion": "0.5.2",
-      "newVersion": "0.5.3",
+      "oldVersion": "0.5.3",
+      "newVersion": "0.5.4",
       "tagName": "latest",
       "constraints": [
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./packages/standards/package.json"
     },
     "@nrg-ui/theme-generator": {
-      "oldVersion": "0.3.2"
+      "impact": "patch",
+      "oldVersion": "0.3.2",
+      "newVersion": "0.3.3",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./packages/theme-generator/package.json"
     }
   },
-  "description": "## Release (2025-09-03)\n\n* @nrg-ui/standards 0.5.3 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/standards`\n  * [#587](https://github.com/knoxville-utilities-board/nrg-ui/pull/587) fix(standards): Specify tsconfigRootDir parser option ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-09-17)\n\n* @nrg-ui/version 0.3.3 (patch)\n* @nrg-ui/code-snippets 0.1.1 (patch)\n* @nrg-ui/css 0.24.1 (patch)\n* @nrg-ui/core 0.42.2 (patch)\n* @nrg-ui/standards 0.5.4 (patch)\n* @nrg-ui/theme-generator 0.3.3 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/standards`\n  * [#601](https://github.com/knoxville-utilities-board/nrg-ui/pull/601) fix(standards): Qunit plugin and template tags with migration ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* [#590](https://github.com/knoxville-utilities-board/nrg-ui/pull/590) feat: Make components easily accessible from navigation ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n\n#### :house: Internal\n* `@nrg-ui/version`, `@nrg-ui/code-snippets`, `@nrg-ui/css`, `@nrg-ui/core`, `@nrg-ui/standards`, `@nrg-ui/theme-generator`\n  * [#602](https://github.com/knoxville-utilities-board/nrg-ui/pull/602) chore(deps): Bump the version group with 15 updates ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
