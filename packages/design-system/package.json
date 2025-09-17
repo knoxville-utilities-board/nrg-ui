@@ -45,5 +45,9 @@
   },
   "dependencies": {
     "prettier": "^3.6.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   }
 }
