@@ -39,7 +39,6 @@ export default class ThemeService extends Service {
 
   @action
   setTheme(theme: Theme) {
-    this.value = theme;
     localStorage.setItem('nrg-theme', theme);
 
     let resolvedTheme = theme;
@@ -48,6 +47,12 @@ export default class ThemeService extends Service {
         ? 'dark'
         : 'light';
     }
+
+    if (this.resolvedTheme === resolvedTheme && this.value === theme) {
+      return;
+    }
+
+    this.value = theme;
     this.resolvedTheme = resolvedTheme as Exclude<Theme, 'auto'>;
 
     document.body.setAttribute('data-bs-theme', resolvedTheme);
