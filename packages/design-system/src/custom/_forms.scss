@@ -32,9 +32,10 @@ select,
       display: none;
     }
   }
+
   &:not([disabled]) {
-    &:not(input[type="checkbox"]):not(input[type="radio"]):not(button) {
-      background: inherit !important;
+    &:not(input[type="checkbox"]):not(input[type="radio"]) {
+      background-image: inherit !important;
       padding-right: revert !important;
     }
 
