@@ -2,25 +2,25 @@ import { action } from '@ember/object';
 import Service from '@ember/service';
 import { tracked } from 'tracked-built-ins';
 
-import type { Theme } from '../';
+import type { IconType, Theme } from '../';
 
-export const THEME_ICONS = {
-  dark: 'bi-moon-stars-fill',
+export const themeIcons = {
   light: 'bi-sun-fill',
+  dark: 'bi-moon-stars-fill',
   auto: 'bi-circle-half',
-} as const;
+} as const as Record<Theme, IconType>;
 
 export default class ThemeService extends Service {
   @tracked
-  theme!: Theme;
+  declare value: Theme;
 
   @tracked
-  preferredTheme!: 'light' | 'dark';
+  declare resolvedTheme: Exclude<Theme, 'auto'>;
 
   loaded: boolean = false;
 
   get icon() {
-    return THEME_ICONS[this.theme];
+    return themeIcons[this.value];
   }
 
   load() {
@@ -39,26 +39,18 @@ export default class ThemeService extends Service {
 
   @action
   setTheme(theme: Theme) {
-    this.theme = theme;
+    this.value = theme;
     localStorage.setItem('nrg-theme', theme);
 
-    let preferredTheme = theme;
-    if (preferredTheme === 'auto') {
-      preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+    let resolvedTheme = theme;
+    if (theme === 'auto') {
+      resolvedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
         ? 'dark'
         : 'light';
     }
-    this.preferredTheme = preferredTheme;
+    this.resolvedTheme = resolvedTheme as Exclude<Theme, 'auto'>;
 
-    document.body.setAttribute('data-bs-theme', preferredTheme);
-  }
-
-  @action
-  cycle() {
-    const preferredTheme = this.preferredTheme;
-    const newTheme = preferredTheme === 'dark' ? 'light' : 'dark';
-
-    this.setTheme(newTheme);
+    document.body.setAttribute('data-bs-theme', resolvedTheme);
   }
 }
 
