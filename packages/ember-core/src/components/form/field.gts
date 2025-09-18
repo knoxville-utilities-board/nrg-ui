@@ -315,11 +315,11 @@ export default class Field extends Component<FieldSignature> {
       }}
     {{/let}}
     {{#if this.hasError}}
-      <div class="invalid-feedback" id={{this.describedBy}}>
+      <div class="invalid-feedback" id={{this.messageId}}>
         {{this.errorMessage}}
       </div>
     {{else if this.hasWarning}}
-      <div class="warning-feedback" id={{this.describedBy}}>
+      <div class="warning-feedback" id={{this.messageId}}>
         {{this.warningMessage}}
       </div>
     {{/if}}
