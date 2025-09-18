@@ -3,6 +3,7 @@ import Service from '@ember/service';
 import { tracked } from 'tracked-built-ins';
 
 import type { IconType, Theme } from '../';
+import type Owner from '@ember/owner';
 
 export const themeIcons = {
   light: 'bi-sun-fill',
@@ -10,12 +11,32 @@ export const themeIcons = {
   auto: 'bi-circle-half',
 } as const as Record<Theme, IconType>;
 
+type OwnerLike = {
+  application: {
+    modulePrefix: string;
+  };
+};
+
 export default class ThemeService extends Service {
   @tracked
   declare value: Theme;
 
   @tracked
   declare resolvedTheme: Exclude<Theme, 'auto'>;
+
+  declare modulePrefix: string;
+
+  constructor(owner: Owner) {
+    super(owner);
+
+    this.modulePrefix = (
+      owner as unknown as OwnerLike
+    ).application.modulePrefix;
+  }
+
+  get storageKey() {
+    return (this.modulePrefix ? this.modulePrefix + '.' : '') + 'nrg-theme';
+  }
 
   loaded: boolean = false;
 
@@ -33,13 +54,13 @@ export default class ThemeService extends Service {
   }
 
   loadTheme(): Theme {
-    const theme = localStorage.getItem('nrg-theme') as Theme | null;
+    const theme = localStorage.getItem(this.storageKey) as Theme | null;
     return theme ?? 'auto';
   }
 
   @action
   setTheme(theme: Theme) {
-    localStorage.setItem('nrg-theme', theme);
+    localStorage.setItem(this.storageKey, theme);
 
     let resolvedTheme = theme;
     if (theme === 'auto') {
