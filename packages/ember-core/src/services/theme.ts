@@ -82,6 +82,6 @@ export default class ThemeService extends Service {
 
 declare module '@ember/service' {
   interface Registry {
-    theme: Theme;
+    theme: ThemeService;
   }
 }
