@@ -35,7 +35,9 @@ export default class ThemeService extends Service {
   }
 
   get storageKey() {
-    return (this.modulePrefix ? this.modulePrefix + '.' : '') + 'nrg-theme';
+    return (
+      'nrg.' + (this.modulePrefix ? this.modulePrefix + '.' : '') + 'theme'
+    );
   }
 
   loaded: boolean = false;
