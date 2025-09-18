@@ -1,5 +1,23 @@
 # Changelog
 
+## Release (2025-09-18)
+
+* @nrg-ui/css 0.24.3 (patch)
+* @nrg-ui/core 0.42.4 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`
+  * [#609](https://github.com/knoxville-utilities-board/nrg-ui/pull/609) fix(select): Hide invalid icon ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`
+  * [#608](https://github.com/knoxville-utilities-board/nrg-ui/pull/608) fix(field): Use correct ID for feedback ([@TSenter](https://github.com/TSenter))
+  * [#607](https://github.com/knoxville-utilities-board/nrg-ui/pull/607) fix(checkbox-group): Don't use same ID for all items ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* [#610](https://github.com/knoxville-utilities-board/nrg-ui/pull/610) chore(dependabot): Run on Sunday to spread run load ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-09-17)
 
 * @nrg-ui/version 0.3.4 (patch)
