@@ -1,83 +1,43 @@
 {
   "solution": {
     "@nrg-ui/version": {
-      "impact": "patch",
-      "oldVersion": "0.3.3",
-      "newVersion": "0.3.4",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./packages/app-version/package.json"
+      "oldVersion": "0.3.4"
     },
     "@nrg-ui/code-snippets": {
-      "impact": "patch",
-      "oldVersion": "0.1.1",
-      "newVersion": "0.1.2",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./packages/code-snippets/package.json"
+      "oldVersion": "0.1.2"
     },
     "@nrg-ui/css": {
       "impact": "patch",
-      "oldVersion": "0.24.1",
-      "newVersion": "0.24.2",
+      "oldVersion": "0.24.2",
+      "newVersion": "0.24.3",
       "tagName": "latest",
       "constraints": [
         {
           "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./packages/design-system/package.json"
     },
     "@nrg-ui/core": {
       "impact": "patch",
-      "oldVersion": "0.42.2",
-      "newVersion": "0.42.3",
+      "oldVersion": "0.42.3",
+      "newVersion": "0.42.4",
       "tagName": "latest",
       "constraints": [
         {
           "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
     },
     "@nrg-ui/standards": {
-      "impact": "patch",
-      "oldVersion": "0.5.4",
-      "newVersion": "0.5.5",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./packages/standards/package.json"
+      "oldVersion": "0.5.5"
     },
     "@nrg-ui/theme-generator": {
-      "impact": "patch",
-      "oldVersion": "0.3.3",
-      "newVersion": "0.3.4",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./packages/theme-generator/package.json"
+      "oldVersion": "0.3.4"
     }
   },
-  "description": "## Release (2025-09-17)\n\n* @nrg-ui/version 0.3.4 (patch)\n* @nrg-ui/code-snippets 0.1.2 (patch)\n* @nrg-ui/css 0.24.2 (patch)\n* @nrg-ui/core 0.42.3 (patch)\n* @nrg-ui/standards 0.5.5 (patch)\n* @nrg-ui/theme-generator 0.3.4 (patch)\n\n#### :house: Internal\n* `@nrg-ui/version`, `@nrg-ui/code-snippets`, `@nrg-ui/css`, `@nrg-ui/core`, `@nrg-ui/standards`, `@nrg-ui/theme-generator`\n  * [#604](https://github.com/knoxville-utilities-board/nrg-ui/pull/604) fix(ci): Publish all packages as public ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-09-18)\n\n* @nrg-ui/css 0.24.3 (patch)\n* @nrg-ui/core 0.42.4 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`\n  * [#609](https://github.com/knoxville-utilities-board/nrg-ui/pull/609) fix(select): Hide invalid icon ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/core`\n  * [#608](https://github.com/knoxville-utilities-board/nrg-ui/pull/608) fix(field): Use correct ID for feedback ([@TSenter](https://github.com/TSenter))\n  * [#607](https://github.com/knoxville-utilities-board/nrg-ui/pull/607) fix(checkbox-group): Don't use same ID for all items ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* [#610](https://github.com/knoxville-utilities-board/nrg-ui/pull/610) chore(dependabot): Run on Sunday to spread run load ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
