@@ -86,7 +86,6 @@ export default class CheckboxGroup extends Component<CheckboxGroupSignature> {
           fieldOptions=(hash
             describedBy=@fieldOptions.describedBy
             disabled=@fieldOptions.disabled
-            id=@fieldOptions.id
             isInvalid=@fieldOptions.isInvalid
             isWarning=@fieldOptions.isWarning
             required=@fieldOptions.required
