@@ -14926,11 +14926,11 @@ select[disabled] ~ .warning-feedback,
 .form-control[disabled] ~ .warning-feedback {
   display: none;
 }
-input:not([disabled]):not(input[type=checkbox]):not(input[type=radio]):not(button),
-textarea:not([disabled]):not(input[type=checkbox]):not(input[type=radio]):not(button),
-select:not([disabled]):not(input[type=checkbox]):not(input[type=radio]):not(button),
-.form-control:not([disabled]):not(input[type=checkbox]):not(input[type=radio]):not(button) {
-  background: inherit !important;
+input:not([disabled]):not(input[type=checkbox]):not(input[type=radio]),
+textarea:not([disabled]):not(input[type=checkbox]):not(input[type=radio]),
+select:not([disabled]):not(input[type=checkbox]):not(input[type=radio]),
+.form-control:not([disabled]):not(input[type=checkbox]):not(input[type=radio]) {
+  background-image: inherit !important;
   padding-right: revert !important;
 }
 input:not([disabled]) ~ .warning-feedback,
