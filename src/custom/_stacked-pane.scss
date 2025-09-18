@@ -1,0 +1,57 @@
+.stacked-pane-container {
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row-reverse nowrap;
+  overflow-x: hidden;
+  direction: rtl;
+  width: 100%;
+  height: 100%;
+  flex: 1 0 0;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  &.container {
+    border-right: calc(var(--bs-gutter-x) * 0.5) solid transparent;
+    border-left: calc(var(--bs-gutter-x) * 0.5) solid transparent;
+  }
+}
+
+.stacked-pane {
+  height: 100%;
+  overflow-y: auto;
+  direction: ltr;
+
+  &.focused {
+    @extend .col-12;
+    @extend .col-md-6;
+    @extend .col-lg-4;
+
+    &:last-of-type {
+      @extend .col-lg-8;
+    }
+  }
+
+  &.half {
+    @extend .col-12;
+    @extend .col-md-6;
+  }
+
+  &.full {
+    @extend .col-12;
+  }
+
+  .pagination-container {
+    container-type: inline-size;
+    container-name: pagination;
+  }
+  @container pagination (max-width: 275px) {
+    .pagination-container {
+      > p {
+        display: none;
+      }
+      li:not(.page-previous):not(.page-next) {
+        display: none;
+      }
+    }
+  }
+}
