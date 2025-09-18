@@ -28,7 +28,7 @@ export default class ApplicationRoute extends Route {
     await this.freestyle.ensureHljs();
     await this.freestyle.ensureHljsLanguage('typescript');
 
-    const displayTheme = syntaxThemes[this.theme.preferredTheme];
+    const displayTheme = syntaxThemes[this.theme.resolvedTheme];
     this.freestyle.ensureHljsTheme(displayTheme);
     this.freestyle.defaultTheme = displayTheme;
 

@@ -11,11 +11,10 @@ import { and, or } from 'ember-truth-helpers';
 import AppBar from './app-bar.gts';
 import ContextMenu, { ContextMenuItem } from './context-menu.gts';
 import Footer from './footer.gts';
-import Checkbox from './form/checkbox.gts';
 import Modal from './modal.gts';
 import Sidebar from './sidebar.gts';
+import ThemeControl from './theme-control.gts';
 import Toaster from './toaster.gts';
-import { bind } from '../helpers/bind.ts';
 import version from '../helpers/version.ts';
 
 import type { AppBarBlock } from './app-bar.gts';
@@ -105,11 +104,11 @@ export default class Scaffold extends Component<ScaffoldSignature> {
   }
 
   get isDark() {
-    return this.theme.theme === 'dark';
+    return this.theme.value === 'dark';
   }
 
   set isDark(value: boolean) {
-    this.theme.theme = value ? 'dark' : 'light';
+    this.theme.value = value ? 'dark' : 'light';
   }
 
   toggleSidebar = () => {
@@ -153,30 +152,14 @@ export default class Scaffold extends Component<ScaffoldSignature> {
 
             {{#if this.allowThemes}}
               <ContextMenuItem
-                class="d-flex justify-content-between align-items-center theme-switcher"
+                class="d-flex justify-content-center align-items-center theme-switcher py-2"
                 @bottom={{false}}
                 @closeOnSelect={{false}}
                 @menuId="application"
-                @onSelect={{this.theme.cycle}}
               >
-                <span>
-                  <i class="bi-sun-fill" title={{t "nrg.base.theme.light"}} />
-                </span>
-                <span>
-                  <Checkbox
-                    @binding={{bind this.self "isDark"}}
-                    @type="switch"
-                  />
-                </span>
-                <span>
-                  <i
-                    class="bi-moon-stars-fill"
-                    title={{t "nrg.base.theme.dark"}}
-                  />
-                </span>
+                <ThemeControl />
               </ContextMenuItem>
               <ContextMenuItem @menuId="application" @divider={{true}} />
-
             {{/if}}
 
             <ContextMenu class="pe-2" @flip={{true}} @id="application">

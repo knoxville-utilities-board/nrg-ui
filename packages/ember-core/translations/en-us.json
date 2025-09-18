@@ -13,8 +13,10 @@
       "previous": "Previous",
       "clear": "Clear",
       "theme": {
+        "auto": "Auto",
         "dark": "Dark mode",
-        "light": "Light mode"
+        "light": "Light mode",
+        "label": "Theme"
       },
       "remove": "Remove"
     },
