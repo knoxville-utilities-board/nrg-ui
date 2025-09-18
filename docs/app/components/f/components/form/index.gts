@@ -9,7 +9,7 @@ import { Button, Form, bind } from '@nrg-ui/core';
 import { validator } from '@nrg-ui/core/validation';
 import dayjs from 'dayjs';
 import { tracked as autoTrack } from 'tracked-built-ins';
-
+import { hash } from '@ember/helper';
 import CodeBlock from '../../../code-block';
 
 const Validators = {
@@ -131,6 +131,9 @@ class Model {
 
   @tracked
   radio = '';
+
+  @tracked
+  bigGroupCheckbox;
 
   @tracked
   checkbox;
@@ -281,27 +284,41 @@ export default class FormDemo extends Component {
         >
           <Field.PhoneInput @binding={{bind this.model "phoneConfirm"}} />
         </Form.Field>
-        <Form.Field
-          @label="Checkbox Group"
-          @required={{this.required}}
-          @validatorKey="checkboxGroup"
-          as |Field|
-        >
-          <Field.CheckboxGroup as |Item|>
-            <Item
-              @binding={{bind this.model "checkboxGroup.0"}}
-              @label="Option A"
+
+        <div class="safety-conditions">
+          <Form.Field @label="Big group" @required={{true}} as |Field|>
+            <Field.Checkbox
+              @binding={{bind this.model "bigGroupCheckbox"}}
+              @label="bigGroupCheckbox"
+              @type="switch"
             />
-            <Item
-              @binding={{bind this.model "checkboxGroup.1"}}
-              @label="Option B"
-            />
-            <Item
-              @binding={{bind this.model "checkboxGroup.2"}}
-              @label="Option C"
-            />
-          </Field.CheckboxGroup>
-        </Form.Field>
+          </Form.Field>
+          <hr class="checkbox-group-break" />
+          <div class="checkbox-group">
+            <Form.Field
+              @label="Checkbox Group"
+              @required={{this.required}}
+              @validatorKey="checkboxGroup"
+              as |Field|
+            >
+              <Field.CheckboxGroup as |Item|>
+                <Item
+                  @binding={{bind this.model "checkboxGroup.0"}}
+                  @label="Option A"
+                />
+                <Item
+                  @binding={{bind this.model "checkboxGroup.1"}}
+                  @label="Option B"
+                />
+                <Item
+                  @binding={{bind this.model "checkboxGroup.2"}}
+                  @label="Option C"
+                />
+              </Field.CheckboxGroup>
+            </Form.Field>
+          </div>
+        </div>
+
         <Form.Field @label="Number" @required={{this.required}} as |Field|>
           <Field.NumberInput
             @binding={{bind this.model "number"}}
