@@ -43,6 +43,7 @@ import {
   Container as StackedPaneContainer,
   Pane as StackedPane,
 } from './components/stacked-pane.gts';
+import Table from './components/table.gts';
 import Toaster from './components/toaster.gts';
 import Bind from './helpers/bind.ts';
 import LookupService from './helpers/lookup-service.ts';
@@ -71,6 +72,7 @@ export interface ComponentRegistry {
   Sidebar: typeof Sidebar;
   StackedPane: typeof StackedPane;
   'StackedPane::Container': typeof StackedPaneContainer;
+  Table: typeof Table;
   Toaster: typeof Toaster;
 
   // Form components

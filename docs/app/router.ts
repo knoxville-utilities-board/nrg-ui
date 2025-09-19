@@ -39,6 +39,7 @@ Router.map(function () {
     this.route('navbar');
     this.route('pagination');
     this.route('popover');
+    this.route('table');
     this.route('toaster');
     this.route('tooltip');
   });
