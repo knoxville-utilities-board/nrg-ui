@@ -161,7 +161,7 @@
     "@nrg-ui/css": "workspace:^0",
     "dayjs": "^1.11.18",
     "ember-auto-import": "^2.0.0",
-    "ember-concurrency": "^4.0.6",
+    "ember-concurrency": "^5.1.0",
     "ember-css-transitions": "^4.4.0",
     "ember-intl": "^7.0.4",
     "ember-source": "^5.9.0 || ^6.0.0",
