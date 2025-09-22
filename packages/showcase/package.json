@@ -1,0 +1,130 @@
+{
+  "name": "@kub/mirage",
+  "version": "0.6.0",
+  "description": "Utilities for using Mirage.js and MSW in Ember.js applications",
+  "keywords": [
+    "ember",
+    "ember-addon",
+    "ember-cli",
+    "mirage",
+    "msw"
+  ],
+  "repository": {
+    "directory": "packages/mirage",
+    "type": "git",
+    "url": "https://github.kub.org/web/ember-kub-common.git"
+  },
+  "license": "MIT",
+  "author": "",
+  "exports": {
+    ".": {
+      "types": "./declarations/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./test-support": {
+      "types": "./declarations/test-support/index.d.ts",
+      "default": "./dist/test-support/index.js"
+    },
+    "./*": {
+      "types": "./declarations/*.d.ts",
+      "default": "./dist/*.js"
+    },
+    "./addon-main.js": "./addon-main.cjs"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "declarations/*"
+      ]
+    }
+  },
+  "files": [
+    "addon-main.cjs",
+    "blueprints",
+    "declarations",
+    "dist"
+  ],
+  "scripts": {
+    "build": "concurrently 'pnpm:build:*' --prefix-colors=auto",
+    "build:js": "rollup --config",
+    "build:types": "glint --declaration",
+    "format": "prettier . --cache --write",
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" --prefixColors auto && pnpm run format",
+    "lint:format": "prettier . --cache --check",
+    "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
+    "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:types": "glint",
+    "prepack": "concurrently 'pnpm:build:*' --prefix-colors=auto",
+    "start": "concurrently 'pnpm:start:*' --prefix-colors=auto",
+    "start:js": "rollup --config --watch --no-watch.clearScreen",
+    "start:types": "glint --declaration --watch",
+    "test": "echo 'A v2 addon does not have tests, run tests in docs'"
+  },
+  "dependencies": {
+    "@embroider/addon-shim": "^1.10.0",
+    "@embroider/macros": "^1.18.1",
+    "chalk": "^4.1.2",
+    "decorator-transforms": "^2.2.2",
+    "execa": "^9.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.3",
+    "@babel/plugin-transform-typescript": "^7.28.0",
+    "@babel/runtime": "^7.28.3",
+    "@ember/string": "^4.0.1",
+    "@ember/test-helpers": "^5.2.2",
+    "@embroider/addon-dev": "^8.1.0",
+    "@glint/core": "^1.5.2",
+    "@glint/environment-ember-loose": "^1.5.2",
+    "@glint/environment-ember-template-imports": "^1.5.2",
+    "@glint/template": "^1.5.2",
+    "@nrg-ui/standards": "^0.5.2",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@tsconfig/ember": "^3.0.11",
+    "@types/qunit": "^2.19.13",
+    "babel-plugin-ember-template-compilation": "^3.0.0",
+    "concurrently": "^9.2.0",
+    "ember-template-lint": "^7.9.3",
+    "eslint": "^9.33.0",
+    "eslint-plugin-decorator-position": "^6.0.0",
+    "eslint-plugin-ember": "^12.7.0",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-n": "^17.21.3",
+    "miragejs": "^0.2.0-alpha.3",
+    "prettier": "^3.6.2",
+    "prettier-plugin-ember-template-tag": "^2.1.0",
+    "rollup": "^4.46.3",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.39.1"
+  },
+  "peerDependencies": {
+    "@ember/string": "^4.0.1",
+    "@ember/test-helpers": "^5.0.0",
+    "ember-source": ">=5.12.0 || ^6.0.0",
+    "miragejs": "^0.2.0-alpha.3"
+  },
+  "publishConfig": {
+    "registry": "https://nexus.kub.org/repository/npm-hosted/"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "ember-addon": {
+    "version": 2,
+    "type": "addon",
+    "main": "addon-main.cjs",
+    "defaultBlueprint": "@kub-mirage",
+    "app-js": {
+      "./utils/auth.js": "./dist/_app_/utils/auth.js",
+      "./utils/filters.js": "./dist/_app_/utils/filters.js"
+    }
+  },
+  "release-plan": {
+    "semverIncrementAs": {
+      "major": "minor"
+    }
+  }
+}
