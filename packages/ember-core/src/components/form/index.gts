@@ -46,6 +46,10 @@ export interface FormType {
   unregisterValidator(name: string, id: string): void;
 }
 
+export interface FormState {
+  isValid: boolean;
+}
+
 export interface FormSignature {
   Element: HTMLFormElement;
   Args: {
@@ -65,6 +69,7 @@ export interface FormSignature {
         Field: ComponentLike<FieldSignature>;
         SubmitButton: ComponentLike<ButtonSignature>;
       },
+      FormState,
     ];
   };
 }
@@ -313,6 +318,7 @@ export default class Form extends Component<FormSignature> implements FormType {
             type="submit"
           )
         )
+        (hash isValid=this.isValid)
       }}
     </form>
   </template>
