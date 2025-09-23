@@ -28,16 +28,19 @@ module('Integration | Component | theme-control', function (hooks) {
       .dom('button:nth-child(1)')
       .hasAria('label', 'Light mode')
       .hasAria('pressed', 'true')
+      .hasAttribute('title', 'Light mode')
       .hasClass('active');
     assert
       .dom('button:nth-child(2)')
       .hasAria('label', 'Dark mode')
       .hasAria('pressed', 'false')
+      .hasAttribute('title', 'Dark mode')
       .doesNotHaveClass('active');
     assert
       .dom('button:nth-child(3)')
       .hasAria('label', 'Auto')
       .hasAria('pressed', 'false')
+      .hasAttribute('title', 'Auto')
       .doesNotHaveClass('active');
 
     this.service.value = 'dark';
