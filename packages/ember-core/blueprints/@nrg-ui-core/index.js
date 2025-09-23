@@ -26,7 +26,7 @@ module.exports = {
       { name: '@nrg-ui/css' },
       { name: '@nrg-ui/version' },
       { name: 'dayjs', target: '^1.11.13' },
-      { name: 'ember-concurrency', target: '^4.0.0' },
+      { name: 'ember-concurrency', target: '^5.1.0' },
       { name: 'ember-css-transitions', target: '^4.4.0' },
       { name: 'ember-intl', target: '^7.0.0' },
       { name: 'ember-keyboard', target: '^9.0.2' },
