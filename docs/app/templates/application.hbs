@@ -26,6 +26,9 @@
         Components
       </:header>
       <:items as |Item|>
+        <Item @route="components.accordion">
+          Accordion
+        </Item>
         <Item @route="components.button">
           Button
         </Item>
@@ -78,14 +81,14 @@
         Forms
       </:header>
       <:items as |Item|>
-        <Item @route="components.form.datetime">
-          Datetime
-        </Item>
         <Item @route="components.form.checkbox">
           Checkbox
         </Item>
         <Item @route="components.form.checkbox-group">
           Checkbox Group
+        </Item>
+        <Item @route="components.form.datetime">
+          Datetime
         </Item>
         <Item @route="components.form.file-upload">
           File Upload
@@ -121,14 +124,14 @@
         Marketing Components
       </:header>
       <:items as |Item|>
+        <Item @route="marketing">
+          Example
+        </Item>
         <Item @route="mktg-components.card-container">
           Card Container
         </Item>
         <Item @route="mktg-components.card">
           Card
-        </Item>
-        <Item @route="mktg-components.faq">
-          FAQ
         </Item>
         <Item @route="mktg-components.footer">
           Footer

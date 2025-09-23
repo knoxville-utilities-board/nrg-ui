@@ -1,11 +1,11 @@
-{{page-title "FAQs"}}
+{{page-title "Accordion"}}
 <main data-theme="marketing" class="bg-primary-subtle vh-100 text-primary">
   <div class="container p-5">
     <div class="row">
       <Mktg::SectionHeader
         class="col-12 col-lg-6"
         @title="We're here to answer all of your questions!"
-        @subject="FAQs"
+        @subject="Accordion Component"
       >
         <:subheader>
           <div class="d-flex justify-content-center mb-4">
@@ -19,42 +19,45 @@
         </:subheader>
       </Mktg::SectionHeader>
     </div>
-    <Mktg::Faq @defaultOpen={{true}} @question="How does a FAQ Component work?">
-      <:answer>
+    <Accordion
+      @defaultOpen={{true}}
+      @title="How does an Accordion Component work?"
+    >
+      <:content>
         <p>
           Once you click the icon in the upper right corner, this answer will
           appear. Pass values into the Open, Question, and Answer parameters,
           and voila! Pretty neat!
         </p>
-      </:answer>
-    </Mktg::Faq>
-    <Mktg::Faq @question="Question?">
-      <:answer>
+      </:content>
+    </Accordion>
+    <Accordion @title="Question?">
+      <:content>
         <p>
           Answer
         </p>
-      </:answer>
-    </Mktg::Faq>
-    <Mktg::Faq @question="Question?">
-      <:answer>
+      </:content>
+    </Accordion>
+    <Accordion @title="Question?">
+      <:content>
         <p>
           Answer
         </p>
-      </:answer>
-    </Mktg::Faq>
-    <Mktg::Faq @question="Question?">
-      <:answer>
+      </:content>
+    </Accordion>
+    <Accordion @title="Question?">
+      <:content>
         <p>
           Answer
         </p>
-      </:answer>
-    </Mktg::Faq>
-    <Mktg::Faq @question="Question?">
-      <:answer>
+      </:content>
+    </Accordion>
+    <Accordion @title="Question?">
+      <:content>
         <p>
           Answer
         </p>
-      </:answer>
-    </Mktg::Faq>
+      </:content>
+    </Accordion>
   </div>
 </main>
