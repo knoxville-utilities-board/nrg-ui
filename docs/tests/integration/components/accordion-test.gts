@@ -51,7 +51,7 @@ module('Integration | Component | Accordion', function (hooks) {
 
     await render(
       <template>
-        <Accordion @defaultOpen={{true}} @question="Question">
+        <Accordion @defaultOpen={{true}} @title="Question">
           <:answer>
             <p>Answer</p>
           </:answer>
