@@ -40,7 +40,7 @@ module('Integration | Component | Accordion', function (hooks) {
       .dom('.rounded div')
       .hasClass(
         'show',
-        'Div containing answer has show class after clicking button',
+        'Div containing content has show class after clicking button',
       );
     assert
       .dom('.rounded button i')
@@ -52,9 +52,9 @@ module('Integration | Component | Accordion', function (hooks) {
     await render(
       <template>
         <Accordion @defaultOpen={{true}} @title="Question">
-          <:answer>
+          <:content>
             <p>Answer</p>
-          </:answer>
+          </:content>
         </Accordion>
       </template>,
     );
@@ -63,7 +63,7 @@ module('Integration | Component | Accordion', function (hooks) {
       .dom('.rounded div')
       .hasClass(
         'show',
-        'Div containing answer has class show when defaultOpen parameter is true',
+        'Div containing content has class show when defaultOpen parameter is true',
       );
     assert
       .dom('.rounded button i')
