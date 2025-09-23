@@ -14686,7 +14686,7 @@ select.focus-ring.form-select.is-warning:focus:not([disabled]),
   --bs-dropdown-border-width: var(--bs-border-width);
   --bs-dropdown-inner-border-radius: calc(var(--bs-border-radius) - var(--bs-border-width));
   --bs-dropdown-divider-bg: var(--bs-border-color-translucent);
-  --bs-dropdown-divider-margin-y: 0.5rem;
+  --bs-dropdown-divider-margin-y: 0;
   --bs-dropdown-box-shadow: var(--bs-box-shadow);
   --bs-dropdown-link-color: var(--bs-body-color);
   --bs-dropdown-link-hover-color: var(--bs-body-color);
@@ -24028,9 +24028,6 @@ dialog .btn-close {
   font-weight: 700;
   margin: 0 0.5rem;
   text-transform: uppercase;
-}
-.app-bar-container .theme-switcher .form-switch {
-  margin-bottom: 0;
 }
 
 [data-bs-theme=dark] {
