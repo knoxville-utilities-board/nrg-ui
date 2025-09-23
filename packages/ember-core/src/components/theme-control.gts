@@ -39,6 +39,7 @@ export default class ThemeControl extends Component<ThemeControlSignature> {
             aria-label={{t (concat "nrg.base.theme." theme)}}
             aria-pressed="{{isActive}}"
             class={{classes "btn-outline-secondary" (if isActive "active")}}
+            title={{t (concat "nrg.base.theme." theme)}}
             @icon={{icon}}
             @iconPosition="center"
             @onClick={{fn this.onChange theme}}
