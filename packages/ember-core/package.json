@@ -232,6 +232,7 @@
       "./components/sidebar.js": "./dist/_app_/components/sidebar.js",
       "./components/stacked-pane.js": "./dist/_app_/components/stacked-pane.js",
       "./components/stacked-pane/container.js": "./dist/_app_/components/stacked-pane/container.js",
+      "./components/theme-control.js": "./dist/_app_/components/theme-control.js",
       "./components/toaster.js": "./dist/_app_/components/toaster.js",
       "./components/tooltip.js": "./dist/_app_/components/tooltip.js",
       "./helpers/bind.js": "./dist/_app_/helpers/bind.js",
