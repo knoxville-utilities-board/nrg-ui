@@ -1,5 +1,25 @@
 # Changelog
 
+## Release (2025-09-24)
+
+* @nrg-ui/css 0.25.0 (minor)
+* @nrg-ui/core 0.43.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#617](https://github.com/knoxville-utilities-board/nrg-ui/pull/617) feat(form): Expose form state block param ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#612](https://github.com/knoxville-utilities-board/nrg-ui/pull/612) feat: Create ThemeControl component for three-way setting ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `@nrg-ui/core`
+  * [#592](https://github.com/knoxville-utilities-board/nrg-ui/pull/592) refactor: Replace mktg/faq component with accordion ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+  * [#614](https://github.com/knoxville-utilities-board/nrg-ui/pull/614) chore: Bump ember-concurrency ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-09-18)
 
 * @nrg-ui/css 0.24.3 (patch)
