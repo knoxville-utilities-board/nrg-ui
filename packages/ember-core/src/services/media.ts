@@ -134,12 +134,14 @@ export default class Media extends Service {
 
       if (matcher.matches) {
         if (!this.matches.has(name)) {
-          this.matches.add(name);
+          this.matches = new TrackedSet([...this.matches, name]);
           changed = true;
         }
       } else {
         changed = this.matches.has(name);
-        this.matches.delete(name);
+        this.matches = new TrackedSet(
+          [...this.matches].filter((m) => m !== name),
+        );
       }
 
       if (changed) {
