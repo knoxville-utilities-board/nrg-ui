@@ -36,6 +36,12 @@ export default class DropdownDemo extends Component {
   hasIcon?: boolean;
 
   @tracked
+  icon: string;
+
+  @tracked
+  iconOnly?: boolean;
+
+  @tracked
   isOpen?: boolean;
 
   @tracked
@@ -64,6 +70,8 @@ export default class DropdownDemo extends Component {
               @closeOnSelect={{this.closeOnSelect}}
               @disabled={{this.disabled}}
               @flip={{this.flip}}
+              @icon={{this.icon}}
+              @iconOnly={{this.iconOnly}}
               @hasIcon={{this.hasIcon}}
               @isOpen={{this.isOpen}}
               @offset={{this.offset}}
@@ -143,6 +151,20 @@ export default class DropdownDemo extends Component {
               @description="Whether to show the dropdown icon"
               @value={{this.hasIcon}}
               @onInput={{fn this.update "hasIcon"}}
+            />
+            <Args.String
+              @name="icon"
+              @defaultValue="chevron-down"
+              @description="Replace the default dropdown icon with a custom icon"
+              @value={{this.icon}}
+              @onInput={{fn this.update "icon"}}
+            />
+            <Args.Bool
+              @name="iconOnly"
+              @defaultValue={{false}}
+              @description="Whether to show only the icon in the dropdown button"
+              @value={{this.iconOnly}}
+              @onInput={{fn this.update "iconOnly"}}
             />
             <Args.Number
               @name="offset"

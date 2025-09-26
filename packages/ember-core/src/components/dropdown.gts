@@ -99,6 +99,8 @@ export interface DropdownSignature {
     flip?: boolean;
     fullWidth?: boolean;
     hasIcon?: boolean;
+    icon?: string;
+    iconOnly?: boolean;
     loading?: boolean;
     offset?: string | number;
     scrollable?: boolean;
@@ -149,6 +151,10 @@ export default class Dropdown extends Component<DropdownSignature> {
   }
 
   get icon() {
+    if (this.args.icon) {
+      return this.args.icon;
+    }
+
     switch (this.args.side) {
       case 'top':
         return 'bi-caret-up-fill';
@@ -202,7 +208,9 @@ export default class Dropdown extends Component<DropdownSignature> {
       >
         <:control as |visibility|>
           {{#if (has-block-params "control")}}
-            {{yield visibility to="control"}}
+            {{#unless this.args.iconOnly}}
+              {{yield visibility to="control"}}
+            {{/unless}}
           {{else}}
             <button
               aria-controls={{this.menuId}}
@@ -217,11 +225,13 @@ export default class Dropdown extends Component<DropdownSignature> {
               {{on "click" visibility.toggle}}
             >
               {{#if this.showLeftIcon}}
-                <i class="icon {{this.icon}} float-start my-1 ms-n1 me-1"></i>
+                <i class="icon {{this.icon}} {{unless this.args.iconOnly "float-start my-1 ms-n1 me-1"}}"></i>
               {{/if}}
-              {{yield visibility to="control"}}
+              {{#unless this.args.iconOnly}}
+                {{yield visibility to="control"}}
+              {{/unless}}
               {{#if this.showRightIcon}}
-                <i class="icon {{this.icon}} float-end my-1 ms-1 me-n1"></i>
+                <i class="icon {{this.icon}} {{unless this.args.iconOnly "float-end my-1 ms-1 me-n1"}}"></i>
               {{/if}}
             </button>
           {{/if}}
