@@ -208,9 +208,7 @@ export default class Dropdown extends Component<DropdownSignature> {
       >
         <:control as |visibility|>
           {{#if (has-block-params "control")}}
-            {{#unless this.args.iconOnly}}
-              {{yield visibility to="control"}}
-            {{/unless}}
+            {{yield visibility to="control"}}
           {{else}}
             <button
               aria-controls={{this.menuId}}
@@ -233,9 +231,7 @@ export default class Dropdown extends Component<DropdownSignature> {
                   }}
                 ></i>
               {{/if}}
-              {{#unless this.args.iconOnly}}
-                {{yield visibility to="control"}}
-              {{/unless}}
+              {{yield visibility to="control"}}
               {{#if this.showRightIcon}}
                 <i
                   class={{classes
