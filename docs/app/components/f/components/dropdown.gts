@@ -18,13 +18,13 @@ export default class DropdownDemo extends Component {
   declare toast: ToastService;
 
   @tracked
-  alignment?: Alignment;
+  alignment?: Alignment = 'start';
 
   @tracked
   class: string = 'btn-primary';
 
   @tracked
-  closeOnSelect?: boolean;
+  closeOnSelect?: boolean = true;
 
   @tracked
   disabled?: boolean;
@@ -36,10 +36,10 @@ export default class DropdownDemo extends Component {
   hasIcon?: boolean;
 
   @tracked
-  icon: string;
+  icon: string = 'bi-caret-down-fill';
 
   @tracked
-  iconOnly?: boolean;
+  iconOnly?: boolean = true;
 
   @tracked
   isOpen?: boolean;
@@ -48,7 +48,7 @@ export default class DropdownDemo extends Component {
   offset?: number;
 
   @tracked
-  side?: Side;
+  side?: Side = 'bottom';
 
   update = (key: string, value: unknown) => {
     this[key] = value;
@@ -153,7 +153,7 @@ export default class DropdownDemo extends Component {
             />
             <Args.String
               @name="icon"
-              @defaultValue="chevron-down"
+              @defaultValue="bi-caret-down-fill"
               @description="Replace the default dropdown icon with a custom icon"
               @value={{this.icon}}
               @onInput={{fn this.update "icon"}}
