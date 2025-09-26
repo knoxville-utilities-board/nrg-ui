@@ -99,6 +99,8 @@ export interface DropdownSignature {
     flip?: boolean;
     fullWidth?: boolean;
     hasIcon?: boolean;
+    icon?: string;
+    iconOnly?: boolean;
     loading?: boolean;
     offset?: string | number;
     scrollable?: boolean;
@@ -149,6 +151,10 @@ export default class Dropdown extends Component<DropdownSignature> {
   }
 
   get icon() {
+    if (this.args.icon) {
+      return this.args.icon;
+    }
+
     switch (this.args.side) {
       case 'top':
         return 'bi-caret-up-fill';
@@ -217,11 +223,23 @@ export default class Dropdown extends Component<DropdownSignature> {
               {{on "click" visibility.toggle}}
             >
               {{#if this.showLeftIcon}}
-                <i class="icon {{this.icon}} float-start my-1 ms-n1 me-1"></i>
+                <i
+                  class={{classes
+                    "icon"
+                    this.icon
+                    (unless @iconOnly "float-start my-1 ms-n1 me-1")
+                  }}
+                ></i>
               {{/if}}
               {{yield visibility to="control"}}
               {{#if this.showRightIcon}}
-                <i class="icon {{this.icon}} float-end my-1 ms-1 me-n1"></i>
+                <i
+                  class={{classes
+                    "icon"
+                    this.icon
+                    (unless @iconOnly "float-end my-1 ms-1 me-n1")
+                  }}
+                ></i>
               {{/if}}
             </button>
           {{/if}}

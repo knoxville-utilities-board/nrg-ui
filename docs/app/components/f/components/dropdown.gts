@@ -18,13 +18,13 @@ export default class DropdownDemo extends Component {
   declare toast: ToastService;
 
   @tracked
-  alignment?: Alignment;
+  alignment?: Alignment = 'start';
 
   @tracked
   class: string = 'btn-primary';
 
   @tracked
-  closeOnSelect?: boolean;
+  closeOnSelect?: boolean = true;
 
   @tracked
   disabled?: boolean;
@@ -36,13 +36,19 @@ export default class DropdownDemo extends Component {
   hasIcon?: boolean;
 
   @tracked
+  icon: string = 'bi-caret-down-fill';
+
+  @tracked
+  iconOnly?: boolean = true;
+
+  @tracked
   isOpen?: boolean;
 
   @tracked
   offset?: number;
 
   @tracked
-  side?: Side;
+  side?: Side = 'bottom';
 
   update = (key: string, value: unknown) => {
     this[key] = value;
@@ -55,7 +61,7 @@ export default class DropdownDemo extends Component {
   <template>
     <Toaster />
     <FreestyleSection @name="Dropdown" as |Section|>
-      <Section.subsection @name="Button">
+      <Section.subsection @name="Basic">
         <FreestyleUsage>
           <:example>
             <Dropdown
@@ -64,6 +70,7 @@ export default class DropdownDemo extends Component {
               @closeOnSelect={{this.closeOnSelect}}
               @disabled={{this.disabled}}
               @flip={{this.flip}}
+              @icon={{this.icon}}
               @hasIcon={{this.hasIcon}}
               @isOpen={{this.isOpen}}
               @offset={{this.offset}}
@@ -144,6 +151,13 @@ export default class DropdownDemo extends Component {
               @value={{this.hasIcon}}
               @onInput={{fn this.update "hasIcon"}}
             />
+            <Args.String
+              @name="icon"
+              @defaultValue="bi-caret-down-fill"
+              @description="Replace the default dropdown icon with a custom icon"
+              @value={{this.icon}}
+              @onInput={{fn this.update "icon"}}
+            />
             <Args.Number
               @name="offset"
               @description="How far to offset the dropdown from the button (in pixels)"
@@ -170,6 +184,70 @@ export default class DropdownDemo extends Component {
             >
               <CodeBlock @lang="typescript" @code="() => Promise<void>" />
             </Args.Action>
+          </:api>
+        </FreestyleUsage>
+      </Section.subsection>
+
+      <Section.subsection @name="Icon Only">
+        <FreestyleUsage>
+          <:example>
+            <Dropdown
+              class={{this.class}}
+              @alignment={{this.alignment}}
+              @closeOnSelect={{this.closeOnSelect}}
+              @disabled={{this.disabled}}
+              @flip={{this.flip}}
+              @icon={{this.icon}}
+              @iconOnly={{this.iconOnly}}
+              @hasIcon={{this.hasIcon}}
+              @isOpen={{this.isOpen}}
+              @offset={{this.offset}}
+              @side={{this.side}}
+              @onShow={{fn this.toast.info "onShow was fired"}}
+              @onHide={{fn this.toast.info "onHide was fired"}}
+            >
+              <:menu as |Menu|>
+                <Menu.Header>
+                  Header
+                </Menu.Header>
+                <Menu.Item
+                  @disabled={{true}}
+                  @onSelect={{fn this.log "Item 1 clicked"}}
+                >
+                  Item 1
+                </Menu.Item>
+                <Menu.Item
+                  @closeOnSelect={{false}}
+                  @onSelect={{fn this.log "Item 2 clicked"}}
+                >
+                  Item 2 (I don't close on select)
+                </Menu.Item>
+                <Menu.Item @onSelect={{fn this.log "Item 3 clicked"}}>Item 3</Menu.Item>
+              </:menu>
+            </Dropdown>
+          </:example>
+          <:api as |Args|>
+            <Args.String
+              @name="class"
+              @description="The class to apply to the dropdown button. Note that this is not an argument but rather a class applied directly to the button"
+              @value={{this.class}}
+              @onInput={{fn this.update "class"}}
+              @options={{this.classOptions}}
+            />
+            <Args.String
+              @name="icon"
+              @defaultValue="chevron-down"
+              @description="Replace the default dropdown icon with a custom icon"
+              @value={{this.icon}}
+              @onInput={{fn this.update "icon"}}
+            />
+            <Args.Bool
+              @name="iconOnly"
+              @defaultValue={{true}}
+              @description="Whether to show only the icon in the dropdown button"
+              @value={{this.iconOnly}}
+              @onInput={{fn this.update "iconOnly"}}
+            />
           </:api>
         </FreestyleUsage>
       </Section.subsection>
