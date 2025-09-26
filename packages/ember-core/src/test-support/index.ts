@@ -1,4 +1,5 @@
 import { getContext, settled } from '@ember/test-helpers';
+import { TrackedSet } from 'tracked-built-ins';
 
 import type Media from '../services/media.ts';
 import type Owner from '@ember/owner';
@@ -22,7 +23,7 @@ export async function setBreakpoint(breakpoint: string) {
     }
   }
 
-  media.matches = breakpointArray;
+  media.matches = new TrackedSet(breakpointArray);
   media.trigger('mediaChanged');
 
   await settled();
