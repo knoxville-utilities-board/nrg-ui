@@ -225,13 +225,25 @@ export default class Dropdown extends Component<DropdownSignature> {
               {{on "click" visibility.toggle}}
             >
               {{#if this.showLeftIcon}}
-                <i class="icon {{this.icon}} {{unless this.args.iconOnly "float-start my-1 ms-n1 me-1"}}"></i>
+                <i
+                  class={{classes
+                    "icon"
+                    this.icon
+                    (unless @iconOnly "float-start my-1 ms-n1 me-1")
+                  }}
+                ></i>
               {{/if}}
               {{#unless this.args.iconOnly}}
                 {{yield visibility to="control"}}
               {{/unless}}
               {{#if this.showRightIcon}}
-                <i class="icon {{this.icon}} {{unless this.args.iconOnly "float-end my-1 ms-1 me-n1"}}"></i>
+                <i
+                  class={{classes
+                    "icon"
+                    this.icon
+                    (unless @iconOnly "float-end my-1 ms-1 me-n1")
+                  }}
+                ></i>
               {{/if}}
             </button>
           {{/if}}
