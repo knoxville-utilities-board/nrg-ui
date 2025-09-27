@@ -58,11 +58,11 @@ export default class Media extends Service {
   }
 
   get matches(): Set<string> {
-    if (this._matches.size) {
-      return this._matches;
+    if (isTesting && this.mocked) {
+      return new TrackedSet([this._mockedBreakpoint]);
     }
 
-    return new TrackedSet(isTesting ? [this._mockedBreakpoint] : []);
+    return this._matches;
   }
 
   set matches(value: Iterable<string>) {

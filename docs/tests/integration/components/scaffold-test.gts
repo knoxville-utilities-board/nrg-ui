@@ -90,6 +90,17 @@ module('Integration | Component | scaffold', function (hooks) {
       );
 
     await setBreakpoint('small');
+    await render(
+      <template>
+        <Scaffold>
+          <:sidebar as |Menu|>
+            <Menu.Item @onClick={{emptyClickHandler}}>
+              Sidebar Item
+            </Menu.Item>
+          </:sidebar>
+        </Scaffold>
+      </template>,
+    );
 
     assert
       .dom('.sidebar')
