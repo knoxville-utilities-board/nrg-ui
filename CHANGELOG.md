@@ -1,5 +1,21 @@
 # Changelog
 
+## Release (2025-09-27)
+
+* @nrg-ui/core 0.44.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#620](https://github.com/knoxville-utilities-board/nrg-ui/pull/620) feat(dropdown): Add params for icon-only and custom icon dropdowns ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#619](https://github.com/knoxville-utilities-board/nrg-ui/pull/619) fix(responsive): Set breakpoints correctly ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-09-24)
 
 * @nrg-ui/css 0.25.0 (minor)
