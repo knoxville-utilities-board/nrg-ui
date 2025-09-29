@@ -34,6 +34,9 @@ export default class TextInputDemo extends Component {
   disabled = false;
 
   @tracked
+  placeholder = 'Enter text...';
+
+  @tracked
   readonly = false;
 
   @tracked
@@ -56,6 +59,7 @@ export default class TextInputDemo extends Component {
               @fieldOptions={{hash disabled=this.disabled}}
               @readonly={{this.readonly}}
               @onChange={{fn log "The value changed to"}}
+              placeholder={{this.placeholder}}
             />
           </:example>
           <:api as |Args|>
@@ -85,6 +89,12 @@ export default class TextInputDemo extends Component {
               @description="When true, the input will be disabled"
               @value={{this.disabled}}
               @onInput={{fn this.update "disabled"}}
+            />
+            <Args.String
+              @name="placeholder"
+              @description="The native HTML placeholder text to display when the input is empty"
+              @value={{this.placeholder}}
+              @onInput={{fn this.update "placeholder"}}
             />
             <Args.Bool
               @name="readonly"
