@@ -1,5 +1,15 @@
 # Changelog
 
+## Release (2025-09-29)
+
+
+
+#### :memo: Documentation
+* [#626](https://github.com/knoxville-utilities-board/nrg-ui/pull/626) docs: Add html placeholder argument to text inputs ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+
+#### Committers: 1
+- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+
 ## Release (2025-09-27)
 
 * @nrg-ui/core 0.44.0 (minor)
