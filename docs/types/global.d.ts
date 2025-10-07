@@ -1,5 +1,4 @@
-import '@glint/environment-ember-loose';
-import '@glint/environment-ember-template-imports';
+import '@glint/ember-tsc/types';
 import 'ember-source/types';
 
 import { HelperLike } from '@glint/template';
