@@ -1,0 +1,40 @@
+import StackedPane from '@nrg-ui/core/components/stacked-pane';
+
+import type { TOC } from '@ember/component/template-only';
+import type { ContentValue } from '@glint/template';
+
+const SideBySideDetailDemo: TOC<{
+  Args: { model: ContentValue };
+}> = <template>
+  <StackedPane @previousRoute="side-by-side">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Person Name {{@model}}</h5>
+        <span class="badge text-bg-secondary">Mail</span>
+        <span class="badge text-bg-secondary">Employee Number</span>
+        <span class="badge text-bg-secondary">Department</span>
+        <div class="card-text">Job Title</div>
+      </div>
+      <hr />
+      <div class="card-body">
+        <strong>Address</strong>
+        <span class="card-text">Street</span>
+        <br />
+        <strong>City</strong>
+        <span class="card-text">City</span>
+        <br />
+        <strong>State</strong>
+        <span class="card-text">State</span>
+        <br />
+        <strong>Zip</strong>
+        <span class="card-text">Zip</span>
+        <br />
+        <strong>Country</strong>
+        <span class="card-text">Country</span>
+      </div>
+    </div>
+    {{outlet}}
+  </StackedPane>
+</template>;
+
+export default SideBySideDetailDemo;
