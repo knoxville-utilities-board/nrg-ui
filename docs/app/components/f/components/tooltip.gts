@@ -204,9 +204,3 @@ export default class TooltipDemo extends Component {
     </FreestyleSection>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'F::Components::Tooltip': typeof TooltipDemo;
-  }
-}

@@ -25,9 +25,3 @@ export default class OnClickOutsideComponent extends Component {
     </div>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'F::Modifiers::OnClickOutside': typeof OnClickOutsideComponent;
-  }
-}

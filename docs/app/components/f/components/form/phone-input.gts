@@ -108,9 +108,3 @@ export default class PhoneInputDemo extends Component {
     </FreestyleSection>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'F::Components::Form::PhoneInput': typeof PhoneInputDemo;
-  }
-}

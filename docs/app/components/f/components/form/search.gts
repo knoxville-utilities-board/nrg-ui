@@ -334,9 +334,3 @@ export default class SearchDemo extends Component {
     </div>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'F::Components::Form::Search': typeof SearchDemo;
-  }
-}

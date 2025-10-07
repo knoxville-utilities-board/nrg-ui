@@ -79,9 +79,3 @@ export default class LoadingIndicatorDemo extends Component {
     </FreestyleSection>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'F::Components::LoadingIndicator': typeof LoadingIndicatorDemo;
-  }
-}

@@ -150,9 +150,3 @@ export default class PromoDemo extends Component {
     </FreestyleSection>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'F::MktgComponents::Promo': typeof PromoDemo;
-  }
-}

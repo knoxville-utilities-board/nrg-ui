@@ -79,9 +79,3 @@ export default class OnDestroyDemo extends Component {
     </div>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'F::Modifiers::OnDestroy': typeof OnDestroyDemo;
-  }
-}

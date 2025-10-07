@@ -246,9 +246,3 @@ export default class PopoverDemo extends Component {
     </FreestyleSection>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'F::Components::Popover': typeof PopoverDemo;
-  }
-}

@@ -244,9 +244,3 @@ export default class MultiSelectDemo extends Component {
     </div>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'F::Components::Form::MultiSelect': typeof MultiSelectDemo;
-  }
-}

@@ -125,9 +125,3 @@ export default class CardDemo extends Component {
     </FreestyleSection>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'F::MktgComponents::Card': typeof CardDemo;
-  }
-}
