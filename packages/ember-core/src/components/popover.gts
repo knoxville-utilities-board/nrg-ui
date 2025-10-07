@@ -305,6 +305,7 @@ export default class Popover extends Component<PopoverSignature> {
       as |visibility|
     }}
       {{yield visibility to="control"}}
+      {{!-- prettier-ignore --}}
       <div
         id={{this.id}}
         class={{classes
@@ -314,14 +315,7 @@ export default class Popover extends Component<PopoverSignature> {
         }}
         {{onInsert this.initPopover}}
         {{! @glint-expect-error Modifier types are currently not correct }}
-        {{onUpdate
-          this.showPopover
-          @alignment
-          @arrow
-          @controlElement
-          @offset
-          @side
-        }}
+        {{onUpdate this.showPopover @alignment @arrow @controlElement @offset @side}}
         ...attributes
       >
         {{#if (has-block-params "content")}}
