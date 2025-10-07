@@ -9,7 +9,7 @@ import CodeBlock from '../components/code-block.ts';
   <div class="row g-0">
     <div class="col px-md-0 py-3">
       <div class="container mx-auto">
-        {{#let (getCodeSnippet "scaffold-component.hbs") as |snippet|}}
+        {{#let (getCodeSnippet "scaffold-component.gts") as |snippet|}}
           <CodeBlock
             class="border rounded simple p-3"
             @lang={{snippet.language}}
