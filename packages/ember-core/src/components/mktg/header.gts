@@ -5,8 +5,8 @@ import type { TOC } from '@ember/component/template-only';
 export interface MktgHeaderSignature {
   Element: HTMLDivElement;
   Args: {
-    dropSection: boolean;
-    flexCollapse: boolean;
+    dropSection?: boolean;
+    flexCollapse?: boolean;
   };
   Blocks: {
     brand: [];
