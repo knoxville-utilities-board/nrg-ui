@@ -224,12 +224,7 @@ export class Group extends Component<GroupSignature> {
           {{/if}}
         </LinkTo>
       {{else if @url}}
-        <a
-          class={{this.classes}}
-          href={{@url}}
-          disabled={{@disabled}}
-          ...attributes
-        >
+        <a class={{this.classes}} href={{@url}} ...attributes>
           <span>
             {{yield to="header"}}
           </span>

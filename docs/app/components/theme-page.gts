@@ -259,9 +259,3 @@ export default class ThemePage extends Component {
     </div>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    ThemePage: typeof ThemePage;
-  }
-}

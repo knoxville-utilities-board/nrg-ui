@@ -118,9 +118,3 @@ export default class TextInputDemo extends Component {
     </FreestyleSection>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'F::Components::Form::TextInput': typeof TextInputDemo;
-  }
-}

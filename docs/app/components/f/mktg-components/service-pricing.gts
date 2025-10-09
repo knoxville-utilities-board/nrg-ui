@@ -115,9 +115,3 @@ export default class ServicePricingDemo extends Component {
     </FreestyleSection>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'F::MktgComponents::ServicePricing': typeof ServicePricingDemo;
-  }
-}

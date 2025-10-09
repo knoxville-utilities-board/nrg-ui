@@ -24,9 +24,3 @@ export default class OnUpdateDemo extends Component {
     </div>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'F::Modifiers::OnUpdate': typeof OnUpdateDemo;
-  }
-}

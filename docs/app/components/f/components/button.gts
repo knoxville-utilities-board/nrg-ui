@@ -166,9 +166,3 @@ export default class ButtonDemo extends Component {
     </FreestyleSection>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'F::Components::Button': typeof ButtonDemo;
-  }
-}

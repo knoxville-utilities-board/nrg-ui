@@ -71,9 +71,3 @@ export default class OnInsertDemo extends Component {
     </div>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'F::Modifiers::OnInsert': typeof OnInsertDemo;
-  }
-}

@@ -9,6 +9,7 @@ const version = getTag({ tagPattern: /v?(.+)-@nrg-ui\/core/ });
 
 module.exports = async function (defaults) {
   const app = new EmberApp(defaults, {
+    snippetExtensions: ['js', 'ts', 'gjs', 'gts', 'hbs'],
     minifyCSS: {
       enabled: false,
     },

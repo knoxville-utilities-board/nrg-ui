@@ -32,7 +32,7 @@ export interface TooltipSignature {
 }
 
 interface HeaderSignature {
-  Element: HTMLDivElement;
+  Element: HTMLHeadingElement;
   Blocks: {
     default: [];
   };

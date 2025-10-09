@@ -116,9 +116,3 @@ export default class RadioGroupDemo extends Component {
     </FreestyleSection>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'F::Components::Form::RadioGroup': typeof RadioGroupDemo;
-  }
-}

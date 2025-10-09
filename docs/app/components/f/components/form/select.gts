@@ -174,9 +174,3 @@ export default class extends Component {
     </div>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'F::Components::Form::Select': typeof SelectDemo;
-  }
-}

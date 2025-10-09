@@ -50,9 +50,3 @@ export default class NavbarDemo extends Component {
     </FreestyleSection>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'F::Components::Navbar': typeof NavbarDemo;
-  }
-}

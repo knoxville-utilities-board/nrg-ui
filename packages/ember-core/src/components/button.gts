@@ -4,7 +4,7 @@ import Component from '@glimmer/component';
 import { t } from 'ember-intl';
 import { or } from 'ember-truth-helpers';
 
-import type { ButtonGroupType } from './button-group';
+import type { ButtonGroupType } from './button-group.gts';
 import type { IconType } from '../';
 
 export interface ButtonSignature {

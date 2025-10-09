@@ -97,9 +97,3 @@ export default class FileUploadDemo extends Component {
     </FreestyleSection>
   </template>
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'F::Components::Form::FileUpload': typeof FileUploadDemo;
-  }
-}
