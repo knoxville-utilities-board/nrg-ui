@@ -1,5 +1,20 @@
 # Changelog
 
+## Release (2025-10-09)
+
+* @nrg-ui/core 0.44.1 (patch)
+
+#### :memo: Documentation
+* [#626](https://github.com/knoxville-utilities-board/nrg-ui/pull/626) docs: Add html placeholder argument to text inputs ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+
+#### :house: Internal
+* `@nrg-ui/core`
+  * [#629](https://github.com/knoxville-utilities-board/nrg-ui/pull/629) chore: Upgrade to Glint v2 ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-09-27)
 
 * @nrg-ui/core 0.44.0 (minor)
