@@ -1,0 +1,19 @@
+
+import { hash } from '@ember/helper';
+import MktgCard from './card.js';
+import Card from '../card.js';
+import { precompileTemplate } from '@ember/template-compilation';
+import { setComponentTemplate } from '@ember/component';
+import templateOnly from '@ember/component/template-only';
+
+const CardContainer = setComponentTemplate(precompileTemplate("\n  <div class=\"grid\" ...attributes>\n    {{yield (hash Card=(component Card) MktgCard=(component MktgCard))}}\n  </div>\n", {
+  strictMode: true,
+  scope: () => ({
+    hash,
+    Card,
+    MktgCard
+  })
+}), templateOnly());
+
+export { CardContainer as default };
+//# sourceMappingURL=card-container.js.map
