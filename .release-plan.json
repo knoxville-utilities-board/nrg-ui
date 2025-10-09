@@ -10,18 +10,14 @@
       "oldVersion": "0.25.0"
     },
     "@nrg-ui/core": {
-      "impact": "minor",
-      "oldVersion": "0.43.0",
-      "newVersion": "0.44.0",
+      "impact": "patch",
+      "oldVersion": "0.44.0",
+      "newVersion": "0.44.1",
       "tagName": "latest",
       "constraints": [
         {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        },
-        {
           "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
@@ -33,5 +29,5 @@
       "oldVersion": "0.3.4"
     }
   },
-  "description": "## Release (2025-09-27)\n\n* @nrg-ui/core 0.44.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#620](https://github.com/knoxville-utilities-board/nrg-ui/pull/620) feat(dropdown): Add params for icon-only and custom icon dropdowns ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#619](https://github.com/knoxville-utilities-board/nrg-ui/pull/619) fix(responsive): Set breakpoints correctly ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-10-09)\n\n* @nrg-ui/core 0.44.1 (patch)\n\n#### :memo: Documentation\n* [#626](https://github.com/knoxville-utilities-board/nrg-ui/pull/626) docs: Add html placeholder argument to text inputs ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n\n#### :house: Internal\n* `@nrg-ui/core`\n  * [#629](https://github.com/knoxville-utilities-board/nrg-ui/pull/629) chore: Upgrade to Glint v2 ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
