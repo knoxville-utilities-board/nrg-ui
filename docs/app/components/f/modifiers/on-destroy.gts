@@ -1,5 +1,3 @@
-// @ts-nocheck - TODO
-
 import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { service } from '@ember/service';
@@ -8,7 +6,8 @@ import { tracked } from '@glimmer/tracking';
 import { Button, TextInput, Toaster, bind, onDestroy } from '@nrg-ui/core';
 import { TrackedArray } from 'tracked-built-ins';
 
-import type { TOC } from '@glint/template';
+import type { TOC } from '@ember/component/template-only';
+import type ToastService from '@nrg-ui/core/services/toast';
 
 interface ItemSignature {
   Args: {
@@ -32,10 +31,10 @@ const Item: TOC<ItemSignature> = <template>
 
 export default class OnDestroyDemo extends Component {
   @service
-  toast;
+  declare toast: ToastService;
 
   @tracked
-  newItem;
+  newItem = '';
 
   items: string[] = new TrackedArray([
     'Item 1',

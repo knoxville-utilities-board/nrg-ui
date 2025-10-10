@@ -12,12 +12,12 @@ module('Integration | Modifier | on-destroy', function (hooks) {
 
     let element: HTMLElement | null = null;
 
-    const callback = (el: HTMLElement, ...args: unknown[]) => {
+    const callback = (el: HTMLElement, args: { [key: string]: unknown }) => {
       assert.step('callback');
       assert.strictEqual(el, element, 'Element is passed');
       assert.deepEqual(
         args,
-        [5, 'foo', 'BAR'],
+        { arg1: 5, arg2: 'foo', arg3: 'BAR' },
         'Additional arguments are passed',
       );
     };
@@ -26,7 +26,7 @@ module('Integration | Modifier | on-destroy', function (hooks) {
 
     await render(
       <template>
-        <div {{onDestroy callback 5 "foo" "BAR"}}></div>
+        <div {{onDestroy callback arg1=5 arg2="foo" arg3="BAR"}}></div>
       </template>,
     );
 
