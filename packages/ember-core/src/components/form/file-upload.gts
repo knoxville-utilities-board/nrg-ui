@@ -271,7 +271,7 @@ export default class FileUpload extends BoundValue<
         (if @fieldOptions.isInvalid "is-invalid")
         (if @fieldOptions.isWarning "is-warning")
       }}
-      {{onUpdate this.setupValidator @accept}}
+      {{onUpdate this.setupValidator accept=@accept}}
       ...attributes
     >
       <div
