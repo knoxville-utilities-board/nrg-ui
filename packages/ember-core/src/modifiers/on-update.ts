@@ -3,31 +3,26 @@ import { tracked } from '@glimmer/tracking';
 import { runTask } from 'ember-lifeline';
 import Modifier from 'ember-modifier';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Fn = (element: Element, ...args: any[]) => void;
-type Element = HTMLElement;
-
-export interface OnUpdateSignature<Positional, Named> {
-  Element: HTMLElement;
+type CallbackFn<Element, A> = (element: Element, args: A) => void;
+export interface OnUpdateSignature<
+  Element extends HTMLElement,
+  Named extends object,
+> {
+  Element: Element;
   Args: {
+    Positional: [CallbackFn<Element, Named>];
     Named: Named;
-    Positional: [Fn, Positional];
   };
 }
 
 export default class OnUpdate<
-  Positional,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Named extends Record<string, any>,
-> extends Modifier<OnUpdateSignature<Positional, Named>> {
+  Element extends HTMLElement,
+  Named extends Record<string, unknown>,
+> extends Modifier<OnUpdateSignature<Element, Named>> {
   @tracked
   initialized = false;
 
-  modify(
-    element: Element,
-    [fn, ...positional]: [Fn, Positional],
-    named: Named,
-  ) {
+  modify(element: Element, [fn]: [CallbackFn<Element, Named>], named: Named) {
     if (!this.initialized) {
       runTask(this, () => {
         this.initialized = true;
@@ -45,7 +40,7 @@ export default class OnUpdate<
         return;
       }
 
-      fn(element, positional, named);
+      fn(element, named);
     });
   }
 }

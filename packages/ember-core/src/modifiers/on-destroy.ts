@@ -4,27 +4,25 @@ import Modifier from 'ember-modifier';
 import type Owner from '@ember/owner';
 import type { ArgsFor } from 'ember-modifier';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type AnyArray = any[];
-
-type CallbackFn<Args extends AnyArray> = (
-  element: HTMLElement,
-  ...args: Args
-) => void;
-
-export interface OnDestroySignature<Args extends AnyArray> {
-  Element: HTMLElement;
+type CallbackFn<Element, A> = (element: Element, args: A) => void;
+export interface OnDestroySignature<
+  Element extends HTMLElement,
+  Named extends object,
+> {
+  Element: Element;
   Args: {
-    Positional: [CallbackFn<Args>, ...Args];
+    Positional: [CallbackFn<Element, Named>];
+    Named: Named;
   };
 }
 
-export default class OnDestroy<Args extends AnyArray> extends Modifier<
-  OnDestroySignature<Args>
-> {
+export default class OnDestroy<
+  Element extends HTMLElement,
+  Named extends Record<string, unknown>,
+> extends Modifier<OnDestroySignature<Element, Named>> {
   declare callback: () => void;
 
-  constructor(owner: Owner, args: ArgsFor<OnDestroySignature<Args>>) {
+  constructor(owner: Owner, args: ArgsFor<OnDestroySignature<Element, Named>>) {
     super(owner, args);
 
     registerDestructor(this, () => {
@@ -33,10 +31,10 @@ export default class OnDestroy<Args extends AnyArray> extends Modifier<
   }
 
   modify(
-    element: HTMLElement,
-
-    [callback, ...args]: [CallbackFn<Args>, ...Args],
+    element: Element,
+    [callback]: [CallbackFn<Element, Named>],
+    named: Named,
   ): void {
-    this.callback = () => callback(element, ...args);
+    this.callback = () => callback(element, named);
   }
 }
