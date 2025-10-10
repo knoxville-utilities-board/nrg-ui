@@ -208,12 +208,17 @@ export default class Field extends Component<FieldSignature> {
 
   @action
   initBinding(binding: Binding<object>) {
-    this.binding = binding;
-
     const { form } = this.args;
     if (!form) {
       return;
     }
+    if (this.binding) {
+      form.unregisterBinding(this.validatorKey);
+      form.unregisterValidator(this.validatorKey, this.requiredId!);
+    }
+
+    this.binding = binding;
+
     form.registerBinding(binding, this.validatorKey);
   }
 
