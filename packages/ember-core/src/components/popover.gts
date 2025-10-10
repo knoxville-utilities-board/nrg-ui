@@ -314,8 +314,14 @@ export default class Popover extends Component<PopoverSignature> {
           "overflow-x-auto"
         }}
         {{onInsert this.initPopover}}
-        {{! @glint-expect-error Modifier types are currently not correct }}
-        {{onUpdate this.showPopover @alignment @arrow @controlElement @offset @side}}
+        {{onUpdate
+          this.showPopover
+          alignment=@alignment
+          arrow=@arrow
+          controlElement=@controlElement
+          offset=@offset
+          side=@side
+        }}
         ...attributes
       >
         {{#if (has-block-params "content")}}
