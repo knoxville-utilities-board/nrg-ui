@@ -169,7 +169,7 @@ importers:
         version: 9.0.3
       ember-qunit:
         specifier: ^9.0.4
-        version: 9.0.4(@ember/test-helpers@5.3.0(@babel/core@7.28.4)(@glint/template@1.6.1))(@glint/template@1.6.1)(qunit@2.24.1)
+        version: 9.0.4(@ember/test-helpers@5.3.0(@babel/core@7.28.4)(@glint/template@1.6.1))(@glint/template@1.6.1)(qunit@2.24.2)
       ember-resolver:
         specifier: ^13.1.1
         version: 13.1.1
@@ -219,8 +219,8 @@ importers:
         specifier: ^2.1.0
         version: 2.1.0(prettier@3.6.2)
       qunit:
-        specifier: ^2.24.1
-        version: 2.24.1
+        specifier: ^2.24.2
+        version: 2.24.2
       qunit-dom:
         specifier: ^3.5.0
         version: 3.5.0
@@ -256,8 +256,8 @@ importers:
         specifier: ^9.6.1
         version: 9.6.1
       '@types/node':
-        specifier: ^22.18.9
-        version: 22.18.9
+        specifier: ^22.18.10
+        version: 22.18.10
       eslint:
         specifier: ^9.37.0
         version: 9.37.0
@@ -278,7 +278,7 @@ importers:
         version: 8.46.0(eslint@9.37.0)(typescript@5.9.3)
       vitest:
         specifier: ^3.2.4
-        version: 3.2.4(@types/node@22.18.9)(jsdom@25.0.1)(sass@1.93.2)(terser@5.44.0)
+        version: 3.2.4(@types/node@22.18.10)(jsdom@25.0.1)(sass@1.93.2)(terser@5.44.0)
 
   packages/code-snippets:
     devDependencies:
@@ -289,14 +289,14 @@ importers:
         specifier: ^5.3.0
         version: 5.3.0(rollup@4.52.4)
       '@types/node':
-        specifier: ^22.18.9
-        version: 22.18.9
+        specifier: ^22.18.10
+        version: 22.18.10
       '@types/picomatch':
         specifier: ^4.0.2
         version: 4.0.2
       '@vitest/coverage-v8':
         specifier: ^3.2.4
-        version: 3.2.4(vitest@3.2.4(@types/node@22.18.9)(jsdom@25.0.1)(sass@1.93.2)(terser@5.44.0))
+        version: 3.2.4(vitest@3.2.4(@types/node@22.18.10)(jsdom@25.0.1)(sass@1.93.2)(terser@5.44.0))
       eslint:
         specifier: ^9.37.0
         version: 9.37.0
@@ -320,10 +320,10 @@ importers:
         version: 8.46.0(eslint@9.37.0)(typescript@5.9.3)
       vite:
         specifier: ^7.1.9
-        version: 7.1.9(@types/node@22.18.9)(sass@1.93.2)(terser@5.44.0)
+        version: 7.1.9(@types/node@22.18.10)(sass@1.93.2)(terser@5.44.0)
       vitest:
         specifier: ^3.2.4
-        version: 3.2.4(@types/node@22.18.9)(jsdom@25.0.1)(sass@1.93.2)(terser@5.44.0)
+        version: 3.2.4(@types/node@22.18.10)(jsdom@25.0.1)(sass@1.93.2)(terser@5.44.0)
 
   packages/design-system:
     dependencies:
@@ -517,8 +517,8 @@ importers:
         specifier: ^9.6.1
         version: 9.6.1
       '@types/node':
-        specifier: ^22.18.9
-        version: 22.18.9
+        specifier: ^22.18.10
+        version: 22.18.10
       '@types/semver':
         specifier: ^7.7.1
         version: 7.7.1
@@ -2289,8 +2289,8 @@ packages:
     resolution: {integrity: sha512-zmPitbQ8+6zNutpwgcQuLcsEpn/Cj54Kbn7L5pX0Os5kdWplB7xPgEh/g+SWOB/qmows2gpuCaPyduq8ZZRnxA==}
     deprecated: This is a stub types definition. minimatch provides its own type definitions, so you do not need this installed.
 
-  '@types/node@22.18.9':
-    resolution: {integrity: sha512-5yBtK0k/q8PjkMXbTfeIEP/XVYnz1R9qZJ3yUicdEW7ppdDJfe+MqXEhpqDL3mtn4Wvs1u0KLEG0RXzCgNpsSg==}
+  '@types/node@22.18.10':
+    resolution: {integrity: sha512-anNG/V/Efn/YZY4pRzbACnKxNKoBng2VTFydVu8RRs5hQjikP8CQfaeAV59VFSCzKNp90mXiVXW2QzV56rwMrg==}
 
   '@types/picomatch@4.0.2':
     resolution: {integrity: sha512-qHHxQ+P9PysNEGbALT8f8YOSHW0KJu6l2xU8DYY0fu/EmGxXdVnuTLvFUvBgPJMSqXq29SYHveejeAha+4AYgA==}
@@ -6466,8 +6466,8 @@ packages:
   qunit-theme-ember@1.0.0:
     resolution: {integrity: sha512-vdMVVo6ecdCkWttMTKeyq1ZTLGHcA6zdze2zhguNuc3ritlJMhOXY5RDseqazOwqZVfCg3rtlmL3fMUyIzUyFQ==}
 
-  qunit@2.24.1:
-    resolution: {integrity: sha512-Eu0k/5JDjx0QnqxsE1WavnDNDgL1zgMZKsMw/AoAxnsl9p4RgyLODyo2N7abZY7CEAnvl5YUqFZdkImzbgXzSg==}
+  qunit@2.24.2:
+    resolution: {integrity: sha512-dWlYs+Q9AIDT3eHKgkpEpWrSjHjqTJNCAJr1tUo5bQuDMzlZvaqCz1bNZhqzNu41ibkIQ7b50S9y6IMlrrUfNQ==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -10018,7 +10018,7 @@ snapshots:
   '@types/body-parser@1.19.6':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 22.18.9
+      '@types/node': 22.18.10
 
   '@types/chai-as-promised@7.1.8':
     dependencies:
@@ -10032,13 +10032,13 @@ snapshots:
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 22.18.9
+      '@types/node': 22.18.10
 
   '@types/cookie@0.4.1': {}
 
   '@types/cors@2.8.17':
     dependencies:
-      '@types/node': 22.18.9
+      '@types/node': 22.18.10
 
   '@types/deep-eql@4.0.2': {}
 
@@ -10056,7 +10056,7 @@ snapshots:
 
   '@types/express-serve-static-core@4.19.6':
     dependencies:
-      '@types/node': 22.18.9
+      '@types/node': 22.18.10
       '@types/qs': 6.14.0
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.5
@@ -10070,21 +10070,21 @@ snapshots:
 
   '@types/fs-extra@5.1.0':
     dependencies:
-      '@types/node': 22.18.9
+      '@types/node': 22.18.10
 
   '@types/fs-extra@8.1.5':
     dependencies:
-      '@types/node': 22.18.9
+      '@types/node': 22.18.10
 
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 6.0.0
-      '@types/node': 22.18.9
+      '@types/node': 22.18.10
 
   '@types/glob@8.1.0':
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 22.18.9
+      '@types/node': 22.18.10
 
   '@types/http-errors@2.0.5': {}
 
@@ -10094,7 +10094,7 @@ snapshots:
 
   '@types/keyv@3.1.4':
     dependencies:
-      '@types/node': 22.18.9
+      '@types/node': 22.18.10
 
   '@types/mime@1.3.5': {}
 
@@ -10106,7 +10106,7 @@ snapshots:
     dependencies:
       minimatch: 10.0.3
 
-  '@types/node@22.18.9':
+  '@types/node@22.18.10':
     dependencies:
       undici-types: 6.21.0
 
@@ -10120,24 +10120,24 @@ snapshots:
 
   '@types/responselike@1.0.3':
     dependencies:
-      '@types/node': 22.18.9
+      '@types/node': 22.18.10
 
   '@types/rimraf@2.0.5':
     dependencies:
       '@types/glob': 8.1.0
-      '@types/node': 22.18.9
+      '@types/node': 22.18.10
 
   '@types/semver@7.7.1': {}
 
   '@types/send@0.17.5':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 22.18.9
+      '@types/node': 22.18.10
 
   '@types/serve-static@1.15.8':
     dependencies:
       '@types/http-errors': 2.0.5
-      '@types/node': 22.18.9
+      '@types/node': 22.18.10
       '@types/send': 0.17.5
 
   '@types/supports-color@8.1.3': {}
@@ -10247,7 +10247,7 @@ snapshots:
       '@typescript-eslint/types': 8.46.0
       eslint-visitor-keys: 4.2.1
 
-  '@vitest/coverage-v8@3.2.4(vitest@3.2.4(@types/node@22.18.9)(jsdom@25.0.1)(sass@1.93.2)(terser@5.44.0))':
+  '@vitest/coverage-v8@3.2.4(vitest@3.2.4(@types/node@22.18.10)(jsdom@25.0.1)(sass@1.93.2)(terser@5.44.0))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 1.0.2
@@ -10262,7 +10262,7 @@ snapshots:
       std-env: 3.9.0
       test-exclude: 7.0.1
       tinyrainbow: 2.0.0
-      vitest: 3.2.4(@types/node@22.18.9)(jsdom@25.0.1)(sass@1.93.2)(terser@5.44.0)
+      vitest: 3.2.4(@types/node@22.18.10)(jsdom@25.0.1)(sass@1.93.2)(terser@5.44.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -10274,13 +10274,13 @@ snapshots:
       chai: 5.2.0
       tinyrainbow: 2.0.0
 
-  '@vitest/mocker@3.2.4(vite@7.1.7(@types/node@22.18.9)(sass@1.93.2)(terser@5.44.0))':
+  '@vitest/mocker@3.2.4(vite@7.1.7(@types/node@22.18.10)(sass@1.93.2)(terser@5.44.0))':
     dependencies:
       '@vitest/spy': 3.2.4
       estree-walker: 3.0.3
       magic-string: 0.30.17
     optionalDependencies:
-      vite: 7.1.7(@types/node@22.18.9)(sass@1.93.2)(terser@5.44.0)
+      vite: 7.1.7(@types/node@22.18.10)(sass@1.93.2)(terser@5.44.0)
 
   '@vitest/pretty-format@3.2.4':
     dependencies:
@@ -12627,12 +12627,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-qunit@9.0.4(@ember/test-helpers@5.3.0(@babel/core@7.28.4)(@glint/template@1.6.1))(@glint/template@1.6.1)(qunit@2.24.1):
+  ember-qunit@9.0.4(@ember/test-helpers@5.3.0(@babel/core@7.28.4)(@glint/template@1.6.1))(@glint/template@1.6.1)(qunit@2.24.2):
     dependencies:
       '@ember/test-helpers': 5.3.0(@babel/core@7.28.4)(@glint/template@1.6.1)
       '@embroider/addon-shim': 1.10.0
       '@embroider/macros': 1.19.1(@glint/template@1.6.1)
-      qunit: 2.24.1
+      qunit: 2.24.2
       qunit-theme-ember: 1.0.0
     transitivePeerDependencies:
       - '@glint/template'
@@ -12796,7 +12796,7 @@ snapshots:
     dependencies:
       '@types/cookie': 0.4.1
       '@types/cors': 2.8.17
-      '@types/node': 22.18.9
+      '@types/node': 22.18.10
       accepts: 1.3.8
       base64id: 2.0.0
       cookie: 0.7.2
@@ -14427,7 +14427,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 22.18.9
+      '@types/node': 22.18.10
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -15486,7 +15486,7 @@ snapshots:
 
   qunit-theme-ember@1.0.0: {}
 
-  qunit@2.24.1:
+  qunit@2.24.2:
     dependencies:
       commander: 7.2.0
       node-watch: 0.7.3
@@ -16821,13 +16821,13 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite-node@3.2.4(@types/node@22.18.9)(sass@1.93.2)(terser@5.44.0):
+  vite-node@3.2.4(@types/node@22.18.10)(sass@1.93.2)(terser@5.44.0):
     dependencies:
       cac: 6.7.14
       debug: 4.4.3(supports-color@8.1.1)
       es-module-lexer: 1.7.0
       pathe: 2.0.3
-      vite: 7.1.9(@types/node@22.18.9)(sass@1.93.2)(terser@5.44.0)
+      vite: 7.1.9(@types/node@22.18.10)(sass@1.93.2)(terser@5.44.0)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -16842,7 +16842,7 @@ snapshots:
       - tsx
       - yaml
 
-  vite@7.1.7(@types/node@22.18.9)(sass@1.93.2)(terser@5.44.0):
+  vite@7.1.7(@types/node@22.18.10)(sass@1.93.2)(terser@5.44.0):
     dependencies:
       esbuild: 0.25.10
       fdir: 6.5.0(picomatch@4.0.3)
@@ -16851,12 +16851,12 @@ snapshots:
       rollup: 4.52.4
       tinyglobby: 0.2.15
     optionalDependencies:
-      '@types/node': 22.18.9
+      '@types/node': 22.18.10
       fsevents: 2.3.3
       sass: 1.93.2
       terser: 5.44.0
 
-  vite@7.1.9(@types/node@22.18.9)(sass@1.93.2)(terser@5.44.0):
+  vite@7.1.9(@types/node@22.18.10)(sass@1.93.2)(terser@5.44.0):
     dependencies:
       esbuild: 0.25.10
       fdir: 6.5.0(picomatch@4.0.3)
@@ -16865,16 +16865,16 @@ snapshots:
       rollup: 4.52.4
       tinyglobby: 0.2.15
     optionalDependencies:
-      '@types/node': 22.18.9
+      '@types/node': 22.18.10
       fsevents: 2.3.3
       sass: 1.93.2
       terser: 5.44.0
 
-  vitest@3.2.4(@types/node@22.18.9)(jsdom@25.0.1)(sass@1.93.2)(terser@5.44.0):
+  vitest@3.2.4(@types/node@22.18.10)(jsdom@25.0.1)(sass@1.93.2)(terser@5.44.0):
     dependencies:
       '@types/chai': 5.2.2
       '@vitest/expect': 3.2.4
-      '@vitest/mocker': 3.2.4(vite@7.1.7(@types/node@22.18.9)(sass@1.93.2)(terser@5.44.0))
+      '@vitest/mocker': 3.2.4(vite@7.1.7(@types/node@22.18.10)(sass@1.93.2)(terser@5.44.0))
       '@vitest/pretty-format': 3.2.4
       '@vitest/runner': 3.2.4
       '@vitest/snapshot': 3.2.4
@@ -16892,11 +16892,11 @@ snapshots:
       tinyglobby: 0.2.15
       tinypool: 1.1.1
       tinyrainbow: 2.0.0
-      vite: 7.1.7(@types/node@22.18.9)(sass@1.93.2)(terser@5.44.0)
-      vite-node: 3.2.4(@types/node@22.18.9)(sass@1.93.2)(terser@5.44.0)
+      vite: 7.1.7(@types/node@22.18.10)(sass@1.93.2)(terser@5.44.0)
+      vite-node: 3.2.4(@types/node@22.18.10)(sass@1.93.2)(terser@5.44.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 22.18.9
+      '@types/node': 22.18.10
       jsdom: 25.0.1(supports-color@8.1.1)
     transitivePeerDependencies:
       - jiti
