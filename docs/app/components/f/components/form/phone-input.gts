@@ -50,7 +50,12 @@ export default class PhoneInputDemo extends Component {
         <FreestyleUsage>
           <:description>
             <div class="alert alert-info" role="alert">
-              This component supports all attributes supported by the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/tel" class="alert-link">phone</a> component in addition to the arguments listed below.
+              This component supports all attributes supported by the
+              <a
+                href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/tel"
+                class="alert-link"
+              >phone</a>
+              component in addition to the arguments listed below.
             </div>
           </:description>
           <:example>
