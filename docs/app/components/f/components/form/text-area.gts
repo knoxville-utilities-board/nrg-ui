@@ -51,6 +51,11 @@ export default class TextAreaDemo extends Component {
     <FreestyleSection @name="Text Area" as |Section|>
       <Section.subsection @name="Basic">
         <FreestyleUsage>
+          <:description>
+            <div class="alert alert-info" role="alert">
+              This component supports all attributes supported by the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/textarea" class="alert-link">textarea</a> component in addition to the arguments listed below.
+            </div>
+          </:description>
           <:example>
             <TextArea
               class={{this.class}}
@@ -90,12 +95,6 @@ export default class TextAreaDemo extends Component {
               @value={{this.disabled}}
               @onInput={{fn this.update "disabled"}}
             />
-            <Args.String
-              @name="placeholder"
-              @description="The native HTML placeholder text to display when the input is empty"
-              @value={{this.placeholder}}
-              @onInput={{fn this.update "placeholder"}}
-            />
             <Args.Bool
               @name="readonly"
               @defaultValue={{false}}
@@ -112,6 +111,12 @@ export default class TextAreaDemo extends Component {
                 @code="(newValue: string) => unknown"
               />
             </Args.Action>
+            <Args.String
+              @name="placeholder"
+              @description="The native HTML placeholder text to display when the input is empty"
+              @value={{this.placeholder}}
+              @onInput={{fn this.update "placeholder"}}
+            />
           </:api>
         </FreestyleUsage>
       </Section.subsection>
