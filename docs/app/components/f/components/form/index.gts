@@ -8,11 +8,10 @@ import { tracked } from '@glimmer/tracking';
 import { Button, Form, bind } from '@nrg-ui/core';
 import { validator } from '@nrg-ui/core/validation';
 import dayjs from 'dayjs';
+import getCodeSnippet from 'ember-code-snippet/helpers/get-code-snippet';
 import { tracked as autoTrack } from 'tracked-built-ins';
 
 import CodeBlock from '../../../code-block';
-
-import getCodeSnippet from 'ember-code-snippet/helpers/get-code-snippet';
 
 const Validators = {
   select: validator('inclusion', { in: ['A', 'C'] }),
@@ -361,7 +360,7 @@ export default class FormDemo extends Component {
               @lang={{snippet.language}}
               @code={{snippet.source}}
             />
-        {{/let}}
+          {{/let}}
         </div>
       </div>
     </div>
