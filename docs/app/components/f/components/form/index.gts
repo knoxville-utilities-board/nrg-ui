@@ -8,6 +8,7 @@ import { tracked } from '@glimmer/tracking';
 import { Button, Form, bind } from '@nrg-ui/core';
 import { validator } from '@nrg-ui/core/validation';
 import dayjs from 'dayjs';
+import getCodeSnippet from 'ember-code-snippet/helpers/get-code-snippet';
 import { tracked as autoTrack } from 'tracked-built-ins';
 
 import CodeBlock from '../../../code-block';
@@ -205,6 +206,7 @@ export default class FormDemo extends Component {
 
   <template>
     <div class="card p-3">
+      {{! BEGIN-SNIPPET form-demo-component }}
       <Form
         class="mb-0"
         @validators={{Validators}}
@@ -338,6 +340,7 @@ export default class FormDemo extends Component {
           @onClick={{this.toggleRequirePhoneLength}}
         />
       </Form>
+      {{! END-SNIPPET }}
       <hr />
       <div class="grid">
         <div class="g-col-12">
@@ -347,6 +350,17 @@ export default class FormDemo extends Component {
             @lang="json"
             @code={{this.modelAsJson}}
           />
+        </div>
+
+        <div class="g-col-12">
+          {{#let (getCodeSnippet "form-demo-component.gts") as |snippet|}}
+            <h3>Source</h3>
+            <CodeBlock
+              class="border rounded simple p-3"
+              @lang={{snippet.language}}
+              @code={{snippet.source}}
+            />
+          {{/let}}
         </div>
       </div>
     </div>

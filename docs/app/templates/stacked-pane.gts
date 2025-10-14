@@ -53,7 +53,7 @@ const StackedPaneTemplate: TOC<StackedPaneSignature> = <template>
   <div class="row g-0">
     <div class="col px-md-0 py-3">
       <div class="container mx-auto">
-        {{#let (getCodeSnippet "stacked-pane-component.hbs") as |snippet|}}
+        {{#let (getCodeSnippet "stacked-pane-component.gts") as |snippet|}}
           <CodeBlock
             class="border rounded simple p-3"
             @lang={{snippet.language}}
@@ -119,7 +119,7 @@ const StackedPaneTemplate: TOC<StackedPaneSignature> = <template>
           />
         {{/let}}
         {{#let
-          (getCodeSnippet "stacked-pane-pagination-component.hbs")
+          (getCodeSnippet "stacked-pane-pagination-component.gts")
           as |snippet|
         }}
           <CodeBlock

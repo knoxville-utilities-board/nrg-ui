@@ -6,8 +6,8 @@ import getCodeSnippet from 'ember-code-snippet/helpers/get-code-snippet';
 import CodeBlock from '../components/code-block.ts';
 
 <template>
-  {{! BEGIN-SNIPPET side-by-side-component }}
   {{! template-lint-disable no-inline-styles }}
+  {{! BEGIN-SNIPPET side-by-side-component }}
   <Container style="min-height: fit-content;">
     <StackedPane>
       <ul class="list-group">
