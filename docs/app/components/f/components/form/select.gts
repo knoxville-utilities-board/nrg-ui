@@ -63,6 +63,11 @@ export default class extends Component {
     <FreestyleSection @name="Select" as |Section|>
       <Section.subsection @name="String Options">
         <FreestyleUsage>
+          <:description>
+            <div class="alert alert-info" role="alert">
+              This component supports all attributes supported by the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/select" class="alert-link">select</a> component in addition to the arguments listed below.
+            </div>
+          </:description>
           <:example>
             <Select
               @binding={{bind this "selectValue"}}

@@ -75,6 +75,11 @@ export default class DatetimeDemo extends Component {
     <FreestyleSection @name="Datetime" as |Section|>
       <Section.subsection @name="Basic">
         <FreestyleUsage>
+          <:description>
+            <div class="alert alert-info" role="alert">
+              This component supports all attributes supported by the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/datetime-local" class="alert-link">datetime</a> component in addition to the arguments listed below.
+            </div>
+          </:description>
           <:example>
             <Datetime
               @allowMinuteSelection={{this.allowMinuteSelection}}

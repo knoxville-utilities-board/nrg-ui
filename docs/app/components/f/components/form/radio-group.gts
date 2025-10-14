@@ -52,6 +52,11 @@ export default class RadioGroupDemo extends Component {
     <FreestyleSection @name="Radio Group" as |Section|>
       <Section.subsection @name="Basic">
         <FreestyleUsage>
+          <:description>
+            <div class="alert alert-info" role="alert">
+              This component supports all attributes supported by the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/radio" class="alert-link">radio</a> component in addition to the arguments listed below.
+            </div>
+          </:description>
           <:example>
             <RadioGroup
               class={{this.class}}
