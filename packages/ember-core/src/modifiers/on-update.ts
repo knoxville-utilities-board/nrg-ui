@@ -26,6 +26,9 @@ export default class OnUpdate<
     if (!this.initialized) {
       runTask(this, () => {
         this.initialized = true;
+
+        // Entangle all named arguments
+        Object.values(named);
       });
       return;
     }
@@ -39,6 +42,9 @@ export default class OnUpdate<
       if (!this.initialized) {
         return;
       }
+
+      // Entangle all named arguments
+      Object.values(named);
 
       fn(element, named);
     });
