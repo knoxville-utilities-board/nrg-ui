@@ -5,13 +5,21 @@ import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { MktgServicePricing, Modal } from '@nrg-ui/core';
+import { service } from '@ember/service';
+import { MktgServicePricing, Modal, Button, Form, bind } from '@nrg-ui/core';
 import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
 import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
 import CodeBlock from '../../code-block';
+import { validator } from '@nrg-ui/core/validation';
+
+const Validators = {
+  modelValue: [validator('presence', { presence: true })],
+};
 
 export default class ModalDemo extends Component {
+  @service toast;
+
   positionOptions = ['center', 'left', 'right'];
 
   @tracked
@@ -28,6 +36,12 @@ export default class ModalDemo extends Component {
 
   @tracked
   position = 'center';
+
+  @tracked
+  didValidate = false;
+
+  @tracked
+  passedInDidValidate = false;
 
   get modal2Position() {
     if (this.position === 'left') {
@@ -49,6 +63,17 @@ export default class ModalDemo extends Component {
     this.isOpen = false;
   }
 
+  @action
+  openModal() {
+    this.isOpen = true;
+    this.didValidate = false;
+  }
+
+  @action
+  onSubmit() {
+    this.toast.danger('Tried to submit!');
+  }
+
   <template>
     <FreestyleSection @name="Modal" as |Section|>
       <Section.subsection @name="Basics">
@@ -65,98 +90,91 @@ export default class ModalDemo extends Component {
                 Modal 1
               </:header>
               <:default>
-                <p>Modal Content</p>
-                <div class="container">
-                  <h4>Billing &amp; Contact Information</h4>
-                  <hr class="my-4" />
-
-                  <MktgServicePricing
-                    @label="Fiber"
-                    @package="The Gig"
-                    @description="$65/mo"
-                    @icon="bi-wifi"
-                    @selected={{true}}
-                    @active={{false}}
-                    as |Addon|
+                <p>Did Validate: {{this.didValidate}}</p>
+                {{#if this.passedInDidValidate}}
+                  <Form
+                    class="mb-0"
+                    @validators={{Validators}}
+                    @onSubmit={{this.onSubmit}}
+                    @didValidate={{this.didValidate}}
+                    @disabled={{this.isLoading}}
+                    as |Form|
                   >
-                    <Addon @label="Smart Gig" @price="$15/mo" />
-                  </MktgServicePricing>
-                  <MktgServicePricing
-                    @label="TV"
-                    @package="Silver"
-                    @description="$107/mo"
-                    @icon="bi-tv"
-                    @selected={{true}}
-                    @active={{false}}
-                    as |Addon|
+                    <Form.Field
+                      @disabled={{this.isLoading}}
+                      class="mt-2"
+                      @label="Value"
+                      @required={{true}}
+                      as |Field|
+                    >
+                      <Field.TextInput @binding={{bind this "modelValue"}} />
+                    </Form.Field>
+                    <div class="d-flex py-3 justify-content-end">
+                      <Form.SubmitButton
+                        class="btn-primary float-right me-2"
+                        @text="Save"
+                        @loading={{this.save.isRunning}}
+                      />
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        {{on "click" (fn this.update "isOpen" false)}}
+                      >
+                        Close this modal
+                      </button>
+                    </div>
+                  </Form>
+                {{else}}
+                  <Form
+                    class="mb-0"
+                    @validators={{Validators}}
+                    @onSubmit={{this.onSubmit}}
+                    @disabled={{this.isLoading}}
+                    as |Form|
                   >
-                    <Addon @label="FireStick" @price="$80" @quantity="2" />
-                    <Addon @label="HBO" @price="$5.99/mo" />
-                  </MktgServicePricing>
-                  <MktgServicePricing
-                    @label="Phone"
-                    @description="$129/mo"
-                    @icon="bi-telephone"
-                    @selected={{true}}
-                    @active={{true}}
-                  />
-                </div>
-
+                    <Form.Field
+                      @disabled={{this.isLoading}}
+                      class="mt-2"
+                      @label="Value"
+                      @required={{true}}
+                      as |Field|
+                    >
+                      <Field.TextInput @binding={{bind this "modelValue"}} />
+                    </Form.Field>
+                    <div class="d-flex py-3 justify-content-end">
+                      <Form.SubmitButton
+                        class="btn-primary float-right me-2"
+                        @text="Save"
+                        @loading={{this.save.isRunning}}
+                      />
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        {{on "click" (fn this.update "isOpen" false)}}
+                      >
+                        Close this modal
+                      </button>
+                    </div>
+                  </Form>
+                {{/if}}
               </:default>
-              <:footer>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  {{on "click" (fn this.update "isOpen" false)}}
-                >
-                  Close this modal
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  {{on "click" (fn this.update "modal2Open" true)}}
-                >
-                  Open Modal 2
-                </button>
-              </:footer>
             </Modal>
 
-            <Modal
-              @dismissible={{this.dismissible}}
-              @isOpen={{this.modal2Open}}
-              @position={{this.modal2Position}}
-              @onDismiss={{fn this.update "modal2Open" false}}
-            >
-              <MktgServicePricing
-                @label="TV"
-                @package="Silver"
-                @description="$107/mo"
-                @icon="bi-tv"
-                @selected={{true}}
-                @active={{false}}
-                as |Addon|
-              >
-                <Addon @label="FireStick" @price="$80" @quantity="2" />
-                <Addon @label="HBO" @price="$5.99/mo" />
-                <Addon @label="STARZ" @price="$4.99/mo" />
-                <Addon @label="Spanish Channels" @price="$4.99/mo" />
-              </MktgServicePricing>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                {{on "click" (fn this.update "modal2Open" false)}}
-              >
-                Close this modal
-              </button>
-            </Modal>
           </:example>
           <:api as |Args|>
+            <Args.Bool
+              @defaultValue={{false}}
+              @description="When true, didValidate will be passed in."
+              @name="passedInDidValidate"
+              @value={{this.passedInDidValidate}}
+              @onInput={{fn this.update "passedInDidValidate"}}
+            />
             <Args.Bool
               @defaultValue={{false}}
               @description="When true, the modal will open."
               @name="isOpen"
               @value={{this.isOpen}}
-              @onInput={{fn this.update "isOpen"}}
+              @onInput={{this.openModal}}
             />
             <Args.Bool
               @defaultValue={{true}}
