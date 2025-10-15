@@ -219,6 +219,8 @@ export default class Popover extends Component<PopoverSignature> {
       return;
     }
 
+    this.cleanupAutoUpdate?.();
+
     this.cleanupAutoUpdate = autoUpdate(
       this.control,
       this.popover,
