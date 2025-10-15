@@ -3,13 +3,23 @@ import { on } from '@ember/modifier';
 import { action, set } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import MktgServicePricing from '@nrg-ui/core/components/mktg/service-pricing';
-import Modal from '@nrg-ui/core/components/modal';
-import Section from '@nrg-ui/showcase/components/section';
+import { service } from '@ember/service';
+import { MktgServicePricing, Modal, Button, Form, bind } from '@nrg-ui/core';
+import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
+import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
-const positionOptions = ['center', 'left', 'right'] as const;
+import CodeBlock from '../../code-block';
+import { validator } from '@nrg-ui/core/validation';
+
+const Validators = {
+  modelValue: [validator('presence', { presence: true })],
+};
 
 export default class ModalDemo extends Component {
+  @service toast;
+
+  positionOptions = ['center', 'left', 'right'];
+
   @tracked
   isOpen = false;
 
@@ -23,7 +33,13 @@ export default class ModalDemo extends Component {
   dismissible = false;
 
   @tracked
-  position: (typeof positionOptions)[number] = 'center';
+  position = 'center';
+
+  @tracked
+  didValidate = false;
+
+  @tracked
+  passedInDidValidate = false;
 
   get modal2Position() {
     if (this.position === 'left') {
@@ -45,112 +61,118 @@ export default class ModalDemo extends Component {
     this.isOpen = false;
   }
 
+  @action
+  openModal() {
+    this.isOpen = true;
+    this.didValidate = false;
+  }
+
+  @action
+  onSubmit() {
+    this.toast.danger('Tried to submit!');
+  }
+
   <template>
-    <Section @name="Modal" as |Section|>
-      <Section.Subsection @name="Basics" @model={{this}} @elementTag="dialog">
-        <:example as |model|>
-          <Modal
-            @dismissible={{model.dismissible}}
-            @isOpen={{model.isOpen}}
-            @subtle={{model.subtle}}
-            @position={{model.position}}
-            @onDismiss={{this.closeModal}}
-          >
-            <:header>
-              Modal 1
-            </:header>
-            <:default>
-              <p>Modal Content</p>
-              <div class="container">
-                <h4>Billing &amp; Contact Information</h4>
-                <hr class="my-4" />
-
-                <MktgServicePricing
-                  @label="Fiber"
-                  @product="The Gig"
-                  @description="$65/mo"
-                  @icon="bi-wifi"
-                  @selected={{true}}
-                  @active={{false}}
-                  as |Addon|
-                >
-                  <Addon @label="Smart Gig" @price="$15/mo" />
-                </MktgServicePricing>
-                <MktgServicePricing
-                  @label="TV"
-                  @product="Silver"
-                  @description="$107/mo"
-                  @icon="bi-tv"
-                  @selected={{true}}
-                  @active={{false}}
-                  as |Addon|
-                >
-                  <Addon @label="FireStick" @price="$80" @quantity={{2}} />
-                  <Addon @label="HBO" @price="$5.99/mo" />
-                </MktgServicePricing>
-                <MktgServicePricing
-                  @label="Phone"
-                  @description="$129/mo"
-                  @icon="bi-telephone"
-                  @selected={{true}}
-                  @active={{true}}
-                />
-              </div>
-
-            </:default>
-            <:footer>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                {{on "click" (fn this.update "isOpen" false)}}
-              >
-                Close this modal
-              </button>
-              <button
-                type="button"
-                class="btn btn-primary"
-                {{on "click" (fn this.update "modal2Open" true)}}
-              >
-                Open Modal 2
-              </button>
-            </:footer>
-          </Modal>
-
-          <Modal
-            @dismissible={{model.dismissible}}
-            @isOpen={{model.modal2Open}}
-            @position={{model.modal2Position}}
-            @onDismiss={{fn this.update "modal2Open" false}}
-          >
-            <MktgServicePricing
-              @label="TV"
-              @product="Silver"
-              @description="$107/mo"
-              @icon="bi-tv"
-              @selected={{true}}
-              @active={{false}}
-              as |Addon|
+    <FreestyleSection @name="Modal" as |Section|>
+      <Section.subsection @name="Basics">
+        <FreestyleUsage>
+          <:example>
+            <Modal
+              @dismissible={{this.dismissible}}
+              @isOpen={{this.isOpen}}
+              @subtle={{this.subtle}}
+              @position={{this.position}}
+              @onDismiss={{fn this.update "isOpen" false}}
             >
-              <Addon @label="FireStick" @price="$80" @quantity={{2}} />
-              <Addon @label="HBO" @price="$5.99/mo" />
-              <Addon @label="STARZ" @price="$4.99/mo" />
-              <Addon @label="Spanish Channels" @price="$4.99/mo" />
-            </MktgServicePricing>
-            <button
-              type="button"
-              class="btn btn-secondary"
-              {{on "click" (fn this.update "modal2Open" false)}}
-            >
-              Close this modal
-            </button>
-          </Modal>
-        </:example>
-        <:api as |Api|>
-          <Api.Arguments as |Args|>
-            <Args.Boolean
+              <:header>
+                Modal 1
+              </:header>
+              <:default>
+                <p>Did Validate: {{this.didValidate}}</p>
+                {{#if this.passedInDidValidate}}
+                  <Form
+                    class="mb-0"
+                    @validators={{Validators}}
+                    @onSubmit={{this.onSubmit}}
+                    @didValidate={{this.didValidate}}
+                    @disabled={{this.isLoading}}
+                    as |Form|
+                  >
+                    <Form.Field
+                      @disabled={{this.isLoading}}
+                      class="mt-2"
+                      @label="Value"
+                      @required={{true}}
+                      as |Field|
+                    >
+                      <Field.TextInput @binding={{bind this "modelValue"}} />
+                    </Form.Field>
+                    <div class="d-flex py-3 justify-content-end">
+                      <Form.SubmitButton
+                        class="btn-primary float-right me-2"
+                        @text="Save"
+                        @loading={{this.save.isRunning}}
+                      />
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        {{on "click" (fn this.update "isOpen" false)}}
+                      >
+                        Close this modal
+                      </button>
+                    </div>
+                  </Form>
+                {{else}}
+                  <Form
+                    class="mb-0"
+                    @validators={{Validators}}
+                    @onSubmit={{this.onSubmit}}
+                    @disabled={{this.isLoading}}
+                    as |Form|
+                  >
+                    <Form.Field
+                      @disabled={{this.isLoading}}
+                      class="mt-2"
+                      @label="Value"
+                      @required={{true}}
+                      as |Field|
+                    >
+                      <Field.TextInput @binding={{bind this "modelValue"}} />
+                    </Form.Field>
+                    <div class="d-flex py-3 justify-content-end">
+                      <Form.SubmitButton
+                        class="btn-primary float-right me-2"
+                        @text="Save"
+                        @loading={{this.save.isRunning}}
+                      />
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        {{on "click" (fn this.update "isOpen" false)}}
+                      >
+                        Close this modal
+                      </button>
+                    </div>
+                  </Form>
+                {{/if}}
+              </:default>
+            </Modal>
+
+          </:example>
+          <:api as |Args|>
+            <Args.Bool
+              @defaultValue={{false}}
+              @description="When true, didValidate will be passed in."
+              @name="passedInDidValidate"
+              @value={{this.passedInDidValidate}}
+              @onInput={{fn this.update "passedInDidValidate"}}
+            />
+            <Args.Bool
               @defaultValue={{false}}
               @description="When true, the modal will open."
               @name="isOpen"
+              @value={{this.isOpen}}
+              @onInput={{this.openModal}}
             />
             <Args.Boolean
               @defaultValue={{true}}
