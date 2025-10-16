@@ -163,7 +163,14 @@ const Application: TOC<{
           </Item>
         </:items>
       </Menu.Group>
-
+      <Menu.Item @url="https://example.com">
+        <:default>
+          External Link
+        </:default>
+        <:badge>
+          9+
+        </:badge>
+      </Menu.Item>
     </:sidebar>
     <:sidebar-footer as |Item|>
       <Item

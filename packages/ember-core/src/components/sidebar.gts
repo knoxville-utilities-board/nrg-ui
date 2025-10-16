@@ -101,22 +101,27 @@ export class Item extends Component<ItemSignature> {
         <span>
           {{yield}}
         </span>
-        {{#if (has-block "badge")}}
-          <span class="badge rounded-pill">
-            {{yield to="badge"}}
-          </span>
-        {{/if}}
+        <span class="d-flex">
+          {{#if (has-block "badge")}}
+            <span class="badge rounded-pill">
+              {{yield to="badge"}}
+            </span>
+          {{/if}}
+        </span>
       </LinkTo>
     {{else if @url}}
       <a class={{this.classes}} href={{@url}} ...attributes>
         <span>
           {{yield}}
         </span>
-        {{#if (has-block "badge")}}
-          <span class="badge rounded-pill">
-            {{yield to="badge"}}
-          </span>
-        {{/if}}
+        <span class="d-flex">
+          <i class="bi bi-box-arrow-up-right text-body external-icon"></i>
+          {{#if (has-block "badge")}}
+            <span class="badge rounded-pill">
+              {{yield to="badge"}}
+            </span>
+          {{/if}}
+        </span>
       </a>
     {{else}}
       <div
@@ -128,11 +133,13 @@ export class Item extends Component<ItemSignature> {
         <span>
           {{yield}}
         </span>
-        {{#if (has-block "badge")}}
-          <span class="badge rounded-pill">
-            {{yield to="badge"}}
-          </span>
-        {{/if}}
+        <span class="d-flex">
+          {{#if (has-block "badge")}}
+            <span class="badge rounded-pill">
+              {{yield to="badge"}}
+            </span>
+          {{/if}}
+        </span>
       </div>
     {{/if}}
   </template>
@@ -228,11 +235,14 @@ export class Group extends Component<GroupSignature> {
           <span>
             {{yield to="header"}}
           </span>
-          {{#if (has-block "badge")}}
-            <span class="badge rounded-pill">
-              {{yield to="badge"}}
-            </span>
-          {{/if}}
+          <span class="d-flex">
+            <i class="bi bi-box-arrow-up-right text-body external-icon"></i>
+            {{#if (has-block "badge")}}
+              <span class="badge rounded-pill">
+                {{yield to="badge"}}
+              </span>
+            {{/if}}
+          </span>
         </a>
       {{else}}
         <div
@@ -244,11 +254,13 @@ export class Group extends Component<GroupSignature> {
           <span>
             {{yield to="header"}}
           </span>
-          {{#if (has-block "badge")}}
-            <span class="badge rounded-pill">
-              {{yield to="badge"}}
-            </span>
-          {{/if}}
+          <span class="d-flex">
+            {{#if (has-block "badge")}}
+              <span class="badge rounded-pill">
+                {{yield to="badge"}}
+              </span>
+            {{/if}}
+          </span>
         </div>
       {{/if}}
     {{/if}}
