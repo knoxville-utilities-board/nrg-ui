@@ -501,6 +501,106 @@ importers:
         specifier: ^5.102.1
         version: 5.102.1
 
+  packages/showcase:
+    dependencies:
+      '@embroider/addon-shim':
+        specifier: ^1.10.0
+        version: 1.10.0
+      '@embroider/macros':
+        specifier: ^1.19.1
+        version: 1.19.2(@glint/template@1.6.2)
+      chalk:
+        specifier: ^4.1.2
+        version: 4.1.2
+      decorator-transforms:
+        specifier: ^2.2.2
+        version: 2.3.0(@babel/core@7.28.4)
+      execa:
+        specifier: ^9.6.0
+        version: 9.6.0
+    devDependencies:
+      '@babel/core':
+        specifier: ^7.28.4
+        version: 7.28.4(supports-color@8.1.1)
+      '@babel/plugin-transform-typescript':
+        specifier: ^7.28.0
+        version: 7.28.0(@babel/core@7.28.4)
+      '@babel/runtime':
+        specifier: ^7.26.10 || ^8.0.0
+        version: 7.28.4
+      '@ember/test-helpers':
+        specifier: ^5.3.0
+        version: 5.3.0(@babel/core@7.28.4)(@glint/template@1.6.2)
+      '@embroider/addon-dev':
+        specifier: ^8.1.0
+        version: 8.1.0(@glint/template@1.6.2)(rollup@4.52.5)
+      '@glimmer/component':
+        specifier: ^2.0.0
+        version: 2.0.0
+      '@glimmer/tracking':
+        specifier: ^1.1.2
+        version: 1.1.2
+      '@glint/ember-tsc':
+        specifier: ^1.0.3
+        version: 1.0.4(typescript@5.9.3)
+      '@glint/template':
+        specifier: ^1.6.1
+        version: 1.6.2
+      '@nrg-ui/core':
+        specifier: workspace:*
+        version: link:../ember-core
+      '@nrg-ui/standards':
+        specifier: workspace:*
+        version: link:../standards
+      '@rollup/plugin-babel':
+        specifier: ^6.0.4
+        version: 6.1.0(@babel/core@7.28.4)(rollup@4.52.5)
+      '@tsconfig/ember':
+        specifier: ^3.0.11
+        version: 3.0.11
+      '@types/qunit':
+        specifier: ^2.19.13
+        version: 2.19.13
+      babel-plugin-ember-template-compilation:
+        specifier: ^3.0.0
+        version: 3.0.1
+      concurrently:
+        specifier: ^9.2.1
+        version: 9.2.1
+      ember-template-lint:
+        specifier: ^7.9.3
+        version: 7.9.3
+      eslint:
+        specifier: ^9.37.0
+        version: 9.38.0
+      eslint-plugin-decorator-position:
+        specifier: ^6.0.0
+        version: 6.0.0(@babel/eslint-parser@7.28.0(@babel/core@7.28.4)(eslint@9.38.0))(eslint@9.38.0)
+      eslint-plugin-ember:
+        specifier: ^12.7.4
+        version: 12.7.4(@babel/core@7.28.4)(@typescript-eslint/parser@8.46.1(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0)(typescript@5.9.3)
+      eslint-plugin-import:
+        specifier: ^2.32.0
+        version: 2.32.0(@typescript-eslint/parser@8.46.1(eslint@9.38.0)(typescript@5.9.3))(eslint-import-resolver-webpack@0.13.10)(eslint@9.38.0)
+      eslint-plugin-n:
+        specifier: ^17.23.1
+        version: 17.23.1(eslint@9.38.0)(typescript@5.9.3)
+      prettier:
+        specifier: ^3.6.2
+        version: 3.6.2
+      prettier-plugin-ember-template-tag:
+        specifier: ^2.1.0
+        version: 2.1.0(prettier@3.6.2)
+      rollup:
+        specifier: ^4.52.4
+        version: 4.52.5
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+      typescript-eslint:
+        specifier: ^8.46.0
+        version: 8.46.1(eslint@9.38.0)(typescript@5.9.3)
+
   packages/standards:
     dependencies:
       chalk:
