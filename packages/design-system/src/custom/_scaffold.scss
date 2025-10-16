@@ -70,7 +70,7 @@
     &.active {
       background: 0;
 
-      & > span:not(.badge) {
+      & span:first-child {
         background-color: rgba(var(--bs-primary-rgb), 0.25);
         color: var(--bs-body-color);
       }
@@ -87,6 +87,10 @@
     &:not(.header) {
       padding-left: calc(2 * var(--bs-list-group-item-padding-x));
     }
+
+    &:hover .external-icon {
+      display: block;
+    }
   }
 
   & .badge {
@@ -94,6 +98,11 @@
 
     background-color: var(--bs-primary);
     color: var(--bs-badge-color);
+    margin-left: var(--bs-list-group-item-padding-x);
+  }
+
+  & .external-icon {
+    display: none;
   }
 }
 
