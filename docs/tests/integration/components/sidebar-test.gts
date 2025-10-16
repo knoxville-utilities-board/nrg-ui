@@ -55,7 +55,7 @@ module('Integration | Component | sidebar', function (hooks) {
       .dom('.sidebar > .list-group > .list-group-item.header')
       .exists({ count: 2 }, 'All headers are rendered');
     assert
-      .dom('.sidebar > .list-group > .list-group-item > .badge')
+      .dom('.sidebar > .list-group > .list-group-item > span > .badge')
       .exists({ count: 3 }, 'All badges are rendered');
     assert
       .dom('.sidebar > .list-group.footer > .list-group-item')
