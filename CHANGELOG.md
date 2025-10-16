@@ -2,6 +2,21 @@
 
 ## Release (2025-10-16)
 
+* @nrg-ui/css 0.26.0 (minor)
+* @nrg-ui/core 0.45.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#645](https://github.com/knoxville-utilities-board/nrg-ui/pull/645) feat(sidebar): Add icon to external links ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* [#643](https://github.com/knoxville-utilities-board/nrg-ui/pull/643) chore: Add Ember Inspector support to docs app ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
+## Release (2025-10-16)
+
 * @nrg-ui/core 0.44.2 (patch)
 
 #### :bug: Bug Fix

@@ -7,17 +7,27 @@
       "oldVersion": "0.1.2"
     },
     "@nrg-ui/css": {
-      "oldVersion": "0.25.0"
-    },
-    "@nrg-ui/core": {
-      "impact": "patch",
-      "oldVersion": "0.44.1",
-      "newVersion": "0.44.2",
+      "impact": "minor",
+      "oldVersion": "0.25.0",
+      "newVersion": "0.26.0",
       "tagName": "latest",
       "constraints": [
         {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        }
+      ],
+      "pkgJSONPath": "./packages/design-system/package.json"
+    },
+    "@nrg-ui/core": {
+      "impact": "minor",
+      "oldVersion": "0.44.2",
+      "newVersion": "0.45.0",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
@@ -29,5 +39,5 @@
       "oldVersion": "0.3.4"
     }
   },
-  "description": "## Release (2025-10-16)\n\n* @nrg-ui/core 0.44.2 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#638](https://github.com/knoxville-utilities-board/nrg-ui/pull/638) fix: Unregister bindings and validations ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* [#635](https://github.com/knoxville-utilities-board/nrg-ui/pull/635) chore: Create better documentation ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n* [#633](https://github.com/knoxville-utilities-board/nrg-ui/pull/633) chore(docs): Convert remaining route templates to GTS ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* [#633](https://github.com/knoxville-utilities-board/nrg-ui/pull/633) chore(docs): Convert remaining route templates to GTS ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-10-16)\n\n* @nrg-ui/css 0.26.0 (minor)\n* @nrg-ui/core 0.45.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#645](https://github.com/knoxville-utilities-board/nrg-ui/pull/645) feat(sidebar): Add icon to external links ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* [#643](https://github.com/knoxville-utilities-board/nrg-ui/pull/643) chore: Add Ember Inspector support to docs app ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
