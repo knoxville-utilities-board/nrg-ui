@@ -23989,7 +23989,7 @@ dialog .btn-close {
 .sidebar .item.list-group-item.active {
   background: 0;
 }
-.sidebar .item.list-group-item.active > span:not(.badge) {
+.sidebar .item.list-group-item.active span:first-child {
   background-color: rgba(var(--bs-primary-rgb), 0.25);
   color: var(--bs-body-color);
 }
@@ -24002,9 +24002,16 @@ dialog .btn-close {
 .sidebar .item.list-group-item:not(.header) {
   padding-left: calc(2 * var(--bs-list-group-item-padding-x));
 }
+.sidebar .item.list-group-item:hover .external-icon {
+  display: block;
+}
 .sidebar .badge {
   background-color: var(--bs-primary);
   color: var(--bs-badge-color);
+  margin-left: var(--bs-list-group-item-padding-x);
+}
+.sidebar .external-icon {
+  display: none;
 }
 
 .app-bar-container {
