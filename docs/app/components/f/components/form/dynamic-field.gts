@@ -11,40 +11,40 @@ import { eq } from 'ember-truth-helpers';
 
 import CodeBlock from '../../../code-block';
 
-const Validators = {
-  'model.foo': validator('custom', {
-    validate(value) {
-      if (value !== 'foo') {
-        return 'Value must be "foo"';
-      }
-      return true;
-    },
-    disabled() {
-      return this.model.type != 'foo';
-    },
-  }),
-  'model.bar': validator('custom', {
-    validate(value) {
-      if (value !== 'bar') {
-        return 'Value must be "bar"';
-      }
-      return true;
-    },
-    disabled() {
-      return this.model.type != 'bar';
-    },
-  }),
-};
+// const Validators = {
+//   'model.foo': validator('custom', {
+//     validate(value) {
+//       if (value !== 'foo') {
+//         return 'Value must be "foo"';
+//       }
+//       return true;
+//     },
+//     disabled() {
+//       return this.model.type != 'foo';
+//     },
+//   }),
+//   'model.bar': validator('custom', {
+//     validate(value) {
+//       if (value !== 'bar') {
+//         return 'Value must be "bar"';
+//       }
+//       return true;
+//     },
+//     disabled() {
+//       return this.model.type != 'bar';
+//     },
+//   }),
+// };
 
 class Model {
   @tracked
-  type = 'foo';
+  type = 'Form 1';
 
   @tracked
-  foo;
+  form1Value;
 
   @tracked
-  bar;
+  form2Value;
 
   toJSON() {
     const obj = {};
@@ -94,25 +94,33 @@ export default class DynamicFieldDemo extends Component {
     alert('Form submitted');
   }
 
+  get formOptions() {
+    return ['Form 1', 'Form 2'];
+  }
+
   <template>
     <div class="card p-3">
-      <Form
-        class="mb-0"
-        @validators={{Validators}}
-        @onSubmit={{this.onSubmit}}
-        as |Form|
-      >
-        <Form.Field
-          @label="Dynamic Input"
-          @required={{this.required}}
-          as |Field options|
-        >
-          <DynamicParent
-            @fieldOptions={{options}}
-            @model={{this.model}}
-            data-test-observed-selector
+      <Form class="mb-0" @onSubmit={{this.onSubmit}} as |Form|>
+        <Form.Field @label="Select" @required={{this.required}} as |Field|>
+          <Field.Select
+            @binding={{bind this.model "type"}}
+            @options={{this.formOptions}}
           />
         </Form.Field>
+        {{#if (eq this.model.type "Form 1")}}
+          <Form.Field @required={{this.required}} as |Field|>
+            <Field.Checkbox @binding={{bind this.model "form1Value"}}>
+              Form 1
+            </Field.Checkbox>
+          </Form.Field>
+        {{else}}
+          <Form.Field @required={{this.required}} as |Field|>
+            <Field.Checkbox @binding={{bind this.model "form2Value"}}>
+              Form 2
+            </Field.Checkbox>
+          </Form.Field>
+        {{/if}}
+
         <Form.SubmitButton class="btn-primary" />
         <Button
           class="btn{{unless this.required '-outline'}}-secondary mt-3"
@@ -132,53 +140,6 @@ export default class DynamicFieldDemo extends Component {
         </div>
       </div>
     </div>
-  </template>
-}
-
-export class DynamicParent extends Component {
-  @tracked
-  model;
-
-  constructor(...args: unknown[]) {
-    super(...args);
-    this.model = this.args.model;
-
-    setOwner(this.model, getOwner(this));
-  }
-
-  get typeOptions() {
-    return ['foo', 'bar'];
-  }
-
-  @action
-  typeSelect(type) {
-    this.model.type = type;
-  }
-
-  <template>
-    <Dropdown class="text-capitalize">
-      <:control>
-        {{this.model.type}}
-      </:control>
-      <:menu as |Menu|>
-        {{#each this.typeOptions as |type|}}
-          <Menu.Item @onSelect={{fn this.typeSelect type}}>
-            {{type}}
-          </Menu.Item>
-        {{/each}}
-      </:menu>
-    </Dropdown>
-    {{#if (eq this.model.type "bar")}}
-      <TextInput
-        @binding={{bind this "model.bar"}}
-        @fieldOptions={{@fieldOptions}}
-      />
-    {{else}}
-      <TextInput
-        @binding={{bind this "model.foo"}}
-        @fieldOptions={{@fieldOptions}}
-      />
-    {{/if}}
   </template>
 }
 
