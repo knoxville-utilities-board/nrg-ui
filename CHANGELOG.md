@@ -1,5 +1,24 @@
 # Changelog
 
+## Release (2025-10-16)
+
+* @nrg-ui/core 0.44.2 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#638](https://github.com/knoxville-utilities-board/nrg-ui/pull/638) fix: Unregister bindings and validations ([@TSenter](https://github.com/TSenter))
+
+#### :memo: Documentation
+* [#635](https://github.com/knoxville-utilities-board/nrg-ui/pull/635) chore: Create better documentation ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+* [#633](https://github.com/knoxville-utilities-board/nrg-ui/pull/633) chore(docs): Convert remaining route templates to GTS ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* [#633](https://github.com/knoxville-utilities-board/nrg-ui/pull/633) chore(docs): Convert remaining route templates to GTS ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-10-09)
 
 * @nrg-ui/core 0.44.1 (patch)
