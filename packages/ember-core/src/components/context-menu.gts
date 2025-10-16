@@ -115,7 +115,10 @@ export default class ContextMenu extends Component<ContextMenuSignature> {
   @service
   declare contextMenu: ContextMenuService;
 
-  register = (top: HTMLDivElement, dropdown: DropdownType) => {
+  register = (
+    top: HTMLDivElement,
+    { menu: dropdown }: { menu: DropdownType },
+  ) => {
     const { id } = this.args;
 
     assert('ContextMenu requires an id', id);
@@ -160,8 +163,7 @@ export default class ContextMenu extends Component<ContextMenuSignature> {
       <:menu as |Menu|>
         <div
           class="dropdown-top"
-          {{! @glint-expect-error Modifier types are currently not correct }}
-          {{onInsert this.register Menu}}
+          {{onInsert this.register menu=Menu}}
           {{onDestroy this.unregister}}
         >
           {{yield Menu}}

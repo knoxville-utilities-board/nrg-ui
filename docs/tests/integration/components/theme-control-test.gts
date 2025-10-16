@@ -19,6 +19,12 @@ module('Integration | Component | theme-control', function (hooks) {
     this.service = this.owner.lookup('service:theme');
   });
 
+  hooks.afterEach(function (this: Context) {
+    const service = this.owner.lookup('service:theme');
+
+    service.setTheme('light');
+  });
+
   test('it renders', async function (this: Context, assert) {
     this.service.value = 'light';
 

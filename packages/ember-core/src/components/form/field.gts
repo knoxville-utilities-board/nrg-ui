@@ -146,7 +146,7 @@ export default class Field extends Component<FieldSignature> {
     super(owner, args);
 
     registerDestructor(this, () => {
-      this.setupValidator(undefined, [false]);
+      this.setupValidator(undefined, { required: false });
     });
   }
 
@@ -208,17 +208,25 @@ export default class Field extends Component<FieldSignature> {
 
   @action
   initBinding(binding: Binding<object>) {
-    this.binding = binding;
-
     const { form } = this.args;
     if (!form) {
       return;
     }
+    if (this.binding) {
+      form.unregisterBinding(this.validatorKey);
+      form.unregisterValidator(this.validatorKey, this.requiredId!);
+    }
+
+    this.binding = binding;
+
     form.registerBinding(binding, this.validatorKey);
   }
 
   @action
-  setupValidator(element: Element | undefined, [required]: [boolean]) {
+  setupValidator(
+    element: unknown,
+    { required }: { required: boolean | undefined },
+  ) {
     const { binding, requiredId } = this;
     const { form } = this.args;
 
@@ -261,7 +269,7 @@ export default class Field extends Component<FieldSignature> {
       <label
         class="form-label"
         for={{this.fieldId}}
-        {{onUpdate this.setupValidator @required}}
+        {{onUpdate this.setupValidator required=@required}}
         ...attributes
       >
         {{@label}}
@@ -272,7 +280,7 @@ export default class Field extends Component<FieldSignature> {
     {{else}}
       <div
         class="d-none invisible"
-        {{onUpdate this.setupValidator @required}}
+        {{onUpdate this.setupValidator required=@required}}
       />
     {{/if}}
     {{#let
