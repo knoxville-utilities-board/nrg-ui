@@ -3,6 +3,7 @@ dialog {
 
   background-color: var(--bs-modal-bg);
   transition: all 0.3s ease allow-discrete;
+  overflow: visible !important;
 
   &.center {
     max-height: 90vh;
