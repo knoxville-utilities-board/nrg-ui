@@ -13,7 +13,7 @@ const Application: TOC<{
   {{! BEGIN-SNIPPET scaffold-component }}
   <Scaffold @environment={{@controller.environment}}>
     <:app-bar-left as |AppBar|>
-      <p class="d-none d-md-block m-0 fs-5">
+      <p class="d-none d-md-block m-0 ps-3 fs-5">
         Docs | @nrg-ui/core
       </p>
       <AppBar.Environment />
