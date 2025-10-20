@@ -140,7 +140,7 @@ export default class Scaffold extends Component<ScaffoldSignature> {
           <:left as |AppBar|>
             {{#if hasSidebar}}
               <i
-                class="bi-{{this.sidebarIcon}} fs-4 px-3"
+                class="bi-{{this.sidebarIcon}} fs-4 ps-3"
                 role="button"
                 {{on "click" this.toggleSidebar}}
               />
