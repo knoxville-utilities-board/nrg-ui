@@ -1,202 +1,213 @@
+import { isDevelopingApp, isTesting, macroCondition } from '@embroider/macros';
+import Component from '@glimmer/component';
 import Scaffold from '@nrg-ui/core/components/scaffold';
 import version from '@nrg-ui/core/helpers/version';
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import type { TOC } from '@ember/component/template-only';
-import type ApplicationController from 'docs/controllers/application';
+// @ts-expect-error - Currently don't know how to
+// handle SVG imports in TypeScript
+import logo from '../assets/images/logo.svg';
 
-const Application: TOC<{
-  Args: { controller: ApplicationController };
-}> = <template>
-  {{pageTitle "@nrg-ui/core"}}
+export default class Application extends Component {
+  get environment() {
+    if (macroCondition(isTesting())) {
+      return 'test';
+    }
+    if (macroCondition(isDevelopingApp())) {
+      return 'dev';
+    }
+    return 'prod';
+  }
 
-  {{! BEGIN-SNIPPET scaffold-component }}
-  <Scaffold @environment={{@controller.environment}}>
-    <:app-bar-left as |AppBar|>
-      <p class="d-none d-md-block m-0 ps-3 fs-5">
-        Docs | @nrg-ui/core
-      </p>
-      <AppBar.Environment />
-    </:app-bar-left>
-    <:sidebar as |Menu|>
-      <Menu.Item @route="scaffold">
-        Scaffold
-      </Menu.Item>
-      <Menu.Item @route="side-by-side">
-        Side-by-Side
-      </Menu.Item>
-      <Menu.Item @route="stacked-pane">
-        Stacked Pane
-      </Menu.Item>
-      <Menu.Group @route="components.index">
-        <:badge>
-          14
-        </:badge>
-        <:header>
-          Components
-        </:header>
-        <:items as |Item|>
-          <Item @route="components.accordion">
-            Accordion
-          </Item>
-          <Item @route="components.button">
-            Button
-          </Item>
-          <Item @route="components.card">
-            Card
-          </Item>
-          <Item @route="components.context-menu">
-            Context Menu
-          </Item>
-          <Item @route="components.dropdown">
-            Dropdown
-          </Item>
-          <Item @route="components.footer">
-            Footer
-          </Item>
-          <Item @route="components.header">
-            Header
-          </Item>
-          <Item @route="components.icon">
-            Icon
-          </Item>
-          <Item @route="components.loading-indicator">
-            Loading Indicator
-          </Item>
-          <Item @route="components.modal">
-            Modal
-          </Item>
-          <Item @route="components.navbar">
-            Navbar
-          </Item>
-          <Item @route="components.pagination">
-            Pagination
-          </Item>
-          <Item @route="components.popover">
-            Popover
-          </Item>
-          <Item @route="components.toaster">
-            Toaster
-          </Item>
-          <Item @route="components.tooltip">
-            Tooltip
-          </Item>
-        </:items>
-      </Menu.Group>
-      <Menu.Group @route="components.form.index">
-        <:badge>
-          11
-        </:badge>
-        <:header>
-          Forms
-        </:header>
-        <:items as |Item|>
-          <Item @route="components.form.checkbox">
-            Checkbox
-          </Item>
-          <Item @route="components.form.checkbox-group">
-            Checkbox Group
-          </Item>
-          <Item @route="components.form.datetime">
-            Datetime
-          </Item>
-          <Item @route="components.form.file-upload">
-            File Upload
-          </Item>
-          <Item @route="components.form.multi-select">
-            Multi Select
-          </Item>
-          <Item @route="components.form.phone-input">
-            Phone Input
-          </Item>
-          <Item @route="components.form.radio-group">
-            Radio Group
-          </Item>
-          <Item @route="components.form.search">
-            Search
-          </Item>
-          <Item @route="components.form.select">
-            Select
-          </Item>
-          <Item @route="components.form.text-area">
-            Text Area
-          </Item>
-          <Item @route="components.form.text-input">
-            Text Input
-          </Item>
-        </:items>
-      </Menu.Group>
-      <Menu.Group @route="mktg-components.index">
-        <:badge>
-          9
-        </:badge>
-        <:header>
-          Marketing Components
-        </:header>
-        <:items as |Item|>
-          <Item @route="marketing">
-            Example
-          </Item>
-          <Item @route="mktg-components.card-container">
-            Card Container
-          </Item>
-          <Item @route="mktg-components.card">
-            Card
-          </Item>
-          <Item @route="mktg-components.footer">
-            Footer
-          </Item>
-          <Item @route="mktg-components.header">
-            Header
-          </Item>
-          <Item @route="mktg-components.promo-container">
-            Promo Container
-          </Item>
-          <Item @route="mktg-components.promo">
-            Promo
-          </Item>
-          <Item @route="mktg-components.section-header">
-            Section Header
-          </Item>
-          <Item @route="mktg-components.service-pricing">
-            Service Pricing
-          </Item>
-        </:items>
-      </Menu.Group>
-      <Menu.Item @url="https://example.com">
-        <:default>
-          External Link
-        </:default>
-        <:badge>
-          9+
-        </:badge>
-      </Menu.Item>
-    </:sidebar>
-    <:sidebar-footer as |Item|>
-      <Item
-        target="_blank"
-        @url="https://github.com/knoxville-utilities-board/nrg-ui"
-      >
-        {{version}}
-      </Item>
-    </:sidebar-footer>
-    <:default>
-      {{outlet}}
-    </:default>
-    <:footer-left>
-      <a
-        aria-label="Knoxville Utilities Board"
-        class="p-0 d-none d-md-block"
-        href="https://www.kub.org/"
-      >
-        <img src={{@controller.logo}} alt="Knoxville Utilities Board" />
-      </a>
-      <span class="mb-0 p-0 px-md-3 align-content-center">
-        &copy; Knoxville Utilities Board
-      </span>
-    </:footer-left>
-  </Scaffold>
-  {{! END-SNIPPET }}
-</template>;
+  <template>
+    {{pageTitle "@nrg-ui/core"}}
 
-export default Application;
+    {{! BEGIN-SNIPPET scaffold-component }}
+    <Scaffold @environment={{this.environment}}>
+      <:app-bar-left as |AppBar|>
+        <p class="d-none d-md-block m-0 ps-3 fs-5">
+          Docs | @nrg-ui/core
+        </p>
+        <AppBar.Environment />
+      </:app-bar-left>
+      <:sidebar as |Menu|>
+        <Menu.Item @route="scaffold">
+          Scaffold
+        </Menu.Item>
+        <Menu.Item @route="side-by-side">
+          Side-by-Side
+        </Menu.Item>
+        <Menu.Item @route="stacked-pane">
+          Stacked Pane
+        </Menu.Item>
+        <Menu.Group @route="components.index">
+          <:badge>
+            14
+          </:badge>
+          <:header>
+            Components
+          </:header>
+          <:items as |Item|>
+            <Item @route="components.accordion">
+              Accordion
+            </Item>
+            <Item @route="components.button">
+              Button
+            </Item>
+            <Item @route="components.card">
+              Card
+            </Item>
+            <Item @route="components.context-menu">
+              Context Menu
+            </Item>
+            <Item @route="components.dropdown">
+              Dropdown
+            </Item>
+            <Item @route="components.footer">
+              Footer
+            </Item>
+            <Item @route="components.header">
+              Header
+            </Item>
+            <Item @route="components.icon">
+              Icon
+            </Item>
+            <Item @route="components.loading-indicator">
+              Loading Indicator
+            </Item>
+            <Item @route="components.modal">
+              Modal
+            </Item>
+            <Item @route="components.navbar">
+              Navbar
+            </Item>
+            <Item @route="components.pagination">
+              Pagination
+            </Item>
+            <Item @route="components.popover">
+              Popover
+            </Item>
+            <Item @route="components.toaster">
+              Toaster
+            </Item>
+            <Item @route="components.tooltip">
+              Tooltip
+            </Item>
+          </:items>
+        </Menu.Group>
+        <Menu.Group @route="components.form.index">
+          <:badge>
+            11
+          </:badge>
+          <:header>
+            Forms
+          </:header>
+          <:items as |Item|>
+            <Item @route="components.form.checkbox">
+              Checkbox
+            </Item>
+            <Item @route="components.form.checkbox-group">
+              Checkbox Group
+            </Item>
+            <Item @route="components.form.datetime">
+              Datetime
+            </Item>
+            <Item @route="components.form.file-upload">
+              File Upload
+            </Item>
+            <Item @route="components.form.multi-select">
+              Multi Select
+            </Item>
+            <Item @route="components.form.phone-input">
+              Phone Input
+            </Item>
+            <Item @route="components.form.radio-group">
+              Radio Group
+            </Item>
+            <Item @route="components.form.search">
+              Search
+            </Item>
+            <Item @route="components.form.select">
+              Select
+            </Item>
+            <Item @route="components.form.text-area">
+              Text Area
+            </Item>
+            <Item @route="components.form.text-input">
+              Text Input
+            </Item>
+          </:items>
+        </Menu.Group>
+        <Menu.Group @route="mktg-components.index">
+          <:badge>
+            9
+          </:badge>
+          <:header>
+            Marketing Components
+          </:header>
+          <:items as |Item|>
+            <Item @route="marketing">
+              Example
+            </Item>
+            <Item @route="mktg-components.card-container">
+              Card Container
+            </Item>
+            <Item @route="mktg-components.card">
+              Card
+            </Item>
+            <Item @route="mktg-components.footer">
+              Footer
+            </Item>
+            <Item @route="mktg-components.header">
+              Header
+            </Item>
+            <Item @route="mktg-components.promo-container">
+              Promo Container
+            </Item>
+            <Item @route="mktg-components.promo">
+              Promo
+            </Item>
+            <Item @route="mktg-components.section-header">
+              Section Header
+            </Item>
+            <Item @route="mktg-components.service-pricing">
+              Service Pricing
+            </Item>
+          </:items>
+        </Menu.Group>
+        <Menu.Item @url="https://example.com">
+          <:default>
+            External Link
+          </:default>
+          <:badge>
+            9+
+          </:badge>
+        </Menu.Item>
+      </:sidebar>
+      <:sidebar-footer as |Item|>
+        <Item
+          target="_blank"
+          @url="https://github.com/knoxville-utilities-board/nrg-ui"
+        >
+          {{version}}
+        </Item>
+      </:sidebar-footer>
+      <:default>
+        {{outlet}}
+      </:default>
+      <:footer-left>
+        <a
+          aria-label="Knoxville Utilities Board"
+          class="p-0 d-none d-md-block"
+          href="https://www.kub.org/"
+        >
+          <img src={{logo}} alt="Knoxville Utilities Board" />
+        </a>
+        <span class="mb-0 p-0 px-md-3 align-content-center">
+          &copy; Knoxville Utilities Board
+        </span>
+      </:footer-left>
+    </Scaffold>
+    {{! END-SNIPPET }}
+  </template>
+}

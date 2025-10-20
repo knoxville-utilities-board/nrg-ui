@@ -1,4 +1,4 @@
-import { fn } from '@ember/helper';
+import { fn, hash } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { getOwner } from '@ember/owner';
 import { service } from '@ember/service';
@@ -29,18 +29,23 @@ type EnvironmentConfig = Record<string, string> & {
   modulePrefix: string;
 };
 
+export interface ScaffoldOptions {
+  contextMenuId: string;
+}
+
 export interface ScaffoldSignature {
   Element: HTMLDivElement;
   Args: {
     allowThemes?: boolean;
+    contextMenuId?: string;
     environment?: string;
     onSidebarToggle?: (open: boolean) => void;
   };
   Blocks: {
     'app-bar-left': [AppBarBlock];
     'app-bar-right': [AppBarBlock];
-    'context-menu': [ContextMenuType];
-    default: [];
+    'context-menu': [ContextMenuType, string];
+    default: [ScaffoldOptions];
     'footer-left': [];
     'footer-right': [];
     about: [];
@@ -85,6 +90,10 @@ export default class Scaffold extends Component<ScaffoldSignature> {
 
   get allowThemes() {
     return this.args.allowThemes ?? true;
+  }
+
+  get contextMenuId() {
+    return this.args.contextMenuId ?? 'application';
   }
 
   get environmentConfig() {
@@ -155,16 +164,19 @@ export default class Scaffold extends Component<ScaffoldSignature> {
                 class="d-flex justify-content-center align-items-center theme-switcher py-2"
                 @bottom={{false}}
                 @closeOnSelect={{false}}
-                @menuId="application"
+                @menuId={{this.contextMenuId}}
               >
                 <ThemeControl />
               </ContextMenuItem>
-              <ContextMenuItem @menuId="application" @divider={{true}} />
+              <ContextMenuItem
+                @menuId={{this.contextMenuId}}
+                @divider={{true}}
+              />
             {{/if}}
 
-            <ContextMenu class="pe-2" @flip={{true}} @id="application">
+            <ContextMenu class="pe-2" @flip={{true}} @id={{this.contextMenuId}}>
               <:default as |Menu|>
-                {{yield Menu to="context-menu"}}
+                {{yield Menu this.contextMenuId to="context-menu"}}
               </:default>
             </ContextMenu>
 
@@ -190,7 +202,7 @@ export default class Scaffold extends Component<ScaffoldSignature> {
             </Modal>
             <ContextMenuItem
               @bottom={{true}}
-              @menuId="application"
+              @menuId={{this.contextMenuId}}
               @onSelect={{fn this.toggleAboutModal true}}
             >
               {{t "nrg.app-bar.about.item"}}
@@ -225,7 +237,7 @@ export default class Scaffold extends Component<ScaffoldSignature> {
             class="col flex-grow-1 justify-content-between overflow-auto px-md-0 d-flex flex-column"
           >
             <main class="col d-flex flex-column">
-              {{yield}}
+              {{yield (hash contextMenuId=this.contextMenuId)}}
             </main>
             {{#if (or (has-block "footer-left") (has-block "footer-right"))}}
               <Footer>
