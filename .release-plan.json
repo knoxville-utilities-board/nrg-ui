@@ -7,27 +7,31 @@
       "oldVersion": "0.1.2"
     },
     "@nrg-ui/css": {
-      "impact": "minor",
-      "oldVersion": "0.25.0",
-      "newVersion": "0.26.0",
+      "impact": "patch",
+      "oldVersion": "0.26.0",
+      "newVersion": "0.26.1",
       "tagName": "latest",
       "constraints": [
         {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./packages/design-system/package.json"
     },
     "@nrg-ui/core": {
       "impact": "minor",
-      "oldVersion": "0.44.2",
-      "newVersion": "0.45.0",
+      "oldVersion": "0.45.0",
+      "newVersion": "0.46.0",
       "tagName": "latest",
       "constraints": [
         {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
@@ -39,5 +43,5 @@
       "oldVersion": "0.3.4"
     }
   },
-  "description": "## Release (2025-10-16)\n\n* @nrg-ui/css 0.26.0 (minor)\n* @nrg-ui/core 0.45.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#645](https://github.com/knoxville-utilities-board/nrg-ui/pull/645) feat(sidebar): Add icon to external links ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* [#643](https://github.com/knoxville-utilities-board/nrg-ui/pull/643) chore: Add Ember Inspector support to docs app ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-10-20)\n\n* @nrg-ui/css 0.26.1 (patch)\n* @nrg-ui/core 0.46.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#650](https://github.com/knoxville-utilities-board/nrg-ui/pull/650) feat(scaffold): Don't render sidebar footer if not used ([@TSenter](https://github.com/TSenter))\n  * [#651](https://github.com/knoxville-utilities-board/nrg-ui/pull/651) feat(scaffold): Remove spacing after sidebar icon ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`\n  * [#647](https://github.com/knoxville-utilities-board/nrg-ui/pull/647) fix: Prevent overflow on modals ([@bnhkubpublic](https://github.com/bnhkubpublic))\n* `@nrg-ui/core`\n  * [#652](https://github.com/knoxville-utilities-board/nrg-ui/pull/652) fix(scaffold): Allow custom context menu IDs ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Brian ([@bnhkubpublic](https://github.com/bnhkubpublic))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
