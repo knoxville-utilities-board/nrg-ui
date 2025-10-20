@@ -203,14 +203,22 @@ export default class Scaffold extends Component<ScaffoldSignature> {
             <div
               class="col-12 col-md-3 col-xl-2 d-flex flex-column sticky-top overflow-auto"
             >
-              <Sidebar @onClickInternal={{this.sidebarClicked}}>
-                <:default as |Menu|>
-                  {{yield Menu to="sidebar"}}
-                </:default>
-                <:footer as |Item|>
-                  {{yield Item to="sidebar-footer"}}
-                </:footer>
-              </Sidebar>
+              {{#if (has-block "sidebar-footer")}}
+                <Sidebar @onClickInternal={{this.sidebarClicked}}>
+                  <:default as |Menu|>
+                    {{yield Menu to="sidebar"}}
+                  </:default>
+                  <:footer as |Item|>
+                    {{yield Item to="sidebar-footer"}}
+                  </:footer>
+                </Sidebar>
+              {{else}}
+                <Sidebar @onClickInternal={{this.sidebarClicked}}>
+                  <:default as |Menu|>
+                    {{yield Menu to="sidebar"}}
+                  </:default>
+                </Sidebar>
+              {{/if}}
             </div>
           {{/if}}
           <div
