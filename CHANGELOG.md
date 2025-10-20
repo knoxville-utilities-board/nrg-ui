@@ -1,5 +1,25 @@
 # Changelog
 
+## Release (2025-10-20)
+
+* @nrg-ui/css 0.26.1 (patch)
+* @nrg-ui/core 0.46.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#650](https://github.com/knoxville-utilities-board/nrg-ui/pull/650) feat(scaffold): Don't render sidebar footer if not used ([@TSenter](https://github.com/TSenter))
+  * [#651](https://github.com/knoxville-utilities-board/nrg-ui/pull/651) feat(scaffold): Remove spacing after sidebar icon ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`
+  * [#647](https://github.com/knoxville-utilities-board/nrg-ui/pull/647) fix: Prevent overflow on modals ([@bnhkubpublic](https://github.com/bnhkubpublic))
+* `@nrg-ui/core`
+  * [#652](https://github.com/knoxville-utilities-board/nrg-ui/pull/652) fix(scaffold): Allow custom context menu IDs ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Brian ([@bnhkubpublic](https://github.com/bnhkubpublic))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-10-16)
 
 * @nrg-ui/css 0.26.0 (minor)
