@@ -23634,6 +23634,7 @@ dialog {
   --bs-modal-bg: var(--bs-body-bg);
   background-color: var(--bs-modal-bg);
   transition: all 0.3s ease allow-discrete;
+  overflow: visible !important;
 }
 dialog.center {
   max-height: 90vh;
