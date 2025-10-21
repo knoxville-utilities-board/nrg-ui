@@ -3,3 +3,9 @@
 
 import '@glint/ember-tsc/types';
 import 'ember-source/types';
+
+export interface EmbroiderConfig {
+  shiki?: {
+    theme: string;
+  }
+}

@@ -86,6 +86,9 @@ importers:
       '@nrg-ui/css':
         specifier: workspace:*
         version: link:../packages/design-system
+      '@nrg-ui/showcase':
+        specifier: workspace:*
+        version: link:../packages/showcase
       '@nrg-ui/standards':
         specifier: workspace:*
         version: link:../packages/standards
