@@ -258,8 +258,10 @@ export default class Pagination extends Component<PaginationSignature> {
           aria-current={{if page.current "page"}}
           class={{classes "page-item" (if page.current "active")}}
           role={{unless page.blank "button"}}
-          {{! @glint-expect-error - Known Glint issue - #661 }}
-          {{(unless page.blank (modifier on "click" (fn this.changePage page)))}}
+          {{! template-lint-disable }}
+          {{! When the user can move to the previous page, the appropriate }}
+          {{! role is added. The lint rule does not account for that. }}
+          {{on "click" (fn this.changePage page)}}
           data-test-page={{page.number}}
         >
           {{#if page.blank}}
@@ -276,8 +278,10 @@ export default class Pagination extends Component<PaginationSignature> {
       <li
         class={{classes "page-item page-next" (unless this.canStepForward "disabled")}}
         role={{if this.canStepForward "button"}}
-        {{! @glint-expect-error - Known Glint issue - #661 }}
-        {{(if this.canStepForward (modifier on "click" this.stepForward))}}
+        {{! template-lint-disable }}
+        {{! When the user can move to the next page, the appropriate }}
+        {{! role is added. The lint rule does not account for that. }}
+        {{on "click" this.stepForward}}
         data-test-next
       >
         <span class="page-link">
