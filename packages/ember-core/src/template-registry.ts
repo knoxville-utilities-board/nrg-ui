@@ -49,7 +49,6 @@ import LookupService from './helpers/lookup-service.ts';
 import Version from './helpers/version.ts';
 import OnClickOutside from './modifiers/on-click-outside.ts';
 import OnInsert from './modifiers/on-insert.ts';
-import OnUpdate from './modifiers/on-update.ts';
 
 export interface ComponentRegistry {
   // Core components
@@ -112,7 +111,6 @@ export interface HelperRegistry {
 export interface ModifierRegistry {
   'on-click-outside': typeof OnClickOutside;
   'on-insert': typeof OnInsert;
-  'on-update': typeof OnUpdate;
 }
 
 export default interface TemplateRegistry

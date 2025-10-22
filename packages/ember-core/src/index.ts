@@ -70,7 +70,6 @@ export { default as Version, version } from './helpers/version.ts';
 export { default as onClickOutside } from './modifiers/on-click-outside.ts';
 export { default as onDestroy } from './modifiers/on-destroy.ts';
 export { default as onInsert } from './modifiers/on-insert.ts';
-export { default as onUpdate } from './modifiers/on-update.ts';
 
 /* Types - Components - Forms */
 import type { InputFieldSignature } from './components/form/-private/input-field.ts';
