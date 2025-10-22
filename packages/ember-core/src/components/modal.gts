@@ -5,9 +5,7 @@ import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { t } from 'ember-intl';
-
-import onInsert from '../modifiers/on-insert.ts';
-import onUpdate from '../modifiers/on-update.ts';
+import { modifier } from 'ember-modifier';
 
 import type ModalService from '../services/modal.ts';
 import type Owner from '@ember/owner';
@@ -91,23 +89,17 @@ export default class Modal extends Component<ModalSignature> {
     }
   }
 
-  @action
-  onInsert(element: HTMLElement) {
-    const dialog = element as HTMLDialogElement;
-    this.dialogElement = dialog;
-    if (this.args.isOpen) {
-      this.openModal();
-    }
-  }
+  onInsert = modifier((element: HTMLDialogElement) => {
+    this.dialogElement = element;
+  });
 
-  @action
-  onUpdate() {
+  onUpdate = modifier(() => {
     if (this.args.isOpen) {
       this.openModal();
     } else {
       this.closeModal();
     }
-  }
+  });
 
   @action
   openModal() {
@@ -127,8 +119,8 @@ export default class Modal extends Component<ModalSignature> {
       id={{this.dialogId}}
       {{on "cancel" this.onDismiss}}
       {{on "close" this.onClose}}
-      {{onInsert this.onInsert}}
-      {{onUpdate this.onUpdate isOpen=@isOpen}}
+      {{this.onInsert}}
+      {{this.onUpdate @isOpen}}
       ...attributes
     >
       <div class="modal-content">
