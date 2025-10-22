@@ -83,6 +83,12 @@ export default class Modal extends Component<ModalSignature> {
     if (!this.args.isOpen) {
       return;
     }
+
+    // This function is a callback for the dialog's "close" event,
+    // which cannot be canceled. Since a user pressing "Escape" or clicking
+    // outside the dialog will trigger this event, we need to re-open
+    // the dialog in case it is not dismissible.
+    // If it is dismissible, we'll close it immediately after.
     this.openModal();
     if (this.isDismissible) {
       this.onDismiss();
