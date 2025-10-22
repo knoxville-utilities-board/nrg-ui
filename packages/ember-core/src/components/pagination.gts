@@ -245,8 +245,10 @@ export default class Pagination extends Component<PaginationSignature> {
       <li
         class={{classes "page-item page-previous" (unless this.canStepBackward "disabled")}}
         role={{if this.canStepBackward "button"}}
-        {{! @glint-expect-error - Known Glint issue - #661 }}
-        {{(if this.canStepBackward (modifier on "click" this.stepBackward))}}
+        {{! template-lint-disable }}
+        {{! When the user can move to the previous page, the appropriate }}
+        {{! role is added. The lint rule does not account for that. }}
+        {{on "click" this.stepBackward}}
         data-test-previous
       >
         <span class="page-link">
@@ -259,7 +261,7 @@ export default class Pagination extends Component<PaginationSignature> {
           class={{classes "page-item" (if page.current "active")}}
           role={{unless page.blank "button"}}
           {{! template-lint-disable }}
-          {{! When the user can move to the previous page, the appropriate }}
+          {{! When the user can move a specific page, the appropriate }}
           {{! role is added. The lint rule does not account for that. }}
           {{on "click" (fn this.changePage page)}}
           data-test-page={{page.number}}
