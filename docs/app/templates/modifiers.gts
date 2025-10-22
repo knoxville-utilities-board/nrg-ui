@@ -20,9 +20,6 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           <Item @route="modifiers.on-insert">
             on-insert
           </Item>
-          <Item @route="modifiers.on-update">
-            on-update
-          </Item>
         </:group>
       </Sidebar.Group>
     </Sidebar>
