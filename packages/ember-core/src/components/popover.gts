@@ -11,10 +11,10 @@ import {
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { restartableTask, timeout } from 'ember-concurrency';
+import { modifier } from 'ember-modifier';
 
 import { classes } from '../helpers/classes.ts';
 import onInsert from '../modifiers/on-insert.ts';
-import onUpdate from '../modifiers/on-update.ts';
 import { getRemValue } from '../utils/dom.ts';
 
 import type { TOC } from '@ember/component/template-only';
@@ -214,7 +214,7 @@ export default class Popover extends Component<PopoverSignature> {
     this.triggerDisplay.perform(evtOrInput);
   };
 
-  showPopover = async () => {
+  showPopover = () => {
     if (!this.control || !this.popover) {
       return;
     }
@@ -227,6 +227,13 @@ export default class Popover extends Component<PopoverSignature> {
       this.updatePosition,
     );
   };
+
+  showPopoverModifier = modifier((element: unknown, positional: unknown[]) => {
+    // Entangle all arguments to ensure reactivity
+    positional.forEach(() => {});
+
+    this.showPopover();
+  });
 
   updatePosition = async () => {
     const { x, y, placement, middlewareData } = await computePosition(
@@ -307,7 +314,6 @@ export default class Popover extends Component<PopoverSignature> {
       as |visibility|
     }}
       {{yield visibility to="control"}}
-      {{!-- prettier-ignore --}}
       <div
         id={{this.id}}
         class={{classes
@@ -316,13 +322,12 @@ export default class Popover extends Component<PopoverSignature> {
           "overflow-x-auto"
         }}
         {{onInsert this.initPopover}}
-        {{onUpdate
-          this.showPopover
-          alignment=@alignment
-          arrow=@arrow
-          controlElement=@controlElement
-          offset=@offset
-          side=@side
+        {{this.showPopoverModifier
+          @alignment
+          @arrow
+          @controlElement
+          @offset
+          @side
         }}
         ...attributes
       >
