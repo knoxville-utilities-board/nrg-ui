@@ -213,7 +213,7 @@ export default class FormDemo extends Component {
         @onSubmit={{this.onSubmit}}
         as |Form|
       >
-        <Form.Field @label="File Upload" @required={{true}} as |Field|>
+        <Form.Field @label="File Upload" @required={{this.required}} as |Field|>
           <Field.FileUpload
             @binding={{bind this.model "fileUpload"}}
             @accept={{array "image/*" ".pdf"}}
