@@ -243,7 +243,6 @@
       "./modifiers/on-click-outside.js": "./dist/_app_/modifiers/on-click-outside.js",
       "./modifiers/on-destroy.js": "./dist/_app_/modifiers/on-destroy.js",
       "./modifiers/on-insert.js": "./dist/_app_/modifiers/on-insert.js",
-      "./modifiers/on-update.js": "./dist/_app_/modifiers/on-update.js",
       "./services/context-menu.js": "./dist/_app_/services/context-menu.js",
       "./services/media.js": "./dist/_app_/services/media.js",
       "./services/modal.js": "./dist/_app_/services/modal.js",
