@@ -204,10 +204,12 @@ export default class Form extends Component<FormSignature> implements FormType {
   ): string {
     const id = uid();
     name ??= validator.binding.valuePath;
-    if (!this.staticValidations.has(name)) {
-      this.staticValidations.set(name, new TrackedArray());
-    }
-    this.staticValidations.get(name)!.push({ id, v: validator });
+    runTask(this, () => {
+      if (!this.staticValidations.has(name)) {
+        this.staticValidations.set(name, new TrackedArray());
+      }
+      this.staticValidations.get(name)!.push({ id, v: validator });
+    });
 
     return id;
   }

@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { runTask } from 'ember-lifeline';
+import { modifier } from 'ember-modifier';
 
 import CheckboxGroup from './checkbox-group.gts';
 import Checkbox from './checkbox.gts';
@@ -17,7 +18,6 @@ import Search from './search.gts';
 import Select from './select.gts';
 import TextArea from './text-area.gts';
 import TextInput from './text-input.gts';
-import onUpdate from '../../modifiers/on-update.ts';
 import { PresenceValidator } from '../../validation/index.ts';
 
 import type { CheckboxGroupSignature } from './checkbox-group.gts';
@@ -146,7 +146,7 @@ export default class Field extends Component<FieldSignature> {
     super(owner, args);
 
     registerDestructor(this, () => {
-      this.setupValidator(undefined, { required: false });
+      this.setupValidator();
     });
   }
 
@@ -223,14 +223,11 @@ export default class Field extends Component<FieldSignature> {
   }
 
   @action
-  setupValidator(
-    element: unknown,
-    { required }: { required: boolean | undefined },
-  ) {
+  setupValidator(required?: boolean) {
     const { binding, requiredId } = this;
     const { form } = this.args;
 
-    if (!form) {
+    if (!form || !binding) {
       return;
     }
 
@@ -264,12 +261,18 @@ export default class Field extends Component<FieldSignature> {
     }
   }
 
+  setupValidatorModifier = modifier(
+    (element: unknown, [required]: [boolean | undefined]) => {
+      runTask(this, () => this.setupValidator(required));
+    },
+  );
+
   <template>
     {{#if @label}}
       <label
         class="form-label"
         for={{this.fieldId}}
-        {{onUpdate this.setupValidator required=@required}}
+        {{this.setupValidatorModifier @required}}
         ...attributes
       >
         {{@label}}
@@ -278,10 +281,7 @@ export default class Field extends Component<FieldSignature> {
         {{/if}}
       </label>
     {{else}}
-      <div
-        class="d-none invisible"
-        {{onUpdate this.setupValidator required=@required}}
-      />
+      <div class="d-none invisible" {{this.setupValidatorModifier @required}} />
     {{/if}}
     {{#let
       (hash

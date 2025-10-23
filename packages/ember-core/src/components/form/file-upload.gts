@@ -7,13 +7,13 @@ import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { t } from 'ember-intl';
-import { scheduleTask } from 'ember-lifeline';
+import { runTask, scheduleTask } from 'ember-lifeline';
+import { modifier } from 'ember-modifier';
 import { TrackedArray } from 'tracked-built-ins';
 
 import BoundValue from './bound-value.ts';
 import { classes } from '../../helpers/classes.ts';
 import onInsert from '../../modifiers/on-insert.ts';
-import onUpdate from '../../modifiers/on-update.ts';
 import { FileValidator } from '../../validation/index.ts';
 import Button from '../button.gts';
 
@@ -39,6 +39,7 @@ export interface FileUploadSignature {
     accept?: string[];
 
     fieldOptions?: FieldOptions;
+    validatorKey?: string;
 
     onAdd?: (files: File[]) => unknown;
     onRemove?: (file: File) => unknown;
@@ -148,6 +149,10 @@ export default class FileUpload extends BoundValue<
     return style;
   }
 
+  get validatorKey() {
+    return this.args.validatorKey ?? this.args.binding!.valuePath;
+  }
+
   filterDuplicateFiles(files: FileList): File[] {
     if (!this.value || this.value!.length === 0) {
       return Array.from(files);
@@ -230,22 +235,44 @@ export default class FileUpload extends BoundValue<
   }
 
   @action
-  setupValidator() {
-    const { binding, accept } = this.args;
-    const { form, validatorKey } = this.args.fieldOptions ?? {};
-    if (!binding || !form || !accept || !validatorKey) {
+  setupValidator(accept?: string[]) {
+    const { binding } = this.args;
+    const { form } = this.args.fieldOptions ?? {};
+
+    if (!form || !binding) {
       return;
     }
-    if (this.validatorId) {
-      form.unregisterValidator(validatorKey, this.validatorId);
+
+    if (accept) {
+      if (this.validatorId) {
+        form.unregisterBinding(this.validatorKey);
+        form.unregisterValidator(this.validatorKey, this.validatorId);
+      }
+
+      const fileValidator = new FileValidator(
+        binding,
+        { acceptedTypes: accept },
+        binding.model,
+      );
+      this.validatorId = form.registerValidator(
+        fileValidator,
+        this.validatorKey,
+      );
+    } else {
+      if (!this.validatorId) {
+        return;
+      }
+
+      form.unregisterValidator(this.validatorKey, this.validatorId);
+      this.validatorId = undefined;
     }
-    const fileValidator = new FileValidator(
-      binding,
-      { acceptedTypes: accept },
-      binding.model,
-    );
-    form.registerValidator(fileValidator, validatorKey);
   }
+
+  setupValidatorModifier = modifier(
+    (element: unknown, [accept]: [string[] | undefined]) => {
+      runTask(this, () => this.setupValidator(accept));
+    },
+  );
 
   @action
   toggleIsDragging(isDragging: boolean) {
@@ -271,7 +298,7 @@ export default class FileUpload extends BoundValue<
         (if @fieldOptions.isInvalid "is-invalid")
         (if @fieldOptions.isWarning "is-warning")
       }}
-      {{onUpdate this.setupValidator accept=@accept}}
+      {{this.setupValidatorModifier @accept}}
       ...attributes
     >
       <div
