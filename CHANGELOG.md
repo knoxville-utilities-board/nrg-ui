@@ -1,5 +1,29 @@
 # Changelog
 
+## Release (2025-10-23)
+
+* @nrg-ui/core 0.47.0 (major)
+
+#### :boom: Breaking Change
+* `@nrg-ui/core`
+  * [#659](https://github.com/knoxville-utilities-board/nrg-ui/pull/659) feat: Remove onUpdate modifier ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#657](https://github.com/knoxville-utilities-board/nrg-ui/pull/657) fix(modal): Use custom modifiers for lifecycle and updates ([@TSenter](https://github.com/TSenter))
+  * [#656](https://github.com/knoxville-utilities-board/nrg-ui/pull/656) fix(pagination): Don't conditionally add modifier ([@TSenter](https://github.com/TSenter))
+  * [#655](https://github.com/knoxville-utilities-board/nrg-ui/pull/655) fix(pagination): Don't conditionally apply modifiers ([@TSenter](https://github.com/TSenter))
+
+#### :memo: Documentation
+* `@nrg-ui/core`
+  * [#658](https://github.com/knoxville-utilities-board/nrg-ui/pull/658) chore(modal): Document logic for onClose action ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* [#660](https://github.com/knoxville-utilities-board/nrg-ui/pull/660) feat(ci): Add Ember 6.8 to testing matrix ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-10-20)
 
 * @nrg-ui/css 0.26.1 (patch)
