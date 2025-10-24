@@ -14,7 +14,7 @@ export interface AccordionSignature {
   };
 }
 
-export default class AccordionComponent extends Component<AccordionSignature> {
+export default class Accordion extends Component<AccordionSignature> {
   @tracked
   isMenuOpen = this.args.defaultOpen || false;
 

@@ -34,7 +34,7 @@ export interface MktgFeatureListSignature {
   };
 }
 
-const Feature: TOC<MktgFeatureSignature> = <template>
+const MktgFeature: TOC<MktgFeatureSignature> = <template>
   <p class="align-items-baseline {{@class}}" ...attributes>
     <span class="me-2 fw-bold bi {{@icon}}">{{@meta}}</span>{{@text}}
   </p>
@@ -53,7 +53,7 @@ export default class MktgFeatureList extends Component<MktgFeatureListSignature>
   <template>
     {{yield to="label"}}
     <div class="grid mt-4 mb-2">
-      {{yield (component Feature class=this.classList) to="features"}}
+      {{yield (component MktgFeature class=this.classList) to="features"}}
     </div>
   </template>
 }

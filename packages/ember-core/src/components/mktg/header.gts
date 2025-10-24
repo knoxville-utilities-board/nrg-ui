@@ -1,4 +1,4 @@
-import HeaderComponent from '../header.gts';
+import Header from '../header.gts';
 
 import type { TOC } from '@ember/component/template-only';
 
@@ -16,8 +16,8 @@ export interface MktgHeaderSignature {
   };
 }
 
-const Header: TOC<MktgHeaderSignature> = <template>
-  <HeaderComponent
+const MktgHeader: TOC<MktgHeaderSignature> = <template>
+  <Header
     class="bg-body top-0 sticky-top w-100 gx-0 border border-bottom"
     @flexCollapse={{@flexCollapse}}
     ...attributes
@@ -51,7 +51,7 @@ const Header: TOC<MktgHeaderSignature> = <template>
         </div>
       {{/if}}
     </:mobile-drop-section>
-  </HeaderComponent>
+  </Header>
 </template>;
 
-export default Header;
+export default MktgHeader;

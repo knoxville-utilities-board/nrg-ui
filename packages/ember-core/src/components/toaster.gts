@@ -13,7 +13,7 @@ export interface ToasterSignature {
   };
 }
 
-export default class ToasterComponent extends Component<ToasterSignature> {
+export default class Toaster extends Component<ToasterSignature> {
   @service
   toast!: ToastService;
 

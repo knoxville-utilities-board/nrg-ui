@@ -13,7 +13,7 @@ export interface MktgPromoSignature {
   };
 }
 
-const Promo: TOC<MktgPromoSignature> = <template>
+const MktgPromo: TOC<MktgPromoSignature> = <template>
   {{#if @vertical}}
     <div ...attributes>
       <div class="d-flex justify-content-center mb-5">
@@ -42,4 +42,4 @@ const Promo: TOC<MktgPromoSignature> = <template>
   {{/if}}
 </template>;
 
-export default Promo;
+export default MktgPromo;

@@ -83,7 +83,7 @@ class Segment extends Component<SegmentSignature> {
   </template>
 }
 
-const ProgressComponent: TOC<ProgressSignature> = <template>
+const Progress: TOC<ProgressSignature> = <template>
   {{#if @stacked}}
     <div class="progress-stacked" ...attributes>
       {{yield
@@ -110,4 +110,4 @@ const ProgressComponent: TOC<ProgressSignature> = <template>
   {{/if}}
 </template>;
 
-export default ProgressComponent;
+export default Progress;

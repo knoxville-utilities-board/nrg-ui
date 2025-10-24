@@ -11,7 +11,7 @@ export interface MktgSectionHeaderSignature {
   };
 }
 
-const SectionHeader: TOC<MktgSectionHeaderSignature> = <template>
+const MktgSectionHeader: TOC<MktgSectionHeaderSignature> = <template>
   <div class="col-12 d-flex flex-column align-items-center">
     <div class="text-center" ...attributes>
       <p class="text-uppercase p-0 m-0 fw-semibold">{{@subject}}</p>
@@ -21,4 +21,4 @@ const SectionHeader: TOC<MktgSectionHeaderSignature> = <template>
   </div>
 </template>;
 
-export default SectionHeader;
+export default MktgSectionHeader;

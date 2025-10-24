@@ -17,10 +17,10 @@ export interface MktgCardContainerSignature {
     ];
   };
 }
-const CardContainer: TOC<MktgCardContainerSignature> = <template>
+const MktgCardContainer: TOC<MktgCardContainerSignature> = <template>
   <div class="grid" ...attributes>
     {{yield (hash Card=(component Card) MktgCard=(component MktgCard))}}
   </div>
 </template>;
 
-export default CardContainer;
+export default MktgCardContainer;

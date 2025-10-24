@@ -26,7 +26,7 @@ export interface ButtonSignature {
   };
 }
 
-export default class ButtonComponent extends Component<ButtonSignature> {
+export default class Button extends Component<ButtonSignature> {
   get classList() {
     const classes = [
       'btn',

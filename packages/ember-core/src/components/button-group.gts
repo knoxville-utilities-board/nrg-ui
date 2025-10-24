@@ -31,7 +31,7 @@ export interface ButtonGroupType {
   onClick: (evt: MouseEvent) => unknown;
 }
 
-export default class ButtonGroupComponent
+export default class ButtonGroup
   extends Component<ButtonGroupSignature>
   implements ButtonGroupType
 {
@@ -82,9 +82,7 @@ export default class ButtonGroupComponent
       {{yield
         (hash
           Button=(component Button group=this disabled=this.disabled)
-          SubGroup=(component
-            ButtonGroupComponent parent=this disabled=this.disabled
-          )
+          SubGroup=(component ButtonGroup parent=this disabled=this.disabled)
         )
       }}
     </div>
