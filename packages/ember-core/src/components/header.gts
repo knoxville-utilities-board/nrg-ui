@@ -15,7 +15,7 @@ export interface HeaderSignature {
   };
 }
 
-const HeaderComponent: TOC<HeaderSignature> = <template>
+const Header: TOC<HeaderSignature> = <template>
   <div
     class={{classes
       "row row-cols-12 p-1 justify-content-between align-items-center"
@@ -59,4 +59,4 @@ const HeaderComponent: TOC<HeaderSignature> = <template>
   </div>
 </template>;
 
-export default HeaderComponent;
+export default Header;

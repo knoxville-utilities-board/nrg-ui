@@ -17,7 +17,7 @@ export interface NavItemSignature {
   };
 }
 
-export default class NrgNavItem extends Component<NavItemSignature> {
+export default class NavItem extends Component<NavItemSignature> {
   @service
   declare responsive: ResponsiveService;
 

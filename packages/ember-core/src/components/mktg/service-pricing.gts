@@ -5,7 +5,7 @@ import Icon from '../icon.gts';
 import type { IconType } from '../../';
 import type { ComponentLike } from '@glint/template';
 
-export interface AddonSignature {
+export interface MktgAddonSignature {
   Args: {
     label?: string;
     price?: string;
@@ -27,12 +27,12 @@ export interface MktgServicePricingSignature {
     selected?: boolean;
   };
   Blocks: {
-    default: [ComponentLike<AddonSignature>];
+    default: [ComponentLike<MktgAddonSignature>];
   };
   Element: HTMLElement;
 }
 
-class Addon extends Component<AddonSignature> {
+class MktgAddon extends Component<MktgAddonSignature> {
   get label() {
     if (this.args.quantity) {
       return `${this.args.label} | Qty: ${this.args.quantity}`;
@@ -88,7 +88,7 @@ export default class MktgServicePricing extends Component<MktgServicePricingSign
           {{@description}}
         </div>
       </div>
-      {{yield (component Addon)}}
+      {{yield (component MktgAddon)}}
     </div>
   </template>
 }

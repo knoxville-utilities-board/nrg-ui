@@ -13,7 +13,7 @@ export interface LoadingIndicatorSignature {
   };
 }
 
-export default class LoadingIndicatorComponent extends Component<LoadingIndicatorSignature> {
+export default class LoadingIndicator extends Component<LoadingIndicatorSignature> {
   get typeClass() {
     const { type } = this.args;
     assert(

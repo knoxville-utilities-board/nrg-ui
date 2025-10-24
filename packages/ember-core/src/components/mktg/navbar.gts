@@ -16,7 +16,7 @@ export interface MktgNavbarSignature {
   };
 }
 
-export default class NavbarComponent extends Component<MktgNavbarSignature> {
+export default class MktgNavbar extends Component<MktgNavbarSignature> {
   @tracked
   isMenuOpen = false;
 
