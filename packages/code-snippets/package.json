@@ -48,8 +48,8 @@
   "devDependencies": {
     "@nrg-ui/standards": "workspace:*",
     "@rollup/pluginutils": "^5.3.0",
-    "@types/picomatch": "^4.0.2",
     "@types/node": "^22.18.12",
+    "@types/picomatch": "^4.0.2",
     "@vitest/coverage-v8": "^3.2.4",
     "eslint": "^9.38.0",
     "eslint-plugin-decorator-position": "^6.0.0",
@@ -59,7 +59,7 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.2",
     "vite": "^7.1.12",
-    "vitest": "^3.2.4"
+    "vitest": "^4.0.4"
   },
   "publishConfig": {
     "access": "public",
