@@ -5,7 +5,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
 <template>
   {{pageTitle "@nrg-ui/core"}}
 
-  <Scaffold>
+  <Scaffold @contextMenuId="application-loading">
     <:app-bar-left as |AppBar|>
       <p class="d-none d-md-block m-0 ps-3 fs-5">
         Docs | @nrg-ui/core

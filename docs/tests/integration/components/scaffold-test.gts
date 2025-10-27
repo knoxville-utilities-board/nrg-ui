@@ -1,4 +1,4 @@
-import { click } from '@ember/test-helpers';
+import { clearRender, click } from '@ember/test-helpers';
 import { render } from '@ember/test-helpers';
 import Scaffold from '@nrg-ui/core/components/scaffold';
 import { setBreakpoint } from '@nrg-ui/core/test-support';
@@ -90,6 +90,7 @@ module('Integration | Component | scaffold', function (hooks) {
       );
 
     await setBreakpoint('small');
+    await clearRender();
     await render(
       <template>
         <Scaffold>

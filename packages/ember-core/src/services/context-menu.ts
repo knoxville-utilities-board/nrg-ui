@@ -46,7 +46,11 @@ export default class ContextMenu extends Service {
     this.menus.set(id, { id, top, bottom, dropdown });
   }
 
-  unregister(id: string) {
+  async unregister(id: string) {
+    // This must be disconnected from reactivity to avoid triggering
+    // errors from reading and updating the same property in the same cycle.
+    await Promise.resolve();
+
     this.menus.delete(id);
   }
 }
