@@ -50,7 +50,7 @@
     "@rollup/pluginutils": "^5.3.0",
     "@types/node": "^22.18.12",
     "@types/picomatch": "^4.0.2",
-    "@vitest/coverage-v8": "^3.2.4",
+    "@vitest/coverage-v8": "^4.0.4",
     "eslint": "^9.38.0",
     "eslint-plugin-decorator-position": "^6.0.0",
     "eslint-plugin-import": "^2.32.0",
