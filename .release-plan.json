@@ -4,28 +4,30 @@
       "oldVersion": "0.3.4"
     },
     "@nrg-ui/code-snippets": {
-      "oldVersion": "0.1.2"
+      "impact": "patch",
+      "oldVersion": "0.1.2",
+      "newVersion": "0.1.3",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./packages/code-snippets/package.json"
     },
     "@nrg-ui/css": {
       "oldVersion": "0.26.1"
     },
     "@nrg-ui/core": {
-      "impact": "major",
-      "oldVersion": "0.46.0",
-      "newVersion": "0.47.0",
+      "impact": "patch",
+      "oldVersion": "0.47.0",
+      "newVersion": "0.47.1",
       "tagName": "latest",
       "constraints": [
         {
-          "impact": "major",
-          "reason": "Appears in changelog section :boom: Breaking Change"
-        },
-        {
           "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :memo: Documentation"
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
@@ -37,5 +39,5 @@
       "oldVersion": "0.3.4"
     }
   },
-  "description": "## Release (2025-10-23)\n\n* @nrg-ui/core 0.47.0 (major)\n\n#### :boom: Breaking Change\n* `@nrg-ui/core`\n  * [#659](https://github.com/knoxville-utilities-board/nrg-ui/pull/659) feat: Remove onUpdate modifier ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#657](https://github.com/knoxville-utilities-board/nrg-ui/pull/657) fix(modal): Use custom modifiers for lifecycle and updates ([@TSenter](https://github.com/TSenter))\n  * [#656](https://github.com/knoxville-utilities-board/nrg-ui/pull/656) fix(pagination): Don't conditionally add modifier ([@TSenter](https://github.com/TSenter))\n  * [#655](https://github.com/knoxville-utilities-board/nrg-ui/pull/655) fix(pagination): Don't conditionally apply modifiers ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* `@nrg-ui/core`\n  * [#658](https://github.com/knoxville-utilities-board/nrg-ui/pull/658) chore(modal): Document logic for onClose action ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* [#660](https://github.com/knoxville-utilities-board/nrg-ui/pull/660) feat(ci): Add Ember 6.8 to testing matrix ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-10-27)\n\n* @nrg-ui/code-snippets 0.1.3 (patch)\n* @nrg-ui/core 0.47.1 (patch)\n\n#### :house: Internal\n* `@nrg-ui/code-snippets`\n  * [#668](https://github.com/knoxville-utilities-board/nrg-ui/pull/668) chore: Bump vitest and @vitest/coverage-v8 to 4.0.4 ([@TSenter](https://github.com/TSenter))\n  * [#667](https://github.com/knoxville-utilities-board/nrg-ui/pull/667) fix(tests): Import types as types ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/core`\n  * [#662](https://github.com/knoxville-utilities-board/nrg-ui/pull/662) chore(ember): Rename classes to match naming convention ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }

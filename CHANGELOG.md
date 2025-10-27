@@ -1,5 +1,20 @@
 # Changelog
 
+## Release (2025-10-27)
+
+* @nrg-ui/code-snippets 0.1.3 (patch)
+* @nrg-ui/core 0.47.1 (patch)
+
+#### :house: Internal
+* `@nrg-ui/code-snippets`
+  * [#668](https://github.com/knoxville-utilities-board/nrg-ui/pull/668) chore: Bump vitest and @vitest/coverage-v8 to 4.0.4 ([@TSenter](https://github.com/TSenter))
+  * [#667](https://github.com/knoxville-utilities-board/nrg-ui/pull/667) fix(tests): Import types as types ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`
+  * [#662](https://github.com/knoxville-utilities-board/nrg-ui/pull/662) chore(ember): Rename classes to match naming convention ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-10-23)
 
 * @nrg-ui/core 0.47.0 (major)
