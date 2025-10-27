@@ -1,11 +1,13 @@
 import { mkdir, mkdtemp, rm, writeFile } from 'fs/promises';
 import { tmpdir } from 'os';
 import { dirname, join } from 'path';
-import { Plugin, ViteDevServer, createServer } from 'vite';
+import { createServer } from 'vite';
 import { describe, expect, it } from 'vitest';
 
 import codeSnippetsPlugin from '../src/plugin.js';
-import { CodeSnippetsPluginOptions, SnippetEntry } from '../src/types.js';
+
+import type { CodeSnippetsPluginOptions, SnippetEntry } from '../src/types.js';
+import type { Plugin, ViteDevServer } from 'vite';
 
 const fixturesDir = join(__dirname, 'fixtures');
 
