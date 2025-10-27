@@ -2,6 +2,17 @@
 
 ## Release (2025-10-27)
 
+* @nrg-ui/core 0.47.2 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#669](https://github.com/knoxville-utilities-board/nrg-ui/pull/669) fix(context-menu): Break `unregister` out of sync event loop ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
+## Release (2025-10-27)
+
 * @nrg-ui/code-snippets 0.1.3 (patch)
 * @nrg-ui/core 0.47.1 (patch)
 
