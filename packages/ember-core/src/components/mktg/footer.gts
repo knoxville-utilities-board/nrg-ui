@@ -3,7 +3,7 @@ import { or } from 'ember-truth-helpers';
 
 import type { TOC } from '@ember/component/template-only';
 
-interface FooterSectionSignature {
+interface MktgFooterSectionSignature {
   Element: HTMLDivElement;
   Args: {
     isCollapsible?: boolean;
@@ -26,7 +26,7 @@ export interface MktgFooterSignature {
   };
 }
 
-class FooterSection extends Component<FooterSectionSignature> {
+class MktgFooterSection extends Component<MktgFooterSectionSignature> {
   get isCollapsible() {
     return this.args.isCollapsible ?? true;
   }
@@ -43,24 +43,24 @@ class FooterSection extends Component<FooterSectionSignature> {
   </template>
 }
 
-const MarketingFooterComponent: TOC<MktgFooterSignature> = <template>
+const MktgFooter: TOC<MktgFooterSignature> = <template>
   <footer class="mt-auto p-2" ...attributes>
     <div class="container pt-0 mb-4">
       <div
         class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center"
       >
         {{#if (has-block "nav")}}
-          <FooterSection>
+          <MktgFooterSection>
             {{yield to="nav"}}
-          </FooterSection>
+          </MktgFooterSection>
         {{/if}}
         {{#if (has-block "social-media")}}
-          <FooterSection
+          <MktgFooterSection
             @isCollapsible={{false}}
             class={{unless (has-block "nav") "ms-md-auto"}}
           >
             {{yield to="social-media"}}
-          </FooterSection>
+          </MktgFooterSection>
         {{/if}}
       </div>
       {{#if @hasDivider}}
@@ -71,14 +71,14 @@ const MarketingFooterComponent: TOC<MktgFooterSignature> = <template>
           class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center"
         >
           {{#if (has-block "brand")}}
-            <FooterSection>
+            <MktgFooterSection>
               {{yield to="brand"}}
-            </FooterSection>
+            </MktgFooterSection>
           {{/if}}
           {{#if (has-block "legal")}}
-            <FooterSection class={{unless (has-block "nav") "ms-md-auto"}}>
+            <MktgFooterSection class={{unless (has-block "nav") "ms-md-auto"}}>
               {{yield to="legal"}}
-            </FooterSection>
+            </MktgFooterSection>
           {{/if}}
         </div>
       {{/if}}
@@ -86,4 +86,4 @@ const MarketingFooterComponent: TOC<MktgFooterSignature> = <template>
   </footer>
 </template>;
 
-export default MarketingFooterComponent;
+export default MktgFooter;

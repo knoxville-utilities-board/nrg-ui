@@ -31,7 +31,7 @@ export interface AlertSignature {
   };
 }
 
-export default class AlertComponent extends Component<AlertSignature> {
+export default class Alert extends Component<AlertSignature> {
   @tracked
   visible = true;
 
