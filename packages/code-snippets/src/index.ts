@@ -1,4 +1,4 @@
-export const virtualModule = 'virtual:code-snippets';
+export const virtualModule = '@nrg-ui/code-snippets/virtual';
 
 import codeSnippetsPlugin from './plugin.js';
 

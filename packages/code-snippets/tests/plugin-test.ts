@@ -4,6 +4,7 @@ import { dirname, join } from 'path';
 import { createServer } from 'vite';
 import { describe, expect, it } from 'vitest';
 
+import { virtualModule } from '../src/index.js';
 import codeSnippetsPlugin from '../src/plugin.js';
 
 import type { CodeSnippetsPluginOptions, SnippetEntry } from '../src/types.js';
@@ -63,12 +64,11 @@ async function sleep(ms: number) {
 describe('vite-plugin-code-snippets', () => {
   it('resolves the virtual module ID', async () => {
     const plugin = codeSnippetsPlugin() as Plugin;
-    const id = 'virtual:code-snippets';
     const resolved = await (
       plugin.resolveId as (id: string) => Promise<string | undefined>
-    )?.(id);
+    )?.(virtualModule);
 
-    expect(resolved).toBe('\0virtual:code-snippets');
+    expect(resolved).toBe(`\0${virtualModule}`);
   });
 
   // vi.doUnmock('path');
@@ -90,7 +90,7 @@ describe('vite-plugin-code-snippets', () => {
     });
     await server.pluginContainer.buildStart();
 
-    const mod = await server.pluginContainer.load('\0virtual:code-snippets');
+    const mod = await server.pluginContainer.load(`\0${virtualModule}`);
     await expect(mod).toMatchFileSnapshot(join(fixturesDir, 'module.snap'));
 
     await server.close();
@@ -98,7 +98,7 @@ describe('vite-plugin-code-snippets', () => {
 
   it('updates snippet map when source file changes', async () => {
     await standupServer(async (server, dir) => {
-      let [snippets] = (await server.ssrLoadModule('virtual:code-snippets'))
+      let [snippets] = (await server.ssrLoadModule(virtualModule))
         .default as SnippetEntry[];
       expect(snippets.name).toBe('demo');
       expect(snippets.code).toContain(`console.log("A");`);
@@ -119,7 +119,7 @@ describe('vite-plugin-code-snippets', () => {
 
       await sleep(50);
 
-      [snippets] = (await server.ssrLoadModule('virtual:code-snippets'))
+      [snippets] = (await server.ssrLoadModule(virtualModule))
         .default as SnippetEntry[];
 
       expect(snippets.name).toBe('new-demo');
@@ -130,7 +130,7 @@ describe('vite-plugin-code-snippets', () => {
 
   it(`excluded files don't get included in the snippets`, async () => {
     await standupServer(async (server, dir) => {
-      let [snippets] = (await server.ssrLoadModule('virtual:code-snippets'))
+      let [snippets] = (await server.ssrLoadModule(virtualModule))
         .default as SnippetEntry[];
       expect(snippets.code).toContain(`console.log("A");`);
 
@@ -138,7 +138,7 @@ describe('vite-plugin-code-snippets', () => {
 
       await sleep(50);
 
-      [snippets] = (await server.ssrLoadModule('virtual:code-snippets'))
+      [snippets] = (await server.ssrLoadModule(virtualModule))
         .default as SnippetEntry[];
 
       expect(snippets.code).not.toContain(`console.log("B");`);
