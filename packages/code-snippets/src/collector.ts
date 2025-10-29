@@ -9,7 +9,7 @@ import type {
   CodeSnippetsPluginOptions,
   DeepRequired,
   SnippetEntry,
-} from './types.js';
+} from './types.ts';
 
 export function collectAllSnippets(
   options: DeepRequired<CodeSnippetsPluginOptions>,

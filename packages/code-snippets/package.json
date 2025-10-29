@@ -20,8 +20,20 @@
     "name": "Knoxville Utilities Board",
     "url": "https://www.kub.org"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    },
+    "./virtual": "./src/virtual.d.ts"
+  },
   "files": [
     "dist",
+    "src/virtual.d.ts",
     "README.md",
     "package.json"
   ],
