@@ -242,6 +242,7 @@
       "./components/tooltip.js": "./dist/_app_/components/tooltip.js",
       "./helpers/bind.js": "./dist/_app_/helpers/bind.js",
       "./helpers/classes.js": "./dist/_app_/helpers/classes.js",
+      "./helpers/code-snippet.js": "./dist/_app_/helpers/code-snippet.js",
       "./helpers/index.js": "./dist/_app_/helpers/index.js",
       "./helpers/lookup-service.js": "./dist/_app_/helpers/lookup-service.js",
       "./helpers/version.js": "./dist/_app_/helpers/version.js",
