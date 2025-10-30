@@ -128,6 +128,52 @@ describe('vite-plugin-code-snippets', () => {
     });
   }, 15_000);
 
+  it('updates snippet map when multiple source files change', async () => {
+    await standupServer(async (server, dir) => {
+      let [snippets] = (await server.ssrLoadModule(virtualModule))
+        .default as SnippetEntry[];
+      expect(snippets.name).toBe('demo');
+      expect(snippets.code).toContain(`console.log("A");`);
+
+      await writeFile(
+        join(dir, 'src/example.js'),
+        `
+        // BEGIN-SNIPPET new-demo
+        console.log("B");
+        // END-SNIPPET
+        // BEGIN-SNIPPET new-demo
+        console.log("C");
+        // END-SNIPPET
+        `,
+      );
+      await writeFile(
+        join(dir, 'src/example-2.js'),
+        `
+        // BEGIN-SNIPPET new-demo
+        console.log("D");
+        // END-SNIPPET
+        `,
+      );
+
+      await server.watcher.emit('change', join(dir, 'src/example.js'));
+      await server.watcher.emit('change', join(dir, 'src/example-2.js'));
+
+      await sleep(50);
+
+      [snippets] = (await server.ssrLoadModule(virtualModule))
+        .default as SnippetEntry[];
+
+      expect(snippets.name).toBe('new-demo');
+      expect(snippets.code).toContain(`console.log("B");`);
+      expect(snippets.code).toContain(`console.log("C");`);
+      expect(snippets.code).toContain(`console.log("D");`);
+
+      expect(snippets.sources[0].location.file).toContain('example.js');
+      expect(snippets.sources[1].location.file).toContain('example.js');
+      expect(snippets.sources[2].location.file).toContain('example-2.js');
+    });
+  }, 15_000);
+
   it(`excluded files don't get included in the snippets`, async () => {
     await standupServer(async (server, dir) => {
       let [snippets] = (await server.ssrLoadModule(virtualModule))
