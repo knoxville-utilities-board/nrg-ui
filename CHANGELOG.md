@@ -1,5 +1,25 @@
 # Changelog
 
+## Release (2025-10-30)
+
+* @nrg-ui/code-snippets 0.2.0 (minor)
+* @nrg-ui/core 0.48.0 (major)
+
+#### :rocket: Enhancement
+* `@nrg-ui/code-snippets`, `@nrg-ui/core`
+  * [#671](https://github.com/knoxville-utilities-board/nrg-ui/pull/671) feat: Add code-snippet helper ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/code-snippets`
+  * [#674](https://github.com/knoxville-utilities-board/nrg-ui/pull/674) fix(plugin): Don't overwrite snippets of same name from previous files ([@TSenter](https://github.com/TSenter))
+
+#### :memo: Documentation
+* `@nrg-ui/code-snippets`
+  * [#673](https://github.com/knoxville-utilities-board/nrg-ui/pull/673) docs(code-snippets): Update virtual module ID ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-10-27)
 
 * @nrg-ui/core 0.47.2 (patch)

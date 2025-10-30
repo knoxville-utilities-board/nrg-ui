@@ -4,20 +4,42 @@
       "oldVersion": "0.3.4"
     },
     "@nrg-ui/code-snippets": {
-      "oldVersion": "0.1.3"
+      "impact": "minor",
+      "oldVersion": "0.1.3",
+      "newVersion": "0.2.0",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :memo: Documentation"
+        }
+      ],
+      "pkgJSONPath": "./packages/code-snippets/package.json"
     },
     "@nrg-ui/css": {
       "oldVersion": "0.26.1"
     },
     "@nrg-ui/core": {
-      "impact": "patch",
-      "oldVersion": "0.47.1",
-      "newVersion": "0.47.2",
+      "impact": "major",
+      "oldVersion": "0.47.2",
+      "newVersion": "0.48.0",
       "tagName": "latest",
       "constraints": [
         {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
+          "impact": "major",
+          "reason": "Has peer dependency `workspace:*` on @nrg-ui/code-snippets"
+        },
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
@@ -29,5 +51,5 @@
       "oldVersion": "0.3.4"
     }
   },
-  "description": "## Release (2025-10-27)\n\n* @nrg-ui/core 0.47.2 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#669](https://github.com/knoxville-utilities-board/nrg-ui/pull/669) fix(context-menu): Break `unregister` out of sync event loop ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-10-30)\n\n* @nrg-ui/code-snippets 0.2.0 (minor)\n* @nrg-ui/core 0.48.0 (major)\n\n#### :rocket: Enhancement\n* `@nrg-ui/code-snippets`, `@nrg-ui/core`\n  * [#671](https://github.com/knoxville-utilities-board/nrg-ui/pull/671) feat: Add code-snippet helper ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/code-snippets`\n  * [#674](https://github.com/knoxville-utilities-board/nrg-ui/pull/674) fix(plugin): Don't overwrite snippets of same name from previous files ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* `@nrg-ui/code-snippets`\n  * [#673](https://github.com/knoxville-utilities-board/nrg-ui/pull/673) docs(code-snippets): Update virtual module ID ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
