@@ -64,14 +64,17 @@ async function sleep(ms: number) {
 describe('vite-plugin-code-snippets', () => {
   it('resolves the virtual module ID', async () => {
     const plugin = codeSnippetsPlugin() as Plugin;
-    const resolved = await (
+    let resolved = await (
       plugin.resolveId as (id: string) => Promise<string | undefined>
     )?.(virtualModule);
 
     expect(resolved).toBe(`\0${virtualModule}`);
-  });
+    resolved = await (
+      plugin.resolveId as (id: string) => Promise<string | undefined>
+    )?.('different-module');
 
-  // vi.doUnmock('path');
+    expect(resolved).toBeUndefined();
+  });
 
   it('exposes snippets in virtual module', async () => {
     const server = await createServer({
@@ -90,8 +93,11 @@ describe('vite-plugin-code-snippets', () => {
     });
     await server.pluginContainer.buildStart();
 
-    const mod = await server.pluginContainer.load(`\0${virtualModule}`);
+    let mod: unknown = await server.pluginContainer.load(`\0${virtualModule}`);
     await expect(mod).toMatchFileSnapshot(join(fixturesDir, 'module.snap'));
+
+    mod = await server.pluginContainer.load('different-module');
+    expect(mod).toBeNull();
 
     await server.close();
   });
