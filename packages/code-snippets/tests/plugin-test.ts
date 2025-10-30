@@ -64,14 +64,17 @@ async function sleep(ms: number) {
 describe('vite-plugin-code-snippets', () => {
   it('resolves the virtual module ID', async () => {
     const plugin = codeSnippetsPlugin() as Plugin;
-    const resolved = await (
+    let resolved = await (
       plugin.resolveId as (id: string) => Promise<string | undefined>
     )?.(virtualModule);
 
     expect(resolved).toBe(`\0${virtualModule}`);
-  });
+    resolved = await (
+      plugin.resolveId as (id: string) => Promise<string | undefined>
+    )?.('different-module');
 
-  // vi.doUnmock('path');
+    expect(resolved).toBeUndefined();
+  });
 
   it('exposes snippets in virtual module', async () => {
     const server = await createServer({
@@ -90,8 +93,11 @@ describe('vite-plugin-code-snippets', () => {
     });
     await server.pluginContainer.buildStart();
 
-    const mod = await server.pluginContainer.load(`\0${virtualModule}`);
+    let mod: unknown = await server.pluginContainer.load(`\0${virtualModule}`);
     await expect(mod).toMatchFileSnapshot(join(fixturesDir, 'module.snap'));
+
+    mod = await server.pluginContainer.load('different-module');
+    expect(mod).toBeNull();
 
     await server.close();
   });
@@ -125,6 +131,52 @@ describe('vite-plugin-code-snippets', () => {
       expect(snippets.name).toBe('new-demo');
       expect(snippets.code).toContain(`console.log("B");`);
       expect(snippets.code).toContain(`console.log("C");`);
+    });
+  }, 15_000);
+
+  it('updates snippet map when multiple source files change', async () => {
+    await standupServer(async (server, dir) => {
+      let [snippets] = (await server.ssrLoadModule(virtualModule))
+        .default as SnippetEntry[];
+      expect(snippets.name).toBe('demo');
+      expect(snippets.code).toContain(`console.log("A");`);
+
+      await writeFile(
+        join(dir, 'src/example.js'),
+        `
+        // BEGIN-SNIPPET new-demo
+        console.log("B");
+        // END-SNIPPET
+        // BEGIN-SNIPPET new-demo
+        console.log("C");
+        // END-SNIPPET
+        `,
+      );
+      await writeFile(
+        join(dir, 'src/example-2.js'),
+        `
+        // BEGIN-SNIPPET new-demo
+        console.log("D");
+        // END-SNIPPET
+        `,
+      );
+
+      await server.watcher.emit('change', join(dir, 'src/example.js'));
+      await server.watcher.emit('change', join(dir, 'src/example-2.js'));
+
+      await sleep(50);
+
+      [snippets] = (await server.ssrLoadModule(virtualModule))
+        .default as SnippetEntry[];
+
+      expect(snippets.name).toBe('new-demo');
+      expect(snippets.code).toContain(`console.log("B");`);
+      expect(snippets.code).toContain(`console.log("C");`);
+      expect(snippets.code).toContain(`console.log("D");`);
+
+      expect(snippets.sources[0].location.file).toContain('example.js');
+      expect(snippets.sources[1].location.file).toContain('example.js');
+      expect(snippets.sources[2].location.file).toContain('example-2.js');
     });
   }, 15_000);
 
