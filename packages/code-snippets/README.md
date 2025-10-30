@@ -60,7 +60,7 @@ try {
 ```
 
 ```ts
-import snippets from 'virtual:code-snippets';
+import snippets from '@nrg-ui/code-snippets/virtual';
 
 console.log(snippets['example-snippet']);
 ```
@@ -91,7 +91,7 @@ Here's an example of using a code snippet in an Ember application:
 ```gts
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import snippets from 'virtual:code-snippets';
+import snippets from '@nrg-ui/code-snippets/virtual';
 import { getHighlighter } from 'shiki';
 
 interface SnippetViewerSignature {
