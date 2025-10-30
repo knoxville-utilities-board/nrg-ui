@@ -86,7 +86,13 @@ export default function codeSnippetsPlugin(
         finalOptions.markers.end!,
       );
       for (const entry of updated) {
-        snippets.set(entry.name, entry);
+        if (snippets.has(entry.name)) {
+          const existing = snippets.get(entry.name)!;
+          existing.code += '\n' + entry.code;
+          existing.sources.push(...entry.sources);
+        } else {
+          snippets.set(entry.name, entry);
+        }
       }
 
       ctx.server.moduleGraph.invalidateModule(
