@@ -3,6 +3,7 @@ import { service } from '@ember/service';
 import { timeout } from 'ember-concurrency';
 
 import type ThemeService from '@nrg-ui/core/services/theme';
+import type ShikiService from '@nrg-ui/showcase/services/shiki';
 import type EmberFreestyleService from 'ember-freestyle/services/ember-freestyle';
 import type { IntlService } from 'ember-intl';
 
@@ -21,9 +22,14 @@ export default class ApplicationRoute extends Route {
   @service
   declare intl: IntlService;
 
+  @service
+  declare shiki: ShikiService;
+
   async beforeModel() {
     this.intl.setLocale(['en-us']);
     this.theme.load();
+
+    this.shiki.initialize.perform();
 
     // Simulate a loading delay
     await timeout(2000);
