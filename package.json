@@ -18,7 +18,7 @@
     "lint": "pnpm --filter '*' lint",
     "lint:fix": "pnpm --filter '*' lint:fix",
     "prepare": "pnpm build",
-    "start": "concurrently 'pnpm:start:*' --restart-tries -1 --restart-after 3000 --prefix-colors cyan,white,yellow,green",
+    "start": "concurrently 'pnpm:start:*' --restart-tries -1 --restart-after 3000 --prefix-colors=auto",
     "start:addon": "pnpm --filter @nrg-ui/core start --no-watch.clearScreen",
     "start:design-system": "pnpm --filter @nrg-ui/css start",
     "start:docs": "pnpm --filter docs start",
