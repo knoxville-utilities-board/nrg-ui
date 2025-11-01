@@ -66,7 +66,8 @@
     "@embroider/macros": "^1.19.1",
     "chalk": "^4.1.2",
     "decorator-transforms": "^2.2.2",
-    "execa": "^9.6.0"
+    "ember-concurrency": "^5.1.0",
+    "shiki": "^3.14.0"
   },
   "devDependencies": {
     "@babel/core": "^7.28.4",
@@ -82,6 +83,7 @@
     "@nrg-ui/standards": "workspace:*",
     "@rollup/plugin-babel": "^6.0.4",
     "@tsconfig/ember": "^3.0.11",
+    "@types/hast": "^3.0.4",
     "@types/qunit": "^2.19.13",
     "babel-plugin-ember-template-compilation": "^3.0.0",
     "concurrently": "^9.2.1",
@@ -112,7 +114,11 @@
   "ember-addon": {
     "version": 2,
     "type": "addon",
-    "main": "addon-main.cjs"
+    "main": "addon-main.cjs",
+    "app-js": {
+      "./components/code-block.js": "./dist/_app_/components/code-block.js",
+      "./services/shiki.js": "./dist/_app_/services/shiki.js"
+    }
   },
   "release-plan": {
     "semverIncrementAs": {
