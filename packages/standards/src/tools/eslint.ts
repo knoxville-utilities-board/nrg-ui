@@ -87,7 +87,12 @@ export class Config {
     }
 
     // Vite apps do not require ember-template-imports to support .gjs/.gts
-    return this.hasDependencies(['vite', 'ember-source']);
+    if (this.hasDependencies(['vite', 'ember-source'])) {
+      return true;
+    }
+
+    // V2 addons do not require anything extra to support .gjs/.gts
+    return this.hasDependency('@embroider/addon-dev');
   }
 
   rules = {
