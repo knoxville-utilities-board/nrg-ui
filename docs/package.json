@@ -49,6 +49,7 @@
     "@glint/template": "^1.6.2",
     "@nrg-ui/core": "workspace:*",
     "@nrg-ui/css": "workspace:*",
+    "@nrg-ui/showcase": "workspace:*",
     "@nrg-ui/standards": "workspace:*",
     "@nrg-ui/version": "workspace:*",
     "@tsconfig/ember": "^3.0.11",

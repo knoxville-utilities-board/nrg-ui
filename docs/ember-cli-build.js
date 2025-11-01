@@ -25,7 +25,7 @@ module.exports = async function (defaults) {
     'ember-cli-babel': { enableTypeScriptTransform: true },
     trees: {
       app: sideWatch('app', {
-        watching: ['@nrg-ui/core', '@nrg-ui/css'],
+        watching: ['@nrg-ui/core', '@nrg-ui/css', '@nrg-ui/showcase'],
       }),
     },
 
