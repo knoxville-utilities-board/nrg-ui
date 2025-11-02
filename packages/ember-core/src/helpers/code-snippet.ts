@@ -17,3 +17,5 @@ export function codeSnippet(name: string): SnippetEntry {
 
   return snippet;
 }
+
+export default { codeSnippet };
