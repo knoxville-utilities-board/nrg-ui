@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2025-11-02)
+
+* @nrg-ui/core 0.48.1 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#678](https://github.com/knoxville-utilities-board/nrg-ui/pull/678) fix(code-snippet): Add missing default export ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-10-30)
 
 * @nrg-ui/code-snippets 0.2.0 (minor)
