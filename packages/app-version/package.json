@@ -40,14 +40,14 @@
   "devDependencies": {
     "@nrg-ui/standards": "workspace:*",
     "@types/eslint": "^9.6.1",
-    "@types/node": "^22.18.12",
-    "eslint": "^9.38.0",
+    "@types/node": "^22.19.0",
+    "eslint": "^9.39.0",
     "eslint-plugin-decorator-position": "^6.0.0",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-n": "^17.23.1",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.2",
-    "vitest": "^4.0.4"
+    "vitest": "^4.0.6"
   },
   "publishConfig": {
     "access": "public",
