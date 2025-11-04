@@ -7,6 +7,8 @@ const addon = new Addon({
 });
 
 export default {
+  external: ['node:path'],
+
   // This provides defaults that work well alongside `publicEntrypoints` below.
   // You can augment this if you need to.
   output: addon.output(),
