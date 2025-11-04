@@ -9,7 +9,7 @@ import { bundledLanguages } from 'shiki/langs';
 import { bundledThemes } from 'shiki/themes';
 
 import type { Element } from 'hast';
-import type { BundledTheme, HighlighterCore } from 'shiki';
+import type { BundledTheme, CodeToHastOptions, HighlighterCore } from 'shiki';
 
 const lightThemes = getOwnConfig()?.themes?.light ?? ['github-light'];
 const darkThemes = getOwnConfig()?.themes?.dark ?? ['github-dark'];
@@ -92,7 +92,11 @@ export default class ShikiService extends Service {
       options.cssVariablePrefix ?? DEFAULT_CSS_VARIABLE_PREFIX;
   });
 
-  highlight(code: string, lang: string): HighlightedCode {
+  highlight(
+    code: string,
+    lang: string,
+    options?: Partial<CodeToHastOptions>,
+  ): HighlightedCode {
     const { highlighter, cssVariablePrefix } = this;
     if (!highlighter) {
       return {
@@ -123,6 +127,7 @@ export default class ShikiService extends Service {
         light: lightTheme,
         dark: darkTheme,
       },
+      ...options,
     });
 
     const root = hast.children[0] as Element;

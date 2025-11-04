@@ -6,7 +6,7 @@ import { cached } from '@glimmer/tracking';
 
 import type ShikiService from '../services/shiki.ts';
 import type ThemeService from '@nrg-ui/core/services/theme';
-import type { BundledLanguage } from 'shiki';
+import type { BundledLanguage, CodeToHastOptions } from 'shiki';
 
 import '../assets/code-block.css';
 
@@ -14,7 +14,8 @@ export interface CodeBlockSignature {
   Element: HTMLElement;
   Args: {
     code: string;
-    lang: BundledLanguage;
+    lang: BundledLanguage | 'plaintext';
+    options?: Partial<CodeToHastOptions>;
 
     inline?: boolean;
   };
