@@ -1,0 +1,28 @@
+.showcase-section {
+  h2 {
+    &:has(> a.showcase-header) {
+      position: relative;
+    }
+
+    & > a.showcase-header {
+      color: inherit;
+      position: relative;
+      text-decoration: none;
+      display: block;
+
+      &::before {
+        position: absolute;
+        content: "\F470";
+        font-family: "bootstrap-icons";
+        left: -1.5em;
+        opacity: 0;
+        color: inherit;
+      }
+    }
+
+    &:hover > a.showcase-header::before,
+    & > a.showcase-header:focus::before {
+      opacity: 1;
+    }
+  }
+}
