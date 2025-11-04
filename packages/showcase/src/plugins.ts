@@ -50,6 +50,31 @@ function extractCode(code: string): string {
   return escapeSource(lines.join('\n'));
 }
 
+function markArguments(node: AST.Statement, blockName: string): void {
+  if (node.type === 'ElementNode') {
+    for (const attrNode of node.attributes) {
+      if (attrNode.value.type !== 'MustacheStatement') {
+        continue;
+      }
+
+      const path = attrNode.value.path;
+
+      if (
+        path.type !== 'PathExpression' ||
+        path.head.type !== 'VarHead' ||
+        !path.original.startsWith(blockName)
+      ) {
+        continue;
+      }
+
+      const fullPath = path.tail.join('.');
+      const placeholder = `__SHOWCASE_ARG_${fullPath}__`;
+
+      attrNode.value = builders.mustache(placeholder);
+    }
+  }
+}
+
 function walkAST(node: AST.Statement, language: string): boolean {
   if (node.type === 'ElementNode' && node.tag === 'Section.Subsection') {
     const exampleBlock = node.children.find(
@@ -57,6 +82,14 @@ function walkAST(node: AST.Statement, language: string): boolean {
     ) as AST.ElementNode | undefined;
 
     if (exampleBlock) {
+      const blockName = exampleBlock.blockParams[0];
+
+      if (blockName) {
+        for (const child of exampleBlock.children) {
+          markArguments(child, blockName);
+        }
+      }
+
       const rawSource = print(builders.program(exampleBlock.children));
       const codeContent = extractCode(rawSource);
       const sourceAttr = builders.attr(
