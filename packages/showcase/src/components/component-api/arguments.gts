@@ -1,0 +1,253 @@
+import { assert } from '@ember/debug';
+import { hash } from '@ember/helper';
+import { array } from '@ember/helper';
+import Component from '@glimmer/component';
+import Checkbox from '@nrg-ui/core/components/form/checkbox';
+import Datetime from '@nrg-ui/core/components/form/datetime';
+import NumberInput from '@nrg-ui/core/components/form/number-input';
+import Select from '@nrg-ui/core/components/form/select';
+import TextInput from '@nrg-ui/core/components/form/text-input';
+import { bind } from '@nrg-ui/core/helpers/bind';
+
+import { createLink, stringify } from '../../utils.ts';
+import { TypeCodeBlock } from '../code-block.gts';
+
+import type { TOC } from '@ember/component/template-only';
+import type { ComponentLike, WithBoundArgs } from '@glint/template';
+
+export interface ArgumentSignature<T> {
+  Element: HTMLTableRowElement;
+  Args: {
+    defaultValue?: T | string;
+    description?: string;
+    model: object;
+    name?: string;
+    options?: T[];
+    required?: boolean;
+    value?: T;
+
+    onInput?: (value: T) => void;
+  };
+}
+
+export interface BaseArgumentSignature<T> {
+  Element: HTMLTableRowElement;
+  Args: {
+    type: string;
+
+    onInput?: (value: T) => void;
+  } & ArgumentSignature<T>['Args'];
+  Blocks: {
+    default: [BaseArgument<T>, T];
+  };
+}
+
+export class BaseArgument<T> extends Component<BaseArgumentSignature<T>> {
+  // This is needed for the binding types, which
+  // should be improved (if not simplified)
+  [key: string]: unknown;
+
+  get value(): T {
+    const { model, name, value } = this.args;
+
+    if (value !== undefined) {
+      return value;
+    }
+
+    assert(
+      'Model is required for BaseArgument when not providing @value',
+      model,
+    );
+    assert('Name is required for BaseArgument when not providing @value', name);
+
+    return (model as { [key: string]: T })[name] as T;
+  }
+
+  set value(value: T) {
+    if (this.args.onInput) {
+      this.args.onInput(value);
+
+      return;
+    }
+
+    const { model, name } = this.args;
+
+    assert(
+      'Model is required for BaseArgument when not providing @onInput',
+      model,
+    );
+    assert(
+      'Name is required for BaseArgument when not providing @onInput',
+      name,
+    );
+
+    (model as { [key: string]: T })[name] = value;
+  }
+
+  <template>
+    <tr class="argument" ...attributes>
+      <td class="name">
+        {{@name}}
+        {{#if @required}}
+          <span class="text-danger">*</span>
+        {{/if}}
+      </td>
+      <td class="type">
+        <TypeCodeBlock class="me-1" @code={{@type}} @inline={{true}} />
+      </td>
+      <td class="description">
+        {{@description}}
+      </td>
+      <td class="default">
+        {{#if @defaultValue}}
+          <TypeCodeBlock @code={{stringify @defaultValue}} @inline={{true}} />
+        {{/if}}
+      </td>
+      <td class="value">
+        {{#if @options}}
+          <Select @binding={{bind this "value"}} @options={{@options}} />
+        {{else}}
+          {{yield this this.value}}
+        {{/if}}
+      </td>
+    </tr>
+  </template>
+}
+
+export const BooleanArgument: TOC<ArgumentSignature<boolean>> = <template>
+  <BaseArgument
+    @defaultValue={{@defaultValue}}
+    @description={{@description}}
+    @model={{@model}}
+    @name={{@name}}
+    @options={{@options}}
+    @type="boolean"
+    @value={{@value}}
+    @onInput={{@onInput}}
+    ...attributes
+    as |base|
+  >
+    <Checkbox
+      @binding={{bind base "value"}}
+      @label={{if base.value "True" "False"}}
+    />
+  </BaseArgument>
+</template>;
+
+export const DateArgument: TOC<ArgumentSignature<Date>> = <template>
+  <BaseArgument
+    @defaultValue={{@defaultValue}}
+    @description={{@description}}
+    @model={{@model}}
+    @name={{@name}}
+    @options={{@options}}
+    @type="Date"
+    @value={{@value}}
+    @onInput={{@onInput}}
+    ...attributes
+    as |base|
+  >
+    <Datetime @binding={{bind base "value"}} />
+  </BaseArgument>
+</template>;
+
+export const NumberArgument: TOC<ArgumentSignature<number>> = <template>
+  <BaseArgument
+    @defaultValue={{@defaultValue}}
+    @description={{@description}}
+    @model={{@model}}
+    @name={{@name}}
+    @type="number"
+    @value={{@value}}
+    @onInput={{@onInput}}
+    as |base|
+  >
+    <NumberInput @binding={{bind base "value"}} />
+  </BaseArgument>
+</template>;
+
+export const StringArgument: TOC<ArgumentSignature<string>> = <template>
+  <BaseArgument
+    @defaultValue={{@defaultValue}}
+    @description={{@description}}
+    @model={{@model}}
+    @name={{@name}}
+    @options={{@options}}
+    @type="string"
+    @value={{@value}}
+    @onInput={{@onInput}}
+    as |base|
+  >
+    <TextInput @binding={{bind base "value"}} />
+  </BaseArgument>
+</template>;
+
+export interface ArgumentsSignature {
+  Element: HTMLTableElement;
+  Args: {
+    sectionName: string;
+    subsectionName: string;
+    model: object;
+  };
+  Blocks: {
+    default: [
+      {
+        Base: WithBoundArgs<
+          ComponentLike<BaseArgumentSignature<unknown>>,
+          'model'
+        >;
+        Boolean: WithBoundArgs<
+          ComponentLike<ArgumentSignature<boolean>>,
+          'model'
+        >;
+        Date: WithBoundArgs<ComponentLike<ArgumentSignature<Date>>, 'model'>;
+        Number: WithBoundArgs<
+          ComponentLike<ArgumentSignature<number>>,
+          'model'
+        >;
+        String: WithBoundArgs<
+          ComponentLike<ArgumentSignature<string>>,
+          'model'
+        >;
+      },
+    ];
+  };
+}
+
+export default class Arguments extends Component<ArgumentsSignature> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  TypedBase = BaseArgument<any>;
+
+  <template>
+    {{#let (createLink (array @sectionName @subsectionName "args")) as |link|}}
+      <h5 class="mt-4" id={{link}}>
+        <a class="showcase-header" href="#{{link}}">
+          Arguments
+        </a>
+      </h5>
+    {{/let}}
+    <div class="arguments">
+      <table class="table table-striped" ...attributes>
+        <thead>
+          <tr>
+            <th class="name">Name</th>
+            <th class="description" colspan="2">Description</th>
+            <th class="default">Default</th>
+            <th class="value">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{yield
+            (hash
+              Base=(component this.TypedBase model=@model)
+              Boolean=(component BooleanArgument model=@model)
+              Date=(component DateArgument model=@model)
+              Number=(component NumberArgument model=@model)
+              String=(component StringArgument model=@model)
+            )
+          }}
+        </tbody>
+      </table>
+    </div>
+  </template>
+}

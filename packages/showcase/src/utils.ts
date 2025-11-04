@@ -5,3 +5,7 @@ export function createLink(name: string | string[]) {
 
   return name.toLowerCase().replace(/\s+/g, '_');
 }
+
+export function stringify(value: unknown) {
+  return String(value);
+}

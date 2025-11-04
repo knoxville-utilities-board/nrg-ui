@@ -2,24 +2,39 @@ import { array, hash } from '@ember/helper';
 import Component from '@glimmer/component';
 
 import { createLink } from '../utils.ts';
+import Arguments from './component-api/arguments.gts';
 
-import type { ComponentLike } from '@glint/template';
+import type { ArgumentsSignature } from './component-api/arguments.gts';
+import type { ComponentLike, WithBoundArgs } from '@glint/template';
 
+import '../assets/component-api.css';
 import '../assets/section.css';
 
-export interface SubsectionSignature {
+export interface SubsectionSignature<Model extends object = object> {
   Element: HTMLDivElement;
   Args: {
+    model: Model;
+
     name: string;
     sectionName: string;
   };
   Blocks: {
+    api: [
+      {
+        Arguments: WithBoundArgs<
+          ComponentLike<ArgumentsSignature>,
+          'model' | 'sectionName' | 'subsectionName'
+        >;
+      },
+    ];
     default: [];
-    example?: [];
+    example?: [Model];
   };
 }
 
-export class Subsection extends Component<SubsectionSignature> {
+export class Subsection<Model extends object = object> extends Component<
+  SubsectionSignature<Model>
+> {
   <template>
     <div class="showcase-subsection">
       {{#let (createLink (array @sectionName @name)) as |link|}}
@@ -32,7 +47,23 @@ export class Subsection extends Component<SubsectionSignature> {
 
       {{#if (has-block "example")}}
         <div class="border border-secondary rounded p-3 my-2 showcase-example">
-          {{yield to="example"}}
+          {{yield @model to="example"}}
+        </div>
+      {{/if}}
+
+      {{#if (has-block "api")}}
+        <div class="showcase-component-api mt-3">
+          {{yield
+            (hash
+              Arguments=(component
+                Arguments
+                model=@model
+                sectionName=@sectionName
+                subsectionName=@name
+              )
+            )
+            to="api"
+          }}
         </div>
       {{/if}}
     </div>
@@ -47,13 +78,20 @@ export interface SectionSignature {
   Blocks: {
     default: [
       {
-        Subsection: ComponentLike<SubsectionSignature>;
+        Subsection: WithBoundArgs<
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          ComponentLike<SubsectionSignature<any>>,
+          'sectionName'
+        >;
       },
     ];
   };
 }
 
 export default class Section extends Component<SectionSignature> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  TypedSubsection = Subsection<any>;
+
   <template>
     <div class="showcase-section" ...attributes>
       {{#let (createLink @name) as |link|}}
@@ -64,8 +102,9 @@ export default class Section extends Component<SectionSignature> {
         </h2>
       {{/let}}
       <hr />
-
-      {{yield (hash Subsection=(component Subsection sectionName=@name))}}
+      {{yield
+        (hash Subsection=(component this.TypedSubsection sectionName=@name))
+      }}
     </div>
   </template>
 }
