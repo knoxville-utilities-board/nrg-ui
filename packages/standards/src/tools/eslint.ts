@@ -45,8 +45,8 @@ export class Config {
 
   get isEmberApp() {
     return (
-      existsSync(join(process.cwd(), 'app')) &&
-      existsSync(join(process.cwd(), 'ember-cli-build.js'))
+      existsSync(join(cwd(), 'app')) &&
+      existsSync(join(cwd(), 'ember-cli-build.js'))
     );
   }
 
@@ -316,6 +316,15 @@ export class Config {
         });
       }
 
+      for (const obj of objects) {
+        obj.languageOptions ??= {};
+        obj.languageOptions.parserOptions ??= {};
+
+        (obj.languageOptions.parserOptions as Record<string, unknown>)[
+          'tsconfigRootDir'
+        ] = cwd();
+      }
+
       return objects;
     },
 
@@ -382,11 +391,11 @@ export class Config {
       }
 
       const recommended = await load('eslint-plugin-ember/configs/recommended');
-      const recommendedGjs = await load(
+      const recommendedGts = await load(
         'eslint-plugin-ember/configs/recommended-gts',
       );
 
-      objects.push(...recommended, ...recommendedGjs);
+      objects.push(...recommended, ...recommendedGts);
 
       if (!rules) {
         return objects;
@@ -401,6 +410,9 @@ export class Config {
           files: ['**/*.gts'],
           languageOptions: {
             parser,
+            parserOptions: {
+              tsconfigRootDir: cwd(),
+            },
           },
           plugins: {
             ember: emberPlugin,
