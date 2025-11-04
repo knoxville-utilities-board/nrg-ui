@@ -146,8 +146,8 @@ export type {
 export type { ThemeControlSignature } from './components/theme-control.gts';
 export type { ToasterSignature } from './components/toaster.gts';
 
-export type Binding<Model extends object = Record<string, unknown>> = {
-  model: Model;
+export type Binding = {
+  model: Record<string, unknown>;
   valuePath: string;
 };
 export type { Icon as IconType } from './icons.ts';

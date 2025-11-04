@@ -24,7 +24,7 @@ export interface CheckboxGroupSignature {
 
     fieldOptions?: FieldOptions;
 
-    onInitBinding?: (binding: Binding<object>) => void;
+    onInitBinding?: (binding: Binding) => void;
   };
   Blocks: {
     default: [ComponentLike<CheckboxSignature>];
@@ -38,7 +38,7 @@ export default class CheckboxGroup extends Component<CheckboxGroupSignature> {
     super(owner, args);
 
     runTask(this, () => {
-      args.onInitBinding?.(bind(this, 'value'));
+      args.onInitBinding?.(bind(this as Record<string, unknown>, 'value'));
     });
   }
 

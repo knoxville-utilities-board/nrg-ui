@@ -25,8 +25,8 @@ export type PasswordOptions = {
 } & BaseOptions;
 
 export default class PasswordValidator<
-  Context extends object = Record<string, unknown>,
-  Model extends object = Record<string, unknown>,
+  Context extends Record<string, unknown> = Record<string, unknown>,
+  Model extends Record<string, unknown> = Record<string, unknown>,
 > extends BaseValidator<string, Model, Context, PasswordOptions> {
   defaultOptions = {
     tests: Object.keys(CommonTests) as (keyof typeof CommonTests)[],

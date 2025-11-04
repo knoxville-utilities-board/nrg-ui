@@ -8,6 +8,8 @@ import { setupRenderingTest } from '../../../helpers';
 import type { Optional } from '@nrg-ui/core';
 
 class Model {
+  [key: string]: unknown;
+
   @tracked
   value: string = 'Hello, world!';
 }

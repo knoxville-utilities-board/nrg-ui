@@ -49,7 +49,7 @@ export function validator<V extends ValidatorType = ValidatorType>(
   ...[type, options]: ValidatorFnArgs<V>
 ): ValidatorBuilder<unknown, ContextOf<V>, ContextOf<V>, OptionsOf<V>> {
   if (type === 'confirmation') {
-    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
+    return (binding: Binding, context: ContextOf<V>) =>
       new ConfirmationValidator(
         binding,
         options,
@@ -57,51 +57,51 @@ export function validator<V extends ValidatorType = ValidatorType>(
       );
   }
   if (type === 'custom') {
-    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
+    return (binding: Binding, context: ContextOf<V>) =>
       new CustomValidator(binding, options, context);
   }
   if (type === 'email') {
-    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
+    return (binding: Binding, context: ContextOf<V>) =>
       new EmailValidator(binding, options, context);
   }
   if (type === 'exclusion') {
-    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
+    return (binding: Binding, context: ContextOf<V>) =>
       new ExclusionValidator(binding, options, context);
   }
   if (type === 'file') {
-    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
+    return (binding: Binding, context: ContextOf<V>) =>
       new FileValidator(binding, options, context);
   }
   if (type === 'inclusion') {
-    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
+    return (binding: Binding, context: ContextOf<V>) =>
       new InclusionValidator(binding, options, context);
   }
   if (type === 'length') {
-    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
+    return (binding: Binding, context: ContextOf<V>) =>
       new LengthValidator(binding, options, context);
   }
   if (type === 'number') {
-    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
+    return (binding: Binding, context: ContextOf<V>) =>
       new NumberValidator(binding, options, context);
   }
   if (type === 'phone') {
-    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
+    return (binding: Binding, context: ContextOf<V>) =>
       new PhoneValidator(binding, options, context);
   }
   if (type === 'presence') {
-    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
+    return (binding: Binding, context: ContextOf<V>) =>
       new PresenceValidator(binding, options, context);
   }
   if (type === 'range') {
-    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
+    return (binding: Binding, context: ContextOf<V>) =>
       new RangeValidator(binding, options, context);
   }
   if (type === 'regex') {
-    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
+    return (binding: Binding, context: ContextOf<V>) =>
       new RegexValidator(binding, options, context);
   }
   if (type === 'password') {
-    return (binding: Binding<ContextOf<V>>, context: ContextOf<V>) =>
+    return (binding: Binding, context: ContextOf<V>) =>
       new PasswordValidator(binding, options, context);
   }
 

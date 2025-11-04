@@ -27,11 +27,11 @@ export type CustomOptions<T, Context> = {
 
 export default class CustomValidator<
   T,
-  Model extends object,
-  Context extends object = Record<string, unknown>,
+  Model extends Record<string, unknown>,
+  Context extends Record<string, unknown> = Record<string, unknown>,
 > extends BaseValidator<T, Model, Context, CustomOptions<T, Context>> {
   constructor(
-    binding: Binding<Model>,
+    binding: Binding,
     options: Computable<Context, CustomOptions<T, Context>>,
     context: Context,
   ) {

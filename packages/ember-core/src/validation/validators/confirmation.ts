@@ -29,8 +29,8 @@ export type ConfirmationOptions = {
 } & BaseOptions;
 
 export default class ConfirmationValidator<
-  Model extends object,
-  Context extends object = Record<string, TranslatableOption>,
+  Model extends Record<string, unknown>,
+  Context extends Record<string, unknown> = Record<string, TranslatableOption>,
 > extends BaseValidator<
   TranslatableOption,
   Model,
@@ -38,7 +38,7 @@ export default class ConfirmationValidator<
   ConfirmationOptions
 > {
   constructor(
-    binding: Binding<Model>,
+    binding: Binding,
     options: Computable<Context, ConfirmationOptions>,
     context: Context,
   ) {

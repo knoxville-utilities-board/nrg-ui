@@ -41,17 +41,17 @@ export interface ValidationResult {
 
 export type ValidatorBuilder<
   T,
-  Model extends object,
-  Context extends object,
+  Model extends Record<string, unknown>,
+  Context extends Record<string, unknown>,
   OptionsShape extends object,
 > = (
-  binding: Binding<Model>,
+  binding: Binding,
   context: Context,
-) => Validator<T, Model, OptionsShape, Context>;
+) => Validator<T, Model, Context, OptionsShape>;
 export interface Validator<
   T,
-  Model extends object,
-  Context extends object,
+  Model extends Record<string, unknown>,
+  Context extends Record<string, unknown>,
   OptionsShape extends BaseOptions,
 > {
   validate(
@@ -61,6 +61,6 @@ export interface Validator<
     context: Context | Model,
   ): ValidateFnResponse;
 
-  readonly binding: Binding<Model>;
+  readonly binding: Binding;
   readonly result: ValidationResult;
 }

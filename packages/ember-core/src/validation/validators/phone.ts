@@ -55,8 +55,8 @@ export type PhoneOptions = {
 } & BaseOptions;
 
 export default class PhoneValidator<
-  Model extends object,
-  Context extends object = Record<string, unknown>,
+  Model extends Record<string, unknown>,
+  Context extends Record<string, unknown> = Record<string, unknown>,
 > extends BaseValidator<
   string | null | undefined,
   Model,

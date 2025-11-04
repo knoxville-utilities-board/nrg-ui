@@ -6,6 +6,8 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from '../../../helpers';
 
 class Model {
+  [key: string]: unknown;
+
   @tracked
   value: string = '';
 }

@@ -13,6 +13,8 @@ import type { TestContext as TC } from '@ember/test-helpers';
 import type { Binding } from '@nrg-ui/core';
 
 class Model {
+  [key: string]: unknown;
+
   constructor() {
     this.password = 'password';
     this.passwordConfirmation = 'password';
@@ -26,7 +28,7 @@ class Model {
 }
 
 declare type TestContext = {
-  binding: Binding<Model>;
+  binding: Binding;
   model: Model;
 } & TC;
 

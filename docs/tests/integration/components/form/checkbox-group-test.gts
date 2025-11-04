@@ -8,6 +8,8 @@ import { setupRenderingTest } from '../../../helpers';
 import type { TestContext as BaseContext } from '@ember/test-helpers';
 
 class Model {
+  [key: string]: unknown;
+
   @tracked
   v1: boolean = false;
 

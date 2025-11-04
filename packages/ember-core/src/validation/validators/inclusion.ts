@@ -14,11 +14,11 @@ export type InclusionOptions<T> = {
 
 export default class InclusionValidator<
   T extends Primitive,
-  Model extends object,
-  Context extends object = Record<string, unknown>,
+  Model extends Record<string, unknown>,
+  Context extends Record<string, unknown> = Record<string, unknown>,
 > extends BaseValidator<T, Model, Context, InclusionOptions<T>> {
   constructor(
-    binding: Binding<Model>,
+    binding: Binding,
     options: Computable<Context, InclusionOptions<T>>,
     context: Context,
   ) {

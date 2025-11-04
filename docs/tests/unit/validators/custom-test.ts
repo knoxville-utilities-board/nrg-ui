@@ -13,6 +13,8 @@ import type { TestContext as TC } from '@ember/test-helpers';
 import type { Binding } from '@nrg-ui/core';
 
 class Model {
+  [key: string]: unknown;
+
   @tracked
   field?: string | string[];
 
@@ -21,7 +23,7 @@ class Model {
 }
 
 declare type TestContext = {
-  binding: Binding<Model>;
+  binding: Binding;
   model: Model;
 } & TC;
 

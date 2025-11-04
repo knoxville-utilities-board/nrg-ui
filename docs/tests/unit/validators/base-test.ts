@@ -12,6 +12,8 @@ import type { Binding } from '@nrg-ui/core';
 import type { BaseOptions, ValidateFnResponse } from '@nrg-ui/core/validation';
 
 class Model {
+  [key: string]: unknown;
+
   @tracked
   disabled: boolean = false;
 }
@@ -36,7 +38,7 @@ class DummyValidator<T extends ValidateFnResponse> extends BaseValidator<
 }
 
 declare type TestContext = {
-  binding: Binding<Model>;
+  binding: Binding;
   model: Model;
 } & TC;
 

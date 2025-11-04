@@ -11,6 +11,8 @@ module('Integration | Component | form/file-upload', function (hooks) {
   setupIntl(hooks, 'en-us');
 
   class Model {
+    [key: string]: unknown;
+
     @tracked
     files: File[] = [];
   }

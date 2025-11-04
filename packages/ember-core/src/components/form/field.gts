@@ -108,7 +108,7 @@ export interface FieldOptions {
   disabled?: boolean;
   form?: FormType;
   id?: string;
-  initBinding?: (binding: Binding<object>) => void;
+  initBinding?: (binding: Binding) => void;
   isInvalid?: boolean;
   isWarning?: boolean;
   required?: boolean;
@@ -140,7 +140,7 @@ export default class Field extends Component<FieldSignature> {
   requiredId?: string;
 
   @tracked
-  binding!: Binding<object>;
+  binding!: Binding;
 
   constructor(owner: Owner, args: FieldSignature['Args']) {
     super(owner, args);
@@ -207,7 +207,7 @@ export default class Field extends Component<FieldSignature> {
   }
 
   @action
-  initBinding(binding: Binding<object>) {
+  initBinding(binding: Binding) {
     const { form } = this.args;
     if (!form) {
       return;

@@ -2,20 +2,18 @@ import Helper from '@ember/component/helper';
 
 import type { Binding } from '../';
 
-export function bind<Model extends object = Record<string, unknown>>(
-  model: Model,
+export function bind(
+  model: Record<string, unknown>,
   valuePath: string,
-): Binding<Model> {
+): Binding {
   return {
     model,
     valuePath,
   };
 }
 
-export default class Bind<
-  Model extends object = Record<string, unknown>,
-> extends Helper {
-  compute([model, valuePath]: [Model, string]) {
+export default class Bind extends Helper {
+  compute([model, valuePath]: [Record<string, unknown>, string]) {
     return bind(model, valuePath);
   }
 }

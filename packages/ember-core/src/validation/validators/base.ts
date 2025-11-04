@@ -32,8 +32,8 @@ export function unwrapProxy<T>(value: T): T {
 
 export default abstract class BaseValidator<
   T,
-  Model extends object = Record<string, unknown>,
-  Context extends object = Record<string, unknown>,
+  Model extends Record<string, unknown> = Record<string, unknown>,
+  Context extends Record<string, unknown> = Record<string, unknown>,
   OptionsShape extends BaseOptions = BaseOptions,
 > implements Validator<T, Model, Context, OptionsShape>
 {
@@ -47,12 +47,12 @@ export default abstract class BaseValidator<
     {} as OptionsShape;
 
   readonly owner;
-  readonly binding: Binding<Model>;
+  readonly binding: Binding;
   readonly options: Computable<Context, OptionsShape & BaseOptions>;
   readonly context: Context | Model;
 
   constructor(
-    binding: Binding<Model>,
+    binding: Binding,
     options: Computable<Context, OptionsShape & BaseOptions>,
     context: Context,
   ) {
