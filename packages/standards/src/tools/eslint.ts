@@ -316,6 +316,15 @@ export class Config {
         });
       }
 
+      for (const obj of objects) {
+        obj.languageOptions ??= {};
+        obj.languageOptions.parserOptions ??= {};
+
+        (obj.languageOptions.parserOptions as Record<string, unknown>)[
+          'tsconfigRootDir'
+        ] = cwd();
+      }
+
       return objects;
     },
 
@@ -401,6 +410,9 @@ export class Config {
           files: ['**/*.gts'],
           languageOptions: {
             parser,
+            parserOptions: {
+              tsconfigRootDir: cwd(),
+            },
           },
           plugins: {
             ember: emberPlugin,
