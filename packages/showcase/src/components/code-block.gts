@@ -6,7 +6,7 @@ import { cached } from '@glimmer/tracking';
 
 import type ShikiService from '../services/shiki.ts';
 import type ThemeService from '@nrg-ui/core/services/theme';
-import type { BundledLanguage } from 'shiki';
+import type { BundledLanguage, CodeToHastOptions } from 'shiki';
 
 import '../assets/code-block.css';
 
@@ -14,7 +14,9 @@ export interface CodeBlockSignature {
   Element: HTMLElement;
   Args: {
     code: string;
-    lang: BundledLanguage;
+    label?: string;
+    lang: BundledLanguage | 'plaintext';
+    options?: Partial<CodeToHastOptions>;
 
     inline?: boolean;
   };
@@ -59,17 +61,49 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
 
   <template>
     {{#if @inline}}
-      <span class="code-block inline" style={{this.style}} ...attributes>
+      <span class="d-inline-flex inline" style={{this.style}} ...attributes>
         {{htmlSafe this.code.html}}
       </span>
     {{else}}
       <div
-        class="border border-secondary rounded p-3 my-2"
+        class="border border-secondary rounded p-3 my-2 position-relative code-block-wrapper"
         style={{this.style}}
+        data-label={{@label}}
         ...attributes
       >
         {{htmlSafe this.code.html}}
       </div>
     {{/if}}
+  </template>
+}
+
+export interface TypeCodeBlockSignature {
+  Element: HTMLElement;
+  Args: {
+    code: string;
+    label?: string;
+    inline?: boolean;
+
+    options?: Partial<CodeToHastOptions>;
+  };
+}
+
+export class TypeCodeBlock extends Component<TypeCodeBlockSignature> {
+  get options(): Partial<CodeToHastOptions> {
+    return {
+      grammarContextCode: 'let a:',
+      ...this.args.options,
+    };
+  }
+
+  <template>
+    <CodeBlock
+      @code={{@code}}
+      @label={{@label}}
+      @lang="typescript"
+      @inline={{@inline}}
+      @options={{this.options}}
+      ...attributes
+    />
   </template>
 }
