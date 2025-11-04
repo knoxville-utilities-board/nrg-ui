@@ -14,6 +14,7 @@ export interface CodeBlockSignature {
   Element: HTMLElement;
   Args: {
     code: string;
+    label?: string;
     lang: BundledLanguage | 'plaintext';
     options?: Partial<CodeToHastOptions>;
 
@@ -60,13 +61,14 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
 
   <template>
     {{#if @inline}}
-      <span class="code-block inline" style={{this.style}} ...attributes>
+      <span class="d-inline-flex inline" style={{this.style}} ...attributes>
         {{htmlSafe this.code.html}}
       </span>
     {{else}}
       <div
-        class="border border-secondary rounded p-3 my-2"
+        class="border border-secondary rounded p-3 my-2 position-relative code-block-wrapper"
         style={{this.style}}
+        data-label={{@label}}
         ...attributes
       >
         {{htmlSafe this.code.html}}
