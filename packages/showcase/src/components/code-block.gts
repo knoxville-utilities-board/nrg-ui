@@ -76,3 +76,34 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
     {{/if}}
   </template>
 }
+
+export interface TypeCodeBlockSignature {
+  Element: HTMLElement;
+  Args: {
+    code: string;
+    label?: string;
+    inline?: boolean;
+
+    options?: Partial<CodeToHastOptions>;
+  };
+}
+
+export class TypeCodeBlock extends Component<TypeCodeBlockSignature> {
+  get options(): Partial<CodeToHastOptions> {
+    return {
+      grammarContextCode: 'let a:',
+      ...this.args.options,
+    };
+  }
+
+  <template>
+    <CodeBlock
+      @code={{@code}}
+      @label={{@label}}
+      @lang="typescript"
+      @inline={{@inline}}
+      @options={{this.options}}
+      ...attributes
+    />
+  </template>
+}
