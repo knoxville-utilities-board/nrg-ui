@@ -31,6 +31,9 @@ export default class Application extends Component {
         <AppBar.Environment />
       </:app-bar-left>
       <:sidebar as |Menu|>
+        <Menu.Item @route="showcase">
+          Showcase
+        </Menu.Item>
         <Menu.Item @route="scaffold">
           Scaffold
         </Menu.Item>
