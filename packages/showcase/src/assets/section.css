@@ -2,7 +2,8 @@
 .showcase-subsection {
   h2,
   h4,
-  h5 {
+  h5,
+  h6 {
     &:has(> a.showcase-header) {
       position: relative;
     }

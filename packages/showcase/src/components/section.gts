@@ -2,8 +2,10 @@ import { array, hash } from '@ember/helper';
 import Component from '@glimmer/component';
 
 import { createLink } from '../utils.ts';
+import Actions from './component-api/actions.gts';
 import Arguments from './component-api/arguments.gts';
 
+import type { ActionsSignature } from './component-api/actions.gts';
 import type { ArgumentsSignature } from './component-api/arguments.gts';
 import type { ComponentLike, WithBoundArgs } from '@glint/template';
 
@@ -24,6 +26,10 @@ export interface SubsectionSignature<Model extends object = object> {
         Arguments: WithBoundArgs<
           ComponentLike<ArgumentsSignature>,
           'model' | 'sectionName' | 'subsectionName'
+        >;
+        Actions: WithBoundArgs<
+          ComponentLike<ActionsSignature>,
+          'sectionName' | 'subsectionName'
         >;
       },
     ];
@@ -60,6 +66,9 @@ export class Subsection<Model extends object = object> extends Component<
                 model=@model
                 sectionName=@sectionName
                 subsectionName=@name
+              )
+              Actions=(component
+                Actions sectionName=@sectionName subsectionName=@name
               )
             )
             to="api"
