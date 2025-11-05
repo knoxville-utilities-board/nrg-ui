@@ -4,9 +4,11 @@ import Component from '@glimmer/component';
 import { createLink } from '../utils.ts';
 import Actions from './component-api/actions.gts';
 import Arguments from './component-api/arguments.gts';
+import Blocks from './component-api/blocks.gts';
 
 import type { ActionsSignature } from './component-api/actions.gts';
 import type { ArgumentsSignature } from './component-api/arguments.gts';
+import type { BlocksSignature } from './component-api/blocks.gts';
 import type { ComponentLike, WithBoundArgs } from '@glint/template';
 
 import '../assets/component-api.css';
@@ -29,6 +31,10 @@ export interface SubsectionSignature<Model extends object = object> {
         >;
         Actions: WithBoundArgs<
           ComponentLike<ActionsSignature>,
+          'sectionName' | 'subsectionName'
+        >;
+Blocks: WithBoundArgs<
+          ComponentLike<BlocksSignature>,
           'sectionName' | 'subsectionName'
         >;
       },
@@ -69,6 +75,9 @@ export class Subsection<Model extends object = object> extends Component<
               )
               Actions=(component
                 Actions sectionName=@sectionName subsectionName=@name
+              )
+              Blocks=(component
+                Blocks sectionName=@sectionName subsectionName=@name
               )
             )
             to="api"
