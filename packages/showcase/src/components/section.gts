@@ -1,6 +1,7 @@
 import { array, hash } from '@ember/helper';
 import Component from '@glimmer/component';
 
+import CodeBlock from './code-block.gts';
 import { createLink } from '../utils.ts';
 import Actions from './component-api/actions.gts';
 import Arguments from './component-api/arguments.gts';
@@ -10,6 +11,7 @@ import type { ActionsSignature } from './component-api/actions.gts';
 import type { ArgumentsSignature } from './component-api/arguments.gts';
 import type { BlocksSignature } from './component-api/blocks.gts';
 import type { ComponentLike, WithBoundArgs } from '@glint/template';
+import type { BundledLanguage } from 'shiki';
 
 import '../assets/component-api.css';
 import '../assets/section.css';
@@ -21,6 +23,8 @@ export interface SubsectionSignature<Model extends object = object> {
 
     name: string;
     sectionName: string;
+    sourceCode?: string;
+    sourceLanguage?: BundledLanguage;
   };
   Blocks: {
     api: [
@@ -33,7 +37,7 @@ export interface SubsectionSignature<Model extends object = object> {
           ComponentLike<ActionsSignature>,
           'sectionName' | 'subsectionName'
         >;
-Blocks: WithBoundArgs<
+        Blocks: WithBoundArgs<
           ComponentLike<BlocksSignature>,
           'sectionName' | 'subsectionName'
         >;
@@ -47,6 +51,18 @@ Blocks: WithBoundArgs<
 export class Subsection<Model extends object = object> extends Component<
   SubsectionSignature<Model>
 > {
+  get hasCode() {
+    return this.args.sourceCode && this.args.sourceLanguage;
+  }
+
+  get code() {
+    return this.args.sourceCode!;
+  }
+
+  get language() {
+    return this.args.sourceLanguage!;
+  }
+
   <template>
     <div class="showcase-subsection">
       {{#let (createLink (array @sectionName @name)) as |link|}}
@@ -60,6 +76,16 @@ export class Subsection<Model extends object = object> extends Component<
       {{#if (has-block "example")}}
         <div class="border border-secondary rounded p-3 my-2 showcase-example">
           {{yield @model to="example"}}
+        </div>
+      {{/if}}
+
+      {{#if this.hasCode}}
+        <div class="my-2">
+          <CodeBlock
+            @code={{this.code}}
+            @lang={{this.language}}
+            @label="Source"
+          />
         </div>
       {{/if}}
 
