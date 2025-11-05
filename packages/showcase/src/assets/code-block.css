@@ -19,6 +19,9 @@ pre.code-block {
 }
 
 .inline:has(.code-block) {
+  border-radius: var(--bs-border-radius) !important;
+  border: 1px solid rgba(var(--bs-secondary-rgb), 1) !important;
+  padding: 0.1rem 0.3rem;
   width: max-content;
 }
 
