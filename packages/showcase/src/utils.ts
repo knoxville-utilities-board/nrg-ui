@@ -12,7 +12,15 @@ export function createLink(name: string | string[]) {
   return name.toLowerCase().replace(/\s+/g, '_');
 }
 
-export function stringify(value: unknown) {
+export function stringify(value: unknown): string {
+  if (Array.isArray(value)) {
+    return `[${value.map(stringify).join(', ')}]`;
+  }
+
+  if (typeof value === 'string') {
+    return `'${value}'`;
+  }
+
   return String(value);
 }
 
