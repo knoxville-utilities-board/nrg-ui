@@ -48,6 +48,10 @@ export class BaseArgument<T> extends Component<BaseArgumentSignature<T>> {
   // should be improved (if not simplified)
   [key: string]: unknown;
 
+  get hasDefaultValue(): boolean {
+    return 'defaultValue' in this.args;
+  }
+
   get value(): T {
     const { model, name, value } = this.args;
 
@@ -100,7 +104,7 @@ export class BaseArgument<T> extends Component<BaseArgumentSignature<T>> {
         {{@description}}
       </td>
       <td class="default">
-        {{#if @defaultValue}}
+        {{#if this.hasDefaultValue}}
           <TypeCodeBlock @code={{stringify @defaultValue}} @inline={{true}} />
         {{/if}}
       </td>
