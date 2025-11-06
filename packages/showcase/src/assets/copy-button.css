@@ -1,0 +1,11 @@
+.copy-button {
+  --bs-btn-padding-x: 0.5rem;
+  --bs-btn-padding-y: 0.5rem;
+
+  opacity: 0;
+  transition: 0.1s ease-in-out opacity;
+}
+
+.code-block-wrapper:hover .copy-button {
+  opacity: 1;
+}

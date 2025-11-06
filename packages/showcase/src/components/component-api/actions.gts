@@ -82,7 +82,7 @@ export class BaseAction extends Component<BaseActionSignature> {
     {{/let}}
     <div class="action" ...attributes>
       <p class="signature">
-        <TypeCodeBlock @code={{this.signature}} />
+        <TypeCodeBlock @code={{this.signature}} @showCopyButton={{false}} />
       </p>
       <p class="description">
         {{@description}}

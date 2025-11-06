@@ -4,6 +4,8 @@ import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
 import { cached } from '@glimmer/tracking';
 
+import CopyButton from './copy-button.gts';
+
 import type ShikiService from '../services/shiki.ts';
 import type ThemeService from '@nrg-ui/core/services/theme';
 import type { BundledLanguage, CodeToHastOptions } from 'shiki';
@@ -16,6 +18,7 @@ export interface CodeBlockSignature {
     code: string;
     label?: string;
     lang: BundledLanguage | 'plaintext';
+    showCopyButton?: boolean;
     options?: Partial<CodeToHastOptions>;
 
     inline?: boolean;
@@ -59,6 +62,15 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
     return htmlSafe(`background-color: ${backgroundColor};`);
   }
 
+  get showCopyButton() {
+    assert(
+      'showCopyButton cannot be used when @inline={{true}}',
+      !this.args.inline || this.args.showCopyButton === undefined,
+    );
+
+    return this.args.showCopyButton ?? true;
+  }
+
   <template>
     {{#if @inline}}
       <span class="d-inline-flex inline" style={{this.style}} ...attributes>
@@ -72,6 +84,9 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
         ...attributes
       >
         {{htmlSafe this.code.html}}
+        {{#if this.showCopyButton}}
+          <CopyButton @text={{@code}} />
+        {{/if}}
       </div>
     {{/if}}
   </template>
@@ -83,6 +98,7 @@ export interface TypeCodeBlockSignature {
     code: string;
     label?: string;
     inline?: boolean;
+    showCopyButton?: boolean;
 
     options?: Partial<CodeToHastOptions>;
   };
@@ -102,6 +118,7 @@ export class TypeCodeBlock extends Component<TypeCodeBlockSignature> {
       @label={{@label}}
       @lang="typescript"
       @inline={{@inline}}
+      @showCopyButton={{@showCopyButton}}
       @options={{this.options}}
       ...attributes
     />
