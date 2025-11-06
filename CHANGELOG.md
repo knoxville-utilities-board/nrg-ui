@@ -1,5 +1,39 @@
 # Changelog
 
+## Release (2025-11-06)
+
+* @nrg-ui/code-snippets 0.2.1 (patch)
+* @nrg-ui/css 0.27.0 (minor)
+* @nrg-ui/core 0.49.0 (major)
+* @nrg-ui/showcase 0.1.0 (major)
+* @nrg-ui/standards 0.5.6 (patch)
+
+#### :rocket: Enhancement
+* `@nrg-ui/showcase`
+  * [#686](https://github.com/knoxville-utilities-board/nrg-ui/pull/686) feat: Add components for component documentation ([@TSenter](https://github.com/TSenter))
+  * [#685](https://github.com/knoxville-utilities-board/nrg-ui/pull/685) feat(plugin): Insert markers for dynamic arguments ([@TSenter](https://github.com/TSenter))
+  * [#683](https://github.com/knoxville-utilities-board/nrg-ui/pull/683) feat(code-block): Add label and additional options ([@TSenter](https://github.com/TSenter))
+  * [#681](https://github.com/knoxville-utilities-board/nrg-ui/pull/681) feat(showcase): Add Vite plugin to provide source code to examples ([@TSenter](https://github.com/TSenter))
+  * [#676](https://github.com/knoxville-utilities-board/nrg-ui/pull/676) feat: Add component for code blocks with Shiki.js ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/css`
+  * [#684](https://github.com/knoxville-utilities-board/nrg-ui/pull/684) feat(design): Don't scroll elements under app bar ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/standards`
+  * [#687](https://github.com/knoxville-utilities-board/nrg-ui/pull/687) fix(cli): Don't look for lock files outside project directory ([@TSenter](https://github.com/TSenter))
+  * [#682](https://github.com/knoxville-utilities-board/nrg-ui/pull/682) fix(standards): Add `tsconfigRootDir` to TS rulesets ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`, `@nrg-ui/standards`
+  * [#677](https://github.com/knoxville-utilities-board/nrg-ui/pull/677) fix: Support GJS/GTS linting for V2 addons ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`
+  * [#678](https://github.com/knoxville-utilities-board/nrg-ui/pull/678) fix(code-snippet): Add missing default export ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `@nrg-ui/code-snippets`, `@nrg-ui/css`, `@nrg-ui/core`
+  * [#675](https://github.com/knoxville-utilities-board/nrg-ui/pull/675) chore: Match concurrently color prefixes ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-10-30)
 
 * @nrg-ui/code-snippets 0.2.0 (minor)
