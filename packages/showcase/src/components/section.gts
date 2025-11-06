@@ -79,16 +79,6 @@ export class Subsection<Model extends object = object> extends Component<
         </div>
       {{/if}}
 
-      {{#if this.hasCode}}
-        <div class="my-2">
-          <CodeBlock
-            @code={{this.code}}
-            @lang={{this.language}}
-            @label="Source"
-          />
-        </div>
-      {{/if}}
-
       {{#if (has-block "api")}}
         <div class="showcase-component-api mt-3">
           {{yield
@@ -108,6 +98,19 @@ export class Subsection<Model extends object = object> extends Component<
             )
             to="api"
           }}
+        </div>
+      {{/if}}
+
+      {{#if this.hasCode}}
+        {{#let (createLink (array @sectionName @name "source")) as |link|}}
+          <h5 id={{link}}>
+            <a class="showcase-header" href="#{{link}}">
+              Source
+            </a>
+          </h5>
+        {{/let}}
+        <div class="my-2">
+          <CodeBlock @code={{this.code}} @lang={{this.language}} />
         </div>
       {{/if}}
     </div>
