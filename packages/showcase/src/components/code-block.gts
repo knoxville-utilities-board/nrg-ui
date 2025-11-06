@@ -13,7 +13,7 @@ import type { BundledLanguage, CodeToHastOptions } from 'shiki';
 
 import '../assets/code-block.css';
 
-const MARKER_PATTERN = '{{__SHOWCASE_ARG_(.*)__}}';
+const MARKER_PATTERN = '{{__SHOWCASE_ARG_(.*)_(.*)__}}';
 
 export interface CodeBlockSignature {
   Element: HTMLElement;
@@ -90,12 +90,12 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
 
     const pattern = new RegExp(MARKER_PATTERN, 'g');
 
-    return rawSource.replace(pattern, (_, key: string) => {
+    return rawSource.replace(pattern, (_, blockName: string, key: string) => {
       const value = get(model, key);
 
       assert(`Model is missing key: ${key}`, value !== undefined);
 
-      return coerceValue(value, key);
+      return coerceValue(value, `${blockName}.${key}`);
     });
   }
 
