@@ -1,29 +1,22 @@
-// @ts-nocheck - TODO
-
-import { array, fn, hash } from '@ember/helper';
-import { action, set } from '@ember/object';
+import { array, hash } from '@ember/helper';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { CheckboxGroup, bind } from '@nrg-ui/core';
-import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
-import FreestyleSection from 'ember-freestyle/components/freestyle-section';
-
-class Model {
-  @tracked
-  property = '';
-}
+import CheckboxGroup from '@nrg-ui/core/components/form/checkbox-group';
+import { bind } from '@nrg-ui/core/helpers/bind';
+import Section from '@nrg-ui/showcase/components/section';
 
 export default class CheckboxGroupDemo extends Component {
-  model = new Model();
-
   @tracked
-  class = '';
+  basic = false;
 
   @tracked
   disabled = false;
 
   @tracked
-  inline;
+  inline = false;
+
+  @tracked
+  reverse = false;
 
   @tracked
   label = 'Checkbox label';
@@ -40,78 +33,59 @@ export default class CheckboxGroupDemo extends Component {
   @tracked
   option3 = false;
 
-  @action
-  update(key: string, value: unknown) {
-    set(this, key, value);
-  }
-
   <template>
-    <FreestyleSection @name="Checkbox Group" as |Section|>
-      <Section.subsection @name="Basic">
-        <FreestyleUsage>
-          <:example>
-            <CheckboxGroup
-              class={{this.class}}
-              @basic={{this.basic}}
-              @fieldOptions={{hash disabled=this.disabled}}
-              @inline={{this.inline}}
-              @label={{this.label}}
-              @reverse={{this.reverse}}
-              @type={{this.type}}
-              as |Item|
-            >
-              <Item @binding={{bind this "option1"}} @label="Option 1" />
-              <Item @binding={{bind this "option2"}} @label="Option 2" />
-              <Item @binding={{bind this "option3"}} @label="Option 3" />
-            </CheckboxGroup>
-          </:example>
-          <:api as |Args|>
-            <Args.String
-              @name="class"
-              @description="The class to apply to the group <div>. Note that this is not an argument but rather a class applied directly to the <div>"
-              @value={{this.class}}
-              @onInput={{fn this.update "class"}}
-              @options={{this.classOptions}}
-            />
-            <Args.Bool
+    <Section @name="Checkbox Group" as |Section|>
+      <Section.Subsection @name="Basic" @model={{this}} @elementTag="div">
+        <:example as |model|>
+          <CheckboxGroup
+            @basic={{model.basic}}
+            @fieldOptions={{hash disabled=model.disabled}}
+            @inline={{model.inline}}
+            @reverse={{model.reverse}}
+            @type={{model.type}}
+            as |Item|
+          >
+            <Item @binding={{bind this "option1"}} @label="Option 1" />
+            <Item @binding={{bind this "option2"}} @label="Option 2" />
+            <Item @binding={{bind this "option3"}} @label="Option 3" />
+          </CheckboxGroup>
+        </:example>
+
+        <:api as |Api|>
+          <Api.Arguments as |Args|>
+            <Args.Boolean
               @name="basic"
               @defaultValue={{false}}
               @description="When true, the border will be removed"
-              @value={{this.basic}}
-              @onInput={{fn this.update "basic"}}
-            />
-            <Args.Bool
-              @name="fieldOptions.disabled"
-              @defaultValue={{false}}
-              @description="When true, all checkboxes in this group will be disabled"
-              @value={{this.disabled}}
-              @onInput={{fn this.update "disabled"}}
-            />
-            <Args.Bool
-              @name="inline"
-              @defaultValue={{false}}
-              @description="When true, all checkboxes in this group will be displayed inline"
-              @value={{this.inline}}
-              @onInput={{fn this.update "inline"}}
-            />
-            <Args.Bool
-              @name="reverse"
-              @defaultValue={{false}}
-              @description="When true, all checkboxes in this group will be on the reverse side of the container"
-              @value={{this.reverse}}
-              @onInput={{fn this.update "reverse"}}
             />
             <Args.String
               @defaultValue="checkbox"
               @name="type"
               @description="All checkboxes in this group will use this type"
               @options={{array "checkbox" "switch"}}
-              @value={{this.type}}
-              @onInput={{fn this.update "type"}}
             />
-          </:api>
-        </FreestyleUsage>
-      </Section.subsection>
-    </FreestyleSection>
+            <Args.Boolean
+              @name="disabled"
+              @defaultValue={{false}}
+              @description="When true, all checkboxes in this group will be disabled"
+            />
+            <Args.Boolean
+              @name="inline"
+              @defaultValue={{false}}
+              @description="When true, all checkboxes in this group will be displayed inline"
+            />
+            <Args.String
+              @name="label"
+              @description="The label for the checkbox group"
+            />
+            <Args.Boolean
+              @name="reverse"
+              @defaultValue={{false}}
+              @description="When true, all checkboxes in this group will be on the reverse side of the container"
+            />
+          </Api.Arguments>
+        </:api>
+      </Section.Subsection>
+    </Section>
   </template>
 }
