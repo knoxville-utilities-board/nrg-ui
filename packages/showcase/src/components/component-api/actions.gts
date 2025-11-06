@@ -4,6 +4,7 @@ import Component from '@glimmer/component';
 
 import { createLink } from '../../utils.ts';
 import CodeBlock, { TypeCodeBlock } from '../code-block.gts';
+import MdnApiLink from './mdn-api-link.gts';
 
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike, HelperLike, WithBoundArgs } from '@glint/template';
@@ -103,11 +104,7 @@ export class BaseAction extends Component<BaseActionSignature> {
                 </td>
                 <td class="type">
                   {{#if param.type}}
-                    <TypeCodeBlock
-                      class="d-block"
-                      @code={{param.type}}
-                      @inline={{true}}
-                    />
+                    <MdnApiLink @type={{param.type}} />
                   {{/if}}
                 </td>
                 <td class="description">

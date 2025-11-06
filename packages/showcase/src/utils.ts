@@ -1,3 +1,9 @@
+import bcd from '@mdn/browser-compat-data';
+
+export const ELEMENT_INDEX = bcd.html['elements']!;
+export const API_INDEX = bcd.api;
+export const BUILTINS_INDEX = bcd.javascript['builtins']!;
+
 export function createLink(name: string | string[]) {
   if (Array.isArray(name)) {
     name = name.filter(Boolean).join('-');
@@ -8,4 +14,16 @@ export function createLink(name: string | string[]) {
 
 export function stringify(value: unknown) {
   return String(value);
+}
+
+export function getMdnLinkForElement(element: string) {
+  const data = ELEMENT_INDEX[element.toLowerCase()];
+
+  return data?.__compat?.mdn_url ?? null;
+}
+
+export function getMdnLinkForApi(api: string) {
+  const data = BUILTINS_INDEX[api] ?? API_INDEX[api];
+
+  return data?.__compat?.mdn_url ?? null;
 }

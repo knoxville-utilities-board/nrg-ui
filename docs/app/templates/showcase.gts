@@ -35,6 +35,7 @@ export default class extends Component {
         <div class="container mx-auto">
           <Section @name="Section Title" as |S|>
             <S.Subsection
+              @elementTag="button"
               @model={{this.model}}
               @name="Subsection Title"
               @sourceCode="<Button class=&quot;btn-primary&quot;>Click me!</Button>"

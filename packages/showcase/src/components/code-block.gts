@@ -73,7 +73,11 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
 
   <template>
     {{#if @inline}}
-      <span class="d-inline-flex inline" style={{this.style}} ...attributes>
+      <span
+        class="d-inline-flex inline mb-0"
+        style={{this.style}}
+        ...attributes
+      >
         {{htmlSafe this.code.html}}
       </span>
     {{else}}
