@@ -88,33 +88,35 @@ export class BaseAction extends Component<BaseActionSignature> {
       <p class="description">
         {{@description}}
       </p>
-      <div class="arguments">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th class="name">Name</th>
-              <th class="description" colspan="2">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each this.parameters as |param|}}
+      {{#if this.parameters}}
+        <div class="arguments">
+          <table class="table table-striped">
+            <thead>
               <tr>
-                <td class="name">
-                  {{param.name}}
-                </td>
-                <td class="type">
-                  {{#if param.type}}
-                    <MdnApiLink @type={{param.type}} />
-                  {{/if}}
-                </td>
-                <td class="description">
-                  {{param.description}}
-                </td>
+                <th class="name">Name</th>
+                <th class="description" colspan="2">Description</th>
               </tr>
-            {{/each}}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {{#each this.parameters as |param|}}
+                <tr>
+                  <td class="name">
+                    {{param.name}}
+                  </td>
+                  <td class="type">
+                    {{#if param.type}}
+                      <MdnApiLink @type={{param.type}} />
+                    {{/if}}
+                  </td>
+                  <td class="description">
+                    {{param.description}}
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      {{/if}}
 
       {{yield}}
     </div>
