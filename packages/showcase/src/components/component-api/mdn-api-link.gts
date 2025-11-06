@@ -10,6 +10,30 @@ export interface MdnApiLinkSignature {
   };
 }
 
+/**
+ * JavaScript provides wrapper classes for
+ * certain primitive data types. These are rarely
+ * used directly and display with Shiki differently
+ * than their primitive counterparts.
+ *
+ * See https://typescript-eslint.io/rules/no-wrapper-object-types/ */
+const WRAPPER_OBJECT_TYPES = [
+  'String',
+  'Number',
+  'Boolean',
+  'Symbol',
+  'BigInt',
+  'Object',
+];
+
+function getDisplayType(type: string) {
+  if (WRAPPER_OBJECT_TYPES.includes(type)) {
+    return type.toLowerCase();
+  }
+
+  return type;
+}
+
 export const MdnApiLink: TOC<MdnApiLinkSignature> = <template>
   {{#let (getMdnLinkForApi @type) as |mdnLink|}}
     {{#if mdnLink}}
@@ -19,10 +43,18 @@ export const MdnApiLink: TOC<MdnApiLinkSignature> = <template>
         target="_blank"
         rel="noopener noreferrer"
       >
-        <TypeCodeBlock class="me-1" @code={{@type}} @inline={{true}} />
+        <TypeCodeBlock
+          class="me-1"
+          @code={{getDisplayType @type}}
+          @inline={{true}}
+        />
       </a>
     {{else}}
-      <TypeCodeBlock class="me-1" @code={{@type}} @inline={{true}} />
+      <TypeCodeBlock
+        class="me-1"
+        @code={{getDisplayType @type}}
+        @inline={{true}}
+      />
     {{/if}}
   {{/let}}
 </template>;
