@@ -11,6 +11,7 @@ import { bind } from '@nrg-ui/core/helpers/bind';
 
 import { createLink, stringify } from '../../utils.ts';
 import { TypeCodeBlock } from '../code-block.gts';
+import MdnApiLink from './mdn-api-link.gts';
 
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike, WithBoundArgs } from '@glint/template';
@@ -93,7 +94,7 @@ export class BaseArgument<T> extends Component<BaseArgumentSignature<T>> {
         {{/if}}
       </td>
       <td class="type">
-        <TypeCodeBlock class="me-1" @code={{@type}} @inline={{true}} />
+        <MdnApiLink @type={{@type}} />
       </td>
       <td class="description">
         {{@description}}
@@ -121,7 +122,7 @@ export const BooleanArgument: TOC<ArgumentSignature<boolean>> = <template>
     @model={{@model}}
     @name={{@name}}
     @options={{@options}}
-    @type="boolean"
+    @type="Boolean"
     @value={{@value}}
     @onInput={{@onInput}}
     ...attributes
@@ -157,7 +158,7 @@ export const NumberArgument: TOC<ArgumentSignature<number>> = <template>
     @description={{@description}}
     @model={{@model}}
     @name={{@name}}
-    @type="number"
+    @type="Number"
     @value={{@value}}
     @onInput={{@onInput}}
     as |base|
@@ -173,7 +174,7 @@ export const StringArgument: TOC<ArgumentSignature<string>> = <template>
     @model={{@model}}
     @name={{@name}}
     @options={{@options}}
-    @type="string"
+    @type="String"
     @value={{@value}}
     @onInput={{@onInput}}
     as |base|
