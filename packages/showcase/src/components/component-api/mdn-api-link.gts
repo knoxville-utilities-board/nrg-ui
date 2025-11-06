@@ -34,8 +34,20 @@ function getDisplayType(type: string) {
   return type;
 }
 
+function getDocType(type: string) {
+  if (type.endsWith('[]')) {
+    type = type.slice(0, -2);
+  } else if (type.endsWith('<T>')) {
+    type = type.slice(0, -3);
+  } else if (type.startsWith('Array<') && type.endsWith('>')) {
+    type = type.slice(6, -1);
+  }
+
+  return getMdnLinkForApi(type);
+}
+
 export const MdnApiLink: TOC<MdnApiLinkSignature> = <template>
-  {{#let (getMdnLinkForApi @type) as |mdnLink|}}
+  {{#let (getDocType @type) as |mdnLink|}}
     {{#if mdnLink}}
       <a
         class="mdn-api-link"
