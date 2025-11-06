@@ -1,4 +1,5 @@
 import { assert } from '@ember/debug';
+import { get } from '@ember/object';
 import { service } from '@ember/service';
 import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
@@ -12,6 +13,8 @@ import type { BundledLanguage, CodeToHastOptions } from 'shiki';
 
 import '../assets/code-block.css';
 
+const MARKER_PATTERN = '{{__SHOWCASE_ARG_(.*)_(.*)__}}';
+
 export interface CodeBlockSignature {
   Element: HTMLElement;
   Args: {
@@ -19,10 +22,42 @@ export interface CodeBlockSignature {
     label?: string;
     lang: BundledLanguage | 'plaintext';
     showCopyButton?: boolean;
+    model?: object;
     options?: Partial<CodeToHastOptions>;
 
     inline?: boolean;
   };
+}
+
+function coerceValue(
+  value: unknown,
+  path: string,
+  wrap: boolean = true,
+): string {
+  const type = typeof value;
+  const stringVal = String(value);
+
+  if (type === 'string') {
+    return `"${stringVal}"`;
+  }
+
+  if (type === 'boolean' || type === 'number') {
+    if (wrap) {
+      return `{{${stringVal}}}`;
+    }
+
+    return stringVal;
+  }
+
+  if (Array.isArray(value)) {
+    const args = value.map((item, index) =>
+      coerceValue(item, `${path}.${index}`, false),
+    );
+
+    return `{{array ${args}}}`;
+  }
+
+  return path;
 }
 
 function unescapeSource(source: string): string {
@@ -42,15 +77,35 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
   declare shiki: ShikiService;
 
   @cached
-  get code() {
-    const { code, lang } = this.args;
+  get resolvedCode() {
+    const { code, model } = this.args;
 
     assert('Code is required', code);
-    assert('Language is required', lang);
 
     const rawSource = unescapeSource(code);
 
-    return this.shiki.highlight(rawSource, lang);
+    if (!model) {
+      return rawSource;
+    }
+
+    const pattern = new RegExp(MARKER_PATTERN, 'g');
+
+    return rawSource.replace(pattern, (_, blockName: string, key: string) => {
+      const value = get(model, key);
+
+      assert(`Model is missing key: ${key}`, value !== undefined);
+
+      return coerceValue(value, `${blockName}.${key}`);
+    });
+  }
+
+  @cached
+  get code() {
+    const { lang } = this.args;
+
+    assert('Language is required', lang);
+
+    return this.shiki.highlight(this.resolvedCode, lang);
   }
 
   get style() {
@@ -89,7 +144,7 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
       >
         {{htmlSafe this.code.html}}
         {{#if this.showCopyButton}}
-          <CopyButton @text={{@code}} />
+          <CopyButton @text={{this.resolvedCode}} />
         {{/if}}
       </div>
     {{/if}}

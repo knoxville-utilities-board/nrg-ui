@@ -38,7 +38,7 @@ export default class extends Component {
               @elementTag="button"
               @model={{this.model}}
               @name="Subsection Title"
-              @sourceCode="<Button class=&quot;btn-primary&quot;>Click me!</Button>"
+              @sourceCode="<Button class=&quot;btn-primary&quot; @disabled=&#123;&#123;__SHOWCASE_ARG_disabled__&#125;&#125;>Click me!</Button>"
               @sourceLanguage="html"
             >
               <:example as |model|>
