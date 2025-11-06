@@ -2,7 +2,7 @@ import { array, hash } from '@ember/helper';
 import Component from '@glimmer/component';
 
 import CodeBlock from './code-block.gts';
-import { createLink } from '../utils.ts';
+import { createLink, getMdnLinkForElement } from '../utils.ts';
 import Actions from './component-api/actions.gts';
 import Arguments from './component-api/arguments.gts';
 import Blocks from './component-api/blocks.gts';
@@ -21,6 +21,7 @@ export interface SubsectionSignature<Model extends object = object> {
   Args: {
     model: Model;
 
+    elementTag?: string;
     name: string;
     sectionName: string;
     sourceCode?: string;
@@ -66,10 +67,24 @@ export class Subsection<Model extends object = object> extends Component<
   <template>
     <div class="showcase-subsection">
       {{#let (createLink (array @sectionName @name)) as |link|}}
-        <h4 id={{link}}>
+        <h4 class="d-flex justify-content-between align-items-end" id={{link}}>
           <a class="showcase-header" href="#{{link}}">
             {{@name}}
           </a>
+          {{#if @elementTag}}
+            <a
+              class="float-end fs-6"
+              href={{getMdnLinkForElement @elementTag}}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <CodeBlock
+                @code="<{{@elementTag}} ...attributes>"
+                @lang="html"
+                @inline={{true}}
+              />
+            </a>
+          {{/if}}
         </h4>
       {{/let}}
 
