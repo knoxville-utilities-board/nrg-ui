@@ -64,6 +64,7 @@
   "dependencies": {
     "@embroider/addon-shim": "^1.10.0",
     "@embroider/macros": "^1.19.1",
+    "@mdn/browser-compat-data": "^7.1.19",
     "chalk": "^4.1.2",
     "content-tag-utils": "^0.6.0",
     "decorator-transforms": "^2.2.2",
