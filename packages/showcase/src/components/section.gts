@@ -125,7 +125,11 @@ export class Subsection<Model extends object = object> extends Component<
           </h5>
         {{/let}}
         <div class="my-2">
-          <CodeBlock @code={{this.code}} @lang={{this.language}} />
+          <CodeBlock
+            @code={{this.code}}
+            @lang={{this.language}}
+            @model={{@model}}
+          />
         </div>
       {{/if}}
     </div>
