@@ -1,5 +1,7 @@
 import { ExecaError, execa } from 'execa';
 import { findUpSync } from 'find-up';
+import { dirname } from 'path';
+import { cwd } from 'process';
 import { coerce, gte, satisfies } from 'semver';
 
 import logger from '../../logging.js';
@@ -48,16 +50,14 @@ export function detectPackageManager(): PackageManager | never {
     return packageManager;
   }
 
+  const stopAt = dirname(cwd());
+
   let detected: PackageManager | false = false;
-  if (findUpSync('pnpm-lock.yaml')) {
+  if (findUpSync('pnpm-lock.yaml', { stopAt })) {
     detected = 'pnpm';
-  }
-
-  if (findUpSync('yarn.lock')) {
+  } else if (findUpSync('yarn.lock', { stopAt })) {
     detected = 'yarn';
-  }
-
-  if (findUpSync('package-lock.json')) {
+  } else if (findUpSync('package-lock.json', { stopAt })) {
     detected = 'npm';
   }
 
