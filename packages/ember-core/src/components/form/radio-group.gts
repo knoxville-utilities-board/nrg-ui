@@ -7,18 +7,18 @@ import BoundValue from './bound-value.ts';
 
 import type { FieldOptions } from './field.gts';
 import type { Optional } from '../../';
-import type { ComponentLike } from '@glint/template';
+import type { ComponentLike, WithBoundArgs } from '@glint/template';
 
 export interface RadioGroupSignature {
   Element: HTMLDivElement;
   Args: {
     basic?: boolean;
-    name: string;
+    name?: string;
 
     fieldOptions?: FieldOptions;
   };
   Blocks: {
-    default: [{ Radio: ComponentLike<RadioSignature> }];
+    default: [{ Radio: WithBoundArgs<ComponentLike<RadioSignature>, 'name'> }];
   };
 }
 
