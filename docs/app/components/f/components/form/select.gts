@@ -1,14 +1,15 @@
-// @ts-nocheck - TODO
-
-import { fn, hash } from '@ember/helper';
-import { action } from '@ember/object';
+import { hash } from '@ember/helper';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { Select, bind } from '@nrg-ui/core';
-import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
-import FreestyleSection from 'ember-freestyle/components/freestyle-section';
+import Select from '@nrg-ui/core/components/form/select';
+import { bind } from '@nrg-ui/core/helpers/bind';
+import CodeBlock from '@nrg-ui/showcase/components/code-block';
+import Section from '@nrg-ui/showcase/components/section';
 
-import CodeBlock from '../../../code-block';
+// Types aren't inferred correctly
+function getId(value: unknown) {
+  return (value as { id: string }).id;
+}
 
 export default class extends Component {
   @tracked
@@ -24,7 +25,7 @@ export default class extends Component {
   scrollable = true;
 
   @tracked
-  selectValue;
+  selectValue?: string;
 
   @tracked
   stringOptions = [
@@ -46,11 +47,6 @@ export default class extends Component {
     { key: 'Option 6', id: '6', searchableDisplay: 'consectetur' },
   ];
 
-  @action
-  update(key: string, value: unknown) {
-    this[key] = value;
-  }
-
   get stringOptionsSource() {
     return JSON.stringify(this.stringOptions, null, 2);
   }
@@ -60,109 +56,109 @@ export default class extends Component {
   }
 
   <template>
-    <FreestyleSection @name="Select" as |Section|>
-      <Section.subsection @name="String Options">
-        <FreestyleUsage>
-          <:example>
-            <Select
-              @binding={{bind this "selectValue"}}
-              @closeOnSelect={{this.closeOnSelect}}
-              @fieldOptions={{hash disabled=this.disabled}}
-              @loading={{this.loading}}
-              @scrollable={{this.scrollable}}
-              @options={{this.stringOptions}}
-            />
-          </:example>
-          <:api as |Args|>
-            <Args.Bool
+    <Section @name="Select" as |Section|>
+      <Section.Subsection
+        @name="String Options"
+        @model={{this}}
+        @elementTag="button"
+      >
+        <:example as |model|>
+          <Select
+            @binding={{bind model "selectValue"}}
+            @closeOnSelect={{model.closeOnSelect}}
+            @fieldOptions={{hash disabled=model.disabled}}
+            @loading={{model.loading}}
+            @scrollable={{model.scrollable}}
+            @options={{model.stringOptions}}
+          />
+        </:example>
+        <:api as |Api|>
+          <Api.Arguments as |Args|>
+            <Args.Boolean
               @name="closeOnSelect"
               @defaultValue={{true}}
               @description="When true, the dropdown will close after selecting an option"
-              @value={{this.closeOnSelect}}
-              @onInput={{fn this.update "closeOnSelect"}}
             />
-            <Args.Bool
-              @name="fieldOptions.disabled"
+            <Args.Boolean
+              @name="disabled"
               @defaultValue={{false}}
               @description="When true, the button will be disabled"
-              @value={{this.disabled}}
-              @onInput={{fn this.update "disabled"}}
             />
-            <Args.Bool
+            <Args.Boolean
               @name="loading"
               @defaultValue={{false}}
               @description="When true, the text will be replaced with a loading spinner"
-              @value={{this.loading}}
-              @onInput={{fn this.update "loading"}}
             />
-            <Args.Bool
+            <Args.Boolean
               @name="scrollable"
               @defaultValue={{false}}
               @description="Unless false, the dropdown will be scrollable"
-              @value={{this.scrollable}}
-              @onInput={{fn this.update "scrollable"}}
             />
-          </:api>
-        </FreestyleUsage>
-      </Section.subsection>
+          </Api.Arguments>
+        </:api>
+      </Section.Subsection>
 
-      <Section.subsection @name="Object Options">
-        <FreestyleUsage>
-          <:example>
-            <Select
-              @binding={{bind this "selectValue"}}
-              @fieldOptions={{hash disabled=this.disabled}}
-              @loading={{this.loading}}
-              @scrollable={{this.scrollable}}
-              @options={{this.objectOptions}}
-              @displayPath="searchableDisplay"
-              @serializationPath="key"
-            />
-          </:example>
-        </FreestyleUsage>
-      </Section.subsection>
+      <Section.Subsection
+        @name="Object Options"
+        @model={{this}}
+        @elementTag="button"
+      >
+        <:example as |model|>
+          <Select
+            @binding={{bind model "selectValue"}}
+            @fieldOptions={{hash disabled=model.disabled}}
+            @loading={{model.loading}}
+            @scrollable={{model.scrollable}}
+            @options={{model.objectOptions}}
+            @displayPath="searchableDisplay"
+            @serializationPath="key"
+          />
+        </:example>
+      </Section.Subsection>
 
-      <Section.subsection @name="Yielded Options">
-        <FreestyleUsage>
-          <:example>
-            <Select
-              @binding={{bind this "selectValue"}}
-              @fieldOptions={{hash disabled=this.disabled}}
-              @loading={{this.loading}}
-              @scrollable={{this.scrollable}}
-              @options={{this.objectOptions}}
-              @serializationPath="key"
-            >
-              <:empty>
-                <span>Nothing to see here</span>
-              </:empty>
-              <:display as |option|>
-                <span>Custom Display {{option.id}}</span>
-              </:display>
-              <:option as |option|>
-                <span>Custom Option {{option.id}}</span>
-              </:option>
-            </Select>
-          </:example>
-        </FreestyleUsage>
-      </Section.subsection>
-    </FreestyleSection>
+      <Section.Subsection
+        @name="Yielded Options"
+        @model={{this}}
+        @elementTag="button"
+      >
+        <:example as |model|>
+          <Select
+            @binding={{bind model "selectValue"}}
+            @fieldOptions={{hash disabled=model.disabled}}
+            @loading={{model.loading}}
+            @scrollable={{model.scrollable}}
+            @options={{model.objectOptions}}
+            @serializationPath="key"
+          >
+            <:empty>
+              <span>Nothing to see here</span>
+            </:empty>
+            <:display as |option|>
+              <span>Custom Display {{getId option}}</span>
+            </:display>
+            <:option as |option|>
+              <span>Custom Option {{getId option}}</span>
+            </:option>
+          </Select>
+        </:example>
+      </Section.Subsection>
+    </Section>
 
     <div class="grid">
       <div class="g-col-4">
         <h3>String Options</h3>
         <CodeBlock
-          class="border rounded p-3"
           @lang="json"
           @code={{this.stringOptionsSource}}
+          @showCopyButton={{false}}
         />
       </div>
       <div class="g-col-4">
         <h3>Object Options</h3>
         <CodeBlock
-          class="border rounded p-3"
           @lang="json"
           @code={{this.objectOptionsSource}}
+          @showCopyButton={{false}}
         />
       </div>
       <div class="g-col-4">
