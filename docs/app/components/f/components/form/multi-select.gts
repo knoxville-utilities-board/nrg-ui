@@ -1,12 +1,10 @@
-import { array, fn, hash } from '@ember/helper';
+import { array, hash } from '@ember/helper';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import MultiSelect from '@nrg-ui/core/components/form/multi-select';
 import { bind } from '@nrg-ui/core/helpers/bind';
-import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
-import FreestyleSection from 'ember-freestyle/components/freestyle-section';
-
-import CodeBlock from '../../../code-block';
+import CodeBlock from '@nrg-ui/showcase/components/code-block';
+import Section from '@nrg-ui/showcase/components/section';
 
 const stringOptions = [
   'Option 1',
@@ -56,165 +54,155 @@ export default class MultiSelectDemo extends Component {
     return JSON.stringify(objectOptions, null, 2);
   }
 
-  update = (key: keyof MultiSelectDemo, value: unknown) => {
-    // @ts-expect-error - Don't need type safety here
-    this[key] = value;
-  };
-
   <template>
-    {{! @glint-expect-error - Freestyle doesn't have great types }}
-    <FreestyleSection @name="Multi Select" as |Section|>
-      <Section.subsection @name="String Options">
-        {{! @glint-expect-error - Freestyle doesn't have great types }}
-        <FreestyleUsage>
-          <:example>
-            <MultiSelect
-              {{! @glint-expect-error - Need to improve types for this }}
-              @binding={{bind this "value"}}
-              @closeOnSelect={{this.closeOnSelect}}
-              @fieldOptions={{hash disabled=this.disabled}}
-              @loading={{this.loading}}
-              @scrollable={{this.scrollable}}
-              @options={{stringOptions}}
-            />
-          </:example>
-          <:api as |Args|>
-            <Args.Bool
+    <Section @name="Multi Select" as |Section|>
+      <Section.Subsection
+        @name="String Options"
+        @model={{this}}
+        @elementTag="button"
+      >
+        <:example as |model|>
+          <MultiSelect
+            @binding={{bind model "value"}}
+            @closeOnSelect={{model.closeOnSelect}}
+            @fieldOptions={{hash disabled=model.disabled}}
+            @loading={{model.loading}}
+            @scrollable={{model.scrollable}}
+            @options={{stringOptions}}
+          />
+        </:example>
+        <:api as |Api|>
+          <Api.Arguments as |Args|>
+            <Args.Boolean
               @name="closeOnSelect"
               @defaultValue={{false}}
               @description="When true, the dropdown will close after selecting an option"
-              @value={{this.closeOnSelect}}
-              @onInput={{fn this.update "closeOnSelect"}}
             />
-            <Args.Bool
+            <Args.Boolean
               @name="fieldOptions.disabled"
               @description="When true, the button will be disabled"
-              @value={{this.disabled}}
-              @onInput={{fn this.update "disabled"}}
             />
-            <Args.Bool
+            <Args.Boolean
               @name="loading"
               @defaultValue={{false}}
               @description="When true, the text will be replaced with a loading spinner"
-              @value={{this.loading}}
-              @onInput={{fn this.update "loading"}}
             />
-            <Args.Bool
+            <Args.Boolean
               @name="scrollable"
               @defaultValue={{false}}
               @description="Unless false, the dropdown will be scrollable"
-              @value={{this.scrollable}}
-              @onInput={{fn this.update "scrollable"}}
             />
-            <Args.Action
+          </Api.Arguments>
+          <Api.Actions as |Action p|>
+            <Action
               @name="onAdd"
               @description="Callback when an option is added"
-            >
-              <CodeBlock @lang="typescript" @code="(value: T) => unknown" />
-            </Args.Action>
-            <Args.Action
+              @parameters={{array
+                (p "value" type="T" description="The added value")
+              }}
+            />
+            <Action
               @name="onRemove"
-              @description="Callback when an option is remove"
-            >
-              <CodeBlock @lang="typescript" @code="(value: T) => unknown" />
-            </Args.Action>
-            <Args.Action
+              @description="Callback when an option is removed"
+              @parameters={{array
+                (p "value" type="T" description="The removed value")
+              }}
+            />
+            <Action
               @name="onShow"
               @description="Fired when the dropdown is shown"
-            >
-              <CodeBlock @lang="typescript" @code="() => Promise<void>" />
-            </Args.Action>
-            <Args.Action
+              @returnType="Promise<void>"
+            />
+            <Action
               @name="onHide"
               @description="Fired when the dropdown is hidden"
-            >
-              <CodeBlock @lang="typescript" @code="() => Promise<void>" />
-            </Args.Action>
-          </:api>
-        </FreestyleUsage>
-      </Section.subsection>
-
-      <Section.subsection @name="Object Options">
-        {{! @glint-expect-error - Freestyle doesn't have great types }}
-        <FreestyleUsage>
-          <:example>
-            <MultiSelect
-              {{! @glint-expect-error - Need to improve types for this }}
-              @binding={{bind this "value"}}
-              @disabled={{this.disabled}}
-              @displayPath={{this.displayPath}}
-              @loading={{this.loading}}
-              @scrollable={{this.scrollable}}
-              @options={{objectOptions}}
-              @serializationPath={{this.serializationPath}}
+              @returnType="Promise<void>"
             />
-          </:example>
-          <:api as |Args|>
+          </Api.Actions>
+        </:api>
+      </Section.Subsection>
+
+      <Section.Subsection
+        @name="Object Options"
+        @model={{this}}
+        @elementTag="button"
+      >
+        <:example as |model|>
+          <MultiSelect
+            @binding={{bind model "value"}}
+            @fieldOptions={{hash disabled=model.disabled}}
+            @displayPath={{model.displayPath}}
+            @loading={{model.loading}}
+            @scrollable={{model.scrollable}}
+            @options={{objectOptions}}
+            @serializationPath={{model.serializationPath}}
+          />
+        </:example>
+        <:api as |Api|>
+          <Api.Arguments as |Args|>
             <Args.String
               @name="displayPath"
               @defaultValue="label"
               @description="The path to the property to display in the dropdown"
               @options={{array "key" "id" "searchableDisplay"}}
-              @onInput={{fn this.update "displayPath"}}
             />
             <Args.String
               @name="serializationPath"
               @defaultValue="value"
               @description="The path to the property to serialize"
               @options={{array "key" "id" "searchableDisplay"}}
-              @onInput={{fn this.update "serializationPath"}}
             />
-          </:api>
-        </FreestyleUsage>
-      </Section.subsection>
+          </Api.Arguments>
+        </:api>
+      </Section.Subsection>
 
-      <Section.subsection @name="Yielded Options">
-        {{! @glint-expect-error - Freestyle doesn't have great types }}
-        <FreestyleUsage>
-          <:example>
-            <MultiSelect
-              {{! @glint-expect-error - Need to improve types for this }}
-              @binding={{bind this "value"}}
-              @disabled={{this.disabled}}
-              @loading={{this.loading}}
-              @scrollable={{this.scrollable}}
-              @options={{objectOptions}}
-              @serializationPath="key"
-            >
-              <:empty>
-                Nothing to see here
-              </:empty>
-              <:display as |valueArray|>
-                {{#each valueArray as |value|}}
-                  {{! @glint-expect-error - This is actually a string since the serializationPath is not null }}
-                  {{value}}
-                {{/each}}
-              </:display>
-              <:option as |option|>
-                <span>Custom Option {{option.key}}</span>
-              </:option>
-              <:selection as |Option|>
-                <span
-                  class="badge text-bg-primary d-inline-flex align-items-center"
-                >
-                  <span class="me-2">
-                    {{Option.value.key}}
-                    ({{Option.value.id}})
-                  </span>
-                  <Option.Remove />
+      <Section.Subsection
+        @name="Yielded Options"
+        @model={{this}}
+        @elementTag="button"
+      >
+        <:example as |model|>
+          <MultiSelect
+            @binding={{bind model "value"}}
+            @fieldOptions={{hash disabled=model.disabled}}
+            @loading={{model.loading}}
+            @scrollable={{model.scrollable}}
+            @options={{objectOptions}}
+            @serializationPath="key"
+          >
+            <:empty>
+              Nothing to see here
+            </:empty>
+            <:display as |valueArray|>
+              {{#each valueArray as |value|}}
+                {{! @glint-expect-error - This is actually a string since the serializationPath is not null }}
+                {{value}}
+              {{/each}}
+            </:display>
+            <:option as |option|>
+              <span>Custom Option {{option.key}}</span>
+            </:option>
+            <:selection as |Option|>
+              <span
+                class="badge text-bg-primary d-inline-flex align-items-center"
+              >
+                <span class="me-2">
+                  {{Option.value.key}}
+                  ({{Option.value.id}})
                 </span>
-              </:selection>
-            </MultiSelect>
-          </:example>
-        </FreestyleUsage>
-      </Section.subsection>
-    </FreestyleSection>
+                <Option.Remove />
+              </span>
+            </:selection>
+          </MultiSelect>
+        </:example>
+      </Section.Subsection>
+    </Section>
 
     <div class="grid">
       <div class="g-col-4">
         <h3>String Options</h3>
         <CodeBlock
-          class="border rounded p-3"
+          @showCopyButton={{false}}
           @lang="json"
           @code={{this.stringOptionsSource}}
         />
@@ -222,7 +210,7 @@ export default class MultiSelectDemo extends Component {
       <div class="g-col-4">
         <h3>Object Options</h3>
         <CodeBlock
-          class="border rounded p-3"
+          @showCopyButton={{false}}
           @lang="json"
           @code={{this.objectOptionsSource}}
         />
