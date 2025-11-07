@@ -65,7 +65,7 @@ export class Subsection<Model extends object = object> extends Component<
   }
 
   <template>
-    <div class="showcase-subsection">
+    <div class="showcase-subsection mb-5">
       {{#let (createLink (array @sectionName @name)) as |link|}}
         <h4 class="d-flex justify-content-between align-items-end" id={{link}}>
           <a class="showcase-header" href="#{{link}}">
