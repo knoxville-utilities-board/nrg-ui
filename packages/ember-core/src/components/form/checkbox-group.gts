@@ -8,7 +8,6 @@ import { TrackedSet } from 'tracked-built-ins';
 import Checkbox from './checkbox.gts';
 import { bind } from '../../helpers/bind.ts';
 
-import type { CheckboxSignature } from './checkbox';
 import type { FieldOptions } from './field.gts';
 import type { Binding } from '../../';
 import type Owner from '@ember/owner';
@@ -27,7 +26,7 @@ export interface CheckboxGroupSignature {
     onInitBinding?: (binding: Binding<object>) => void;
   };
   Blocks: {
-    default: [ComponentLike<CheckboxSignature>];
+    default: [ComponentLike<typeof Checkbox>];
   };
 }
 
