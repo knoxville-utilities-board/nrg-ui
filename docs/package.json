@@ -57,7 +57,7 @@
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^9.2.1",
     "dayjs": "^1.11.19",
-    "ember-auto-import": "^2.11.1",
+    "ember-auto-import": "^2.11.2",
     "ember-cli": "~6.4.0",
     "ember-cli-app-version": "^7.0.0",
     "ember-cli-babel": "^8.2.0",
@@ -84,7 +84,7 @@
     "ember-template-imports": "^4.3.0",
     "ember-template-lint": "^7.9.3",
     "ember-try": "^4.0.0",
-    "eslint": "^9.39.0",
+    "eslint": "^9.39.1",
     "eslint-import-resolver-webpack": "^0.13.10",
     "eslint-plugin-decorator-position": "^6.0.0",
     "eslint-plugin-ember": "^12.7.4",
@@ -101,7 +101,7 @@
     "stylelint-config-standard": "^39.0.1",
     "tracked-built-ins": "^4.0.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.46.2",
+    "typescript-eslint": "^8.46.3",
     "webpack": "^5.102.1"
   },
   "engines": {
