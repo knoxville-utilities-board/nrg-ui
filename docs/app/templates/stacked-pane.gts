@@ -4,11 +4,10 @@ import Pagination from '@nrg-ui/core/components/pagination';
 import StackedPane, {
   Container as StackedPaneContainer,
 } from '@nrg-ui/core/components/stacked-pane';
+import CodeBlock from '@nrg-ui/showcase/components/code-block';
 import getCodeSnippet from 'ember-code-snippet/helpers/get-code-snippet';
 
-import CodeBlock from '../components/code-block.ts';
-import StackedPaneController from '../controllers/stacked-pane';
-
+import type StackedPaneController from '../controllers/stacked-pane';
 import type { TOC } from '@ember/component/template-only';
 
 interface StackedPaneSignature {
@@ -54,11 +53,7 @@ const StackedPaneTemplate: TOC<StackedPaneSignature> = <template>
     <div class="col px-md-0 py-3">
       <div class="container mx-auto">
         {{#let (getCodeSnippet "stacked-pane-component.gts") as |snippet|}}
-          <CodeBlock
-            class="border rounded simple p-3"
-            @lang={{snippet.language}}
-            @code={{snippet.source}}
-          />
+          <CodeBlock @lang={{snippet.language}} @code={{snippet.source}} />
         {{/let}}
       </div>
     </div>

@@ -1,9 +1,8 @@
 import { LinkTo } from '@ember/routing';
 import StackedPane from '@nrg-ui/core/components/stacked-pane';
 import Container from '@nrg-ui/core/components/stacked-pane/container';
+import CodeBlock from '@nrg-ui/showcase/components/code-block';
 import getCodeSnippet from 'ember-code-snippet/helpers/get-code-snippet';
-
-import CodeBlock from '../components/code-block.ts';
 
 <template>
   {{! template-lint-disable no-inline-styles }}
@@ -77,11 +76,7 @@ import CodeBlock from '../components/code-block.ts';
     <div class="col px-md-0 py-3">
       <div class="container mx-auto">
         {{#let (getCodeSnippet "side-by-side-component.gts") as |snippet|}}
-          <CodeBlock
-            class="border rounded simple p-3"
-            @lang={{snippet.language}}
-            @code={{snippet.source}}
-          />
+          <CodeBlock @lang={{snippet.language}} @code={{snippet.source}} />
         {{/let}}
       </div>
     </div>
