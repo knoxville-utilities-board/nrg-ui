@@ -1,7 +1,6 @@
 'use strict';
 /* eslint-disable @typescript-eslint/no-require-imports */
 
-const sideWatch = require('@embroider/broccoli-side-watch');
 const { compatBuild } = require('@embroider/compat');
 const { getTag } = require('@nrg-ui/version');
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
@@ -26,11 +25,6 @@ module.exports = async function (defaults) {
       },
     },
     'ember-cli-babel': { enableTypeScriptTransform: true },
-    trees: {
-      app: sideWatch('app', {
-        watching: ['@nrg-ui/core', '@nrg-ui/css', '@nrg-ui/showcase'],
-      }),
-    },
 
     // Add options here
     '@embroider/macros': {
