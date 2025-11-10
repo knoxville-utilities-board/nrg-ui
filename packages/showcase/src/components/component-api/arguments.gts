@@ -10,7 +10,7 @@ import { bind } from '@nrg-ui/core/helpers/bind';
 
 import { createLink, stringify } from '../../utils.ts';
 import { TypeCodeBlock } from '../code-block.gts';
-import MdnApiLink from './mdn-api-link.gts';
+import ApiLink from './api-link.gts';
 
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike, WithBoundArgs } from '@glint/template';
@@ -97,7 +97,7 @@ export class BaseArgument<T> extends Component<BaseArgumentSignature<T>> {
         {{/if}}
       </td>
       <td class="type">
-        <MdnApiLink @type={{@type}} />
+        <ApiLink @type={{@type}} />
       </td>
       <td class="description">
         {{@description}}

@@ -123,9 +123,9 @@
     "app-js": {
       "./components/code-block.js": "./dist/_app_/components/code-block.js",
       "./components/component-api/actions.js": "./dist/_app_/components/component-api/actions.js",
+      "./components/component-api/api-link.js": "./dist/_app_/components/component-api/api-link.js",
       "./components/component-api/arguments.js": "./dist/_app_/components/component-api/arguments.js",
       "./components/component-api/blocks.js": "./dist/_app_/components/component-api/blocks.js",
-      "./components/component-api/mdn-api-link.js": "./dist/_app_/components/component-api/mdn-api-link.js",
       "./components/copy-button.js": "./dist/_app_/components/copy-button.js",
       "./components/section.js": "./dist/_app_/components/section.js",
       "./services/shiki.js": "./dist/_app_/services/shiki.js"
