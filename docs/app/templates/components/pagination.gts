@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import PaginationDemo from '../../components/f/components/pagination.ts';
+import PaginationDemo from '#app/components/f/components/pagination.gts';
 
 <template>
   {{pageTitle "Pagination"}}

@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import MktgFooterDemo from '../../components/f/mktg-components/footer.ts';
+import MktgFooterDemo from '#app/components/f/mktg-components/footer.gts';
 
 <template>
   {{pageTitle "Footer"}}

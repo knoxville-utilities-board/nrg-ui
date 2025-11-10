@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import LoadingIndicatorDemo from '../../components/f/components/loading-indicator.ts';
+import LoadingIndicatorDemo from '#app/components/f/components/loading-indicator.gts';
 
 <template>
   {{pageTitle "Loading Indicator"}}

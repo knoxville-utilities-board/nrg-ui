@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import OnInsertDemo from '../../components/f/modifiers/on-insert.ts';
+import OnInsertDemo from '#app/components/f/modifiers/on-insert.gts';
 
 <template>
   {{pageTitle "on-insert"}}

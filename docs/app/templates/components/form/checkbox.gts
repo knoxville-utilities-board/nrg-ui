@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import CheckboxDemo from '../../../components/f/components/form/checkbox.ts';
+import CheckboxDemo from '#app/components/f/components/form/checkbox.gts';
 
 <template>
   {{pageTitle "Checkbox"}}

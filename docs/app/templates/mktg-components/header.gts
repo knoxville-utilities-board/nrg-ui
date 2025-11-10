@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import MktgHeader from '../../components/f/mktg-components/header.ts';
+import MktgHeader from '#app/components/f/mktg-components/header.gts';
 
 <template>
   {{pageTitle "Header"}}
