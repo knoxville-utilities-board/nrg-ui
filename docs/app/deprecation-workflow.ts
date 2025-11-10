@@ -9,11 +9,5 @@ setupDeprecationWorkflow({
     handling their deprecations, this should be set to "true"
   */
   throwOnUnhandled: false,
-  workflow: [
-    {
-      // ember-freestyle still uses `import { inject as service } from '@ember/service';`
-      handler: 'silence',
-      matchId: 'importing-inject-from-ember-service',
-    },
-  ],
+  workflow: [],
 });
