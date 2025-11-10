@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import NavbarDemo from '../../components/f/components/navbar.ts';
+import NavbarDemo from '../../components/f/mktg-components/navbar.ts';
 
 <template>
   {{pageTitle "Navbar"}}

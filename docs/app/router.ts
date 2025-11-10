@@ -37,7 +37,6 @@ Router.map(function () {
     this.route('icon');
     this.route('loading-indicator');
     this.route('modal');
-    this.route('navbar');
     this.route('pagination');
     this.route('popover');
     this.route('toaster');
@@ -49,6 +48,7 @@ Router.map(function () {
     this.route('card-container');
     this.route('footer');
     this.route('header');
+    this.route('navbar');
     this.route('promo');
     this.route('promo-container');
     this.route('section-header');
