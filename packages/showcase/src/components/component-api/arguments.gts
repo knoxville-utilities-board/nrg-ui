@@ -49,7 +49,7 @@ export class BaseArgument<T> extends Component<BaseArgumentSignature<T>> {
   [key: string]: unknown;
 
   get hasDefaultValue(): boolean {
-    return 'defaultValue' in this.args;
+    return this.args.defaultValue !== undefined;
   }
 
   get value(): T {
