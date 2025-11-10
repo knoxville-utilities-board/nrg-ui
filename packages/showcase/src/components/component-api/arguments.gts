@@ -10,20 +10,27 @@ import { bind } from '@nrg-ui/core/helpers/bind';
 
 import { createLink, stringify } from '../../utils.ts';
 import { TypeCodeBlock } from '../code-block.gts';
-import MdnApiLink from './mdn-api-link.gts';
+import ApiLink from './api-link.gts';
 
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike, WithBoundArgs } from '@glint/template';
+
+function or(...args: (string | unknown)[]): string {
+  return args.find(Boolean) as string;
+}
 
 export interface ArgumentSignature<T> {
   Element: HTMLTableRowElement;
   Args: {
     defaultValue?: T | string;
     description?: string;
+    displayType?: string;
     model: object;
     name?: string;
     options?: T[];
     required?: boolean;
+    type?: string;
+    typeLink?: string;
     value?: T;
 
     onInput?: (value: T) => void;
@@ -33,7 +40,9 @@ export interface ArgumentSignature<T> {
 export interface BaseArgumentSignature<T> {
   Element: HTMLTableRowElement;
   Args: {
+    displayType?: string;
     type: string;
+    typeLink?: string;
 
     onInput?: (value: T) => void;
   } & ArgumentSignature<T>['Args'];
@@ -97,7 +106,11 @@ export class BaseArgument<T> extends Component<BaseArgumentSignature<T>> {
         {{/if}}
       </td>
       <td class="type">
-        <MdnApiLink @type={{@type}} />
+        <ApiLink
+          @displayType={{@displayType}}
+          @link={{@typeLink}}
+          @type={{@type}}
+        />
       </td>
       <td class="description">
         {{@description}}
@@ -122,10 +135,12 @@ export const BooleanArgument: TOC<ArgumentSignature<boolean>> = <template>
   <BaseArgument
     @defaultValue={{@defaultValue}}
     @description={{@description}}
+    @displayType={{@displayType}}
     @model={{@model}}
     @name={{@name}}
     @options={{@options}}
-    @type="Boolean"
+    @type={{or @type "Boolean"}}
+    @typeLink={{@typeLink}}
     @value={{@value}}
     @onInput={{@onInput}}
     ...attributes
@@ -142,10 +157,12 @@ export const DateArgument: TOC<ArgumentSignature<Date>> = <template>
   <BaseArgument
     @defaultValue={{@defaultValue}}
     @description={{@description}}
+    @displayType={{@displayType}}
     @model={{@model}}
     @name={{@name}}
     @options={{@options}}
-    @type="Date"
+    @type={{or @type "Date"}}
+    @typeLink={{@typeLink}}
     @value={{@value}}
     @onInput={{@onInput}}
     ...attributes
@@ -159,9 +176,11 @@ export const NumberArgument: TOC<ArgumentSignature<number>> = <template>
   <BaseArgument
     @defaultValue={{@defaultValue}}
     @description={{@description}}
+    @displayType={{@displayType}}
     @model={{@model}}
     @name={{@name}}
-    @type="Number"
+    @type={{or @type "Number"}}
+    @typeLink={{@typeLink}}
     @value={{@value}}
     @onInput={{@onInput}}
     as |base|
@@ -174,10 +193,12 @@ export const StringArgument: TOC<ArgumentSignature<string>> = <template>
   <BaseArgument
     @defaultValue={{@defaultValue}}
     @description={{@description}}
+    @displayType={{@displayType}}
     @model={{@model}}
     @name={{@name}}
     @options={{@options}}
-    @type="String"
+    @type={{or @type "String"}}
+    @typeLink={{@typeLink}}
     @value={{@value}}
     @onInput={{@onInput}}
     as |base|

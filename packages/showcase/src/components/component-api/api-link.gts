@@ -3,9 +3,11 @@ import { TypeCodeBlock } from '../code-block.gts';
 
 import type { TOC } from '@ember/component/template-only';
 
-export interface MdnApiLinkSignature {
+export interface ApiLinkSignature {
   Element: HTMLAnchorElement;
   Args: {
+    displayType?: string;
+    link?: string;
     type: string;
   };
 }
@@ -46,29 +48,48 @@ function getDocType(type: string) {
   return getMdnLinkForApi(type);
 }
 
-export const MdnApiLink: TOC<MdnApiLinkSignature> = <template>
-  {{#let (getDocType @type) as |mdnLink|}}
-    {{#if mdnLink}}
-      <a
-        class="mdn-api-link"
-        href={{mdnLink}}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <TypeCodeBlock
-          class="me-1"
-          @code={{getDisplayType @type}}
-          @inline={{true}}
-        />
-      </a>
-    {{else}}
+function or(...values: (string | undefined | null)[]) {
+  return values.filter(Boolean)[0] ?? '';
+}
+
+export const ApiLink: TOC<ApiLinkSignature> = <template>
+  {{#if @link}}
+    <a
+      class="api-link"
+      href={{@link}}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <TypeCodeBlock
         class="me-1"
-        @code={{getDisplayType @type}}
+        @code={{or @displayType (getDisplayType @type)}}
         @inline={{true}}
       />
-    {{/if}}
-  {{/let}}
+    </a>
+  {{else}}
+    {{#let (getDocType @type) as |mdnLink|}}
+      {{#if mdnLink}}
+        <a
+          class="api-link mdn"
+          href={{mdnLink}}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <TypeCodeBlock
+            class="me-1"
+            @code={{or @displayType (getDisplayType @type)}}
+            @inline={{true}}
+          />
+        </a>
+      {{else}}
+        <TypeCodeBlock
+          class="me-1"
+          @code={{or @displayType (getDisplayType @type)}}
+          @inline={{true}}
+        />
+      {{/if}}
+    {{/let}}
+  {{/if}}
 </template>;
 
-export default MdnApiLink;
+export default ApiLink;
