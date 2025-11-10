@@ -1,7 +1,5 @@
 import { fn } from '@ember/helper';
-import { click } from '@ember/test-helpers';
-import { findAll } from '@ember/test-helpers';
-import { render } from '@ember/test-helpers';
+import { click, findAll, render } from '@ember/test-helpers';
 import ContextMenu, {
   ContextMenuItem,
 } from '@nrg-ui/core/components/context-menu';

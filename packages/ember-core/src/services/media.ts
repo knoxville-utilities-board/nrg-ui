@@ -118,7 +118,9 @@ export default class Media extends Service {
     for (const callback of callbackList) {
       try {
         callback();
-      } catch {}
+      } catch {
+        // Ignore
+      }
     }
   }
 
