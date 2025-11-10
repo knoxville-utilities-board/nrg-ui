@@ -131,7 +131,7 @@ export default class FileUpload extends BoundValue<
           const mimeType = type.includes('/');
           if (!fileExtension && !mimeType) {
             assert(
-              'The accept argument\'s file type strings should be in the format "image/png" or ".pdf" to be compatible with the input\'s \"accept\" attribute.',
+              'The accept argument\'s file type strings should be in the format "image/png" or ".pdf" to be compatible with the input\'s "accept" attribute.',
             );
           }
         }

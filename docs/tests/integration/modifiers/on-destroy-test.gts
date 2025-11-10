@@ -1,5 +1,4 @@
-import { clearRender } from '@ember/test-helpers';
-import { find, render } from '@ember/test-helpers';
+import { clearRender, find, render } from '@ember/test-helpers';
 import { onDestroy } from '@nrg-ui/core';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';

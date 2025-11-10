@@ -11,8 +11,7 @@ import onInsert from '../modifiers/on-insert.ts';
 import type { Direction, PopoverVisibility } from './popover.gts';
 import type { TOC } from '@ember/component/template-only';
 import type { Alignment } from '@floating-ui/dom';
-import type { ComponentLike } from '@glint/template';
-import type { WithBoundArgs } from '@glint/template';
+import type { ComponentLike, WithBoundArgs } from '@glint/template';
 import type IntlService from 'ember-intl/services/intl';
 
 interface ItemSignature {

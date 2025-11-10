@@ -1,6 +1,5 @@
 import { assert } from '@ember/debug';
-import { hash } from '@ember/helper';
-import { array } from '@ember/helper';
+import { array, hash } from '@ember/helper';
 import Component from '@glimmer/component';
 import Checkbox from '@nrg-ui/core/components/form/checkbox';
 import Datetime from '@nrg-ui/core/components/form/datetime';

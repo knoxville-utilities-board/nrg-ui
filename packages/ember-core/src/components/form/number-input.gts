@@ -2,8 +2,7 @@ import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { isEmpty } from '@ember/utils';
-import { isNone } from '@ember/utils';
+import { isEmpty, isNone } from '@ember/utils';
 import { tracked } from '@glimmer/tracking';
 import { runTask } from 'ember-lifeline';
 
