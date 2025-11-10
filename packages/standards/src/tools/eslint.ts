@@ -5,7 +5,7 @@ import { cwd } from 'process';
 import logger from '../logging.js';
 import { getDependenciesFromPackage, load } from '../utils.js';
 
-import type { Linter } from 'eslint';
+import type { ESLint, Linter } from 'eslint';
 
 export const defaultJsIgnores = [
   'node_modules/',
@@ -141,7 +141,9 @@ export class Config {
       }
 
       if (this.hasDependency('eslint-plugin-import', 'base')) {
-        const importPlugin = await load('eslint-plugin-import');
+        const importPlugin = (await load(
+          'eslint-plugin-import',
+        )) as typeof import('eslint-plugin-import');
         const parserOptions = structuredClone(esmParserOptions);
 
         if (!this.hasDependency('decorator-transforms')) {
@@ -182,9 +184,9 @@ export class Config {
       }
 
       if (this.hasDependency('eslint-plugin-decorator-position', 'base')) {
-        const decoratorPositionPlugin = await load(
+        const decoratorPositionPlugin = (await load(
           'eslint-plugin-decorator-position',
-        );
+        )) as ESLint.Plugin;
         const parserOptions = structuredClone(esmParserOptions);
 
         if (!this.hasDependency('decorator-transforms')) {
@@ -222,9 +224,9 @@ export class Config {
       const objects: Linter.Config[] = [];
 
       if (this.hasDependency('eslint-plugin-ember', 'ember')) {
-        const emberRecommended = await load(
+        const emberRecommended = (await load(
           'eslint-plugin-ember/configs/recommended',
-        );
+        )) as Linter.Config[];
 
         objects.push(...emberRecommended);
       }
@@ -259,7 +261,9 @@ export class Config {
       }
 
       if (this.hasDependency('eslint-plugin-import', 'js')) {
-        const importPlugin = await load('eslint-plugin-import');
+        const importPlugin = (await load(
+          'eslint-plugin-import',
+        )) as typeof import('eslint-plugin-import');
 
         objects.push({
           name: '@nrg-ui/standards/eslint/js/import',
@@ -309,7 +313,9 @@ export class Config {
       }
 
       const files = [`**/*.{${fileTypes.join()}}`];
-      const tseslint = await load('typescript-eslint');
+      const tseslint = (await load(
+        'typescript-eslint',
+      )) as typeof import('typescript-eslint');
 
       objects.push(...tseslint.configs.recommended);
       objects.push(tseslint.configs.eslintRecommended);
@@ -359,10 +365,12 @@ export class Config {
         return objects;
       }
 
-      const recommended = await load('eslint-plugin-ember/configs/recommended');
-      const recommendedGjs = await load(
+      const recommended = (await load(
+        'eslint-plugin-ember/configs/recommended',
+      )) as Linter.Config[];
+      const recommendedGjs = (await load(
         'eslint-plugin-ember/configs/recommended-gjs',
-      );
+      )) as Linter.Config[];
 
       objects.push(...recommended, ...recommendedGjs);
 
@@ -370,8 +378,8 @@ export class Config {
         return objects;
       }
 
-      const plugin = await load('eslint-plugin-ember');
-      const parser = await load('ember-eslint-parser');
+      const plugin = (await load('eslint-plugin-ember')) as ESLint.Plugin;
+      const parser = (await load('ember-eslint-parser')) as Linter.Parser;
 
       return [
         {
@@ -407,10 +415,12 @@ export class Config {
         return objects;
       }
 
-      const recommended = await load('eslint-plugin-ember/configs/recommended');
-      const recommendedGts = await load(
+      const recommended = (await load(
+        'eslint-plugin-ember/configs/recommended',
+      )) as Linter.Config[];
+      const recommendedGts = (await load(
         'eslint-plugin-ember/configs/recommended-gts',
-      );
+      )) as Linter.Config[];
 
       objects.push(...recommended, ...recommendedGts);
 
@@ -418,8 +428,8 @@ export class Config {
         return objects;
       }
 
-      const emberPlugin = await load('eslint-plugin-ember');
-      const parser = await load('ember-eslint-parser');
+      const emberPlugin = (await load('eslint-plugin-ember')) as ESLint.Plugin;
+      const parser = (await load('ember-eslint-parser')) as Linter.Parser;
 
       if (rules) {
         objects.push({
@@ -459,7 +469,9 @@ export class Config {
         return objects;
       }
 
-      const nodePlugin = await load('eslint-plugin-n');
+      const nodePlugin = (await load(
+        'eslint-plugin-n',
+      )) as typeof import('eslint-plugin-n');
       const defaultConfig = nodePlugin.configs['flat/recommended'];
 
       objects.push({
@@ -501,7 +513,9 @@ export class Config {
       }
 
       if (this.hasDependency('eslint-plugin-qunit', 'tests')) {
-        const qunitPlugin = await load('eslint-plugin-qunit');
+        const qunitPlugin = (await load(
+          'eslint-plugin-qunit',
+        )) as typeof import('eslint-plugin-qunit');
 
         objects.push({
           name: '@nrg-ui/lint/tests/base',
