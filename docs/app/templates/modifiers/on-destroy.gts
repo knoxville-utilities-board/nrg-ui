@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import OnDestroyDemo from '../../components/f/modifiers/on-destroy.ts';
+import OnDestroyDemo from '#app/components/f/modifiers/on-destroy.gts';
 
 <template>
   {{pageTitle "on-destroy"}}

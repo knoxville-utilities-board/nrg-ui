@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import CardDemo from '../../components/f/components/card.ts';
+import CardDemo from '#app/components/f/components/card.gts';
 
 <template>
   {{pageTitle "Card"}}

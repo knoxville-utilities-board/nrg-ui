@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import MultiSelectDemo from '../../../components/f/components/form/multi-select.ts';
+import MultiSelectDemo from '#app/components/f/components/form/multi-select.gts';
 
 <template>
   {{pageTitle "Multi Select"}}

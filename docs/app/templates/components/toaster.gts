@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import ToasterDemo from '../../components/f/components/toaster.ts';
+import ToasterDemo from '#app/components/f/components/toaster.gts';
 
 <template>
   {{pageTitle "Toaster"}}
