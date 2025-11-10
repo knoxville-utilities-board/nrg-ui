@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import DatetimeDemo from '../../../components/f/components/form/datetime.ts';
+import DatetimeDemo from '#app/components/f/components/form/datetime.gts';
 
 <template>
   {{pageTitle "Datetime"}}

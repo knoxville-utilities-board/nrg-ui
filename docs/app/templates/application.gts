@@ -4,9 +4,7 @@ import Scaffold from '@nrg-ui/core/components/scaffold';
 import version from '@nrg-ui/core/helpers/version';
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-// @ts-expect-error - Currently don't know how to
-// handle SVG imports in TypeScript
-import logo from '../assets/images/logo.svg';
+import logo from '#app/assets/images/logo.svg';
 
 export default class Application extends Component {
   get environment() {

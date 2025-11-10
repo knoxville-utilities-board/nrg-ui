@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import FormDemo from '../../../components/f/components/form/index.ts';
+import FormDemo from '#app/components/f/components/form/index.gts';
 
 <template>
   {{pageTitle "Form"}}

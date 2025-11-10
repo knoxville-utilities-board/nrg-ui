@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import HeaderDemo from '../../components/f/components/header.ts';
+import HeaderDemo from '#app/components/f/components/header.gts';
 
 <template>
   {{pageTitle "Header"}}

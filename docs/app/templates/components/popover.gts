@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import PopoverDemo from '../../components/f/components/popover.ts';
+import PopoverDemo from '#app/components/f/components/popover.gts';
 
 <template>
   {{pageTitle "Popover"}}

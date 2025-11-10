@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import TextAreaDemo from '../../../components/f/components/form/text-area.ts';
+import TextAreaDemo from '#app/components/f/components/form/text-area.gts';
 
 <template>
   {{pageTitle "Text Area"}}

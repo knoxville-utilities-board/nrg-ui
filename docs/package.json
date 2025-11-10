@@ -14,6 +14,9 @@
     "name": "Knoxville Utilities Board",
     "url": "https://www.kub.org"
   },
+  "imports": {
+    "#app/*": "./app/*"
+  },
   "scripts": {
     "build": "vite build",
     "format": "prettier . --cache --write",

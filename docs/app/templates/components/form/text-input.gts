@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import TextInputDemo from '../../../components/f/components/form/text-input.ts';
+import TextInputDemo from '#app/components/f/components/form/text-input.gts';
 
 <template>
   {{pageTitle "Text Input"}}

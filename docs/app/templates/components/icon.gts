@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import IconDemo from '../../components/f/components/icon.ts';
+import IconDemo from '#app/components/f/components/icon.gts';
 
 <template>
   {{pageTitle "Icon"}}

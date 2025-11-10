@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import OnClickOutsideDemo from '../../components/f/modifiers/on-click-outside.ts';
+import OnClickOutsideDemo from '#app/components/f/modifiers/on-click-outside.gts';
 
 <template>
   {{pageTitle "on-click-outside"}}

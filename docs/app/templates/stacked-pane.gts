@@ -7,7 +7,7 @@ import StackedPane, {
 import CodeBlock from '@nrg-ui/showcase/components/code-block';
 import getCodeSnippet from 'ember-code-snippet/helpers/get-code-snippet';
 
-import type StackedPaneController from '../controllers/stacked-pane';
+import type StackedPaneController from '#app/controllers/stacked-pane.ts';
 import type { TOC } from '@ember/component/template-only';
 
 interface StackedPaneSignature {

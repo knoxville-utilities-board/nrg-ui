@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import ModalDemo from '../../components/f/components/modal.ts';
+import ModalDemo from '#app/components/f/components/modal.gts';
 
 <template>
   {{pageTitle "Modal"}}

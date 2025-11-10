@@ -1,6 +1,6 @@
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import ButtonDemo from '../../components/f/components/button.ts';
+import ButtonDemo from '#app/components/f/components/button.gts';
 
 <template>
   {{pageTitle "Button"}}
