@@ -1,5 +1,4 @@
-import { click, fillIn, render } from '@ember/test-helpers';
-import { settled } from '@ember/test-helpers';
+import { click, fillIn, render, settled } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import Pagination from '@nrg-ui/core/components/pagination';
 import { setupRenderingTest } from 'docs/tests/helpers';

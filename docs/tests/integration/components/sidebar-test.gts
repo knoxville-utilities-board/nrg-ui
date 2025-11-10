@@ -1,7 +1,5 @@
 import { fn } from '@ember/helper';
-import { findAll } from '@ember/test-helpers';
-import { click } from '@ember/test-helpers';
-import { render } from '@ember/test-helpers';
+import { click, findAll, render } from '@ember/test-helpers';
 import Sidebar from '@nrg-ui/core/components/sidebar';
 import { setupRenderingTest } from 'docs/tests/helpers';
 import { module, test } from 'qunit';

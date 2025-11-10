@@ -156,17 +156,23 @@ export function getVersion(
 
   try {
     version = getTag(options);
-  } catch {}
+  } catch {
+    // Ignore
+  }
 
   if (!version) {
     try {
       version = getBranch();
-    } catch {}
+    } catch {
+      // Ignore
+    }
 
     if (!version) {
       try {
         version = getCommitHash();
-      } catch {}
+      } catch {
+        // Ignore
+      }
     }
   }
 
