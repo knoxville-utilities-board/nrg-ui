@@ -54,7 +54,7 @@ export interface MultiSelectSignature<T> {
     loading?: boolean;
     noOptionsText?: string;
     noOptionsTextKey?: string;
-    options: T[];
+    options: readonly T[];
     scrollable?: boolean;
     serializationPath?: string | null;
 

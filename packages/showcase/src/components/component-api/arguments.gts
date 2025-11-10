@@ -27,7 +27,7 @@ export interface ArgumentSignature<T> {
     displayType?: string;
     model: object;
     name?: string;
-    options?: T[];
+    options?: readonly T[];
     required?: boolean;
     type?: string;
     typeLink?: string;
