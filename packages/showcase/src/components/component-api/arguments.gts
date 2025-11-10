@@ -22,7 +22,7 @@ export interface ArgumentSignature<T> {
     description?: string;
     model: object;
     name?: string;
-    options?: T[];
+    options?: readonly T[];
     required?: boolean;
     value?: T;
 
