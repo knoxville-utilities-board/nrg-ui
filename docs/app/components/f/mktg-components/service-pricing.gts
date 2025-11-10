@@ -1,17 +1,9 @@
-// @ts-nocheck - TODO
-
-import { fn } from '@ember/helper';
-import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { MktgServicePricing } from '@nrg-ui/core';
-import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
-import FreestyleSection from 'ember-freestyle/components/freestyle-section';
+import MktgServicePricing from '@nrg-ui/core/components/mktg/service-pricing';
+import Section from '@nrg-ui/showcase/components/section';
 
 export default class ServicePricingDemo extends Component {
-  @tracked
-  class = 'col-6';
-
   @tracked
   active = false;
 
@@ -30,88 +22,67 @@ export default class ServicePricingDemo extends Component {
   @tracked
   selected = true;
 
-  @action
-  update(key: string, value: unknown) {
-    this[key] = value;
-  }
-
   <template>
-    <FreestyleSection @name="Service Pricing" as |Section|>
-      <Section.subsection @name="Basics">
-        <FreestyleUsage>
-          <:example>
-            <MktgServicePricing
-              class={{this.class}}
-              @active={{this.active}}
-              @description={{this.description}}
-              @icon={{this.icon}}
-              @label={{this.label}}
-              @product={{this.product}}
-              @selected={{this.selected}}
-              as |Addon|
-            >
-              <Addon @label="Product 1" @price="$80" @quantity="2" />
-              <Addon @label="Product 2" @price="$5.99/mo" />
-              <Addon @label="Product 3" @price="$4.99/mo" />
-              <Addon @label="Product 4" @price="$4.99/mo" />
-            </MktgServicePricing>
-            <MktgServicePricing
-              class={{this.class}}
-              @active={{this.active}}
-              @description="Add (optional)"
-              @icon="bi-tv"
-              @label="Phone"
-              @selected={{this.selected}}
-            />
-          </:example>
-          <:api as |Args|>
-            <Args.String
-              @description="The class to apply to the service pricing component. Note that this is not an argument but rather a class applied directly to the service pricing component."
-              @name="class"
-              @value={{this.class}}
-              @onInput={{fn this.update "class"}}
-            />
-            <Args.Bool
-              @description=""
+    <Section @name="Service Pricing" as |Section|>
+      <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
+        <:example as |model|>
+          <MktgServicePricing
+            class="col-6"
+            @active={{model.active}}
+            @description={{model.description}}
+            @icon={{model.icon}}
+            @label={{model.label}}
+            @product={{model.product}}
+            @selected={{model.selected}}
+            as |Addon|
+          >
+            <Addon @label="Product 1" @price="$80" @quantity={{2}} />
+            <Addon @label="Product 2" @price="$5.99/mo" />
+            <Addon @label="Product 3" @price="$4.99/mo" />
+            <Addon @label="Product 4" @price="$4.99/mo" />
+          </MktgServicePricing>
+          <MktgServicePricing
+            class="col-6"
+            @active={{model.active}}
+            @description="Add (optional)"
+            @icon="bi-tv"
+            @label="Phone"
+            @selected={{model.selected}}
+          />
+        </:example>
+        <:api as |Api|>
+          <Api.Arguments as |Args|>
+            <Args.Boolean
+              @description="When true, the service pricing component will appear active"
               @name="active"
-              @value={{this.active}}
-              @onInput={{fn this.update "active"}}
               @defaultValue={{false}}
             />
             <Args.String
               @description="Renders the description in the top right (Typically used for pricing information)"
               @name="description"
-              @value={{this.description}}
-              @onInput={{fn this.update "description"}}
             />
             <Args.String
               @description="Renders a icon in the top left"
               @name="icon"
-              @value={{this.icon}}
-              @onInput={{fn this.update "icon"}}
+              @displayType="IconType"
+              @typeLink="https://icons.getbootstrap.com/"
             />
             <Args.String
               @description="Renders the label in the top left"
               @name="label"
-              @value={{this.label}}
-              @onInput={{fn this.update "label"}}
             />
             <Args.String
               @description="Renders the product name in the top left"
               @name="product"
-              @value={{this.product}}
-              @onInput={{fn this.update "product"}}
             />
-            <Args.Bool
+            <Args.Boolean
               @description="When true, the service pricing component will be selected"
               @name="selected"
-              @value={{this.selected}}
-              @onInput={{fn this.update "selected"}}
               @defaultValue={{true}}
             />
-          </:api>
-        </FreestyleUsage>
-      </Section.subsection>
-    </FreestyleSection>
+          </Api.Arguments>
+        </:api>
+      </Section.Subsection>
+    </Section>
   </template>
 }

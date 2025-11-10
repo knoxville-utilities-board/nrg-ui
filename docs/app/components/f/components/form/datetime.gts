@@ -1,57 +1,51 @@
-// @ts-nocheck - TODO
-
 import { A } from '@ember/array';
-import { array, fn, hash } from '@ember/helper';
-import { on } from '@ember/modifier';
+import { array, hash } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import Datetime from '@nrg-ui/core/components/form/datetime';
-import bind from '@nrg-ui/core/helpers/bind';
-import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
-import FreestyleSection from 'ember-freestyle/components/freestyle-section';
-
-import CodeBlock from '../../../code-block';
+import { bind } from '@nrg-ui/core/helpers/bind';
+import Section from '@nrg-ui/showcase/components/section';
 
 export default class DatetimeDemo extends Component {
   @tracked
   allowMinuteSelection = true;
 
   @tracked
-  basic;
+  basic = false;
 
   @tracked
-  dateFormat;
+  dateFormat?: string;
 
   @tracked
-  disabled;
+  disabled = false;
 
   @tracked
-  maxDate;
+  maxDate?: Date;
 
   @tracked
-  minDate;
+  minDate?: Date;
 
   @tracked
   parseFormat: string[] = A();
 
   @tracked
-  placeholder;
+  placeholder?: string;
 
   @tracked
-  readonly;
+  readonly = false;
 
   @tracked
-  showNowShortcut;
+  showNowShortcut = true;
 
   @tracked
-  timeFormat;
+  timeFormat?: string;
 
   @tracked
-  type;
+  type = 'date';
 
   @tracked
-  value;
+  value?: Date;
 
   @action
   onHide() {
@@ -63,148 +57,113 @@ export default class DatetimeDemo extends Component {
     console.log('Datetime opened');
   }
 
-  @action
-  update(key, value) {
-    if (value instanceof Event) {
-      value = value.target.value;
-    }
-    this[key] = value;
-  }
-
   <template>
-    <FreestyleSection @name="Datetime" as |Section|>
-      <Section.subsection @name="Basic">
-        <FreestyleUsage>
-          <:example>
-            <Datetime
-              @allowMinuteSelection={{this.allowMinuteSelection}}
-              @basic={{this.basic}}
-              @binding={{bind this "value"}}
-              @dateFormat={{this.dateFormat}}
-              @fieldOptions={{hash disabled=this.disabled}}
-              @maxDate={{this.maxDate}}
-              @minDate={{this.minDate}}
-              @onHide={{this.onHide}}
-              @onShow={{this.onShow}}
-              @parseFormat={{this.parseFormat}}
-              @placeholder={{this.placeholder}}
-              @readonly={{this.readonly}}
-              @showNowShortcut={{this.showNowShortcut}}
-              @timeFormat={{this.timeFormat}}
-              @type={{this.type}}
-            />
-          </:example>
-          <:api as |Args|>
+    <Section @name="Datetime" as |Section|>
+      <Section.Subsection @name="Basic" @model={{this}} @elementTag="div">
+        <:example as |model|>
+          <Datetime
+            @allowMinuteSelection={{model.allowMinuteSelection}}
+            @basic={{model.basic}}
+            @binding={{bind model "value"}}
+            @dateFormat={{model.dateFormat}}
+            @fieldOptions={{hash disabled=model.disabled}}
+            @maxDate={{model.maxDate}}
+            @minDate={{model.minDate}}
+            @onHide={{model.onHide}}
+            @onShow={{model.onShow}}
+            @parseFormat={{model.parseFormat}}
+            @placeholder={{model.placeholder}}
+            @readonly={{model.readonly}}
+            @showNowShortcut={{model.showNowShortcut}}
+            @timeFormat={{model.timeFormat}}
+            @type={{model.type}}
+          />
+        </:example>
+        <:api as |Api|>
+          <Api.Arguments as |Args|>
             <Args.String
               @name="type"
               @defaultValue="date"
               @description="The type of input to render"
               @options={{array "date" "datetime" "time"}}
-              @value={{this.type}}
-              @onInput={{fn this.update "type"}}
             />
             <Args.String
               @name="dateFormat"
               @defaultValue="LL"
               @description="If provided, the date portion of the value will be formatted with this pattern"
-              @value={{this.dateFormat}}
-              @onInput={{fn this.update "dateFormat"}}
             />
             <Args.String
               @name="timeFormat"
               @defaultValue="LT"
               @description="If provided, the time portion of the value will be formatted with this pattern"
-              @value={{this.timeFormat}}
-              @onInput={{fn this.update "timeFormat"}}
             />
-            <Args.Array
+            {{! TODO: Add back when array arguments are supported by Showcase }}
+            {{!-- <Args.Array
               @name="parseFormat"
               @description="When provided, no dates before this point can be selected"
               @items={{this.parseFormat}}
               @type="String"
-            />
-            <Args.Bool
+            /> --}}
+            <Args.Boolean
               @name="allowMinuteSelection"
               @defaultValue={{true}}
               @description="Whether to allow selection of minutes"
-              @value={{this.allowMinuteSelection}}
-              @onInput={{fn this.update "allowMinuteSelection"}}
             />
-            <Args.Bool
+            <Args.Boolean
               @name="basic"
               @description="Whether to render the basic version of the input"
-              @value={{this.basic}}
-              @onInput={{fn this.update "basic"}}
             />
-            <Args.Bool
+            <Args.Boolean
               @name="fieldOptions.disabled"
               @description="Whether the input is disabled"
-              @value={{this.disabled}}
-              @onInput={{fn this.update "disabled"}}
             />
-            <Args.Base
+            <Args.Date
               @name="maxDate"
               @description="When provided, no dates after this point can be selected"
-              @type="Date"
-              @value={{this.maxDate}}
-              @onInput={{fn this.update "maxDate"}}
-            >
-              {{! template-lint-disable require-input-label }}
-              <input type="date" {{on "change" (fn this.update "maxDate")}} />
-            </Args.Base>
-            <Args.Base
+            />
+            <Args.Date
               @name="minDate"
               @description="When provided, no dates before this point can be selected"
-              @type="Date"
-              @value={{this.minDate}}
-              @onInput={{fn this.update "minDate"}}
-            >
-              {{! template-lint-disable require-input-label }}
-              <input type="date" {{on "change" (fn this.update "minDate")}} />
-            </Args.Base>
+            />
             <Args.String
               @name="placeholder"
               @description="The placeholder text"
-              @value={{this.placeholder}}
-              @onInput={{fn this.update "placeholder"}}
             />
-            <Args.Bool
+            <Args.Boolean
               @name="readonly"
               @description="Whether the input is readonly"
-              @value={{this.readonly}}
-              @onInput={{fn this.update "readonly"}}
             />
-            <Args.Bool
+            <Args.Boolean
               @name="showNowShortcut"
               @defaultValue={{true}}
               @description="Whether to show a 'Now' button to select the current date and time"
-              @value={{this.showNowShortcut}}
-              @onInput={{fn this.update "showNowShortcut"}}
             />
-            <Args.Action
+          </Api.Arguments>
+          <Api.Actions as |Action p|>
+            <Action
               @name="isDateDisabled"
               @description="A function that receives a date and returns whether it should be disabled"
-            >
-              <CodeBlock
-                @lang="typescript"
-                @code="(date: Date, precision?: OpUnitType) => boolean"
-              />
-            </Args.Action>
-            <Args.Action
+              @parameters={{array
+                (p "date" description="The date to check" type="Date")
+                (p
+                  "precision"
+                  description="The precision to check at"
+                  type="OpUnitType"
+                )
+              }}
+              @returnType="boolean"
+            />
+            <Action
               @name="onHide"
               @description="Action called when the datetime calendar is closed"
-            >
-              <CodeBlock @lang="typescript" @code="() => void" />
-            </Args.Action>
-            <Args.Action
+            />
+            <Action
               @name="onShow"
               @description="Action called when the datetime calendar is opened"
-            >
-              <CodeBlock @lang="typescript" @code="() => void" />
-            </Args.Action>
-          </:api>
-        </FreestyleUsage>
-      </Section.subsection>
-    </FreestyleSection>
+            />
+          </Api.Actions>
+        </:api>
+      </Section.Subsection>
+    </Section>
   </template>
 }

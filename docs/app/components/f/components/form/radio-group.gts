@@ -1,32 +1,15 @@
-// @ts-nocheck - TODO
-
-import { fn, hash } from '@ember/helper';
-import { action, set } from '@ember/object';
+import { array, fn, hash } from '@ember/helper';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { RadioGroup, bind } from '@nrg-ui/core';
-import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
-import FreestyleSection from 'ember-freestyle/components/freestyle-section';
+import RadioGroup from '@nrg-ui/core/components/form/radio-group';
+import { bind } from '@nrg-ui/core/helpers/bind';
+import Section from '@nrg-ui/showcase/components/section';
 
-import CodeBlock from '../../../code-block';
-
-// TypeScript doesn't recognize that this function is used in the template
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function log(...msg: string[]) {
+function print(...msg: unknown[]) {
   console.log(msg.join(' '));
 }
 
-class Model {
-  @tracked
-  property = '';
-}
-
 export default class RadioGroupDemo extends Component {
-  @tracked
-  class = '';
-
-  model = new Model();
-
   @tracked
   name = 'radio';
 
@@ -43,76 +26,53 @@ export default class RadioGroupDemo extends Component {
   @tracked
   basic = false;
 
-  @action
-  update(key: string, value: unknown) {
-    set(this, key, value);
-  }
+  @tracked
+  value = '2';
 
   <template>
-    <FreestyleSection @name="Radio Group" as |Section|>
-      <Section.subsection @name="Basic">
-        <FreestyleUsage>
-          <:example>
-            <RadioGroup
-              class={{this.class}}
-              @name={{this.name}}
-              @binding={{bind this.model "property"}}
-              @basic={{this.basic}}
-              @fieldOptions={{hash disabled=this.disabled}}
-              @onChange={{fn log "The value changed to"}}
-              as |Group|
-            >
-              <Group.Radio @option="1" @label="One" />
-              <Group.Radio @option="2" @label="Two" />
-              <Group.Radio @option="3" @label="Three" />
-            </RadioGroup>
-          </:example>
-          <:api as |Args|>
-            <Args.String
-              @name="class"
-              @description="The class to apply to the group <div>. Note that this is not an argument but rather a class applied directly to the group"
-              @value={{this.class}}
-              @onInput={{fn this.update "class"}}
-              @options={{this.classOptions}}
-            />
-            <Args.Bool
+    <Section @name="Radio Group" as |Section|>
+      <Section.Subsection @name="Basic" @model={{this}} @elementTag="div">
+        <:example as |model|>
+          <RadioGroup
+            class={{model.class}}
+            @name={{model.name}}
+            @binding={{bind model "property"}}
+            @basic={{model.basic}}
+            @fieldOptions={{hash disabled=model.disabled}}
+            @onChange={{fn print "The value changed to"}}
+            as |Group|
+          >
+            <Group.Radio @option="1" @label="One" />
+            <Group.Radio @option="2" @label="Two" />
+            <Group.Radio @option="3" @label="Three" />
+          </RadioGroup>
+        </:example>
+        <:api as |Api|>
+          <Api.Arguments as |Args|>
+            <Args.Boolean
               @name="basic"
               @defaultValue={{false}}
               @description="When true, the border will be removed"
-              @value={{this.basic}}
-              @onInput={{fn this.update "basic"}}
             />
             <Args.String
               @name="name"
-              @description="the shared name used for the input value, must be unique for the group"
-              @value={{this.name}}
-              @onInput={{fn this.update "name"}}
+              @description="The shared name used for the input value, must be unique for the group"
             />
-            <Args.String
-              @name="binding"
-              @description="Create a two-way binding with the value"
-              @value={{this.model.property}}
-              @onInput={{fn this.update "model.property"}}
-            />
-            <Args.Bool
-              @name="fieldOptions.disabled"
+            <Args.Boolean
+              @name="disabled"
               @defaultValue={{false}}
               @description="When true, the input will be disabled"
-              @value={{this.disabled}}
-              @onInput={{fn this.update "disabled"}}
             />
-            <Args.Action
+          </Api.Arguments>
+          <Api.Actions as |Action p|>
+            <Action
               @name="onChange"
               @description="The action to call when the value changes"
-            >
-              <CodeBlock
-                @lang="typescript"
-                @code="(newValue: string) => unknown"
-              />
-            </Args.Action>
-          </:api>
-        </FreestyleUsage>
-      </Section.subsection>
-    </FreestyleSection>
+              @parameters={{array (p "newValue" type="string")}}
+            />
+          </Api.Actions>
+        </:api>
+      </Section.Subsection>
+    </Section>
   </template>
 }

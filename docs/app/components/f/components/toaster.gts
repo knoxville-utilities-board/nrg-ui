@@ -1,27 +1,14 @@
-// @ts-nocheck - TODO
-
-import { fn } from '@ember/helper';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
-import { Button } from '@nrg-ui/core';
-import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
-import FreestyleSection from 'ember-freestyle/components/freestyle-section';
+import Button from '@nrg-ui/core/components/button';
+import Section from '@nrg-ui/showcase/components/section';
 
 import type ToastService from '@nrg-ui/core/services/toast';
 
 export default class ToasterDemo extends Component {
   @service
-  toast!: ToastService;
-
-  @tracked
-  fixed = true;
-
-  @action
-  update(key: string, value: unknown) {
-    this[key] = value;
-  }
+  declare toast: ToastService;
 
   @action
   createToast() {
@@ -56,29 +43,26 @@ export default class ToasterDemo extends Component {
   }
 
   <template>
-    <FreestyleSection @name="Toaster" as |Section|>
-      <Section.subsection @name="Basics">
-        <FreestyleUsage>
-          <:example>
-            <Button @onClick={{this.createToast}} class="btn-primary">
-              Create Toasts
-            </Button>
-            <Button @onClick={{this.createStickyToast}} class="btn-primary">
-              Create Sticky Toasts
-            </Button>
-          </:example>
-          <:api as |Args|>
-            <Args.Bool
+    <Section @name="Toaster" as |Section|>
+      <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
+        <:example>
+          <Button class="btn-primary" @onClick={{this.createToast}}>
+            Create Toasts
+          </Button>
+          <Button class="btn-primary" @onClick={{this.createStickyToast}}>
+            Create Sticky Toasts
+          </Button>
+        </:example>
+        <:api as |Api|>
+          <Api.Arguments as |Args|>
+            <Args.Boolean
               @name="fixed"
               @defaultValue={{true}}
               @description="When true, the toaster will be fixed to the top-right of the screen."
-              @hideControls={{true}}
-              @value={{this.fixed}}
-              @onInput={{fn this.update "fixed"}}
             />
-          </:api>
-        </FreestyleUsage>
-      </Section.subsection>
-    </FreestyleSection>
+          </Api.Arguments>
+        </:api>
+      </Section.Subsection>
+    </Section>
   </template>
 }

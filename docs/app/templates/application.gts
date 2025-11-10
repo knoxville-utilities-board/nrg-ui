@@ -81,9 +81,6 @@ export default class Application extends Component {
             <Item @route="components.modal">
               Modal
             </Item>
-            <Item @route="components.navbar">
-              Navbar
-            </Item>
             <Item @route="components.pagination">
               Pagination
             </Item>
@@ -163,6 +160,9 @@ export default class Application extends Component {
             </Item>
             <Item @route="mktg-components.header">
               Header
+            </Item>
+            <Item @route="mktg-components.navbar">
+              Navbar
             </Item>
             <Item @route="mktg-components.promo-container">
               Promo Container

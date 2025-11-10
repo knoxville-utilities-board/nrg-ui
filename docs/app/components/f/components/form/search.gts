@@ -1,33 +1,17 @@
-// @ts-nocheck - TODO
-
-import { fn, hash } from '@ember/helper';
-import { action, set } from '@ember/object';
+import { array, fn, hash } from '@ember/helper';
+import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { Search, bind } from '@nrg-ui/core';
+import CodeBlock from '@nrg-ui/showcase/components/code-block';
+import Section from '@nrg-ui/showcase/components/section';
 import { timeout } from 'ember-concurrency';
-import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
-import FreestyleSection from 'ember-freestyle/components/freestyle-section';
 
-import CodeBlock from '../../../code-block';
-
-// TypeScript doesn't recognize that this function is used in the template
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function log(...msg: string[]) {
+function print(...msg: unknown[]) {
   console.log(msg.join(' '));
 }
 
-class Model {
-  @tracked
-  property = 'Orange';
-}
-
 export default class SearchDemo extends Component {
-  model = new Model();
-
-  @tracked
-  class = '';
-
   @tracked
   basic = false;
 
@@ -107,10 +91,10 @@ export default class SearchDemo extends Component {
   minCharacters = 1;
 
   @tracked
-  noResultsLabel;
+  noResultsLabel?: string = undefined;
 
   @tracked
-  placeholder;
+  placeholder?: string = undefined;
 
   @tracked
   readonly = false;
@@ -142,11 +126,6 @@ export default class SearchDemo extends Component {
     return things;
   }
 
-  @action
-  update(key: string, value: unknown) {
-    set(this, key, value);
-  }
-
   get stringOptionsSource() {
     return JSON.stringify(this.stringOptions, null, 2);
   }
@@ -156,158 +135,123 @@ export default class SearchDemo extends Component {
   }
 
   <template>
-    <FreestyleSection @name="Search" as |Section|>
-      <Section.subsection @name="Basic">
-        <FreestyleUsage>
-          <:example>
-            <Search
-              class={{this.class}}
-              @basic={{this.basic}}
-              @binding={{bind this.model "property"}}
-              @clearable={{this.clearable}}
-              @fieldOptions={{hash disabled=this.disabled}}
-              @hideSearchIcon={{this.hideSearchIcon}}
-              @loading={{this.loading}}
-              @minCharacters={{this.minCharacters}}
-              @noResultsLabel={{this.noResultsLabel}}
-              @placeholder={{this.placeholder}}
-              @readonly={{this.readonly}}
-              @scrollable={{this.scrollable}}
-              @searchTimeout={{this.searchTimeout}}
-              @onChange={{fn log "The value changed to"}}
-              @onQuery={{this.stringQuery}}
-            />
-          </:example>
-          <:api as |Args|>
-            <Args.String
-              @name="class"
-              @description="The class to apply to the input. Note that this is not an argument but rather a class applied directly to the input"
-              @value={{this.class}}
-              @onInput={{fn this.update "class"}}
-              @options={{this.classOptions}}
-            />
-            <Args.Bool
+    <Section @name="Search" as |Section|>
+      <Section.Subsection @name="Basic" @model={{this}} @elementTag="div">
+        <:example as |model|>
+          <Search
+            @basic={{model.basic}}
+            @binding={{bind model "property"}}
+            @clearable={{model.clearable}}
+            @fieldOptions={{hash disabled=model.disabled}}
+            @hideSearchIcon={{model.hideSearchIcon}}
+            @loading={{model.loading}}
+            @minCharacters={{model.minCharacters}}
+            @noResultsLabel={{model.noResultsLabel}}
+            @placeholder={{model.placeholder}}
+            @readonly={{model.readonly}}
+            @scrollable={{model.scrollable}}
+            @searchTimeout={{model.searchTimeout}}
+            @onChange={{fn print "The value changed to"}}
+            @onQuery={{model.stringQuery}}
+          />
+        </:example>
+        <:api as |Api|>
+          <Api.Arguments as |Args|>
+            <Args.Boolean
               @name="basic"
               @defaultValue={{false}}
               @description="When true, the border will be removed"
-              @value={{this.basic}}
-              @onInput={{fn this.update "basic"}}
             />
-            <Args.String
-              @name="binding"
-              @description="Create a two-way binding with the value"
-              @value={{this.model.property}}
-              @onInput={{fn this.update "model.property"}}
-            />
-            <Args.Bool
+            <Args.Boolean
               @name="clearable"
               @defaultValue={{false}}
               @description="When true, adds a clear button"
-              @value={{this.clearable}}
-              @onInput={{fn this.update "clearable"}}
             />
-            <Args.Bool
-              @name="fieldOptions.disabled"
+            <Args.Boolean
+              @name="disabled"
               @defaultValue={{false}}
               @description="When true, the input will be disabled"
-              @value={{this.disabled}}
-              @onInput={{fn this.update "disabled"}}
             />
-            <Args.Bool
+            <Args.Boolean
               @name="hideSearchIcon"
               @defaultValue={{false}}
               @description="When true, the search icon will be hidden"
-              @value={{this.hideSearchIcon}}
-              @onInput={{fn this.update "hideSearchIcon"}}
             />
-            <Args.Bool
+            <Args.Boolean
               @name="loading"
               @defaultValue={{false}}
               @description="When true, the icon will be replaced with a loading spinner. Note: the loading indicator will not be displayed if the basic option is set to true"
-              @value={{this.loading}}
-              @onInput={{fn this.update "loading"}}
             />
             <Args.Number
               @name="minCharacters"
               @defaultValue={{1}}
               @description="The minimum number of characters needed to start a search"
-              @value={{this.minCharacters}}
-              @onInput={{fn this.update "minCharacters"}}
             />
             <Args.String
               @name="noResultsLabel"
               @defaultValue="No results found"
               @description="The label to display when no results are found"
-              @value={{this.noResultsLabel}}
-              @onInput={{fn this.update "noResultsLabel"}}
             />
             <Args.String
               @name="placeholder"
               @defaultValue="Search"
               @description="The placeholder text"
-              @value={{this.placeholder}}
-              @onInput={{fn this.update "placeholder"}}
             />
-            <Args.Bool
+            <Args.Boolean
               @name="readonly"
               @defaultValue={{false}}
               @description="When true, the input will be readonly"
-              @value={{this.readonly}}
-              @onInput={{fn this.update "readonly"}}
             />
-            <Args.Bool
+            <Args.Boolean
               @name="scrollable"
               @defaultValue={{true}}
               @description="Unless false, the dropdown will be scrollable"
-              @value={{this.scrollable}}
-              @onInput={{fn this.update "scrollable"}}
             />
             <Args.Number
               @name="searchTimeout"
               @defaultValue={{300}}
               @description="The amount of time to wait before searching"
-              @value={{this.searchTimeout}}
-              @onInput={{fn this.update "searchTimeout"}}
             />
-            <Args.Action
+          </Api.Arguments>
+          <Api.Actions as |Action p|>
+            <Action
               @name="onQuery"
               @description="A function that return an array of string or object options"
-            >
-              <CodeBlock
-                @lang="typescript"
-                @code="(string: searchString) => T[]"
-              />
-            </Args.Action>
-          </:api>
-        </FreestyleUsage>
-      </Section.subsection>
-
-      <Section.subsection @name="Object Options">
-        <FreestyleUsage>
-          <:example>
-            <Search
-              class={{this.class}}
-              @basic={{this.basic}}
-              @binding={{bind this.model "property"}}
-              @clearable={{this.clearable}}
-              @displayPath="fruit"
-              @fieldOptions={{hash disabled=this.disabled}}
-              @hideSearchIcon={{this.hideSearchIcon}}
-              @loading={{this.loading}}
-              @minCharacters={{this.minCharacters}}
-              @noResultsLabel={{this.noResultsLabel}}
-              @placeholder={{this.placeholder}}
-              @readonly={{this.readonly}}
-              @scrollable={{this.scrollable}}
-              @searchTimeout={{this.searchTimeout}}
-              @serializationPath="key"
-              @onChange={{fn log "The value changed to"}}
-              @onQuery={{this.objectQuery}}
+              @parameters={{array (p "searchString" type="string")}}
+              @returnType="T[]"
             />
-          </:example>
-        </FreestyleUsage>
-      </Section.subsection>
-    </FreestyleSection>
+          </Api.Actions>
+        </:api>
+      </Section.Subsection>
+
+      <Section.Subsection
+        @name="Object Options"
+        @model={{this}}
+        @elementTag="div"
+      >
+        <:example as |model|>
+          <Search
+            @basic={{model.basic}}
+            @binding={{bind model "property"}}
+            @clearable={{model.clearable}}
+            @displayPath="fruit"
+            @fieldOptions={{hash disabled=model.disabled}}
+            @hideSearchIcon={{model.hideSearchIcon}}
+            @loading={{model.loading}}
+            @minCharacters={{model.minCharacters}}
+            @noResultsLabel={{model.noResultsLabel}}
+            @placeholder={{model.placeholder}}
+            @readonly={{model.readonly}}
+            @scrollable={{model.scrollable}}
+            @searchTimeout={{model.searchTimeout}}
+            @serializationPath="key"
+            @onChange={{fn print "The value changed to"}}
+            @onQuery={{model.objectQuery}}
+          />
+        </:example>
+      </Section.Subsection>
+    </Section>
+
     <div class="grid">
       <div class="g-col-4">
         <h3>String Options</h3>
@@ -320,15 +264,15 @@ export default class SearchDemo extends Component {
       <div class="g-col-4">
         <h3>Object Options</h3>
         <CodeBlock
-          class="border rounded p-3 scrollable"
           @lang="json"
           @code={{this.objectOptionsSource}}
+          @showCopyButton={{false}}
         />
       </div>
       <div class="g-col-4">
         <h3>Selected</h3>
         <div class="border rounded p-3">
-          {{this.model.property}}
+          {{this.value}}
         </div>
       </div>
     </div>

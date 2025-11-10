@@ -1,29 +1,10 @@
-// @ts-nocheck - TODO
-
-import { array, fn } from '@ember/helper';
-import { action } from '@ember/object';
+import { array } from '@ember/helper';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { Button } from '@nrg-ui/core';
-import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
-import FreestyleSection from 'ember-freestyle/components/freestyle-section';
+import Section from '@nrg-ui/showcase/components/section';
 
 export default class ButtonDemo extends Component {
-  classOptions = [
-    'btn-primary',
-    'btn-secondary',
-    'btn-success',
-    'btn-danger',
-    'btn-warning',
-    'btn-info',
-    'btn-light',
-    'btn-dark',
-    'btn-link',
-  ];
-
-  @tracked
-  class = 'btn-primary';
-
   @tracked
   disabled = false;
 
@@ -42,127 +23,107 @@ export default class ButtonDemo extends Component {
   @tracked
   iconPosition = 'left';
 
-  @action
-  update(key: string, value: unknown) {
-    this[key] = value;
-  }
-
   <template>
-    <FreestyleSection @name="Button" as |Section|>
-      <Section.subsection @name="Basics">
-        <FreestyleUsage>
-          <:example>
-            <Button
-              class={{this.class}}
-              @disabled={{this.disabled}}
-              @loading={{this.loading}}
-              @text={{this.text}}
-              @type={{this.type}}
-            />
-          </:example>
-          <:api as |Args|>
-            <Args.String
-              @name="class"
-              @description="The class to apply to the button. Note that this is not an argument but rather a class applied directly to the button"
-              @value={{this.class}}
-              @onInput={{fn this.update "class"}}
-              @options={{this.classOptions}}
-            />
-            <Args.Bool
+    <Section @name="Button" as |Section|>
+      <Section.Subsection @name="Basics" @model={{this}} @elementTag="button">
+        <:example as |model|>
+          <Button
+            class="btn-primary"
+            @disabled={{model.disabled}}
+            @loading={{model.loading}}
+            @text={{model.text}}
+            @type={{model.type}}
+          />
+        </:example>
+        <:api as |Api|>
+          <Api.Arguments as |Args|>
+            <Args.Boolean
               @name="disabled"
               @defaultValue={{false}}
               @description="When true, the button will be disabled"
-              @value={{this.disabled}}
-              @onInput={{fn this.update "disabled"}}
             />
-            <Args.Bool
+            <Args.Boolean
               @name="loading"
               @defaultValue={{false}}
               @description="When true, the text will be replaced with a loading spinner"
-              @value={{this.loading}}
-              @onInput={{fn this.update "loading"}}
             />
             <Args.String
               @name="text"
               @description="The text to display on the button"
-              @value={{this.text}}
-              @onInput={{fn this.update "text"}}
             />
             <Args.String
               @name="type"
               @defaultValue="button"
               @description="The type of button"
-              @value={{this.type}}
               @options={{array "button" "submit"}}
-              @onInput={{fn this.update "type"}}
             />
-          </:api>
-        </FreestyleUsage>
-      </Section.subsection>
+          </Api.Arguments>
+          <Api.Actions as |Action p|>
+            <Action
+              @name="onClick"
+              @parameters={{array (p "event" type="MouseEvent")}}
+            />
+          </Api.Actions>
+          <Api.Blocks as |Block|>
+            <Block
+              @name="default"
+              @description="The content to display inside the button"
+            />
+          </Api.Blocks>
+        </:api>
+      </Section.Subsection>
 
-      <Section.subsection @name="Icon">
-        <FreestyleUsage>
-          <:example>
-            <Button
-              class="btn-primary"
-              @icon={{this.icon}}
-              @iconLabel={{this.iconLabel}}
-              @iconPosition={{this.iconPosition}}
-            >
-              Go now
-            </Button>
-          </:example>
-          <:api as |Args|>
-            <Args.String
-              @name="icon"
-              @description="The icon to display"
-              @value={{this.icon}}
-              @onInput={{fn this.update "icon"}}
-            />
+      <Section.Subsection @name="Icon" @model={{this}} @elementTag="button">
+        <:example as |model|>
+          <Button
+            class="btn-primary"
+            @icon={{model.icon}}
+            @iconLabel={{model.iconLabel}}
+            @iconPosition={{model.iconPosition}}
+          >
+            Go now
+          </Button>
+        </:example>
+        <:api as |Api|>
+          <Api.Arguments as |Args|>
+            <Args.String @name="icon" @description="The icon to display" />
             <Args.String
               @name="iconLabel"
               @description="The label for the icon (for accessibility)"
-              @value={{this.iconLabel}}
-              @onInput={{fn this.update "iconLabel"}}
             />
             <Args.String
               @name="iconPosition"
               @defaultValue="left"
               @description="The position of the icon relative to the text"
-              @value={{this.iconPosition}}
               @options={{array "left" "right"}}
-              @onInput={{fn this.update "iconPosition"}}
             />
-          </:api>
-        </FreestyleUsage>
-      </Section.subsection>
+          </Api.Arguments>
+        </:api>
+      </Section.Subsection>
 
-      <Section.subsection @name="Icon-Only Button">
-        <FreestyleUsage>
-          <:example>
-            <Button
-              class="btn-primary"
-              @icon={{this.icon}}
-              @iconLabel={{this.iconLabel}}
-              @iconPosition="center"
-            />
-          </:example>
-          <:api as |Args|>
-            <Args.String
-              @name="icon"
-              @description="The icon to display"
-              @value={{this.icon}}
-              @onInput={{fn this.update "icon"}}
-            />
+      <Section.Subsection
+        @name="Icon-Only Button"
+        @model={{this}}
+        @elementTag="button"
+      >
+        <:example as |model|>
+          <Button
+            class="btn-primary"
+            @icon={{model.icon}}
+            @iconLabel={{model.iconLabel}}
+            @iconPosition="center"
+          />
+        </:example>
+        <:api as |Api|>
+          <Api.Arguments as |Args|>
+            <Args.String @name="icon" @description="The icon to display" />
             <Args.String
               @name="iconLabel"
               @description="The label for the icon (for accessibility)"
-              @value={{this.iconLabel}}
-              @onInput={{fn this.update "iconLabel"}}
             />
-          </:api>
-        </FreestyleUsage>
-      </Section.subsection>
-    </FreestyleSection>
+          </Api.Arguments>
+        </:api>
+      </Section.Subsection>
+    </Section>
   </template>
 }

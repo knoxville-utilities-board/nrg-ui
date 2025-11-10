@@ -1,12 +1,8 @@
-// @ts-nocheck - TODO
-
-import { fn } from '@ember/helper';
-import { action } from '@ember/object';
+import { array } from '@ember/helper';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { Card } from '@nrg-ui/core';
-import FreestyleUsage from 'ember-freestyle/components/freestyle/usage';
-import FreestyleSection from 'ember-freestyle/components/freestyle-section';
+import Card from '@nrg-ui/core/components/card';
+import Section from '@nrg-ui/showcase/components/section';
 
 export default class CardDemo extends Component {
   @tracked
@@ -18,70 +14,54 @@ export default class CardDemo extends Component {
   @tracked
   hasHorizontalDivider = true;
 
-  @tracked
-  class = 'col-12 col-md-6';
-
-  @action
-  update(key: string, value: unknown) {
-    this[key] = value;
-  }
-
   <template>
-    <FreestyleSection @name="Card" as |Section|>
-      <Section.subsection @name="Basics">
-        <FreestyleUsage>
-          <:example>
-            <Card
-              class={{this.class}}
-              @hasBorder={{this.hasBorder}}
-              @hasHorizontalDivider={{this.hasHorizontalDivider}}
-              @isClickable={{this.isClickable}}
-              @onClick={{this.onClick}}
-            >
-              <:header>
-                <p>Card header</p>
-              </:header>
-              <:body>
-                <p>Card body</p>
-              </:body>
-            </Card>
-          </:example>
-          <:api as |Args|>
-            <Args.String
-              @name="class"
-              @description="The class to apply to the card. Note that this is not an argument but rather a class applied directly to the card and should be implemented for organiziation, utilizing Bootstrap flexbox grid using 'col-{number}'"
-              @value={{this.class}}
-              @onInput={{fn this.update "class"}}
-            />
-            <Args.Bool
+    <Section @name="Card" as |Section|>
+      <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
+        <:example as |model|>
+          <Card
+            @hasBorder={{model.hasBorder}}
+            @hasHorizontalDivider={{model.hasHorizontalDivider}}
+            @isClickable={{model.isClickable}}
+          >
+            <:header>
+              <p>Card header</p>
+            </:header>
+            <:body>
+              <p>Card body</p>
+            </:body>
+          </Card>
+        </:example>
+        <:api as |Api|>
+          <Api.Arguments as |Args|>
+            <Args.Boolean
               @name="hasBorder"
               @description="When false, the card's border is removed."
-              @value={{this.hasBorder}}
               @defaultValue={{true}}
-              @onInput={{fn this.update "hasBorder"}}
             />
-            <Args.Bool
+            <Args.Boolean
               @name="hasHorizontalDivider"
               @description="When false, the card's horizontal divider is removed."
-              @value={{this.hasHorizontalDivider}}
               @defaultValue={{true}}
-              @onInput={{fn this.update "hasHorizontalDivider"}}
             />
-            <Args.Bool
+            <Args.Boolean
               @name="isClickable"
               @description="When true, the card is given a role of button and allows for an onClick method parameter to be passed."
-              @value={{this.isClickable}}
               @defaultValue={{false}}
-              @onInput={{fn this.update "isClickable"}}
             />
-            <Args.Action
+          </Api.Arguments>
+          <Api.Actions as |Action p|>
+            <Action
               @name="onClick"
               @description="The action to be called when the card is clicked."
-              @hideControls={{true}}
+              @parameters={{array
+                (p
+                  "event" type="MouseEvent" description="The click event object"
+                )
+              }}
             />
-          </:api>
-        </FreestyleUsage>
-      </Section.subsection>
-    </FreestyleSection>
+          </Api.Actions>
+        </:api>
+      </Section.Subsection>
+    </Section>
   </template>
 }
