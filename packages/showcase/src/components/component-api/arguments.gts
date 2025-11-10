@@ -68,12 +68,6 @@ export class BaseArgument<T> extends Component<BaseArgumentSignature<T>> {
   }
 
   set value(value: T) {
-    if (this.args.onInput) {
-      this.args.onInput(value);
-
-      return;
-    }
-
     const { model, name } = this.args;
 
     assert(
@@ -86,6 +80,8 @@ export class BaseArgument<T> extends Component<BaseArgumentSignature<T>> {
     );
 
     (model as { [key: string]: T })[name] = value;
+
+    this.args.onInput?.(value);
   }
 
   <template>
