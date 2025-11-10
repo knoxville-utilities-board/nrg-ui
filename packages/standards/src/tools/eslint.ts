@@ -118,6 +118,23 @@ export class Config {
         );
       }
 
+      const { configs: recommendedConfigs } = (await load(
+        '@eslint/js',
+      )) as typeof import('@eslint/js');
+
+      objects.push({
+        name: '@nrg-ui/standards/eslint/js/recommended',
+        rules: {
+          ...recommendedConfigs.recommended.rules,
+          'no-duplicate-imports': [
+            'error',
+            {
+              allowSeparateTypeImports: true,
+            },
+          ],
+        },
+      });
+
       let defaultParser: Linter.Parser | undefined;
       if (this.hasDependency('@babel/eslint-parser')) {
         defaultParser = (await load('@babel/eslint-parser')) as Linter.Parser;
