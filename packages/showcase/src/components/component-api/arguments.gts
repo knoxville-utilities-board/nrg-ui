@@ -1,5 +1,6 @@
 import { assert } from '@ember/debug';
 import { array, hash } from '@ember/helper';
+import { get, set } from '@ember/object';
 import Component from '@glimmer/component';
 import Checkbox from '@nrg-ui/core/components/form/checkbox';
 import Datetime from '@nrg-ui/core/components/form/datetime';
@@ -73,7 +74,7 @@ export class BaseArgument<T> extends Component<BaseArgumentSignature<T>> {
     );
     assert('Name is required for BaseArgument when not providing @value', name);
 
-    return (model as { [key: string]: T })[name] as T;
+    return get(model, name) as T;
   }
 
   set value(value: T) {
@@ -88,7 +89,7 @@ export class BaseArgument<T> extends Component<BaseArgumentSignature<T>> {
       name,
     );
 
-    (model as { [key: string]: T })[name] = value;
+    set(model, name, value);
 
     this.args.onInput?.(value);
   }
