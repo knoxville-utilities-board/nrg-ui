@@ -28,12 +28,10 @@
     "./*": {
       "types": "./dist/*.d.ts",
       "default": "./dist/*.js"
-    },
-    "./virtual": "./src/virtual.d.ts"
+    }
   },
   "files": [
     "dist",
-    "src/virtual.d.ts",
     "README.md",
     "package.json"
   ],
