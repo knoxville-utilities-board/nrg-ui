@@ -128,7 +128,7 @@ function walkAST(node: AST.Statement): boolean {
 
   if (node.type === 'ElementNode') {
     for (const child of node.children) {
-      didChange ||= walkAST(child);
+      didChange = walkAST(child) || didChange;
     }
   }
 
