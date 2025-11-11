@@ -11,6 +11,10 @@ export interface SnippetExtractorOptions {
   filter?: string | string[];
 }
 
+function cloneNode<T extends AST.Node>(node: T): T {
+  return parse(print(node)) as T;
+}
+
 function escapeSource(source: string): string {
   return source
     .replace(/"/g, '&quot;')
@@ -47,7 +51,18 @@ function extractCode(code: string): string {
   return escapeSource(lines.join('\n'));
 }
 
-function markArguments(node: AST.Statement, blockName: string): void {
+function markArguments(
+  node: AST.Statement | AST.Template,
+  blockName: string,
+): void {
+  if (node.type === 'Template') {
+    for (const child of node.body) {
+      markArguments(child, blockName);
+    }
+
+    return;
+  }
+
   if (node.type === 'ElementNode') {
     for (const attrNode of node.attributes) {
       if (attrNode.value.type !== 'MustacheStatement') {
@@ -69,6 +84,10 @@ function markArguments(node: AST.Statement, blockName: string): void {
 
       attrNode.value = builders.mustache(placeholder);
     }
+
+    for (const child of node.children) {
+      markArguments(child, blockName);
+    }
   }
 }
 
@@ -80,14 +99,15 @@ function walkAST(node: AST.Statement): boolean {
 
     if (exampleBlock) {
       const blockName = exampleBlock.blockParams[0];
+      const clonedChildren = exampleBlock.children.map(cloneNode);
 
       if (blockName) {
-        for (const child of exampleBlock.children) {
+        for (const child of clonedChildren) {
           markArguments(child, blockName);
         }
       }
 
-      const rawSource = print(builders.program(exampleBlock.children));
+      const rawSource = print(builders.program(clonedChildren));
       const codeContent = extractCode(rawSource);
       const sourceAttr = builders.attr(
         '@sourceCode',
