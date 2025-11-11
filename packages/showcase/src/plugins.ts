@@ -65,7 +65,7 @@ function markArguments(node: AST.Statement, blockName: string): void {
       }
 
       const fullPath = path.tail.join('.');
-      const placeholder = `__SHOWCASE_ARG_${blockName}_${fullPath}__`;
+      const placeholder = `__SHOWCASE_ARG_${blockName}-${fullPath}__`;
 
       attrNode.value = builders.mustache(placeholder);
     }

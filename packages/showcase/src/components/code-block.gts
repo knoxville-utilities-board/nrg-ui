@@ -13,7 +13,7 @@ import type { BundledLanguage, CodeToHastOptions } from 'shiki';
 
 import '../assets/code-block.css';
 
-const MARKER_PATTERN = '{{__SHOWCASE_ARG_(.*)_(.*)__}}';
+const MARKER_PATTERN = '{{__SHOWCASE_ARG_([^}]+)-([^}]+)__}}';
 
 export interface CodeBlockSignature {
   Element: HTMLElement;
