@@ -1,4 +1,4 @@
-import { assert } from '@ember/debug';
+import { assert, warn } from '@ember/debug';
 import { get } from '@ember/object';
 import { service } from '@ember/service';
 import { htmlSafe } from '@ember/template';
@@ -36,6 +36,10 @@ function coerceValue(
 ): string {
   const type = typeof value;
   const stringVal = String(value);
+
+  if (value === undefined) {
+    return `{{undefined}}`;
+  }
 
   if (type === 'string') {
     return `"${stringVal}"`;
@@ -93,7 +97,13 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
     return rawSource.replace(pattern, (_, blockName: string, key: string) => {
       const value = get(model, key);
 
-      assert(`Model is missing key: ${key}`, value !== undefined);
+      warn(
+        `Model is missing key: ${key}`,
+        key in model || value !== undefined,
+        {
+          id: 'showcase.code-block.missing-model-key',
+        },
+      );
 
       return coerceValue(value, `${blockName}.${key}`);
     });
