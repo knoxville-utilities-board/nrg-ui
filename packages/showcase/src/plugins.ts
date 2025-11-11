@@ -11,6 +11,10 @@ export interface SnippetExtractorOptions {
   filter?: string | string[];
 }
 
+function cloneNode<T extends AST.Node>(node: T): T {
+  return parse(print(node)) as T;
+}
+
 function escapeSource(source: string): string {
   return source
     .replace(/"/g, '&quot;')
@@ -80,14 +84,15 @@ function walkAST(node: AST.Statement): boolean {
 
     if (exampleBlock) {
       const blockName = exampleBlock.blockParams[0];
+      const clonedChildren = exampleBlock.children.map(cloneNode);
 
       if (blockName) {
-        for (const child of exampleBlock.children) {
+        for (const child of clonedChildren) {
           markArguments(child, blockName);
         }
       }
 
-      const rawSource = print(builders.program(exampleBlock.children));
+      const rawSource = print(builders.program(clonedChildren));
       const codeContent = extractCode(rawSource);
       const sourceAttr = builders.attr(
         '@sourceCode',
