@@ -119,6 +119,13 @@ export default class ShikiService extends Service {
       darkTheme = 'none';
     }
 
+    if (lang === 'glimmer-template') {
+      options ??= {};
+
+      lang = 'glimmer-js';
+      options.grammarContextCode = '<template>';
+    }
+
     const hast = highlighter.codeToHast(code, {
       cssVariablePrefix,
       defaultColor: false,
