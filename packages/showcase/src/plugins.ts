@@ -51,7 +51,18 @@ function extractCode(code: string): string {
   return escapeSource(lines.join('\n'));
 }
 
-function markArguments(node: AST.Statement, blockName: string): void {
+function markArguments(
+  node: AST.Statement | AST.Template,
+  blockName: string,
+): void {
+  if (node.type === 'Template') {
+    for (const child of node.body) {
+      markArguments(child, blockName);
+    }
+
+    return;
+  }
+
   if (node.type === 'ElementNode') {
     for (const attrNode of node.attributes) {
       if (attrNode.value.type !== 'MustacheStatement') {
@@ -72,6 +83,10 @@ function markArguments(node: AST.Statement, blockName: string): void {
       const placeholder = `__SHOWCASE_ARG_${blockName}_${fullPath}__`;
 
       attrNode.value = builders.mustache(placeholder);
+    }
+
+    for (const child of node.children) {
+      markArguments(child, blockName);
     }
   }
 }
