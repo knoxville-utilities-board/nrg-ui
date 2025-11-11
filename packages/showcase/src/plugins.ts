@@ -1,18 +1,15 @@
 import { Transformer } from 'content-tag-utils';
 import { builders, parse, print } from 'ember-template-recast';
-import { extname } from 'node:path';
 import { createFilter } from 'vite';
 
 import type { AST } from 'ember-template-recast';
 import type { Plugin } from 'vite';
 
+const GLIMMER_TEMPLATE_LANG = 'glimmer-template';
+
 export interface SnippetExtractorOptions {
   filter?: string | string[];
 }
-const LANGUAGE_MAP = {
-  '.gjs': 'glimmer-js',
-  '.gts': 'glimmer-ts',
-} as Record<string, string>;
 
 function escapeSource(source: string): string {
   return source
@@ -75,7 +72,7 @@ function markArguments(node: AST.Statement, blockName: string): void {
   }
 }
 
-function walkAST(node: AST.Statement, language: string): boolean {
+function walkAST(node: AST.Statement): boolean {
   if (node.type === 'ElementNode' && node.tag === 'Section.Subsection') {
     const exampleBlock = node.children.find(
       (child) => child.type === 'ElementNode' && child.tag === ':example',
@@ -98,7 +95,7 @@ function walkAST(node: AST.Statement, language: string): boolean {
       );
       const langAttr = builders.attr(
         '@sourceLanguage',
-        builders.text(language),
+        builders.text(GLIMMER_TEMPLATE_LANG),
       );
 
       node.attributes.push(sourceAttr, langAttr);
@@ -111,7 +108,7 @@ function walkAST(node: AST.Statement, language: string): boolean {
 
   if (node.type === 'ElementNode') {
     for (const child of node.children) {
-      didChange ||= walkAST(child, language);
+      didChange ||= walkAST(child);
     }
   }
 
@@ -133,9 +130,6 @@ export function extractCodeBlocks(
         return null;
       }
 
-      const extension = extname(id);
-      const language = LANGUAGE_MAP[extension] || 'glimmer-js';
-
       const t = new Transformer(code);
 
       await t.asyncMap((contents: string) => {
@@ -143,7 +137,7 @@ export function extractCodeBlocks(
 
         let didChange = false;
         for (const node of ast.body) {
-          didChange ||= walkAST(node, language);
+          didChange ||= walkAST(node);
         }
 
         if (didChange) {
