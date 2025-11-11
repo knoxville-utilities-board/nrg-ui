@@ -17,7 +17,10 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           <div class="mb-2">
           </div>
           <div class="d-grid col-8 col-md-4 mx-auto">
-            <LinkTo class="btn btn-primary fw-semibold" @route="components">
+            <LinkTo
+              class="btn btn-primary fw-semibold"
+              @route="core-components"
+            >
               Go
             </LinkTo>
           </div>

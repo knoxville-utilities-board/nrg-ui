@@ -41,7 +41,7 @@ export default class Application extends Component {
         <Menu.Item @route="stacked-pane">
           Stacked Pane
         </Menu.Item>
-        <Menu.Group @route="components.index">
+        <Menu.Group @route="core-components.index">
           <:badge>
             14
           </:badge>
@@ -49,51 +49,51 @@ export default class Application extends Component {
             Components
           </:header>
           <:items as |Item|>
-            <Item @route="components.accordion">
+            <Item @route="core-components.accordion">
               Accordion
             </Item>
-            <Item @route="components.button">
+            <Item @route="core-components.button">
               Button
             </Item>
-            <Item @route="components.card">
+            <Item @route="core-components.card">
               Card
             </Item>
-            <Item @route="components.context-menu">
+            <Item @route="core-components.context-menu">
               Context Menu
             </Item>
-            <Item @route="components.dropdown">
+            <Item @route="core-components.dropdown">
               Dropdown
             </Item>
-            <Item @route="components.footer">
+            <Item @route="core-components.footer">
               Footer
             </Item>
-            <Item @route="components.header">
+            <Item @route="core-components.header">
               Header
             </Item>
-            <Item @route="components.icon">
+            <Item @route="core-components.icon">
               Icon
             </Item>
-            <Item @route="components.loading-indicator">
+            <Item @route="core-components.loading-indicator">
               Loading Indicator
             </Item>
-            <Item @route="components.modal">
+            <Item @route="core-components.modal">
               Modal
             </Item>
-            <Item @route="components.pagination">
+            <Item @route="core-components.pagination">
               Pagination
             </Item>
-            <Item @route="components.popover">
+            <Item @route="core-components.popover">
               Popover
             </Item>
-            <Item @route="components.toaster">
+            <Item @route="core-components.toaster">
               Toaster
             </Item>
-            <Item @route="components.tooltip">
+            <Item @route="core-components.tooltip">
               Tooltip
             </Item>
           </:items>
         </Menu.Group>
-        <Menu.Group @route="components.form.index">
+        <Menu.Group @route="core-components.form.index">
           <:badge>
             11
           </:badge>
@@ -101,37 +101,37 @@ export default class Application extends Component {
             Forms
           </:header>
           <:items as |Item|>
-            <Item @route="components.form.checkbox">
+            <Item @route="core-components.form.checkbox">
               Checkbox
             </Item>
-            <Item @route="components.form.checkbox-group">
+            <Item @route="core-components.form.checkbox-group">
               Checkbox Group
             </Item>
-            <Item @route="components.form.datetime">
+            <Item @route="core-components.form.datetime">
               Datetime
             </Item>
-            <Item @route="components.form.file-upload">
+            <Item @route="core-components.form.file-upload">
               File Upload
             </Item>
-            <Item @route="components.form.multi-select">
+            <Item @route="core-components.form.multi-select">
               Multi Select
             </Item>
-            <Item @route="components.form.phone-input">
+            <Item @route="core-components.form.phone-input">
               Phone Input
             </Item>
-            <Item @route="components.form.radio-group">
+            <Item @route="core-components.form.radio-group">
               Radio Group
             </Item>
-            <Item @route="components.form.search">
+            <Item @route="core-components.form.search">
               Search
             </Item>
-            <Item @route="components.form.select">
+            <Item @route="core-components.form.select">
               Select
             </Item>
-            <Item @route="components.form.text-area">
+            <Item @route="core-components.form.text-area">
               Text Area
             </Item>
-            <Item @route="components.form.text-input">
+            <Item @route="core-components.form.text-input">
               Text Input
             </Item>
           </:items>
