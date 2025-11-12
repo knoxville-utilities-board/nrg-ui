@@ -163,7 +163,7 @@ export default class extends Component {
       </div>
       <div class="g-col-4">
         <h3>Selected</h3>
-        <div class="border rounded p-3">
+        <div class="border border-secondary rounded p-3">
           {{this.selectValue}}
         </div>
       </div>
