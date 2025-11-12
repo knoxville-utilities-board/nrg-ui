@@ -267,8 +267,9 @@ export default class Pagination extends Component<PaginationSignature> {
           data-test-page={{page.number}}
         >
           {{#if page.blank}}
+            {{! template-lint-disable no-whitespace-for-layout }}
             <span aria-hidden="true" class="page-link disabled">
-              &nbsp;
+              &nbsp;&nbsp;
             </span>
           {{else}}
             <span class="page-link">
