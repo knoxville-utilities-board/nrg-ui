@@ -58,7 +58,7 @@ function coerceValue(
       coerceValue(item, `${path}.${index}`, false),
     );
 
-    return `{{array ${args}}}`;
+    return `{{array ${args.join(' ')}}}`;
   }
 
   return path;
