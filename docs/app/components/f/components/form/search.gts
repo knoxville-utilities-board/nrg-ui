@@ -256,9 +256,9 @@ export default class SearchDemo extends Component {
       <div class="g-col-4">
         <h3>String Options</h3>
         <CodeBlock
-          class="border rounded p-3"
           @lang="json"
           @code={{this.stringOptionsSource}}
+          @showCopyButton={{false}}
         />
       </div>
       <div class="g-col-4">
@@ -271,7 +271,7 @@ export default class SearchDemo extends Component {
       </div>
       <div class="g-col-4">
         <h3>Selected</h3>
-        <div class="border rounded p-3">
+        <div class="border border-secondary rounded p-3">
           {{this.value}}
         </div>
       </div>
