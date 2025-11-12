@@ -347,20 +347,16 @@ export default class FormDemo extends Component {
         <div class="g-col-12">
           <h3>Model</h3>
           <CodeBlock
-            class="border rounded p-3"
             @lang="json"
             @code={{this.modelAsJson}}
+            @showCopyButton={{false}}
           />
         </div>
 
         <div class="g-col-12">
           {{#let (getCodeSnippet "form-demo-component.gts") as |snippet|}}
             <h3>Source</h3>
-            <CodeBlock
-              class="border rounded simple p-3"
-              @lang={{snippet.language}}
-              @code={{snippet.source}}
-            />
+            <CodeBlock @lang="glimmer-template" @code={{snippet.source}} />
           {{/let}}
         </div>
       </div>
