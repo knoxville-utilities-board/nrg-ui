@@ -23,6 +23,7 @@ function or(...args: (string | unknown)[]): string {
 export interface ArgumentSignature<T> {
   Element: HTMLTableRowElement;
   Args: {
+    alias?: string;
     defaultValue?: T | string;
     description?: string;
     displayType?: string;
@@ -62,7 +63,7 @@ export class BaseArgument<T> extends Component<BaseArgumentSignature<T>> {
   }
 
   get value(): T {
-    const { model, name, value } = this.args;
+    const { alias, model, name, value } = this.args;
 
     if (value !== undefined) {
       return value;
@@ -74,11 +75,11 @@ export class BaseArgument<T> extends Component<BaseArgumentSignature<T>> {
     );
     assert('Name is required for BaseArgument when not providing @value', name);
 
-    return get(model, name) as T;
+    return get(model, alias ?? name) as T;
   }
 
   set value(value: T) {
-    const { model, name } = this.args;
+    const { alias, model, name } = this.args;
 
     assert(
       'Model is required for BaseArgument when not providing @onInput',
@@ -89,7 +90,7 @@ export class BaseArgument<T> extends Component<BaseArgumentSignature<T>> {
       name,
     );
 
-    set(model, name, value);
+    set(model, alias ?? name, value);
 
     this.args.onInput?.(value);
   }
@@ -130,6 +131,7 @@ export class BaseArgument<T> extends Component<BaseArgumentSignature<T>> {
 
 export const BooleanArgument: TOC<ArgumentSignature<boolean>> = <template>
   <BaseArgument
+    @alias={{@alias}}
     @defaultValue={{@defaultValue}}
     @description={{@description}}
     @displayType={{@displayType}}
@@ -152,6 +154,7 @@ export const BooleanArgument: TOC<ArgumentSignature<boolean>> = <template>
 
 export const DateArgument: TOC<ArgumentSignature<Date>> = <template>
   <BaseArgument
+    @alias={{@alias}}
     @defaultValue={{@defaultValue}}
     @description={{@description}}
     @displayType={{@displayType}}
@@ -171,6 +174,7 @@ export const DateArgument: TOC<ArgumentSignature<Date>> = <template>
 
 export const NumberArgument: TOC<ArgumentSignature<number>> = <template>
   <BaseArgument
+    @alias={{@alias}}
     @defaultValue={{@defaultValue}}
     @description={{@description}}
     @displayType={{@displayType}}
@@ -188,6 +192,7 @@ export const NumberArgument: TOC<ArgumentSignature<number>> = <template>
 
 export const StringArgument: TOC<ArgumentSignature<string>> = <template>
   <BaseArgument
+    @alias={{@alias}}
     @defaultValue={{@defaultValue}}
     @description={{@description}}
     @displayType={{@displayType}}
