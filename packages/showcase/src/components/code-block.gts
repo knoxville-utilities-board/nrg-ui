@@ -35,22 +35,19 @@ function coerceValue(
   wrap: boolean = true,
 ): string {
   const type = typeof value;
-  const stringVal = String(value);
 
   if (value === undefined) {
     return `{{undefined}}`;
   }
 
   if (type === 'string') {
-    return `"${stringVal}"`;
+    return `"${value}"`;
   }
 
-  if (type === 'boolean' || type === 'number') {
-    if (wrap) {
-      return `{{${stringVal}}}`;
-    }
+  const stringVal = String(value);
 
-    return stringVal;
+  if (type === 'boolean' || type === 'number') {
+    return wrap ? `{{${stringVal}}}` : stringVal;
   }
 
   if (Array.isArray(value)) {
@@ -58,10 +55,10 @@ function coerceValue(
       coerceValue(item, `${path}.${index}`, false),
     );
 
-    return `{{array ${args}}}`;
+    return `{{array ${args.join(' ')}}}`;
   }
 
-  return path;
+  return wrap ? `{{${path}}}` : path;
 }
 
 function unescapeSource(source: string): string {
