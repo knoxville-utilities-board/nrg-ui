@@ -9,7 +9,17 @@ import { bundledLanguages } from 'shiki/langs';
 import { bundledThemes } from 'shiki/themes';
 
 import type { Element } from 'hast';
-import type { BundledTheme, CodeToHastOptions, HighlighterCore } from 'shiki';
+import type {
+  BundledLanguage,
+  BundledTheme,
+  CodeToHastOptions,
+  HighlighterCore,
+} from 'shiki';
+
+export type AllowedLanguage =
+  | BundledLanguage
+  | 'glimmer-template'
+  | 'plaintext';
 
 const lightThemes = getOwnConfig()?.themes?.light ?? ['github-light'];
 const darkThemes = getOwnConfig()?.themes?.dark ?? ['github-dark'];
@@ -94,7 +104,7 @@ export default class ShikiService extends Service {
 
   highlight(
     code: string,
-    lang: string,
+    lang: AllowedLanguage,
     options?: Partial<CodeToHastOptions>,
   ): HighlightedCode {
     const { highlighter, cssVariablePrefix } = this;

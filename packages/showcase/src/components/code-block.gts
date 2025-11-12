@@ -8,8 +8,9 @@ import { cached } from '@glimmer/tracking';
 import CopyButton from './copy-button.gts';
 
 import type ShikiService from '../services/shiki.ts';
+import type { AllowedLanguage } from '../services/shiki.ts';
 import type ThemeService from '@nrg-ui/core/services/theme';
-import type { BundledLanguage, CodeToHastOptions } from 'shiki';
+import type { CodeToHastOptions } from 'shiki';
 
 import '../assets/code-block.css';
 
@@ -20,7 +21,7 @@ export interface CodeBlockSignature {
   Args: {
     code: string;
     label?: string;
-    lang: BundledLanguage | 'plaintext';
+    lang: AllowedLanguage;
     showCopyButton?: boolean;
     model?: object;
     options?: Partial<CodeToHastOptions>;
