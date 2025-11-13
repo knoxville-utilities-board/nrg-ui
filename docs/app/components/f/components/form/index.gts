@@ -6,15 +6,17 @@ import { action, set } from '@ember/object';
 import { setOwner } from '@ember/owner';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { Button, bind } from '@nrg-ui/core';
-import Form, { type ValidatorsObject } from '@nrg-ui/core/components/form';
+import Button from '@nrg-ui/core/components/button';
+import Form from '@nrg-ui/core/components/form';
+import { bind } from '@nrg-ui/core/helpers/bind';
+import { codeSnippet } from '@nrg-ui/core/helpers/code-snippet';
 import { validator } from '@nrg-ui/core/validation';
 import CodeBlock from '@nrg-ui/showcase/components/code-block';
 import dayjs from 'dayjs';
-import getCodeSnippet from 'ember-code-snippet/helpers/get-code-snippet';
 import { tracked as autoTrack } from 'tracked-built-ins';
 
 import type Owner from '@ember/owner';
+import type { ValidatorsObject } from '@nrg-ui/core/components/form';
 
 const Validators = {
   select: validator('inclusion', { in: ['A', 'C'] }),
@@ -355,7 +357,7 @@ export default class FormDemo extends Component {
         </div>
 
         <div class="g-col-12">
-          {{#let (getCodeSnippet "form-demo-component.gts") as |snippet|}}
+          {{#let (codeSnippet "form-demo-component.gts") as |snippet|}}
             <h3>Source</h3>
             <CodeBlock @lang="glimmer-template" @code={{snippet.source}} />
           {{/let}}
