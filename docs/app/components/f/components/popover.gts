@@ -36,16 +36,16 @@ export default class PopoverDemo extends Component {
   arrow: boolean = true;
 
   @tracked
-  delay?: number;
+  delay = 0;
 
   @tracked
-  flip: boolean = false;
+  flip = false;
 
   @tracked
   offset?: number;
 
   @tracked
-  side?: Side;
+  side: Side = 'bottom';
 
   <template>
     <Section @name="Popover" as |Section|>
@@ -97,7 +97,7 @@ export default class PopoverDemo extends Component {
             />
             <Args.Number
               @name="delay"
-              @defaultValue="undefined"
+              @defaultValue={{0}}
               @description="Amount of delay before showing the popover (in milliseconds)"
             />
             <Args.Boolean

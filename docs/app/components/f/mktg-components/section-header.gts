@@ -21,13 +21,16 @@ export default class SectionHeaderDemo extends Component {
             @title={{model.title}}
           >
             <:subheader>
-              <p class="m-0">Here's some content to give context and summarize
-                this section.</p>
+              <p class="m-0">
+                Here's some content to give context and summarize this section.
+              </p>
               <div class="d-flex justify-content-center mb-4">
-                <Button type="button" class="mx-2 mt-2 btn btn-primary">Contact
-                  Us</Button>
-                <Button type="button" class="mx-2 mt-2 btn text-primary">Or call
-                  (865)111-2323</Button>
+                <Button type="button" class="mx-2 mt-2 btn btn-primary">
+                  Contact Us
+                </Button>
+                <Button type="button" class="mx-2 mt-2 btn btn-link">
+                  Or call (865) 111-2323
+                </Button>
               </div>
             </:subheader>
           </MktgSectionHeader>
