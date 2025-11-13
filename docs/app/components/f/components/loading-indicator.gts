@@ -6,20 +6,17 @@ import LoadingIndicator, {
 } from '@nrg-ui/core/components/loading-indicator';
 import Section from '@nrg-ui/showcase/components/section';
 
+const typeOptions = [typeBorder, typeGrow];
+
 export default class LoadingIndicatorDemo extends Component {
   @tracked
-  type?: typeof typeBorder | typeof typeGrow;
+  type = typeBorder;
 
   @tracked
-  showLabel?: boolean;
+  showLabel = false;
 
   @tracked
-  label?: string;
-
-  @tracked
-  size?: string;
-
-  typeOptions = [typeBorder, typeGrow];
+  label = 'Loading...';
 
   <template>
     <Section @name="Loading Indicator" as |Section|>
@@ -47,7 +44,7 @@ export default class LoadingIndicatorDemo extends Component {
               @name="type"
               @defaultValue="border"
               @description="The type of loading indicator to display. Can be either 'border', 'grow', or 'undefined'."
-              @options={{this.typeOptions}}
+              @options={{typeOptions}}
             />
           </Api.Arguments>
         </:api>

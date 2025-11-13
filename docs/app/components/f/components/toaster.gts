@@ -59,6 +59,7 @@ export default class ToasterDemo extends Component {
               @name="fixed"
               @defaultValue={{true}}
               @description="When true, the toaster will be fixed to the top-right of the screen."
+              @hideControl={{true}}
             />
           </Api.Arguments>
         </:api>
