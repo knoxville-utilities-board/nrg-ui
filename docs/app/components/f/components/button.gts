@@ -23,6 +23,9 @@ export default class ButtonDemo extends Component {
   @tracked
   iconPosition = 'left';
 
+  @tracked
+  type = 'button';
+
   <template>
     <Section @name="Button" as |Section|>
       <Section.Subsection @name="Basics" @model={{this}} @elementTag="button">

@@ -17,13 +17,13 @@ export default class ContextMenuDemo extends Component {
   declare toast: ToastService;
 
   @tracked
-  alignment?: Alignment;
+  alignment: Alignment = 'start';
 
   @tracked
-  disabled?: boolean;
+  disabled: boolean = false;
 
   @tracked
-  flip?: boolean;
+  flip: boolean = false;
 
   @tracked
   id = 'my-context-menu';

@@ -23,10 +23,10 @@ export default class DropdownDemo extends Component {
   closeOnSelect?: boolean = true;
 
   @tracked
-  disabled?: boolean;
+  disabled: boolean = false;
 
   @tracked
-  flip?: boolean;
+  flip: boolean = false;
 
   @tracked
   hasIcon?: boolean;
@@ -35,10 +35,7 @@ export default class DropdownDemo extends Component {
   icon?: string;
 
   @tracked
-  iconOnly?: boolean = true;
-
-  @tracked
-  isOpen?: boolean;
+  iconOnly = true;
 
   @tracked
   offset?: number;
@@ -117,7 +114,7 @@ export default class DropdownDemo extends Component {
             />
             <Args.Boolean
               @name="hasIcon"
-              @defaultValue="true"
+              @defaultValue={{true}}
               @description="Whether to show the dropdown icon"
             />
             <Args.String
@@ -195,7 +192,7 @@ export default class DropdownDemo extends Component {
             />
             <Args.Boolean
               @name="iconOnly"
-              @defaultValue={{true}}
+              @defaultValue={{false}}
               @description="Whether to show only the icon in the dropdown button"
             />
           </Api.Arguments>

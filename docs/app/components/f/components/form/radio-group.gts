@@ -34,7 +34,6 @@ export default class RadioGroupDemo extends Component {
       <Section.Subsection @name="Basic" @model={{this}} @elementTag="div">
         <:example as |model|>
           <RadioGroup
-            class={{model.class}}
             @name={{model.name}}
             @binding={{bind model "property"}}
             @basic={{model.basic}}

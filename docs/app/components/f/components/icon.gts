@@ -96,6 +96,7 @@ export default class IconDemo extends Component {
             />
             <Args.String
               @description="The color of the icon."
+              @defaultValue="reset"
               @name="color"
               @options={{colorOptions}}
               @required={{true}}
