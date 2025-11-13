@@ -1,11 +1,11 @@
 import { fn } from '@ember/helper';
 import { LinkTo } from '@ember/routing';
+import { getSnippet } from '@nrg-ui/code-snippets/helper';
 import Pagination from '@nrg-ui/core/components/pagination';
 import StackedPane, {
   Container as StackedPaneContainer,
 } from '@nrg-ui/core/components/stacked-pane';
 import CodeBlock from '@nrg-ui/showcase/components/code-block';
-import getCodeSnippet from 'ember-code-snippet/helpers/get-code-snippet';
 
 import type StackedPaneController from '#app/controllers/stacked-pane.ts';
 import type { TOC } from '@ember/component/template-only';
@@ -52,8 +52,8 @@ const StackedPaneTemplate: TOC<StackedPaneSignature> = <template>
   <div class="row g-0">
     <div class="col px-md-0 py-3">
       <div class="container mx-auto">
-        {{#let (getCodeSnippet "stacked-pane-component.gts") as |snippet|}}
-          <CodeBlock @lang="glimmer-template" @code={{snippet.source}} />
+        {{#let (getSnippet "stacked-pane-component") as |snippet|}}
+          <CodeBlock @lang="glimmer-template" @code={{snippet.code}} />
         {{/let}}
       </div>
     </div>
@@ -63,8 +63,8 @@ const StackedPaneTemplate: TOC<StackedPaneSignature> = <template>
     <div class="col px-md-0 py-3">
       <div class="container mx-auto">
         <h2>Stacked Pane with Pagination</h2>
-        {{! BEGIN-SNIPPET stacked-pane-pagination-component }}
 
+        {{! BEGIN-SNIPPET stacked-pane-pagination-component }}
         <StackedPaneContainer style="min-height: fit-content;">
           <StackedPane>
             <Pagination
@@ -106,14 +106,11 @@ const StackedPaneTemplate: TOC<StackedPaneSignature> = <template>
   <div class="row g-0">
     <div class="col px-md-0 py-3">
       <div class="container mx-auto">
-        {{#let (getCodeSnippet "stacked-pane-controller.ts") as |snippet|}}
-          <CodeBlock @lang={{snippet.language}} @code={{snippet.source}} />
+        {{#let (getSnippet "stacked-pane-controller") as |snippet|}}
+          <CodeBlock @lang="typescript" @code={{snippet.code}} />
         {{/let}}
-        {{#let
-          (getCodeSnippet "stacked-pane-pagination-component.gts")
-          as |snippet|
-        }}
-          <CodeBlock @lang="glimmer-template" @code={{snippet.source}} />
+        {{#let (getSnippet "stacked-pane-pagination-component") as |snippet|}}
+          <CodeBlock @lang="glimmer-template" @code={{snippet.code}} />
         {{/let}}
       </div>
     </div>
