@@ -104,10 +104,10 @@ describe('vite-plugin-code-snippets', () => {
 
   it('updates snippet map when source file changes', async () => {
     await standupServer(async (server, dir) => {
-      let [snippets] = (await server.ssrLoadModule(virtualModule))
-        .default as SnippetEntry[];
-      expect(snippets.name).toBe('demo');
-      expect(snippets.code).toContain(`console.log("A");`);
+      let { demo: snippet } = (await server.ssrLoadModule(virtualModule))
+        .default as Record<string, SnippetEntry>;
+      expect(snippet.name).toBe('demo');
+      expect(snippet.code).toContain(`console.log("A");`);
 
       await writeFile(
         join(dir, 'src/example.js'),
@@ -125,21 +125,21 @@ describe('vite-plugin-code-snippets', () => {
 
       await sleep(50);
 
-      [snippets] = (await server.ssrLoadModule(virtualModule))
-        .default as SnippetEntry[];
+      ({ 'new-demo': snippet } = (await server.ssrLoadModule(virtualModule))
+        .default as Record<string, SnippetEntry>);
 
-      expect(snippets.name).toBe('new-demo');
-      expect(snippets.code).toContain(`console.log("B");`);
-      expect(snippets.code).toContain(`console.log("C");`);
+      expect(snippet.name).toBe('new-demo');
+      expect(snippet.code).toContain(`console.log("B");`);
+      expect(snippet.code).toContain(`console.log("C");`);
     });
   }, 15_000);
 
   it('updates snippet map when multiple source files change', async () => {
     await standupServer(async (server, dir) => {
-      let [snippets] = (await server.ssrLoadModule(virtualModule))
-        .default as SnippetEntry[];
-      expect(snippets.name).toBe('demo');
-      expect(snippets.code).toContain(`console.log("A");`);
+      let { demo: snippet } = (await server.ssrLoadModule(virtualModule))
+        .default as Record<string, SnippetEntry>;
+      expect(snippet.name).toBe('demo');
+      expect(snippet.code).toContain(`console.log("A");`);
 
       await writeFile(
         join(dir, 'src/example.js'),
@@ -166,34 +166,34 @@ describe('vite-plugin-code-snippets', () => {
 
       await sleep(50);
 
-      [snippets] = (await server.ssrLoadModule(virtualModule))
-        .default as SnippetEntry[];
+      ({ 'new-demo': snippet } = (await server.ssrLoadModule(virtualModule))
+        .default as Record<string, SnippetEntry>);
 
-      expect(snippets.name).toBe('new-demo');
-      expect(snippets.code).toContain(`console.log("B");`);
-      expect(snippets.code).toContain(`console.log("C");`);
-      expect(snippets.code).toContain(`console.log("D");`);
+      expect(snippet.name).toBe('new-demo');
+      expect(snippet.code).toContain(`console.log("B");`);
+      expect(snippet.code).toContain(`console.log("C");`);
+      expect(snippet.code).toContain(`console.log("D");`);
 
-      expect(snippets.sources[0].location.file).toContain('example.js');
-      expect(snippets.sources[1].location.file).toContain('example.js');
-      expect(snippets.sources[2].location.file).toContain('example-2.js');
+      expect(snippet.sources[0].location.file).toContain('example.js');
+      expect(snippet.sources[1].location.file).toContain('example.js');
+      expect(snippet.sources[2].location.file).toContain('example-2.js');
     });
   }, 15_000);
 
   it(`excluded files don't get included in the snippets`, async () => {
     await standupServer(async (server, dir) => {
-      let [snippets] = (await server.ssrLoadModule(virtualModule))
-        .default as SnippetEntry[];
-      expect(snippets.code).toContain(`console.log("A");`);
+      let { demo: snippet } = (await server.ssrLoadModule(virtualModule))
+        .default as Record<string, SnippetEntry>;
+      expect(snippet.code).toContain(`console.log("A");`);
 
       await server.watcher.emit('change', join(dir, 'ignore-me/example.js'));
 
       await sleep(50);
 
-      [snippets] = (await server.ssrLoadModule(virtualModule))
-        .default as SnippetEntry[];
+      ({ demo: snippet } = (await server.ssrLoadModule(virtualModule))
+        .default as Record<string, SnippetEntry>);
 
-      expect(snippets.code).not.toContain(`console.log("B");`);
+      expect(snippet.code).not.toContain(`console.log("B");`);
     });
   });
 });

@@ -14,8 +14,8 @@ import type {
 import type { Plugin } from 'vite';
 
 const defaultOptions: DeepRequired<CodeSnippetsPluginOptions> = {
-  include: ['**/*.{js,ts}'],
-  exclude: [],
+  include: ['app/**/*', 'src/**/*'],
+  exclude: ['node_modules/**', 'dist/**'],
   rootDir: cwd(),
   markers: {
     start: /\bBEGIN-SNIPPET\s+(\S+)\b/,
@@ -56,7 +56,7 @@ export default function codeSnippetsPlugin(
 
     load(id: string) {
       if (id === resolvedVirtualModuleId) {
-        return `export default ${JSON.stringify(Array.from(snippets.values()), null, 2)};`;
+        return `export default ${JSON.stringify(Object.fromEntries(snippets.entries()), null, 2)};`;
       }
     },
 
