@@ -14,8 +14,8 @@ import type {
 import type { Plugin } from 'vite';
 
 const defaultOptions: DeepRequired<CodeSnippetsPluginOptions> = {
-  include: ['**/*.{js,ts}'],
-  exclude: [],
+  include: ['app/**/*', 'src/**/*'],
+  exclude: ['node_modules/**', 'dist/**'],
   rootDir: cwd(),
   markers: {
     start: /\bBEGIN-SNIPPET\s+(\S+)\b/,
