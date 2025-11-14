@@ -31,8 +31,8 @@ export interface DatetimeCalendarSignature {
   Element: HTMLDivElement;
   Args: {
     allowMinuteSelection?: boolean;
-    maxDate?: Date;
-    minDate?: Date;
+    maxDate?: Date | Dayjs;
+    minDate?: Date | Dayjs;
     showNowShortcut?: boolean;
     type?: 'datetime' | 'date' | 'time';
     value?: Date | Dayjs | null;
@@ -72,18 +72,22 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     }
   }
 
-  get currentValue() {
+  get currentValue(): Dayjs {
     if (this.args.value) {
-      return this.args.value;
+      return dayjs(this.args.value);
     }
 
+    const { minDate, maxDate } = this.args;
+    const min = dayjs(minDate),
+      max = dayjs(maxDate);
     const now = dayjs();
 
-    if (now.isBefore(this.args.minDate)) {
-      return this.args.minDate as Date;
-    } else if (now.isAfter(this.args.maxDate)) {
-      return this.args.maxDate as Date;
+    if (now.isBefore(min)) {
+      return min;
+    } else if (now.isAfter(max)) {
+      return max;
     }
+
     return now;
   }
 
@@ -93,17 +97,17 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
 
   get selectedDayIndex() {
     const value = this.currentValue;
-    return dayjs(value).date();
+    return value.date();
   }
 
   get selectedMonthIndex() {
     const value = this.currentValue;
-    return dayjs(value).month();
+    return value.month();
   }
 
   get selectedYearIndex() {
     const value = this.currentValue;
-    return dayjs(value).year();
+    return value.year();
   }
 
   get selectedHourIndex() {
@@ -112,7 +116,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     if (!hasTime) {
       return;
     }
-    return dayjs(value).hour();
+    return value.hour();
   }
 
   get selectedMinuteIndex() {
@@ -121,7 +125,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     if (!hasTime) {
       return;
     }
-    return dayjs(value).minute();
+    return value.minute();
   }
 
   get showNowShortcut() {
