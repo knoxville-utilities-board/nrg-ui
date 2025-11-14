@@ -217,6 +217,22 @@ export class Config {
         });
       }
 
+      if (this.hasDependency('eslint-plugin-unused-imports', 'js')) {
+        const importPlugin = (await load(
+          'eslint-plugin-unused-imports',
+        )) as ESLint.Plugin;
+
+        objects.push({
+          name: '@nrg-ui/standards/eslint/js/unused-imports',
+          plugins: {
+            'unused-imports': importPlugin,
+          },
+          rules: {
+            'unused-imports/no-unused-imports': 'error',
+          },
+        });
+      }
+
       return objects;
     },
 
