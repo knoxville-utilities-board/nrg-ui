@@ -12,7 +12,7 @@ import onClickOutside from '../../modifiers/on-click-outside.ts';
 
 import type { FieldOptions } from './field.gts';
 import type { IconType } from '../../';
-import type { OpUnitType } from 'dayjs';
+import type { Dayjs, OpUnitType } from 'dayjs';
 
 const defaultDateFormat = 'LL';
 const defaultTimeFormat = 'LT';
@@ -22,8 +22,8 @@ export interface DatetimeSignature {
   Args: {
     allowMinuteSelection?: boolean;
     dateFormat?: string;
-    maxDate?: Date;
-    minDate?: Date;
+    maxDate?: Date | Dayjs;
+    minDate?: Date | Dayjs;
     parseFormat?: string | string[];
     placeholder?: string;
     readonly?: boolean;
