@@ -12,7 +12,6 @@ Router.map(function () {
   this.route('marketing');
   this.route('promo');
   this.route('workflow-tray');
-  this.route('theme');
   this.route(
     'core-components',
     {
