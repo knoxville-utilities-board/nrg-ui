@@ -26,8 +26,13 @@ type Wrapper = {
   id: string;
   v: Validator<unknown, object, object, object>;
 };
-type ValidatorArray = ValidatorBuilder<unknown, object, object, object>[];
-type ValidatorsObject = Record<
+export type ValidatorArray = ValidatorBuilder<
+  unknown,
+  object,
+  object,
+  object
+>[];
+export type ValidatorsObject = Record<
   string,
   ValidatorBuilder<unknown, object, object, object> | ValidatorArray
 >;
