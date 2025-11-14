@@ -27,6 +27,7 @@ export interface ArgumentSignature<T> {
     defaultValue?: T | string;
     description?: string;
     displayType?: string;
+    hideControl?: boolean;
     model: object;
     name?: string;
     options?: readonly T[];
@@ -36,6 +37,9 @@ export interface ArgumentSignature<T> {
     value?: T;
 
     onInput?: (value: T) => void;
+  };
+  Blocks: {
+    default: [BaseArgument<T>, T];
   };
 }
 
@@ -145,10 +149,14 @@ export const BooleanArgument: TOC<ArgumentSignature<boolean>> = <template>
     ...attributes
     as |base|
   >
-    <Checkbox
-      @binding={{bind base "value"}}
-      @label={{if base.value "True" "False"}}
-    />
+    {{#unless @hideControl}}
+      <Checkbox
+        @binding={{bind base "value"}}
+        @label={{if base.value "True" "False"}}
+      />
+    {{/unless}}
+
+    {{yield base base.value}}
   </BaseArgument>
 </template>;
 
@@ -168,7 +176,11 @@ export const DateArgument: TOC<ArgumentSignature<Date>> = <template>
     ...attributes
     as |base|
   >
-    <Datetime @binding={{bind base "value"}} />
+    {{#unless @hideControl}}
+      <Datetime @binding={{bind base "value"}} />
+    {{/unless}}
+
+    {{yield base base.value}}
   </BaseArgument>
 </template>;
 
@@ -186,7 +198,11 @@ export const NumberArgument: TOC<ArgumentSignature<number>> = <template>
     @onInput={{@onInput}}
     as |base|
   >
-    <NumberInput @binding={{bind base "value"}} />
+    {{#unless @hideControl}}
+      <NumberInput @binding={{bind base "value"}} />
+    {{/unless}}
+
+    {{yield base base.value}}
   </BaseArgument>
 </template>;
 
@@ -205,7 +221,11 @@ export const StringArgument: TOC<ArgumentSignature<string>> = <template>
     @onInput={{@onInput}}
     as |base|
   >
-    <TextInput @binding={{bind base "value"}} />
+    {{#unless @hideControl}}
+      <TextInput @binding={{bind base "value"}} />
+    {{/unless}}
+
+    {{yield base base.value}}
   </BaseArgument>
 </template>;
 
