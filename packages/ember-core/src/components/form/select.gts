@@ -50,7 +50,7 @@ export interface SelectSignature<T> {
     loading?: boolean;
     noOptionsText?: string;
     noOptionsTextKey?: string;
-    options: readonly T[];
+    options?: readonly T[];
     scrollable?: boolean;
     serializationPath?: string | null;
     side?: Direction;

@@ -3,6 +3,8 @@ import { hash } from '@ember/helper';
 import MktgPromo from './promo.gts';
 import MktgSectionHeader from './section-header.gts';
 
+import type { MktgPromoSignature } from './promo.gts';
+import type { MktgSectionHeaderSignature } from './section-header.gts';
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike } from '@glint/template';
 
@@ -11,8 +13,8 @@ export interface MktgPromoContainerSignature {
   Blocks: {
     default: [
       {
-        SectionHeader: ComponentLike<typeof MktgSectionHeader>;
-        Promo: ComponentLike<typeof MktgPromo>;
+        SectionHeader: ComponentLike<MktgSectionHeaderSignature>;
+        Promo: ComponentLike<MktgPromoSignature>;
       },
     ];
   };

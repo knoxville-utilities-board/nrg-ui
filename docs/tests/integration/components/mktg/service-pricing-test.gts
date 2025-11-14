@@ -149,7 +149,7 @@ module('Integration | Component | mktg/service-pricing', function (hooks) {
           @icon="bi-emoji-smile"
           as |Addon|
         >
-          <Addon @label="Addon" @price="$100" @quantity="2" />
+          <Addon @label="Addon" @price="$100" @quantity={{2}} />
         </MktgServicePricing>
       </template>,
     );

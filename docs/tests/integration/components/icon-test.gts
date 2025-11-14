@@ -9,7 +9,9 @@ module('Integration | Component | icon', function (hooks) {
 
   test('icon renders without circular background', async function () {
     await render(
-      <template><Icon class="test" @type="icon" @color="primary" /></template>,
+      <template>
+        <Icon class="test" @type="bi-check" @color="primary" />
+      </template>,
     );
 
     assert.dom('.d-flex.test').exists('Icon renders passed attributes');
@@ -19,7 +21,7 @@ module('Integration | Component | icon', function (hooks) {
     );
     assert
       .dom('div div i')
-      .hasClass('icon', 'Type param renders icon correctly');
+      .hasClass('bi-check', 'Type param renders icon correctly');
     assert
       .dom('div div i')
       .hasClass('text-primary', 'Color param renders text color correctly');
@@ -28,7 +30,12 @@ module('Integration | Component | icon', function (hooks) {
   test('icon renders with circular background', async function () {
     await render(
       <template>
-        <Icon class="test" @type="icon" @color="warning" @circular={{true}} />
+        <Icon
+          class="test"
+          @type="bi-check"
+          @color="warning"
+          @circular={{true}}
+        />
       </template>,
     );
     assert
@@ -42,15 +49,15 @@ module('Integration | Component | icon', function (hooks) {
       .hasClass('bg-warning-subtle', 'Icon bubble has correct bg color passed');
   });
 
-  test('icon renders at a diffrent size background', async function () {
+  test('icon renders at a different size background', async function () {
     await render(
       <template>
-        <Icon class="test" @type="icon" @color="primary" @size={{3}} />
+        <Icon class="test" @type="bi-check" @color="primary" @size="3" />
       </template>,
     );
 
     assert
       .dom('.test div')
-      .hasClass('fs-3', 'Has a fontsize class based on the the size argument');
+      .hasClass('fs-3', 'Has a font size class based on the the size argument');
   });
 });

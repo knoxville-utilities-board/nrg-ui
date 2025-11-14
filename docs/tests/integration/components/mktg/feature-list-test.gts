@@ -11,7 +11,7 @@ module('Integration | Component | mktg/feature-list', function (hooks) {
     assert.expect(4);
     await render(
       <template>
-        <MktgFeatureList @columns="2">
+        <MktgFeatureList @columns={{2}}>
           <:label>
             <p class="mt-2">Includes:</p>
           </:label>

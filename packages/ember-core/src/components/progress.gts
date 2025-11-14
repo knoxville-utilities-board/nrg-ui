@@ -10,7 +10,7 @@ export interface SegmentSignature {
     animated?: boolean;
     hideLabel?: boolean;
     label?: string;
-    multiple: boolean;
+    multiple?: boolean;
     progress?: number;
     striped?: boolean;
     title?: string;
@@ -23,12 +23,18 @@ export interface ProgressSignature {
     animated?: boolean;
     hideLabel?: boolean;
     label?: string;
-    progress: number;
     showLabel?: boolean;
-    stacked?: boolean;
     striped?: boolean;
     title?: string;
-  };
+  } & (
+    | {
+        stacked: true;
+      }
+    | {
+        stacked?: false;
+        progress: number;
+      }
+  );
   Blocks: {
     default?: [ComponentLike<SegmentSignature>];
   };

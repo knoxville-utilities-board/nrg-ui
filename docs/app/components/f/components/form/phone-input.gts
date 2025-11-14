@@ -4,8 +4,8 @@ import { tracked } from '@glimmer/tracking';
 import { PhoneInput, bind } from '@nrg-ui/core';
 import Section from '@nrg-ui/showcase/components/section';
 
-function print(...msg: string[]) {
-  console.log(msg.join(' '));
+function print(...msg: unknown[]) {
+  console.log(...msg);
 }
 
 export default class PhoneInputDemo extends Component {

@@ -13,11 +13,12 @@ import type Owner from '@ember/owner';
 export interface ModalSignature {
   Element: HTMLDialogElement;
   Args: {
-    isOpen: boolean;
+    isOpen?: boolean;
     dismissible?: boolean;
     subtle?: boolean;
     position?: 'center' | 'left' | 'right';
-    onDismiss: () => void;
+
+    onDismiss?: () => void;
   };
   Blocks: {
     header?: [];

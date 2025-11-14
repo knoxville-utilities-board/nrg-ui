@@ -58,7 +58,7 @@ module('Integration | Component | form/text-input', function (hooks) {
   test('it uses a custom format', async function (assert) {
     const model = new Model();
 
-    const format = (value: string) => value.toUpperCase();
+    const format = (value: string | null) => value?.toUpperCase() ?? '';
 
     await render(
       <template>
