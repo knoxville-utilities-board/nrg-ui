@@ -91,44 +91,50 @@ function markArguments(
   }
 }
 
-function walkAST(node: AST.Statement): boolean {
-  if (node.type === 'ElementNode' && node.tag === 'Section.Subsection') {
-    const exampleBlock = node.children.find(
-      (child) => child.type === 'ElementNode' && child.tag === ':example',
-    ) as AST.ElementNode | undefined;
+function walkAST(node: AST.Node): boolean {
+  let didChange = false;
 
-    if (exampleBlock) {
-      const blockName = exampleBlock.blockParams[0];
-      const clonedChildren = exampleBlock.children.map(cloneNode);
-
-      if (blockName) {
-        for (const child of clonedChildren) {
-          markArguments(child, blockName);
-        }
-      }
-
-      const rawSource = print(builders.program(clonedChildren));
-      const codeContent = extractCode(rawSource);
-      const sourceAttr = builders.attr(
-        '@sourceCode',
-        builders.text(codeContent),
-      );
-      const langAttr = builders.attr(
-        '@sourceLanguage',
-        builders.text(GLIMMER_TEMPLATE_LANG),
-      );
-
-      node.attributes.push(sourceAttr, langAttr);
-
-      return true;
+  if (node.type === 'Program') {
+    for (const child of node.body) {
+      didChange ||= walkAST(child);
     }
   }
 
-  let didChange = false;
-
   if (node.type === 'ElementNode') {
+    if (node.tag === 'Section.Subsection') {
+      const exampleBlock = node.children.find(
+        (child) => child.type === 'ElementNode' && child.tag === ':example',
+      ) as AST.ElementNode | undefined;
+
+      if (exampleBlock) {
+        const blockName = exampleBlock.blockParams[0];
+        const clonedChildren = exampleBlock.children.map(cloneNode);
+
+        if (blockName) {
+          for (const child of clonedChildren) {
+            markArguments(child, blockName);
+          }
+        }
+
+        const rawSource = print(builders.program(clonedChildren));
+        const codeContent = extractCode(rawSource);
+        const sourceAttr = builders.attr(
+          '@sourceCode',
+          builders.text(codeContent),
+        );
+        const langAttr = builders.attr(
+          '@sourceLanguage',
+          builders.text(GLIMMER_TEMPLATE_LANG),
+        );
+
+        node.attributes.push(sourceAttr, langAttr);
+
+        didChange = true;
+      }
+    }
+
     for (const child of node.children) {
-      didChange ||= walkAST(child);
+      didChange = walkAST(child) || didChange;
     }
   }
 
