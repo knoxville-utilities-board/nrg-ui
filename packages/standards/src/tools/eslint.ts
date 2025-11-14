@@ -260,6 +260,22 @@ export class Config {
         defaultParser = (await load('@babel/eslint-parser')) as Linter.Parser;
       }
 
+      if (this.hasDependency('eslint-plugin-unused-imports', 'js')) {
+        const importPlugin = (await load(
+          'eslint-plugin-unused-imports',
+        )) as ESLint.Plugin;
+
+        objects.push({
+          name: '@nrg-ui/standards/eslint/js/unused-imports',
+          plugins: {
+            'unused-imports': importPlugin,
+          },
+          rules: {
+            'unused-imports/no-unused-imports': 'error',
+          },
+        });
+      }
+
       if (this.hasDependency('eslint-plugin-import', 'js')) {
         const importPlugin = (await load(
           'eslint-plugin-import',
