@@ -127,7 +127,7 @@ export default class Pagination extends Component<PaginationSignature> {
   get pageItems(): Page[] {
     const pageList = new TrackedArray<Page>();
     const totalPages = this.totalPages;
-    const displayedPages = (!this.args.compact && totalPages >= 5) ? 5 : 3;
+    const displayedPages = !this.args.compact && totalPages >= 5 ? 5 : 3;
     const pageRange = (displayedPages - 1) / 2;
     const first = this.currentPage - pageRange;
     const last = this.currentPage + pageRange;
@@ -243,7 +243,10 @@ export default class Pagination extends Component<PaginationSignature> {
         </li>
       {{/if}}
       <li
-        class={{classes "page-item page-previous" (unless this.canStepBackward "disabled")}}
+        class={{classes
+          "page-item page-previous"
+          (unless this.canStepBackward "disabled")
+        }}
         role={{if this.canStepBackward "button"}}
         {{! template-lint-disable }}
         {{! When the user can move to the previous page, the appropriate }}
@@ -267,8 +270,9 @@ export default class Pagination extends Component<PaginationSignature> {
           data-test-page={{page.number}}
         >
           {{#if page.blank}}
+            {{! template-lint-disable no-whitespace-for-layout }}
             <span aria-hidden="true" class="page-link disabled">
-              &nbsp;
+              &nbsp;&nbsp;
             </span>
           {{else}}
             <span class="page-link">
@@ -278,7 +282,10 @@ export default class Pagination extends Component<PaginationSignature> {
         </li>
       {{/each}}
       <li
-        class={{classes "page-item page-next" (unless this.canStepForward "disabled")}}
+        class={{classes
+          "page-item page-next"
+          (unless this.canStepForward "disabled")
+        }}
         role={{if this.canStepForward "button"}}
         {{! template-lint-disable }}
         {{! When the user can move to the next page, the appropriate }}
