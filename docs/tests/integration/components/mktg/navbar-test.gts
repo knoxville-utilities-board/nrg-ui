@@ -1,5 +1,7 @@
 import { click, render } from '@ember/test-helpers';
-import { MktgNavbar, NavItem } from '@nrg-ui/core';
+import Button from '@nrg-ui/core/components/button';
+import MktgNavbar from '@nrg-ui/core/components/mktg/navbar';
+import NavItem from '@nrg-ui/core/components/nav-item';
 import { assert, module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../../helpers';
@@ -16,7 +18,7 @@ module('Integration | Component | mktg/navbar', function (hooks) {
               <img src="https://imageplaceholder.net/50" alt="Placeholder" />
             </a>
           </:brand>
-          <:actions as |Button|>
+          <:actions>
             <Button
               @text="Mobile Button"
               class="btn-secondary ms-auto d-lg-none"
@@ -43,7 +45,7 @@ module('Integration | Component | mktg/navbar', function (hooks) {
               <img src="https://imageplaceholder.net/50" alt="Placeholder" />
             </a>
           </:brand>
-          <:actions as |Button|>
+          <:actions>
             <Button
               @text="Mobile Button"
               class="btn-secondary ms-auto d-lg-none"

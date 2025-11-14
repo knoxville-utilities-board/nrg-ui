@@ -19,10 +19,10 @@ export interface MktgAddonSignature {
 
 export interface MktgServicePricingSignature {
   Args: {
-    icon: IconType;
-    label: string;
+    icon?: IconType;
+    label?: string;
     product?: string;
-    description: string;
+    description?: string;
     active?: boolean;
     selected?: boolean;
   };
@@ -79,7 +79,9 @@ export default class MktgServicePricing extends Component<MktgServicePricingSign
     >
       <div class="row align-items-center">
         <div class="col-12">
-          <Icon @type={{@icon}} class="my-2" />
+          {{#if @icon}}
+            <Icon @type={{@icon}} class="my-2" />
+          {{/if}}
         </div>
         <div class="col fs-5 fw-bold">
           {{this.label}}

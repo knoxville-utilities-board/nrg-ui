@@ -102,7 +102,7 @@ module('Integration | Component | form/search', function (hooks) {
 
     await render(
       <template>
-        <Search @binding={{bind model "value"}} @query={{actionHandler}} />
+        <Search @binding={{bind model "value"}} @onQuery={{actionHandler}} />
       </template>,
     );
 

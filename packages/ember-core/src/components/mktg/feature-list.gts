@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 
 import type { TOC } from '@ember/component/template-only';
-import type { ComponentLike } from '@glint/template';
+import type { ComponentLike, WithBoundArgs } from '@glint/template';
 
 const columnMap = {
   1: 'g-col-lg-12',
@@ -14,10 +14,11 @@ const columnMap = {
 
 export interface MktgFeatureSignature {
   Args: {
+    class: string;
+
     icon?: string;
     text?: string;
     meta?: string;
-    class: string;
   };
   Element: HTMLParagraphElement;
 }
@@ -25,7 +26,7 @@ export interface MktgFeatureSignature {
 export interface MktgFeatureListSignature {
   Element: HTMLDivElement;
   Blocks: {
-    features: [ComponentLike<MktgFeatureSignature>];
+    features: [WithBoundArgs<ComponentLike<MktgFeatureSignature>, 'class'>];
     label: [];
     default?: [];
   };

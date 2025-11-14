@@ -52,7 +52,7 @@ export interface SearchSignature<T> {
 
     onShow?: () => unknown | Promise<unknown>;
     onHide?: () => unknown | Promise<unknown>;
-    onQuery: (searchString: string) => Promise<T[]>;
+    onQuery?: (searchString: string) => Promise<T[]> | T[];
   };
   Blocks: {
     option: [T];
@@ -246,7 +246,7 @@ export default class Search<T> extends BoundValue<
     }
 
     await timeout(this.searchTimeout);
-    this.options = await this.args.onQuery(searchString);
+    this.options = (await this.args.onQuery?.(searchString)) ?? [];
     this.visibility.show(this.inputElement);
   });
 
