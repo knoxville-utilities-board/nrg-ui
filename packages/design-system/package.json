@@ -41,7 +41,7 @@
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
     "concurrently": "^9.2.1",
-    "sass": "^1.93.3"
+    "sass": "^1.94.0"
   },
   "dependencies": {
     "prettier": "^3.6.2"
