@@ -547,7 +547,7 @@ importers:
         specifier: workspace:*
         version: link:../ember-core
       '@nrg-ui/standards':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../standards
       '@rollup/plugin-babel':
         specifier: ^6.0.4
