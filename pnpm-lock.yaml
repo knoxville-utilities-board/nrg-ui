@@ -410,9 +410,6 @@ importers:
       '@glint/template':
         specifier: ^1.7.2
         version: 1.7.2
-      '@nrg-ui/code-snippets':
-        specifier: workspace:*
-        version: link:../code-snippets
       '@nrg-ui/css':
         specifier: workspace:^0
         version: link:../design-system
