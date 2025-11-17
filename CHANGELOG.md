@@ -2,6 +2,25 @@
 
 ## Release (2025-11-17)
 
+* @nrg-ui/code-snippets 0.3.1 (patch)
+* @nrg-ui/core 0.50.1 (patch)
+* @nrg-ui/showcase 0.3.0 (major)
+
+#### :bug: Bug Fix
+* `@nrg-ui/code-snippets`, `@nrg-ui/core`
+  * [#731](https://github.com/knoxville-utilities-board/nrg-ui/pull/731) refactor: Move snippet helper to @nrg-ui/code-snippets ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `@nrg-ui/showcase`
+  * [#734](https://github.com/knoxville-utilities-board/nrg-ui/pull/734) chore: Loosen dependency on @nrg-ui/core ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`
+  * [#733](https://github.com/knoxville-utilities-board/nrg-ui/pull/733) chore: Remove peer dependency on @nrg-ui/code-snippets ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
+## Release (2025-11-17)
+
 * @nrg-ui/standards 0.6.1 (patch)
 
 #### :bug: Bug Fix

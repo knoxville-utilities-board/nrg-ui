@@ -4,21 +4,9 @@
       "oldVersion": "0.4.0"
     },
     "@nrg-ui/code-snippets": {
-      "oldVersion": "0.3.0"
-    },
-    "@nrg-ui/css": {
-      "oldVersion": "0.27.0"
-    },
-    "@nrg-ui/core": {
-      "oldVersion": "0.50.0"
-    },
-    "@nrg-ui/showcase": {
-      "oldVersion": "0.2.0"
-    },
-    "@nrg-ui/standards": {
       "impact": "patch",
-      "oldVersion": "0.6.0",
-      "newVersion": "0.6.1",
+      "oldVersion": "0.3.0",
+      "newVersion": "0.3.1",
       "tagName": "latest",
       "constraints": [
         {
@@ -26,11 +14,51 @@
           "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
-      "pkgJSONPath": "./packages/standards/package.json"
+      "pkgJSONPath": "./packages/code-snippets/package.json"
+    },
+    "@nrg-ui/css": {
+      "oldVersion": "0.27.0"
+    },
+    "@nrg-ui/core": {
+      "impact": "patch",
+      "oldVersion": "0.50.0",
+      "newVersion": "0.50.1",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./packages/ember-core/package.json"
+    },
+    "@nrg-ui/showcase": {
+      "impact": "major",
+      "oldVersion": "0.2.0",
+      "newVersion": "0.3.0",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "major",
+          "reason": "Has peer dependency `workspace:*` on @nrg-ui/core"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./packages/showcase/package.json"
+    },
+    "@nrg-ui/standards": {
+      "oldVersion": "0.6.1"
     },
     "@nrg-ui/theme-generator": {
       "oldVersion": "0.3.4"
     }
   },
-  "description": "## Release (2025-11-17)\n\n* @nrg-ui/standards 0.6.1 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/standards`\n  * [#729](https://github.com/knoxville-utilities-board/nrg-ui/pull/729) fix: Add globals to different rule sets ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-11-17)\n\n* @nrg-ui/code-snippets 0.3.1 (patch)\n* @nrg-ui/core 0.50.1 (patch)\n* @nrg-ui/showcase 0.3.0 (major)\n\n#### :bug: Bug Fix\n* `@nrg-ui/code-snippets`, `@nrg-ui/core`\n  * [#731](https://github.com/knoxville-utilities-board/nrg-ui/pull/731) refactor: Move snippet helper to @nrg-ui/code-snippets ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/showcase`\n  * [#734](https://github.com/knoxville-utilities-board/nrg-ui/pull/734) chore: Loosen dependency on @nrg-ui/core ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/core`\n  * [#733](https://github.com/knoxville-utilities-board/nrg-ui/pull/733) chore: Remove peer dependency on @nrg-ui/code-snippets ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
