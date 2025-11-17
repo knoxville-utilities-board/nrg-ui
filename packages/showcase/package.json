@@ -82,7 +82,7 @@
     "@glint/ember-tsc": "^1.0.7",
     "@glint/template": "^1.7.2",
     "@nrg-ui/core": "workspace:*",
-    "@nrg-ui/standards": "workspace:*",
+    "@nrg-ui/standards": "workspace:^",
     "@rollup/plugin-babel": "^6.0.4",
     "@tsconfig/ember": "^3.0.12",
     "@types/hast": "^3.0.4",
