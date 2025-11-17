@@ -1,4 +1,5 @@
 import { existsSync, readFileSync } from 'fs';
+import allGlobals from 'globals';
 import { join } from 'path';
 import { cwd } from 'process';
 
@@ -14,6 +15,10 @@ export const defaultJsIgnores = [
   'assets/',
 ];
 export const defaultTsIgnores = defaultJsIgnores.concat(['declarations/']);
+
+function flatten(o: object): object {
+  return Object.values(o).reduce((acc, cur) => ({ ...acc, ...cur }), {});
+}
 
 const esmParserOptions: Linter.ParserOptions = {
   ecmaFeatures: { modules: true },
@@ -109,7 +114,9 @@ export class Config {
       ];
     },
 
-    base: async (): Promise<Linter.Config[]> => {
+    base: async (
+      globals: (keyof typeof allGlobals)[] = ['browser'],
+    ): Promise<Linter.Config[]> => {
       const objects: Linter.Config[] = [];
 
       if (this.hasDependency('babel-eslint')) {
@@ -124,6 +131,9 @@ export class Config {
 
       objects.push({
         name: '@nrg-ui/standards/eslint/js/recommended',
+        languageOptions: {
+          globals: flatten(globals.map((g) => allGlobals[g])),
+        },
         rules: {
           ...recommendedConfigs.recommended.rules,
           'no-duplicate-imports': [
@@ -234,7 +244,10 @@ export class Config {
       return objects;
     },
 
-    js: async (rules?: Linter.RulesRecord): Promise<Linter.Config[]> => {
+    js: async (
+      globals: (keyof typeof allGlobals)[] = ['browser'],
+      rules?: Linter.RulesRecord,
+    ): Promise<Linter.Config[]> => {
       const objects: Linter.Config[] = [];
       const fileTypes = ['js'];
       let root = '';
@@ -269,6 +282,7 @@ export class Config {
           name: '@nrg-ui/standards/eslint/js/import',
           files,
           languageOptions: {
+            globals: flatten(globals.map((g) => allGlobals[g])),
             parser: defaultParser,
           },
           plugins: {
@@ -290,6 +304,9 @@ export class Config {
       if (rules) {
         objects.push({
           name: '@nrg-ui/standards/eslint/js/custom',
+          languageOptions: {
+            globals: flatten(globals.map((g) => allGlobals[g])),
+          },
           files,
           rules: {
             ...rules,
@@ -300,7 +317,10 @@ export class Config {
       return objects;
     },
 
-    ts: async (rules?: Linter.RulesRecord): Promise<Linter.Config[]> => {
+    ts: async (
+      globals: (keyof typeof allGlobals)[] = ['browser'],
+      rules?: Linter.RulesRecord,
+    ): Promise<Linter.Config[]> => {
       const objects: Linter.Config[] = [];
       const fileTypes = ['ts'];
 
@@ -325,6 +345,7 @@ export class Config {
           name: '@nrg-ui/standards/eslint/ts/custom',
           files,
           languageOptions: {
+            globals: flatten(globals.map((g) => allGlobals[g])),
             parser: tseslint.parser,
             parserOptions: {
               tsconfigRootDir: cwd(),
@@ -477,6 +498,12 @@ export class Config {
       objects.push({
         ...defaultConfig,
         name: '@nrg-ui/standards/eslint/scripts/base',
+        languageOptions: {
+          globals: {
+            ...(defaultConfig.languageOptions?.globals ?? {}),
+            ...allGlobals.node,
+          },
+        },
         files: globs,
         rules: {
           ...rules,
@@ -486,6 +513,11 @@ export class Config {
       if (rules) {
         objects.push({
           name: '@nrg-ui/standards/eslint/scripts/custom',
+          languageOptions: {
+            globals: {
+              ...allGlobals.node,
+            },
+          },
           files: globs,
           rules: {
             ...rules,
