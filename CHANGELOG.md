@@ -1,5 +1,66 @@
 # Changelog
 
+## Release (2025-11-17)
+
+* @nrg-ui/version 0.4.0 (minor)
+* @nrg-ui/code-snippets 0.3.0 (minor)
+* @nrg-ui/core 0.50.0 (major)
+* @nrg-ui/showcase 0.2.0 (major)
+* @nrg-ui/standards 0.6.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/showcase`
+  * [#719](https://github.com/knoxville-utilities-board/nrg-ui/pull/719) feat(code-block): Allow `glimmer-template` as language ([@TSenter](https://github.com/TSenter))
+  * [#720](https://github.com/knoxville-utilities-board/nrg-ui/pull/720) feat(arguments): Hide controls and provide yield ([@TSenter](https://github.com/TSenter))
+  * [#721](https://github.com/knoxville-utilities-board/nrg-ui/pull/721) feat(arguments): Add `alias` for values ([@TSenter](https://github.com/TSenter))
+  * [#712](https://github.com/knoxville-utilities-board/nrg-ui/pull/712) feat: Add special language for Glimmer templates ([@TSenter](https://github.com/TSenter))
+  * [#708](https://github.com/knoxville-utilities-board/nrg-ui/pull/708) feat(arguments): Support nested values ([@TSenter](https://github.com/TSenter))
+  * [#707](https://github.com/knoxville-utilities-board/nrg-ui/pull/707) feat(arguments): Always call onInput after update ([@TSenter](https://github.com/TSenter))
+  * [#704](https://github.com/knoxville-utilities-board/nrg-ui/pull/704) feat(api-link): Allow custom links and types ([@TSenter](https://github.com/TSenter))
+  * [#699](https://github.com/knoxville-utilities-board/nrg-ui/pull/699) feat: Add spacing under subsection ([@TSenter](https://github.com/TSenter))
+  * [#697](https://github.com/knoxville-utilities-board/nrg-ui/pull/697) feat(mdn-link): Extract base type from arrays ([@TSenter](https://github.com/TSenter))
+  * [#696](https://github.com/knoxville-utilities-board/nrg-ui/pull/696) feat(arguments): Render any default value if provided ([@TSenter](https://github.com/TSenter))
+  * [#694](https://github.com/knoxville-utilities-board/nrg-ui/pull/694) feat(mdn-link): Use appropriate TypeScript syntax for types ([@TSenter](https://github.com/TSenter))
+  * [#693](https://github.com/knoxville-utilities-board/nrg-ui/pull/693) feat(actions): Don't render arguments if empty ([@TSenter](https://github.com/TSenter))
+  * [#692](https://github.com/knoxville-utilities-board/nrg-ui/pull/692) feat(stringify): Wrap string values in quotes ([@TSenter](https://github.com/TSenter))
+  * [#691](https://github.com/knoxville-utilities-board/nrg-ui/pull/691) feat: Dynamically replace arguments in example code block ([@TSenter](https://github.com/TSenter))
+  * [#688](https://github.com/knoxville-utilities-board/nrg-ui/pull/688) feat: Autogenerate links to MDN docs ([@TSenter](https://github.com/TSenter))
+  * [#689](https://github.com/knoxville-utilities-board/nrg-ui/pull/689) feat: Add copy button to code blocks ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`
+  * [#724](https://github.com/knoxville-utilities-board/nrg-ui/pull/724) feat(datetime): Allow dayjs objects for min/max date ([@TSenter](https://github.com/TSenter))
+  * [#718](https://github.com/knoxville-utilities-board/nrg-ui/pull/718) feat(pagination): Add width to empty page items ([@TSenter](https://github.com/TSenter))
+  * [#705](https://github.com/knoxville-utilities-board/nrg-ui/pull/705) feat(icon): Export additional types ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/code-snippets`
+  * [#710](https://github.com/knoxville-utilities-board/nrg-ui/pull/710) feat(types): Convert virtual module to real module ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`, `@nrg-ui/showcase`
+  * [#706](https://github.com/knoxville-utilities-board/nrg-ui/pull/706) feat(select/multi-select): Mark options as readonly ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/version`, `@nrg-ui/core`, `@nrg-ui/showcase`, `@nrg-ui/standards`
+  * [#703](https://github.com/knoxville-utilities-board/nrg-ui/pull/703) feat: Add recommended ESLint config ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#725](https://github.com/knoxville-utilities-board/nrg-ui/pull/725) fix(types): Update field and export extra types ([@TSenter](https://github.com/TSenter))
+  * [#700](https://github.com/knoxville-utilities-board/nrg-ui/pull/700) fix(checkbox-group): Update component signature ([@TSenter](https://github.com/TSenter))
+  * [#698](https://github.com/knoxville-utilities-board/nrg-ui/pull/698) fix(radio-group): Don't require pre-bound @name ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/code-snippets`
+  * [#723](https://github.com/knoxville-utilities-board/nrg-ui/pull/723) fix(plugin): Correct default values and virtual module format ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/showcase`
+  * [#717](https://github.com/knoxville-utilities-board/nrg-ui/pull/717) fix(code-block): Print arrays and paths correctly ([@TSenter](https://github.com/TSenter))
+  * [#715](https://github.com/knoxville-utilities-board/nrg-ui/pull/715) fix(code-block): Allow undefined argument values ([@TSenter](https://github.com/TSenter))
+  * [#714](https://github.com/knoxville-utilities-board/nrg-ui/pull/714) fix(plugin): Clone and walk entire tree for dynamic args ([@TSenter](https://github.com/TSenter))
+  * [#713](https://github.com/knoxville-utilities-board/nrg-ui/pull/713) fix(code-block): Improve dynamic argument pattern detection ([@TSenter](https://github.com/TSenter))
+  * [#702](https://github.com/knoxville-utilities-board/nrg-ui/pull/702) fix(arguments): Show only defined values for default args ([@TSenter](https://github.com/TSenter))
+
+#### :memo: Documentation
+* [#709](https://github.com/knoxville-utilities-board/nrg-ui/pull/709) refactor: Replace ember-freestyle with @nrg-ui/showcase ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `@nrg-ui/core`, `@nrg-ui/showcase`
+  * [#728](https://github.com/knoxville-utilities-board/nrg-ui/pull/728) chore: Remove @glimmer/tracking package ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-11-06)
 
 * @nrg-ui/code-snippets 0.2.1 (patch)
