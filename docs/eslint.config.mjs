@@ -5,7 +5,7 @@ export default await merge(
   eslint.rules.base(),
   eslint.rules.ember(),
   eslint.rules.js(),
-  eslint.rules.ts({
+  eslint.rules.ts(['browser'], {
     '@typescript-eslint/ban-ts-comment': [
       'error',
       {
