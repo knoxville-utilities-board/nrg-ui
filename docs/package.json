@@ -44,7 +44,6 @@
     "@embroider/webpack": "^4.1.1",
     "@floating-ui/dom": "^1.7.4",
     "@glimmer/component": "^2.0.0",
-    "@glimmer/tracking": "^1.1.2",
     "@glint/ember-tsc": "^1.0.7",
     "@glint/template": "^1.7.2",
     "@nrg-ui/core": "workspace:*",
