@@ -85,7 +85,7 @@ export default class PaginationDemo extends Component {
             @meta={{model.meta}}
             @pageSizes={{model.pageSizes}}
             @showDetailedMeta={{model.showDetailedMeta}}
-            @onChangePage={{fn model.update "start"}}
+            @onChangePage={{model.changePage}}
             @onChangePageSize={{model.changePageSize}}
           />
         </:example>
@@ -130,7 +130,7 @@ export default class PaginationDemo extends Component {
             @enablePageJump={{model.enablePageJump}}
             @pageSizes={{model.pageSizes}}
             @showDetailedMeta={{model.showDetailedMeta}}
-            @onChangePage={{fn model.update "start"}}
+            @onChangePage={{model.changePage}}
             @onChangePageSize={{model.changePageSize}}
           />
         </:example>
