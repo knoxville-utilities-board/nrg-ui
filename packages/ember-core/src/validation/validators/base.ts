@@ -5,7 +5,7 @@ import ObjectProxy from '@ember/object/proxy';
 import { getOwner } from '@ember/owner';
 import { cached } from '@glimmer/tracking';
 
-import type { Binding } from '../../';
+import type { Binding } from '../../index.ts';
 import type {
   BaseOptions,
   Computable,

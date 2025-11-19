@@ -15,7 +15,11 @@ import BoundValue from './bound-value.ts';
 import onInsert from '../../modifiers/on-insert.ts';
 import { collapseWhitespace } from '../../utils/string.ts';
 
-import type { BoundValueSignature, DropdownSignature, Optional } from '../../';
+import type {
+  BoundValueSignature,
+  DropdownSignature,
+  Optional,
+} from '../../index.ts';
 import type { Direction, PopoverVisibility } from '../popover.gts';
 import type { FieldOptions } from './field.gts';
 import type IntlService from 'ember-intl/services/intl';

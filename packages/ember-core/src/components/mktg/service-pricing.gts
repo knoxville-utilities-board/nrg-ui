@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 
 import Icon from '../icon.gts';
 
-import type { IconType } from '../../';
+import type { IconType } from '../../index.ts';
 import type { ComponentLike } from '@glint/template';
 
 export interface MktgAddonSignature {

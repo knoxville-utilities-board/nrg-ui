@@ -11,7 +11,7 @@ import { bind } from '../../helpers/bind.ts';
 import onClickOutside from '../../modifiers/on-click-outside.ts';
 
 import type { FieldOptions } from './field.gts';
-import type { BoundValueSignature, IconType } from '../../';
+import type { BoundValueSignature, IconType } from '../../index.ts';
 import type { Dayjs, OpUnitType } from 'dayjs';
 
 const defaultDateFormat = 'LL';

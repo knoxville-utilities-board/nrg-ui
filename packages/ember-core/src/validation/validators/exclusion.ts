@@ -2,7 +2,7 @@ import { assert } from '@ember/debug';
 
 import BaseValidator from './base.ts';
 
-import type { Binding, Primitive } from '../../';
+import type { Binding, Primitive } from '../../index.ts';
 import type { BaseOptions, Computable, ValidateFnResponse } from '../types';
 
 export type ExclusionOptions<T> = {

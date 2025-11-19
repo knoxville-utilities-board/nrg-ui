@@ -19,7 +19,7 @@ import { classes } from '../../helpers/classes.ts';
 import onInsert from '../../modifiers/on-insert.ts';
 import Button from '../button.gts';
 
-import type { Optional } from '../../';
+import type { Optional } from '../../index.ts';
 import type { Direction, PopoverVisibility } from '../popover.ts';
 import type { FieldOptions } from './field.gts';
 import type IntlService from 'ember-intl/services/intl';

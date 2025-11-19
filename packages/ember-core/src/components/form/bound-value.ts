@@ -6,7 +6,7 @@ import { runTask, scheduleTask } from 'ember-lifeline';
 import { ensurePathExists } from '../../utils/ensure-path-exists.ts';
 
 import type { FieldOptions } from './field.gts';
-import type { Binding, Optional } from '../../';
+import type { Binding, Optional } from '../../index.ts';
 import type Owner from '@ember/owner';
 
 type AllowChangeFn<T> = (newValue: T, oldValue: T) => boolean;

@@ -6,7 +6,7 @@ import BoundValue from './bound-value.ts';
 
 import type { BoundValueSignature } from './bound-value';
 import type { FieldOptions } from './field.gts';
-import type { Optional } from '../../';
+import type { Optional } from '../../index.ts';
 import type Owner from '@ember/owner';
 
 export type CheckboxSignature = BoundValueSignature<

@@ -6,7 +6,7 @@ import Component from '@glimmer/component';
 import BoundValue from './bound-value.ts';
 
 import type { FieldOptions } from './field.gts';
-import type { BoundValueSignature, Optional } from '../../';
+import type { BoundValueSignature, Optional } from '../../index.ts';
 import type { ComponentLike, WithBoundArgs } from '@glint/template';
 
 export type RadioGroupSignature = BoundValueSignature<
