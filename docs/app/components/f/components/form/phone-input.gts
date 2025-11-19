@@ -1,7 +1,8 @@
 import { array, fn, hash } from '@ember/helper';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { PhoneInput, bind } from '@nrg-ui/core';
+import PhoneInput from '@nrg-ui/core/components/form/phone-input';
+import { bind } from '@nrg-ui/core/helpers/bind';
 import Section from '@nrg-ui/showcase/components/section';
 
 function print(...msg: unknown[]) {

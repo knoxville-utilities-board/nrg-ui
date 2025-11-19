@@ -1,7 +1,7 @@
 import { array } from '@ember/helper';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { Button } from '@nrg-ui/core';
+import Button from '@nrg-ui/core/components/button';
 import Section from '@nrg-ui/showcase/components/section';
 
 export default class ButtonDemo extends Component {

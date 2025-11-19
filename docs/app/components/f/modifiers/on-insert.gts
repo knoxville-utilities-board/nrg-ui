@@ -3,7 +3,10 @@ import { on } from '@ember/modifier';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { Button, TextInput, Toaster, bind, onInsert } from '@nrg-ui/core';
+import Button from '@nrg-ui/core/components/button';
+import TextInput from '@nrg-ui/core/components/form/text-input';
+import { bind } from '@nrg-ui/core/helpers/bind';
+import onInsert from '@nrg-ui/core/modifiers/on-insert';
 import { TrackedArray } from 'tracked-built-ins';
 
 import type { TOC } from '@ember/component/template-only';
@@ -54,7 +57,6 @@ export default class OnInsertDemo extends Component {
   };
 
   <template>
-    <Toaster />
     <div class="grid-collection grid gap-2 text-center">
       {{#each this.items as |item i|}}
         <Item

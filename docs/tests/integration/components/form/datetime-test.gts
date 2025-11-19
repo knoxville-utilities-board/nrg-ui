@@ -14,7 +14,6 @@ class Model {
 }
 
 interface TestContext extends BaseContext {
-  // element: HTMLElement;
   model: Model;
 }
 
