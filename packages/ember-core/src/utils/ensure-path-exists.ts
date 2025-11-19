@@ -1,9 +1,6 @@
-export function ensurePathExists(
-  object: Record<string, unknown>,
-  path: string,
-) {
+export function ensurePathExists(object: object, path: string) {
   const keys = path.split?.('.');
-  ensure(object, keys);
+  ensure(object as Record<string, unknown>, keys);
 }
 
 function ensure(object: Record<string, unknown>, keys: string[]) {

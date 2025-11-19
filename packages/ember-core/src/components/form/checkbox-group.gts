@@ -23,7 +23,7 @@ export interface CheckboxGroupSignature {
 
     fieldOptions?: FieldOptions;
 
-    onInitBinding?: (binding: Binding<object>) => void;
+    onInitBinding?: (binding: Binding) => void;
   };
   Blocks: {
     default: [ComponentLike<typeof Checkbox>];

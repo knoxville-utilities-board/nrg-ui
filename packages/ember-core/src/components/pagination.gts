@@ -300,7 +300,6 @@ export default class Pagination extends Component<PaginationSignature> {
       {{#if @pageSizes}}
         <li class="page-item" data-test-page-sizes>
           <Select
-            {{! @glint-expect-error - Binding types are currently not supported }}
             @binding={{bind this "selectedPageSize"}}
             @options={{this.pageSizes}}
             @useDefaultValue={{true}}
@@ -320,7 +319,6 @@ export default class Pagination extends Component<PaginationSignature> {
               class="py-0 text-end me-1"
               max={{this.totalPages}}
               @basic={{true}}
-              {{! @glint-expect-error - Binding types are currently not supported }}
               @binding={{bind this "currentPageNumber"}}
               @onChange={{this.jumpToPage}}
             />
