@@ -6,21 +6,26 @@ import Component from '@glimmer/component';
 import BoundValue from './bound-value.ts';
 
 import type { FieldOptions } from './field.gts';
-import type { Optional } from '../../';
+import type { BoundValueSignature, Optional } from '../../';
 import type { ComponentLike, WithBoundArgs } from '@glint/template';
 
-export interface RadioGroupSignature {
-  Element: HTMLDivElement;
-  Args: {
-    basic?: boolean;
-    name?: string;
+export type RadioGroupSignature = BoundValueSignature<
+  {
+    Element: HTMLDivElement;
+    Args: {
+      basic?: boolean;
+      name?: string;
 
-    fieldOptions?: FieldOptions;
-  };
-  Blocks: {
-    default: [{ Radio: WithBoundArgs<ComponentLike<RadioSignature>, 'name'> }];
-  };
-}
+      fieldOptions?: FieldOptions;
+    };
+    Blocks: {
+      default: [
+        { Radio: WithBoundArgs<ComponentLike<RadioSignature>, 'name'> },
+      ];
+    };
+  },
+  string
+>;
 
 export default class RadioGroup extends BoundValue<
   RadioGroupSignature,

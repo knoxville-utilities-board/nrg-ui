@@ -11,7 +11,11 @@ import BoundValue from './bound-value.ts';
 import Select from './select.gts';
 import { bind } from '../../helpers/bind.ts';
 
-import type { DropdownSignature, Optional } from '../../index.ts';
+import type {
+  BoundValueSignature,
+  DropdownSignature,
+  Optional,
+} from '../../index.ts';
 import type { PopoverVisibility } from '../popover.gts';
 import type { FieldOptions } from './field.gts';
 import type { TOC } from '@ember/component/template-only';
@@ -44,41 +48,44 @@ const RemoveButton: TOC<RemoveButtonSignature> = <template>
   />
 </template>;
 
-export interface MultiSelectSignature<T> {
-  Element: HTMLButtonElement;
-  Args: {
-    closeOnSelect?: boolean;
-    defaultText?: string;
-    defaultTextKey?: string;
-    displayPath?: string;
-    loading?: boolean;
-    noOptionsText?: string;
-    noOptionsTextKey?: string;
-    options?: readonly T[];
-    scrollable?: boolean;
-    serializationPath?: string | null;
+export type MultiSelectSignature<T> = BoundValueSignature<
+  {
+    Element: HTMLButtonElement;
+    Args: {
+      closeOnSelect?: boolean;
+      defaultText?: string;
+      defaultTextKey?: string;
+      displayPath?: string;
+      loading?: boolean;
+      noOptionsText?: string;
+      noOptionsTextKey?: string;
+      options?: readonly T[];
+      scrollable?: boolean;
+      serializationPath?: string | null;
 
-    fieldOptions?: FieldOptions;
+      fieldOptions?: FieldOptions;
 
-    onAdd?: (value: T) => unknown;
-    onRemove?: (value: T) => unknown;
-    onShow?: () => unknown | Promise<unknown>;
-    onHide?: () => unknown | Promise<unknown>;
-  };
-  Blocks: {
-    control?: [PopoverVisibility];
-    display?: [T[]];
-    option?: [T | undefined];
-    selection?: [
-      {
-        value: T | undefined;
-        Remove: WithBoundArgs<typeof RemoveButton, 'disabled' | 'onClick'>;
-      },
-    ];
-    empty?: [];
-    menu?: DropdownSignature['Blocks']['menu'];
-  };
-}
+      onAdd?: (value: T) => unknown;
+      onRemove?: (value: T) => unknown;
+      onShow?: () => unknown | Promise<unknown>;
+      onHide?: () => unknown | Promise<unknown>;
+    };
+    Blocks: {
+      control?: [PopoverVisibility];
+      display?: [T[]];
+      option?: [T | undefined];
+      selection?: [
+        {
+          value: T | undefined;
+          Remove: WithBoundArgs<typeof RemoveButton, 'disabled' | 'onClick'>;
+        },
+      ];
+      empty?: [];
+      menu?: DropdownSignature['Blocks']['menu'];
+    };
+  },
+  T[]
+>;
 
 export default class MultiSelect<T> extends BoundValue<
   MultiSelectSignature<T>,

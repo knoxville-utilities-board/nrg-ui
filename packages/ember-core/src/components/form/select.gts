@@ -15,7 +15,7 @@ import BoundValue from './bound-value.ts';
 import onInsert from '../../modifiers/on-insert.ts';
 import { collapseWhitespace } from '../../utils/string.ts';
 
-import type { DropdownSignature, Optional } from '../../';
+import type { BoundValueSignature, DropdownSignature, Optional } from '../../';
 import type { Direction, PopoverVisibility } from '../popover.gts';
 import type { FieldOptions } from './field.gts';
 import type IntlService from 'ember-intl/services/intl';
@@ -41,31 +41,34 @@ function isActive<T>(
   );
 }
 
-export interface SelectSignature<T> {
-  Args: {
-    closeOnSelect?: boolean;
-    defaultText?: string;
-    defaultTextKey?: string;
-    displayPath?: string;
-    loading?: boolean;
-    noOptionsText?: string;
-    noOptionsTextKey?: string;
-    options?: readonly T[];
-    scrollable?: boolean;
-    serializationPath?: string | null;
-    side?: Direction;
+export type SelectSignature<T> = BoundValueSignature<
+  {
+    Args: {
+      closeOnSelect?: boolean;
+      defaultText?: string;
+      defaultTextKey?: string;
+      displayPath?: string;
+      loading?: boolean;
+      noOptionsText?: string;
+      noOptionsTextKey?: string;
+      options?: readonly T[];
+      scrollable?: boolean;
+      serializationPath?: string | null;
+      side?: Direction;
 
-    fieldOptions?: FieldOptions;
-  };
-  Blocks: {
-    control?: [PopoverVisibility];
-    display?: [T | undefined];
-    option?: [T | undefined];
-    empty?: [];
-    menu?: DropdownSignature['Blocks']['menu'];
-  };
-  Element: HTMLButtonElement;
-}
+      fieldOptions?: FieldOptions;
+    };
+    Blocks: {
+      control?: [PopoverVisibility];
+      display?: [T | undefined];
+      option?: [T | undefined];
+      empty?: [];
+      menu?: DropdownSignature['Blocks']['menu'];
+    };
+    Element: HTMLButtonElement;
+  },
+  T
+>;
 
 export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   declare visibility: PopoverVisibility;

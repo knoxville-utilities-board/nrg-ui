@@ -67,7 +67,9 @@ export interface FieldSignature {
         FileUpload: ComponentLike<FileUploadSignature>;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         MultiSelect: ComponentLike<MultiSelectSignature<any>>;
-        NumberInput: ComponentLike<NumberInputArgs>;
+        NumberInput: ComponentLike<
+          InputFieldSignature<NumberInputArgs, number>
+        >;
         PhoneInput: ComponentLike<InputFieldSignature<PhoneInputArgs>>;
         RadioGroup: ComponentLike<RadioGroupSignature>;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
