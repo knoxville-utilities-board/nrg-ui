@@ -27,16 +27,8 @@ module('Integration | Component | form/checkbox-group', function (hooks) {
     await render(
       <template>
         <CheckboxGroup as |Item|>
-          <Item
-            @binding={{bind model "v1"}}
-            @id="my-id-1"
-            @label="This is checkbox 1"
-          />
-          <Item
-            @binding={{bind model "v2"}}
-            @id="my-id-2"
-            @label="This is checkbox 2"
-          />
+          <Item @binding={{bind model "v1"}} @label="This is checkbox 1" />
+          <Item @binding={{bind model "v2"}} @label="This is checkbox 2" />
         </CheckboxGroup>
       </template>,
     );
@@ -91,10 +83,10 @@ module('Integration | Component | form/checkbox-group', function (hooks) {
     await render(
       <template>
         <CheckboxGroup as |Item|>
-          <Item @binding={{bind model "v1"}} @id="my-id-1">
+          <Item @binding={{bind model "v1"}}>
             <span>This is checkbox 1</span>
           </Item>
-          <Item @binding={{bind model "v2"}} @id="my-id-2">
+          <Item @binding={{bind model "v2"}}>
             <span>This is checkbox 2</span>
           </Item>
         </CheckboxGroup>
@@ -151,16 +143,8 @@ module('Integration | Component | form/checkbox-group', function (hooks) {
     await render(
       <template>
         <CheckboxGroup @type="switch" as |Item|>
-          <Item
-            @binding={{bind model "v1"}}
-            @id="my-id-1"
-            @label="This is checkbox 1"
-          />
-          <Item
-            @binding={{bind model "v2"}}
-            @id="my-id-2"
-            @label="This is checkbox 2"
-          />
+          <Item @binding={{bind model "v1"}} @label="This is checkbox 1" />
+          <Item @binding={{bind model "v2"}} @label="This is checkbox 2" />
         </CheckboxGroup>
       </template>,
     );
@@ -217,16 +201,8 @@ module('Integration | Component | form/checkbox-group', function (hooks) {
     await render(
       <template>
         <CheckboxGroup as |Item|>
-          <Item
-            @binding={{bind model "v1"}}
-            @id="my-id-1"
-            @label="This is checkbox 1"
-          />
-          <Item
-            @binding={{bind model "v2"}}
-            @id="my-id-2"
-            @label="This is checkbox 2"
-          />
+          <Item @binding={{bind model "v1"}} @label="This is checkbox 1" />
+          <Item @binding={{bind model "v2"}} @label="This is checkbox 2" />
         </CheckboxGroup>
       </template>,
     );
