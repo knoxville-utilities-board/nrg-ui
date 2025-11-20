@@ -1,17 +1,19 @@
-// @ts-nocheck - TODO
-
 import { array } from '@ember/helper';
 import { action } from '@ember/object';
 import { getOwner, setOwner } from '@ember/owner';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { Button, Form, bind } from '@nrg-ui/core';
+import Button from '@nrg-ui/core/components/button';
+import Form from '@nrg-ui/core/components/form';
+import { bind } from '@nrg-ui/core/helpers/bind';
 import { validator } from '@nrg-ui/core/validation';
+import CodeBlock from '@nrg-ui/showcase/components/code-block';
 import dayjs from 'dayjs';
 import getCodeSnippet from 'ember-code-snippet/helpers/get-code-snippet';
 import { tracked as autoTrack } from 'tracked-built-ins';
 
-import CodeBlock from '../../../code-block';
+import type Owner from '@ember/owner';
+import type { ValidatorsObject } from '@nrg-ui/core/components/form/index';
 
 const Validators = {
   select: validator('inclusion', { in: ['A', 'C'] }),
@@ -38,7 +40,7 @@ const Validators = {
       min: 10,
       message: 'Phone number must contain a 3-digit area code',
       disabled() {
-        return !this.requirePhoneLength;
+        return !(this as InstanceType<typeof Model>).requirePhoneLength;
       },
     }),
     validator('length', {
@@ -46,7 +48,7 @@ const Validators = {
       isWarning: true,
       message: 'Phone number cannot contain a country code',
       disabled() {
-        return !this.requirePhoneLength;
+        return !(this as InstanceType<typeof Model>).requirePhoneLength;
       },
     }),
   ],
@@ -59,7 +61,7 @@ const Validators = {
       min: 10,
       message: 'Phone number must contain a 3-digit area code',
       disabled() {
-        return !this.requirePhoneLength;
+        return !(this as InstanceType<typeof Model>).requirePhoneLength;
       },
     }),
     validator('length', {
@@ -67,14 +69,14 @@ const Validators = {
       isWarning: true,
       message: 'Phone number cannot contain a country code',
       disabled() {
-        return !this.requirePhoneLength;
+        return !(this as InstanceType<typeof Model>).requirePhoneLength;
       },
     }),
   ],
   checkboxGroup: [
     validator('custom', {
       validate(value) {
-        return !value.includes('checkboxGroup.0');
+        return !(value as unknown[]).includes('checkboxGroup.0');
       },
       message: 'The first checkbox is not allowed',
       isWarning: true,
@@ -83,7 +85,6 @@ const Validators = {
   number: [
     validator('number', {
       allowBlank: true,
-      allowDecimals: true,
       maxPrecision: 2,
     }),
   ],
@@ -103,14 +104,14 @@ const Validators = {
       },
     }),
   ],
-};
+} as ValidatorsObject;
 
 class Model {
   @tracked
   requirePhoneLength = true;
 
   @tracked
-  number;
+  number = 0;
 
   @tracked
   text = '';
@@ -134,33 +135,33 @@ class Model {
   radio = '';
 
   @tracked
-  checkbox;
+  checkbox = false;
 
   @tracked
-  checkbox2;
+  checkbox2 = false;
 
   @tracked
   checkboxGroup = autoTrack(new Array(3));
 
   @tracked
-  datetime;
+  datetime: Date | null = null;
 
   @tracked
-  date;
+  date: Date | null = null;
 
   @tracked
-  fileUpload;
+  fileUpload: File[] = [];
 
   toJSON() {
-    const obj = {};
+    const obj = {} as Record<string, unknown>;
 
     const prototype = Object.getPrototypeOf(this);
     for (const key of Object.getOwnPropertyNames(prototype)) {
       const desc = Object.getOwnPropertyDescriptor(prototype, key);
       const hasGetter = typeof desc?.get === 'function';
-      const isValue = 'value' in desc;
+      const isValue = 'value' in desc!;
       if (hasGetter || isValue) {
-        obj[key] = this[key];
+        obj[key] = this[key as keyof this];
       }
     }
 
@@ -178,11 +179,11 @@ export default class FormDemo extends Component {
   @tracked
   required = true;
 
-  constructor(...args: unknown[]) {
-    super(...args);
+  constructor(owner: Owner, args: object) {
+    super(owner, args);
     this.model = new Model();
 
-    setOwner(this.model, getOwner(this));
+    setOwner(this.model, getOwner(this)!);
   }
 
   get modelAsJson() {

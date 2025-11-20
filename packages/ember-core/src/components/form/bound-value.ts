@@ -6,13 +6,10 @@ import { runTask, scheduleTask } from 'ember-lifeline';
 import { ensurePathExists } from '../../utils/ensure-path-exists.ts';
 
 import type { FieldOptions } from './field.gts';
-import type { Binding, Optional } from '../../';
+import type { Binding, Optional } from '../../index.ts';
 import type Owner from '@ember/owner';
 
-type AllowChangeFn<T> = (
-  newValue: Optional<T>,
-  oldValue: Optional<T>,
-) => boolean;
+type AllowChangeFn<T> = (newValue: T, oldValue: T) => boolean;
 
 export type BoundValueSignature<Signature, Type> = {
   Args: {
@@ -23,9 +20,9 @@ export type BoundValueSignature<Signature, Type> = {
 
     fieldOptions?: FieldOptions;
 
-    allowChange?: AllowChangeFn<Type>;
+    allowChange?: AllowChangeFn<Optional<Type>>;
     initBinding?: (binding: Binding) => void;
-    onChange?: (value: Type, ...args: unknown[]) => void;
+    onChange?: (value: Optional<Type>, ...args: unknown[]) => void;
   };
 } & Signature;
 
@@ -92,7 +89,7 @@ export default class BoundValue<Signature, T> extends Component<
     return this.getDefaultValue?.() ?? null;
   }
 
-  get allowChange(): AllowChangeFn<T> {
+  get allowChange(): AllowChangeFn<Optional<T>> {
     if (this.args.allowChange) {
       return this.args.allowChange;
     }

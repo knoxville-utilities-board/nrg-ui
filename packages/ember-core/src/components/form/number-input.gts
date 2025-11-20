@@ -8,7 +8,7 @@ import { runTask } from 'ember-lifeline';
 
 import InputField from './-private/input-field.ts';
 
-import type { Optional } from '../../';
+import type { Optional } from '../../index.ts';
 import type { IntlService } from 'ember-intl';
 
 export interface NumberInputArgs {

@@ -17,6 +17,7 @@ import onInsert from '../../modifiers/on-insert.ts';
 import { FileValidator } from '../../validation/index.ts';
 import Button from '../button.gts';
 
+import type { BoundValueSignature } from './bound-value.ts';
 import type { FieldOptions } from './field.gts';
 import type Owner from '@ember/owner';
 
@@ -34,21 +35,24 @@ export interface SelectedFileListSignature {
   };
 }
 
-export interface FileUploadSignature {
-  Args: {
-    accept?: string[];
+export type FileUploadSignature = BoundValueSignature<
+  {
+    Args: {
+      accept?: string[];
 
-    fieldOptions?: FieldOptions;
-    validatorKey?: string;
+      fieldOptions?: FieldOptions;
+      validatorKey?: string;
 
-    onAdd?: (files: File[]) => unknown;
-    onRemove?: (file: File) => unknown;
-  };
-  Blocks: {
-    default: [];
-  };
-  Element: HTMLDivElement;
-}
+      onAdd?: (files: File[]) => unknown;
+      onRemove?: (file: File) => unknown;
+    };
+    Blocks: {
+      default: [];
+    };
+    Element: HTMLDivElement;
+  },
+  File[]
+>;
 
 class SelectedFileList extends Component<SelectedFileListSignature> {
   @action

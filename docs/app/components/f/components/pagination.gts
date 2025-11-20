@@ -2,7 +2,7 @@ import { A } from '@ember/array';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { Pagination } from '@nrg-ui/core';
+import Pagination from '@nrg-ui/core/components/pagination';
 import Section from '@nrg-ui/showcase/components/section';
 
 export default class PaginationDemo extends Component {

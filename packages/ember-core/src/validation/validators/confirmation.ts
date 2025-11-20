@@ -4,7 +4,7 @@ import { isEqual, isPresent } from '@ember/utils';
 
 import BaseValidator from './base.ts';
 
-import type { Binding } from '../../';
+import type { Binding } from '../../index.ts';
 import type {
   BaseOptions,
   Computable,

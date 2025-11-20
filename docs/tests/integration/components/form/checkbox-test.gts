@@ -1,3 +1,4 @@
+import { hash } from '@ember/helper';
 import { click, render, settled } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import { Checkbox, bind } from '@nrg-ui/core';
@@ -25,7 +26,7 @@ module('Integration | Component | form/checkbox', function (hooks) {
       <template>
         <Checkbox
           @binding={{bind model "value"}}
-          @id="my-id"
+          @fieldOptions={{hash id="my-id"}}
           @label="This is a checkbox"
         />
       </template>,
@@ -56,7 +57,10 @@ module('Integration | Component | form/checkbox', function (hooks) {
     const model = new Model();
     await render(
       <template>
-        <Checkbox @binding={{bind model "value"}} @id="my-id">
+        <Checkbox
+          @binding={{bind model "value"}}
+          @fieldOptions={{hash id="my-id"}}
+        >
           <span>This is a checkbox</span>
         </Checkbox>
       </template>,
@@ -87,7 +91,7 @@ module('Integration | Component | form/checkbox', function (hooks) {
       <template>
         <Checkbox
           @binding={{bind model "value"}}
-          @id="my-id"
+          @fieldOptions={{hash id="my-id"}}
           @label="This is a checkbox"
           @type="switch"
         />

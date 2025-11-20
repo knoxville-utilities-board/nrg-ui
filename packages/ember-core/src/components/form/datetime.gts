@@ -11,41 +11,44 @@ import { bind } from '../../helpers/bind.ts';
 import onClickOutside from '../../modifiers/on-click-outside.ts';
 
 import type { FieldOptions } from './field.gts';
-import type { IconType } from '../../';
+import type { BoundValueSignature, IconType } from '../../index.ts';
 import type { Dayjs, OpUnitType } from 'dayjs';
 
 const defaultDateFormat = 'LL';
 const defaultTimeFormat = 'LT';
 
-export interface DatetimeSignature {
-  Element: HTMLDivElement;
-  Args: {
-    allowMinuteSelection?: boolean;
-    dateFormat?: string;
-    maxDate?: Date | Dayjs;
-    minDate?: Date | Dayjs;
-    parseFormat?: string | string[];
-    placeholder?: string;
-    readonly?: boolean;
-    showNowShortcut?: boolean;
-    timeFormat?: string;
-    type?: 'datetime' | 'date' | 'time';
+export type DatetimeSignature = BoundValueSignature<
+  {
+    Element: HTMLDivElement;
+    Args: {
+      allowMinuteSelection?: boolean;
+      dateFormat?: string;
+      maxDate?: Date | Dayjs;
+      minDate?: Date | Dayjs;
+      parseFormat?: string | string[];
+      placeholder?: string;
+      readonly?: boolean;
+      showNowShortcut?: boolean;
+      timeFormat?: string;
+      type?: 'datetime' | 'date' | 'time';
 
-    // Required by form fields
-    basic?: boolean;
-    fieldOptions?: FieldOptions;
+      // Required by form fields
+      basic?: boolean;
+      fieldOptions?: FieldOptions;
 
-    _class?: string;
+      _class?: string;
 
-    isDateDisabled?: (date: Date, precision?: OpUnitType) => boolean;
+      isDateDisabled?: (date: Date, precision?: OpUnitType) => boolean;
 
-    onHide?: () => void;
-    onShow?: () => void;
-  };
-  Blocks: {
-    default: [];
-  };
-}
+      onHide?: () => void;
+      onShow?: () => void;
+    };
+    Blocks: {
+      default: [];
+    };
+  },
+  Date
+>;
 
 export default class Datetime extends BoundValue<DatetimeSignature, Date> {
   self: Record<'displayValue', string> = this;

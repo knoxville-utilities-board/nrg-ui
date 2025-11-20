@@ -32,7 +32,7 @@ import type { RadioGroupSignature } from './radio-group.gts';
 import type { SearchSignature } from './search.gts';
 import type { SelectSignature } from './select.gts';
 import type { TextAreaSignature } from './text-area.gts';
-import type { Binding } from '../../';
+import type { Binding } from '../../index.ts';
 import type { InputFieldSignature } from './-private/input-field.ts';
 import type { TextInputArgs } from './text-input.gts';
 import type Owner from '@ember/owner';
@@ -67,7 +67,9 @@ export interface FieldSignature {
         FileUpload: ComponentLike<FileUploadSignature>;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         MultiSelect: ComponentLike<MultiSelectSignature<any>>;
-        NumberInput: ComponentLike<NumberInputArgs>;
+        NumberInput: ComponentLike<
+          InputFieldSignature<NumberInputArgs, number>
+        >;
         PhoneInput: ComponentLike<InputFieldSignature<PhoneInputArgs>>;
         RadioGroup: ComponentLike<RadioGroupSignature>;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -108,7 +110,7 @@ export interface FieldOptions {
   disabled?: boolean;
   form?: FormType;
   id?: string;
-  initBinding?: (binding: Binding<object>) => void;
+  initBinding?: (binding: Binding) => void;
   isInvalid?: boolean;
   isWarning?: boolean;
   required?: boolean;
@@ -140,7 +142,7 @@ export default class Field extends Component<FieldSignature> {
   requiredId?: string;
 
   @tracked
-  binding!: Binding<object>;
+  binding!: Binding;
 
   constructor(owner: Owner, args: FieldSignature['Args']) {
     super(owner, args);
@@ -207,7 +209,7 @@ export default class Field extends Component<FieldSignature> {
   }
 
   @action
-  initBinding(binding: Binding<object>) {
+  initBinding(binding: Binding) {
     const { form } = this.args;
     if (!form) {
       return;

@@ -3,6 +3,8 @@ import { hash } from '@ember/helper';
 import MktgCard from './card.gts';
 import Card from '../card.gts';
 
+import type { CardSignature } from '../card.gts';
+import type { MktgCardSignature } from './card.gts';
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike } from '@glint/template';
 
@@ -11,8 +13,8 @@ export interface MktgCardContainerSignature {
   Blocks: {
     default: [
       {
-        Card: ComponentLike<typeof Card>;
-        MktgCard: ComponentLike<typeof MktgCard>;
+        Card: ComponentLike<CardSignature>;
+        MktgCard: ComponentLike<MktgCardSignature>;
       },
     ];
   };

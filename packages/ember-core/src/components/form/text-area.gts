@@ -3,17 +3,21 @@ import { action } from '@ember/object';
 
 import BoundValue from './bound-value.ts';
 
+import type { BoundValueSignature } from './bound-value.ts';
 import type { FieldOptions } from './field.gts';
 
-export interface TextAreaSignature {
-  Element: HTMLTextAreaElement;
-  Args: {
-    basic?: boolean;
-    readonly?: boolean;
+export type TextAreaSignature = BoundValueSignature<
+  {
+    Element: HTMLTextAreaElement;
+    Args: {
+      basic?: boolean;
+      readonly?: boolean;
 
-    fieldOptions?: FieldOptions;
-  };
-}
+      fieldOptions?: FieldOptions;
+    };
+  },
+  string
+>;
 
 export default class TextArea extends BoundValue<TextAreaSignature, string> {
   get classList() {

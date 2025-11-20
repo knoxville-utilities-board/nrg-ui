@@ -9,7 +9,7 @@ import Checkbox from './checkbox.gts';
 import { bind } from '../../helpers/bind.ts';
 
 import type { FieldOptions } from './field.gts';
-import type { Binding } from '../../';
+import type { Binding, CheckboxSignature } from '../../index.ts';
 import type Owner from '@ember/owner';
 import type { ComponentLike } from '@glint/template';
 
@@ -23,10 +23,10 @@ export interface CheckboxGroupSignature {
 
     fieldOptions?: FieldOptions;
 
-    onInitBinding?: (binding: Binding<object>) => void;
+    onInitBinding?: (binding: Binding) => void;
   };
   Blocks: {
-    default: [ComponentLike<typeof Checkbox>];
+    default: [ComponentLike<CheckboxSignature>];
   };
 }
 

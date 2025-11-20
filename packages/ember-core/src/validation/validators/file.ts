@@ -3,7 +3,7 @@ import { isEmpty } from '@ember/utils';
 
 import BaseValidator from './base.ts';
 
-import type { Binding } from '../../';
+import type { Binding } from '../../index.ts';
 import type { BaseOptions, Computable, ValidateFnResponse } from '../types.ts';
 
 export type FileOptions = {

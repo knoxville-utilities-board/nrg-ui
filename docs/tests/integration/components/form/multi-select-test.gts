@@ -1,6 +1,7 @@
 import { click, render } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import { MultiSelect, bind } from '@nrg-ui/core';
+import MultiSelect from '@nrg-ui/core/components/form/multi-select';
+import { bind } from '@nrg-ui/core/helpers/bind';
 import { setupIntl } from 'ember-intl/test-support';
 // @ts-expect-error Ember keyboard doesn't currently ship types
 // https://github.com/adopted-ember-addons/ember-keyboard/issues/464

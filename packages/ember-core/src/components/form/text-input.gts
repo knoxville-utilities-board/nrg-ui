@@ -5,7 +5,7 @@ import { tracked } from '@glimmer/tracking';
 
 import InputField from './-private/input-field.ts';
 
-import type { Optional } from '../../';
+import type { Optional } from '../../index.ts';
 
 export interface TextInputArgs {
   format?: ((value: Optional<string>) => string) | false;

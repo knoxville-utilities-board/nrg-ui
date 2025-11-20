@@ -10,6 +10,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from '../../../helpers';
 
 import type { TestContext as BaseContext } from '@ember/test-helpers';
+import type { ValidatorsObject } from '@nrg-ui/core/components/form/index';
 
 class Model {
   @tracked
@@ -31,7 +32,7 @@ const Validators = {
     presence: false,
     isWarning: true,
   }),
-};
+} as ValidatorsObject;
 
 module('Integration | Component | form', function (hooks) {
   setupRenderingTest(hooks);

@@ -93,7 +93,7 @@
     "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
-    "lint:types": "ember-tsc",
+    "lint:types": "ember-tsc --noEmit",
     "prepack": "concurrently 'pnpm:build:*'",
     "start": "concurrently 'pnpm:start:*'",
     "start:js": "rollup --config --watch --no-watch.clearScreen",

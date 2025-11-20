@@ -64,8 +64,8 @@ module('Integration | Component | form/phone-input', function (hooks) {
   test('it formats (custom)', async function (assert) {
     const model = new Model();
 
-    const format = (value: string) => {
-      return value.replace(/(\d)(\d+)/, '$1 $2');
+    const format = (value: string | null) => {
+      return value?.replace(/(\d)(\d+)/, '$1 $2') ?? '';
     };
 
     await render(

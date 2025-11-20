@@ -1,6 +1,7 @@
 import { click, find, render, settled } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
-import { FileUpload, bind } from '@nrg-ui/core';
+import FileUpload from '@nrg-ui/core/components/form/file-upload';
+import { bind } from '@nrg-ui/core/helpers/bind';
 import { setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';
 
