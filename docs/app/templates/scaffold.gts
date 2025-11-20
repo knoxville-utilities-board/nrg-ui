@@ -1,5 +1,5 @@
+import { getSnippet } from '@nrg-ui/code-snippets/helper';
 import CodeBlock from '@nrg-ui/showcase/components/code-block';
-import getCodeSnippet from 'ember-code-snippet/helpers/get-code-snippet';
 import pageTitle from 'ember-page-title/helpers/page-title';
 
 <template>
@@ -8,8 +8,8 @@ import pageTitle from 'ember-page-title/helpers/page-title';
   <div class="row g-0">
     <div class="col px-md-0 py-3">
       <div class="container mx-auto">
-        {{#let (getCodeSnippet "scaffold-component.gts") as |snippet|}}
-          <CodeBlock @lang="glimmer-template" @code={{snippet.source}} />
+        {{#let (getSnippet "scaffold-component") as |snippet|}}
+          <CodeBlock @lang="glimmer-template" @code={{snippet.code}} />
         {{/let}}
       </div>
     </div>

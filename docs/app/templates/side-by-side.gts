@@ -1,8 +1,8 @@
 import { LinkTo } from '@ember/routing';
+import { getSnippet } from '@nrg-ui/code-snippets/helper';
 import StackedPane from '@nrg-ui/core/components/stacked-pane';
 import Container from '@nrg-ui/core/components/stacked-pane/container';
 import CodeBlock from '@nrg-ui/showcase/components/code-block';
-import getCodeSnippet from 'ember-code-snippet/helpers/get-code-snippet';
 
 <template>
   {{! template-lint-disable no-inline-styles }}
@@ -75,8 +75,8 @@ import getCodeSnippet from 'ember-code-snippet/helpers/get-code-snippet';
   <div class="row g-0">
     <div class="col px-md-0 py-3">
       <div class="container mx-auto">
-        {{#let (getCodeSnippet "side-by-side-component.gts") as |snippet|}}
-          <CodeBlock @lang="glimmer-template" @code={{snippet.source}} />
+        {{#let (getSnippet "side-by-side-component") as |snippet|}}
+          <CodeBlock @lang="glimmer-template" @code={{snippet.code}} />
         {{/let}}
       </div>
     </div>

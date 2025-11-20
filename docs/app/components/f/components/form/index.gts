@@ -3,13 +3,13 @@ import { action } from '@ember/object';
 import { getOwner, setOwner } from '@ember/owner';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { getSnippet } from '@nrg-ui/code-snippets/helper';
 import Button from '@nrg-ui/core/components/button';
 import Form from '@nrg-ui/core/components/form';
 import { bind } from '@nrg-ui/core/helpers/bind';
 import { validator } from '@nrg-ui/core/validation';
 import CodeBlock from '@nrg-ui/showcase/components/code-block';
 import dayjs from 'dayjs';
-import getCodeSnippet from 'ember-code-snippet/helpers/get-code-snippet';
 import { tracked as autoTrack } from 'tracked-built-ins';
 
 import type Owner from '@ember/owner';
@@ -354,9 +354,9 @@ export default class FormDemo extends Component {
         </div>
 
         <div class="g-col-12">
-          {{#let (getCodeSnippet "form-demo-component.gts") as |snippet|}}
+          {{#let (getSnippet "form-demo-component.gts") as |snippet|}}
             <h3>Source</h3>
-            <CodeBlock @lang="glimmer-template" @code={{snippet.source}} />
+            <CodeBlock @lang="glimmer-template" @code={{snippet.code}} />
           {{/let}}
         </div>
       </div>
