@@ -11,7 +11,7 @@ export default class AccordionDemo extends Component {
     <Section @name="Accordion" as |Section|>
       <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
         <:example as |model|>
-          <Accordion @defaultOpen={{model.defaultOpen}} @title={{model.title}}>
+          <Accordion @title={{model.title}}>
             <:content>
               <p>Your content goes here</p>
             </:content>
@@ -23,6 +23,7 @@ export default class AccordionDemo extends Component {
               @name="defaultOpen"
               @description="When true, the Accordion will default to being open on render"
               @defaultValue={{false}}
+              @hideControl={{true}}
             />
             <Args.String
               @name="title"

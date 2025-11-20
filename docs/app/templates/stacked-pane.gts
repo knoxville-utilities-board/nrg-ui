@@ -7,7 +7,7 @@ import StackedPane, {
 import CodeBlock from '@nrg-ui/showcase/components/code-block';
 import getCodeSnippet from 'ember-code-snippet/helpers/get-code-snippet';
 
-import type StackedPaneController from '../controllers/stacked-pane';
+import type StackedPaneController from '#app/controllers/stacked-pane.ts';
 import type { TOC } from '@ember/component/template-only';
 
 interface StackedPaneSignature {
@@ -53,7 +53,7 @@ const StackedPaneTemplate: TOC<StackedPaneSignature> = <template>
     <div class="col px-md-0 py-3">
       <div class="container mx-auto">
         {{#let (getCodeSnippet "stacked-pane-component.gts") as |snippet|}}
-          <CodeBlock @lang={{snippet.language}} @code={{snippet.source}} />
+          <CodeBlock @lang="glimmer-template" @code={{snippet.source}} />
         {{/let}}
       </div>
     </div>
@@ -107,21 +107,13 @@ const StackedPaneTemplate: TOC<StackedPaneSignature> = <template>
     <div class="col px-md-0 py-3">
       <div class="container mx-auto">
         {{#let (getCodeSnippet "stacked-pane-controller.ts") as |snippet|}}
-          <CodeBlock
-            class="border rounded simple p-3"
-            @lang={{snippet.language}}
-            @code={{snippet.source}}
-          />
+          <CodeBlock @lang={{snippet.language}} @code={{snippet.source}} />
         {{/let}}
         {{#let
           (getCodeSnippet "stacked-pane-pagination-component.gts")
           as |snippet|
         }}
-          <CodeBlock
-            class="border rounded simple p-3"
-            @lang={{snippet.language}}
-            @code={{snippet.source}}
-          />
+          <CodeBlock @lang="glimmer-template" @code={{snippet.source}} />
         {{/let}}
       </div>
     </div>

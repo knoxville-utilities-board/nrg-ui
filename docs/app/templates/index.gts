@@ -17,7 +17,10 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           <div class="mb-2">
           </div>
           <div class="d-grid col-8 col-md-4 mx-auto">
-            <LinkTo class="btn btn-primary fw-semibold" @route="components">
+            <LinkTo
+              class="btn btn-primary fw-semibold"
+              @route="core-components"
+            >
               Go
             </LinkTo>
           </div>
@@ -93,24 +96,6 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           </div>
           <div class="d-grid col-8 col-md-4 mx-auto">
             <LinkTo class="btn btn-primary fw-semibold" @route="modifiers">
-              Go
-            </LinkTo>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="mb-0">
-      <div class="card bg-secondary-subtle text-center">
-        <div class="card-body">
-          <h5 class="card-title">
-            <span class="align-middle">
-              Theme
-            </span>
-          </h5>
-          <div class="mb-2">
-          </div>
-          <div class="d-grid col-8 col-md-4 mx-auto">
-            <LinkTo class="btn btn-primary fw-semibold" @route="theme">
               Go
             </LinkTo>
           </div>

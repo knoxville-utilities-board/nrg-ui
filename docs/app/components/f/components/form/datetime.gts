@@ -29,6 +29,7 @@ export default class DatetimeDemo extends Component {
   @tracked
   parseFormat: string[] = A();
 
+  // TODO: This is an HTML attribute, it should be removed
   @tracked
   placeholder?: string;
 

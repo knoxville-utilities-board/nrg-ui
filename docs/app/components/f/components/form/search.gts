@@ -92,10 +92,11 @@ export default class SearchDemo extends Component {
   minCharacters = 1;
 
   @tracked
-  noResultsLabel?: string = undefined;
+  noResultsLabel = 'No results found';
 
+  // TODO: This is an HTML attribute, it should be removed
   @tracked
-  placeholder?: string = undefined;
+  placeholder = 'Search';
 
   @tracked
   readonly = false;
@@ -219,7 +220,7 @@ export default class SearchDemo extends Component {
               @name="onQuery"
               @description="A function that return an array of string or object options"
               @parameters={{array (p "searchString" type="string")}}
-              @returnType="T[]"
+              @returnType="Promise<T[]>"
             />
           </Api.Actions>
         </:api>
@@ -257,9 +258,9 @@ export default class SearchDemo extends Component {
       <div class="g-col-4">
         <h3>String Options</h3>
         <CodeBlock
-          class="border rounded p-3"
           @lang="json"
           @code={{this.stringOptionsSource}}
+          @showCopyButton={{false}}
         />
       </div>
       <div class="g-col-4">
@@ -272,7 +273,7 @@ export default class SearchDemo extends Component {
       </div>
       <div class="g-col-4">
         <h3>Selected</h3>
-        <div class="border rounded p-3">
+        <div class="border border-secondary rounded p-3">
           {{this.value}}
         </div>
       </div>

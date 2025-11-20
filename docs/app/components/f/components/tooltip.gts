@@ -16,16 +16,16 @@ export default class TooltipDemo extends Component {
   alignment?: Alignment;
 
   @tracked
-  delay?: number;
+  delay = 300;
 
   @tracked
-  flip?: boolean;
+  flip = false;
 
   @tracked
   offset?: number;
 
   @tracked
-  side?: Side;
+  side: Side = 'bottom';
 
   <template>
     <Section @name="Tooltip" as |Section|>

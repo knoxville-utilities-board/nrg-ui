@@ -12,36 +12,41 @@ Router.map(function () {
   this.route('marketing');
   this.route('promo');
   this.route('workflow-tray');
-  this.route('theme');
-  this.route('components', function () {
-    this.route('accordion');
-    this.route('button');
-    this.route('card');
-    this.route('context-menu');
-    this.route('dropdown');
-    this.route('header');
-    this.route('form', function () {
-      this.route('checkbox');
-      this.route('checkbox-group');
-      this.route('datetime');
-      this.route('file-upload');
-      this.route('multi-select');
-      this.route('phone-input');
-      this.route('radio-group');
-      this.route('search');
-      this.route('select');
-      this.route('text-area');
-      this.route('text-input');
-    });
-    this.route('footer');
-    this.route('icon');
-    this.route('loading-indicator');
-    this.route('modal');
-    this.route('pagination');
-    this.route('popover');
-    this.route('toaster');
-    this.route('tooltip');
-  });
+  this.route(
+    'core-components',
+    {
+      path: '/components',
+    },
+    function () {
+      this.route('accordion');
+      this.route('button');
+      this.route('card');
+      this.route('context-menu');
+      this.route('dropdown');
+      this.route('header');
+      this.route('form', function () {
+        this.route('checkbox');
+        this.route('checkbox-group');
+        this.route('datetime');
+        this.route('file-upload');
+        this.route('multi-select');
+        this.route('phone-input');
+        this.route('radio-group');
+        this.route('search');
+        this.route('select');
+        this.route('text-area');
+        this.route('text-input');
+      });
+      this.route('footer');
+      this.route('icon');
+      this.route('loading-indicator');
+      this.route('modal');
+      this.route('pagination');
+      this.route('popover');
+      this.route('toaster');
+      this.route('tooltip');
+    },
+  );
   this.route('helpers');
   this.route('mktg-components', function () {
     this.route('card');
