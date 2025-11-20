@@ -1,6 +1,6 @@
 import { createFilter } from '@rollup/pluginutils';
 import { readFileSync } from 'node:fs';
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 import { globSync } from 'tinyglobby';
 
 import { extractSnippetsFromCode } from './parser.js';
