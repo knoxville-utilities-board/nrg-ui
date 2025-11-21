@@ -29,7 +29,6 @@ export default class DatetimeDemo extends Component {
   @tracked
   parseFormat: string[] = A();
 
-  // TODO: This is an HTML attribute, it should be removed
   @tracked
   placeholder?: string;
 
@@ -128,7 +127,7 @@ export default class DatetimeDemo extends Component {
             />
             <Args.String
               @name="placeholder"
-              @description="The placeholder text"
+              @description="The placeholder text. Note that while this is a native HTML attribute, attributes are applied to the wrapping div and not the input element."
             />
             <Args.Boolean
               @name="readonly"

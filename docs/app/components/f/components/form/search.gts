@@ -94,7 +94,6 @@ export default class SearchDemo extends Component {
   @tracked
   noResultsLabel = 'No results found';
 
-  // TODO: This is an HTML attribute, it should be removed
   @tracked
   placeholder = 'Search';
 
@@ -197,7 +196,7 @@ export default class SearchDemo extends Component {
             <Args.String
               @name="placeholder"
               @defaultValue="Search"
-              @description="The placeholder text"
+              @description="The placeholder text. Note that while this is a native HTML attribute, attributes are applied to the wrapping div and not the input element."
             />
             <Args.Boolean
               @name="readonly"
