@@ -20,9 +20,10 @@ export default defineConfig(async (config) => {
   );
   const resolvedEmberEnv = await emberEnv(emberEnvironment);
 
-  config.base = resolvedEmberEnv.rootURL ?? '/';
+  const base = resolvedEmberEnv.rootURL ?? '/';
 
   return {
+    base,
     plugins: [
       extractCodeBlocks(),
       codeSnippetsPlugin(),
