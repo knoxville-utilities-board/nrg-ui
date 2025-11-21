@@ -17,9 +17,6 @@ export default class TextAreaDemo extends Component {
   disabled = false;
 
   @tracked
-  placeholder = 'Enter text...';
-
-  @tracked
   readonly = false;
 
   @tracked
@@ -35,7 +32,6 @@ export default class TextAreaDemo extends Component {
             @fieldOptions={{hash disabled=model.disabled}}
             @readonly={{model.readonly}}
             @onChange={{fn print "The value changed to"}}
-            placeholder={{model.placeholder}}
           />
         </:example>
         <:api as |Api|>
