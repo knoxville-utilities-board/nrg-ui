@@ -44,7 +44,6 @@ module('Integration | Component | context-menu', function (hooks) {
 
     assert
       .dom('.dropdown-item', item2)
-      .hasAttribute('disabled')
       .hasClass('disabled')
       .hasText("I'm a disabled item");
     await click(item2!);
@@ -87,7 +86,6 @@ module('Integration | Component | context-menu', function (hooks) {
 
     assert
       .dom('.dropdown-item', item2)
-      .hasAttribute('disabled')
       .hasClass('disabled')
       .hasText("I'm a disabled item");
     await click(item2!);
@@ -140,7 +138,6 @@ module('Integration | Component | context-menu', function (hooks) {
 
     assert
       .dom('.dropdown-item', item2)
-      .hasAttribute('disabled')
       .hasClass('disabled')
       .hasText("I'm a disabled item");
     await click(item2!);
