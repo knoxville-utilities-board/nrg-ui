@@ -46,8 +46,8 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-n": "^17.23.1",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.46.4",
-    "vitest": "^4.0.9"
+    "typescript-eslint": "^8.47.0",
+    "vitest": "^4.0.13"
   },
   "publishConfig": {
     "access": "public",
