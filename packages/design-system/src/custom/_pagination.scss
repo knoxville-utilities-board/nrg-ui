@@ -1,12 +1,14 @@
 .pagination {
+  --bs-pagination-padding-x: 0.5rem;
+
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-user-select: none;
   user-select: none;
 }
 
-.page-item {
-  min-width: 3rem;
+.page-link {
+  min-width: 2.5rem;
   text-align: center;
 }
 
