@@ -13,7 +13,7 @@ export default class PaginationDemo extends Component {
   count = 25;
 
   @tracked
-  total = 249;
+  total = 500;
 
   @tracked
   enablePageJump = true;
