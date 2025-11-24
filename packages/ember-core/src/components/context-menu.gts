@@ -154,7 +154,6 @@ export default class ContextMenu extends Component<ContextMenuSignature> {
         <i
           aria-disabled={{if @disabled "true"}}
           class="bi bi-three-dots-vertical p-1"
-          disabled={{@disabled}}
           role="button"
           title={{t "nrg.navbar.toggleContextMenu"}}
           {{on "click" visibility.toggle}}
