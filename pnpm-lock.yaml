@@ -111,8 +111,8 @@ importers:
         specifier: ^2.19.13
         version: 2.19.13
       babel-plugin-ember-template-compilation:
-        specifier: ^2.3.0
-        version: 2.4.1
+        specifier: ^3.0.1
+        version: 3.0.1
       concurrently:
         specifier: ^9.2.1
         version: 9.2.1
@@ -550,7 +550,7 @@ importers:
         specifier: ^2.19.13
         version: 2.19.13
       babel-plugin-ember-template-compilation:
-        specifier: ^3.0.0
+        specifier: ^3.0.1
         version: 3.0.1
       concurrently:
         specifier: ^9.2.1
@@ -5070,8 +5070,8 @@ packages:
     resolution: {integrity: sha512-TR3KfrTZTYLPB6jUjfx6MF9WcWrHL9su5TObK4ZkYgBdWKPOFoSoQIdEuTuR82pmtxH2spWG9h6etwfr1pLBqQ==}
     engines: {node: '>=6'}
 
-  import-meta-resolve@4.1.0:
-    resolution: {integrity: sha512-I6fiaX09Xivtk+THaMfAwnA3MVA5Big1WHF1Dfx9hFuvNIWpXnorlkzhcQf6ehrqQiiZECRt1poOAkPmer3ruw==}
+  import-meta-resolve@4.2.0:
+    resolution: {integrity: sha512-Iqv2fzaTQN28s/FwZAoFq0ZSs/7hMAHJVX+w8PZl3cY19Pxk6jFFalxQoIfW2826i/fDLXv8IiEZRIT0lDuWcg==}
 
   imurmurhash@0.1.4:
     resolution: {integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==}
@@ -10742,7 +10742,7 @@ snapshots:
     dependencies:
       '@glimmer/syntax': 0.95.0
       babel-import-util: 3.0.1
-      import-meta-resolve: 4.1.0
+      import-meta-resolve: 4.2.0
 
   babel-plugin-htmlbars-inline-precompile@5.3.1:
     dependencies:
@@ -13879,7 +13879,7 @@ snapshots:
       parent-module: 1.0.1
       resolve-from: 4.0.0
 
-  import-meta-resolve@4.1.0: {}
+  import-meta-resolve@4.2.0: {}
 
   imurmurhash@0.1.4: {}
 
