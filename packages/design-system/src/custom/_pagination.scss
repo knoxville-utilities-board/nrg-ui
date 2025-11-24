@@ -5,6 +5,11 @@
   user-select: none;
 }
 
+.page-item {
+  min-width: 3rem;
+  text-align: center;
+}
+
 .page-item:not(:first-child) {
   .dropdown.form-control {
     border-top-left-radius: 0;
