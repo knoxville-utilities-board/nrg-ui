@@ -54,7 +54,6 @@ class Item extends Component<ItemSignature> {
     >
       <span
         class={{classes "dropdown-item" (if @disabled "disabled")}}
-        disabled={{@disabled}}
         ...attributes
       >
         {{yield}}
