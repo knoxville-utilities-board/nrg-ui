@@ -2,6 +2,22 @@
 
 ## Release (2025-11-25)
 
+* @nrg-ui/core 0.52.0 (minor)
+* @nrg-ui/showcase 0.4.1 (patch)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#750](https://github.com/knoxville-utilities-board/nrg-ui/pull/750) feat: Install blueprint uses Vite ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `@nrg-ui/core`, `@nrg-ui/showcase`
+  * [#752](https://github.com/knoxville-utilities-board/nrg-ui/pull/752) chore: Loosen dependencies on sibling packages ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
+## Release (2025-11-25)
+
 * @nrg-ui/version 0.4.1 (patch)
 * @nrg-ui/code-snippets 0.3.2 (patch)
 * @nrg-ui/css 0.28.0 (minor)
