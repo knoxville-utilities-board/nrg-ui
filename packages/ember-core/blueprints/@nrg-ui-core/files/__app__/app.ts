@@ -10,6 +10,10 @@ import config from './config/environment.ts';
 import '@nrg-ui/css/main.css';
 import '<%= modulePrefix %>/assets/css/app.css';
 
+if (macroCondition(isDevelopingApp())) {
+  importSync('./deprecation-workflow.ts');
+}
+
 export default class App extends Application {
   modulePrefix = config.modulePrefix;
   podModulePrefix = config.podModulePrefix;
