@@ -136,7 +136,6 @@
     "ember-template-lint": "^7.9.3",
     "ember-truth-helpers": "^5.0.0",
     "eslint": "^9.39.1",
-    "eslint-import-resolver-webpack": "^0.13.10",
     "eslint-plugin-decorator-position": "^6.0.0",
     "eslint-plugin-ember": "^12.7.4",
     "eslint-plugin-import": "^2.32.0",
@@ -148,8 +147,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "tracked-built-ins": "^4.0.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.47.0",
-    "webpack": "^5.103.0"
+    "typescript-eslint": "^8.47.0"
   },
   "peerDependencies": {
     "@glimmer/component": "^2.0.0",
@@ -161,8 +159,7 @@
     "ember-intl": "^7.0.4",
     "ember-source": "^5.9.0 || ^6.0.0",
     "ember-truth-helpers": "^5.0.0",
-    "tracked-built-ins": "^4.0.0",
-    "webpack": "^5.0.0"
+    "tracked-built-ins": "^4.0.0"
   },
   "publishConfig": {
     "access": "public",

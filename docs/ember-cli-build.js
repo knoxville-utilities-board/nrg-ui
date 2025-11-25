@@ -11,10 +11,6 @@ module.exports = async function (defaults) {
   const { buildOnce } = await import('@embroider/vite');
 
   const app = new EmberApp(defaults, {
-    snippetExtensions: ['js', 'ts', 'gjs', 'gts', 'hbs'],
-    minifyCSS: {
-      enabled: false,
-    },
     emberData: {
       deprecations: {
         // New projects can safely leave this deprecation disabled.

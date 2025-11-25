@@ -22,10 +22,12 @@ module.exports = {
     ]);
     await this.addPackagesToProject([
       { name: '@ember/string', target: '^4.0.0' },
+      { name: '@embroider/legacy-inspector-support', target: '^0.1.3' },
       { name: '@embroider/macros' },
       { name: '@nrg-ui/css' },
       { name: '@nrg-ui/version' },
       { name: 'dayjs', target: '^1.11.13' },
+      { name: 'ember-cli-deprecation-workflow', target: '^3.3.0' },
       { name: 'ember-concurrency', target: '^5.1.0' },
       { name: 'ember-css-transitions', target: '^4.4.0' },
       { name: 'ember-intl', target: '^7.0.0' },

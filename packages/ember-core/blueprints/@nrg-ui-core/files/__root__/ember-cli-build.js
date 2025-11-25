@@ -1,10 +1,23 @@
 'use strict';
+/* eslint-disable @typescript-eslint/no-require-imports */
 
+const { compatBuild } = require('@embroider/compat');
 const { getVersion } = require('@nrg-ui/version');
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-module.exports = function (defaults) {
+module.exports = async function (defaults) {
+  const { buildOnce } = await import('@embroider/vite');
+
   const app = new EmberApp(defaults, {
+    emberData: {
+      deprecations: {
+        // New projects can safely leave this deprecation disabled.
+        // If upgrading, to opt-into the deprecated behavior, set this to true and then follow:
+        // https://deprecations.emberjs.com/id/ember-data-deprecate-store-extends-ember-object
+        // before upgrading to Ember Data 6.0
+        DEPRECATE_STORE_EXTENDS_EMBER_OBJECT: false,
+      },
+    },
     <% if (isTypeScriptProject) {%>'ember-cli-babel': { enableTypeScriptTransform: true },<% } %>
 
     // Add options here
@@ -25,31 +38,7 @@ module.exports = function (defaults) {
     },
   });
 
-  const { Webpack } = require('@embroider/webpack');
-  return require('@embroider/compat').compatBuild(app, Webpack, {
-    staticAddonTestSupportTrees: true,
-    staticAddonTrees: true,
+  return compatBuild(app, buildOnce, {
     staticInvokables: true,
-    staticEmberSource: true,
-    skipBabel: [
-      {
-        package: 'qunit',
-      },
-    ],
-    packagerOptions: {
-      webpackConfig: {
-        module: {
-          rules: [
-            {
-              test: /\.(woff|woff2|eot|ttf|otf)$/i,
-              type: 'asset/resource',
-              generator: {
-                filename: 'assets/fonts/[name].[hash][ext]',
-              },
-            },
-          ],
-        },
-      },
-    },
   });
 };
