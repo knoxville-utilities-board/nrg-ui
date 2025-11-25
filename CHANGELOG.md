@@ -1,5 +1,50 @@
 # Changelog
 
+## Release (2025-11-25)
+
+* @nrg-ui/version 0.4.1 (patch)
+* @nrg-ui/code-snippets 0.3.2 (patch)
+* @nrg-ui/css 0.28.0 (minor)
+* @nrg-ui/core 0.51.0 (major)
+* @nrg-ui/showcase 0.4.0 (major)
+
+#### :rocket: Enhancement
+* `@nrg-ui/css`
+  * [#748](https://github.com/knoxville-utilities-board/nrg-ui/pull/748) style(pagination): Set min width on page items ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#747](https://github.com/knoxville-utilities-board/nrg-ui/pull/747) fix: Remove inapplicable HTML attributes ([@TSenter](https://github.com/TSenter))
+* Other
+  * [#743](https://github.com/knoxville-utilities-board/nrg-ui/pull/743) fix: Set base URL for docs app ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/code-snippets`
+  * [#740](https://github.com/knoxville-utilities-board/nrg-ui/pull/740) fix: Don't use built-in Node assert ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`, `@nrg-ui/showcase`
+  * [#738](https://github.com/knoxville-utilities-board/nrg-ui/pull/738) fix: Correct emitted types and form types ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/showcase`
+  * [#716](https://github.com/knoxville-utilities-board/nrg-ui/pull/716) fix(plugin): Walk all subtrees ([@TSenter](https://github.com/TSenter))
+
+#### :memo: Documentation
+* [#744](https://github.com/knoxville-utilities-board/nrg-ui/pull/744) fix: Actually use root URL ([@TSenter](https://github.com/TSenter))
+* [#742](https://github.com/knoxville-utilities-board/nrg-ui/pull/742) refactor: Replace ember-code-snippet with code-snippets package ([@TSenter](https://github.com/TSenter))
+* [#739](https://github.com/knoxville-utilities-board/nrg-ui/pull/739) docs: Convert to Vite app ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `@nrg-ui/version`, `@nrg-ui/code-snippets`, `@nrg-ui/core`, `@nrg-ui/showcase`
+  * [#749](https://github.com/knoxville-utilities-board/nrg-ui/pull/749) chore: Remove strict dependencies on sibling packages ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/code-snippets`
+  * [#741](https://github.com/knoxville-utilities-board/nrg-ui/pull/741) chore: Remove helper export ([@TSenter](https://github.com/TSenter))
+  * [#735](https://github.com/knoxville-utilities-board/nrg-ui/pull/735) chore: Add test to get full coverage ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`, `@nrg-ui/showcase`
+  * [#738](https://github.com/knoxville-utilities-board/nrg-ui/pull/738) fix: Correct emitted types and form types ([@TSenter](https://github.com/TSenter))
+* Other
+  * [#737](https://github.com/knoxville-utilities-board/nrg-ui/pull/737) fix: Fix pagination component demo ([@RudraPatel2003](https://github.com/RudraPatel2003))
+
+#### Committers: 3
+- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))
+- Rudra Patel ([@RudraPatel2003](https://github.com/RudraPatel2003))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-11-17)
 
 * @nrg-ui/code-snippets 0.3.1 (patch)
