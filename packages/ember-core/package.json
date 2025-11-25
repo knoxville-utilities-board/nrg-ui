@@ -151,7 +151,7 @@
   },
   "peerDependencies": {
     "@glimmer/component": "^2.0.0",
-    "@nrg-ui/css": "workspace:^",
+    "@nrg-ui/css": "workspace:^0",
     "dayjs": "^1.11.19",
     "ember-auto-import": "^2.0.0",
     "ember-concurrency": "^5.1.0",
