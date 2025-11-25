@@ -39,7 +39,7 @@ export interface ValidationResult {
   message?: string;
 }
 
-export type ValidatorBuilder<
+export type Validator<
   T,
   Model extends object,
   Context extends object,
@@ -47,8 +47,8 @@ export type ValidatorBuilder<
 > = (
   binding: Binding<Model>,
   context: Context,
-) => Validator<T, Model, OptionsShape, Context>;
-export interface Validator<
+) => ValidatorImpl<T, Model, OptionsShape, Context>;
+export interface ValidatorImpl<
   T,
   Model extends object,
   Context extends object,

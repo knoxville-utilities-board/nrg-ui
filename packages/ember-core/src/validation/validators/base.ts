@@ -12,7 +12,7 @@ import type {
   TranslatableMessage,
   ValidateFnResponse,
   ValidationResult,
-  Validator,
+  ValidatorImpl,
 } from '../types.d.ts';
 import type { IntlService } from 'ember-intl';
 
@@ -35,7 +35,7 @@ export default abstract class BaseValidator<
   Model extends object = Record<string, unknown>,
   Context extends object = Record<string, unknown>,
   OptionsShape extends BaseOptions = BaseOptions,
-> implements Validator<T, Model, Context, OptionsShape>
+> implements ValidatorImpl<T, Model, Context, OptionsShape>
 {
   abstract validate(
     this: BaseValidator<T, Model, Context, OptionsShape>,

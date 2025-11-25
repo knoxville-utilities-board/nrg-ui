@@ -17,14 +17,14 @@ import Button from '../button.gts';
 
 import type { FieldSignature } from './field.gts';
 import type { Binding } from '../../index.ts';
-import type { Validator, ValidatorBuilder } from '../../validation/types';
+import type { Validator, ValidatorImpl } from '../../validation/types';
 import type { ButtonSignature } from '../button.gts';
 import type Owner from '@ember/owner';
 import type { ComponentLike } from '@glint/template';
 
 type Wrapper = {
   id: string;
-  v: Validator<unknown, object, object, object>;
+  v: ValidatorImpl<unknown, object, object, object>;
 };
 export type ValidatorArray = ValidatorBuilder<
   unknown,
@@ -46,7 +46,7 @@ export interface FormType {
   registerBinding(binding: Binding<object>, name?: string): void;
   unregisterBinding(name: string): void;
   registerValidator(
-    validator: Validator<unknown, object, object, object>,
+    validator: ValidatorImpl<unknown, object, object, object>,
     name?: string,
   ): string;
   unregisterValidator(name: string, id: string): void;
@@ -204,7 +204,7 @@ export default class Form extends Component<FormSignature> implements FormType {
 
   @action
   registerValidator(
-    validator: Validator<unknown, object, object, object>,
+    validator: ValidatorImpl<unknown, object, object, object>,
     name?: string,
   ): string {
     const id = uid();
