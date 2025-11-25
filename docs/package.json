@@ -67,7 +67,7 @@
     "ember-auto-import": "^2.11.2",
     "ember-cli": "~6.4.0",
     "ember-cli-babel": "^8.2.0",
-    "ember-cli-deprecation-workflow": "^3.3.0",
+    "ember-cli-deprecation-workflow": "^3.4.0",
     "ember-cli-htmlbars": "^6.3.0",
     "ember-concurrency": "^5.1.0",
     "ember-css-transitions": "^4.5.0",

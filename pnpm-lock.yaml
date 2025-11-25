@@ -132,7 +132,7 @@ importers:
         specifier: ^8.2.0
         version: 8.2.0(@babel/core@7.28.5)
       ember-cli-deprecation-workflow:
-        specifier: ^3.3.0
+        specifier: ^3.4.0
         version: 3.4.0(ember-source@6.4.0(@glimmer/component@2.0.0)(rsvp@4.8.5))
       ember-cli-htmlbars:
         specifier: ^6.3.0
