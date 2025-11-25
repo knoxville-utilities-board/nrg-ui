@@ -22,6 +22,7 @@ module.exports = {
     ]);
     await this.addPackagesToProject([
       { name: '@ember/string', target: '^4.0.0' },
+      { name: '@embroider/legacy-inspector-support', target: '^0.1.3' },
       { name: '@embroider/macros' },
       { name: '@nrg-ui/css' },
       { name: '@nrg-ui/version' },
