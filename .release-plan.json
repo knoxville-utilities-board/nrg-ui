@@ -1,61 +1,23 @@
 {
   "solution": {
     "@nrg-ui/version": {
-      "impact": "patch",
-      "oldVersion": "0.4.0",
-      "newVersion": "0.4.1",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./packages/app-version/package.json"
+      "oldVersion": "0.4.1"
     },
     "@nrg-ui/code-snippets": {
-      "impact": "patch",
-      "oldVersion": "0.3.1",
-      "newVersion": "0.3.2",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./packages/code-snippets/package.json"
+      "oldVersion": "0.3.2"
     },
     "@nrg-ui/css": {
+      "oldVersion": "0.28.0"
+    },
+    "@nrg-ui/core": {
       "impact": "minor",
-      "oldVersion": "0.27.0",
-      "newVersion": "0.28.0",
+      "oldVersion": "0.51.0",
+      "newVersion": "0.52.0",
       "tagName": "latest",
       "constraints": [
         {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
-        }
-      ],
-      "pkgJSONPath": "./packages/design-system/package.json"
-    },
-    "@nrg-ui/core": {
-      "impact": "major",
-      "oldVersion": "0.50.1",
-      "newVersion": "0.51.0",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "major",
-          "reason": "Has peer dependency `workspace:^` on @nrg-ui/css"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
         },
         {
           "impact": "patch",
@@ -65,19 +27,11 @@
       "pkgJSONPath": "./packages/ember-core/package.json"
     },
     "@nrg-ui/showcase": {
-      "impact": "major",
-      "oldVersion": "0.3.0",
-      "newVersion": "0.4.0",
+      "impact": "patch",
+      "oldVersion": "0.4.0",
+      "newVersion": "0.4.1",
       "tagName": "latest",
       "constraints": [
-        {
-          "impact": "major",
-          "reason": "Has peer dependency `workspace:^` on @nrg-ui/core"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
-        },
         {
           "impact": "patch",
           "reason": "Appears in changelog section :house: Internal"
@@ -92,5 +46,5 @@
       "oldVersion": "0.3.4"
     }
   },
-  "description": "## Release (2025-11-25)\n\n* @nrg-ui/version 0.4.1 (patch)\n* @nrg-ui/code-snippets 0.3.2 (patch)\n* @nrg-ui/css 0.28.0 (minor)\n* @nrg-ui/core 0.51.0 (major)\n* @nrg-ui/showcase 0.4.0 (major)\n\n#### :rocket: Enhancement\n* `@nrg-ui/css`\n  * [#748](https://github.com/knoxville-utilities-board/nrg-ui/pull/748) style(pagination): Set min width on page items ([@ChesneyJulian](https://github.com/ChesneyJulian))\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#747](https://github.com/knoxville-utilities-board/nrg-ui/pull/747) fix: Remove inapplicable HTML attributes ([@TSenter](https://github.com/TSenter))\n* Other\n  * [#743](https://github.com/knoxville-utilities-board/nrg-ui/pull/743) fix: Set base URL for docs app ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/code-snippets`\n  * [#740](https://github.com/knoxville-utilities-board/nrg-ui/pull/740) fix: Don't use built-in Node assert ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/core`, `@nrg-ui/showcase`\n  * [#738](https://github.com/knoxville-utilities-board/nrg-ui/pull/738) fix: Correct emitted types and form types ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/showcase`\n  * [#716](https://github.com/knoxville-utilities-board/nrg-ui/pull/716) fix(plugin): Walk all subtrees ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* [#744](https://github.com/knoxville-utilities-board/nrg-ui/pull/744) fix: Actually use root URL ([@TSenter](https://github.com/TSenter))\n* [#742](https://github.com/knoxville-utilities-board/nrg-ui/pull/742) refactor: Replace ember-code-snippet with code-snippets package ([@TSenter](https://github.com/TSenter))\n* [#739](https://github.com/knoxville-utilities-board/nrg-ui/pull/739) docs: Convert to Vite app ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/version`, `@nrg-ui/code-snippets`, `@nrg-ui/core`, `@nrg-ui/showcase`\n  * [#749](https://github.com/knoxville-utilities-board/nrg-ui/pull/749) chore: Remove strict dependencies on sibling packages ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/code-snippets`\n  * [#741](https://github.com/knoxville-utilities-board/nrg-ui/pull/741) chore: Remove helper export ([@TSenter](https://github.com/TSenter))\n  * [#735](https://github.com/knoxville-utilities-board/nrg-ui/pull/735) chore: Add test to get full coverage ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/core`, `@nrg-ui/showcase`\n  * [#738](https://github.com/knoxville-utilities-board/nrg-ui/pull/738) fix: Correct emitted types and form types ([@TSenter](https://github.com/TSenter))\n* Other\n  * [#737](https://github.com/knoxville-utilities-board/nrg-ui/pull/737) fix: Fix pagination component demo ([@RudraPatel2003](https://github.com/RudraPatel2003))\n\n#### Committers: 3\n- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))\n- Rudra Patel ([@RudraPatel2003](https://github.com/RudraPatel2003))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-11-25)\n\n* @nrg-ui/core 0.52.0 (minor)\n* @nrg-ui/showcase 0.4.1 (patch)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#750](https://github.com/knoxville-utilities-board/nrg-ui/pull/750) feat: Install blueprint uses Vite ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/core`, `@nrg-ui/showcase`\n  * [#752](https://github.com/knoxville-utilities-board/nrg-ui/pull/752) chore: Loosen dependencies on sibling packages ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
