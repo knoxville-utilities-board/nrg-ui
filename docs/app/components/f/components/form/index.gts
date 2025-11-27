@@ -354,7 +354,7 @@ export default class FormDemo extends Component {
         </div>
 
         <div class="g-col-12">
-          {{#let (getSnippet "form-demo-component.gts") as |snippet|}}
+          {{#let (getSnippet "form-demo-component") as |snippet|}}
             <h3>Source</h3>
             <CodeBlock @lang="glimmer-template" @code={{snippet.code}} />
           {{/let}}
