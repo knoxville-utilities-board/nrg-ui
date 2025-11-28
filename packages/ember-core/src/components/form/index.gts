@@ -26,11 +26,7 @@ type Wrapper = {
   id: string;
   v: ValidatorImpl<unknown, object, object>;
 };
-export type ValidatorArray = Validator<unknown, object, object>;
-export type ValidatorsObject = Record<
-  string,
-  Validator<unknown, object, object> | ValidatorArray
->;
+export type ValidatorsObject = Record<string, Validator | Validator[]>;
 
 export interface FormType {
   didValidate: boolean;

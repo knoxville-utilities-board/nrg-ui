@@ -40,9 +40,9 @@ export interface ValidationResult {
 }
 
 export type Validator<
-  T,
-  Context extends object,
-  OptionsShape extends object,
+  T = unknown,
+  Context extends object = object,
+  OptionsShape extends object = object,
 > = (
   binding: Binding,
   context: Context,
