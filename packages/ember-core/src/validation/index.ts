@@ -13,7 +13,22 @@ export { default as RangeValidator } from './validators/range.ts';
 export { default as RegexValidator } from './validators/regex.ts';
 export { default as PasswordValidator } from './validators/password.ts';
 
-export { validator } from './utils.ts';
+export {
+  confirmation,
+  custom,
+  email,
+  exclusion,
+  file,
+  inclusion,
+  length,
+  number,
+  password,
+  phone,
+  presence,
+  range,
+  regex,
+  validator,
+} from './utils.ts';
 
 export type {
   BaseOptions,
