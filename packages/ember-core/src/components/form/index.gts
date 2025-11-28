@@ -24,17 +24,12 @@ import type { ComponentLike } from '@glint/template';
 
 type Wrapper = {
   id: string;
-  v: ValidatorImpl<unknown, object, object, object>;
+  v: ValidatorImpl<unknown, object, object>;
 };
-export type ValidatorArray = ValidatorBuilder<
-  unknown,
-  object,
-  object,
-  object
->[];
+export type ValidatorArray = Validator<unknown, object, object>;
 export type ValidatorsObject = Record<
   string,
-  ValidatorBuilder<unknown, object, object, object> | ValidatorArray
+  Validator<unknown, object, object> | ValidatorArray
 >;
 
 export interface FormType {
@@ -46,7 +41,7 @@ export interface FormType {
   registerBinding(binding: Binding<object>, name?: string): void;
   unregisterBinding(name: string): void;
   registerValidator(
-    validator: ValidatorImpl<unknown, object, object, object>,
+    validator: ValidatorImpl<unknown, object, object>,
     name?: string,
   ): string;
   unregisterValidator(name: string, id: string): void;
@@ -204,7 +199,7 @@ export default class Form extends Component<FormSignature> implements FormType {
 
   @action
   registerValidator(
-    validator: ValidatorImpl<unknown, object, object, object>,
+    validator: ValidatorImpl<unknown, object, object>,
     name?: string,
   ): string {
     const id = uid();

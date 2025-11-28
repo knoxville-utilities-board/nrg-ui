@@ -41,26 +41,25 @@ export interface ValidationResult {
 
 export type Validator<
   T,
-  Model extends object,
   Context extends object,
   OptionsShape extends object,
 > = (
-  binding: Binding<Model>,
+  binding: Binding,
   context: Context,
-) => ValidatorImpl<T, Model, OptionsShape, Context>;
+) => ValidatorImpl<T, Context, OptionsShape>;
+
 export interface ValidatorImpl<
   T,
-  Model extends object,
   Context extends object,
   OptionsShape extends BaseOptions,
 > {
   validate(
-    this: BaseValidator<T, Model, Context, OptionsShape>,
+    this: BaseValidator<T, Context, OptionsShape>,
     value: T,
     options: OptionsShape,
-    context: Context | Model,
+    context: Context,
   ): ValidateFnResponse;
 
-  readonly binding: Binding<Model>;
+  readonly binding: Binding;
   readonly result: ValidationResult;
 }

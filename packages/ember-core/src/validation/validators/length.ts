@@ -26,16 +26,15 @@ export type LengthOptions = {
 
 export default class LengthValidator<
   T extends ArrayLike<T>,
-  Model extends object,
   Context extends object = Record<string, unknown>,
-> extends BaseValidator<T, Model, Context, LengthOptions> {
+> extends BaseValidator<T, Context, LengthOptions> {
   defaultOptions = {
     allowNone: true,
     presence: true,
   };
 
   constructor(
-    binding: Binding<Model>,
+    binding: Binding,
     options: Computable<Context, LengthOptions>,
     context: Context,
   ) {

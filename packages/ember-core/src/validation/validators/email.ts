@@ -26,14 +26,8 @@ export type EmailOptions = {
 
 /** TODO Add support for subdomains */
 export default class EmailValidator<
-  Model extends object,
   Context extends object = Record<string, unknown>,
-> extends BaseValidator<
-  string | null | undefined,
-  Model,
-  Context,
-  EmailOptions
-> {
+> extends BaseValidator<string | null | undefined, Context, EmailOptions> {
   validate(
     value: string | null | undefined,
     options: EmailOptions,

@@ -32,33 +32,32 @@ export function unwrapProxy<T>(value: T): T {
 
 export default abstract class BaseValidator<
   T,
-  Model extends object = Record<string, unknown>,
   Context extends object = Record<string, unknown>,
   OptionsShape extends BaseOptions = BaseOptions,
-> implements ValidatorImpl<T, Model, Context, OptionsShape>
+> implements ValidatorImpl<T, Context, OptionsShape>
 {
   abstract validate(
-    this: BaseValidator<T, Model, Context, OptionsShape>,
+    this: BaseValidator<T, Context, OptionsShape>,
     value: T,
     options: OptionsShape,
-    context: Context | Model,
+    context: Context,
   ): ValidateFnResponse;
   defaultOptions: Computable<Context, OptionsShape & BaseOptions> =
     {} as OptionsShape;
 
   readonly owner;
-  readonly binding: Binding<Model>;
+  readonly binding: Binding;
   readonly options: Computable<Context, OptionsShape & BaseOptions>;
-  readonly context: Context | Model;
+  readonly context: Context;
 
   constructor(
-    binding: Binding<Model>,
+    binding: Binding,
     options: Computable<Context, OptionsShape & BaseOptions>,
     context: Context,
   ) {
     this.binding = binding;
     this.options = options;
-    this.context = context ?? binding.model;
+    this.context = context ?? (binding.model as Context);
 
     assert(
       `You must provide a binding argument to ${this.constructor.name}`,
