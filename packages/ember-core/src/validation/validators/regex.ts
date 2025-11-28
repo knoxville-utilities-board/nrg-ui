@@ -24,7 +24,7 @@ export default class RegexValidator<
   constructor(
     binding: Binding,
     options: Computable<Context, RegexOptions>,
-    context: Context,
+    context?: Context,
   ) {
     super(binding, options, context);
 

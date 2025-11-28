@@ -19,7 +19,7 @@ export default class InclusionValidator<
   constructor(
     binding: Binding,
     options: Computable<Context, InclusionOptions<T>>,
-    context: Context,
+    context?: Context,
   ) {
     super(binding, options, context);
 

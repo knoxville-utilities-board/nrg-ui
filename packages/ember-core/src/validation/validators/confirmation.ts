@@ -34,7 +34,7 @@ export default class ConfirmationValidator<
   constructor(
     binding: Binding,
     options: Computable<Context, ConfirmationOptions>,
-    context: Context,
+    context?: Context,
   ) {
     super(binding, options, context);
 

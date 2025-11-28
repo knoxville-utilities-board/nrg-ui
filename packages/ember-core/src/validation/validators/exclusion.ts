@@ -19,7 +19,7 @@ export default class ExclusionValidator<
   constructor(
     bind: Binding,
     options: Computable<Context, ExclusionOptions<T>>,
-    context: Context,
+    context?: Context,
   ) {
     super(bind, options, context);
 

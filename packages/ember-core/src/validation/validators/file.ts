@@ -26,7 +26,7 @@ export default class FileValidator<
   constructor(
     binding: Binding,
     options: Computable<Context, FileOptions>,
-    context: Context,
+    context?: Context,
   ) {
     super(binding, options, context);
 

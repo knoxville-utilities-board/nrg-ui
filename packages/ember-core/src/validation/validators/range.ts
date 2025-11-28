@@ -38,7 +38,7 @@ export default class RangeValidator<
   constructor(
     binding: Binding,
     options: Computable<Context, RangeOptions>,
-    context: Context,
+    context?: Context,
   ) {
     super(binding, options, context);
 

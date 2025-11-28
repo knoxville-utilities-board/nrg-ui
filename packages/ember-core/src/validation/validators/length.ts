@@ -36,7 +36,7 @@ export default class LengthValidator<
   constructor(
     binding: Binding,
     options: Computable<Context, LengthOptions>,
-    context: Context,
+    context?: Context,
   ) {
     super(binding, options, context);
 

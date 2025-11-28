@@ -32,7 +32,7 @@ export default class CustomValidator<
   constructor(
     binding: Binding,
     options: Computable<Context, CustomOptions<T, Context>>,
-    context: Context,
+    context?: Context,
   ) {
     super(binding, options, context);
 

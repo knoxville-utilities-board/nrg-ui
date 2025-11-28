@@ -31,7 +31,7 @@ export default class PresenceValidator<
   constructor(
     binding: Binding,
     options: Computable<Context, PresenceOptions>,
-    context: Context,
+    context?: Context,
   ) {
     super(binding, options, context);
 

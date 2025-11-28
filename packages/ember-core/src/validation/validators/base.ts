@@ -13,7 +13,7 @@ import type {
   ValidateFnResponse,
   ValidationResult,
   ValidatorImpl,
-} from '../types.d.ts';
+} from '../types.ts';
 import type { IntlService } from 'ember-intl';
 
 export function isProxy(
@@ -53,7 +53,7 @@ export default abstract class BaseValidator<
   constructor(
     binding: Binding,
     options: Computable<Context, OptionsShape & BaseOptions>,
-    context: Context,
+    context?: Context,
   ) {
     this.binding = binding;
     this.options = options;
