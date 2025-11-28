@@ -7,7 +7,14 @@ import { getSnippet } from '@nrg-ui/code-snippets/helper';
 import Button from '@nrg-ui/core/components/button';
 import Form from '@nrg-ui/core/components/form';
 import { bind } from '@nrg-ui/core/helpers/bind';
-import { validator } from '@nrg-ui/core/validation';
+import {
+  confirmation,
+  custom,
+  exclusion,
+  inclusion,
+  length,
+  number,
+} from '@nrg-ui/core/validation';
 import CodeBlock from '@nrg-ui/showcase/components/code-block';
 import dayjs from 'dayjs';
 import { tracked as autoTrack } from 'tracked-built-ins';
@@ -16,8 +23,8 @@ import type Owner from '@ember/owner';
 import type { ValidatorsObject } from '@nrg-ui/core/components/form/index';
 
 const Validators = {
-  select: validator('inclusion', { in: ['A', 'C'] }),
-  someOtherKey: validator('custom', {
+  select: inclusion({ in: ['A', 'C'] }),
+  someOtherKey: custom({
     validate(value) {
       if (value !== 'foo') {
         return 'Value must be "foo"';
@@ -26,7 +33,7 @@ const Validators = {
     },
   }),
   textArea: [
-    validator('custom', {
+    custom({
       validate(value) {
         console.log(`Validating: '${value}'`);
         return value !== 'foo';
@@ -34,68 +41,68 @@ const Validators = {
       isWarning: true,
     }),
   ],
-  radio: [validator('exclusion', { in: ['A', 'B'], isWarning: true })],
+  radio: [exclusion({ in: ['A', 'B'], isWarning: true })],
   phone: [
-    validator('length', {
+    length<Model>({
       min: 10,
       message: 'Phone number must contain a 3-digit area code',
       disabled() {
-        return !(this as InstanceType<typeof Model>).requirePhoneLength;
+        return !this.requirePhoneLength;
       },
     }),
-    validator('length', {
+    length<Model>({
       max: 10,
       isWarning: true,
       message: 'Phone number cannot contain a country code',
       disabled() {
-        return !(this as InstanceType<typeof Model>).requirePhoneLength;
+        return !this.requirePhoneLength;
       },
     }),
   ],
   phoneConfirm: [
-    validator('confirmation', {
+    confirmation({
       on: 'phone',
       message: 'Phone numbers do not match',
     }),
-    validator('length', {
+    length<Model>({
       min: 10,
       message: 'Phone number must contain a 3-digit area code',
       disabled() {
-        return !(this as InstanceType<typeof Model>).requirePhoneLength;
+        return !this.requirePhoneLength;
       },
     }),
-    validator('length', {
+    length<Model>({
       max: 10,
       isWarning: true,
       message: 'Phone number cannot contain a country code',
       disabled() {
-        return !(this as InstanceType<typeof Model>).requirePhoneLength;
+        return !this.requirePhoneLength;
       },
     }),
   ],
   checkboxGroup: [
-    validator('custom', {
+    custom<Model, unknown[]>({
       validate(value) {
-        return !(value as unknown[]).includes('checkboxGroup.0');
+        return !value.includes('checkboxGroup.0');
       },
       message: 'The first checkbox is not allowed',
       isWarning: true,
     }),
   ],
   number: [
-    validator('number', {
+    number({
       allowBlank: true,
       maxPrecision: 2,
     }),
   ],
   fileUpload: [
-    validator('length', {
+    length({
       between: [1, 4],
       message: 'No more than 4 files can be uploaded',
     }),
   ],
   checkbox2: [
-    validator('custom', {
+    custom({
       validate(value) {
         if (value != 'because') {
           return 'You must provide a reason';
