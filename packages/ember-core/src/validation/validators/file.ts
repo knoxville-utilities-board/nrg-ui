@@ -18,9 +18,8 @@ export type FileOptions = {
 } & BaseOptions;
 
 export default class FileValidator<
-  T extends File[] | File,
   Context extends object = Record<string, unknown>,
-> extends BaseValidator<T, Context, FileOptions> {
+> extends BaseValidator<File | File[], Context, FileOptions> {
   defaultOptions = {};
 
   constructor(
@@ -39,7 +38,7 @@ export default class FileValidator<
     }
   }
 
-  validate(value: T, options: FileOptions): ValidateFnResponse {
+  validate(value: File | File[], options: FileOptions): ValidateFnResponse {
     const { acceptedTypes, unacceptedTypes } = options;
     if (!isEmpty(acceptedTypes)) {
       if (Array.isArray(value)) {
