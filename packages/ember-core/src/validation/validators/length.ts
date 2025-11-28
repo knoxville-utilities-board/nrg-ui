@@ -37,7 +37,7 @@ export type LengthOptions = {
 } & BaseOptions;
 
 export default class LengthValidator<
-  T extends ArrayLike<T>,
+  T extends ArrayLike<unknown>,
   Context extends object = Record<string, unknown>,
 > extends BaseValidator<T, Context, LengthOptions> {
   defaultOptions = {
@@ -122,7 +122,7 @@ export default class LengthValidator<
     return true;
   }
 
-  toString(value: ArrayLike<T>): string {
+  toString(value: T): string {
     if (typeof value === 'string') {
       return value;
     }
