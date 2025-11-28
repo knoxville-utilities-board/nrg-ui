@@ -16,11 +16,23 @@ export type LengthOptions = {
    */
   allowNone?: boolean;
   /**
-   * A range
+   * If set, the length must be greater than `between[0]` and
+   * less than `between[1]`.
    */
   between?: [number, number];
+  /**
+   * If set, the length must equal this value.
+   */
   is?: number;
+  /**
+   * If set, the length cannot be greater than or
+   * equal to this.
+   */
   max?: number;
+  /**
+   * If set, the length cannot be less than or
+   * equal to this.
+   */
   min?: number;
 } & BaseOptions;
 

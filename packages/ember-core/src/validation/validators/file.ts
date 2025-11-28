@@ -8,11 +8,11 @@ import type { BaseOptions, Computable, ValidateFnResponse } from '../types.ts';
 
 export type FileOptions = {
   /**
-   * Accepted file types, e.g. ['png', '.jpeg', 'image/*'].
+   * Accepted file types, e.g. `['png', '.jpeg', 'image/*']`.
    */
   acceptedTypes?: string[];
   /**
-   * Unaccepted file types, e.g. ['png', '.jpeg', 'image/*'].
+   * Unaccepted file types, e.g. `['png', '.jpeg', 'image/*']`.
    */
   unacceptedTypes?: string[];
 } & BaseOptions;

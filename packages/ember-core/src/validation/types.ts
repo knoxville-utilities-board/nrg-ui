@@ -2,9 +2,29 @@ import type { Binding } from '../index.ts';
 import type BaseValidator from './validators/base.ts';
 
 export type BaseOptions = {
+  /**
+   * When true, the validation will not be performed.
+   */
   disabled?: boolean;
+
+  /**
+   * When the validation fails, this key is used by `ember-intl`
+   * to translate a failure message. This option overrides the
+   * `message` option.
+   */
   key?: string;
+
+  /**
+   * When the validation fails, this failure message will be displayed.
+   * This option can be overridden by the `key` option.
+   */
   message?: string;
+
+  /**
+   * When true, validation failures will not prevent form submissions.
+   * Additionally, warnings are shown before the form is submitted, when
+   * the user inputs a value that fails the validation.
+   */
   isWarning?: boolean;
 };
 
