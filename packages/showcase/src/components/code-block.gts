@@ -141,7 +141,13 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
         style={{this.style}}
         ...attributes
       >
-        {{htmlSafe this.code.html}}
+        {{#let this.code.html as |html|}}
+          {{#if this.code.isRendered}}
+            {{htmlSafe html}}
+          {{else}}
+            <pre><code>{{html}}</code></pre>
+          {{/if}}
+        {{/let}}
       </span>
     {{else}}
       <div
@@ -150,7 +156,13 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
         data-label={{@label}}
         ...attributes
       >
-        {{htmlSafe this.code.html}}
+        {{#let this.code.html as |html|}}
+          {{#if this.code.isRendered}}
+            {{htmlSafe html}}
+          {{else}}
+            <pre><code>{{html}}</code></pre>
+          {{/if}}
+        {{/let}}
         {{#if this.showCopyButton}}
           <CopyButton @text={{this.resolvedCode}} />
         {{/if}}

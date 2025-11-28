@@ -54,6 +54,7 @@ export interface ShikiServiceOptions {
 
 export interface HighlightedCode {
   html: string;
+  isRendered: boolean;
   background: {
     light: string;
     dark: string;
@@ -110,7 +111,8 @@ export default class ShikiService extends Service {
     const { highlighter, cssVariablePrefix } = this;
     if (!highlighter) {
       return {
-        html: `<pre><code>${code}</code></pre>`,
+        isRendered: false,
+        html: code,
         background: {
           light: 'transparent',
           dark: 'transparent',
@@ -154,6 +156,7 @@ export default class ShikiService extends Service {
     const html = hastToHtml(hast);
 
     return {
+      isRendered: true,
       html,
       background: {
         light: this.extractBackgroundColor(style, 'light'),
