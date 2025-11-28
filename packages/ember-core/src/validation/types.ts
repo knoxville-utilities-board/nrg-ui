@@ -56,7 +56,7 @@ export interface ValidatorImpl<
   validate(
     this: BaseValidator<T, Context, OptionsShape>,
     value: T,
-    options: OptionsShape,
+    options: Computable<Context, OptionsShape>,
     context: Context,
   ): ValidateFnResponse;
 
