@@ -68,7 +68,7 @@
     "ember-cli": "~6.4.0",
     "ember-cli-babel": "^8.2.0",
     "ember-cli-deprecation-workflow": "^3.4.0",
-    "ember-cli-htmlbars": "^6.3.0",
+    "ember-cli-htmlbars": "^7.0.0",
     "ember-concurrency": "^5.1.0",
     "ember-css-transitions": "^4.5.0",
     "ember-intl": "^7.4.1",
