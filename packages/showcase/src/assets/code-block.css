@@ -41,7 +41,7 @@ pre.code-block {
       display: inline-block;
       margin-right: 1.5em;
       text-align: right;
-      width: 2em;
+      width: var(--showcase-line-number-width, 2em);
     }
   }
 }
