@@ -34,8 +34,7 @@ export default abstract class BaseValidator<
   T,
   Context extends object = Record<string, unknown>,
   OptionsShape extends BaseOptions = BaseOptions,
-> implements ValidatorImpl<T, Context, OptionsShape>
-{
+> implements ValidatorImpl<T, Context, OptionsShape> {
   abstract validate(
     this: BaseValidator<T, Context, OptionsShape>,
     value: T,

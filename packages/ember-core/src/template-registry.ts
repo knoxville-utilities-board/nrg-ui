@@ -114,6 +114,4 @@ export interface ModifierRegistry {
 }
 
 export default interface TemplateRegistry
-  extends ComponentRegistry,
-    HelperRegistry,
-    ModifierRegistry {}
+  extends ComponentRegistry, HelperRegistry, ModifierRegistry {}
