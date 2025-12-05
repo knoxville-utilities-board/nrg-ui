@@ -21,18 +21,17 @@ export type PresenceOptions = {
 
 export default class PresenceValidator<
   T,
-  Model extends object,
   Context extends object = Record<string, unknown>,
-> extends BaseValidator<T, Model, Context, PresenceOptions> {
+> extends BaseValidator<T, Context, PresenceOptions> {
   defaultOptions = {
     presence: true,
     ignoreBlank: true,
   };
 
   constructor(
-    binding: Binding<Model>,
+    binding: Binding,
     options: Computable<Context, PresenceOptions>,
-    context: Context,
+    context?: Context,
   ) {
     super(binding, options, context);
 

@@ -28,18 +28,17 @@ export type RangeOptions = {
 } & BaseOptions;
 
 export default class RangeValidator<
-  Model extends object,
   Context extends object = Record<string, unknown>,
-> extends BaseValidator<number, Model, Context, RangeOptions> {
+> extends BaseValidator<number, Context, RangeOptions> {
   defaultOptions = {
     minInclusive: true,
     maxInclusive: true,
   };
 
   constructor(
-    binding: Binding<Model>,
+    binding: Binding,
     options: Computable<Context, RangeOptions>,
-    context: Context,
+    context?: Context,
   ) {
     super(binding, options, context);
 

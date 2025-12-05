@@ -8,26 +8,24 @@ import type { BaseOptions, Computable, ValidateFnResponse } from '../types.ts';
 
 export type FileOptions = {
   /**
-   * Accepted file types, e.g. ['png', '.jpeg', 'image/*'].
+   * Accepted file types, e.g. `['png', '.jpeg', 'image/*']`.
    */
   acceptedTypes?: string[];
   /**
-   * Unaccepted file types, e.g. ['png', '.jpeg', 'image/*'].
+   * Unaccepted file types, e.g. `['png', '.jpeg', 'image/*']`.
    */
   unacceptedTypes?: string[];
 } & BaseOptions;
 
 export default class FileValidator<
-  T extends File[] | File,
-  Model extends object,
   Context extends object = Record<string, unknown>,
-> extends BaseValidator<T, Model, Context, FileOptions> {
+> extends BaseValidator<File | File[], Context, FileOptions> {
   defaultOptions = {};
 
   constructor(
-    binding: Binding<Model>,
+    binding: Binding,
     options: Computable<Context, FileOptions>,
-    context: Context,
+    context?: Context,
   ) {
     super(binding, options, context);
 
@@ -40,7 +38,7 @@ export default class FileValidator<
     }
   }
 
-  validate(value: T, options: FileOptions): ValidateFnResponse {
+  validate(value: File | File[], options: FileOptions): ValidateFnResponse {
     const { acceptedTypes, unacceptedTypes } = options;
     if (!isEmpty(acceptedTypes)) {
       if (Array.isArray(value)) {

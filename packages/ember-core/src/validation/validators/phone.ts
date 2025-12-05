@@ -55,14 +55,8 @@ export type PhoneOptions = {
 } & BaseOptions;
 
 export default class PhoneValidator<
-  Model extends object,
   Context extends object = Record<string, unknown>,
-> extends BaseValidator<
-  string | null | undefined,
-  Model,
-  Context,
-  PhoneOptions
-> {
+> extends BaseValidator<string | null | undefined, Context, PhoneOptions> {
   defaultOptions = {
     areaCode: 'allow' as const,
     countryCode: 'allow' as const,

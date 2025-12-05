@@ -16,28 +16,39 @@ export type LengthOptions = {
    */
   allowNone?: boolean;
   /**
-   * A range
+   * If set, the length must be greater than `between[0]` and
+   * less than `between[1]`.
    */
   between?: [number, number];
+  /**
+   * If set, the length must equal this value.
+   */
   is?: number;
+  /**
+   * If set, the length cannot be greater than or
+   * equal to this.
+   */
   max?: number;
+  /**
+   * If set, the length cannot be less than or
+   * equal to this.
+   */
   min?: number;
 } & BaseOptions;
 
 export default class LengthValidator<
-  T extends ArrayLike<T>,
-  Model extends object,
+  T extends ArrayLike<unknown>,
   Context extends object = Record<string, unknown>,
-> extends BaseValidator<T, Model, Context, LengthOptions> {
+> extends BaseValidator<T, Context, LengthOptions> {
   defaultOptions = {
     allowNone: true,
     presence: true,
   };
 
   constructor(
-    binding: Binding<Model>,
+    binding: Binding,
     options: Computable<Context, LengthOptions>,
-    context: Context,
+    context?: Context,
   ) {
     super(binding, options, context);
 
@@ -111,7 +122,7 @@ export default class LengthValidator<
     return true;
   }
 
-  toString(value: ArrayLike<T>): string {
+  toString(value: T): string {
     if (typeof value === 'string') {
       return value;
     }

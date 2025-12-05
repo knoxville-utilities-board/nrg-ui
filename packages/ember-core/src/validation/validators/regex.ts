@@ -19,13 +19,12 @@ export type RegexOptions = {
 } & BaseOptions;
 
 export default class RegexValidator<
-  Model extends object = Record<string, unknown>,
   Context extends object = Record<string, unknown>,
-> extends BaseValidator<string, Model, Context, RegexOptions> {
+> extends BaseValidator<string, Context, RegexOptions> {
   constructor(
-    binding: Binding<Model>,
+    binding: Binding,
     options: Computable<Context, RegexOptions>,
-    context: Context,
+    context?: Context,
   ) {
     super(binding, options, context);
 

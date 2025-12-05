@@ -2,9 +2,29 @@ import type { Binding } from '../index.ts';
 import type BaseValidator from './validators/base.ts';
 
 export type BaseOptions = {
+  /**
+   * When true, the validation will not be performed.
+   */
   disabled?: boolean;
+
+  /**
+   * When the validation fails, this key is used by `ember-intl`
+   * to translate a failure message. This option overrides the
+   * `message` option.
+   */
   key?: string;
+
+  /**
+   * When the validation fails, this failure message will be displayed.
+   * This option can be overridden by the `key` option.
+   */
   message?: string;
+
+  /**
+   * When true, validation failures will not prevent form submissions.
+   * Additionally, warnings are shown before the form is submitted, when
+   * the user inputs a value that fails the validation.
+   */
   isWarning?: boolean;
 };
 
@@ -39,28 +59,27 @@ export interface ValidationResult {
   message?: string;
 }
 
-export type ValidatorBuilder<
-  T,
-  Model extends object,
-  Context extends object,
-  OptionsShape extends object,
+export type Validator<
+  T = unknown,
+  Context extends object = object,
+  OptionsShape extends object = object,
 > = (
-  binding: Binding<Model>,
+  binding: Binding,
   context: Context,
-) => Validator<T, Model, OptionsShape, Context>;
-export interface Validator<
+) => ValidatorImpl<T, Context, OptionsShape>;
+
+export interface ValidatorImpl<
   T,
-  Model extends object,
   Context extends object,
   OptionsShape extends BaseOptions,
 > {
   validate(
-    this: BaseValidator<T, Model, Context, OptionsShape>,
+    this: BaseValidator<T, Context, OptionsShape>,
     value: T,
-    options: OptionsShape,
-    context: Context | Model,
+    options: Computable<Context, OptionsShape>,
+    context: Context,
   ): ValidateFnResponse;
 
-  readonly binding: Binding<Model>;
+  readonly binding: Binding;
   readonly result: ValidationResult;
 }

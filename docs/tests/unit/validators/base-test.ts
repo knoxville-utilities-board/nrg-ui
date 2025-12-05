@@ -23,11 +23,10 @@ type DummyOptions<T extends ValidateFnResponse> = BaseOptions & {
 class DummyValidator<T extends ValidateFnResponse> extends BaseValidator<
   T,
   Model,
-  Model,
   DummyOptions<T>
 > {
   validate(
-    this: BaseValidator<T, Model, Model, DummyOptions<T>>,
+    this: BaseValidator<T, Model, DummyOptions<T>>,
     value: T,
     options: DummyOptions<T>,
   ) {

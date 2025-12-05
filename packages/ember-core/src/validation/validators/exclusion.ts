@@ -15,12 +15,11 @@ export type ExclusionOptions<T> = {
 export default class ExclusionValidator<
   T extends Primitive,
   Context extends object = Record<string, unknown>,
-  Model extends object = Record<string, unknown>,
-> extends BaseValidator<T, Model, Context, ExclusionOptions<T>> {
+> extends BaseValidator<T, Context, ExclusionOptions<T>> {
   constructor(
-    bind: Binding<Model>,
+    bind: Binding,
     options: Computable<Context, ExclusionOptions<T>>,
-    context: Context,
+    context?: Context,
   ) {
     super(bind, options, context);
 
