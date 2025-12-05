@@ -8,7 +8,8 @@ module('Integration | Component | modal', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(<template><Modal /></template>);
+    await render(<template><Modal @isOpen={{true}} /></template>);
+
     assert.dom('dialog').exists();
     assert.dom('.modal-content').exists();
     assert.dom('.modal-header').doesNotExist();
@@ -17,7 +18,7 @@ module('Integration | Component | modal', function (hooks) {
 
     await render(
       <template>
-        <Modal>
+        <Modal @isOpen={{true}}>
           <:header>
             <div>Header</div>
           </:header>
@@ -30,6 +31,7 @@ module('Integration | Component | modal', function (hooks) {
         </Modal>
       </template>,
     );
+
     assert.dom('dialog').exists();
     assert.dom('.modal-content').exists();
     assert.dom('.modal-header').exists();
@@ -69,7 +71,7 @@ module('Integration | Component | modal', function (hooks) {
   test('it can have custom header, body, and footer', async function (assert) {
     await render(
       <template>
-        <Modal>
+        <Modal @isOpen={{true}}>
           <:header>
             <div data-test-header>Header</div>
           </:header>
