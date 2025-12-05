@@ -9,7 +9,13 @@ import pageTitle from 'ember-page-title/helpers/page-title';
     <div class="col px-md-0 py-3">
       <div class="container mx-auto">
         {{#let (getSnippet "scaffold-component") as |snippet|}}
-          <CodeBlock @lang="glimmer-template" @code={{snippet.code}} />
+          <CodeBlock @code={{snippet.code}} @lang="glimmer-template">
+            <:name>
+              <strong>
+                Docs App
+              </strong>
+            </:name>
+          </CodeBlock>
         {{/let}}
       </div>
     </div>

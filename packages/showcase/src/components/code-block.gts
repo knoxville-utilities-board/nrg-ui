@@ -1,9 +1,11 @@
 import { assert, warn } from '@ember/debug';
+import { concat } from '@ember/helper';
 import { get } from '@ember/object';
 import { service } from '@ember/service';
 import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
 import { cached } from '@glimmer/tracking';
+import { classes } from '@nrg-ui/core/helpers/classes';
 
 import CopyButton from './copy-button.gts';
 
@@ -22,12 +24,20 @@ export interface CodeBlockSignature {
     code: string;
     label?: string;
     lang: AllowedLanguage;
+    name?: string;
     showCopyButton?: boolean;
     model?: object;
     options?: Partial<CodeToHastOptions>;
 
     inline?: boolean;
   };
+  Blocks: {
+    name?: [];
+  };
+}
+
+function or(...args: unknown[]) {
+  return args.some((a) => Boolean(a));
 }
 
 function coerceValue(
@@ -116,6 +126,19 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
     return this.shiki.highlight(this.resolvedCode, lang);
   }
 
+  get hasName() {
+    return Boolean(this.args.name);
+  }
+
+  get name() {
+    assert(
+      'Inline code blocks cannot have a name',
+      !(this.args.inline && this.hasName),
+    );
+
+    return this.args.name;
+  }
+
   get style() {
     const { code } = this;
     const theme = this.theme.resolvedTheme;
@@ -150,23 +173,41 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
         {{/let}}
       </span>
     {{else}}
-      <div
-        class="border border-secondary rounded p-3 my-2 position-relative code-block-wrapper"
-        style={{this.style}}
-        data-label={{@label}}
-        ...attributes
-      >
-        {{#let this.code.html as |html|}}
-          {{#if this.code.isRendered}}
-            {{htmlSafe html}}
-          {{else}}
-            <pre><code>{{html}}</code></pre>
-          {{/if}}
-        {{/let}}
-        {{#if this.showCopyButton}}
-          <CopyButton @text={{this.resolvedCode}} />
+      {{#let (or this.hasName (has-block "name")) as |hasName|}}
+        {{#if hasName}}
+          <div
+            class="border border-secondary border-bottom-0 rounded-top p-3 mt-2"
+          >
+            {{#if (has-block "name")}}
+              {{yield to="name"}}
+            {{else if this.hasName}}
+              {{this.name}}
+            {{/if}}
+          </div>
         {{/if}}
-      </div>
+        <div
+          class={{classes
+            "border border-secondary"
+            (concat "rounded" (if hasName "-bottom"))
+            (if hasName "mb-2" "my-2")
+            "p-3 position-relative code-block-wrapper"
+          }}
+          style={{this.style}}
+          data-label={{@label}}
+          ...attributes
+        >
+          {{#let this.code.html as |html|}}
+            {{#if this.code.isRendered}}
+              {{htmlSafe html}}
+            {{else}}
+              <pre><code>{{html}}</code></pre>
+            {{/if}}
+          {{/let}}
+          {{#if this.showCopyButton}}
+            <CopyButton @text={{this.resolvedCode}} />
+          {{/if}}
+        </div>
+      {{/let}}
     {{/if}}
   </template>
 }
