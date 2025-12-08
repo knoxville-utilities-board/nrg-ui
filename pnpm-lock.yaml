@@ -70,7 +70,7 @@ importers:
         version: 1.19.5(@glint/template@1.7.3)
       '@embroider/vite':
         specifier: ^1.4.4
-        version: 1.4.4(@embroider/core@4.2.8(@glint/template@1.7.3))(@glint/template@1.7.3)(rollup@4.53.3)(vite@7.2.6(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1))
+        version: 1.4.4(@embroider/core@4.2.8(@glint/template@1.7.3))(@glint/template@1.7.3)(rollup@4.53.3)(vite@7.2.7(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1))
       '@floating-ui/dom':
         specifier: ^1.7.4
         version: 1.7.4
@@ -225,8 +225,8 @@ importers:
         specifier: ^8.48.1
         version: 8.48.1(eslint@9.39.1)(typescript@5.9.3)
       vite:
-        specifier: ^7.2.6
-        version: 7.2.6(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1)
+        specifier: ^7.2.7
+        version: 7.2.7(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1)
 
   packages/app-version:
     dependencies:
@@ -304,8 +304,8 @@ importers:
         specifier: ^8.48.1
         version: 8.48.1(eslint@9.39.1)(typescript@5.9.3)
       vite:
-        specifier: ^7.2.6
-        version: 7.2.6(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1)
+        specifier: ^7.2.7
+        version: 7.2.7(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1)
       vitest:
         specifier: ^4.0.15
         version: 4.0.15(@types/node@22.19.1)(jsdom@26.1.0)(sass@1.94.2)(terser@5.44.1)
@@ -580,8 +580,8 @@ importers:
         specifier: ^8.48.1
         version: 8.48.1(eslint@9.39.1)(typescript@5.9.3)
       vite:
-        specifier: ^7.2.6
-        version: 7.2.6(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1)
+        specifier: ^7.2.7
+        version: 7.2.7(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1)
 
   packages/standards:
     dependencies:
@@ -7488,8 +7488,8 @@ packages:
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
 
-  vite@7.2.6:
-    resolution: {integrity: sha512-tI2l/nFHC5rLh7+5+o7QjKjSR04ivXDF4jcgV0f/bTQ+OJiITy5S6gaynVsEM+7RqzufMnVbIon6Sr5x1SDYaQ==}
+  vite@7.2.7:
+    resolution: {integrity: sha512-ITcnkFeR3+fI8P1wMgItjGrR10170d8auB4EpMLPqmx6uxElH3a/hHGQabSHKdqd4FXWO1nFIp9rRn7JQ34ACQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -8949,7 +8949,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@embroider/vite@1.4.4(@embroider/core@4.2.8(@glint/template@1.7.3))(@glint/template@1.7.3)(rollup@4.53.3)(vite@7.2.6(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1))':
+  '@embroider/vite@1.4.4(@embroider/core@4.2.8(@glint/template@1.7.3))(@glint/template@1.7.3)(rollup@4.53.3)(vite@7.2.7(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1))':
     dependencies:
       '@babel/core': 7.28.5
       '@embroider/core': 4.2.8(@glint/template@1.7.3)
@@ -8968,7 +8968,7 @@ snapshots:
       send: 0.18.0
       source-map-url: 0.4.1
       terser: 5.44.1
-      vite: 7.2.6(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1)
+      vite: 7.2.7(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1)
     transitivePeerDependencies:
       - '@glint/template'
       - bufferutil
@@ -10108,13 +10108,13 @@ snapshots:
       chai: 6.2.1
       tinyrainbow: 3.0.3
 
-  '@vitest/mocker@4.0.15(vite@7.2.6(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1))':
+  '@vitest/mocker@4.0.15(vite@7.2.7(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1))':
     dependencies:
       '@vitest/spy': 4.0.15
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 7.2.6(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1)
+      vite: 7.2.7(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1)
 
   '@vitest/pretty-format@4.0.15':
     dependencies:
@@ -16389,7 +16389,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite@7.2.6(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1):
+  vite@7.2.7(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1):
     dependencies:
       esbuild: 0.25.12
       fdir: 6.5.0(picomatch@4.0.3)
@@ -16406,7 +16406,7 @@ snapshots:
   vitest@4.0.15(@types/node@22.19.1)(jsdom@26.1.0)(sass@1.94.2)(terser@5.44.1):
     dependencies:
       '@vitest/expect': 4.0.15
-      '@vitest/mocker': 4.0.15(vite@7.2.6(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1))
+      '@vitest/mocker': 4.0.15(vite@7.2.7(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1))
       '@vitest/pretty-format': 4.0.15
       '@vitest/runner': 4.0.15
       '@vitest/snapshot': 4.0.15
@@ -16423,7 +16423,7 @@ snapshots:
       tinyexec: 1.0.2
       tinyglobby: 0.2.15
       tinyrainbow: 3.0.3
-      vite: 7.2.6(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1)
+      vite: 7.2.7(@types/node@22.19.1)(sass@1.94.2)(terser@5.44.1)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 22.19.1
