@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { cssTransition } from 'ember-css-transitions';
 import { t } from 'ember-intl';
 import { modifier } from 'ember-modifier';
 
@@ -35,10 +36,11 @@ export default class Modal extends Component<ModalSignature> {
   dialogElement!: HTMLDialogElement;
 
   @tracked
-  dialogId = crypto.randomUUID();
+  dialogId = '_' + crypto.randomUUID();
 
   constructor(owner: Owner, args: ModalSignature['Args']) {
     super(owner, args);
+
     registerDestructor(this, () => {
       if (this.args.isOpen) {
         this.closeModal();
@@ -56,12 +58,15 @@ export default class Modal extends Component<ModalSignature> {
 
   get classList() {
     const classes = ['border-0', 'rounded-3', this.position];
+
     if (!this.isActive) {
       classes.push('inactive');
     }
+
     if (this.args.subtle) {
       classes.push('subtle');
     }
+
     return classes.join(' ');
   }
 
@@ -73,9 +78,11 @@ export default class Modal extends Component<ModalSignature> {
   onDismiss(evt?: Event) {
     evt?.preventDefault();
     evt?.stopPropagation();
+
     if (!this.isDismissible) {
       return;
     }
+
     this.args.onDismiss?.();
   }
 
@@ -91,6 +98,7 @@ export default class Modal extends Component<ModalSignature> {
     // the dialog in case it is not dismissible.
     // If it is dismissible, we'll close it immediately after.
     this.openModal();
+
     if (this.isDismissible) {
       this.onDismiss();
     }
@@ -130,31 +138,36 @@ export default class Modal extends Component<ModalSignature> {
       {{this.onUpdate @isOpen}}
       ...attributes
     >
-      <div class="modal-content">
-        {{#if this.isDismissible}}
-          <button
-            aria-label={{t "nrg.base.close"}}
-            class="btn-close"
-            type="button"
-            {{on "click" this.onDismiss}}
-          ></button>
-        {{/if}}
-        {{#if (has-block "header")}}
-          <div class="modal-header">
-            <h5 class="modal-title">
-              {{yield to="header"}}
-            </h5>
+      {{#if @isOpen}}
+        <div
+          class="modal-content"
+          {{cssTransition "modal" didTransitionOut=this.closeModal}}
+        >
+          {{#if this.isDismissible}}
+            <button
+              aria-label={{t "nrg.base.close"}}
+              class="btn-close"
+              type="button"
+              {{on "click" this.onDismiss}}
+            ></button>
+          {{/if}}
+          {{#if (has-block "header")}}
+            <div class="modal-header">
+              <h5 class="modal-title">
+                {{yield to="header"}}
+              </h5>
+            </div>
+          {{/if}}
+          <div class="modal-body">
+            {{yield}}
           </div>
-        {{/if}}
-        <div class="modal-body">
-          {{yield}}
+          {{#if (has-block "footer")}}
+            <div class="modal-footer">
+              {{yield to="footer"}}
+            </div>
+          {{/if}}
         </div>
-        {{#if (has-block "footer")}}
-          <div class="modal-footer">
-            {{yield to="footer"}}
-          </div>
-        {{/if}}
-      </div>
+      {{/if}}
     </dialog>
   </template>
 }
