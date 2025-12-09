@@ -28,6 +28,8 @@ export interface CodeBlockSignature {
     showCopyButton?: boolean;
     model?: object;
     options?: Partial<CodeToHastOptions>;
+    showLineNumbers?: boolean;
+    startingLineNumber?: number;
 
     inline?: boolean;
   };
@@ -140,12 +142,24 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
   }
 
   get style() {
+    const { startingLineNumber } = this.args;
     const { code } = this;
     const theme = this.theme.resolvedTheme;
 
     const backgroundColor = code.background[theme];
+    const rules: string[] = [`background-color: ${backgroundColor}`];
 
-    return htmlSafe(`background-color: ${backgroundColor};`);
+    if (startingLineNumber !== undefined) {
+      rules.push(`--showcase-starting-line: ${startingLineNumber}`);
+    }
+
+    const numLines = code.html.split('\n').length;
+    const maxLineNumber = (startingLineNumber ?? 1) + numLines - 1;
+    const maxLineNumberWidth = Math.trunc(Math.log10(maxLineNumber) + 1);
+
+    rules.push(`--showcase-line-number-width: ${maxLineNumberWidth - 1}em`);
+
+    return htmlSafe(rules.join('; '));
   }
 
   get showCopyButton() {
@@ -191,6 +205,7 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
             (concat "rounded" (if hasName "-bottom"))
             (if hasName "mb-2" "my-2")
             "p-3 position-relative code-block-wrapper"
+            (if @showLineNumbers "line-numbers")
           }}
           style={{this.style}}
           data-label={{@label}}
