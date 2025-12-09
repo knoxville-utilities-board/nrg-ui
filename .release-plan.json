@@ -7,17 +7,39 @@
       "oldVersion": "0.3.2"
     },
     "@nrg-ui/css": {
-      "oldVersion": "0.28.0"
-    },
-    "@nrg-ui/core": {
-      "impact": "minor",
-      "oldVersion": "0.51.0",
-      "newVersion": "0.52.0",
+      "impact": "patch",
+      "oldVersion": "0.28.0",
+      "newVersion": "0.28.1",
       "tagName": "latest",
       "constraints": [
         {
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./packages/design-system/package.json"
+    },
+    "@nrg-ui/core": {
+      "impact": "major",
+      "oldVersion": "0.52.0",
+      "newVersion": "0.53.0",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "major",
+          "reason": "Appears in changelog section :boom: Breaking Change"
+        },
+        {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
         },
         {
           "impact": "patch",
@@ -27,11 +49,19 @@
       "pkgJSONPath": "./packages/ember-core/package.json"
     },
     "@nrg-ui/showcase": {
-      "impact": "patch",
-      "oldVersion": "0.4.0",
-      "newVersion": "0.4.1",
+      "impact": "major",
+      "oldVersion": "0.4.1",
+      "newVersion": "0.5.0",
       "tagName": "latest",
       "constraints": [
+        {
+          "impact": "major",
+          "reason": "Has peer dependency `workspace:^0` on @nrg-ui/core"
+        },
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
         {
           "impact": "patch",
           "reason": "Appears in changelog section :house: Internal"
@@ -40,11 +70,31 @@
       "pkgJSONPath": "./packages/showcase/package.json"
     },
     "@nrg-ui/standards": {
-      "oldVersion": "0.6.1"
+      "impact": "patch",
+      "oldVersion": "0.6.1",
+      "newVersion": "0.6.2",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./packages/standards/package.json"
     },
     "@nrg-ui/theme-generator": {
-      "oldVersion": "0.3.4"
+      "impact": "patch",
+      "oldVersion": "0.3.4",
+      "newVersion": "0.3.5",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./packages/theme-generator/package.json"
     }
   },
-  "description": "## Release (2025-11-25)\n\n* @nrg-ui/core 0.52.0 (minor)\n* @nrg-ui/showcase 0.4.1 (patch)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#750](https://github.com/knoxville-utilities-board/nrg-ui/pull/750) feat: Install blueprint uses Vite ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/core`, `@nrg-ui/showcase`\n  * [#752](https://github.com/knoxville-utilities-board/nrg-ui/pull/752) chore: Loosen dependencies on sibling packages ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2025-12-09)\n\n* @nrg-ui/css 0.28.1 (patch)\n* @nrg-ui/core 0.53.0 (major)\n* @nrg-ui/showcase 0.5.0 (major)\n* @nrg-ui/standards 0.6.2 (patch)\n* @nrg-ui/theme-generator 0.3.5 (patch)\n\n#### :boom: Breaking Change\n* `@nrg-ui/core`\n  * [#755](https://github.com/knoxville-utilities-board/nrg-ui/pull/755) refactor(validation): Rewrite types and remove model argument ([@TSenter](https://github.com/TSenter))\n\n#### :rocket: Enhancement\n* `@nrg-ui/showcase`\n  * [#764](https://github.com/knoxville-utilities-board/nrg-ui/pull/764) feat(code-block): Add option to show line numbers ([@TSenter](https://github.com/TSenter))\n  * [#756](https://github.com/knoxville-utilities-board/nrg-ui/pull/756) feat: Add name to code blocks ([@TSenter](https://github.com/TSenter))\n  * [#757](https://github.com/knoxville-utilities-board/nrg-ui/pull/757) feat(code-block): Maintain formatting before render ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/core`\n  * [#755](https://github.com/knoxville-utilities-board/nrg-ui/pull/755) refactor(validation): Rewrite types and remove model argument ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#762](https://github.com/knoxville-utilities-board/nrg-ui/pull/762) fix(modal): Don't render content when closed ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* [#753](https://github.com/knoxville-utilities-board/nrg-ui/pull/753) docs: Update snippet name ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/css`, `@nrg-ui/core`, `@nrg-ui/showcase`, `@nrg-ui/standards`, `@nrg-ui/theme-generator`\n  * [#761](https://github.com/knoxville-utilities-board/nrg-ui/pull/761) chore: Upgrade Prettier and plugin ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
