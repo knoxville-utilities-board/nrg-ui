@@ -40,6 +40,7 @@ export default class Modal extends Component<ModalSignature> {
 
   constructor(owner: Owner, args: ModalSignature['Args']) {
     super(owner, args);
+
     registerDestructor(this, () => {
       if (this.args.isOpen) {
         this.closeModal();
@@ -57,12 +58,15 @@ export default class Modal extends Component<ModalSignature> {
 
   get classList() {
     const classes = ['border-0', 'rounded-3', this.position];
+
     if (!this.isActive) {
       classes.push('inactive');
     }
+
     if (this.args.subtle) {
       classes.push('subtle');
     }
+
     return classes.join(' ');
   }
 
@@ -74,9 +78,11 @@ export default class Modal extends Component<ModalSignature> {
   onDismiss(evt?: Event) {
     evt?.preventDefault();
     evt?.stopPropagation();
+
     if (!this.isDismissible) {
       return;
     }
+
     this.args.onDismiss?.();
   }
 
@@ -92,6 +98,7 @@ export default class Modal extends Component<ModalSignature> {
     // the dialog in case it is not dismissible.
     // If it is dismissible, we'll close it immediately after.
     this.openModal();
+
     if (this.isDismissible) {
       this.onDismiss();
     }
