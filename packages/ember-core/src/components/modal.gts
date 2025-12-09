@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { cssTransition } from 'ember-css-transitions';
 import { t } from 'ember-intl';
 import { modifier } from 'ember-modifier';
 
@@ -35,7 +36,7 @@ export default class Modal extends Component<ModalSignature> {
   dialogElement!: HTMLDialogElement;
 
   @tracked
-  dialogId = crypto.randomUUID();
+  dialogId = '_' + crypto.randomUUID();
 
   constructor(owner: Owner, args: ModalSignature['Args']) {
     super(owner, args);
@@ -131,7 +132,10 @@ export default class Modal extends Component<ModalSignature> {
       ...attributes
     >
       {{#if @isOpen}}
-        <div class="modal-content">
+        <div
+          class="modal-content"
+          {{cssTransition "modal" didTransitionOut=this.closeModal}}
+        >
           {{#if this.isDismissible}}
             <button
               aria-label={{t "nrg.base.close"}}

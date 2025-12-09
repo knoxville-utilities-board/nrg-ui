@@ -1,9 +1,18 @@
 dialog {
   --bs-modal-bg: var(--bs-body-bg);
+  --nrg-modal-transition-duration: 0.3s;
 
   background-color: var(--bs-modal-bg);
-  transition: all 0.3s ease allow-discrete;
+  transition: all var(--nrg-modal-transition-duration) ease allow-discrete;
   overflow: visible !important;
+
+  // `ember-css-transitions` uses `getComputedStyle` to determine
+  // the length of the transition/animation. We need to match the
+  // transition duration on the .modal-content element in order
+  // for the closing animation to render correctly.
+  & .modal-content {
+    transition-duration: var(--nrg-modal-transition-duration);
+  }
 
   &.center {
     max-height: 90vh;
@@ -48,7 +57,7 @@ dialog {
     }
   }
   &::backdrop {
-    transition: all 0.3s ease allow-discrete;
+    transition: all var(--nrg-modal-transition-duration) ease allow-discrete;
 
     background: rgba(0, 0, 0, 0); // Animation end for close
   }
