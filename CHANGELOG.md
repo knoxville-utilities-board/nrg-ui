@@ -1,5 +1,39 @@
 # Changelog
 
+## Release (2025-12-09)
+
+* @nrg-ui/css 0.28.1 (patch)
+* @nrg-ui/core 0.53.0 (major)
+* @nrg-ui/showcase 0.5.0 (major)
+* @nrg-ui/standards 0.6.2 (patch)
+* @nrg-ui/theme-generator 0.3.5 (patch)
+
+#### :boom: Breaking Change
+* `@nrg-ui/core`
+  * [#755](https://github.com/knoxville-utilities-board/nrg-ui/pull/755) refactor(validation): Rewrite types and remove model argument ([@TSenter](https://github.com/TSenter))
+
+#### :rocket: Enhancement
+* `@nrg-ui/showcase`
+  * [#764](https://github.com/knoxville-utilities-board/nrg-ui/pull/764) feat(code-block): Add option to show line numbers ([@TSenter](https://github.com/TSenter))
+  * [#756](https://github.com/knoxville-utilities-board/nrg-ui/pull/756) feat: Add name to code blocks ([@TSenter](https://github.com/TSenter))
+  * [#757](https://github.com/knoxville-utilities-board/nrg-ui/pull/757) feat(code-block): Maintain formatting before render ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`
+  * [#755](https://github.com/knoxville-utilities-board/nrg-ui/pull/755) refactor(validation): Rewrite types and remove model argument ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#762](https://github.com/knoxville-utilities-board/nrg-ui/pull/762) fix(modal): Don't render content when closed ([@TSenter](https://github.com/TSenter))
+
+#### :memo: Documentation
+* [#753](https://github.com/knoxville-utilities-board/nrg-ui/pull/753) docs: Update snippet name ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `@nrg-ui/css`, `@nrg-ui/core`, `@nrg-ui/showcase`, `@nrg-ui/standards`, `@nrg-ui/theme-generator`
+  * [#761](https://github.com/knoxville-utilities-board/nrg-ui/pull/761) chore: Upgrade Prettier and plugin ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-11-25)
 
 * @nrg-ui/core 0.52.0 (minor)
