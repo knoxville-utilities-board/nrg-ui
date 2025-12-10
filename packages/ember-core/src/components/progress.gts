@@ -23,7 +23,6 @@ export interface ProgressSignature {
     animated?: boolean;
     hideLabel?: boolean;
     label?: string;
-    showLabel?: boolean;
     striped?: boolean;
     title?: string;
   } & (
