@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2025-12-10)
+
+* @nrg-ui/core 0.53.1 (patch)
+
+#### :memo: Documentation
+* `@nrg-ui/core`
+  * [#767](https://github.com/knoxville-utilities-board/nrg-ui/pull/767) docs(progress): Add progress docs to showcase ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+#### Committers: 1
+- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
 ## Release (2025-12-09)
 
 * @nrg-ui/css 0.28.1 (patch)
