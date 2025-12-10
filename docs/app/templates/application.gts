@@ -43,7 +43,7 @@ export default class Application extends Component {
         </Menu.Item>
         <Menu.Group @route="core-components.index">
           <:badge>
-            14
+            15
           </:badge>
           <:header>
             Components
@@ -84,6 +84,9 @@ export default class Application extends Component {
             </Item>
             <Item @route="core-components.popover">
               Popover
+            </Item>
+            <Item @route="core-components.progress">
+              Progress
             </Item>
             <Item @route="core-components.toaster">
               Toaster

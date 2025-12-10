@@ -43,6 +43,7 @@ Router.map(function () {
       this.route('modal');
       this.route('pagination');
       this.route('popover');
+      this.route('progress');
       this.route('toaster');
       this.route('tooltip');
     },
