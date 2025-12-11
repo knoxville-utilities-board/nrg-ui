@@ -30,7 +30,7 @@ module.exports = {
       { name: 'ember-cli-deprecation-workflow', target: '^3.3.0' },
       { name: 'ember-concurrency', target: '^5.1.0' },
       { name: 'ember-css-transitions', target: '^4.4.0' },
-      { name: 'ember-intl', target: '^7.0.0' },
+      { name: 'ember-intl', target: '^8.0.0' },
       { name: 'ember-keyboard', target: '^9.0.2' },
       { name: 'ember-lifeline', target: '^7.0.0' },
       { name: 'ismobilejs', target: '^1.1.1' },
