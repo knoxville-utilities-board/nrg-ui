@@ -5,6 +5,8 @@ import type ThemeService from '@nrg-ui/core/services/theme';
 import type ShikiService from '@nrg-ui/showcase/services/shiki';
 import type { IntlService } from 'ember-intl';
 
+import { formats } from '#app/ember-intl.ts';
+
 export default class ApplicationRoute extends Route {
   @service('theme')
   declare theme: ThemeService;
@@ -16,6 +18,7 @@ export default class ApplicationRoute extends Route {
   declare shiki: ShikiService;
 
   async beforeModel() {
+    this.intl.setFormats(formats);
     this.intl.setLocale(['en-us']);
     this.theme.load();
 

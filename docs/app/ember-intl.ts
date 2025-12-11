@@ -1,19 +1,21 @@
-export default {
-  time: {
+import type { Formats } from 'ember-intl';
+
+export const formats: Formats = {
+  formatTime: {
     hhmmss: {
       hour: 'numeric',
       minute: 'numeric',
       second: 'numeric',
     },
   },
-  date: {
+  formatDate: {
     hhmmss: {
       hour: 'numeric',
       minute: 'numeric',
       second: 'numeric',
     },
   },
-  number: {
+  formatNumber: {
     compact: {
       notation: 'compact',
     },
