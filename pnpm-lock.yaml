@@ -44,6 +44,9 @@ importers:
       '@babel/plugin-transform-typescript':
         specifier: ^7.28.5
         version: 7.28.5(@babel/core@7.28.5)
+      '@ember-intl/lint':
+        specifier: ^0.2.2
+        version: 0.2.2
       '@ember-intl/v1-compat':
         specifier: ^1.0.1
         version: 1.0.1(@glint/template@1.7.3)
@@ -386,6 +389,9 @@ importers:
       '@bertdeblock/gember':
         specifier: ^1.6.0
         version: 1.6.0
+      '@ember-intl/lint':
+        specifier: ^0.2.2
+        version: 0.2.2
       '@embroider/addon-dev':
         specifier: ^8.1.2
         version: 8.1.2(@glint/template@1.7.3)(rollup@4.53.3)
@@ -1304,6 +1310,26 @@ packages:
     engines: {node: '>=0.1.95'}
     hasBin: true
 
+  '@codemod-utils/ast-javascript@2.1.0':
+    resolution: {integrity: sha512-43HlBPBZtRDgk3m0wSyjaJXqs0ErtIfX3No5X2QA2CTJUm5qVizZF7P2ss09eABAQgWJ/rMR8jLCVHumcZqV3A==}
+    engines: {node: 20.* || >= 22}
+
+  '@codemod-utils/ast-template-tag@1.1.0':
+    resolution: {integrity: sha512-Sc/O9fxJE2xBrVtO1CRtKEQCnTA4FZECSkAePi/VMti8GnM+j7N9SZbAN7Ppkie3gBZ5mArhujlVjeOnjl5j1Q==}
+    engines: {node: 20.* || >= 22}
+
+  '@codemod-utils/ast-template@2.1.0':
+    resolution: {integrity: sha512-TP8WRubj1v3BRKD5JdIjgqIjOkOdWctxf060T4BcydO+UYpsFfTDNHj4ukI9Fy93pSziOJmM0MXRovJljzN/YA==}
+    engines: {node: 20.* || >= 22}
+
+  '@codemod-utils/files@3.2.1':
+    resolution: {integrity: sha512-GveYEg7aMjQ1YgyQeB+39Q/1jD2UB2D3c0lew3+s0RZ4FGl7QqN7sEVn3wGi6RQoGtRjRALRxfosBo+ctTi5xQ==}
+    engines: {node: 20.* || >= 22}
+
+  '@codemod-utils/package-json@3.3.1':
+    resolution: {integrity: sha512-yON7hrWp333T2Mdn173X0mBPeT54s8oYDm8IPdM0hHkNVQvTxnBpnd8Y9NRdTJ6SwzU0hkDGMwGSpAl/dgqD0Q==}
+    engines: {node: 20.* || >= 22}
+
   '@colors/colors@1.5.0':
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
     engines: {node: '>=0.1.90'}
@@ -1358,6 +1384,11 @@ packages:
 
   '@ember-data/rfc395-data@0.0.4':
     resolution: {integrity: sha512-tGRdvgC9/QMQSuSuJV45xoyhI0Pzjm7A9o/MVVA3HakXIImJbbzx/k/6dO9CUEQXIyS2y0fW6C1XaYOG7rY0FQ==}
+
+  '@ember-intl/lint@0.2.2':
+    resolution: {integrity: sha512-2Psk2urB7IjqvZbVFrgp9deh5oLb5Pe8iCUBuNlF/SV/wt/iEL1sY5HNP4cOl86meZjE//vQlQ4UGopWnUIwbw==}
+    engines: {node: 20.* || >= 22}
+    hasBin: true
 
   '@ember-intl/v1-compat@1.0.1':
     resolution: {integrity: sha512-d93IMzD7uq68XC1UmQP0pUJhOdryuBJRruLqxbkzD3jery4flNx3K9J1lV6/+brbgZkuwg2espV27Hqr5bb7cg==}
@@ -4718,6 +4749,10 @@ packages:
     resolution: {integrity: sha512-DfXN8DfhJ7NH3Oe7cFmu3NCu1wKbkReJ8TorzSAFbSKrlNaQSKfIzqYqVY8zlbs2NLBbWpRiU52GX2PbaBVNkg==}
     hasBin: true
 
+  glob@13.0.0:
+    resolution: {integrity: sha512-tvZgpqk6fz4BaNZ66ZsRaZnbHvP/jG3uKJvAZOwEVUL4RTA5nJeeLYfyN9/VA8NX/V3IBG+hkeuGpKjvELkVhA==}
+    engines: {node: 20 || >=22}
+
   glob@5.0.15:
     resolution: {integrity: sha512-c9IPMazfRITpmAAKi22dK1VKxGDX9ehhqfABDriL/lzO92xcUKEJPQHrVA/2YHSNFB4iFlykVmWvwo48nr3OxA==}
     deprecated: Glob versions prior to v9 are no longer supported
@@ -5560,6 +5595,10 @@ packages:
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
+  lru-cache@11.2.4:
+    resolution: {integrity: sha512-B5Y16Jr9LB9dHVkh6ZevG+vAbOsNOYCX+sXvFWFu7B3Iz5mijW3zdbMyhsh8ANd2mSWBYdJgnqi+mL7/LrOPYg==}
+    engines: {node: 20 || >=22}
+
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
@@ -6213,6 +6252,10 @@ packages:
   path-scurry@1.11.1:
     resolution: {integrity: sha512-Xa4Nw17FS9ApQFJ9umLiJS4orGjm7ZzwUrwamcGQuHSzDyth9boKDaycYdDcZDuqYATXw4HFXgaqWTctW/v1HA==}
     engines: {node: '>=16 || 14 >=14.18'}
+
+  path-scurry@2.0.1:
+    resolution: {integrity: sha512-oWyT4gICAu+kaA7QWk/jvCHWarMKNs6pXOGWKDTr7cw4IGcUbW+PeTfbaQiLGheFRpjo6O9J0PmyMfQPjH71oA==}
+    engines: {node: 20 || >=22}
 
   path-to-regexp@0.1.12:
     resolution: {integrity: sha512-RA1GjUVMnvYFxuqovrEqZoxxW5NUZqbwKtYz/Tt7nXerk0LbLblQmrsgdeOxV5SFHf0UDggjS/bSeOZwt1pmEQ==}
@@ -7143,6 +7186,10 @@ packages:
     resolution: {integrity: sha512-9kY+CygyYM6j02t5YFHbNz2FN5QmYGv9zAjVp4lCDjlCw7amdckXlEt/bjMhUIfj4ThGRE4gCUH5+yGnNuPo5A==}
     engines: {node: '>=10.0.0'}
 
+  tagged-tag@1.0.0:
+    resolution: {integrity: sha512-yEFYrVhod+hdNyx7g5Bnkkb0G6si8HJurOoOEgC8B/O0uXLHlaey/65KRv6cuWBNhBgHKAROVpc7QyYqE5gFng==}
+    engines: {node: '>=20'}
+
   tap-parser@7.0.0:
     resolution: {integrity: sha512-05G8/LrzqOOFvZhhAk32wsGiPZ1lfUrl+iV7+OkKgfofZxiceZWMHkKmow71YsyVQ8IvGBP2EjcIjE5gL4l5lA==}
     hasBin: true
@@ -7315,6 +7362,10 @@ packages:
   type-fest@4.38.0:
     resolution: {integrity: sha512-2dBz5D5ycHIoliLYLi0Q2V7KRaDlH0uWIvmk7TYlAg5slqwiPv1ezJdZm1QEM0xgk29oYWMCbIG7E6gHpvChlg==}
     engines: {node: '>=16'}
+
+  type-fest@5.3.1:
+    resolution: {integrity: sha512-VCn+LMHbd4t6sF3wfU/+HKT63C9OoyrSIf4b+vtWHpt2U7/4InZG467YDNMFMR70DdHjAdpPWmw2lzRdg0Xqqg==}
+    engines: {node: '>=20'}
 
   type-is@1.6.18:
     resolution: {integrity: sha512-TkRKr9sUTxEH8MdfuCSP7VizJyzRNMjj2J2do2Jr3Kym598JVdEksuzPQCnlFPW4ky9Q+iA+ma9BGm06XQBy8g==}
@@ -8691,6 +8742,30 @@ snapshots:
       exec-sh: 0.3.6
       minimist: 1.2.8
 
+  '@codemod-utils/ast-javascript@2.1.0':
+    dependencies:
+      '@babel/parser': 7.28.5
+      recast: 0.23.11
+
+  '@codemod-utils/ast-template-tag@1.1.0':
+    dependencies:
+      '@codemod-utils/ast-javascript': 2.1.0
+      content-tag: 4.0.0
+
+  '@codemod-utils/ast-template@2.1.0':
+    dependencies:
+      ember-template-recast: 6.1.5
+    transitivePeerDependencies:
+      - supports-color
+
+  '@codemod-utils/files@3.2.1':
+    dependencies:
+      glob: 13.0.0
+
+  '@codemod-utils/package-json@3.3.1':
+    dependencies:
+      type-fest: 5.3.1
+
   '@colors/colors@1.5.0':
     optional: true
 
@@ -8728,6 +8803,19 @@ snapshots:
   '@dual-bundle/import-meta-resolve@4.2.1': {}
 
   '@ember-data/rfc395-data@0.0.4': {}
+
+  '@ember-intl/lint@0.2.2':
+    dependencies:
+      '@codemod-utils/ast-javascript': 2.1.0
+      '@codemod-utils/ast-template': 2.1.0
+      '@codemod-utils/ast-template-tag': 1.1.0
+      '@codemod-utils/files': 3.2.1
+      '@codemod-utils/package-json': 3.3.1
+      '@formatjs/icu-messageformat-parser': 2.11.4
+      js-yaml: 4.1.1
+      yargs: 18.0.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ember-intl/v1-compat@1.0.1(@glint/template@1.7.3)':
     dependencies:
@@ -13216,6 +13304,12 @@ snapshots:
       package-json-from-dist: 1.0.1
       path-scurry: 1.11.1
 
+  glob@13.0.0:
+    dependencies:
+      minimatch: 10.1.1
+      minipass: 7.1.2
+      path-scurry: 2.0.1
+
   glob@5.0.15:
     dependencies:
       inflight: 1.0.6
@@ -14162,6 +14256,8 @@ snapshots:
 
   lru-cache@10.4.3: {}
 
+  lru-cache@11.2.4: {}
+
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
@@ -14829,6 +14925,11 @@ snapshots:
   path-scurry@1.11.1:
     dependencies:
       lru-cache: 10.4.3
+      minipass: 7.1.2
+
+  path-scurry@2.0.1:
+    dependencies:
+      lru-cache: 11.2.4
       minipass: 7.1.2
 
   path-to-regexp@0.1.12: {}
@@ -15924,6 +16025,8 @@ snapshots:
       string-width: 4.2.3
       strip-ansi: 6.0.1
 
+  tagged-tag@1.0.0: {}
+
   tap-parser@7.0.0:
     dependencies:
       events-to-array: 1.1.2
@@ -16187,6 +16290,10 @@ snapshots:
   type-fest@0.21.3: {}
 
   type-fest@4.38.0: {}
+
+  type-fest@5.3.1:
+    dependencies:
+      tagged-tag: 1.0.0
 
   type-is@1.6.18:
     dependencies:
