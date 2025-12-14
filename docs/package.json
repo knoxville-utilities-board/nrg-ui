@@ -82,7 +82,7 @@
     "ember-source": "~6.4.0",
     "ember-template-lint": "^7.9.3",
     "ember-try": "^4.0.0",
-    "eslint": "^9.39.1",
+    "eslint": "^9.39.2",
     "eslint-plugin-decorator-position": "^6.0.0",
     "eslint-plugin-ember": "^12.7.5",
     "eslint-plugin-import": "^2.32.0",
@@ -97,7 +97,7 @@
     "stylelint-config-standard": "^39.0.1",
     "tracked-built-ins": "^4.0.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.48.1",
+    "typescript-eslint": "^8.49.0",
     "vite": "^7.2.7"
   },
   "engines": {

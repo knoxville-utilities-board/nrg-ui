@@ -64,13 +64,13 @@
   "dependencies": {
     "@embroider/addon-shim": "^1.10.2",
     "@embroider/macros": "^1.19.5",
-    "@mdn/browser-compat-data": "^7.1.24",
+    "@mdn/browser-compat-data": "^7.2.1",
     "chalk": "^4.1.2",
     "content-tag-utils": "^0.6.0",
     "decorator-transforms": "^2.2.2",
     "ember-concurrency": "^5.1.0",
     "ember-template-recast": "^6.1.5",
-    "shiki": "^3.19.0"
+    "shiki": "^3.20.0"
   },
   "devDependencies": {
     "@babel/core": "^7.28.4",
@@ -90,7 +90,7 @@
     "babel-plugin-ember-template-compilation": "^3.0.1",
     "concurrently": "^9.2.1",
     "ember-template-lint": "^7.9.3",
-    "eslint": "^9.39.1",
+    "eslint": "^9.39.2",
     "eslint-plugin-decorator-position": "^6.0.0",
     "eslint-plugin-ember": "^12.7.5",
     "eslint-plugin-import": "^2.32.0",
@@ -99,7 +99,7 @@
     "prettier-plugin-ember-template-tag": "^2.1.2",
     "rollup": "^4.53.3",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.48.1",
+    "typescript-eslint": "^8.49.0",
     "vite": "^7.2.7"
   },
   "peerDependencies": {
