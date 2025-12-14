@@ -119,7 +119,7 @@
     "@babel/core": "^7.28.5",
     "@babel/plugin-transform-typescript": "^7.28.5",
     "@babel/runtime": "7.28.4",
-    "@bertdeblock/gember": "^1.5.0",
+    "@bertdeblock/gember": "^1.6.0",
     "@embroider/addon-dev": "^8.1.2",
     "@glimmer/component": "^2.0.0",
     "@glint/ember-tsc": "^1.0.8",
@@ -135,7 +135,7 @@
     "ember-concurrency": "^5.1.0",
     "ember-template-lint": "^7.9.3",
     "ember-truth-helpers": "^5.0.0",
-    "eslint": "^9.39.1",
+    "eslint": "^9.39.2",
     "eslint-plugin-decorator-position": "^6.0.0",
     "eslint-plugin-ember": "^12.7.5",
     "eslint-plugin-import": "^2.32.0",
@@ -147,7 +147,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "tracked-built-ins": "^4.0.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.48.1"
+    "typescript-eslint": "^8.49.0"
   },
   "peerDependencies": {
     "@glimmer/component": "^2.0.0",
