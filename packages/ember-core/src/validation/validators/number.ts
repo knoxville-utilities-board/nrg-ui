@@ -1,4 +1,5 @@
 import { isEmpty, isNone } from '@ember/utils';
+import { tKey } from 'ember-intl';
 
 import BaseValidator from './base.ts';
 
@@ -81,15 +82,21 @@ export default class NumberValidator<
     }
 
     if (isEmpty(value)) {
-      return { key: 'nrg.validation.number.notANumber' };
+      return {
+        key: tKey('nrg.validation.number.notANumber'),
+      };
     }
 
     if (typeof value === 'string' && !allowString) {
-      return { key: 'nrg.validation.number.notANumber' };
+      return {
+        key: tKey('nrg.validation.number.notANumber'),
+      };
     }
 
     if (integer && !Number.isInteger(numValue)) {
-      return { key: 'nrg.validation.number.integer' };
+      return {
+        key: tKey('nrg.validation.number.integer'),
+      };
     }
 
     return this.handleOptions(numValue, options);
@@ -99,35 +106,49 @@ export default class NumberValidator<
     const { positive, negative, even, odd, is } = options;
 
     if (positive && !isPositive(value)) {
-      return { key: 'nrg.validation.number.positive' };
+      return {
+        key: tKey('nrg.validation.number.positive'),
+      };
     }
 
     if (negative && !isNegative(value)) {
-      return { key: 'nrg.validation.number.negative' };
+      return {
+        key: tKey('nrg.validation.number.negative'),
+      };
     }
 
     if (even && !isEven(value)) {
-      return { key: 'nrg.validation.number.even' };
+      return {
+        key: tKey('nrg.validation.number.even'),
+      };
     }
 
     if (odd && !isOdd(value)) {
-      return { key: 'nrg.validation.number.odd' };
+      return {
+        key: tKey('nrg.validation.number.odd'),
+      };
     }
 
     const multipleOf = options['multipleOf'];
     if (multipleOf && !isMultipleOf(value, multipleOf)) {
-      return { key: 'nrg.validation.number.multipleOf', multipleOf };
+      return {
+        key: tKey('nrg.validation.number.multipleOf'),
+        multipleOf,
+      };
     }
 
     const isValue = is;
     if (isValue !== undefined && value !== isValue) {
-      return { key: 'nrg.validation.number.isValue', isValue };
+      return {
+        key: tKey('nrg.validation.number.isValue'),
+        isValue,
+      };
     }
 
     const maxPrecision = options['maxPrecision'];
     if (maxPrecision !== undefined && !hasMaxPrecision(value, maxPrecision)) {
       return {
-        key: 'nrg.validation.number.precision',
+        key: tKey('nrg.validation.number.precision'),
         precision: maxPrecision,
       };
     }

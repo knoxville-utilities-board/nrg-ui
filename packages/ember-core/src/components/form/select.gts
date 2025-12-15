@@ -4,7 +4,7 @@ import { action, get } from '@ember/object';
 import { service } from '@ember/service';
 import { isEqual } from '@ember/utils';
 import { cached, tracked } from '@glimmer/tracking';
-import { t } from 'ember-intl';
+import { t, tKey } from 'ember-intl';
 // @ts-expect-error Ember keyboard doesn't currently ship a type for the `on-key` modifier
 // https://github.com/adopted-ember-addons/ember-keyboard/issues/464
 import onKey from 'ember-keyboard/modifiers/on-key';
@@ -115,7 +115,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   get defaultText() {
     return (
       this.args.defaultText ??
-      this.intl.t(this.args.defaultTextKey ?? 'nrg.select.defaultText')
+      this.intl.t(this.args.defaultTextKey ?? tKey('nrg.select.defaultText'))
     );
   }
 
@@ -181,7 +181,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   get noOptionsText() {
     return (
       this.args.noOptionsText ??
-      this.intl.t(this.args.noOptionsTextKey ?? 'nrg.select.noOptions')
+      this.intl.t(this.args.noOptionsTextKey ?? tKey('nrg.select.noOptions'))
     );
   }
 

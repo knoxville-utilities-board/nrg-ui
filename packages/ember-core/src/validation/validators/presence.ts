@@ -1,5 +1,6 @@
 import { assert } from '@ember/debug';
 import { isEmpty, isPresent } from '@ember/utils';
+import { tKey } from 'ember-intl';
 
 import BaseValidator from './base.ts';
 
@@ -46,11 +47,11 @@ export default class PresenceValidator<
     const hasValue = ignoreBlank ? isPresent(value) : !isEmpty(value);
 
     if (presence === true && !hasValue) {
-      return { key: 'nrg.validation.presence.blank' };
+      return { key: tKey('nrg.validation.presence.blank') };
     }
 
     if (presence === false && hasValue) {
-      return { key: 'nrg.validation.presence.notBlank' };
+      return { key: tKey('nrg.validation.presence.notBlank') };
     }
 
     return true;

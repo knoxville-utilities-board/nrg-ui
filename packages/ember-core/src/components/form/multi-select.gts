@@ -3,7 +3,7 @@ import { on } from '@ember/modifier';
 import { get } from '@ember/object';
 import { service } from '@ember/service';
 import { cached, tracked } from '@glimmer/tracking';
-import { t } from 'ember-intl';
+import { t, tKey } from 'ember-intl';
 import { scheduleTask } from 'ember-lifeline';
 import { TrackedArray } from 'tracked-built-ins';
 
@@ -113,14 +113,18 @@ export default class MultiSelect<T> extends BoundValue<
   get defaultText() {
     return (
       this.args.defaultText ??
-      this.intl.t(this.args.defaultTextKey ?? 'nrg.multi-select.defaultText')
+      this.intl.t(
+        this.args.defaultTextKey ?? tKey('nrg.multi-select.defaultText'),
+      )
     );
   }
 
   get noOptionsText() {
     return (
       this.args.noOptionsText ??
-      this.intl.t(this.args.noOptionsTextKey ?? 'nrg.multi-select.noOptions')
+      this.intl.t(
+        this.args.noOptionsTextKey ?? tKey('nrg.multi-select.noOptions'),
+      )
     );
   }
 

@@ -1,5 +1,6 @@
 import { assert } from '@ember/debug';
 import { isEmpty } from '@ember/utils';
+import { tKey } from 'ember-intl';
 
 import BaseValidator from './base.ts';
 
@@ -120,7 +121,10 @@ export default class FileValidator<
         }
       }
       const types = this.formatTypeValidations(acceptedTypes);
-      return { key: 'nrg.validation.file.acceptedTypes', types };
+      return {
+        key: tKey('nrg.validation.file.acceptedTypes'),
+        types,
+      };
     }
     return true;
   }
@@ -139,7 +143,10 @@ export default class FileValidator<
         }
       }
       const types = this.formatTypeValidations(unacceptedTypes);
-      return { key: 'nrg.validation.file.unacceptedTypes', types };
+      return {
+        key: tKey('nrg.validation.file.unacceptedTypes'),
+        types,
+      };
     }
 
     return true;

@@ -1,4 +1,5 @@
 import { assert } from '@ember/debug';
+import { tKey } from 'ember-intl';
 
 import BaseValidator from './base.ts';
 
@@ -46,7 +47,7 @@ export default class ExclusionValidator<
     const invalidValuesList = this.intl.formatList(invalidValues.map(String));
 
     return {
-      key: 'nrg.validation.exclusion.in',
+      key: tKey('nrg.validation.exclusion.in'),
       value,
       in: invalidValuesList,
     };
