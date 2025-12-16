@@ -1,5 +1,6 @@
 import { assert } from '@ember/debug';
 import { isEmpty, isNone } from '@ember/utils';
+import { tKey } from 'ember-intl';
 
 import BaseValidator from './base.ts';
 
@@ -72,7 +73,10 @@ export default class LengthValidator<
         return true;
       }
 
-      return { key: 'nrg.validation.length.invalid', value };
+      return {
+        key: tKey('nrg.validation.length.invalid'),
+        value,
+      };
     }
 
     if (allowBlank && isEmpty(value)) {

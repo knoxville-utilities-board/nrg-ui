@@ -1,5 +1,6 @@
 import { assert } from '@ember/debug';
 import { cached } from '@glimmer/tracking';
+import { tKey } from 'ember-intl';
 
 import BaseValidator from './base.ts';
 
@@ -71,7 +72,7 @@ export default class CustomValidator<
       value: stringValue,
     });
     if (!response.isValid) {
-      response.message ??= this.intl.t('nrg.validation.custom.invalid', {
+      response.message ??= this.intl.t(tKey('nrg.validation.custom.invalid'), {
         value: stringValue,
       });
 

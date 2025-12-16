@@ -1,4 +1,5 @@
 import { isEmpty, isNone } from '@ember/utils';
+import { tKey } from 'ember-intl';
 
 import BaseValidator from './base.ts';
 import {
@@ -68,7 +69,7 @@ export default class PhoneValidator<
   ): ValidateFnResponse {
     const { allowBlank } = options;
 
-    const key = 'nrg.validation.phone.invalid';
+    const key = tKey('nrg.validation.phone.invalid');
 
     if (isEmpty(value) || isNone(value)) {
       if (allowBlank) {
@@ -115,21 +116,21 @@ export default class PhoneValidator<
 
     if (cc && countryCode === 'disallow') {
       return {
-        key: 'nrg.validation.phone.countryCode.notAllowed',
+        key: tKey('nrg.validation.phone.countryCode.notAllowed'),
         value,
       };
     }
 
     if (!cc && countryCode === 'require') {
       return {
-        key: 'nrg.validation.phone.countryCode.required',
+        key: tKey('nrg.validation.phone.countryCode.required'),
         value,
       };
     }
 
     if (cc && validCountryCodes && !validCountryCodes.includes(cc)) {
       return {
-        key: 'nrg.validation.phone.countryCode.valid',
+        key: tKey('nrg.validation.phone.countryCode.valid'),
         value,
         countryCodes: this.listToString(validCountryCodes),
       };
@@ -137,7 +138,7 @@ export default class PhoneValidator<
 
     if (cc && invalidCountryCodes?.includes(cc)) {
       return {
-        key: 'nrg.validation.phone.countryCode.invalid',
+        key: tKey('nrg.validation.phone.countryCode.invalid'),
         value,
         countryCodes: this.listToString(invalidCountryCodes),
       };
@@ -153,19 +154,19 @@ export default class PhoneValidator<
 
     if (ac && areaCode === 'disallow') {
       return {
-        key: 'nrg.validation.phone.areaCode.notAllowed',
+        key: tKey('nrg.validation.phone.areaCode.notAllowed'),
         value,
       };
     } else if (!ac && areaCode === 'require') {
       return {
-        key: 'nrg.validation.phone.areaCode.required',
+        key: tKey('nrg.validation.phone.areaCode.required'),
         value,
       };
     }
 
     if (ac && validAreaCodes && !validAreaCodes.includes(ac)) {
       return {
-        key: 'nrg.validation.phone.areaCode.valid',
+        key: tKey('nrg.validation.phone.areaCode.valid'),
         value,
         areaCodes: this.listToString(validAreaCodes),
       };
@@ -173,7 +174,7 @@ export default class PhoneValidator<
 
     if (ac && invalidAreaCodes?.includes(ac)) {
       return {
-        key: 'nrg.validation.phone.areaCode.invalid',
+        key: tKey('nrg.validation.phone.areaCode.invalid'),
         value,
         areaCodes: this.listToString(invalidAreaCodes),
       };
@@ -193,12 +194,12 @@ export default class PhoneValidator<
 
     const ec = getExchangeCode(value);
     if (validExchangeCodes && !validExchangeCodes.includes(ec)) {
-      key = 'nrg.validation.phone.exchangeCode.valid';
+      key = tKey('nrg.validation.phone.exchangeCode.valid');
       exchangeCodes = this.listToString(validExchangeCodes);
     }
 
     if (invalidExchangeCodes?.includes(ec)) {
-      key = 'nrg.validation.phone.exchangeCode.invalid';
+      key = tKey('nrg.validation.phone.exchangeCode.invalid');
       exchangeCodes = this.listToString(invalidExchangeCodes);
     }
 

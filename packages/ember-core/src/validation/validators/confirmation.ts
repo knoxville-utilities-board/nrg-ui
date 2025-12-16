@@ -1,6 +1,7 @@
 import { assert } from '@ember/debug';
 import { get } from '@ember/object';
 import { isEqual, isPresent } from '@ember/utils';
+import { tKey } from 'ember-intl';
 
 import BaseValidator from './base.ts';
 
@@ -56,14 +57,14 @@ export default class ConfirmationValidator<
     const expectedValue = get(context, on) as TranslatableOption;
 
     const matches = isEqual(value, expectedValue);
-    let key = 'nrg.validation.confirmation.invalid';
+    let key: string = tKey('nrg.validation.confirmation.invalid');
 
     if (!inverse && matches) {
       return true;
     }
 
     if (inverse) {
-      key = 'nrg.validation.confirmation.match';
+      key = tKey('nrg.validation.confirmation.match');
       if (!matches) {
         return true;
       }

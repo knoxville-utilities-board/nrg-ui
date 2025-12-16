@@ -1,4 +1,5 @@
 import { assert } from '@ember/debug';
+import { tKey } from 'ember-intl';
 
 import BaseValidator from './base.ts';
 
@@ -64,7 +65,7 @@ export default class PasswordValidator<
     }
 
     return {
-      key: 'nrg.validation.password.strength',
+      key: tKey('nrg.validation.password.strength'),
       value,
     };
   }

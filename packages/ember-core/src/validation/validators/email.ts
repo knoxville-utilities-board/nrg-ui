@@ -1,4 +1,5 @@
 import { isEmpty, isNone } from '@ember/utils';
+import { tKey } from 'ember-intl';
 
 import BaseValidator from './base.ts';
 import { regex as emailRegex } from '../../utils/email.ts';
@@ -34,7 +35,7 @@ export default class EmailValidator<
   ): ValidateFnResponse {
     const { allowBlank, invalidDomains, validDomains } = options;
 
-    const key = 'nrg.validation.email.invalid';
+    const key = tKey('nrg.validation.email.invalid');
 
     if (isEmpty(value) || isNone(value)) {
       if (allowBlank) {
@@ -57,7 +58,7 @@ export default class EmailValidator<
 
     if (invalidDomains?.includes(domainPart!)) {
       return {
-        key: 'nrg.validation.email.domain.invalid',
+        key: tKey('nrg.validation.email.domain.invalid'),
         value,
         domains: this.listToString(invalidDomains),
       };
@@ -65,7 +66,7 @@ export default class EmailValidator<
 
     if (validDomains && !validDomains.includes(domainPart!)) {
       return {
-        key: 'nrg.validation.email.domain.valid',
+        key: tKey('nrg.validation.email.domain.valid'),
         value,
         domains: this.listToString(validDomains),
       };

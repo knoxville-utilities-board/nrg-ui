@@ -1,5 +1,6 @@
 import { assert } from '@ember/debug';
 import { isPresent } from '@ember/utils';
+import { tKey } from 'ember-intl';
 
 import BaseValidator from './base.ts';
 
@@ -52,23 +53,25 @@ export default class RangeValidator<
     const { min, minInclusive, max, maxInclusive } = options;
 
     if (Number.isNaN(value)) {
-      return { key: 'nrg.validation.range.notANumber' };
+      return {
+        key: tKey('nrg.validation.range.notANumber'),
+      };
     }
 
     let key = null;
 
     if (min !== undefined) {
       if (minInclusive && value < min) {
-        key = 'nrg.validation.range.greaterThanOrEqualTo';
+        key = tKey('nrg.validation.range.greaterThanOrEqualTo');
       } else if (!minInclusive && value <= min) {
-        key = 'nrg.validation.range.greaterThan';
+        key = tKey('nrg.validation.range.greaterThan');
       }
     }
     if (max !== undefined) {
       if (maxInclusive && value > max) {
-        key = 'nrg.validation.range.lessThanOrEqualTo';
+        key = tKey('nrg.validation.range.lessThanOrEqualTo');
       } else if (!maxInclusive && value >= max) {
-        key = 'nrg.validation.range.lessThan';
+        key = tKey('nrg.validation.range.lessThan');
       }
     }
 

@@ -3,6 +3,7 @@ import { hash } from '@ember/helper';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { tKey } from 'ember-intl';
 import { runTask } from 'ember-lifeline';
 import { modifier } from 'ember-modifier';
 
@@ -241,7 +242,7 @@ export default class Field extends Component<FieldSignature> {
       let key;
 
       if (binding.model instanceof CheckboxGroup) {
-        key = 'nrg.validation.presence.listBlank';
+        key = tKey('nrg.validation.presence.listBlank');
       }
 
       const presenceValidator = new PresenceValidator(
