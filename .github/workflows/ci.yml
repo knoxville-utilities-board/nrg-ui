@@ -11,16 +11,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
-    name: 'Tests'
+  lint:
+    name: 'Lint'
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          fetch-tags: true
 
       - uses: pnpm/action-setup@v4
         with:
@@ -37,9 +34,6 @@ jobs:
 
       - name: Lint
         run: pnpm lint
-
-      - name: Run Tests
-        run: pnpm test
 
   floating:
     name: 'Floating Dependencies'
@@ -64,6 +58,33 @@ jobs:
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Run Tests
+        run: pnpm test
+
+  test:
+    name: 'Test'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile --prefer-offline
 
       - name: Run Tests
         run: pnpm test
