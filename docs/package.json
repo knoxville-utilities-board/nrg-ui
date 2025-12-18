@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "description": "Documentation for @nrg-ui/core addon",
-  "keywords": [],
   "repository": {
     "directory": "docs",
     "type": "git",
@@ -16,6 +15,10 @@
   },
   "imports": {
     "#app/*": "./app/*"
+  },
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
   },
   "scripts": {
     "build": "vite build",
@@ -33,23 +36,30 @@
     "lint:js:fix": "eslint . --fix",
     "lint:types": "ember-tsc --noEmit",
     "start": "vite",
-    "test": "concurrently \"pnpm:lint\" \"pnpm:test:*\" --names \"lint,test:\" --prefix-colors=auto",
-    "test:ember": "vite build --mode development && ember test --path dist"
+    "test": "vite build --mode development && ember test --path dist"
+  },
+  "exports": {
+    "./tests/*": "./tests/*",
+    "./*": "./app/*"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",
+    "@babel/runtime": "^7.28.4",
     "@babel/plugin-transform-runtime": "^7.28.5",
     "@babel/plugin-transform-typescript": "^7.28.5",
     "@ember-intl/lint": "^0.2.2",
     "@ember-intl/v1-compat": "^1.0.1",
+    "@ember/app-tsconfig": "^1.0.3",
     "@ember/optional-features": "^2.3.0",
     "@ember/string": "^4.0.1",
     "@ember/test-helpers": "^5.4.1",
-    "@embroider/compat": "^4.1.10",
+    "@ember/test-waiters": "^4.1.1",
+    "@embroider/compat": "^4.1.11",
     "@embroider/config-meta-loader": "^1.0.0",
-    "@embroider/core": "^4.2.7",
+    "@embroider/core": "^4.3.0",
     "@embroider/legacy-inspector-support": "^0.1.3",
     "@embroider/macros": "^1.19.5",
+    "@embroider/router": "^3.0.6",
     "@embroider/vite": "^1.4.4",
     "@floating-ui/dom": "^1.7.4",
     "@glimmer/component": "^2.0.0",
@@ -62,17 +72,15 @@
     "@nrg-ui/standards": "workspace:*",
     "@nrg-ui/version": "workspace:*",
     "@rollup/plugin-babel": "^6.1.0",
-    "@tsconfig/ember": "^3.0.12",
     "@types/qunit": "^2.19.13",
     "babel-plugin-ember-template-compilation": "^3.0.1",
     "concurrently": "^9.2.1",
     "dayjs": "^1.11.19",
     "decorator-transforms": "^2.3.0",
     "ember-auto-import": "^2.12.0",
-    "ember-cli": "~6.4.0",
+    "ember-cli": "~6.8.0",
     "ember-cli-babel": "^8.2.0",
     "ember-cli-deprecation-workflow": "^3.4.0",
-    "ember-cli-htmlbars": "^7.0.0",
     "ember-concurrency": "^5.1.0",
     "ember-css-transitions": "^4.5.0",
     "ember-intl": "^8.0.1",
@@ -83,7 +91,7 @@
     "ember-page-title": "^9.0.3",
     "ember-qunit": "^9.0.4",
     "ember-resolver": "^13.1.1",
-    "ember-source": "~6.4.0",
+    "ember-source": "~6.8.0",
     "ember-template-lint": "^7.9.3",
     "ember-try": "^4.0.0",
     "eslint": "^9.39.2",
@@ -99,13 +107,14 @@
     "qunit-dom": "^3.5.0",
     "stylelint": "^16.26.1",
     "stylelint-config-standard": "^39.0.1",
+    "testem": "^3.16.0",
     "tracked-built-ins": "^4.0.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.49.0",
     "vite": "^7.2.7"
   },
   "engines": {
-    "node": ">= 18"
+    "node": ">= 20"
   },
   "ember": {
     "edition": "octane"
@@ -113,9 +122,5 @@
   "ember-addon": {
     "type": "app",
     "version": 2
-  },
-  "exports": {
-    "./tests/*": "./tests/*",
-    "./*": "./app/*"
   }
 }

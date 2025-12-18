@@ -9,5 +9,16 @@ setupDeprecationWorkflow({
     handling their deprecations, this should be set to "true"
   */
   throwOnUnhandled: false,
-  workflow: [],
+  workflow: [
+    /* ... handlers ... */
+    /* to generate this list, run your app for a while (or run the test suite),
+     * and then run in the browser console:
+     *
+     *    deprecationWorkflow.flushDeprecations()
+     *
+     * And copy the handlers here
+     */
+    /* example: */
+    /* { handler: 'silence', matchId: 'template-action' }, */
+  ],
 });

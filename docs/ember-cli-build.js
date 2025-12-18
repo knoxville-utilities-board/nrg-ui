@@ -9,7 +9,6 @@ const version = getTag({ tagPattern: /v?(.+)-@nrg-ui\/core/ });
 
 module.exports = async function (defaults) {
   const { buildOnce } = await import('@embroider/vite');
-
   const app = new EmberApp(defaults, {
     emberData: {
       deprecations: {
@@ -20,8 +19,9 @@ module.exports = async function (defaults) {
         DEPRECATE_STORE_EXTENDS_EMBER_OBJECT: false,
       },
     },
-    'ember-cli-babel': { enableTypeScriptTransform: true },
-
+    'ember-cli-babel': {
+      enableTypeScriptTransform: true,
+    },
     // Add options here
     '@embroider/macros': {
       setConfig: {
