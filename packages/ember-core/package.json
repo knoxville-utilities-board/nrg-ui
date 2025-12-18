@@ -160,7 +160,7 @@
     "ember-concurrency": "^5.1.0",
     "ember-css-transitions": "^4.4.0",
     "ember-intl": "^7.0.4 || ^8.0.1",
-    "ember-source": "^5.9.0 || ^6.0.0",
+    "ember-source": "^5.12.0 || ^6.0.0",
     "ember-truth-helpers": "^5.0.0",
     "tracked-built-ins": "^4.0.0"
   },
