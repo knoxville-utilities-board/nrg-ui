@@ -146,11 +146,11 @@
     "execa": "^9.6.1",
     "prettier": "^3.7.4",
     "prettier-plugin-ember-template-tag": "^2.1.2",
-    "rollup": "^4.53.3",
+    "rollup": "^4.54.0",
     "rollup-plugin-copy": "^3.5.0",
     "tracked-built-ins": "^4.0.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.49.0"
+    "typescript-eslint": "^8.50.0"
   },
   "peerDependencies": {
     "@glimmer/component": "^2.0.0",
