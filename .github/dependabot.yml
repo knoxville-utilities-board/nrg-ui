@@ -47,6 +47,7 @@ updates:
       day: 'sunday'
     labels:
       - 'dependencies'
+      - 'internal'
     groups:
       version:
         patterns:
