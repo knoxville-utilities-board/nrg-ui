@@ -64,7 +64,7 @@
   "dependencies": {
     "@embroider/addon-shim": "^1.10.2",
     "@embroider/macros": "^1.19.5",
-    "@mdn/browser-compat-data": "^7.2.1",
+    "@mdn/browser-compat-data": "^7.2.2",
     "chalk": "^4.1.2",
     "content-tag-utils": "^0.6.0",
     "decorator-transforms": "^2.2.2",
@@ -97,16 +97,16 @@
     "eslint-plugin-n": "^17.23.1",
     "prettier": "^3.7.4",
     "prettier-plugin-ember-template-tag": "^2.1.2",
-    "rollup": "^4.53.3",
+    "rollup": "^4.54.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.49.0",
-    "vite": "^7.2.7"
+    "typescript-eslint": "^8.50.0",
+    "vite": "^7.3.0"
   },
   "peerDependencies": {
     "@ember/test-helpers": "^5.0.0",
     "@nrg-ui/core": "workspace:^0",
     "ember-source": ">=5.12.0 || ^6.0.0",
-    "vite": "^7.2.7"
+    "vite": "^7.3.0"
   },
   "publishConfig": {
     "access": "public",
