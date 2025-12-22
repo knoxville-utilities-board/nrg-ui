@@ -17,13 +17,16 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v3
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
         with:
           version: 10
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
@@ -31,13 +34,15 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
 
-      - uses: kategengler/put-built-npm-package-contents-on-branch@v2.0.0
+      - name: Publish `@nrg-ui/core`
+        uses: kategengler/put-built-npm-package-contents-on-branch@v2.0.0
         with:
           branch: unstable-ember
           token: ${{ secrets.GITHUB_TOKEN }}
           working-directory: 'packages/ember-core'
 
-      - uses: kategengler/put-built-npm-package-contents-on-branch@v2.0.0
+      - name: Publish `@nrg-ui/css`
+        uses: kategengler/put-built-npm-package-contents-on-branch@v2.0.0
         with:
           branch: unstable-css
           token: ${{ secrets.GITHUB_TOKEN }}
