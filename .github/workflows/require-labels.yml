@@ -8,7 +8,8 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - uses: mheap/github-action-required-labels@v5
+      - name: Check for Label
+        uses: mheap/github-action-required-labels@v5
         with:
           mode: minimum
           count: 1
