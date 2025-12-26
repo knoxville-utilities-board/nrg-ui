@@ -54,8 +54,8 @@ jobs:
         uses: actions/create-github-app-token@v2
         id: generate-token
         with:
-          app_id: ${{ secrets.APP_ID }}
-          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
       - name: Create Prepare Release PR
         uses: peter-evans/create-pull-request@v7
