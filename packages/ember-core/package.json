@@ -150,7 +150,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "tracked-built-ins": "^4.0.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.50.0"
+    "typescript-eslint": "^8.50.1"
   },
   "peerDependencies": {
     "@glimmer/component": "^2.0.0",

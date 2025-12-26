@@ -58,7 +58,7 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-qunit": "8.2.5",
-    "typescript-eslint": "^8.50.0"
+    "typescript-eslint": "^8.50.1"
   },
   "devDependencies": {
     "@types/eslint": "^9.6.1",
@@ -70,7 +70,7 @@
     "eslint-plugin-import": "^2.32.0",
     "prettier": "^3.7.4",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.50.0"
+    "typescript-eslint": "^8.50.1"
   },
   "publishConfig": {
     "access": "public",
