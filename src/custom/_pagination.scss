@@ -1,0 +1,63 @@
+.pagination {
+  --bs-pagination-padding-x: 0.5rem;
+
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.page-link {
+  min-width: 2.5rem;
+  text-align: center;
+}
+
+.page-item:not(:first-child) {
+  .dropdown.form-control {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left-width: 0;
+  }
+
+  .input-group-text {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+    input {
+      border: 0;
+      min-width: 2rem;
+      max-width: 3rem;
+      appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        display: none;
+      }
+    }
+  }
+}
+
+.page-item:not(:last-child) {
+  .dropdown.form-control {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right-width: 0;
+  }
+
+  .input-group-text {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+    input {
+      border: 0;
+      min-width: 2rem;
+      max-width: 3rem;
+      appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        display: none;
+      }
+    }
+  }
+}
