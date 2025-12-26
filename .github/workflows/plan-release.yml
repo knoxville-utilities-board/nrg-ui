@@ -58,7 +58,7 @@ jobs:
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
       - name: Create Prepare Release PR
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           commit-message: ${{ steps.commit-message.outputs.COMMIT_MESSAGE }}
           labels: 'internal'
