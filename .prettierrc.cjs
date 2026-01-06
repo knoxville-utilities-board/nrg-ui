@@ -3,6 +3,7 @@
 module.exports = {
   plugins: ['prettier-plugin-ember-template-tag'],
   singleQuote: true,
+  printWidth: 100,
   overrides: [
     {
       files: ['*.html', '*.hbs'],
