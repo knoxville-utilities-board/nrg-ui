@@ -161,8 +161,7 @@ const isPositive = (value: number) => value > 0;
 const isNegative = (value: number) => value < 0;
 const isEven = (value: number) => value % 2 === 0;
 const isOdd = (value: number) => value % 2 !== 0;
-const isMultipleOf = (value: number, multiple: number) =>
-  value % multiple === 0;
+const isMultipleOf = (value: number, multiple: number) => value % multiple === 0;
 
 const hasMaxPrecision = (value: number, maxPrecision: number): boolean => {
   const [, decimal] = value.toString().split('.');

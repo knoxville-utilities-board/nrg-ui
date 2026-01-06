@@ -22,12 +22,7 @@ interface ItemSignature {
 }
 
 const Item: TOC<ItemSignature> = <template>
-  <div
-    class="item g-col-4"
-    role="button"
-    {{on "click" @onRemove}}
-    {{onInsert @onInsert}}
-  >
+  <div class="item g-col-4" role="button" {{on "click" @onRemove}} {{onInsert @onInsert}}>
     {{@label}}
   </div>
 </template>;
@@ -59,11 +54,7 @@ export default class OnInsertDemo extends Component {
   <template>
     <div class="grid-collection grid gap-2 text-center">
       {{#each this.items as |item i|}}
-        <Item
-          @label={{item}}
-          @onInsert={{fn this.insert item}}
-          @onRemove={{fn this.remove i}}
-        />
+        <Item @label={{item}} @onInsert={{fn this.insert item}} @onRemove={{fn this.remove i}} />
       {{/each}}
     </div>
     <div class="input-group mt-4">

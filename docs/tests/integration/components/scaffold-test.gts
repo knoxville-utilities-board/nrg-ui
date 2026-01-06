@@ -84,9 +84,7 @@ module('Integration | Component | scaffold', function (hooks) {
 
     assert
       .dom('.sidebar')
-      .exists(
-        'Sidebar should not close when clicking on an item in large screens',
-      );
+      .exists('Sidebar should not close when clicking on an item in large screens');
 
     await setBreakpoint('small');
     await clearRender();
@@ -102,9 +100,7 @@ module('Integration | Component | scaffold', function (hooks) {
       </template>,
     );
 
-    assert
-      .dom('.sidebar')
-      .doesNotExist('Sidebar should not be shown by default on mobile');
+    assert.dom('.sidebar').doesNotExist('Sidebar should not be shown by default on mobile');
 
     await click('i.bi-list');
 
@@ -114,9 +110,7 @@ module('Integration | Component | scaffold', function (hooks) {
 
     assert
       .dom('.sidebar')
-      .doesNotExist(
-        'Sidebar should close when clicking on an item on small screens',
-      );
+      .doesNotExist('Sidebar should close when clicking on an item on small screens');
   });
 
   test('it renders about section', async function (assert) {
@@ -134,13 +128,8 @@ module('Integration | Component | scaffold', function (hooks) {
     await click('[data-test-dropdown-item]:last-child');
     assert
       .dom('dialog')
-      .isVisible(
-        'The about modal should be visible when the menu item is clicked',
-      )
-      .containsText(
-        'About Modal Content',
-        'The about modal should render the correct content',
-      );
+      .isVisible('The about modal should be visible when the menu item is clicked')
+      .containsText('About Modal Content', 'The about modal should render the correct content');
   });
 
   test('it renders the context menu', async function (assert) {
@@ -159,15 +148,8 @@ module('Integration | Component | scaffold', function (hooks) {
     await click('i.bi-three-dots-vertical');
     assert
       .dom('.context-menu-item-1')
-      .exists(
-        'The context menu item should be rendered when the menu is opened',
-      )
-      .isVisible(
-        'The context menu item should be visible when the menu is opened',
-      )
-      .containsText(
-        'Context Menu Item',
-        'The context menu item should display the correct text',
-      );
+      .exists('The context menu item should be rendered when the menu is opened')
+      .isVisible('The context menu item should be visible when the menu is opened')
+      .containsText('Context Menu Item', 'The context menu item should display the correct text');
   });
 });

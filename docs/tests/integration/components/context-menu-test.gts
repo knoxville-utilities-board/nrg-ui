@@ -1,8 +1,6 @@
 import { fn } from '@ember/helper';
 import { click, findAll, render } from '@ember/test-helpers';
-import ContextMenu, {
-  ContextMenuItem,
-} from '@nrg-ui/core/components/context-menu';
+import ContextMenu, { ContextMenuItem } from '@nrg-ui/core/components/context-menu';
 import { setupRenderingTest } from 'docs/tests/helpers';
 import { module, test } from 'qunit';
 
@@ -42,10 +40,7 @@ module('Integration | Component | context-menu', function (hooks) {
     await openMenu();
     assert.dom('hr', divider).hasClass('dropdown-divider');
 
-    assert
-      .dom('.dropdown-item', item2)
-      .hasClass('disabled')
-      .hasText("I'm a disabled item");
+    assert.dom('.dropdown-item', item2).hasClass('disabled').hasText("I'm a disabled item");
     await click(item2!);
 
     assert.verifySteps(['Item 1']);
@@ -66,10 +61,7 @@ module('Integration | Component | context-menu', function (hooks) {
             I'm a disabled item
           </Menu.Item>
         </ContextMenu>
-        <ContextMenuItem
-          @menuId="context-menu-id"
-          @onSelect={{fn onSelect "Item 3"}}
-        >
+        <ContextMenuItem @menuId="context-menu-id" @onSelect={{fn onSelect "Item 3"}}>
           I'm an external item
         </ContextMenuItem>
       </template>,
@@ -84,10 +76,7 @@ module('Integration | Component | context-menu', function (hooks) {
 
     await openMenu();
 
-    assert
-      .dom('.dropdown-item', item2)
-      .hasClass('disabled')
-      .hasText("I'm a disabled item");
+    assert.dom('.dropdown-item', item2).hasClass('disabled').hasText("I'm a disabled item");
     await click(item2!);
 
     assert.dom('.dropdown-item', item3).hasText("I'm an external item");
@@ -118,10 +107,7 @@ module('Integration | Component | context-menu', function (hooks) {
         >
           I'm an external item
         </ContextMenuItem>
-        <ContextMenuItem
-          @menuId="context-menu-id"
-          @onSelect={{fn onSelect "Item 4"}}
-        >
+        <ContextMenuItem @menuId="context-menu-id" @onSelect={{fn onSelect "Item 4"}}>
           I'm an external item, but on top
         </ContextMenuItem>
       </template>,
@@ -136,15 +122,10 @@ module('Integration | Component | context-menu', function (hooks) {
 
     await openMenu();
 
-    assert
-      .dom('.dropdown-item', item2)
-      .hasClass('disabled')
-      .hasText("I'm a disabled item");
+    assert.dom('.dropdown-item', item2).hasClass('disabled').hasText("I'm a disabled item");
     await click(item2!);
 
-    assert
-      .dom('.dropdown-item', item4)
-      .hasText("I'm an external item, but on top");
+    assert.dom('.dropdown-item', item4).hasText("I'm an external item, but on top");
     await click(item4!);
 
     await openMenu();

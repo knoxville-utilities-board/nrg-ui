@@ -20,12 +20,7 @@ afterEach(() => {
 function mockSingleTag(tagName: string, commitSha: string, count = 4) {
   spawnSync
     .mockImplementationOnce((command: string, args: string[]) => {
-      expect(args).toEqual([
-        'tag',
-        '--sort=tag',
-        '--sort=-committerdate',
-        '--merged',
-      ]);
+      expect(args).toEqual(['tag', '--sort=tag', '--sort=-committerdate', '--merged']);
 
       return tagName;
     })
@@ -51,19 +46,10 @@ function mockSingleTag(tagName: string, commitSha: string, count = 4) {
     });
 }
 
-function mockMultipleTags(
-  baseTagName: string,
-  baseCommitSha: string,
-  count = 4,
-) {
+function mockMultipleTags(baseTagName: string, baseCommitSha: string, count = 4) {
   spawnSync
     .mockImplementationOnce((command: string, args: string[]) => {
-      expect(args).toEqual([
-        'tag',
-        '--sort=tag',
-        '--sort=-committerdate',
-        '--merged',
-      ]);
+      expect(args).toEqual(['tag', '--sort=tag', '--sort=-committerdate', '--merged']);
 
       return `${baseTagName}A`;
     })

@@ -23,19 +23,13 @@ export default class FileValidator<
 > extends BaseValidator<File | File[], Context, FileOptions> {
   defaultOptions = {};
 
-  constructor(
-    binding: Binding,
-    options: Computable<Context, FileOptions>,
-    context?: Context,
-  ) {
+  constructor(binding: Binding, options: Computable<Context, FileOptions>, context?: Context) {
     super(binding, options, context);
 
     const { acceptedTypes, unacceptedTypes } = options;
 
     if (isEmpty(acceptedTypes) && isEmpty(unacceptedTypes)) {
-      assert(
-        'FileValidator requires either `acceptedTypes` or `unacceptedTypes` to be provided',
-      );
+      assert('FileValidator requires either `acceptedTypes` or `unacceptedTypes` to be provided');
     }
   }
 
@@ -136,9 +130,7 @@ export default class FileValidator<
     if (typeIsNotAllowed) {
       for (const unacceptedType of unacceptedTypes) {
         if (unacceptedType.endsWith('/*')) {
-          unacceptedTypes = unacceptedTypes.filter(
-            (type) => type !== unacceptedType,
-          );
+          unacceptedTypes = unacceptedTypes.filter((type) => type !== unacceptedType);
           unacceptedTypes.push(unacceptedType);
         }
       }

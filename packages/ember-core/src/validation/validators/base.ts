@@ -16,9 +16,7 @@ import type {
 } from '../types.ts';
 import type { IntlService } from 'ember-intl';
 
-export function isProxy(
-  value: unknown,
-): value is ObjectProxy | ArrayProxy<never> {
+export function isProxy(value: unknown): value is ObjectProxy | ArrayProxy<never> {
   return value instanceof ObjectProxy || value instanceof ArrayProxy;
 }
 
@@ -41,8 +39,7 @@ export default abstract class BaseValidator<
     options: OptionsShape,
     context: Context,
   ): ValidateFnResponse;
-  defaultOptions: Computable<Context, OptionsShape & BaseOptions> =
-    {} as OptionsShape;
+  defaultOptions: Computable<Context, OptionsShape & BaseOptions> = {} as OptionsShape;
 
   readonly owner;
   readonly binding: Binding;
@@ -58,10 +55,7 @@ export default abstract class BaseValidator<
     this.options = options;
     this.context = context ?? (binding.model as Context);
 
-    assert(
-      `You must provide a binding argument to ${this.constructor.name}`,
-      binding,
-    );
+    assert(`You must provide a binding argument to ${this.constructor.name}`, binding);
 
     assert(
       'BaseValidator requires the `validate` function to be implemented by subclasses',
@@ -102,10 +96,7 @@ export default abstract class BaseValidator<
     return this.coalesceResponse(response, computedOptions);
   }
 
-  coalesceResponse(
-    response: ValidateFnResponse,
-    options: OptionsShape,
-  ): ValidationResult {
+  coalesceResponse(response: ValidateFnResponse, options: OptionsShape): ValidationResult {
     let isValid = false;
     let isWarning = options.isWarning;
     let message = options.message;
@@ -159,9 +150,7 @@ export default abstract class BaseValidator<
     const computed = {} as OptionsShape;
 
     for (const key of Object.keys(options)) {
-      computed[key as keyof OptionsShape] = this.compute(
-        options[key as keyof OptionsShape],
-      );
+      computed[key as keyof OptionsShape] = this.compute(options[key as keyof OptionsShape]);
     }
 
     for (const key of Object.keys(defaultOptions)) {
@@ -175,9 +164,7 @@ export default abstract class BaseValidator<
         continue;
       }
 
-      computed[key as keyof OptionsShape] = this.compute(
-        defaultOptions[key as keyof OptionsShape],
-      );
+      computed[key as keyof OptionsShape] = this.compute(defaultOptions[key as keyof OptionsShape]);
     }
 
     return { ...computed };

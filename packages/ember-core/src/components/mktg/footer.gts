@@ -46,9 +46,7 @@ class MktgFooterSection extends Component<MktgFooterSectionSignature> {
 const MktgFooter: TOC<MktgFooterSignature> = <template>
   <footer class="mt-auto p-2" ...attributes>
     <div class="container pt-0 mb-4">
-      <div
-        class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center"
-      >
+      <div class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center">
         {{#if (has-block "nav")}}
           <MktgFooterSection>
             {{yield to="nav"}}
@@ -67,9 +65,7 @@ const MktgFooter: TOC<MktgFooterSignature> = <template>
         <hr class="mb-0 mt-4" />
       {{/if}}
       {{#if (or (has-block "brand") (has-block "legal"))}}
-        <div
-          class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center"
-        >
+        <div class="row row-cols-1 row-cols-md-auto justify-content-between align-items-center">
           {{#if (has-block "brand")}}
             <MktgFooterSection>
               {{yield to="brand"}}

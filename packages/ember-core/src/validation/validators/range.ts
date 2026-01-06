@@ -36,11 +36,7 @@ export default class RangeValidator<
     maxInclusive: true,
   };
 
-  constructor(
-    binding: Binding,
-    options: Computable<Context, RangeOptions>,
-    context?: Context,
-  ) {
+  constructor(binding: Binding, options: Computable<Context, RangeOptions>, context?: Context) {
     super(binding, options, context);
 
     assert(

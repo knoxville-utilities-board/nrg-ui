@@ -25,15 +25,11 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           </:subheader>
         </MktgSectionHeader>
       </div>
-      <Accordion
-        @defaultOpen={{true}}
-        @title="How does an Accordion Component work?"
-      >
+      <Accordion @defaultOpen={{true}} @title="How does an Accordion Component work?">
         <:content>
           <p>
-            Once you click the icon in the upper right corner, this answer will
-            appear. Pass values into the Open, Question, and Answer parameters,
-            and voila! Pretty neat!
+            Once you click the icon in the upper right corner, this answer will appear. Pass values
+            into the Open, Question, and Answer parameters, and voila! Pretty neat!
           </p>
         </:content>
       </Accordion>

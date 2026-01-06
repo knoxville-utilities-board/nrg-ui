@@ -42,10 +42,7 @@ module('Integration | Component | form/checkbox', function (hooks) {
 
     const labelId = this.element.querySelector('.form-check > input')!.id;
 
-    assert
-      .dom('.form-check > label')
-      .hasAttribute('for', labelId)
-      .hasText('This is a checkbox');
+    assert.dom('.form-check > label').hasAttribute('for', labelId).hasText('This is a checkbox');
 
     model.value = true;
     await settled();
@@ -57,10 +54,7 @@ module('Integration | Component | form/checkbox', function (hooks) {
     const model = new Model();
     await render(
       <template>
-        <Checkbox
-          @binding={{bind model "value"}}
-          @fieldOptions={{hash id="my-id"}}
-        >
+        <Checkbox @binding={{bind model "value"}} @fieldOptions={{hash id="my-id"}}>
           <span>This is a checkbox</span>
         </Checkbox>
       </template>,
@@ -110,10 +104,7 @@ module('Integration | Component | form/checkbox', function (hooks) {
 
     const labelId = this.element.querySelector('.form-check > input')!.id;
 
-    assert
-      .dom('.form-check > label')
-      .hasAttribute('for', labelId)
-      .hasText('This is a checkbox');
+    assert.dom('.form-check > label').hasAttribute('for', labelId).hasText('This is a checkbox');
 
     model.value = true;
     await settled();
@@ -124,9 +115,7 @@ module('Integration | Component | form/checkbox', function (hooks) {
   test('it works', async function (assert) {
     const model = new Model();
     await render(
-      <template>
-        <Checkbox @binding={{bind model "value"}} @label="This is a checkbox" />
-      </template>,
+      <template><Checkbox @binding={{bind model "value"}} @label="This is a checkbox" /></template>,
     );
 
     assert.dom('.form-check > input').hasValue('false').isNotChecked();

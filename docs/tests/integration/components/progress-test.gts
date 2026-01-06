@@ -15,9 +15,7 @@ module('Integration | Component | progress', function (hooks) {
 
   test('it renders (inline)', async function (this: Context, assert) {
     await render(
-      <template>
-        <Progress @animated={{true}} @progress={{40}} @striped={{true}} />
-      </template>,
+      <template><Progress @animated={{true}} @progress={{40}} @striped={{true}} /></template>,
     );
 
     assert
@@ -40,9 +38,7 @@ module('Integration | Component | progress', function (hooks) {
     //  dimensions of the element. Since we are using a test container
     //  with a variable width, we can't use this method to test the width
     //  of the progress bar.
-    const progress = this.element.querySelector(
-      'div > div:not(:has(> *))',
-    ) as HTMLDivElement;
+    const progress = this.element.querySelector('div > div:not(:has(> *))') as HTMLDivElement;
 
     assert.strictEqual(progress.style.width, '40%');
   });
@@ -82,9 +78,7 @@ module('Integration | Component | progress', function (hooks) {
       .hasClass('progress-bar-striped')
       .hasClass('progress-bar-animated');
 
-    segment = container.querySelector(
-      'div:nth-child(2):has(> .progress-bar)',
-    ) as HTMLDivElement;
+    segment = container.querySelector('div:nth-child(2):has(> .progress-bar)') as HTMLDivElement;
     bar = segment.querySelector('.progress-bar') as HTMLDivElement;
 
     assert

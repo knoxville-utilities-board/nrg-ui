@@ -6,14 +6,7 @@ import { bind } from '@nrg-ui/core/helpers/bind';
 import CodeBlock from '@nrg-ui/showcase/components/code-block';
 import Section from '@nrg-ui/showcase/components/section';
 
-const stringOptions = [
-  'Option 1',
-  'Option 2',
-  'Option 3',
-  'Option 4',
-  'Option 5',
-  'Option 6',
-];
+const stringOptions = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5', 'Option 6'];
 
 const objectOptions = [
   { key: 'Option 1', id: '1', searchableDisplay: 'Lorem' },
@@ -56,11 +49,7 @@ export default class MultiSelectDemo extends Component {
 
   <template>
     <Section @name="Multi Select" as |Section|>
-      <Section.Subsection
-        @name="String Options"
-        @model={{this}}
-        @elementTag="button"
-      >
+      <Section.Subsection @name="String Options" @model={{this}} @elementTag="button">
         <:example as |model|>
           <MultiSelect
             @binding={{bind model "value"}}
@@ -97,16 +86,12 @@ export default class MultiSelectDemo extends Component {
             <Action
               @name="onAdd"
               @description="Callback when an option is added"
-              @parameters={{array
-                (p "value" type="T" description="The added value")
-              }}
+              @parameters={{array (p "value" type="T" description="The added value")}}
             />
             <Action
               @name="onRemove"
               @description="Callback when an option is removed"
-              @parameters={{array
-                (p "value" type="T" description="The removed value")
-              }}
+              @parameters={{array (p "value" type="T" description="The removed value")}}
             />
             <Action
               @name="onShow"
@@ -122,11 +107,7 @@ export default class MultiSelectDemo extends Component {
         </:api>
       </Section.Subsection>
 
-      <Section.Subsection
-        @name="Object Options"
-        @model={{this}}
-        @elementTag="button"
-      >
+      <Section.Subsection @name="Object Options" @model={{this}} @elementTag="button">
         <:example as |model|>
           <MultiSelect
             @binding={{bind model "value"}}
@@ -156,11 +137,7 @@ export default class MultiSelectDemo extends Component {
         </:api>
       </Section.Subsection>
 
-      <Section.Subsection
-        @name="Yielded Options"
-        @model={{this}}
-        @elementTag="button"
-      >
+      <Section.Subsection @name="Yielded Options" @model={{this}} @elementTag="button">
         <:example as |model|>
           <MultiSelect
             @binding={{bind model "value"}}
@@ -183,9 +160,7 @@ export default class MultiSelectDemo extends Component {
               <span>Custom Option {{option.key}}</span>
             </:option>
             <:selection as |Option|>
-              <span
-                class="badge text-bg-primary d-inline-flex align-items-center"
-              >
+              <span class="badge text-bg-primary d-inline-flex align-items-center">
                 <span class="me-2">
                   {{Option.value.key}}
                   ({{Option.value.id}})
@@ -201,19 +176,11 @@ export default class MultiSelectDemo extends Component {
     <div class="grid">
       <div class="g-col-4">
         <h3>String Options</h3>
-        <CodeBlock
-          @showCopyButton={{false}}
-          @lang="json"
-          @code={{this.stringOptionsSource}}
-        />
+        <CodeBlock @showCopyButton={{false}} @lang="json" @code={{this.stringOptionsSource}} />
       </div>
       <div class="g-col-4">
         <h3>Object Options</h3>
-        <CodeBlock
-          @showCopyButton={{false}}
-          @lang="json"
-          @code={{this.objectOptionsSource}}
-        />
+        <CodeBlock @showCopyButton={{false}} @lang="json" @code={{this.objectOptionsSource}} />
       </div>
       <div class="g-col-4">
         <h3>Selected</h3>

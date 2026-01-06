@@ -6,11 +6,7 @@ import Icon from '@nrg-ui/core/components/icon';
 import Section from '@nrg-ui/showcase/components/section';
 
 import type { IconType } from '@nrg-ui/core';
-import type {
-  ColorType,
-  SizeType,
-  SubtleColorType,
-} from '@nrg-ui/core/components/icon';
+import type { ColorType, SizeType, SubtleColorType } from '@nrg-ui/core/components/icon';
 
 const colorOptions = [
   'primary',

@@ -42,9 +42,7 @@ module('Integration | Component | form/select', function (hooks) {
 
   test('it renders when empty', async function (assert) {
     const model = new Model();
-    await render(
-      <template><Select @binding={{bind model "value"}} /></template>,
-    );
+    await render(<template><Select @binding={{bind model "value"}} /></template>);
     assert.dom('.selected-display').hasText('Select an Option');
   });
 
@@ -65,9 +63,7 @@ module('Integration | Component | form/select', function (hooks) {
   test('it opens when clicked', async function (assert) {
     const model = new Model();
     await render(
-      <template>
-        <Select @binding={{bind model "value"}} @options={{stringOptions}} />
-      </template>,
+      <template><Select @binding={{bind model "value"}} @options={{stringOptions}} /></template>,
     );
     await click('button');
     assert.dom('.dropdown-menu').doesNotHaveClass('hidden');
@@ -76,9 +72,7 @@ module('Integration | Component | form/select', function (hooks) {
   test('it closes when selecting an option', async function (assert) {
     const model = new Model();
     await render(
-      <template>
-        <Select @binding={{bind model "value"}} @options={{stringOptions}} />
-      </template>,
+      <template><Select @binding={{bind model "value"}} @options={{stringOptions}} /></template>,
     );
     await click('button');
     assert.dom('.dropdown-menu').doesNotHaveClass('hidden');
@@ -89,9 +83,7 @@ module('Integration | Component | form/select', function (hooks) {
   test('it renders string options', async function (assert) {
     const model = new Model();
     await render(
-      <template>
-        <Select @binding={{bind model "value"}} @options={{stringOptions}} />
-      </template>,
+      <template><Select @binding={{bind model "value"}} @options={{stringOptions}} /></template>,
     );
 
     assert.dom('.selected-display').hasText('Select an Option');
@@ -111,9 +103,7 @@ module('Integration | Component | form/select', function (hooks) {
   test('it renders label-value options', async function (assert) {
     const model = new Model();
     await render(
-      <template>
-        <Select @binding={{bind model "value"}} @options={{objectOptions}} />
-      </template>,
+      <template><Select @binding={{bind model "value"}} @options={{objectOptions}} /></template>,
     );
 
     assert.dom('.selected-display').hasText('Select an Option');
@@ -146,11 +136,7 @@ module('Integration | Component | form/select', function (hooks) {
     assert.dom('.selected-display').hasText('Select an Option');
 
     await click('button');
-    assert
-      .dom('.dropdown-menu')
-      .containsText('key 1')
-      .containsText('key 2')
-      .containsText('key 3');
+    assert.dom('.dropdown-menu').containsText('key 1').containsText('key 2').containsText('key 3');
 
     await click('.dropdown-menu li');
     assert.dom('.selected-display').hasText('key 1');
@@ -172,11 +158,7 @@ module('Integration | Component | form/select', function (hooks) {
     assert.dom('.selected-display').hasText('Select an Option');
 
     await click('button');
-    assert
-      .dom('.dropdown-menu')
-      .containsText('key 1')
-      .containsText('key 2')
-      .containsText('key 3');
+    assert.dom('.dropdown-menu').containsText('key 1').containsText('key 2').containsText('key 3');
 
     await click('.dropdown-menu li');
     assert.dom('.selected-display').hasText('key 1');
@@ -211,9 +193,7 @@ module('Integration | Component | form/select', function (hooks) {
     const model = new Model();
     model.value = 'value 2';
     await render(
-      <template>
-        <Select @binding={{bind model "value"}} @options={{objectOptions}} />
-      </template>,
+      <template><Select @binding={{bind model "value"}} @options={{objectOptions}} /></template>,
     );
 
     assert.dom('.dropdown-item.active').hasText('label 2');
@@ -222,9 +202,7 @@ module('Integration | Component | form/select', function (hooks) {
   test('it opens and closes via keyboard when focused', async function (assert) {
     const model = new Model();
     await render(
-      <template>
-        <Select @binding={{bind model "value"}} @options={{objectOptions}} />
-      </template>,
+      <template><Select @binding={{bind model "value"}} @options={{objectOptions}} /></template>,
     );
 
     await click('button');
@@ -249,9 +227,7 @@ module('Integration | Component | form/select', function (hooks) {
   test('it allows items to be selected via keyboard', async function (assert) {
     const model = new Model();
     await render(
-      <template>
-        <Select @binding={{bind model "value"}} @options={{objectOptions}} />
-      </template>,
+      <template><Select @binding={{bind model "value"}} @options={{objectOptions}} /></template>,
     );
     assert.dom('.selected-display').hasText('Select an Option');
 
@@ -273,9 +249,7 @@ module('Integration | Component | form/select', function (hooks) {
     const model = new Model();
     model.value = 'value 2';
     await render(
-      <template>
-        <Select @binding={{bind model "value"}} @options={{objectOptions}} />
-      </template>,
+      <template><Select @binding={{bind model "value"}} @options={{objectOptions}} /></template>,
     );
     assert.dom('.selected-display').hasText('label 2');
 
@@ -294,9 +268,7 @@ module('Integration | Component | form/select', function (hooks) {
     const model = new Model();
     model.value = 'value 1';
     await render(
-      <template>
-        <Select @binding={{bind model "value"}} @options={{objectOptions}} />
-      </template>,
+      <template><Select @binding={{bind model "value"}} @options={{objectOptions}} /></template>,
     );
 
     assert.dom('.selected-display').hasText('label 1');
@@ -316,9 +288,7 @@ module('Integration | Component | form/select', function (hooks) {
     const model = new Model();
     model.value = 'value 3';
     await render(
-      <template>
-        <Select @binding={{bind model "value"}} @options={{objectOptions}} />
-      </template>,
+      <template><Select @binding={{bind model "value"}} @options={{objectOptions}} /></template>,
     );
     assert.dom('.selected-display').hasText('label 3');
 

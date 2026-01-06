@@ -34,11 +34,7 @@ export default class Toaster extends Component<ToasterSignature> {
   <template>
     <div class={{this.classList}} ...attributes>
       {{#each this.toast.queue as |toast|}}
-        <Alert
-          @type={{toast.type}}
-          @dismissible={{true}}
-          @onDismiss={{fn this.toast.remove toast}}
-        >
+        <Alert @type={{toast.type}} @dismissible={{true}} @onDismiss={{fn this.toast.remove toast}}>
           {{toast.message}}
         </Alert>
       {{/each}}

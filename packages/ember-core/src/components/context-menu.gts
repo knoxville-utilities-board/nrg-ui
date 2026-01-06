@@ -115,10 +115,7 @@ export default class ContextMenu extends Component<ContextMenuSignature> {
   @service
   declare contextMenu: ContextMenuService;
 
-  register = (
-    top: HTMLDivElement,
-    { menu: dropdown }: { menu: DropdownType },
-  ) => {
+  register = (top: HTMLDivElement, { menu: dropdown }: { menu: DropdownType }) => {
     const { id } = this.args;
 
     assert('ContextMenu requires an id', id);

@@ -73,10 +73,7 @@ export default class MktgServicePricing extends Component<MktgServicePricingSign
   }
 
   <template>
-    <div
-      class="card p-4 border-2 rounded-4 {{if @active 'border-primary'}} my-4"
-      ...attributes
-    >
+    <div class="card p-4 border-2 rounded-4 {{if @active 'border-primary'}} my-4" ...attributes>
       <div class="row align-items-center">
         <div class="col-12">
           {{#if @icon}}

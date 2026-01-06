@@ -1,10 +1,7 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/core';
-import {
-  RegexValidator,
-  validator as buildValidator,
-} from '@nrg-ui/core/validation';
+import { RegexValidator, validator as buildValidator } from '@nrg-ui/core/validation';
 import { setupTest } from 'docs/tests/helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';
@@ -40,10 +37,7 @@ module('Unit | Validator | regex', function (hooks) {
       // @ts-expect-error Testing that the `pattern` option is required
       const validator = new RegexValidator(this.binding, {}, this.model);
 
-      assert.notOk(
-        true,
-        'Expected an error, but got a result instead: ' + validator.result,
-      );
+      assert.notOk(true, 'Expected an error, but got a result instead: ' + validator.result);
     }, new Error('Assertion Failed: RegexValidator requires `pattern` to be provided'));
 
     assert.throws(() => {
@@ -54,19 +48,12 @@ module('Unit | Validator | regex', function (hooks) {
         this.model,
       );
 
-      assert.notOk(
-        true,
-        'Expected an error, but got a result instead: ' + validator.result,
-      );
+      assert.notOk(true, 'Expected an error, but got a result instead: ' + validator.result);
     }, new Error('Assertion Failed: RegexValidator requires the pattern to be of type string or RegExp'));
   });
 
   test('`pattern` option works', function (this: TestContext, assert) {
-    const validator = new RegexValidator(
-      this.binding,
-      { pattern: /^Foo/ },
-      this.model,
-    );
+    const validator = new RegexValidator(this.binding, { pattern: /^Foo/ }, this.model);
 
     this.model.field = 'foo';
 

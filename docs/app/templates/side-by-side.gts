@@ -10,11 +10,7 @@ import CodeBlock from '@nrg-ui/showcase/components/code-block';
   <Container style="min-height: fit-content;">
     <StackedPane>
       <ul class="list-group">
-        <LinkTo
-          class="list-group-item"
-          @route="side-by-side.detail"
-          @model={{1}}
-        >
+        <LinkTo class="list-group-item" @route="side-by-side.detail" @model={{1}}>
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">Person Name 1</h5>
             <small>Employee Number</small>
@@ -22,44 +18,28 @@ import CodeBlock from '@nrg-ui/showcase/components/code-block';
           <p class="mb-1">Mail - Department</p>
           <small>Phone</small>
         </LinkTo>
-        <LinkTo
-          class="list-group-item"
-          @route="side-by-side.detail"
-          @model={{2}}
-        >
+        <LinkTo class="list-group-item" @route="side-by-side.detail" @model={{2}}>
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">Person Name 2</h5>
             <small>Employee Number</small>
           </div>
           <p class="mb-1">Mail - Department</p>
           <small>Phone</small></LinkTo>
-        <LinkTo
-          class="list-group-item"
-          @route="side-by-side.detail"
-          @model={{3}}
-        >
+        <LinkTo class="list-group-item" @route="side-by-side.detail" @model={{3}}>
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">Person Name 3</h5>
             <small>Employee Number</small>
           </div>
           <p class="mb-1">Mail - Department</p>
           <small>Phone</small></LinkTo>
-        <LinkTo
-          class="list-group-item"
-          @route="side-by-side.detail"
-          @model={{4}}
-        >
+        <LinkTo class="list-group-item" @route="side-by-side.detail" @model={{4}}>
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">Person Name 4</h5>
             <small>Employee Number</small>
           </div>
           <p class="mb-1">Mail - Department</p>
           <small>Phone</small></LinkTo>
-        <LinkTo
-          class="list-group-item"
-          @route="side-by-side.detail"
-          @model={{5}}
-        >
+        <LinkTo class="list-group-item" @route="side-by-side.detail" @model={{5}}>
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">Person Name 5</h5>
             <small>Employee Number</small>

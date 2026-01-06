@@ -48,11 +48,7 @@ module('Integration | Component | modal', function (hooks) {
 
     await render(
       <template>
-        <Modal
-          @isOpen={{true}}
-          @onDismiss={{onDismiss}}
-          @dismissible={{true}}
-        />
+        <Modal @isOpen={{true}} @onDismiss={{onDismiss}} @dismissible={{true}} />
       </template>,
     );
 
@@ -61,9 +57,7 @@ module('Integration | Component | modal', function (hooks) {
   });
 
   test('close button does not display when not dismissible', async function (assert) {
-    await render(
-      <template><Modal @isOpen={{true}} @dismissible={{false}} /></template>,
-    );
+    await render(<template><Modal @isOpen={{true}} @dismissible={{false}} /></template>);
 
     assert.dom('.btn-close').doesNotExist();
   });

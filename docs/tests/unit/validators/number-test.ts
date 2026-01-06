@@ -1,10 +1,7 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/core';
-import {
-  NumberValidator,
-  validator as buildValidator,
-} from '@nrg-ui/core/validation';
+import { NumberValidator, validator as buildValidator } from '@nrg-ui/core/validation';
 import { setupTest } from 'docs/tests/helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';
@@ -62,29 +59,17 @@ module('Unit | Validator | number', function (hooks) {
   });
 
   test('`allowNone` option works', function (this: TestContext, assert) {
-    let validator = new NumberValidator(
-      this.binding,
-      { allowNone: false },
-      this.model,
-    );
+    let validator = new NumberValidator(this.binding, { allowNone: false }, this.model);
 
     assert.isInvalid(validator.result, 'This field must be a number');
 
-    validator = new NumberValidator(
-      this.binding,
-      { allowNone: false },
-      this.model,
-    );
+    validator = new NumberValidator(this.binding, { allowNone: false }, this.model);
 
     this.model.field = null;
 
     assert.isInvalid(validator.result, 'This field must be a number');
 
-    validator = new NumberValidator(
-      this.binding,
-      { allowNone: true },
-      this.model,
-    );
+    validator = new NumberValidator(this.binding, { allowNone: true }, this.model);
 
     this.model.field = null;
 
@@ -92,31 +77,19 @@ module('Unit | Validator | number', function (hooks) {
   });
 
   test('`allowString` option works', function (this: TestContext, assert) {
-    let validator = new NumberValidator(
-      this.binding,
-      { allowString: false },
-      this.model,
-    );
+    let validator = new NumberValidator(this.binding, { allowString: false }, this.model);
 
     this.model.field = '5.4';
 
     assert.isInvalid(validator.result, 'This field must be a number');
 
-    validator = new NumberValidator(
-      this.binding,
-      { allowString: true },
-      this.model,
-    );
+    validator = new NumberValidator(this.binding, { allowString: true }, this.model);
 
     assert.isValid(validator.result);
   });
 
   test('`integer` option works', function (this: TestContext, assert) {
-    let validator = new NumberValidator(
-      this.binding,
-      { integer: true },
-      this.model,
-    );
+    let validator = new NumberValidator(this.binding, { integer: true }, this.model);
 
     this.model.field = 17.5;
 
@@ -126,11 +99,7 @@ module('Unit | Validator | number', function (hooks) {
 
     assert.isValid(validator.result);
 
-    validator = new NumberValidator(
-      this.binding,
-      { integer: false },
-      this.model,
-    );
+    validator = new NumberValidator(this.binding, { integer: false }, this.model);
 
     this.model.field = 17.5;
 
@@ -142,11 +111,7 @@ module('Unit | Validator | number', function (hooks) {
   });
 
   test('`positive` option works', function (this: TestContext, assert) {
-    let validator = new NumberValidator(
-      this.binding,
-      { positive: true },
-      this.model,
-    );
+    let validator = new NumberValidator(this.binding, { positive: true }, this.model);
 
     this.model.field = -17;
 
@@ -156,11 +121,7 @@ module('Unit | Validator | number', function (hooks) {
 
     assert.isValid(validator.result);
 
-    validator = new NumberValidator(
-      this.binding,
-      { positive: false },
-      this.model,
-    );
+    validator = new NumberValidator(this.binding, { positive: false }, this.model);
 
     this.model.field = -17;
 
@@ -172,11 +133,7 @@ module('Unit | Validator | number', function (hooks) {
   });
 
   test('`negative` option works', function (this: TestContext, assert) {
-    let validator = new NumberValidator(
-      this.binding,
-      { negative: true },
-      this.model,
-    );
+    let validator = new NumberValidator(this.binding, { negative: true }, this.model);
 
     this.model.field = 17;
 
@@ -186,11 +143,7 @@ module('Unit | Validator | number', function (hooks) {
 
     assert.isValid(validator.result);
 
-    validator = new NumberValidator(
-      this.binding,
-      { negative: false },
-      this.model,
-    );
+    validator = new NumberValidator(this.binding, { negative: false }, this.model);
 
     this.model.field = 17;
 
@@ -202,11 +155,7 @@ module('Unit | Validator | number', function (hooks) {
   });
 
   test('`even` option works', function (this: TestContext, assert) {
-    let validator = new NumberValidator(
-      this.binding,
-      { even: true },
-      this.model,
-    );
+    let validator = new NumberValidator(this.binding, { even: true }, this.model);
 
     this.model.field = 17;
 
@@ -228,11 +177,7 @@ module('Unit | Validator | number', function (hooks) {
   });
 
   test('`odd` option works', function (this: TestContext, assert) {
-    let validator = new NumberValidator(
-      this.binding,
-      { odd: true },
-      this.model,
-    );
+    let validator = new NumberValidator(this.binding, { odd: true }, this.model);
 
     this.model.field = 16;
 
@@ -254,11 +199,7 @@ module('Unit | Validator | number', function (hooks) {
   });
 
   test('`multipleOf` option works', function (this: TestContext, assert) {
-    const validator = new NumberValidator(
-      this.binding,
-      { multipleOf: 5 },
-      this.model,
-    );
+    const validator = new NumberValidator(this.binding, { multipleOf: 5 }, this.model);
 
     this.model.field = 16;
 
@@ -270,18 +211,11 @@ module('Unit | Validator | number', function (hooks) {
   });
 
   test('`maxPrecision` option works', function (this: TestContext, assert) {
-    const validator = new NumberValidator(
-      this.binding,
-      { maxPrecision: 2 },
-      this.model,
-    );
+    const validator = new NumberValidator(this.binding, { maxPrecision: 2 }, this.model);
 
     this.model.field = 3.1415;
 
-    assert.isInvalid(
-      validator.result,
-      'This field must have at most 2 decimal places',
-    );
+    assert.isInvalid(validator.result, 'This field must have at most 2 decimal places');
 
     this.model.field = 3.14;
 

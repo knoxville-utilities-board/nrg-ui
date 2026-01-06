@@ -47,10 +47,7 @@ module('Integration | Component | app-bar', function (hooks) {
         </AppBar>
       </template>,
     );
-    assert
-      .dom('h5')
-      .hasText('Test Title')
-      .matchesSelector('.environment-title ~ &');
+    assert.dom('h5').hasText('Test Title').matchesSelector('.environment-title ~ &');
     assert.dom('.environment-title').hasText('dev');
 
     await render(

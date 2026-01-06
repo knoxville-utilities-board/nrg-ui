@@ -73,10 +73,7 @@ export class BaseArgument<T> extends Component<BaseArgumentSignature<T>> {
       return value;
     }
 
-    assert(
-      'Model is required for BaseArgument when not providing @value',
-      model,
-    );
+    assert('Model is required for BaseArgument when not providing @value', model);
     assert('Name is required for BaseArgument when not providing @value', name);
 
     return get(model, alias ?? name) as T;
@@ -85,14 +82,8 @@ export class BaseArgument<T> extends Component<BaseArgumentSignature<T>> {
   set value(value: T) {
     const { alias, model, name } = this.args;
 
-    assert(
-      'Model is required for BaseArgument when not providing @onInput',
-      model,
-    );
-    assert(
-      'Name is required for BaseArgument when not providing @onInput',
-      name,
-    );
+    assert('Model is required for BaseArgument when not providing @onInput', model);
+    assert('Name is required for BaseArgument when not providing @onInput', name);
 
     set(model, alias ?? name, value);
 
@@ -108,11 +99,7 @@ export class BaseArgument<T> extends Component<BaseArgumentSignature<T>> {
         {{/if}}
       </td>
       <td class="type">
-        <ApiLink
-          @displayType={{@displayType}}
-          @link={{@typeLink}}
-          @type={{@type}}
-        />
+        <ApiLink @displayType={{@displayType}} @link={{@typeLink}} @type={{@type}} />
       </td>
       <td class="description">
         {{@description}}
@@ -150,10 +137,7 @@ export const BooleanArgument: TOC<ArgumentSignature<boolean>> = <template>
     as |base|
   >
     {{#unless @hideControl}}
-      <Checkbox
-        @binding={{bind base "value"}}
-        @label={{if base.value "True" "False"}}
-      />
+      <Checkbox @binding={{bind base "value"}} @label={{if base.value "True" "False"}} />
     {{/unless}}
 
     {{yield base base.value}}
@@ -239,23 +223,11 @@ export interface ArgumentsSignature {
   Blocks: {
     default: [
       {
-        Base: WithBoundArgs<
-          ComponentLike<BaseArgumentSignature<unknown>>,
-          'model'
-        >;
-        Boolean: WithBoundArgs<
-          ComponentLike<ArgumentSignature<boolean>>,
-          'model'
-        >;
+        Base: WithBoundArgs<ComponentLike<BaseArgumentSignature<unknown>>, 'model'>;
+        Boolean: WithBoundArgs<ComponentLike<ArgumentSignature<boolean>>, 'model'>;
         Date: WithBoundArgs<ComponentLike<ArgumentSignature<Date>>, 'model'>;
-        Number: WithBoundArgs<
-          ComponentLike<ArgumentSignature<number>>,
-          'model'
-        >;
-        String: WithBoundArgs<
-          ComponentLike<ArgumentSignature<string>>,
-          'model'
-        >;
+        Number: WithBoundArgs<ComponentLike<ArgumentSignature<number>>, 'model'>;
+        String: WithBoundArgs<ComponentLike<ArgumentSignature<string>>, 'model'>;
       },
     ];
   };

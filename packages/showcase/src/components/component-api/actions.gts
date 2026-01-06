@@ -17,11 +17,9 @@ export interface ParamHelperSignature {
   Return: ActionParameter;
 }
 
-export const param = helper<ParamHelperSignature>(
-  ([name], { type, description }) => {
-    return { name, type, description };
-  },
-);
+export const param = helper<ParamHelperSignature>(([name], { type, description }) => {
+  return { name, type, description };
+});
 
 export interface ActionParameter {
   name: string;
@@ -71,10 +69,7 @@ export class BaseAction extends Component<BaseActionSignature> {
   }
 
   <template>
-    {{#let
-      (createLink (array @sectionName @subsectionName "actions" @name))
-      as |link|
-    }}
+    {{#let (createLink (array @sectionName @subsectionName "actions" @name)) as |link|}}
       <h6 id={{link}}>
         <a class="showcase-header" href="#{{link}}">
           <CodeBlock @code={{@name}} @lang="plaintext" @inline={{true}} />
@@ -130,10 +125,7 @@ export interface ActionsSignature {
   };
   Blocks: {
     default: [
-      WithBoundArgs<
-        ComponentLike<BaseActionSignature>,
-        'sectionName' | 'subsectionName'
-      >,
+      WithBoundArgs<ComponentLike<BaseActionSignature>, 'sectionName' | 'subsectionName'>,
       HelperLike<ParamHelperSignature>,
     ];
   };
@@ -147,12 +139,7 @@ export const Actions: TOC<ActionsSignature> = <template>
       </a>
     </h5>
   {{/let}}
-  {{yield
-    (component
-      BaseAction sectionName=@sectionName subsectionName=@subsectionName
-    )
-    param
-  }}
+  {{yield (component BaseAction sectionName=@sectionName subsectionName=@subsectionName) param}}
 </template>;
 
 export default Actions;

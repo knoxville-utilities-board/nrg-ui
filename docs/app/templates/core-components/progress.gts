@@ -86,8 +86,7 @@ export default class ProgressDemo extends Component {
           : this.randomNumber(10, 100 - progressTotal);
       const newSegment = {
         progress: newProgress,
-        backgroundColor:
-          backgroundColors[this.segments.length % backgroundColors.length],
+        backgroundColor: backgroundColors[this.segments.length % backgroundColors.length],
       };
       this.segments.push(newSegment);
     }

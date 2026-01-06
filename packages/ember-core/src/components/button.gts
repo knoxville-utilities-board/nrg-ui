@@ -60,10 +60,7 @@ export default class Button extends Component<ButtonSignature> {
   }
 
   get isLeftAlignedIcon() {
-    return (
-      this.hasIcon &&
-      (this.args.iconPosition === 'left' || !this.args.iconPosition)
-    );
+    return this.hasIcon && (this.args.iconPosition === 'left' || !this.args.iconPosition);
   }
 
   get isRightAlignedIcon() {
@@ -91,10 +88,7 @@ export default class Button extends Component<ButtonSignature> {
       ...attributes
     >
       {{#if @loading}}
-        <span
-          class="spinner-border spinner-border-sm position-absolute"
-          aria-hidden="true"
-        ></span>
+        <span class="spinner-border spinner-border-sm position-absolute" aria-hidden="true"></span>
         <span class="visually-hidden" role="status">
           {{t "nrg.base.loading"}}
         </span>

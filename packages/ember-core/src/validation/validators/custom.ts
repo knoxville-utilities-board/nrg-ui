@@ -5,12 +5,7 @@ import { tKey } from 'ember-intl';
 import BaseValidator from './base.ts';
 
 import type { Binding } from '../../index.ts';
-import type {
-  BaseOptions,
-  Computable,
-  ValidateFnResponse,
-  ValidationResult,
-} from '../types';
+import type { BaseOptions, Computable, ValidateFnResponse, ValidationResult } from '../types';
 
 declare type ValidateFn<T, Context> = (
   value: T,
@@ -39,19 +34,14 @@ export default class CustomValidator<
 
     const { validate } = options;
 
-    assert(
-      'CustomValidator requires a `validate` function to be provided',
-      validate,
-    );
+    assert('CustomValidator requires a `validate` function to be provided', validate);
   }
 
   @cached
   get result(): ValidationResult {
     const { context, value } = this;
     const { validate, ...options } = this.options;
-    const computedOptions = this.computeOptions(
-      options as CustomOptions<T, Context>,
-    );
+    const computedOptions = this.computeOptions(options as CustomOptions<T, Context>);
 
     if (computedOptions.disabled) {
       return { isValid: true };

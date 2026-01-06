@@ -35,9 +35,6 @@ module('Integration | Modifier | on-destroy', function (hooks) {
 
     await clearRender();
 
-    assert.verifySteps(
-      ['before render', 'after render', 'callback'],
-      'Steps are correct',
-    );
+    assert.verifySteps(['before render', 'after render', 'callback'], 'Steps are correct');
   });
 });

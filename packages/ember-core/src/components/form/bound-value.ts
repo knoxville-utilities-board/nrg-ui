@@ -29,26 +29,16 @@ export type BoundValueSignature<Signature, Type> = {
 export default class BoundValue<Signature, T> extends Component<
   BoundValueSignature<Signature, Optional<T>>
 > {
-  constructor(
-    owner: Owner,
-    args: BoundValueSignature<Signature, Optional<T>>['Args'],
-  ) {
+  constructor(owner: Owner, args: BoundValueSignature<Signature, Optional<T>>['Args']) {
     super(owner, args);
 
     const { binding } = args;
 
-    assert(
-      `You must provide a binding argument to ${this.constructor.name}`,
-      binding,
-    );
+    assert(`You must provide a binding argument to ${this.constructor.name}`, binding);
 
     const defaultValue = this.defaultValue;
     const initialValue = this.value;
-    if (
-      initialValue === undefined &&
-      defaultValue !== undefined &&
-      this.useDefaultValue
-    ) {
+    if (initialValue === undefined && defaultValue !== undefined && this.useDefaultValue) {
       scheduleTask(this, 'actions', () => {
         this.onChange(defaultValue);
       });

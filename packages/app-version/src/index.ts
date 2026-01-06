@@ -46,9 +46,7 @@ export interface TagInfo {
 }
 
 export function getPackageVersion(fallback?: string) {
-  const pkg = JSON.parse(
-    readFileSync(join(process.cwd(), 'package.json'), 'utf-8'),
-  );
+  const pkg = JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf-8'));
 
   return (pkg.version ?? fallback) as string;
 }
@@ -76,9 +74,7 @@ const defaultTagOptions: TagOptions = {
   tagPattern: /(\d+\.\d+\.\d+)/,
 };
 
-export function getTagDetails(
-  options: Partial<TagOptions> = {},
-): TagInfo | null {
+export function getTagDetails(options: Partial<TagOptions> = {}): TagInfo | null {
   const { appendCommitHash, prefix, tagPattern } = {
     ...defaultTagOptions,
     ...options,
@@ -86,12 +82,7 @@ export function getTagDetails(
 
   let latestTag: string | null = null;
   if (tagPattern) {
-    const allTags = git([
-      'tag',
-      '--sort=tag',
-      '--sort=-committerdate',
-      '--merged',
-    ]);
+    const allTags = git(['tag', '--sort=tag', '--sort=-committerdate', '--merged']);
     latestTag = allTags.split('\n').find((tag) => tagPattern.test(tag)) ?? null;
   }
 
@@ -112,10 +103,7 @@ export function getTagDetails(
         version = `${prefix}${version}`;
       }
 
-      if (
-        appendCommitHash === true ||
-        (appendCommitHash === null && count !== 0)
-      ) {
+      if (appendCommitHash === true || (appendCommitHash === null && count !== 0)) {
         version += '-g' + commit.slice(0, 7);
       }
 

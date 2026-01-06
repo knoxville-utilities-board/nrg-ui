@@ -68,9 +68,7 @@ export interface FieldSignature {
         FileUpload: ComponentLike<FileUploadSignature>;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         MultiSelect: ComponentLike<MultiSelectSignature<any>>;
-        NumberInput: ComponentLike<
-          InputFieldSignature<NumberInputArgs, number>
-        >;
+        NumberInput: ComponentLike<InputFieldSignature<NumberInputArgs, number>>;
         PhoneInput: ComponentLike<InputFieldSignature<PhoneInputArgs>>;
         RadioGroup: ComponentLike<RadioGroupSignature>;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -250,10 +248,7 @@ export default class Field extends Component<FieldSignature> {
         { presence: true, key },
         binding.model,
       );
-      this.requiredId = form.registerValidator(
-        presenceValidator,
-        this.validatorKey,
-      );
+      this.requiredId = form.registerValidator(presenceValidator, this.validatorKey);
     } else {
       if (!requiredId) {
         return;
@@ -264,11 +259,9 @@ export default class Field extends Component<FieldSignature> {
     }
   }
 
-  setupValidatorModifier = modifier(
-    (element: unknown, [required]: [boolean | undefined]) => {
-      runTask(this, () => this.setupValidator(required));
-    },
-  );
+  setupValidatorModifier = modifier((element: unknown, [required]: [boolean | undefined]) => {
+    runTask(this, () => this.setupValidator(required));
+  });
 
   <template>
     {{#if @label}}
@@ -304,15 +297,11 @@ export default class Field extends Component<FieldSignature> {
         (hash
           Checkbox=(component Checkbox fieldOptions=fieldOptions)
           CheckboxGroup=(component
-            CheckboxGroup
-            fieldOptions=fieldOptions
-            onInitBinding=this.initBinding
+            CheckboxGroup fieldOptions=fieldOptions onInitBinding=this.initBinding
           )
           Datetime=(component Datetime fieldOptions=fieldOptions)
           FileUpload=(component FileUpload fieldOptions=fieldOptions)
-          MultiSelect=(component
-            this.TypedMultiSelect fieldOptions=fieldOptions
-          )
+          MultiSelect=(component this.TypedMultiSelect fieldOptions=fieldOptions)
           NumberInput=(component NumberInput fieldOptions=fieldOptions)
           PhoneInput=(component PhoneInput fieldOptions=fieldOptions)
           RadioGroup=(component RadioGroup fieldOptions=fieldOptions)

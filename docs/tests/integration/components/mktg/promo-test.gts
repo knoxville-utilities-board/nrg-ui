@@ -25,18 +25,13 @@ module('Integration | Component | mktg/promo', function (hooks) {
     );
 
     assert.dom('.row.promo').exists('Promo renders default horizontal');
-    assert
-      .dom('div div p')
-      .hasText('Product name', 'Product name renders with correct content');
+    assert.dom('div div p').hasText('Product name', 'Product name renders with correct content');
     assert
       .dom('div div .mb-3.fs-1.fw-semibold.lh-sm p')
       .hasText('Header Text', 'Header named block renders correct content');
     assert
       .dom('div div p:nth-of-type(2)')
-      .hasText(
-        'Description',
-        'Description named block renders correct content',
-      );
+      .hasText('Description', 'Description named block renders correct content');
 
     const imageElement = find('img');
 
@@ -45,11 +40,7 @@ module('Integration | Component | mktg/promo', function (hooks) {
       'https://place-hold.it/700x700',
       'The img src renders correctly',
     );
-    assert.equal(
-      imageElement?.alt,
-      'Placeholder',
-      'The img alt tag renders correctly',
-    );
+    assert.equal(imageElement?.alt, 'Placeholder', 'The img alt tag renders correctly');
 
     await render(
       <template>

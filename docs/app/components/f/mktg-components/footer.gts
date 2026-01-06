@@ -15,28 +15,16 @@ export default class FooterDemo extends Component {
           <MktgFooter class="bg-primary" @hasDivider={{model.hasDivider}}>
             <:nav>
               <Button class="ms-2 rounded-pill btn-light">Nav 1</Button>
-              <a
-                href=""
-                class="text-light link-underline link-underline-opacity-0"
-              >
+              <a href="" class="text-light link-underline link-underline-opacity-0">
                 Nav 2
               </a>
-              <a
-                href=""
-                class="text-light link-underline link-underline-opacity-0"
-              >
+              <a href="" class="text-light link-underline link-underline-opacity-0">
                 Nav 3
               </a>
-              <a
-                href=""
-                class="text-light link-underline link-underline-opacity-0"
-              >
+              <a href="" class="text-light link-underline link-underline-opacity-0">
                 Nav 4
               </a>
-              <a
-                href=""
-                class="text-light link-underline link-underline-opacity-0"
-              >
+              <a href="" class="text-light link-underline link-underline-opacity-0">
                 Nav 5
               </a>
             </:nav>
@@ -49,10 +37,7 @@ export default class FooterDemo extends Component {
             </:social-media>
             <:brand>
               <div>
-                <img
-                  src="https://imageplaceholder.net/50x50"
-                  alt="Sample icon"
-                />
+                <img src="https://imageplaceholder.net/50x50" alt="Sample icon" />
               </div>
               <a href="" class="text-light mb-0">Brand</a>
             </:brand>
@@ -71,18 +56,9 @@ export default class FooterDemo extends Component {
             />
           </Api.Arguments>
           <Api.Blocks as |Block|>
-            <Block
-              @description="Renders brand content in the bottom left"
-              @name="brand"
-            />
-            <Block
-              @description="Renders legal content in the bottom right"
-              @name="legal"
-            />
-            <Block
-              @description="Renders navigational content in the top left"
-              @name="nav"
-            />
+            <Block @description="Renders brand content in the bottom left" @name="brand" />
+            <Block @description="Renders legal content in the bottom right" @name="legal" />
+            <Block @description="Renders navigational content in the top left" @name="nav" />
             <Block
               @description="Renders social media links in the top right"
               @name="social-media"

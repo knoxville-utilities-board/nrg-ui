@@ -40,9 +40,7 @@ export function getPackageFile(
   return packageJson;
 }
 
-export function getDependenciesFromPackage(
-  path: string = 'package.json',
-): Record<string, string> {
+export function getDependenciesFromPackage(path: string = 'package.json'): Record<string, string> {
   const pkg = getPackageFile(path);
 
   const dependencies = {
@@ -71,9 +69,7 @@ export async function exec(command: string, ...args: string[]) {
   } catch (e) {
     const whitespace = /\s/;
     const fullCommand =
-      command +
-      ' ' +
-      args.map((a) => (whitespace.test(a) ? `'${a}'` : a)).join(' ');
+      command + ' ' + args.map((a) => (whitespace.test(a) ? `'${a}'` : a)).join(' ');
     logger.debug(e);
     let errorMessage = 'Command failed';
     if (e instanceof ExecaError) {
@@ -84,9 +80,7 @@ export async function exec(command: string, ...args: string[]) {
   }
 }
 
-export async function merge<T>(
-  ...objects: T[] | Promise<T>[] | Promise<T[]>[]
-): Promise<T[]> {
+export async function merge<T>(...objects: T[] | Promise<T>[] | Promise<T[]>[]): Promise<T[]> {
   const flat = ([] as T[] | Promise<T>[] | Promise<T[]>[]).concat(...objects);
 
   const flatObjects = await Promise.all(flat.flat());

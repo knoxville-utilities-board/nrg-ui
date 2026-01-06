@@ -15,9 +15,7 @@ export default defineConfig(async (config) => {
     emberEnvironment = 'test';
   }
 
-  const { default: emberEnv } = await import(
-    resolve(join('config', 'environment.js'))
-  );
+  const { default: emberEnv } = await import(resolve(join('config', 'environment.js')));
   const resolvedEmberEnv = await emberEnv(emberEnvironment);
 
   const base = resolvedEmberEnv.rootURL ?? '/';

@@ -25,11 +25,7 @@ class DummyValidator<T extends ValidateFnResponse> extends BaseValidator<
   Model,
   DummyOptions<T>
 > {
-  validate(
-    this: BaseValidator<T, Model, DummyOptions<T>>,
-    value: T,
-    options: DummyOptions<T>,
-  ) {
+  validate(this: BaseValidator<T, Model, DummyOptions<T>>, value: T, options: DummyOptions<T>) {
     return options.response ?? true;
   }
 }
@@ -57,10 +53,7 @@ module('Unit | Validator | base', function (hooks) {
       // @ts-expect-error TS disallows instantiating an abstract class
       const validator = new BaseValidator(this.binding, {}, this.model);
 
-      assert.notOk(
-        true,
-        'Expected an error, but got a result instead: ' + validator.result,
-      );
+      assert.notOk(true, 'Expected an error, but got a result instead: ' + validator.result);
     }, new Error('Assertion Failed: BaseValidator requires the `validate` function to be implemented by subclasses'));
   });
 
@@ -71,10 +64,7 @@ module('Unit | Validator | base', function (hooks) {
       // @ts-expect-error Testing that the `binding` option is required
       const validator = new DummyValidator(null, {}, this.model);
 
-      assert.notOk(
-        true,
-        'Expected an error, but got a result instead: ' + validator.result,
-      );
+      assert.notOk(true, 'Expected an error, but got a result instead: ' + validator.result);
     }, new Error('Assertion Failed: You must provide a binding argument to DummyValidator'));
   });
 
@@ -85,10 +75,7 @@ module('Unit | Validator | base', function (hooks) {
       setOwner(this.model, undefined as unknown as Owner);
       const validator = new DummyValidator(this.binding, {}, this.model);
 
-      assert.notOk(
-        true,
-        'Expected an error, but got a result instead: ' + validator.result,
-      );
+      assert.notOk(true, 'Expected an error, but got a result instead: ' + validator.result);
     }, new Error('Assertion Failed: The `context` or `model` must be have an owner. Usually this means the `context` or `model` is an EmberObject or GlimmerComponent, but this can be manually set up with `setOwner`'));
 
     try {

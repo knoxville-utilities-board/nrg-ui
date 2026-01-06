@@ -51,11 +51,7 @@ const AppBar: TOC<AppBarSignature> = <template>
       (hash Environment=(component EnvironmentDisplay environment=@environment))
       as |AppBarYield|
     }}
-      <Header
-        class="app-bar text-bg-primary shadow-sm py-2"
-        @flexCollapse={{true}}
-        ...attributes
-      >
+      <Header class="app-bar text-bg-primary shadow-sm py-2" @flexCollapse={{true}} ...attributes>
         <:left>
           {{yield AppBarYield to="left"}}
         </:left>

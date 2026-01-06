@@ -170,13 +170,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
             <label for="city" class="form-label">
               City
             </label>
-            <input
-              type="text"
-              class="form-control"
-              id="city"
-              placeholder="City"
-              required=""
-            />
+            <input type="text" class="form-control" id="city" placeholder="City" required="" />
             <div class="invalid-feedback">
               Please enter a valid city.
             </div>
@@ -200,13 +194,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
             <label for="zip" class="form-label">
               Zip
             </label>
-            <input
-              type="text"
-              class="form-control"
-              id="zip"
-              placeholder="12345"
-              required=""
-            />
+            <input type="text" class="form-control" id="zip" placeholder="12345" required="" />
             <div class="invalid-feedback">
               Zip code required.
             </div>
@@ -221,11 +209,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
                 *
               </span>
             </label>
-            <input
-              class="form-control"
-              id="phone"
-              placeholder="(555) 555-5555"
-            />
+            <input class="form-control" id="phone" placeholder="(555) 555-5555" />
             <div class="invalid-feedback">
               Please enter a valid phone.
             </div>
@@ -238,12 +222,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
                 *
               </span>
             </label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              placeholder="e@mail.com"
-            />
+            <input type="email" class="form-control" id="email" placeholder="e@mail.com" />
             <div class="invalid-feedback">
               Please enter a valid email address.
             </div>

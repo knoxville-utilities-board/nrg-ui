@@ -47,16 +47,12 @@ const Validators = {
 };
 type ValidatorType = keyof typeof Validators;
 
-declare type OptionsOf<T extends ValidatorType> = ConstructorParameters<
-  (typeof Validators)[T]
->[1];
+declare type OptionsOf<T extends ValidatorType> = ConstructorParameters<(typeof Validators)[T]>[1];
 
 type ValidatorFnArgs<
   V extends ValidatorType = ValidatorType,
   Context extends object = object,
-> = V extends V
-  ? [V, OptionsOf<V>, Context | undefined] | [V, OptionsOf<V>]
-  : never;
+> = V extends V ? [V, OptionsOf<V>, Context | undefined] | [V, OptionsOf<V>] : never;
 
 export function validator<
   Context extends object = object,
@@ -124,54 +120,42 @@ export function confirmation<Context extends object = object>(
   options: Computable<Context, ConfirmationOptions>,
   context?: Context,
 ): Validator<TranslatableOption, Context, ConfirmationOptions> {
-  return (binding: Binding) =>
-    new ConfirmationValidator<Context>(binding, options, context);
+  return (binding: Binding) => new ConfirmationValidator<Context>(binding, options, context);
 }
 
 export function custom<Context extends object = object, T = unknown>(
   options: Computable<Context, CustomOptions<T, Context>>,
   context?: Context,
 ): Validator<T, Context, CustomOptions<T, Context>> {
-  return (binding: Binding) =>
-    new CustomValidator<T, Context>(binding, options, context);
+  return (binding: Binding) => new CustomValidator<T, Context>(binding, options, context);
 }
 
 export function email<Context extends object = object>(
   options: Computable<Context, EmailOptions>,
   context?: Context,
 ): Validator<string, Context, EmailOptions> {
-  return (binding: Binding) =>
-    new EmailValidator<Context>(binding, options, context);
+  return (binding: Binding) => new EmailValidator<Context>(binding, options, context);
 }
 
-export function exclusion<
-  Context extends object = object,
-  T extends Primitive = Primitive,
->(
+export function exclusion<Context extends object = object, T extends Primitive = Primitive>(
   options: Computable<Context, ExclusionOptions<T>>,
   context?: Context,
 ): Validator<T, Context, ExclusionOptions<T>> {
-  return (binding: Binding) =>
-    new ExclusionValidator<T, Context>(binding, options, context);
+  return (binding: Binding) => new ExclusionValidator<T, Context>(binding, options, context);
 }
 
 export function file<Context extends object = object>(
   options: Computable<Context, FileOptions>,
   context?: Context,
 ): Validator<File | File[], Context, FileOptions> {
-  return (binding: Binding) =>
-    new FileValidator<Context>(binding, options, context);
+  return (binding: Binding) => new FileValidator<Context>(binding, options, context);
 }
 
-export function inclusion<
-  Context extends object = object,
-  T extends Primitive = Primitive,
->(
+export function inclusion<Context extends object = object, T extends Primitive = Primitive>(
   options: Computable<Context, InclusionOptions<T>>,
   context?: Context,
 ): Validator<T, Context, InclusionOptions<T>> {
-  return (binding: Binding) =>
-    new InclusionValidator<T, Context>(binding, options, context);
+  return (binding: Binding) => new InclusionValidator<T, Context>(binding, options, context);
 }
 
 export function length<
@@ -181,54 +165,47 @@ export function length<
   options: Computable<Context, LengthOptions>,
   context?: Context,
 ): Validator<T, Context, LengthOptions> {
-  return (binding: Binding) =>
-    new LengthValidator<T, Context>(binding, options, context);
+  return (binding: Binding) => new LengthValidator<T, Context>(binding, options, context);
 }
 
 export function number<Context extends object = object>(
   options: Computable<Context, NumberOptions>,
   context?: Context,
 ): Validator<number, Context, NumberOptions> {
-  return (binding: Binding) =>
-    new NumberValidator<Context>(binding, options, context);
+  return (binding: Binding) => new NumberValidator<Context>(binding, options, context);
 }
 
 export function password<Context extends object = object>(
   options: Computable<Context, PasswordOptions>,
   context?: Context,
 ): Validator<string, Context, PasswordOptions> {
-  return (binding: Binding) =>
-    new PasswordValidator<Context>(binding, options, context);
+  return (binding: Binding) => new PasswordValidator<Context>(binding, options, context);
 }
 
 export function phone<Context extends object = object>(
   options: Computable<Context, PhoneOptions>,
   context?: Context,
 ): Validator<string, Context, PhoneOptions> {
-  return (binding: Binding) =>
-    new PhoneValidator<Context>(binding, options, context);
+  return (binding: Binding) => new PhoneValidator<Context>(binding, options, context);
 }
 
 export function presence<Context extends object = object, T = unknown>(
   options: Computable<Context, PresenceOptions>,
   context?: Context,
 ): Validator<T, Context, PresenceOptions> {
-  return (binding: Binding) =>
-    new PresenceValidator<T, Context>(binding, options, context);
+  return (binding: Binding) => new PresenceValidator<T, Context>(binding, options, context);
 }
 
 export function range<Context extends object = object>(
   options: Computable<Context, RangeOptions>,
   context?: Context,
 ): Validator<number, Context, RangeOptions> {
-  return (binding: Binding) =>
-    new RangeValidator<Context>(binding, options, context);
+  return (binding: Binding) => new RangeValidator<Context>(binding, options, context);
 }
 
 export function regex<Context extends object = object>(
   options: Computable<Context, RegexOptions>,
   context?: Context,
 ): Validator<string, Context, RegexOptions> {
-  return (binding: Binding) =>
-    new RegexValidator<Context>(binding, options, context);
+  return (binding: Binding) => new RegexValidator<Context>(binding, options, context);
 }

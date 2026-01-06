@@ -14,10 +14,7 @@ import Section from '@nrg-ui/showcase/components/section';
             </a>
           </:brand>
           <:actions>
-            <Button
-              class="btn-secondary ms-auto d-lg-none"
-              @text="I'm only visible on mobile!"
-            />
+            <Button class="btn-secondary ms-auto d-lg-none" @text="I'm only visible on mobile!" />
           </:actions>
           <:default>
             <NavItem @url="#" @label="Home" />

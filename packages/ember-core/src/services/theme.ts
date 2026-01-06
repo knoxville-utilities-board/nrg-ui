@@ -29,15 +29,11 @@ export default class ThemeService extends Service {
   constructor(owner: Owner) {
     super(owner);
 
-    this.modulePrefix = (
-      owner as unknown as OwnerLike
-    ).application.modulePrefix;
+    this.modulePrefix = (owner as unknown as OwnerLike).application.modulePrefix;
   }
 
   get storageKey() {
-    return (
-      'nrg.' + (this.modulePrefix ? this.modulePrefix + '.' : '') + 'theme'
-    );
+    return 'nrg.' + (this.modulePrefix ? this.modulePrefix + '.' : '') + 'theme';
   }
 
   loaded: boolean = false;
@@ -66,9 +62,7 @@ export default class ThemeService extends Service {
 
     let resolvedTheme = theme;
     if (theme === 'auto') {
-      resolvedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
+      resolvedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
 
     if (this.resolvedTheme === resolvedTheme && this.value === theme) {

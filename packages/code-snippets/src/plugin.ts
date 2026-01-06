@@ -6,11 +6,7 @@ import { collectAllSnippets } from './collector.js';
 import { virtualModule } from './index.js';
 import { extractSnippetsFromCode } from './parser.js';
 
-import type {
-  CodeSnippetsPluginOptions,
-  DeepRequired,
-  SnippetEntry,
-} from './types.ts';
+import type { CodeSnippetsPluginOptions, DeepRequired, SnippetEntry } from './types.ts';
 import type { Plugin } from 'vite';
 
 const defaultOptions: DeepRequired<CodeSnippetsPluginOptions> = {
@@ -23,9 +19,7 @@ const defaultOptions: DeepRequired<CodeSnippetsPluginOptions> = {
   },
 };
 
-export default function codeSnippetsPlugin(
-  options: CodeSnippetsPluginOptions = {},
-): Plugin {
+export default function codeSnippetsPlugin(options: CodeSnippetsPluginOptions = {}): Plugin {
   const finalOptions: DeepRequired<CodeSnippetsPluginOptions> = {
     ...defaultOptions,
     ...options,
@@ -69,9 +63,7 @@ export default function codeSnippetsPlugin(
       const code = await ctx.read();
 
       for (const [name, entry] of snippets.entries()) {
-        entry.sources = entry.sources.filter(
-          (s) => s.location.file !== relativePath,
-        );
+        entry.sources = entry.sources.filter((s) => s.location.file !== relativePath);
         entry.code = entry.sources.map((s) => s.code).join('\n');
 
         if (entry.sources.length === 0) {

@@ -29,17 +29,10 @@ export default class PresenceValidator<
     ignoreBlank: true,
   };
 
-  constructor(
-    binding: Binding,
-    options: Computable<Context, PresenceOptions>,
-    context?: Context,
-  ) {
+  constructor(binding: Binding, options: Computable<Context, PresenceOptions>, context?: Context) {
     super(binding, options, context);
 
-    assert(
-      'PresenceValidator requires `presence` to be provided',
-      options.presence !== undefined,
-    );
+    assert('PresenceValidator requires `presence` to be provided', options.presence !== undefined);
   }
 
   validate(value: T, options: PresenceOptions): ValidateFnResponse {

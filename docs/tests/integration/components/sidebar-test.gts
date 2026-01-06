@@ -45,9 +45,7 @@ module('Integration | Component | sidebar', function (hooks) {
       </template>,
     );
 
-    assert
-      .dom('.sidebar > .list-group')
-      .exists({ count: 2 }, 'Content and footer are rendered');
+    assert.dom('.sidebar > .list-group').exists({ count: 2 }, 'Content and footer are rendered');
 
     assert
       .dom('.sidebar > .list-group > .list-group-item.header')
@@ -62,13 +60,8 @@ module('Integration | Component | sidebar', function (hooks) {
     const items = findAll('.sidebar > .list-group > .list-group-item');
     const [header1, item1, header2, item2, footerItem] = items;
 
-    assert
-      .dom(header1)
-      .hasTagName('div')
-      .containsText('Section 1', 'First header is rendered');
-    assert
-      .dom('.badge', header1)
-      .containsText("I'm a badge!", 'First badge is rendered on header');
+    assert.dom(header1).hasTagName('div').containsText('Section 1', 'First header is rendered');
+    assert.dom('.badge', header1).containsText("I'm a badge!", 'First badge is rendered on header');
 
     assert
       .dom(item1)
@@ -76,15 +69,10 @@ module('Integration | Component | sidebar', function (hooks) {
       .hasTagName('a')
       .hasAttribute('href', 'https://example.com', 'Item has correct URL');
 
-    assert
-      .dom(header2)
-      .hasTagName('div')
-      .containsText('Section 2', 'Second header is rendered');
+    assert.dom(header2).hasTagName('div').containsText('Section 2', 'Second header is rendered');
 
     assert.dom(item2).hasClass('custom-class', 'Custom class is applied');
-    assert
-      .dom('span:not(.badge)', item2)
-      .hasText('Item 2', 'Second item is rendered');
+    assert.dom('span:not(.badge)', item2).hasText('Item 2', 'Second item is rendered');
     assert
       .dom('.badge', item2)
       .containsText("I'm a badge too!", 'Second badge is rendered on item');
@@ -92,14 +80,8 @@ module('Integration | Component | sidebar', function (hooks) {
     assert
       .dom(footerItem)
       .hasTagName('a')
-      .hasAttribute(
-        'href',
-        'https://example.com',
-        'Footer item has correct URL',
-      );
-    assert
-      .dom('span:not(.badge)', footerItem)
-      .hasText('Footer Item', 'Footer item is rendered');
+      .hasAttribute('href', 'https://example.com', 'Footer item has correct URL');
+    assert.dom('span:not(.badge)', footerItem).hasText('Footer Item', 'Footer item is rendered');
     assert
       .dom('.badge', footerItem)
       .containsText("I'm a footer badge!", 'Footer badge is rendered');
@@ -139,28 +121,19 @@ module('Integration | Component | sidebar', function (hooks) {
     const items = findAll('.sidebar > .list-group > .list-group-item');
     const [item1, header1, item2, item3, item4] = items;
 
-    assert
-      .dom(item1)
-      .hasClass('list-group-item-action', 'First item is clickable');
+    assert.dom(item1).hasClass('list-group-item-action', 'First item is clickable');
     await click(item1!);
 
-    assert
-      .dom(header1)
-      .hasClass('list-group-item-action', 'Header is clickable');
+    assert.dom(header1).hasClass('list-group-item-action', 'Header is clickable');
     await click(header1!);
 
-    assert
-      .dom(item2)
-      .hasClass('list-group-item-action', 'Second item is clickable');
+    assert.dom(item2).hasClass('list-group-item-action', 'Second item is clickable');
     await click(item2!);
 
     assert
       .dom(item3)
       .hasClass('disabled', 'Third item is disabled')
-      .doesNotHaveClass(
-        'list-group-item-action',
-        'Third item is not clickable',
-      );
+      .doesNotHaveClass('list-group-item-action', 'Third item is not clickable');
     await click(item3!);
 
     assert.dom(item4).hasClass('active', 'Fourth item is active');

@@ -66,11 +66,7 @@ class TooltipTarget extends Component<TooltipTargetSignature> {
   };
 
   <template>
-    <span
-      {{on "mouseenter" this.mouseEnter}}
-      {{on "mouseleave" this.mouseLeave}}
-      ...attributes
-    >
+    <span {{on "mouseenter" this.mouseEnter}} {{on "mouseleave" this.mouseLeave}} ...attributes>
       {{yield}}
     </span>
   </template>
@@ -93,11 +89,7 @@ class Tooltip extends Component<TooltipSignature> {
       @onHide={{@onHide}}
     >
       <:control as |actions|>
-        {{yield
-          (component
-            TooltipTarget onMouseEnter=actions.show onMouseLeave=actions.hide
-          )
-        }}
+        {{yield (component TooltipTarget onMouseEnter=actions.show onMouseLeave=actions.hide)}}
       </:control>
       <:content as |Content|>
         {{#if Content}}

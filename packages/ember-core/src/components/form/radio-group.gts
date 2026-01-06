@@ -19,18 +19,13 @@ export type RadioGroupSignature = BoundValueSignature<
       fieldOptions?: FieldOptions;
     };
     Blocks: {
-      default: [
-        { Radio: WithBoundArgs<ComponentLike<RadioSignature>, 'name'> },
-      ];
+      default: [{ Radio: WithBoundArgs<ComponentLike<RadioSignature>, 'name'> }];
     };
   },
   string
 >;
 
-export default class RadioGroup extends BoundValue<
-  RadioGroupSignature,
-  string
-> {
+export default class RadioGroup extends BoundValue<RadioGroupSignature, string> {
   get classList() {
     const classes = ['form-control', 'form-check-group'];
 

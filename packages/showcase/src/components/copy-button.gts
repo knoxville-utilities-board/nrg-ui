@@ -14,9 +14,7 @@ export interface CopyButtonSignature {
 
 export default class CopyButton extends Component<CopyButtonSignature> {
   get icon() {
-    return this.copyToClipboard.isRunning
-      ? 'bi-clipboard-check'
-      : 'bi-clipboard';
+    return this.copyToClipboard.isRunning ? 'bi-clipboard-check' : 'bi-clipboard';
   }
 
   copyToClipboard = task(async () => {

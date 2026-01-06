@@ -4,9 +4,7 @@ import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import Button from '@nrg-ui/core/components/button';
-import ContextMenu, {
-  ContextMenuItem,
-} from '@nrg-ui/core/components/context-menu';
+import ContextMenu, { ContextMenuItem } from '@nrg-ui/core/components/context-menu';
 import Section from '@nrg-ui/showcase/components/section';
 
 import type { Alignment } from '@floating-ui/dom';
@@ -61,17 +59,11 @@ export default class ContextMenuDemo extends Component {
             </Menu.Item>
           </ContextMenu>
           {{#if this.showExternalButton}}
-            <ContextMenuItem
-              @menuId={{this.id}}
-              @onSelect={{fn this.log "I was clicked too!"}}
-            >
+            <ContextMenuItem @menuId={{this.id}} @onSelect={{fn this.log "I was clicked too!"}}>
               I was added outside the menu
             </ContextMenuItem>
           {{/if}}
-          <Button
-            class="btn-primary ms-2"
-            @onClick={{this.toggleExternalButton}}
-          >
+          <Button class="btn-primary ms-2" @onClick={{this.toggleExternalButton}}>
             Toggle external item
           </Button>
         </:example>

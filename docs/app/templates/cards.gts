@@ -8,11 +8,7 @@ import MktgCardContainer from '@nrg-ui/core/components/mktg/card-container';
     </p>
     {{! template-lint-disable no-inline-styles }}
     <MktgCardContainer style="--bs-gap: .5rem;" as |Container|>
-      <Container.Card
-        @isClickable={{true}}
-        @hasBorder={{false}}
-        class="g-col-12 g-col-md-4"
-      >
+      <Container.Card @isClickable={{true}} @hasBorder={{false}} class="g-col-12 g-col-md-4">
         <:header>
           <p>
             This card has hasBorder param false
@@ -68,9 +64,7 @@ import MktgCardContainer from '@nrg-ui/core/components/mktg/card-container';
             </div>
           </:start>
           <:callout>
-            <p
-              class="d-flex align-self-start align-self-md-center fs-1 fw-bold m-0"
-            >
+            <p class="d-flex align-self-start align-self-md-center fs-1 fw-bold m-0">
               &dollar;315
               <span class="fs-5 align-self-end mb-2">
                 /mo
@@ -171,11 +165,7 @@ import MktgCardContainer from '@nrg-ui/core/components/mktg/card-container';
         Horizontal card
       </p>
       <MktgCardContainer as |Container|>
-        <Container.MktgCard
-          @title="The Gig 10"
-          @horizontal={{true}}
-          class="g-col-12"
-        >
+        <Container.MktgCard @title="The Gig 10" @horizontal={{true}} class="g-col-12">
           <:callout>
             <p class="card-title d-flex align-self-start fs-1 fw-bold m-0 pb-2">
               &dollar;300/mo
@@ -183,13 +173,10 @@ import MktgCardContainer from '@nrg-ui/core/components/mktg/card-container';
           </:callout>
           <:start>
             <p class="card-text text-body-secondary">
-              Stream multiple 4k videos, download large files in seconds, and
-              dominate online gaming like never before.
+              Stream multiple 4k videos, download large files in seconds, and dominate online gaming
+              like never before.
             </p>
-            <Button
-              @text="Get Started"
-              class="bg-primary text-white w-100 mt-2"
-            />
+            <Button @text="Get Started" class="bg-primary text-white w-100 mt-2" />
           </:start>
           <:end>
             <p class="card-text mt-2">

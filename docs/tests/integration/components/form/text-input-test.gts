@@ -25,10 +25,7 @@ module('Integration | Component | form/text-input', function (hooks) {
 
     await render(
       <template>
-        <TextInput
-          @binding={{bind model "value"}}
-          @onChange={{actionHandler}}
-        />
+        <TextInput @binding={{bind model "value"}} @onChange={{actionHandler}} />
       </template>,
     );
 
@@ -44,11 +41,7 @@ module('Integration | Component | form/text-input', function (hooks) {
 
     await render(
       <template>
-        <TextInput
-          @binding={{bind model "value"}}
-          @basic={{true}}
-          @onChange={{actionHandler}}
-        />
+        <TextInput @binding={{bind model "value"}} @basic={{true}} @onChange={{actionHandler}} />
       </template>,
     );
 
@@ -61,9 +54,7 @@ module('Integration | Component | form/text-input', function (hooks) {
     const format = (value: string | null) => value?.toUpperCase() ?? '';
 
     await render(
-      <template>
-        <TextInput @binding={{bind model "value"}} @format={{format}} />
-      </template>,
+      <template><TextInput @binding={{bind model "value"}} @format={{format}} /></template>,
     );
 
     assert

@@ -10,10 +10,7 @@ pre.code-block {
     top: 0;
     right: 0;
     font-size: 0.7rem;
-    background-color: rgba(
-      var(--bs-secondary-rgb),
-      var(--bs-border-opacity)
-    ) !important;
+    background-color: rgba(var(--bs-secondary-rgb), var(--bs-border-opacity)) !important;
     color: #fff !important;
     padding: 0.25rem 0.5rem;
     border-radius: 0 var(--bs-border-radius) 0 var(--bs-border-radius);
@@ -32,10 +29,7 @@ pre.code-block {
     & span.line::before {
       --showcase-starting-line: attr(data-starting-line);
 
-      color: var(
-        --showcase-line-number-color,
-        var(--bs-secondary-text-emphasis)
-      );
+      color: var(--showcase-line-number-color, var(--bs-secondary-text-emphasis));
       content: counter(line);
       counter-increment: line;
       display: inline-block;

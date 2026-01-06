@@ -36,10 +36,7 @@ export interface FormType {
   warningFor(name: string): string | undefined;
   registerBinding(binding: Binding<object>, name?: string): void;
   unregisterBinding(name: string): void;
-  registerValidator(
-    validator: ValidatorImpl<unknown, object, object>,
-    name?: string,
-  ): string;
+  registerValidator(validator: ValidatorImpl<unknown, object, object>, name?: string): string;
   unregisterValidator(name: string, id: string): void;
 }
 
@@ -161,9 +158,7 @@ export default class Form extends Component<FormSignature> implements FormType {
       this._didValidate = true;
       if (!this.args.preventScroll) {
         runTask(this, () => {
-          const invalidField = this.element.querySelector(
-            '.is-invalid',
-          ) as HTMLElement;
+          const invalidField = this.element.querySelector('.is-invalid') as HTMLElement;
 
           const label = this.element.querySelector(
             `[for="${invalidField?.id}"]`,
@@ -194,10 +189,7 @@ export default class Form extends Component<FormSignature> implements FormType {
   }
 
   @action
-  registerValidator(
-    validator: ValidatorImpl<unknown, object, object>,
-    name?: string,
-  ): string {
+  registerValidator(validator: ValidatorImpl<unknown, object, object>, name?: string): string {
     const id = uid();
     name ??= validator.binding.valuePath;
     runTask(this, () => {
@@ -234,21 +226,16 @@ export default class Form extends Component<FormSignature> implements FormType {
     const validationKeys = new Set(this.validations.keys());
     const bindingKeys = new Set(this.bindings.keys());
 
-    const [noBindings, noValidations] = diff(
-      Array.from(validationKeys),
-      Array.from(bindingKeys),
-    );
+    const [noBindings, noValidations] = diff(Array.from(validationKeys), Array.from(bindingKeys));
 
     warn(
-      'The following validations have no binding defined: ' +
-        noBindings.join(', '),
+      'The following validations have no binding defined: ' + noBindings.join(', '),
       noBindings.length === 0,
       { id: 'nrg.form.missing-validations' },
     );
 
     warn(
-      'The following bindings have no validations defined: ' +
-        noValidations.join(', '),
+      'The following bindings have no validations defined: ' + noValidations.join(', '),
       noValidations.length === 0,
       { id: 'nrg.form.missing-bindings' },
     );
@@ -270,8 +257,7 @@ export default class Form extends Component<FormSignature> implements FormType {
     }
 
     const error = validators.find(
-      (validator) =>
-        !validator.v.result.isValid && !validator.v.result.isWarning,
+      (validator) => !validator.v.result.isValid && !validator.v.result.isWarning,
     );
 
     if (!error) {
@@ -288,8 +274,7 @@ export default class Form extends Component<FormSignature> implements FormType {
     }
 
     const warning = validators.find(
-      (validator) =>
-        !validator.v.result.isValid && validator.v.result.isWarning,
+      (validator) => !validator.v.result.isValid && validator.v.result.isWarning,
     );
 
     if (!warning) {
@@ -300,11 +285,7 @@ export default class Form extends Component<FormSignature> implements FormType {
   }
 
   <template>
-    <form
-      {{on "submit" (perform this.submit)}}
-      {{onInsert this.setElement}}
-      ...attributes
-    >
+    <form {{on "submit" (perform this.submit)}} {{onInsert this.setElement}} ...attributes>
       {{yield
         (hash
           Field=(component Field disabled=@disabled form=this)

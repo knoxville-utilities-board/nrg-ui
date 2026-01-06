@@ -22,12 +22,7 @@ interface ItemSignature {
 }
 
 const Item: TOC<ItemSignature> = <template>
-  <div
-    class="item g-col-4"
-    role="button"
-    {{on "click" @onRemove}}
-    {{onDestroy @onDestroy}}
-  >
+  <div class="item g-col-4" role="button" {{on "click" @onRemove}} {{onDestroy @onDestroy}}>
     {{@label}}
   </div>
 </template>;
@@ -67,11 +62,7 @@ export default class OnDestroyDemo extends Component {
   <template>
     <div class="grid-collection grid gap-2 text-center">
       {{#each this.items as |item i|}}
-        <Item
-          @label={{item}}
-          @onDestroy={{fn this.destroy item}}
-          @onRemove={{fn this.remove i}}
-        />
+        <Item @label={{item}} @onDestroy={{fn this.destroy item}} @onRemove={{fn this.remove i}} />
       {{/each}}
     </div>
     <div class="input-group mt-4">

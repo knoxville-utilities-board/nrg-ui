@@ -172,8 +172,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       for (let j = 0; j < 3; j++) {
         const minute = calendar.minute();
         const disabled = this.isDateDisabled(calendar.toDate(), 'minute');
-        const selected =
-          !disabled && this.hasValue && this.selectedMinuteIndex === minute;
+        const selected = !disabled && this.hasValue && this.selectedMinuteIndex === minute;
         row.push({
           display: calendar.format('LT'),
           minute,
@@ -199,8 +198,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       for (let j = 0; j < 4; j++) {
         const hour = calendar.hour();
         const disabled = this.isDateDisabled(calendar.toDate(), 'hour');
-        const selected =
-          !disabled && this.hasValue && this.selectedHourIndex === hour;
+        const selected = !disabled && this.hasValue && this.selectedHourIndex === hour;
         row.push({
           display: calendar.format('LT'),
           hour,
@@ -229,10 +227,8 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
         const year = calendar.year();
         const isDifferentMonth = month !== this.selectedMonthIndex;
         const dateIsToday = calendar.isSame(today, 'date');
-        const disabled =
-          this.isDateDisabled(calendar.toDate(), 'date') || isDifferentMonth;
-        const selected =
-          !disabled && this.hasValue && this.selectedDayIndex === date;
+        const disabled = this.isDateDisabled(calendar.toDate(), 'date') || isDifferentMonth;
+        const selected = !disabled && this.hasValue && this.selectedDayIndex === date;
 
         week.push({
           customClass: (dateIsToday && 'today') || '',
@@ -261,8 +257,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       for (let j = 0; j < 3; j++) {
         const month = calendar.month();
         const disabled = this.isDateDisabled(calendar.toDate(), 'month');
-        const selected =
-          !disabled && this.hasValue && this.selectedMonthIndex === month;
+        const selected = !disabled && this.hasValue && this.selectedMonthIndex === month;
         row.push({
           display: calendar.format('MMM'),
           month,
@@ -291,8 +286,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
           year,
         });
         const disabled = this.isDateDisabled(calendar.toDate(), 'year');
-        const selected =
-          !disabled && this.hasValue && this.selectedYearIndex === year;
+        const selected = !disabled && this.hasValue && this.selectedYearIndex === year;
         row.push({
           display: year,
           year,
@@ -356,10 +350,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
     return userDisabled || isBeyondDateRange;
   }
 
-  manipulateDate(
-    operation: 'add' | 'subtract' | 'set',
-    dateTransformation: TransformData,
-  ) {
+  manipulateDate(operation: 'add' | 'subtract' | 'set', dateTransformation: TransformData) {
     let date = dayjs({
       day: this.selectedDayIndex,
       month: this.selectedMonthIndex,
@@ -391,10 +382,8 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       return;
     }
 
-    const dateBeforeMinDate =
-      this.args.minDate && date.isBefore(this.args.minDate);
-    const dateAfterMaxDate =
-      this.args.maxDate && date.isAfter(this.args.maxDate);
+    const dateBeforeMinDate = this.args.minDate && date.isBefore(this.args.minDate);
+    const dateAfterMaxDate = this.args.maxDate && date.isAfter(this.args.maxDate);
 
     if (dateBeforeMinDate) {
       date = dayjs(this.args.minDate).clone();
@@ -695,12 +684,7 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
         <tfoot>
           {{#if this.showNowShortcut}}
             <tr>
-              <td
-                colspan="7"
-                class="today cell"
-                role="button"
-                {{on "click" this.setToNow}}
-              >
+              <td colspan="7" class="today cell" role="button" {{on "click" this.setToNow}}>
                 {{t (concat "nrg.base.datetime." @type)}}
               </td>
             </tr>

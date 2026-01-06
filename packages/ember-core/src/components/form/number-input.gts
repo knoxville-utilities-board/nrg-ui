@@ -14,12 +14,7 @@ import type { IntlService } from 'ember-intl';
 export interface NumberInputArgs {
   allowBlank?: boolean;
   allowDecimals?: boolean;
-  format?:
-    | ((value: Optional<number>) => string)
-    | 'number'
-    | 'currency'
-    | 'percent'
-    | false;
+  format?: ((value: Optional<number>) => string) | 'number' | 'currency' | 'percent' | false;
   formatPrecision?: number;
 }
 

@@ -55,10 +55,7 @@ class Pane extends Component<PaneSignature> {
     >
       {{#if @previousRoute}}
         <div class="d-block d-md-none">
-          <LinkTo
-            @route={{@previousRoute}}
-            class="icon-link icon-link-hover p-1"
-          >
+          <LinkTo @route={{@previousRoute}} class="icon-link icon-link-hover p-1">
             <i class="bi bi-arrow-left"></i>
             {{t "nrg.stacked-pane.navigate-back"}}
           </LinkTo>
