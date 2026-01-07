@@ -25,18 +25,11 @@ module('Integration | Component | form/number-input', function (hooks) {
 
     await render(
       <template>
-        <NumberInput
-          @binding={{bind model "value"}}
-          @onChange={{actionHandler}}
-        />
+        <NumberInput @binding={{bind model "value"}} @onChange={{actionHandler}} />
       </template>,
     );
 
-    assert
-      .dom('input')
-      .hasAttribute('type', 'text')
-      .hasClass('form-control')
-      .hasValue('42');
+    assert.dom('input').hasAttribute('type', 'text').hasClass('form-control').hasValue('42');
 
     await fillIn('div > input', '36');
 
@@ -44,11 +37,7 @@ module('Integration | Component | form/number-input', function (hooks) {
 
     await render(
       <template>
-        <NumberInput
-          @binding={{bind model "value"}}
-          @basic={{true}}
-          @onChange={{actionHandler}}
-        />
+        <NumberInput @binding={{bind model "value"}} @basic={{true}} @onChange={{actionHandler}} />
       </template>,
     );
 
@@ -69,18 +58,11 @@ module('Integration | Component | form/number-input', function (hooks) {
 
     await render(
       <template>
-        <NumberInput
-          @binding={{bind model "value"}}
-          @onChange={{actionHandler}}
-        />
+        <NumberInput @binding={{bind model "value"}} @onChange={{actionHandler}} />
       </template>,
     );
 
-    assert
-      .dom('input')
-      .hasAttribute('type', 'text')
-      .hasClass('form-control')
-      .hasValue('42');
+    assert.dom('input').hasAttribute('type', 'text').hasClass('form-control').hasValue('42');
 
     await fillIn('div > input', '3600');
     await blur('div > input');
@@ -126,11 +108,7 @@ module('Integration | Component | form/number-input', function (hooks) {
       </template>,
     );
 
-    assert
-      .dom('input')
-      .hasAttribute('type', 'text')
-      .hasClass('form-control')
-      .hasValue('$42.00');
+    assert.dom('input').hasAttribute('type', 'text').hasClass('form-control').hasValue('$42.00');
 
     await fillIn('div > input', '3600');
     await blur('div > input');
@@ -177,11 +155,7 @@ module('Integration | Component | form/number-input', function (hooks) {
       </template>,
     );
 
-    assert
-      .dom('input')
-      .hasAttribute('type', 'text')
-      .hasClass('form-control')
-      .hasValue('42%');
+    assert.dom('input').hasAttribute('type', 'text').hasClass('form-control').hasValue('42%');
 
     await fillIn('div > input', '36');
     await blur('div > input');
@@ -232,11 +206,7 @@ module('Integration | Component | form/number-input', function (hooks) {
       </template>,
     );
 
-    assert
-      .dom('input')
-      .hasAttribute('type', 'text')
-      .hasClass('form-control')
-      .hasValue('#42 units');
+    assert.dom('input').hasAttribute('type', 'text').hasClass('form-control').hasValue('#42 units');
 
     await fillIn('div > input', '36');
     await blur('div > input');

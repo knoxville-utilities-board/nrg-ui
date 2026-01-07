@@ -36,19 +36,12 @@ module('Unit | Validator | file', function (hooks) {
     assert.throws(() => {
       const validator = new FileValidator(this.binding, {}, this.model);
 
-      assert.notOk(
-        true,
-        'Expected an error, but got a result instead: ' + validator.result,
-      );
+      assert.notOk(true, 'Expected an error, but got a result instead: ' + validator.result);
     }, new Error('Assertion Failed: FileValidator requires either `acceptedTypes` or `unacceptedTypes` to be provided'));
   });
 
   test('`acceptedTypes` option works', function (this: TestContext, assert) {
-    const validator = new FileValidator(
-      this.binding,
-      { acceptedTypes: ['png'] },
-      this.model,
-    );
+    const validator = new FileValidator(this.binding, { acceptedTypes: ['png'] }, this.model);
 
     this.model.field = [new File([''], 'test.png', { type: 'image/png' })];
 
@@ -56,18 +49,11 @@ module('Unit | Validator | file', function (hooks) {
 
     this.model.field = [new File([''], 'test.jpg', { type: 'image/jpeg' })];
 
-    assert.isInvalid(
-      validator.result,
-      'Only files of the following types are accepted: png',
-    );
+    assert.isInvalid(validator.result, 'Only files of the following types are accepted: png');
   });
 
   test('`unacceptedTypes` option works', function (this: TestContext, assert) {
-    const validator = new FileValidator(
-      this.binding,
-      { unacceptedTypes: ['png'] },
-      this.model,
-    );
+    const validator = new FileValidator(this.binding, { unacceptedTypes: ['png'] }, this.model);
 
     this.model.field = [new File([''], 'test.jpeg', { type: 'image/jpeg' })];
 
@@ -75,9 +61,6 @@ module('Unit | Validator | file', function (hooks) {
 
     this.model.field = [new File([''], 'test.png', { type: 'image/png' })];
 
-    assert.isInvalid(
-      validator.result,
-      'Files of the following types are not accepted: png',
-    );
+    assert.isInvalid(validator.result, 'Files of the following types are not accepted: png');
   });
 });

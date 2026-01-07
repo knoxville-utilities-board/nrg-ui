@@ -17,11 +17,7 @@ export default class ExclusionValidator<
   T extends Primitive,
   Context extends object = Record<string, unknown>,
 > extends BaseValidator<T, Context, ExclusionOptions<T>> {
-  constructor(
-    bind: Binding,
-    options: Computable<Context, ExclusionOptions<T>>,
-    context?: Context,
-  ) {
+  constructor(bind: Binding, options: Computable<Context, ExclusionOptions<T>>, context?: Context) {
     super(bind, options, context);
 
     const { in: invalidValues } = options;

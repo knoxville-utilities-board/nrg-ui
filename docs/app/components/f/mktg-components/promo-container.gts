@@ -32,11 +32,7 @@ import Section from '@nrg-ui/showcase/components/section';
               </div>
             </:subheader>
           </Container.SectionHeader>
-          <Container.Promo
-            class="col-12 col-md-4"
-            @productName="Product"
-            @vertical={{true}}
-          >
+          <Container.Promo class="col-12 col-md-4" @productName="Product" @vertical={{true}}>
             <:img>
               <img
                 src="https://place-hold.it/400x150"
@@ -54,19 +50,12 @@ import Section from '@nrg-ui/showcase/components/section';
                   <li>Option</li>
                 </ul>
               </p>
-              <Button
-                type="button"
-                class="mt-2 btn bg-primary-subtle text-primary"
-              >
+              <Button type="button" class="mt-2 btn bg-primary-subtle text-primary">
                 Learn More
               </Button>
             </:description>
           </Container.Promo>
-          <Container.Promo
-            class="col-12 col-md-4"
-            @productName="Product"
-            @vertical={{true}}
-          >
+          <Container.Promo class="col-12 col-md-4" @productName="Product" @vertical={{true}}>
             <:img>
               <img
                 src="https://place-hold.it/400x150"
@@ -84,19 +73,12 @@ import Section from '@nrg-ui/showcase/components/section';
                   <li>Option</li>
                 </ul>
               </p>
-              <Button
-                type="button"
-                class="mt-2 btn bg-primary-subtle text-primary"
-              >
+              <Button type="button" class="mt-2 btn bg-primary-subtle text-primary">
                 Learn More
               </Button>
             </:description>
           </Container.Promo>
-          <Container.Promo
-            class="col-12 col-md-4"
-            @productName="Product"
-            @vertical={{true}}
-          >
+          <Container.Promo class="col-12 col-md-4" @productName="Product" @vertical={{true}}>
             <:img>
               <img
                 src="https://place-hold.it/400x150"
@@ -114,10 +96,7 @@ import Section from '@nrg-ui/showcase/components/section';
                   <li>Option</li>
                 </ul>
               </p>
-              <Button
-                type="button"
-                class="mt-2 btn bg-primary-subtle text-primary"
-              >
+              <Button type="button" class="mt-2 btn bg-primary-subtle text-primary">
                 Learn More
               </Button>
             </:description>

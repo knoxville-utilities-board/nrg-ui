@@ -51,10 +51,7 @@ function extractCode(code: string): string {
   return escapeSource(lines.join('\n'));
 }
 
-function markArguments(
-  node: AST.Statement | AST.Template,
-  blockName: string,
-): void {
+function markArguments(node: AST.Statement | AST.Template, blockName: string): void {
   if (node.type === 'Template') {
     for (const child of node.body) {
       markArguments(child, blockName);
@@ -118,14 +115,8 @@ function walkAST(node: AST.Node): boolean {
 
         const rawSource = print(builders.program(clonedChildren));
         const codeContent = extractCode(rawSource);
-        const sourceAttr = builders.attr(
-          '@sourceCode',
-          builders.text(codeContent),
-        );
-        const langAttr = builders.attr(
-          '@sourceLanguage',
-          builders.text(GLIMMER_TEMPLATE_LANG),
-        );
+        const sourceAttr = builders.attr('@sourceCode', builders.text(codeContent));
+        const langAttr = builders.attr('@sourceLanguage', builders.text(GLIMMER_TEMPLATE_LANG));
 
         node.attributes.push(sourceAttr, langAttr);
 
@@ -141,9 +132,7 @@ function walkAST(node: AST.Node): boolean {
   return didChange;
 }
 
-export function extractCodeBlocks(
-  options: SnippetExtractorOptions = {},
-): Plugin {
+export function extractCodeBlocks(options: SnippetExtractorOptions = {}): Plugin {
   const glob = options.filter ?? ['**/*.gts', '**/*.gjs'];
   const filter = createFilter(glob);
 

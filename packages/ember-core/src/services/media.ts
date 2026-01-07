@@ -1,10 +1,6 @@
 import { assert } from '@ember/debug';
 import Service from '@ember/service';
-import {
-  getOwnConfig,
-  isTesting as isTestingMacro,
-  macroCondition,
-} from '@embroider/macros';
+import { getOwnConfig, isTesting as isTestingMacro, macroCondition } from '@embroider/macros';
 import { tracked } from '@glimmer/tracking';
 import { runTask } from 'ember-lifeline';
 import { TrackedSet } from 'tracked-built-ins';

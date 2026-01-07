@@ -226,11 +226,7 @@ export default class SearchDemo extends Component {
         </:api>
       </Section.Subsection>
 
-      <Section.Subsection
-        @name="Object Options"
-        @model={{this}}
-        @elementTag="div"
-      >
+      <Section.Subsection @name="Object Options" @model={{this}} @elementTag="div">
         <:example as |model|>
           <Search
             @basic={{model.basic}}
@@ -257,19 +253,11 @@ export default class SearchDemo extends Component {
     <div class="grid">
       <div class="g-col-4">
         <h3>String Options</h3>
-        <CodeBlock
-          @lang="json"
-          @code={{this.stringOptionsSource}}
-          @showCopyButton={{false}}
-        />
+        <CodeBlock @lang="json" @code={{this.stringOptionsSource}} @showCopyButton={{false}} />
       </div>
       <div class="g-col-4">
         <h3>Object Options</h3>
-        <CodeBlock
-          @lang="json"
-          @code={{this.objectOptionsSource}}
-          @showCopyButton={{false}}
-        />
+        <CodeBlock @lang="json" @code={{this.objectOptionsSource}} @showCopyButton={{false}} />
       </div>
       <div class="g-col-4">
         <h3>Selected</h3>

@@ -6,12 +6,7 @@ import { tKey } from 'ember-intl';
 import BaseValidator from './base.ts';
 
 import type { Binding } from '../../index.ts';
-import type {
-  BaseOptions,
-  Computable,
-  TranslatableOption,
-  ValidateFnResponse,
-} from '../types';
+import type { BaseOptions, Computable, TranslatableOption, ValidateFnResponse } from '../types';
 
 export type ConfirmationOptions = {
   /**
@@ -41,10 +36,7 @@ export default class ConfirmationValidator<
 
     const { on } = options;
 
-    assert(
-      'ConfirmationValidator requires a property name `on` to be provided',
-      isPresent(on),
-    );
+    assert('ConfirmationValidator requires a property name `on` to be provided', isPresent(on));
   }
 
   validate(

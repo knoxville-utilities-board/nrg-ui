@@ -10,22 +10,11 @@ export default class PromoDemo extends Component {
 
   <template>
     <Section @name="Promo" as |Section|>
-      <Section.Subsection
-        @name="Horizontal Promo"
-        @model={{this}}
-        @elementTag="div"
-      >
+      <Section.Subsection @name="Horizontal Promo" @model={{this}} @elementTag="div">
         <:example as |model|>
-          <MktgPromo
-            class="bg-primary text-white"
-            @productName={{model.productName}}
-          >
+          <MktgPromo class="bg-primary text-white" @productName={{model.productName}}>
             <:img>
-              <img
-                src="https://place-hold.it/500x500"
-                alt="Placeholder"
-                class="w-100 h-100"
-              />
+              <img src="https://place-hold.it/500x500" alt="Placeholder" class="w-100 h-100" />
             </:img>
             <:header>
               <p class="m-0 p-0">Try This Product</p>
@@ -66,24 +55,13 @@ export default class PromoDemo extends Component {
               @description="Named yield block to render the header text of the promo"
               @name="header"
             />
-            <Block
-              @description="Named yield block to render the image"
-              @name="img"
-            />
+            <Block @description="Named yield block to render the image" @name="img" />
           </Api.Blocks>
         </:api>
       </Section.Subsection>
-      <Section.Subsection
-        @name="Vertical Promo"
-        @model={{this}}
-        @elementTag="div"
-      >
+      <Section.Subsection @name="Vertical Promo" @model={{this}} @elementTag="div">
         <:example as |model|>
-          <MktgPromo
-            class="col-12 col-md-6"
-            @productName={{model.productName}}
-            @vertical={{true}}
-          >
+          <MktgPromo class="col-12 col-md-6" @productName={{model.productName}} @vertical={{true}}>
             <:img>
               <img
                 src="https://place-hold.it/400x150"
@@ -127,10 +105,7 @@ export default class PromoDemo extends Component {
               @description="Named yield block to render the header text of the promo"
               @name="header"
             />
-            <Block
-              @description="Named yield block to render the image"
-              @name="img"
-            />
+            <Block @description="Named yield block to render the image" @name="img" />
           </Api.Blocks>
         </:api>
       </Section.Subsection>

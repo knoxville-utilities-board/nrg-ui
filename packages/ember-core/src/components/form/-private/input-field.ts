@@ -6,10 +6,7 @@ import type { BoundValueSignature } from '../bound-value.ts';
 import type { FieldOptions } from '../field.gts';
 import type { AttrValue } from '@glint/template';
 
-export type InputFieldSignature<
-  S,
-  T extends AttrValue = string,
-> = BoundValueSignature<
+export type InputFieldSignature<S, T extends AttrValue = string> = BoundValueSignature<
   {
     Element: HTMLInputElement;
     Args: {
@@ -22,10 +19,10 @@ export type InputFieldSignature<
   T
 >;
 
-export default class InputField<
-  S = object,
-  T extends AttrValue = string,
-> extends BoundValue<InputFieldSignature<S, T>, T> {
+export default class InputField<S = object, T extends AttrValue = string> extends BoundValue<
+  InputFieldSignature<S, T>,
+  T
+> {
   get classList() {
     const classes = ['form-control'];
 

@@ -11,16 +11,8 @@ import type { SetupTestOptions } from 'ember-qunit';
 declare global {
   interface Assert {
     isValid: (result: ValidateFnResponse, message?: string) => void;
-    isWarning: (
-      result: ValidateFnResponse,
-      warning?: string,
-      message?: string,
-    ) => void;
-    isInvalid: (
-      result: ValidateFnResponse,
-      error?: string,
-      message?: string,
-    ) => void;
+    isWarning: (result: ValidateFnResponse, warning?: string, message?: string) => void;
+    isInvalid: (result: ValidateFnResponse, error?: string, message?: string) => void;
     isDisabled: (result: ValidateFnResponse, message?: string) => void;
   }
 }

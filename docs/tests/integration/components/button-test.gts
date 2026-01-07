@@ -20,9 +20,7 @@ module('Integration | Component | button', function (hooks) {
       assert.ok(evt, 'action is fired with event');
     };
 
-    await render(
-      <template><Button @text="Foo bar" @onClick={{clickHandler}} /></template>,
-    );
+    await render(<template><Button @text="Foo bar" @onClick={{clickHandler}} /></template>);
 
     assert
       .dom('button')
@@ -61,17 +59,9 @@ module('Integration | Component | button', function (hooks) {
       assert.notOk(evt, 'action is fired with event');
     };
 
-    await render(
-      <template>
-        <Button @disabled={{true}} @onClick={{clickHandler}} />
-      </template>,
-    );
+    await render(<template><Button @disabled={{true}} @onClick={{clickHandler}} /></template>);
 
-    assert
-      .dom('button')
-      .hasAria('disabled', 'true')
-      .hasAttribute('disabled')
-      .hasClass('disabled');
+    assert.dom('button').hasAria('disabled', 'true').hasAttribute('disabled').hasClass('disabled');
 
     try {
       // Clicking on a disabled element throws an exception
@@ -88,11 +78,7 @@ module('Integration | Component | button', function (hooks) {
       assert.notOk(evt, 'action is fired with event');
     };
 
-    await render(
-      <template>
-        <Button @loading={{true}} @onClick={{clickHandler}} />
-      </template>,
-    );
+    await render(<template><Button @loading={{true}} @onClick={{clickHandler}} /></template>);
 
     assert
       .dom('button')
@@ -108,11 +94,7 @@ module('Integration | Component | button', function (hooks) {
       .hasClass('spinner-border')
       .hasClass('spinner-border-sm');
 
-    assert
-      .dom(ariaLabel)
-      .containsText('Loading')
-      .hasAttribute('role')
-      .hasClass('visually-hidden');
+    assert.dom(ariaLabel).containsText('Loading').hasAttribute('role').hasClass('visually-hidden');
 
     try {
       // Clicking on a disabled element throws an exception
@@ -155,19 +137,12 @@ module('Integration | Component | button', function (hooks) {
       </template>,
     );
 
-    assert
-      .dom('button > i:first-child')
-      .hasClass('bi-suitcase')
-      .hasAria('label', 'Suitcase');
+    assert.dom('button > i:first-child').hasClass('bi-suitcase').hasAria('label', 'Suitcase');
     assert.dom('button > span:last-child').containsText('Text');
 
     await render(
       <template>
-        <Button
-          @icon="bi-suitcase"
-          @iconLabel="Suitcase"
-          @iconPosition="center"
-        />
+        <Button @icon="bi-suitcase" @iconLabel="Suitcase" @iconPosition="center" />
       </template>,
     );
 

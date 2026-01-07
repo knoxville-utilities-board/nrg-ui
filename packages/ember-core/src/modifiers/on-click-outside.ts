@@ -22,11 +22,7 @@ export interface OnClickOutsideSignature {
 
 function cleanup(instance: OnClickOutside) {
   delete instance.element?.dataset['clickHandler'];
-  document.documentElement.removeEventListener(
-    'click',
-    instance.clickHandler,
-    true,
-  );
+  document.documentElement.removeEventListener('click', instance.clickHandler, true);
 }
 
 export default class OnClickOutside extends Modifier<OnClickOutsideSignature> {

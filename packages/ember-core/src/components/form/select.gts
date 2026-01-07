@@ -15,11 +15,7 @@ import BoundValue from './bound-value.ts';
 import onInsert from '../../modifiers/on-insert.ts';
 import { collapseWhitespace } from '../../utils/string.ts';
 
-import type {
-  BoundValueSignature,
-  DropdownSignature,
-  Optional,
-} from '../../index.ts';
+import type { BoundValueSignature, DropdownSignature, Optional } from '../../index.ts';
 import type { Direction, PopoverVisibility } from '../popover.gts';
 import type { FieldOptions } from './field.gts';
 import type IntlService from 'ember-intl/services/intl';
@@ -40,9 +36,7 @@ function isActive<T>(
   const isCurrentIndex = optionIndex === activeIndex;
   const isCurrentValue = isEqual(option.value, currentValue);
 
-  return (
-    (useIndexActive && isCurrentIndex) || (!useIndexActive && isCurrentValue)
-  );
+  return (useIndexActive && isCurrentIndex) || (!useIndexActive && isCurrentValue);
 }
 
 export type SelectSignature<T> = BoundValueSignature<
@@ -124,17 +118,11 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
   }
 
   get isOpen() {
-    return (
-      this.visibility?.isShown &&
-      !this.disabled &&
-      !!this.internalOptions.length
-    );
+    return this.visibility?.isShown && !this.disabled && !!this.internalOptions.length;
   }
 
   get selected(): Optional<SelectOption<T>> {
-    const found = this.internalOptions.find(
-      (option) => option.value === this.value,
-    );
+    const found = this.internalOptions.find((option) => option.value === this.value);
     return found || null;
   }
 
@@ -191,9 +179,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
       return;
     }
 
-    const childElements = Array.from(
-      this.menuElement?.querySelectorAll(`li`) ?? [],
-    );
+    const childElements = Array.from(this.menuElement?.querySelectorAll(`li`) ?? []);
     for (const stringIndex in childElements) {
       const index = parseInt(stringIndex);
       const element = childElements[index];
@@ -217,9 +203,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
     if (this.activeItem == -1) {
       return;
     }
-    const childElements = Array.from(
-      this.menuElement?.querySelectorAll(`li`) ?? [],
-    );
+    const childElements = Array.from(this.menuElement?.querySelectorAll(`li`) ?? []);
     const activeElement = childElements[this.activeItem];
     if (!activeElement) {
       return;

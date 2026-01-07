@@ -1,10 +1,7 @@
 import Modifier from 'ember-modifier';
 
 type CallbackFn<Element, A> = (element: Element, args: A) => void;
-export interface OnInsertSignature<
-  Element extends HTMLElement,
-  Named extends object,
-> {
+export interface OnInsertSignature<Element extends HTMLElement, Named extends object> {
   Element: Element;
   Args: {
     Positional: [CallbackFn<Element, Named>];

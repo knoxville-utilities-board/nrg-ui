@@ -24,9 +24,7 @@ export function checkNodeVersion() {
 }
 
 export function getVersion() {
-  const pkg = JSON.parse(
-    readFileSync(join(import.meta.dirname, '../../package.json'), 'utf-8'),
-  );
+  const pkg = JSON.parse(readFileSync(join(import.meta.dirname, '../../package.json'), 'utf-8'));
 
   return pkg.version;
 }

@@ -54,10 +54,7 @@ export default class CheckboxDemo extends Component {
               @defaultValue={{false}}
               @description="When true, the input will be displayed inline"
             />
-            <Args.String
-              @name="label"
-              @description="The label to display next to the checkbox"
-            />
+            <Args.String @name="label" @description="The label to display next to the checkbox" />
             <Args.Boolean
               @name="reverse"
               @defaultValue={{false}}
@@ -75,11 +72,7 @@ export default class CheckboxDemo extends Component {
               @name="onChange"
               @description="The action to call when the value changes"
               @parameters={{array
-                (p
-                  "newValue"
-                  description="The new value of the checkbox"
-                  type="Boolean"
-                )
+                (p "newValue" description="The new value of the checkbox" type="Boolean")
               }}
             />
           </Api.Actions>

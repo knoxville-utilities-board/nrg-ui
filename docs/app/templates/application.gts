@@ -189,10 +189,7 @@ export default class Application extends Component {
         </Menu.Item>
       </:sidebar>
       <:sidebar-footer as |Item|>
-        <Item
-          target="_blank"
-          @url="https://github.com/knoxville-utilities-board/nrg-ui"
-        >
+        <Item target="_blank" @url="https://github.com/knoxville-utilities-board/nrg-ui">
           {{version}}
         </Item>
       </:sidebar-footer>

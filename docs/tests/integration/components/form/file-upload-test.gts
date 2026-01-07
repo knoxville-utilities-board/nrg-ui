@@ -18,28 +18,20 @@ module('Integration | Component | form/file-upload', function (hooks) {
 
   test('it renders', async function (assert) {
     const model = new Model();
-    await render(
-      <template><FileUpload @binding={{bind model "files"}} /></template>,
-    );
+    await render(<template><FileUpload @binding={{bind model "files"}} /></template>);
     assert.dom('input').hasAttribute('type', 'file');
-    assert
-      .dom('[data-test-drop-zone]')
-      .containsText('Drop files here or click to browse');
+    assert.dom('[data-test-drop-zone]').containsText('Drop files here or click to browse');
   });
 
   test('it displays message when no files are selected', async function (assert) {
     const model = new Model();
-    await render(
-      <template><FileUpload @binding={{bind model "files"}} /></template>,
-    );
+    await render(<template><FileUpload @binding={{bind model "files"}} /></template>);
     assert.dom('p.text-muted').hasText('No files selected');
   });
 
   test('it displays and removes selected files', async function (assert) {
     const model = new Model();
-    await render(
-      <template><FileUpload @binding={{bind model "files"}} /></template>,
-    );
+    await render(<template><FileUpload @binding={{bind model "files"}} /></template>);
 
     await click('[data-test-open="input"]');
 
@@ -76,11 +68,7 @@ module('Integration | Component | form/file-upload', function (hooks) {
 
     await render(
       <template>
-        <FileUpload
-          @binding={{bind model "files"}}
-          @onAdd={{onAdd}}
-          @onRemove={{onRemove}}
-        />
+        <FileUpload @binding={{bind model "files"}} @onAdd={{onAdd}} @onRemove={{onRemove}} />
       </template>,
     );
 

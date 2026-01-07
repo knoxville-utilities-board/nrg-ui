@@ -57,18 +57,9 @@ export default class PaginationDemo extends Component {
         </:example>
         <:api as |Api|>
           <Api.Arguments as |Args|>
-            <Args.Number
-              @description="Index of the first item"
-              @name="meta.start"
-            />
-            <Args.Number
-              @description="Number of items per page"
-              @name="meta.count"
-            />
-            <Args.Number
-              @description="Total number of items"
-              @name="meta.total"
-            />
+            <Args.Number @description="Index of the first item" @name="meta.start" />
+            <Args.Number @description="Number of items per page" @name="meta.count" />
+            <Args.Number @description="Total number of items" @name="meta.total" />
             <Args.Boolean
               @defaultValue={{false}}
               @description="Show detailed meta information"
@@ -95,18 +86,9 @@ export default class PaginationDemo extends Component {
               @description="Shorten the number of pages displayed"
               @name="compact"
             />
-            <Args.Number
-              @description="Number of items per page"
-              @name="meta.count"
-            />
-            <Args.Number
-              @description="Index of the first item"
-              @name="meta.start"
-            />
-            <Args.Number
-              @description="Total number of items"
-              @name="meta.total"
-            />
+            <Args.Number @description="Number of items per page" @name="meta.count" />
+            <Args.Number @description="Index of the first item" @name="meta.start" />
+            <Args.Number @description="Total number of items" @name="meta.total" />
             {{! TODO }}
             {{!-- <Args.Array
               @description="List of available page sizes"
@@ -135,18 +117,9 @@ export default class PaginationDemo extends Component {
         </:example>
         <:api as |Api|>
           <Api.Arguments as |Args|>
-            <Args.Number
-              @description="Index of the first item"
-              @name="meta.start"
-            />
-            <Args.Number
-              @description="Number of items per page"
-              @name="meta.count"
-            />
-            <Args.Number
-              @description="Total number of items"
-              @name="meta.total"
-            />
+            <Args.Number @description="Index of the first item" @name="meta.start" />
+            <Args.Number @description="Number of items per page" @name="meta.count" />
+            <Args.Number @description="Total number of items" @name="meta.total" />
             <Args.Boolean
               @defaultValue={{false}}
               @description="Enable jumping to page"

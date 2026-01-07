@@ -13,9 +13,9 @@
         Checkout form
       </h2>
       <p class="lead">
-        Below is an example form built entirely with Bootstrap's form controls.
-        Each required form group has a validation state that can be triggered by
-        attempting to submit the form without completing it.
+        Below is an example form built entirely with Bootstrap's form controls. Each required form
+        group has a validation state that can be triggered by attempting to submit the form without
+        completing it.
       </p>
     </div>
 
@@ -69,9 +69,7 @@
               $5
             </span>
           </li>
-          <li
-            class="list-group-item d-flex justify-content-between bg-body-tertiary"
-          >
+          <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
             <div class="text-success">
               <h6 class="my-0">
                 Promo code
@@ -115,14 +113,7 @@
               <label for="firstName" class="form-label">
                 First name
               </label>
-              <input
-                type="text"
-                class="form-control"
-                id="firstName"
-                placeholder
-                value
-                required
-              />
+              <input type="text" class="form-control" id="firstName" placeholder value required />
               <div class="invalid-feedback">
                 Valid first name is required.
               </div>
@@ -132,14 +123,7 @@
               <label for="lastName" class="form-label">
                 Last name
               </label>
-              <input
-                type="text"
-                class="form-control"
-                id="lastName"
-                placeholder
-                value
-                required
-              />
+              <input type="text" class="form-control" id="lastName" placeholder value required />
               <div class="invalid-feedback">
                 Valid last name is required.
               </div>
@@ -173,12 +157,7 @@
                   (Optional)
                 </span>
               </label>
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                placeholder="you@example.com"
-              />
+              <input type="email" class="form-control" id="email" placeholder="you@example.com" />
               <div class="invalid-feedback">
                 Please enter a valid email address for shipping updates.
               </div>
@@ -253,13 +232,7 @@
               <label for="zip" class="form-label">
                 Zip
               </label>
-              <input
-                type="text"
-                class="form-control"
-                id="zip"
-                placeholder
-                required
-              />
+              <input type="text" class="form-control" id="zip" placeholder required />
               <div class="invalid-feedback">
                 Zip code required.
               </div>
@@ -333,13 +306,7 @@
               <label for="cc-name" class="form-label">
                 Name on card
               </label>
-              <input
-                type="text"
-                class="form-control"
-                id="cc-name"
-                placeholder
-                required
-              />
+              <input type="text" class="form-control" id="cc-name" placeholder required />
               <small class="text-body-secondary">
                 Full name as displayed on card
               </small>
@@ -352,13 +319,7 @@
               <label for="cc-number" class="form-label">
                 Credit card number
               </label>
-              <input
-                type="text"
-                class="form-control"
-                id="cc-number"
-                placeholder
-                required
-              />
+              <input type="text" class="form-control" id="cc-number" placeholder required />
               <div class="invalid-feedback">
                 Credit card number is required
               </div>
@@ -368,13 +329,7 @@
               <label for="cc-expiration" class="form-label">
                 Expiration
               </label>
-              <input
-                type="text"
-                class="form-control"
-                id="cc-expiration"
-                placeholder
-                required
-              />
+              <input type="text" class="form-control" id="cc-expiration" placeholder required />
               <div class="invalid-feedback">
                 Expiration date required
               </div>
@@ -384,13 +339,7 @@
               <label for="cc-cvv" class="form-label">
                 CVV
               </label>
-              <input
-                type="text"
-                class="form-control"
-                id="cc-cvv"
-                placeholder
-                required
-              />
+              <input type="text" class="form-control" id="cc-cvv" placeholder required />
               <div class="invalid-feedback">
                 Security code required
               </div>

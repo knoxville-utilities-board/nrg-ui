@@ -126,14 +126,8 @@ export default class DatetimeDemo extends Component {
               @name="minDate"
               @description="When provided, no dates before this point can be selected"
             />
-            <Args.String
-              @name="placeholder"
-              @description="The placeholder text"
-            />
-            <Args.Boolean
-              @name="readonly"
-              @description="Whether the input is readonly"
-            />
+            <Args.String @name="placeholder" @description="The placeholder text" />
+            <Args.Boolean @name="readonly" @description="Whether the input is readonly" />
             <Args.Boolean
               @name="showNowShortcut"
               @defaultValue={{true}}
@@ -146,11 +140,7 @@ export default class DatetimeDemo extends Component {
               @description="A function that receives a date and returns whether it should be disabled"
               @parameters={{array
                 (p "date" description="The date to check" type="Date")
-                (p
-                  "precision"
-                  description="The precision to check at"
-                  type="OpUnitType"
-                )
+                (p "precision" description="The precision to check at" type="OpUnitType")
               }}
               @returnType="boolean"
             />

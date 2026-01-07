@@ -35,23 +35,13 @@ module('Integration | Component | mktg/header', function (hooks) {
       )
       .hasText('Title', 'Title renders content');
     assert
-      .dom(
-        'div div:nth-of-type(2) .d-none.d-md-flex .d-flex.flex-row.mt-2.mx-2.text-nowrap p',
-      )
-      .hasText(
-        'Options content',
-        'Options renders content within center block',
-      );
+      .dom('div div:nth-of-type(2) .d-none.d-md-flex .d-flex.flex-row.mt-2.mx-2.text-nowrap p')
+      .hasText('Options content', 'Options renders content within center block');
     assert
-      .dom(
-        'div div:nth-of-type(3) .col.d-flex.justify-content-end .btn-outline-light',
-      )
+      .dom('div div:nth-of-type(3) .col.d-flex.justify-content-end .btn-outline-light')
       .exists({ count: 2 }, 'Nav renders content');
     assert
       .dom('div div:nth-of-type(4) .d-flex.flex-row.mt-2.mx-2.text-nowrap p')
-      .hasText(
-        'Options content',
-        'Options renders content within mobile drop section block',
-      );
+      .hasText('Options content', 'Options renders content within mobile drop section block');
   });
 });

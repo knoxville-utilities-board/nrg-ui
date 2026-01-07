@@ -28,14 +28,7 @@ export default class extends Component {
   selectValue?: string;
 
   @tracked
-  stringOptions = [
-    'Option 1',
-    'Option 2',
-    'Option 3',
-    'Option 4',
-    'Option 5',
-    'Option 6',
-  ];
+  stringOptions = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5', 'Option 6'];
 
   @tracked
   objectOptions = [
@@ -57,11 +50,7 @@ export default class extends Component {
 
   <template>
     <Section @name="Select" as |Section|>
-      <Section.Subsection
-        @name="String Options"
-        @model={{this}}
-        @elementTag="button"
-      >
+      <Section.Subsection @name="String Options" @model={{this}} @elementTag="button">
         <:example as |model|>
           <Select
             @binding={{bind model "selectValue"}}
@@ -98,11 +87,7 @@ export default class extends Component {
         </:api>
       </Section.Subsection>
 
-      <Section.Subsection
-        @name="Object Options"
-        @model={{this}}
-        @elementTag="button"
-      >
+      <Section.Subsection @name="Object Options" @model={{this}} @elementTag="button">
         <:example as |model|>
           <Select
             @binding={{bind model "selectValue"}}
@@ -116,11 +101,7 @@ export default class extends Component {
         </:example>
       </Section.Subsection>
 
-      <Section.Subsection
-        @name="Yielded Options"
-        @model={{this}}
-        @elementTag="button"
-      >
+      <Section.Subsection @name="Yielded Options" @model={{this}} @elementTag="button">
         <:example as |model|>
           <Select
             @binding={{bind model "selectValue"}}
@@ -147,19 +128,11 @@ export default class extends Component {
     <div class="grid">
       <div class="g-col-4">
         <h3>String Options</h3>
-        <CodeBlock
-          @lang="json"
-          @code={{this.stringOptionsSource}}
-          @showCopyButton={{false}}
-        />
+        <CodeBlock @lang="json" @code={{this.stringOptionsSource}} @showCopyButton={{false}} />
       </div>
       <div class="g-col-4">
         <h3>Object Options</h3>
-        <CodeBlock
-          @lang="json"
-          @code={{this.objectOptionsSource}}
-          @showCopyButton={{false}}
-        />
+        <CodeBlock @lang="json" @code={{this.objectOptionsSource}} @showCopyButton={{false}} />
       </div>
       <div class="g-col-4">
         <h3>Selected</h3>

@@ -46,11 +46,7 @@ export default class LengthValidator<
     presence: true,
   };
 
-  constructor(
-    binding: Binding,
-    options: Computable<Context, LengthOptions>,
-    context?: Context,
-  ) {
+  constructor(binding: Binding, options: Computable<Context, LengthOptions>, context?: Context) {
     super(binding, options, context);
 
     if (
@@ -59,9 +55,7 @@ export default class LengthValidator<
       isNone(options.max) &&
       isNone(options.between)
     ) {
-      assert(
-        'LengthValidator requires either `is`, `min`, `max`, or `between` to be provided',
-      );
+      assert('LengthValidator requires either `is`, `min`, `max`, or `between` to be provided');
     }
   }
 

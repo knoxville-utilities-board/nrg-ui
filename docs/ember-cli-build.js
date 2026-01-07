@@ -44,9 +44,7 @@ module.exports = async function (defaults) {
   });
 
   if (app.env !== 'production') {
-    app.options['@embroider/macros']['setConfig']['@nrg-ui/core'][
-      'appVersion'
-    ] = 'version-v1';
+    app.options['@embroider/macros']['setConfig']['@nrg-ui/core']['appVersion'] = 'version-v1';
   }
 
   return compatBuild(app, buildOnce, {

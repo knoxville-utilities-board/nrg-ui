@@ -59,10 +59,7 @@ export interface SearchSignature<T> {
   };
 }
 
-export default class Search<T> extends BoundValue<
-  SearchSignature<T>,
-  string | T
-> {
+export default class Search<T> extends BoundValue<SearchSignature<T>, string | T> {
   self: Record<'searchString' | 'displayValue', string> = this;
   declare visibility: PopoverVisibility;
   declare inputElement: HTMLInputElement;
@@ -200,9 +197,7 @@ export default class Search<T> extends BoundValue<
   }
 
   get selectedOption(): Optional<SearchOption<T>> {
-    const found = this.internalOptions.find(
-      (option) => option.value === this.value,
-    );
+    const found = this.internalOptions.find((option) => option.value === this.value);
     return found || null;
   }
 
@@ -226,9 +221,7 @@ export default class Search<T> extends BoundValue<
     if (this.activeIndex == -1) {
       return;
     }
-    const childElements = Array.from(
-      this.menuElement.querySelectorAll(`li`) ?? [],
-    );
+    const childElements = Array.from(this.menuElement.querySelectorAll(`li`) ?? []);
     const activeElement = childElements[this.activeIndex];
     if (!activeElement) {
       return;

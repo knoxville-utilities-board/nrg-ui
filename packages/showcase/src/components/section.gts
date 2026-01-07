@@ -34,14 +34,8 @@ export interface SubsectionSignature<Model extends object = object> {
           ComponentLike<ArgumentsSignature>,
           'model' | 'sectionName' | 'subsectionName'
         >;
-        Actions: WithBoundArgs<
-          ComponentLike<ActionsSignature>,
-          'sectionName' | 'subsectionName'
-        >;
-        Blocks: WithBoundArgs<
-          ComponentLike<BlocksSignature>,
-          'sectionName' | 'subsectionName'
-        >;
+        Actions: WithBoundArgs<ComponentLike<ActionsSignature>, 'sectionName' | 'subsectionName'>;
+        Blocks: WithBoundArgs<ComponentLike<BlocksSignature>, 'sectionName' | 'subsectionName'>;
       },
     ];
     default: [];
@@ -78,11 +72,7 @@ export class Subsection<Model extends object = object> extends Component<
               target="_blank"
               rel="noopener noreferrer"
             >
-              <CodeBlock
-                @code="<{{@elementTag}} ...attributes>"
-                @lang="html"
-                @inline={{true}}
-              />
+              <CodeBlock @code="<{{@elementTag}} ...attributes>" @lang="html" @inline={{true}} />
             </a>
           {{/if}}
         </h4>
@@ -99,17 +89,10 @@ export class Subsection<Model extends object = object> extends Component<
           {{yield
             (hash
               Arguments=(component
-                Arguments
-                model=@model
-                sectionName=@sectionName
-                subsectionName=@name
+                Arguments model=@model sectionName=@sectionName subsectionName=@name
               )
-              Actions=(component
-                Actions sectionName=@sectionName subsectionName=@name
-              )
-              Blocks=(component
-                Blocks sectionName=@sectionName subsectionName=@name
-              )
+              Actions=(component Actions sectionName=@sectionName subsectionName=@name)
+              Blocks=(component Blocks sectionName=@sectionName subsectionName=@name)
             )
             to="api"
           }}
@@ -125,11 +108,7 @@ export class Subsection<Model extends object = object> extends Component<
           </h5>
         {{/let}}
         <div class="my-2">
-          <CodeBlock
-            @code={{this.code}}
-            @lang={{this.language}}
-            @model={{@model}}
-          />
+          <CodeBlock @code={{this.code}} @lang={{this.language}} @model={{@model}} />
         </div>
       {{/if}}
     </div>
@@ -168,9 +147,7 @@ export default class Section extends Component<SectionSignature> {
         </h2>
       {{/let}}
       <hr />
-      {{yield
-        (hash Subsection=(component this.TypedSubsection sectionName=@name))
-      }}
+      {{yield (hash Subsection=(component this.TypedSubsection sectionName=@name))}}
     </div>
   </template>
 }

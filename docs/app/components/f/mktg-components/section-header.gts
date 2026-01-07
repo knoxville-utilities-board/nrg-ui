@@ -15,11 +15,7 @@ export default class SectionHeaderDemo extends Component {
     <Section @name="Section Header" as |Section|>
       <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
         <:example as |model|>
-          <MktgSectionHeader
-            class="col-12"
-            @subject={{model.subject}}
-            @title={{model.title}}
-          >
+          <MktgSectionHeader class="col-12" @subject={{model.subject}} @title={{model.title}}>
             <:subheader>
               <p class="m-0">
                 Here's some content to give context and summarize this section.

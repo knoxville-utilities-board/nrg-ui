@@ -1,9 +1,6 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import LoadingIndicator, {
-  typeBorder,
-  typeGrow,
-} from '@nrg-ui/core/components/loading-indicator';
+import LoadingIndicator, { typeBorder, typeGrow } from '@nrg-ui/core/components/loading-indicator';
 import Section from '@nrg-ui/showcase/components/section';
 
 const typeOptions = [typeBorder, typeGrow];

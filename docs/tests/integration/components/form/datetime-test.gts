@@ -31,9 +31,7 @@ module('Integration | Component | form/datetime', function (hooks) {
 
     model.value = undefined;
 
-    await render(
-      <template><Datetime @binding={{bind model "value"}} /></template>,
-    );
+    await render(<template><Datetime @binding={{bind model "value"}} /></template>);
 
     assert.dom('input').hasValue('');
   });
@@ -42,9 +40,7 @@ module('Integration | Component | form/datetime', function (hooks) {
     const { model } = this;
 
     await render(
-      <template>
-        <Datetime @binding={{bind model "value"}} @useDefaultValue={{true}} />
-      </template>,
+      <template><Datetime @binding={{bind model "value"}} @useDefaultValue={{true}} /></template>,
     );
 
     assert.dom('input').hasValue();
@@ -57,9 +53,7 @@ module('Integration | Component | form/datetime', function (hooks) {
     model.value = testDate;
 
     await render(
-      <template>
-        <Datetime @binding={{bind model "value"}} @type="datetime" />
-      </template>,
+      <template><Datetime @binding={{bind model "value"}} @type="datetime" /></template>,
     );
 
     assert.dom('input').hasValue('March 3, 2013 4:10 AM');
@@ -69,9 +63,7 @@ module('Integration | Component | form/datetime', function (hooks) {
     const { model } = this;
     model.value = testDate;
 
-    await render(
-      <template><Datetime @binding={{bind model "value"}} /></template>,
-    );
+    await render(<template><Datetime @binding={{bind model "value"}} /></template>);
 
     assert.dom('input').hasValue('March 3, 2013');
   });
@@ -80,11 +72,7 @@ module('Integration | Component | form/datetime', function (hooks) {
     const { model } = this;
     model.value = testDate;
 
-    await render(
-      <template>
-        <Datetime @binding={{bind model "value"}} @type="time" />
-      </template>,
-    );
+    await render(<template><Datetime @binding={{bind model "value"}} @type="time" /></template>);
 
     assert.dom('input').hasValue('4:10 AM');
   });
@@ -107,9 +95,7 @@ module('Integration | Component | form/datetime', function (hooks) {
     const { model } = this;
 
     await render(
-      <template>
-        <Datetime @binding={{bind model "value"}} @readonly={{true}} />
-      </template>,
+      <template><Datetime @binding={{bind model "value"}} @readonly={{true}} /></template>,
     );
 
     assert.dom('input').isNotDisabled();

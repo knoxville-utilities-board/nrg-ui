@@ -19,10 +19,7 @@ module('Integration | Component | mktg/navbar', function (hooks) {
             </a>
           </:brand>
           <:actions>
-            <Button
-              @text="Mobile Button"
-              class="btn-secondary ms-auto d-lg-none"
-            />
+            <Button @text="Mobile Button" class="btn-secondary ms-auto d-lg-none" />
           </:actions>
           <:default>
             <NavItem @url="#" @label="Home" />
@@ -46,10 +43,7 @@ module('Integration | Component | mktg/navbar', function (hooks) {
             </a>
           </:brand>
           <:actions>
-            <Button
-              @text="Mobile Button"
-              class="btn-secondary ms-auto d-lg-none"
-            />
+            <Button @text="Mobile Button" class="btn-secondary ms-auto d-lg-none" />
           </:actions>
           <:default>
             <NavItem @url="#" @label="Home" />

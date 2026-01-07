@@ -3,11 +3,7 @@ import { resolve } from 'path';
 
 import logger from '../../../logging.js';
 import { defaultJsIgnores, defaultTsIgnores } from '../../../tools/eslint.js';
-import {
-  format,
-  getDependenciesFromPackage,
-  getPackageFile,
-} from '../../../utils.js';
+import { format, getDependenciesFromPackage, getPackageFile } from '../../../utils.js';
 import { getVersion } from '../../index.js';
 import {
   compatibility,
@@ -54,9 +50,7 @@ async function ensureInstallation() {
 
   const hasThisPackage = '@nrg-ui/standards' in dependencies;
   if (!hasThisPackage) {
-    logger.debug(
-      '`@nrg-ui/standards` not found in package.json, installing...',
-    );
+    logger.debug('`@nrg-ui/standards` not found in package.json, installing...');
 
     await install('@nrg-ui/standards', `^${getVersion()}`);
   }
@@ -244,18 +238,12 @@ async function installPlugins() {
 
   const neededPlugins = detectNeededPlugins();
   await installMany(
-    Object.fromEntries(
-      neededPlugins.map((plugin) => [plugin, compatibility[plugin]]),
-    ),
+    Object.fromEntries(neededPlugins.map((plugin) => [plugin, compatibility[plugin]])),
   );
 }
 
 function detectNeededPlugins(): string[] {
-  const plugins = [
-    'eslint-plugin-import',
-    'eslint-plugin-decorator-position',
-    'eslint-plugin-n',
-  ];
+  const plugins = ['eslint-plugin-import', 'eslint-plugin-decorator-position', 'eslint-plugin-n'];
 
   if (hasDependency('ember-source')) {
     plugins.push('eslint-plugin-ember');

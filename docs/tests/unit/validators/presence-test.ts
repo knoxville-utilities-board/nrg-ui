@@ -1,10 +1,7 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/core';
-import {
-  PresenceValidator,
-  validator as buildValidator,
-} from '@nrg-ui/core/validation';
+import { PresenceValidator, validator as buildValidator } from '@nrg-ui/core/validation';
 import { setupTest } from 'docs/tests/helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';
@@ -40,19 +37,12 @@ module('Unit | Validator | inclusion', function (hooks) {
       // @ts-expect-error Testing that the `in` option is required
       const validator = new PresenceValidator(this.binding, {}, this);
 
-      assert.notOk(
-        true,
-        'Expected an error, but got a result instead: ' + validator.result,
-      );
+      assert.notOk(true, 'Expected an error, but got a result instead: ' + validator.result);
     }, new Error('Assertion Failed: PresenceValidator requires `presence` to be provided'));
   });
 
   test('`presence` option works', function (this: TestContext, assert) {
-    let validator = new PresenceValidator(
-      this.binding,
-      { presence: true },
-      this,
-    );
+    let validator = new PresenceValidator(this.binding, { presence: true }, this);
 
     assert.isInvalid(validator.result, 'This field cannot be blank');
 
@@ -96,11 +86,7 @@ module('Unit | Validator | inclusion', function (hooks) {
 
     assert.isValid(validator.result);
 
-    validator = new PresenceValidator(
-      this.binding,
-      { ignoreBlank: false, presence: false },
-      this,
-    );
+    validator = new PresenceValidator(this.binding, { ignoreBlank: false, presence: false }, this);
 
     assert.isInvalid(validator.result, 'This field must be blank');
 

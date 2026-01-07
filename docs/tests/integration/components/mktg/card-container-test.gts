@@ -19,12 +19,8 @@ module('Integration | Component | mktg/card-container', function (hooks) {
     );
 
     assert.dom('.grid').exists('Card container renders');
-    assert
-      .dom('div div.card')
-      .exists({ count: 3 }, 'Three content cards render');
-    assert
-      .dom('div div.card')
-      .hasClass('first', 'First content card renders in correct order');
+    assert.dom('div div.card').exists({ count: 3 }, 'Three content cards render');
+    assert.dom('div div.card').hasClass('first', 'First content card renders in correct order');
     assert
       .dom('div div:nth-of-type(2).card')
       .hasClass('second', 'Second content card renders in correct order');

@@ -39,19 +39,9 @@ export interface TranslatableMessage extends Partial<ValidationResult> {
   [option: string]: TranslatableOption;
 }
 
-export type TranslatableOption =
-  | string
-  | number
-  | boolean
-  | Date
-  | null
-  | undefined;
+export type TranslatableOption = string | number | boolean | Date | null | undefined;
 
-export type ValidateFnResponse =
-  | boolean
-  | string
-  | TranslatableMessage
-  | ValidationResult;
+export type ValidateFnResponse = boolean | string | TranslatableMessage | ValidationResult;
 
 export interface ValidationResult {
   isValid: boolean;
@@ -63,16 +53,9 @@ export type Validator<
   T = unknown,
   Context extends object = object,
   OptionsShape extends object = object,
-> = (
-  binding: Binding,
-  context: Context,
-) => ValidatorImpl<T, Context, OptionsShape>;
+> = (binding: Binding, context: Context) => ValidatorImpl<T, Context, OptionsShape>;
 
-export interface ValidatorImpl<
-  T,
-  Context extends object,
-  OptionsShape extends BaseOptions,
-> {
+export interface ValidatorImpl<T, Context extends object, OptionsShape extends BaseOptions> {
   validate(
     this: BaseValidator<T, Context, OptionsShape>,
     value: T,

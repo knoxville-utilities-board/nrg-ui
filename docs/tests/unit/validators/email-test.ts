@@ -1,10 +1,7 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/core';
-import {
-  EmailValidator,
-  validator as buildValidator,
-} from '@nrg-ui/core/validation';
+import { EmailValidator, validator as buildValidator } from '@nrg-ui/core/validation';
 import { setupTest } from 'docs/tests/helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';
@@ -38,10 +35,7 @@ module('Unit | Validator | email', function (hooks) {
 
     this.model.field = 'foo';
 
-    assert.isInvalid(
-      validator.result,
-      'This field must be a valid email address',
-    );
+    assert.isInvalid(validator.result, 'This field must be a valid email address');
 
     this.model.field = 'foo@bar.com';
 
@@ -49,11 +43,7 @@ module('Unit | Validator | email', function (hooks) {
   });
 
   test('`invalidDomains` option works', function (this: TestContext, assert) {
-    const validator = new EmailValidator(
-      this.binding,
-      { invalidDomains: ['kub.org'] },
-      this.model,
-    );
+    const validator = new EmailValidator(this.binding, { invalidDomains: ['kub.org'] }, this.model);
 
     this.model.field = 'foo@bar.com';
 
@@ -68,11 +58,7 @@ module('Unit | Validator | email', function (hooks) {
   });
 
   test('`validDomains` option works', function (this: TestContext, assert) {
-    const validator = new EmailValidator(
-      this.binding,
-      { validDomains: ['kub.org'] },
-      this.model,
-    );
+    const validator = new EmailValidator(this.binding, { validDomains: ['kub.org'] }, this.model);
 
     this.model.field = 'foo@kub.org';
 
@@ -96,9 +82,6 @@ module('Unit | Validator | email', function (hooks) {
 
     this.model.field = 'foo';
 
-    assert.isInvalid(
-      validator.result,
-      'This field must be a valid email address',
-    );
+    assert.isInvalid(validator.result, 'This field must be a valid email address');
   });
 });

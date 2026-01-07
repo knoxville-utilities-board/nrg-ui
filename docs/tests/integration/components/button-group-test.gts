@@ -40,10 +40,7 @@ module('Integration | Component | button-group', function (hooks) {
 
     await click('button');
 
-    assert.verifySteps(
-      ['button', 'group'],
-      'actions are fired in correct order',
-    );
+    assert.verifySteps(['button', 'group'], 'actions are fired in correct order');
   });
 
   test('a disabled group disables all buttons', async function (this: Context, assert) {
@@ -56,27 +53,16 @@ module('Integration | Component | button-group', function (hooks) {
 
     await render(
       <template>
-        <ButtonGroup
-          @disabled={{true}}
-          @onClick={{fn clickHandler "group"}}
-          as |Group|
-        >
+        <ButtonGroup @disabled={{true}} @onClick={{fn clickHandler "group"}} as |Group|>
           <Group.Button @text="Foo" @onClick={{fn clickHandler "foo"}} />
           <Group.Button @text="Bar" @onClick={{fn clickHandler "bar"}} />
         </ButtonGroup>
       </template>,
     );
 
-    assert
-      .dom('div:has(button)')
-      .hasAttribute('role', 'group')
-      .hasAria('disabled', 'true');
+    assert.dom('div:has(button)').hasAttribute('role', 'group').hasAria('disabled', 'true');
 
-    assert
-      .dom('button')
-      .hasAria('disabled', 'true')
-      .hasAttribute('disabled')
-      .hasClass('disabled');
+    assert.dom('button').hasAria('disabled', 'true').hasAttribute('disabled').hasClass('disabled');
 
     try {
       // Clicking on a disabled element throws an exception
@@ -97,26 +83,10 @@ module('Integration | Component | button-group', function (hooks) {
     await render(
       <template>
         <ButtonGroup @onClick={{fn clickHandler "group"}} as |Group|>
-          <Group.Button
-            class="btn-primary"
-            @text="Foo"
-            @onClick={{fn clickHandler "foo"}}
-          />
-          <Group.SubGroup
-            @onClick={{fn clickHandler "subgroup"}}
-            data-test-subgroup
-            as |SubGroup|
-          >
-            <SubGroup.Button
-              class="btn-primary"
-              @text="Bar"
-              @onClick={{fn clickHandler "bar"}}
-            />
-            <SubGroup.Button
-              class="btn-primary"
-              @text="Baz"
-              @onClick={{fn clickHandler "baz"}}
-            />
+          <Group.Button class="btn-primary" @text="Foo" @onClick={{fn clickHandler "foo"}} />
+          <Group.SubGroup @onClick={{fn clickHandler "subgroup"}} data-test-subgroup as |SubGroup|>
+            <SubGroup.Button class="btn-primary" @text="Bar" @onClick={{fn clickHandler "bar"}} />
+            <SubGroup.Button class="btn-primary" @text="Baz" @onClick={{fn clickHandler "baz"}} />
           </Group.SubGroup>
         </ButtonGroup>
       </template>,
@@ -132,10 +102,7 @@ module('Integration | Component | button-group', function (hooks) {
 
     await click('div > button:first-child');
 
-    assert.verifySteps(
-      ['foo', 'group'],
-      'actions are fired in correct order (primary group)',
-    );
+    assert.verifySteps(['foo', 'group'], 'actions are fired in correct order (primary group)');
 
     await click('[data-test-subgroup] > button:last-child');
 

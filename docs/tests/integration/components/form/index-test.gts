@@ -52,11 +52,7 @@ module('Integration | Component | form', function (hooks) {
           <Form.Field @label="Text Input" @required={{true}} as |Field|>
             <Field.TextInput @binding={{bind model "textInput"}} />
           </Form.Field>
-          <Form.Field
-            @label="Text Area (with additional text)"
-            @required={{true}}
-            as |Field|
-          >
+          <Form.Field @label="Text Area (with additional text)" @required={{true}} as |Field|>
             <Field.TextArea @binding={{bind model "textArea"}} />
             <Field.Text>
               Here's some extra context for this field
@@ -90,20 +86,13 @@ module('Integration | Component | form', function (hooks) {
     const textarea = this.element.querySelector('label + textarea')!;
     const text = this.element.querySelector('label + textarea + div');
 
-    assert
-      .dom(label)
-      .hasClass('form-label')
-      .containsText('Text Area (with additional text)');
+    assert.dom(label).hasClass('form-label').containsText('Text Area (with additional text)');
     assert.dom('span', label).exists().hasClass('text-danger').hasText('*');
 
     labelId = label.getAttribute('for')!;
     const ariaId = textarea.getAttribute('aria-describedby')!;
 
-    assert
-      .dom(textarea)
-      .exists()
-      .hasAttribute('id', labelId)
-      .hasClass('form-control');
+    assert.dom(textarea).exists().hasAttribute('id', labelId).hasClass('form-control');
     assert
       .dom(text)
       .containsText("Here's some extra context for this field")
@@ -137,25 +126,14 @@ module('Integration | Component | form', function (hooks) {
           <Form.Field @label="Text Input" @required={{true}} as |Field|>
             <Field.TextInput @binding={{bind model "textInput"}} />
           </Form.Field>
-          <Form.Field
-            @label="Text Area (with additional text)"
-            @required={{true}}
-            as |Field|
-          >
+          <Form.Field @label="Text Area (with additional text)" @required={{true}} as |Field|>
             <Field.TextArea @binding={{bind model "textArea"}} />
             <Field.Text>
               Here's some extra context for this field
             </Field.Text>
           </Form.Field>
-          <Form.Field
-            @label="Select"
-            @validatorKey="selectByAnotherProperty"
-            as |Field|
-          >
-            <Field.Select
-              @binding={{bind model "select"}}
-              @options={{array "A" "B" "C"}}
-            />
+          <Form.Field @label="Select" @validatorKey="selectByAnotherProperty" as |Field|>
+            <Field.Select @binding={{bind model "select"}} @options={{array "A" "B" "C"}} />
           </Form.Field>
           <Form.SubmitButton />
         </Form>
@@ -165,11 +143,7 @@ module('Integration | Component | form', function (hooks) {
     // Select
     const select = this.element.querySelector('label + .dropdown > button')!;
 
-    assert
-      .dom(select)
-      .exists()
-      .hasAttribute('role', 'combobox')
-      .hasClass('form-control');
+    assert.dom(select).exists().hasAttribute('role', 'combobox').hasClass('form-control');
 
     await click(select);
     await click('button + .popover .dropdown-menu > li:first-child');
@@ -189,10 +163,7 @@ module('Integration | Component | form', function (hooks) {
     assert.false(didSubmit, 'Form should not submit when validations fail');
 
     assert.dom('input').hasClass('is-invalid');
-    assert
-      .dom('input + div')
-      .hasClass('invalid-feedback')
-      .hasText('This field cannot be blank');
+    assert.dom('input + div').hasClass('invalid-feedback').hasText('This field cannot be blank');
 
     assert.dom('textarea').hasClass('is-invalid');
     assert

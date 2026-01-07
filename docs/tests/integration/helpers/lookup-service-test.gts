@@ -7,9 +7,7 @@ import { module, test } from 'qunit';
 module('Integration | Helper | lookup-service', function (hooks) {
   setupRenderingTest(hooks);
 
-  if (
-    macroCondition(dependencySatisfies('ember-source', '^6.3.0')) ? false : true
-  ) {
+  if (macroCondition(dependencySatisfies('ember-source', '^6.3.0')) ? false : true) {
     test('it looks up services', async function (assert) {
       assert.expect(1);
 
@@ -29,9 +27,7 @@ module('Integration | Helper | lookup-service', function (hooks) {
         assert.strictEqual(service, undefined);
       }
 
-      await render(
-        <template>{{compare (lookupService "i-don't-exist")}}</template>,
-      );
+      await render(<template>{{compare (lookupService "i-don't-exist")}}</template>);
     });
   }
 });

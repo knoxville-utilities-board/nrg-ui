@@ -5,11 +5,7 @@ import { globSync } from 'tinyglobby';
 
 import { extractSnippetsFromCode } from './parser.js';
 
-import type {
-  CodeSnippetsPluginOptions,
-  DeepRequired,
-  SnippetEntry,
-} from './types.ts';
+import type { CodeSnippetsPluginOptions, DeepRequired, SnippetEntry } from './types.ts';
 
 export function collectAllSnippets(
   options: DeepRequired<CodeSnippetsPluginOptions>,

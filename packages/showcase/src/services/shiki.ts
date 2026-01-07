@@ -9,17 +9,9 @@ import { bundledLanguages } from 'shiki/langs';
 import { bundledThemes } from 'shiki/themes';
 
 import type { Element } from 'hast';
-import type {
-  BundledLanguage,
-  BundledTheme,
-  CodeToHastOptions,
-  HighlighterCore,
-} from 'shiki';
+import type { BundledLanguage, BundledTheme, CodeToHastOptions, HighlighterCore } from 'shiki';
 
-export type AllowedLanguage =
-  | BundledLanguage
-  | 'glimmer-template'
-  | 'plaintext';
+export type AllowedLanguage = BundledLanguage | 'glimmer-template' | 'plaintext';
 
 const lightThemes = getOwnConfig()?.themes?.light ?? ['github-light'];
 const darkThemes = getOwnConfig()?.themes?.dark ?? ['github-dark'];
@@ -37,14 +29,8 @@ assert(
   'Light themes must be a non-empty array',
   Array.isArray(lightThemes) && lightThemes.length > 0,
 );
-assert(
-  'Dark themes must be a non-empty array',
-  Array.isArray(darkThemes) && darkThemes.length > 0,
-);
-assert(
-  'Languages must be a non-empty array',
-  Array.isArray(languages) && languages.length > 0,
-);
+assert('Dark themes must be a non-empty array', Array.isArray(darkThemes) && darkThemes.length > 0);
+assert('Languages must be a non-empty array', Array.isArray(languages) && languages.length > 0);
 
 export interface ShikiServiceOptions {
   defaultLightTheme?: BundledTheme;
@@ -99,8 +85,7 @@ export default class ShikiService extends Service {
     });
 
     this.loadedThemes = allThemes;
-    this.cssVariablePrefix =
-      options.cssVariablePrefix ?? DEFAULT_CSS_VARIABLE_PREFIX;
+    this.cssVariablePrefix = options.cssVariablePrefix ?? DEFAULT_CSS_VARIABLE_PREFIX;
   });
 
   highlight(
@@ -166,9 +151,7 @@ export default class ShikiService extends Service {
   }
 
   extractBackgroundColor(style: string, theme: 'light' | 'dark'): string {
-    const match = new RegExp(
-      `${this.cssVariablePrefix}${theme}-bg:([^;]+)`,
-    ).exec(style);
+    const match = new RegExp(`${this.cssVariablePrefix}${theme}-bg:([^;]+)`).exec(style);
 
     return match?.[1] ?? 'transparent';
   }

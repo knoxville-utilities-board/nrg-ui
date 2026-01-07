@@ -12,9 +12,7 @@ export function bind<Model extends object = Record<string, unknown>>(
   };
 }
 
-export default class Bind<
-  Model extends object = Record<string, unknown>,
-> extends Helper {
+export default class Bind<Model extends object = Record<string, unknown>> extends Helper {
   compute([model, valuePath]: [Model, string]) {
     return bind(model, valuePath);
   }

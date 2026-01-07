@@ -38,11 +38,7 @@ module(
 
       await render(
         <template>
-          <Calendar
-            @type="date"
-            @value={{model.value}}
-            @onSelect={{onSelect}}
-          />
+          <Calendar @type="date" @value={{model.value}} @onSelect={{onSelect}} />
         </template>,
       );
 
@@ -63,11 +59,7 @@ module(
 
       await render(
         <template>
-          <Calendar
-            @type="date"
-            @value={{model.value}}
-            @onSelect={{onSelect}}
-          />
+          <Calendar @type="date" @value={{model.value}} @onSelect={{onSelect}} />
         </template>,
       );
 
@@ -233,11 +225,7 @@ module(
 
       await render(
         <template>
-          <Calendar
-            @type="date"
-            @value={{model.value}}
-            @onSelect={{onSelect}}
-          />
+          <Calendar @type="date" @value={{model.value}} @onSelect={{onSelect}} />
         </template>,
       );
 
@@ -269,11 +257,7 @@ module(
 
       await render(
         <template>
-          <Calendar
-            @type="date"
-            @value={{model.value}}
-            @onSelect={{onSelect}}
-          />
+          <Calendar @type="date" @value={{model.value}} @onSelect={{onSelect}} />
         </template>,
       );
 
@@ -293,11 +277,7 @@ module(
 
       await render(
         <template>
-          <Calendar
-            @type="datetime"
-            @value={{model.value}}
-            @onSelect={{onSelect}}
-          />
+          <Calendar @type="datetime" @value={{model.value}} @onSelect={{onSelect}} />
         </template>,
       );
 
@@ -321,11 +301,7 @@ module(
 
       await render(
         <template>
-          <Calendar
-            @type="time"
-            @value={{model.value}}
-            @onSelect={{onSelect}}
-          />
+          <Calendar @type="time" @value={{model.value}} @onSelect={{onSelect}} />
         </template>,
       );
 
@@ -346,11 +322,7 @@ module(
 
       await render(
         <template>
-          <Calendar
-            @type="date"
-            @value={{model.value}}
-            @onSelect={{onSelect}}
-          />
+          <Calendar @type="date" @value={{model.value}} @onSelect={{onSelect}} />
         </template>,
       );
 
@@ -374,9 +346,7 @@ module(
       const maxDate = model.value;
 
       await render(
-        <template>
-          <Calendar @type="date" @value={{model.value}} @maxDate={{maxDate}} />
-        </template>,
+        <template><Calendar @type="date" @value={{model.value}} @maxDate={{maxDate}} /></template>,
       );
 
       assert.dom('tbody tr:nth-child(7)').doesNotExist();
@@ -414,11 +384,7 @@ module(
 
       await render(
         <template>
-          <Calendar
-            @type="time"
-            @value={{model.value}}
-            @isDateDisabled={{isDateDisabled}}
-          />
+          <Calendar @type="time" @value={{model.value}} @isDateDisabled={{isDateDisabled}} />
         </template>,
       );
 

@@ -14,11 +14,7 @@ export default {
   },
   hooks: {
     async postGenerate({ files }) {
-      await execa('npx', [
-        'prettier',
-        '--write',
-        ...files.map((file) => file.path),
-      ]);
+      await execa('npx', ['prettier', '--write', ...files.map((file) => file.path)]);
     },
   },
   typescript: true,

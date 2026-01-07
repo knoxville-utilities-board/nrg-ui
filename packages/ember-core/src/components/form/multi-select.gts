@@ -11,11 +11,7 @@ import BoundValue from './bound-value.ts';
 import Select from './select.gts';
 import { bind } from '../../helpers/bind.ts';
 
-import type {
-  BoundValueSignature,
-  DropdownSignature,
-  Optional,
-} from '../../index.ts';
+import type { BoundValueSignature, DropdownSignature, Optional } from '../../index.ts';
 import type { PopoverVisibility } from '../popover.gts';
 import type { FieldOptions } from './field.gts';
 import type { TOC } from '@ember/component/template-only';
@@ -87,10 +83,7 @@ export type MultiSelectSignature<T> = BoundValueSignature<
   T[]
 >;
 
-export default class MultiSelect<T> extends BoundValue<
-  MultiSelectSignature<T>,
-  T[]
-> {
+export default class MultiSelect<T> extends BoundValue<MultiSelectSignature<T>, T[]> {
   @service
   declare intl: IntlService;
 
@@ -113,18 +106,14 @@ export default class MultiSelect<T> extends BoundValue<
   get defaultText() {
     return (
       this.args.defaultText ??
-      this.intl.t(
-        this.args.defaultTextKey ?? tKey('nrg.multi-select.defaultText'),
-      )
+      this.intl.t(this.args.defaultTextKey ?? tKey('nrg.multi-select.defaultText'))
     );
   }
 
   get noOptionsText() {
     return (
       this.args.noOptionsText ??
-      this.intl.t(
-        this.args.noOptionsTextKey ?? tKey('nrg.multi-select.noOptions'),
-      )
+      this.intl.t(this.args.noOptionsTextKey ?? tKey('nrg.multi-select.noOptions'))
     );
   }
 
@@ -171,16 +160,13 @@ export default class MultiSelect<T> extends BoundValue<
     const { internalOptions, value } = this;
 
     return value!.map(
-      (selectedValue) =>
-        internalOptions.find((option) => option.value === selectedValue)!,
+      (selectedValue) => internalOptions.find((option) => option.value === selectedValue)!,
     );
   }
 
   @cached
   get availableOptions(): SelectOption<T>[] {
-    return this.internalOptions.filter(
-      (option) => !this.value!.includes(option.value),
-    );
+    return this.internalOptions.filter((option) => !this.value!.includes(option.value));
   }
 
   addItem = (option: Optional<SelectOption<T>>) => {
@@ -246,9 +232,7 @@ export default class MultiSelect<T> extends BoundValue<
                     to="selection"
                   }}
                 {{else}}
-                  <span
-                    class="badge text-bg-secondary d-inline-flex align-items-center"
-                  >
+                  <span class="badge text-bg-secondary d-inline-flex align-items-center">
                     {{option.label}}
                     <RemoveButton
                       @disabled={{@fieldOptions.disabled}}

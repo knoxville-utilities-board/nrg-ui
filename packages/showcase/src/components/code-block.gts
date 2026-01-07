@@ -42,11 +42,7 @@ function or(...args: unknown[]) {
   return args.some((a) => Boolean(a));
 }
 
-function coerceValue(
-  value: unknown,
-  path: string,
-  wrap: boolean = true,
-): string {
+function coerceValue(value: unknown, path: string, wrap: boolean = true): string {
   const type = typeof value;
 
   if (value === undefined) {
@@ -64,9 +60,7 @@ function coerceValue(
   }
 
   if (Array.isArray(value)) {
-    const args = value.map((item, index) =>
-      coerceValue(item, `${path}.${index}`, false),
-    );
+    const args = value.map((item, index) => coerceValue(item, `${path}.${index}`, false));
 
     return `{{array ${args.join(' ')}}}`;
   }
@@ -107,13 +101,9 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
     return rawSource.replace(pattern, (_, blockName: string, key: string) => {
       const value = get(model, key);
 
-      warn(
-        `Model is missing key: ${key}`,
-        key in model || value !== undefined,
-        {
-          id: 'showcase.code-block.missing-model-key',
-        },
-      );
+      warn(`Model is missing key: ${key}`, key in model || value !== undefined, {
+        id: 'showcase.code-block.missing-model-key',
+      });
 
       return coerceValue(value, `${blockName}.${key}`);
     });
@@ -133,10 +123,7 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
   }
 
   get name() {
-    assert(
-      'Inline code blocks cannot have a name',
-      !(this.args.inline && this.hasName),
-    );
+    assert('Inline code blocks cannot have a name', !(this.args.inline && this.hasName));
 
     return this.args.name;
   }
@@ -173,11 +160,7 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
 
   <template>
     {{#if @inline}}
-      <span
-        class="d-inline-flex inline mb-0"
-        style={{this.style}}
-        ...attributes
-      >
+      <span class="d-inline-flex inline mb-0" style={{this.style}} ...attributes>
         {{#let this.code.html as |html|}}
           {{#if this.code.isRendered}}
             {{htmlSafe html}}
@@ -189,9 +172,7 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
     {{else}}
       {{#let (or this.hasName (has-block "name")) as |hasName|}}
         {{#if hasName}}
-          <div
-            class="border border-secondary border-bottom-0 rounded-top p-3 mt-2"
-          >
+          <div class="border border-secondary border-bottom-0 rounded-top p-3 mt-2">
             {{#if (has-block "name")}}
               {{yield to="name"}}
             {{else if this.hasName}}

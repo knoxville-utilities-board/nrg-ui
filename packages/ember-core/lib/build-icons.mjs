@@ -3,8 +3,7 @@ import { join } from 'node:path';
 import process from 'node:process';
 
 const OUTPUT_FILE = join(process.cwd(), 'src', 'icons.ts');
-const AUTO_GEN_HEADER =
-  "/* Generated from Bootstrap Icon's bootstrap-icons.json */";
+const AUTO_GEN_HEADER = "/* Generated from Bootstrap Icon's bootstrap-icons.json */";
 
 const content = [AUTO_GEN_HEADER, `const icons = [`];
 const iconData = JSON.parse(

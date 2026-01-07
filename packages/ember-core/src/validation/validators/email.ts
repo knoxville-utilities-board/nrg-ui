@@ -29,10 +29,7 @@ export type EmailOptions = {
 export default class EmailValidator<
   Context extends object = Record<string, unknown>,
 > extends BaseValidator<string | null | undefined, Context, EmailOptions> {
-  validate(
-    value: string | null | undefined,
-    options: EmailOptions,
-  ): ValidateFnResponse {
+  validate(value: string | null | undefined, options: EmailOptions): ValidateFnResponse {
     const { allowBlank, invalidDomains, validDomains } = options;
 
     const key = tKey('nrg.validation.email.invalid');

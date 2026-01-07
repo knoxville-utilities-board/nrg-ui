@@ -68,10 +68,7 @@ export default class CardDemo extends Component {
               @description="When true, callout will render on the left side of the card. Note that this only affects layout when @horizontal is false."
               @defaultValue={{false}}
             />
-            <Args.String
-              @name="subtitle"
-              @description="The subtitle for the card"
-            />
+            <Args.String @name="subtitle" @description="The subtitle for the card" />
             <Args.String @name="title" @description="The title for the card" />
           </Api.Arguments>
           <Api.Blocks as |Block|>

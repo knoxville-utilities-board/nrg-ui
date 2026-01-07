@@ -79,8 +79,7 @@ export default class Scaffold extends Component<ScaffoldSignature> {
 
   get showSidebar() {
     return (
-      this._showSidebar ??
-      !(this.responsive.isMobileScreenGroup || this.responsive.isMediumScreen)
+      this._showSidebar ?? !(this.responsive.isMobileScreenGroup || this.responsive.isMediumScreen)
     );
   }
 
@@ -98,18 +97,14 @@ export default class Scaffold extends Component<ScaffoldSignature> {
 
   get environmentConfig() {
     // @ts-expect-error - this is a private API
-    return getOwner(this)!.resolveRegistration(
-      'config:environment',
-    ) as EnvironmentConfig;
+    return getOwner(this)!.resolveRegistration('config:environment') as EnvironmentConfig;
   }
 
   get sidebarIcon() {
     if (!this.showSidebar) {
       return 'list';
     }
-    return this.responsive.isMobileScreenGroup || this.responsive.isMediumScreen
-      ? 'x-lg'
-      : 'list';
+    return this.responsive.isMobileScreenGroup || this.responsive.isMediumScreen ? 'x-lg' : 'list';
   }
 
   get isDark() {
@@ -140,10 +135,7 @@ export default class Scaffold extends Component<ScaffoldSignature> {
   };
 
   <template>
-    {{#let
-      (or (has-block "sidebar") (has-block "sidebar-footer"))
-      as |hasSidebar|
-    }}
+    {{#let (or (has-block "sidebar") (has-block "sidebar-footer")) as |hasSidebar|}}
       <div class="min-vh-100 d-flex flex-column">
         <AppBar @environment={{@environment}}>
           <:left as |AppBar|>
@@ -168,10 +160,7 @@ export default class Scaffold extends Component<ScaffoldSignature> {
               >
                 <ThemeControl />
               </ContextMenuItem>
-              <ContextMenuItem
-                @menuId={{this.contextMenuId}}
-                @divider={{true}}
-              />
+              <ContextMenuItem @menuId={{this.contextMenuId}} @divider={{true}} />
             {{/if}}
 
             <ContextMenu class="pe-2" @flip={{true}} @id={{this.contextMenuId}}>
@@ -212,9 +201,7 @@ export default class Scaffold extends Component<ScaffoldSignature> {
         <div class="application" ...attributes>
           <Toaster />
           {{#if (and hasSidebar this.showSidebar)}}
-            <div
-              class="col-12 col-md-3 col-xl-2 d-flex flex-column sticky-top overflow-auto"
-            >
+            <div class="col-12 col-md-3 col-xl-2 d-flex flex-column sticky-top overflow-auto">
               {{#if (has-block "sidebar-footer")}}
                 <Sidebar @onClickInternal={{this.sidebarClicked}}>
                   <:default as |Menu|>

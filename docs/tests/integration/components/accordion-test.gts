@@ -22,15 +22,10 @@ module('Integration | Component | Accordion', function (hooks) {
       .dom('.d-flex.flex-column.p-2.m-2.rounded.test')
       .exists('Accordion renders with passed attributes');
 
-    assert
-      .dom('div button p')
-      .hasText('Title', 'Title parameter renders correct content');
+    assert.dom('div button p').hasText('Title', 'Title parameter renders correct content');
     assert
       .dom('div div button i')
-      .hasClass(
-        'bi-caret-left-fill',
-        'Icon has correct class when Accordion is closed',
-      );
+      .hasClass('bi-caret-left-fill', 'Icon has correct class when Accordion is closed');
     assert
       .dom('.rounded div')
       .hasClass('collapse', 'Div containing content contains collapse class');
@@ -38,16 +33,10 @@ module('Integration | Component | Accordion', function (hooks) {
 
     assert
       .dom('.rounded div')
-      .hasClass(
-        'show',
-        'Div containing content has show class after clicking button',
-      );
+      .hasClass('show', 'Div containing content has show class after clicking button');
     assert
       .dom('.rounded button i')
-      .hasClass(
-        'bi-caret-down-fill',
-        'Icon switches to down caret after clicking button',
-      );
+      .hasClass('bi-caret-down-fill', 'Icon switches to down caret after clicking button');
 
     await render(
       <template>
@@ -61,10 +50,7 @@ module('Integration | Component | Accordion', function (hooks) {
 
     assert
       .dom('.rounded div')
-      .hasClass(
-        'show',
-        'Div containing content has class show when defaultOpen parameter is true',
-      );
+      .hasClass('show', 'Div containing content has class show when defaultOpen parameter is true');
     assert
       .dom('.rounded button i')
       .hasClass(

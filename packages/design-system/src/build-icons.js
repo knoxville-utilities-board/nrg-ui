@@ -8,9 +8,7 @@ const DEPS_PATH = join(process.cwd(), 'node_modules');
 const dir = await stat(DEPS_PATH);
 
 if (dir === undefined) {
-  console.error(
-    '`node_modules` does not exist, install dependencies before building icons',
-  );
+  console.error('`node_modules` does not exist, install dependencies before building icons');
   process.exit(1);
 }
 

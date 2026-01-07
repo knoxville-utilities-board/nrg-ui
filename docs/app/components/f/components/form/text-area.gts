@@ -61,11 +61,7 @@ export default class TextAreaDemo extends Component {
               @name="onChange"
               @description="The action to call when the value changes"
               @parameters={{array
-                (p
-                  "newValue"
-                  type="string"
-                  description="The new value of the textarea"
-                )
+                (p "newValue" type="string" description="The new value of the textarea")
               }}
             />
           </Api.Actions>

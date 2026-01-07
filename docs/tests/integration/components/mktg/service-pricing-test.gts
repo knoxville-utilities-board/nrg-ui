@@ -10,17 +10,11 @@ module('Integration | Component | mktg/service-pricing', function (hooks) {
   test('it renders', async function () {
     await render(
       <template>
-        <MktgServicePricing
-          @label="Service"
-          @description="Description"
-          @icon="bi-emoji-smile"
-        />
+        <MktgServicePricing @label="Service" @description="Description" @icon="bi-emoji-smile" />
       </template>,
     );
 
-    assert
-      .dom('div div:nth-child(1) div:nth-child(1) > i')
-      .hasClass('bi-emoji-smile');
+    assert.dom('div div:nth-child(1) div:nth-child(1) > i').hasClass('bi-emoji-smile');
 
     assert.dom('div div:nth-child(1) div:nth-child(2)').hasText('Service');
 
@@ -111,14 +105,10 @@ module('Integration | Component | mktg/service-pricing', function (hooks) {
 
   test('it can render a service product', async function () {
     await render(
-      <template>
-        <MktgServicePricing @label="Service" @product="Service Product" />
-      </template>,
+      <template><MktgServicePricing @label="Service" @product="Service Product" /></template>,
     );
 
-    assert
-      .dom('div div:nth-child(1) div:nth-child(2)')
-      .hasText('Service: Service Product');
+    assert.dom('div div:nth-child(1) div:nth-child(2)').hasText('Service: Service Product');
   });
 
   test('it can render an addon', async function () {
@@ -154,8 +144,6 @@ module('Integration | Component | mktg/service-pricing', function (hooks) {
       </template>,
     );
 
-    assert
-      .dom('div div:nth-child(2) div:nth-child(1)')
-      .hasText('Addon | Qty: 2');
+    assert.dom('div div:nth-child(2) div:nth-child(1)').hasText('Addon | Qty: 2');
   });
 });

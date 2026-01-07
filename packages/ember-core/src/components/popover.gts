@@ -1,13 +1,6 @@
 import { registerDestructor } from '@ember/destroyable';
 import { concat, hash } from '@ember/helper';
-import {
-  arrow,
-  autoUpdate,
-  computePosition,
-  flip,
-  offset,
-  size,
-} from '@floating-ui/dom';
+import { arrow, autoUpdate, computePosition, flip, offset, size } from '@floating-ui/dom';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { restartableTask, timeout } from 'ember-concurrency';
@@ -162,8 +155,7 @@ export default class Popover extends Component<PopoverSignature> {
   get offset() {
     const defaultOffset = this.hasArrow ? getRemValue() / 2 : 0;
     const { offset } = this.args;
-    const numOffset =
-      typeof offset === 'number' ? offset : parseFloat(offset ?? '0');
+    const numOffset = typeof offset === 'number' ? offset : parseFloat(offset ?? '0');
 
     return numOffset + defaultOffset;
   }
@@ -221,11 +213,7 @@ export default class Popover extends Component<PopoverSignature> {
 
     this.cleanupAutoUpdate?.();
 
-    this.cleanupAutoUpdate = autoUpdate(
-      this.control,
-      this.popover,
-      this.updatePosition,
-    );
+    this.cleanupAutoUpdate = autoUpdate(this.control, this.popover, this.updatePosition);
   };
 
   showPopoverModifier = modifier((element: unknown, positional: unknown[]) => {
@@ -263,8 +251,7 @@ export default class Popover extends Component<PopoverSignature> {
     }
 
     const { x: arrowX, y: arrowY } = middlewareData.arrow!;
-    const staticSide: string =
-      ARROW_SIDE[placement.split('-')[0] as Direction]!;
+    const staticSide: string = ARROW_SIDE[placement.split('-')[0] as Direction]!;
 
     Object.assign(this.arrow!.style, {
       left: arrowX ? `${arrowX}px` : '',
@@ -281,36 +268,29 @@ export default class Popover extends Component<PopoverSignature> {
     await action(evt);
   };
 
-  triggerDisplay = restartableTask(
-    async (evtOrInput: Event | HTMLInputElement) => {
-      const { currentTarget } = evtOrInput as Event;
+  triggerDisplay = restartableTask(async (evtOrInput: Event | HTMLInputElement) => {
+    const { currentTarget } = evtOrInput as Event;
 
-      if (this.args.delay) {
-        await timeout(this.args.delay);
-      }
+    if (this.args.delay) {
+      await timeout(this.args.delay);
+    }
 
-      this.isShown = true;
+    this.isShown = true;
 
-      await this.args.onShow?.();
+    await this.args.onShow?.();
 
-      if (evtOrInput instanceof HTMLInputElement) {
-        this._control = evtOrInput;
-        this.showPopover();
-      } else if (
-        evtOrInput instanceof Event &&
-        currentTarget instanceof HTMLElement
-      ) {
-        this._control = currentTarget;
-        this.showPopover();
-      }
-    },
-  );
+    if (evtOrInput instanceof HTMLInputElement) {
+      this._control = evtOrInput;
+      this.showPopover();
+    } else if (evtOrInput instanceof Event && currentTarget instanceof HTMLElement) {
+      this._control = currentTarget;
+      this.showPopover();
+    }
+  });
 
   <template>
     {{#let
-      (hash
-        isShown=this.isShown show=this.show hide=this.hide toggle=this.toggle
-      )
+      (hash isShown=this.isShown show=this.show hide=this.hide toggle=this.toggle)
       as |visibility|
     }}
       {{yield visibility to="control"}}
@@ -322,21 +302,11 @@ export default class Popover extends Component<PopoverSignature> {
           "overflow-x-auto"
         }}
         {{onInsert this.initPopover}}
-        {{this.showPopoverModifier
-          @alignment
-          @arrow
-          @controlElement
-          @offset
-          @side
-        }}
+        {{this.showPopoverModifier @alignment @arrow @controlElement @offset @side}}
         ...attributes
       >
         {{#if (has-block-params "content")}}
-          {{yield
-            (hash Header=(component Header) Body=(component Body))
-            visibility
-            to="content"
-          }}
+          {{yield (hash Header=(component Header) Body=(component Body)) visibility to="content"}}
         {{else}}
           {{! @glint-expect-error - If there are no block params, we don't need to yield anything to the block }}
           {{yield to="content"}}

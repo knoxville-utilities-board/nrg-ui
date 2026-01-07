@@ -1,10 +1,7 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/core';
-import {
-  CustomValidator,
-  validator as buildValidator,
-} from '@nrg-ui/core/validation';
+import { CustomValidator, validator as buildValidator } from '@nrg-ui/core/validation';
 import { setupTest } from 'docs/tests/helpers';
 import { addTranslations, setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';
@@ -43,10 +40,7 @@ module('Unit | Validator | custom', function (hooks) {
       // @ts-expect-error Testing that the `validate` option is required
       const validator = new CustomValidator(this.binding, {}, this.model);
 
-      assert.notOk(
-        true,
-        'Expected an error, but got a result instead: ' + validator.result,
-      );
+      assert.notOk(true, 'Expected an error, but got a result instead: ' + validator.result);
     }, new Error('Assertion Failed: CustomValidator requires a `validate` function to be provided'));
   });
 

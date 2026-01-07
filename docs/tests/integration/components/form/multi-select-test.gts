@@ -44,9 +44,7 @@ module('Integration | Component | form/multi-select', function (hooks) {
   test('it renders when empty', async function (assert) {
     const model = new Model();
 
-    await render(
-      <template><MultiSelect @binding={{bind model "value"}} /></template>,
-    );
+    await render(<template><MultiSelect @binding={{bind model "value"}} /></template>);
 
     assert.dom('.selected-display').hasText('Select at least one option');
   });
@@ -73,10 +71,7 @@ module('Integration | Component | form/multi-select', function (hooks) {
 
     await render(
       <template>
-        <MultiSelect
-          @binding={{bind model "value"}}
-          @options={{stringOptions}}
-        />
+        <MultiSelect @binding={{bind model "value"}} @options={{stringOptions}} />
       </template>,
     );
 
@@ -88,10 +83,7 @@ module('Integration | Component | form/multi-select', function (hooks) {
     const model = new Model();
     await render(
       <template>
-        <MultiSelect
-          @binding={{bind model "value"}}
-          @options={{stringOptions}}
-        />
+        <MultiSelect @binding={{bind model "value"}} @options={{stringOptions}} />
       </template>,
     );
 
@@ -113,10 +105,7 @@ module('Integration | Component | form/multi-select', function (hooks) {
     const model = new Model();
     await render(
       <template>
-        <MultiSelect
-          @binding={{bind model "value"}}
-          @options={{objectOptions}}
-        />
+        <MultiSelect @binding={{bind model "value"}} @options={{objectOptions}} />
       </template>,
     );
 
@@ -150,11 +139,7 @@ module('Integration | Component | form/multi-select', function (hooks) {
     assert.dom('.selected-display').hasText('Select at least one option');
 
     await click('button');
-    assert
-      .dom('.dropdown-menu')
-      .containsText('key 1')
-      .containsText('key 2')
-      .containsText('key 3');
+    assert.dom('.dropdown-menu').containsText('key 1').containsText('key 2').containsText('key 3');
 
     await click('.dropdown-menu li');
     assert.dom('.selected-display > span:first-child').hasText('key 1');
@@ -176,11 +161,7 @@ module('Integration | Component | form/multi-select', function (hooks) {
     assert.dom('.selected-display').hasText('Select at least one option');
 
     await click('button');
-    assert
-      .dom('.dropdown-menu')
-      .containsText('key 1')
-      .containsText('key 2')
-      .containsText('key 3');
+    assert.dom('.dropdown-menu').containsText('key 1').containsText('key 2').containsText('key 3');
 
     await click('.dropdown-menu li');
     assert.dom('.selected-display > span:first-child').hasText('label 1');
@@ -217,10 +198,7 @@ module('Integration | Component | form/multi-select', function (hooks) {
     const model = new Model();
     await render(
       <template>
-        <MultiSelect
-          @binding={{bind model "value"}}
-          @options={{objectOptions}}
-        />
+        <MultiSelect @binding={{bind model "value"}} @options={{objectOptions}} />
       </template>,
     );
 
@@ -247,10 +225,7 @@ module('Integration | Component | form/multi-select', function (hooks) {
     const model = new Model();
     await render(
       <template>
-        <MultiSelect
-          @binding={{bind model "value"}}
-          @options={{objectOptions}}
-        />
+        <MultiSelect @binding={{bind model "value"}} @options={{objectOptions}} />
       </template>,
     );
     assert.dom('.selected-display').hasText('Select at least one option');

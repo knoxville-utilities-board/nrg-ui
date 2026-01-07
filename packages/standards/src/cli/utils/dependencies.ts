@@ -97,9 +97,7 @@ export async function installMany(deps: { [dep: string]: string | undefined }) {
     .map(([dep, version]) => {
       const currentVersion = getVersion(dep)!;
       if (version && satisfies(currentVersion, version)) {
-        logger.debug(
-          `Dependency '${dep}' satisfies the minimum version ${version}`,
-        );
+        logger.debug(`Dependency '${dep}' satisfies the minimum version ${version}`);
         return;
       }
 
@@ -147,9 +145,7 @@ export async function install(dep?: string, version?: string) {
 
   const currentVersion = getVersion(dep)!;
   if (version && satisfies(currentVersion, version)) {
-    logger.debug(
-      `Dependency '${dep}' satisfies the minimum version ${version}`,
-    );
+    logger.debug(`Dependency '${dep}' satisfies the minimum version ${version}`);
     return;
   }
 
@@ -184,13 +180,8 @@ export async function update(dep: string, version?: string, force?: boolean) {
   }
 
   const currentVersion = coerce(getVersion(dep))!;
-  if (
-    satisfies(currentVersion, version) ||
-    gte(currentVersion, coerce(version)!)
-  ) {
-    logger.debug(
-      `Dependency '${dep}@${currentVersion}' satisfies the minimum version ${version}`,
-    );
+  if (satisfies(currentVersion, version) || gte(currentVersion, coerce(version)!)) {
+    logger.debug(`Dependency '${dep}@${currentVersion}' satisfies the minimum version ${version}`);
 
     if (!force) {
       return true;

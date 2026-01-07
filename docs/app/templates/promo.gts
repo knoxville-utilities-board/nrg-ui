@@ -4,16 +4,9 @@ import MktgPromoContainer from '@nrg-ui/core/components/mktg/promo-container';
 <template>
   <main data-theme="marketing" class="bg-primary-subtle">
     <MktgPromoContainer as |Container|>
-      <Container.Promo
-        class="bg-primary text-white p-0"
-        @productName="Smart Gig Add-on"
-      >
+      <Container.Promo class="bg-primary text-white p-0" @productName="Smart Gig Add-on">
         <:img>
-          <img
-            src="https://place-hold.it/500x500"
-            alt="Placeholder"
-            class="w-100 h-100"
-          />
+          <img src="https://place-hold.it/500x500" alt="Placeholder" class="w-100 h-100" />
         </:img>
         <:header>
           <p class="m-0 p-0">
@@ -24,10 +17,9 @@ import MktgPromoContainer from '@nrg-ui/core/components/mktg/promo-container';
         </:header>
         <:description>
           <p>
-            With KUB Smart Gig, we will provide you with a router, and you'll
-            have everything you need to seamlessly use your wired and wireless
-            devices, keeping each of them running at optimal speeds at the same
-            time.
+            With KUB Smart Gig, we will provide you with a router, and you'll have everything you
+            need to seamlessly use your wired and wireless devices, keeping each of them running at
+            optimal speeds at the same time.
             <span class="fw-semibold">
               For only $15 per month
             </span>
@@ -36,8 +28,7 @@ import MktgPromoContainer from '@nrg-ui/core/components/mktg/promo-container';
                 <span class="fw-semibold">
                   $15 a month:
                 </span>
-                We'll provide you a router to get everything set up to run
-                smoothly
+                We'll provide you a router to get everything set up to run smoothly
               </li>
               <li>
                 <span class="fw-semibold">
@@ -62,9 +53,9 @@ import MktgPromoContainer from '@nrg-ui/core/components/mktg/promo-container';
       >
         <:subheader>
           <p class="m-0">
-            KUB is installing its fiber optic cables alongside existing electric
-            wires. Fiber cables will be underground where electric lines are
-            underground, and overhead where electric lines are overhead.
+            KUB is installing its fiber optic cables alongside existing electric wires. Fiber cables
+            will be underground where electric lines are underground, and overhead where electric
+            lines are overhead.
           </p>
           <div class="d-flex justify-content-center mb-4">
             <Button type="button" class="mx-2 mt-2 btn btn-primary">
@@ -97,10 +88,9 @@ import MktgPromoContainer from '@nrg-ui/core/components/mktg/promo-container';
         </:header>
         <:description>
           <p>
-            With KUB Smart Gig, we will provide you with a router, and you'll
-            have everything you need to seamlessly use your wired and wireless
-            devices, keeping each of them running at optimal speeds at the same
-            time.
+            With KUB Smart Gig, we will provide you with a router, and you'll have everything you
+            need to seamlessly use your wired and wireless devices, keeping each of them running at
+            optimal speeds at the same time.
             <span class="fw-semibold">
               For only $15 per month
             </span>
@@ -109,8 +99,7 @@ import MktgPromoContainer from '@nrg-ui/core/components/mktg/promo-container';
                 <span class="fw-semibold">
                   $15 a month:
                 </span>
-                We'll provide you a router to get everything set up to run
-                smoothly
+                We'll provide you a router to get everything set up to run smoothly
               </li>
               <li>
                 <span class="fw-semibold">
@@ -146,10 +135,9 @@ import MktgPromoContainer from '@nrg-ui/core/components/mktg/promo-container';
         </:header>
         <:description>
           <p>
-            With KUB Smart Gig, we will provide you with a router, and you'll
-            have everything you need to seamlessly use your wired and wireless
-            devices, keeping each of them running at optimal speeds at the same
-            time.
+            With KUB Smart Gig, we will provide you with a router, and you'll have everything you
+            need to seamlessly use your wired and wireless devices, keeping each of them running at
+            optimal speeds at the same time.
             <span class="fw-semibold">
               For only $15 per month
             </span>
@@ -158,8 +146,7 @@ import MktgPromoContainer from '@nrg-ui/core/components/mktg/promo-container';
                 <span class="fw-semibold">
                   $15 a month:
                 </span>
-                We'll provide you a router to get everything set up to run
-                smoothly
+                We'll provide you a router to get everything set up to run smoothly
               </li>
               <li>
                 <span class="fw-semibold">
@@ -174,11 +161,7 @@ import MktgPromoContainer from '@nrg-ui/core/components/mktg/promo-container';
           </Button>
         </:description>
       </Container.Promo>
-      <Container.Promo
-        class="col-12 col-lg-4"
-        @vertical={{true}}
-        @productName="Smart Gig Add-on"
-      >
+      <Container.Promo class="col-12 col-lg-4" @vertical={{true}} @productName="Smart Gig Add-on">
         <:img>
           <img
             src="https://place-hold.it/400x150"
@@ -195,10 +178,9 @@ import MktgPromoContainer from '@nrg-ui/core/components/mktg/promo-container';
         </:header>
         <:description>
           <p>
-            With KUB Smart Gig, we will provide you with a router, and you'll
-            have everything you need to seamlessly use your wired and wireless
-            devices, keeping each of them running at optimal speeds at the same
-            time.
+            With KUB Smart Gig, we will provide you with a router, and you'll have everything you
+            need to seamlessly use your wired and wireless devices, keeping each of them running at
+            optimal speeds at the same time.
             <span class="fw-semibold">
               For only $15 per month
             </span>
@@ -207,8 +189,7 @@ import MktgPromoContainer from '@nrg-ui/core/components/mktg/promo-container';
                 <span class="fw-semibold">
                   $15 a month:
                 </span>
-                We'll provide you a router to get everything set up to run
-                smoothly
+                We'll provide you a router to get everything set up to run smoothly
               </li>
               <li>
                 <span class="fw-semibold">

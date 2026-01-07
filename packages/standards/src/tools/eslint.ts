@@ -8,12 +8,7 @@ import { getDependenciesFromPackage, load } from '../utils.js';
 
 import type { ESLint, Linter } from 'eslint';
 
-export const defaultJsIgnores = [
-  'node_modules/',
-  'dist/',
-  'vendor/',
-  'assets/',
-];
+export const defaultJsIgnores = ['node_modules/', 'dist/', 'vendor/', 'assets/'];
 export const defaultTsIgnores = defaultJsIgnores.concat(['declarations/']);
 
 function flatten(o: object): object {
@@ -35,9 +30,7 @@ export class Config {
   #loadDeps() {
     if (!this.#deps) {
       this.#deps = new Map(
-        Object.entries(
-          getDependenciesFromPackage(join(process.cwd(), 'package.json')),
-        ),
+        Object.entries(getDependenciesFromPackage(join(process.cwd(), 'package.json'))),
       );
     }
 
@@ -53,16 +46,11 @@ export class Config {
   }
 
   get isEmberApp() {
-    return (
-      existsSync(join(cwd(), 'app')) &&
-      existsSync(join(cwd(), 'ember-cli-build.js'))
-    );
+    return existsSync(join(cwd(), 'app')) && existsSync(join(cwd(), 'ember-cli-build.js'));
   }
 
   get isEmberAddon() {
-    const packageJson = JSON.parse(
-      readFileSync(join(process.cwd(), 'package.json'), 'utf-8'),
-    );
+    const packageJson = JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf-8'));
 
     return 'ember-addon' in packageJson;
   }
@@ -118,9 +106,7 @@ export class Config {
       ];
     },
 
-    base: async (
-      globals: (keyof typeof allGlobals)[] = ['browser'],
-    ): Promise<Linter.Config[]> => {
+    base: async (globals: (keyof typeof allGlobals)[] = ['browser']): Promise<Linter.Config[]> => {
       const objects: Linter.Config[] = [];
 
       if (this.hasDependency('babel-eslint')) {
@@ -337,9 +323,7 @@ export class Config {
       }
 
       const files = [`**/*.{${fileTypes.join()}}`];
-      const tseslint = (await load(
-        'typescript-eslint',
-      )) as typeof import('typescript-eslint');
+      const tseslint = (await load('typescript-eslint')) as typeof import('typescript-eslint');
 
       objects.push(...tseslint.configs.recommended);
       objects.push(tseslint.configs.eslintRecommended);
@@ -368,9 +352,7 @@ export class Config {
         obj.languageOptions ??= {};
         obj.languageOptions.parserOptions ??= {};
 
-        (obj.languageOptions.parserOptions as Record<string, unknown>)[
-          'tsconfigRootDir'
-        ] = cwd();
+        (obj.languageOptions.parserOptions as Record<string, unknown>)['tsconfigRootDir'] = cwd();
       }
 
       return objects;
@@ -426,10 +408,7 @@ export class Config {
     gts: async (rules?: Linter.RulesRecord): Promise<Linter.Config[]> => {
       const objects: Linter.Config[] = [];
 
-      if (
-        !this.supportsEmberTemplateTags ||
-        !this.hasDependency('typescript', 'gts')
-      ) {
+      if (!this.supportsEmberTemplateTags || !this.hasDependency('typescript', 'gts')) {
         logger.warn(
           'This application does not support GTS files. In addition to typescript, one of the following is required:',
           'ember-template-imports',
@@ -478,10 +457,7 @@ export class Config {
       return objects;
     },
 
-    scripts: async (
-      globs: string[],
-      rules: Linter.RulesRecord = {},
-    ): Promise<Linter.Config[]> => {
+    scripts: async (globs: string[], rules: Linter.RulesRecord = {}): Promise<Linter.Config[]> => {
       const objects: Linter.Config[] = [];
 
       if (!globs?.length) {
@@ -494,9 +470,7 @@ export class Config {
         return objects;
       }
 
-      const nodePlugin = (await load(
-        'eslint-plugin-n',
-      )) as typeof import('eslint-plugin-n');
+      const nodePlugin = (await load('eslint-plugin-n')) as typeof import('eslint-plugin-n');
       const defaultConfig = nodePlugin.configs['flat/recommended'];
 
       objects.push({
@@ -578,10 +552,7 @@ export class Config {
       return objects;
     },
 
-    custom: async (
-      name: string,
-      options: Partial<Linter.Config>,
-    ): Promise<Linter.Config[]> => {
+    custom: async (name: string, options: Partial<Linter.Config>): Promise<Linter.Config[]> => {
       if (!name) {
         logger.error('No name provided for `.rules.custom()`');
       }

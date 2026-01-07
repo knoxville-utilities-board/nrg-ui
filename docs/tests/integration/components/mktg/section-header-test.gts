@@ -10,11 +10,7 @@ module('Integration | Component | mktg/section-header', function (hooks) {
   test('Section header renders', async function () {
     await render(
       <template>
-        <MktgSectionHeader
-          class="section-header"
-          @title="Title"
-          @subject="Subject"
-        >
+        <MktgSectionHeader class="section-header" @title="Title" @subject="Subject">
           <:subheader>
             <p>subheader</p>
           </:subheader>
@@ -23,14 +19,10 @@ module('Integration | Component | mktg/section-header', function (hooks) {
     );
 
     assert
-      .dom(
-        '.col-12.d-flex.flex-column.align-items-center .text-center.section-header',
-      )
+      .dom('.col-12.d-flex.flex-column.align-items-center .text-center.section-header')
       .exists('Section header renders with passed attributes');
     assert.dom('div div p').hasText('Subject', 'Subject renders within header');
-    assert
-      .dom('div div p:nth-of-type(2)')
-      .hasText('Title', 'Title renders within header');
+    assert.dom('div div p:nth-of-type(2)').hasText('Title', 'Title renders within header');
     assert
       .dom('div div p:nth-of-type(3)')
       .hasText('subheader', 'Subheader renders within named block');
