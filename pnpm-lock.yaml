@@ -137,9 +137,6 @@ importers:
       decorator-transforms:
         specifier: ^2.3.1
         version: 2.3.1(@babel/core@7.28.5)
-      ember-auto-import:
-        specifier: ^2.12.0
-        version: 2.12.0(@glint/template@1.7.3)
       ember-cli:
         specifier: ~6.8.0
         version: 6.8.1(handlebars@4.7.8)(underscore@1.13.7)
