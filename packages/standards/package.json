@@ -38,6 +38,7 @@
     "build:watch": "tsc --build --watch",
     "format": "prettier . --cache --write",
     "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
+    "lint:format": "prettier . --cache --check",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "prepare": "pnpm build",
