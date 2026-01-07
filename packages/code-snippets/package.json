@@ -45,7 +45,6 @@
     "format": "prettier . --write --cache",
     "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:' --prefix-colors=auto",
     "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" --prefix-colors=auto && pnpm format",
-    "lint:format": "prettier . --cache --check",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "prepare": "pnpm build",
