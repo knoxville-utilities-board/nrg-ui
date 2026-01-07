@@ -10,6 +10,9 @@
     "emitDeclarationOnly": false,
     "noEmitOnError": false,
 
+    "declaration": true,
+    "declarationDir": "declarations",
+
     "rootDir": "./src",
     "outDir": "./dist",
     "verbatimModuleSyntax": true,

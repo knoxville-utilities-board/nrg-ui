@@ -20,6 +20,7 @@
     "url": "https://www.kub.org"
   },
   "files": [
+    "declarations",
     "dist",
     "README.md",
     "package.json"
