@@ -30,22 +30,26 @@ const esmParserOptions: Linter.ParserOptions = {
 };
 
 export class Config {
-  readonly #deps: Map<string, string>;
+  #deps?: Map<string, string>;
 
-  constructor() {
-    this.#deps = new Map(
-      Object.entries(
-        getDependenciesFromPackage(join(process.cwd(), 'package.json')),
-      ),
-    );
+  #loadDeps() {
+    if (!this.#deps) {
+      this.#deps = new Map(
+        Object.entries(
+          getDependenciesFromPackage(join(process.cwd(), 'package.json')),
+        ),
+      );
+    }
+
+    return this.#deps;
   }
 
   get hasTypescript() {
-    return this.#deps.has('typescript');
+    return this.#loadDeps().has('typescript');
   }
 
   get hasTemplateImports() {
-    return this.#deps.has('ember-template-imports');
+    return this.#loadDeps().has('ember-template-imports');
   }
 
   get isEmberApp() {
@@ -64,7 +68,7 @@ export class Config {
   }
 
   hasDependency(dep: string, message?: string) {
-    if (!this.#deps.has(dep)) {
+    if (!this.#loadDeps().has(dep)) {
       if (message) {
         logger.missing(dep, `.rules.${message}()`);
       }
