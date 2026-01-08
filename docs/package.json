@@ -77,7 +77,6 @@
     "concurrently": "^9.2.1",
     "dayjs": "^1.11.19",
     "decorator-transforms": "^2.3.1",
-    "ember-auto-import": "^2.12.0",
     "ember-cli": "~6.8.0",
     "ember-cli-babel": "^8.2.0",
     "ember-cli-deprecation-workflow": "^4.0.0",
