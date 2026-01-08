@@ -30,14 +30,8 @@ module('Unit | Utility | phone', function (hooks) {
     assert.true(lineNumberInput.test(withLineNumber));
     assert.false(lineNumberInput.test(withoutLineNumber));
 
-    assert.strictEqual(
-      withLineNumber.replace(lineNumberInput, lineNumberOutput),
-      '123',
-    );
-    assert.strictEqual(
-      withoutLineNumber.replace(lineNumberInput, lineNumberOutput),
-      '',
-    );
+    assert.strictEqual(withLineNumber.replace(lineNumberInput, lineNumberOutput), '123');
+    assert.strictEqual(withoutLineNumber.replace(lineNumberInput, lineNumberOutput), '');
 
     assert.true(hasLineNumber(withLineNumber));
     assert.false(hasLineNumber(withoutLineNumber));
@@ -53,14 +47,8 @@ module('Unit | Utility | phone', function (hooks) {
     assert.true(exchangeCodeInput.test(withExchangeCode));
     assert.false(exchangeCodeInput.test(withoutExchangeCode));
 
-    assert.strictEqual(
-      withExchangeCode.replace(exchangeCodeInput, exchangeCodeOutput),
-      '1-2345',
-    );
-    assert.strictEqual(
-      withoutExchangeCode.replace(exchangeCodeInput, exchangeCodeOutput),
-      '1234',
-    );
+    assert.strictEqual(withExchangeCode.replace(exchangeCodeInput, exchangeCodeOutput), '1-2345');
+    assert.strictEqual(withoutExchangeCode.replace(exchangeCodeInput, exchangeCodeOutput), '1234');
 
     assert.true(hasExchangeCode(withExchangeCode));
     assert.false(hasExchangeCode(withoutExchangeCode));
@@ -76,14 +64,8 @@ module('Unit | Utility | phone', function (hooks) {
     assert.true(areaCodeInput.test(withAreaCode));
     assert.false(areaCodeInput.test(withoutAreaCode));
 
-    assert.strictEqual(
-      withAreaCode.replace(areaCodeInput, areaCodeOutput),
-      '(123) 456-7890',
-    );
-    assert.strictEqual(
-      withoutAreaCode.replace(areaCodeInput, areaCodeOutput),
-      '1234567',
-    );
+    assert.strictEqual(withAreaCode.replace(areaCodeInput, areaCodeOutput), '(123) 456-7890');
+    assert.strictEqual(withoutAreaCode.replace(areaCodeInput, areaCodeOutput), '1234567');
 
     assert.true(hasAreaCode(withAreaCode));
     assert.false(hasAreaCode(withoutAreaCode));

@@ -21,28 +21,18 @@ export type RegexOptions = {
 export default class RegexValidator<
   Context extends object = Record<string, unknown>,
 > extends BaseValidator<string, Context, RegexOptions> {
-  constructor(
-    binding: Binding,
-    options: Computable<Context, RegexOptions>,
-    context?: Context,
-  ) {
+  constructor(binding: Binding, options: Computable<Context, RegexOptions>, context?: Context) {
     super(binding, options, context);
 
     const { pattern } = options;
 
-    assert(
-      'RegexValidator requires `pattern` to be provided',
-      !isNone(pattern),
-    );
+    assert('RegexValidator requires `pattern` to be provided', !isNone(pattern));
   }
 
   validate(value: string, options: RegexOptions): ValidateFnResponse {
     const { inverse = false, pattern } = options;
 
-    assert(
-      'RegexValidator requires a pattern to be provided',
-      !isNone(pattern),
-    );
+    assert('RegexValidator requires a pattern to be provided', !isNone(pattern));
 
     assert(
       'RegexValidator requires the pattern to be of type string or RegExp',

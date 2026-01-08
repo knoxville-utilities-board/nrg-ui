@@ -50,14 +50,10 @@ module('Integration | Component | dropdown', function (hooks) {
 
     assert.dom('[data-test-dropdown-item]').exists({ count: 3 });
     assert
-      .dom(
-        '[data-test-dropdown-item]:nth-child(3) + li > [data-test-dropdown-divider]',
-      )
+      .dom('[data-test-dropdown-item]:nth-child(3) + li > [data-test-dropdown-divider]')
       .exists();
     assert
-      .dom(
-        'li:has(> [data-test-dropdown-divider]) + li > [data-test-dropdown-header]',
-      )
+      .dom('li:has(> [data-test-dropdown-divider]) + li > [data-test-dropdown-header]')
       .hasText('Header')
       .exists();
   });

@@ -139,10 +139,7 @@ export default class Modal extends Component<ModalSignature> {
       ...attributes
     >
       {{#if @isOpen}}
-        <div
-          class="modal-content"
-          {{cssTransition "modal" didTransitionOut=this.closeModal}}
-        >
+        <div class="modal-content" {{cssTransition "modal" didTransitionOut=this.closeModal}}>
           {{#if this.isDismissible}}
             <button
               aria-label={{t "nrg.base.close"}}

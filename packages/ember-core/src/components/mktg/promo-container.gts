@@ -23,12 +23,7 @@ export interface MktgPromoContainerSignature {
 const MktgPromoContainer: TOC<MktgPromoContainerSignature> = <template>
   <div class="container">
     <div class="row p-4 d-flex justify-content-center" ...attributes>
-      {{yield
-        (hash
-          SectionHeader=(component MktgSectionHeader)
-          Promo=(component MktgPromo)
-        )
-      }}
+      {{yield (hash SectionHeader=(component MktgSectionHeader) Promo=(component MktgPromo))}}
 
     </div>
   </div>

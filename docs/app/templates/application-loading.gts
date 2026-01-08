@@ -13,9 +13,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
       <AppBar.Environment />
     </:app-bar-left>
     <:default>
-      <div
-        class="d-flex flex-column align-items-center justify-content-center mt-5"
-      >
+      <div class="d-flex flex-column align-items-center justify-content-center mt-5">
         <LoadingIndicator class="spinner-lg" />
         <h4 class="mt-3" role="status">Loading docs...</h4>
       </div>

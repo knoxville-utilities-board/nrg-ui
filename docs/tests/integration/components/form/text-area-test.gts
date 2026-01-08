@@ -24,9 +24,7 @@ module('Integration | Component | form/text-area', function (hooks) {
     };
 
     await render(
-      <template>
-        <TextArea @binding={{bind model "value"}} @onChange={{actionHandler}} />
-      </template>,
+      <template><TextArea @binding={{bind model "value"}} @onChange={{actionHandler}} /></template>,
     );
 
     assert.dom('textarea').hasClass('form-control').hasValue('Hello, world!');
@@ -37,11 +35,7 @@ module('Integration | Component | form/text-area', function (hooks) {
 
     await render(
       <template>
-        <TextArea
-          @binding={{bind model "value"}}
-          @basic={{true}}
-          @onChange={{actionHandler}}
-        />
+        <TextArea @binding={{bind model "value"}} @basic={{true}} @onChange={{actionHandler}} />
       </template>,
     );
 

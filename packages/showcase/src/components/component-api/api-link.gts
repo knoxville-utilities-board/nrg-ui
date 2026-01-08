@@ -19,14 +19,7 @@ export interface ApiLinkSignature {
  * than their primitive counterparts.
  *
  * See https://typescript-eslint.io/rules/no-wrapper-object-types/ */
-const WRAPPER_OBJECT_TYPES = [
-  'String',
-  'Number',
-  'Boolean',
-  'Symbol',
-  'BigInt',
-  'Object',
-];
+const WRAPPER_OBJECT_TYPES = ['String', 'Number', 'Boolean', 'Symbol', 'BigInt', 'Object'];
 
 function getDisplayType(type: string) {
   if (WRAPPER_OBJECT_TYPES.includes(type)) {
@@ -54,12 +47,7 @@ function or(...values: (string | undefined | null)[]) {
 
 export const ApiLink: TOC<ApiLinkSignature> = <template>
   {{#if @link}}
-    <a
-      class="api-link"
-      href={{@link}}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <a class="api-link" href={{@link}} target="_blank" rel="noopener noreferrer">
       <TypeCodeBlock
         class="me-1"
         @code={{or @displayType (getDisplayType @type)}}
@@ -69,12 +57,7 @@ export const ApiLink: TOC<ApiLinkSignature> = <template>
   {{else}}
     {{#let (getDocType @type) as |mdnLink|}}
       {{#if mdnLink}}
-        <a
-          class="api-link mdn"
-          href={{mdnLink}}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a class="api-link mdn" href={{mdnLink}} target="_blank" rel="noopener noreferrer">
           <TypeCodeBlock
             class="me-1"
             @code={{or @displayType (getDisplayType @type)}}

@@ -2,11 +2,7 @@ import { isEmpty, isNone } from '@ember/utils';
 import { tKey } from 'ember-intl';
 
 import BaseValidator from './base.ts';
-import {
-  getAreaCode,
-  getCountryCode,
-  getExchangeCode,
-} from '../../utils/phone.ts';
+import { getAreaCode, getCountryCode, getExchangeCode } from '../../utils/phone.ts';
 
 import type { BaseOptions, ValidateFnResponse } from '../types';
 
@@ -63,10 +59,7 @@ export default class PhoneValidator<
     countryCode: 'allow' as const,
   };
 
-  validate(
-    value: string | null | undefined,
-    options: PhoneOptions,
-  ): ValidateFnResponse {
+  validate(value: string | null | undefined, options: PhoneOptions): ValidateFnResponse {
     const { allowBlank } = options;
 
     const key = tKey('nrg.validation.phone.invalid');

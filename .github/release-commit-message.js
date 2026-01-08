@@ -14,10 +14,7 @@ const updatedVersions = [];
 for (const pkg of packages) {
   let packageJson;
   try {
-    const json = fs.readFileSync(
-      path.join(pkg, 'package.json'),
-      'utf8',
-    );
+    const json = fs.readFileSync(path.join(pkg, 'package.json'), 'utf8');
     packageJson = JSON.parse(json);
   } catch (e) {
     continue;

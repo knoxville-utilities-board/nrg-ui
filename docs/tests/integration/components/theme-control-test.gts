@@ -52,34 +52,16 @@ module('Integration | Component | theme-control', function (hooks) {
     this.service.value = 'dark';
     await rerender();
 
-    assert
-      .dom('button:nth-child(1)')
-      .hasAria('pressed', 'false')
-      .doesNotHaveClass('active');
-    assert
-      .dom('button:nth-child(2)')
-      .hasAria('pressed', 'true')
-      .hasClass('active');
-    assert
-      .dom('button:nth-child(3)')
-      .hasAria('pressed', 'false')
-      .doesNotHaveClass('active');
+    assert.dom('button:nth-child(1)').hasAria('pressed', 'false').doesNotHaveClass('active');
+    assert.dom('button:nth-child(2)').hasAria('pressed', 'true').hasClass('active');
+    assert.dom('button:nth-child(3)').hasAria('pressed', 'false').doesNotHaveClass('active');
 
     this.service.value = 'auto';
     await rerender();
 
-    assert
-      .dom('button:nth-child(1)')
-      .hasAria('pressed', 'false')
-      .doesNotHaveClass('active');
-    assert
-      .dom('button:nth-child(2)')
-      .hasAria('pressed', 'false')
-      .doesNotHaveClass('active');
-    assert
-      .dom('button:nth-child(3)')
-      .hasAria('pressed', 'true')
-      .hasClass('active');
+    assert.dom('button:nth-child(1)').hasAria('pressed', 'false').doesNotHaveClass('active');
+    assert.dom('button:nth-child(2)').hasAria('pressed', 'false').doesNotHaveClass('active');
+    assert.dom('button:nth-child(3)').hasAria('pressed', 'true').hasClass('active');
   });
 
   test('buttons work', async function (this: Context, assert) {

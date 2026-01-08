@@ -69,11 +69,7 @@ module('Integration | Component | form/radio-group', function (hooks) {
 
     await render(
       <template>
-        <RadioGroup
-          @binding={{bind model "value"}}
-          @onChange={{actionHandler}}
-          as |Group|
-        >
+        <RadioGroup @binding={{bind model "value"}} @onChange={{actionHandler}} as |Group|>
           <Group.Radio @option="1" />
           <Group.Radio @option="2" />
         </RadioGroup>

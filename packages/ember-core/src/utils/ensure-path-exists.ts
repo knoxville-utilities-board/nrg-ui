@@ -19,10 +19,7 @@ function ensure(object: Record<string, unknown>, keys: string[]) {
       const newArray = [];
       newArray[index] = {};
       object[key] = newArray;
-      ensure(
-        (object[key] as unknown[])[index] as Record<string, unknown>,
-        keys.slice(2),
-      );
+      ensure((object[key] as unknown[])[index] as Record<string, unknown>, keys.slice(2));
       return;
     }
 

@@ -15,9 +15,7 @@ export const LogLevel = {
 function split(messages: unknown[]) {
   return messages
     .map(String)
-    .map((message) =>
-      message.split('\n').map((line, i) => (i ? '  ' : '') + line),
-    )
+    .map((message) => message.split('\n').map((line, i) => (i ? '  ' : '') + line))
     .flat();
 }
 

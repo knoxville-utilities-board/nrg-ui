@@ -127,9 +127,7 @@ export default class Datetime extends BoundValue<DatetimeSignature, Date> {
 
   get defaultValue() {
     if (this.args.defaultValue !== undefined) {
-      return this.args.defaultValue
-        ? dayjs(this.args.defaultValue).toDate()
-        : null;
+      return this.args.defaultValue ? dayjs(this.args.defaultValue).toDate() : null;
     }
 
     return new Date();
@@ -161,11 +159,7 @@ export default class Datetime extends BoundValue<DatetimeSignature, Date> {
     evt.preventDefault();
     evt.stopPropagation();
 
-    if (
-      this.isFocused ||
-      this.args.fieldOptions?.disabled ||
-      this.args.readonly
-    ) {
+    if (this.isFocused || this.args.fieldOptions?.disabled || this.args.readonly) {
       return;
     }
 

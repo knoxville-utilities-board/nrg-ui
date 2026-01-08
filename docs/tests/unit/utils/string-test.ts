@@ -3,16 +3,8 @@ import { module, test } from 'qunit';
 
 module('Unit | Utility | string', function () {
   test('collapseWhitespace works', function (assert) {
-    assert.strictEqual(
-      collapseWhitespace('  foo bar'),
-      'foo bar',
-      'removes leading whitespace',
-    );
-    assert.strictEqual(
-      collapseWhitespace('foo bar  '),
-      'foo bar',
-      'removes trailing whitespace',
-    );
+    assert.strictEqual(collapseWhitespace('  foo bar'), 'foo bar', 'removes leading whitespace');
+    assert.strictEqual(collapseWhitespace('foo bar  '), 'foo bar', 'removes trailing whitespace');
     assert.strictEqual(
       collapseWhitespace(' foo  bar '),
       'foo bar',

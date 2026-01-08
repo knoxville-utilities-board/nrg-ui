@@ -88,6 +88,7 @@
     "generate": "pnpm exec gember",
     "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
     "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" --prefix-colors=auto && pnpm format",
+    "lint:format": "prettier . --cache --check",
     "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
     "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
     "lint:intl": "ember-intl-lint",

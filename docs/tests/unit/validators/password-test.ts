@@ -43,10 +43,7 @@ module('Unit | Validator | password', function (hooks) {
         this.model,
       );
 
-      assert.notOk(
-        true,
-        'Expected an error, but got a result instead: ' + validator.result,
-      );
+      assert.notOk(true, 'Expected an error, but got a result instead: ' + validator.result);
     }, new Error('Assertion Failed: PasswordValidator requires `minClasses` to be less than or equal to the number of tests provided'));
   });
 
@@ -108,17 +105,11 @@ module('Unit | Validator | password', function (hooks) {
     );
     this.model.field = 'password';
 
-    assert.isInvalid(
-      validator.result,
-      'Password does not meet the minimum strength requirements',
-    );
+    assert.isInvalid(validator.result, 'Password does not meet the minimum strength requirements');
 
     this.model.field = 'Password';
 
-    assert.isInvalid(
-      validator.result,
-      'Password does not meet the minimum strength requirements',
-    );
+    assert.isInvalid(validator.result, 'Password does not meet the minimum strength requirements');
 
     this.model.field = 'Passw0rd';
 

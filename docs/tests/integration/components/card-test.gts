@@ -22,9 +22,7 @@ module('Integration | Component | card', function (hooks) {
     );
 
     assert.dom('.card').exists('Card is rendered');
-    assert
-      .dom('.border-0')
-      .doesNotExist('Border renders if hasBorder is not present');
+    assert.dom('.border-0').doesNotExist('Border renders if hasBorder is not present');
     assert
       .dom('.card .card-header p')
       .hasText('Header content', 'Correct content is rendered in card header');
@@ -43,8 +41,6 @@ module('Integration | Component | card', function (hooks) {
         </Card>
       </template>,
     );
-    assert
-      .dom('.card.border-0')
-      .exists('Card has class of border-0 if hasBorder is false');
+    assert.dom('.card.border-0').exists('Card has class of border-0 if hasBorder is false');
   });
 });

@@ -84,10 +84,7 @@ export default class extends Component {
                   />
                 </Api.Actions>
                 <Api.Blocks as |Block|>
-                  <Block
-                    @name="default"
-                    @description="The content of the button"
-                  />
+                  <Block @name="default" @description="The content of the button" />
                 </Api.Blocks>
               </:api>
             </S.Subsection>

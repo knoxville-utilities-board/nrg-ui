@@ -74,10 +74,7 @@ export default class CheckboxGroupDemo extends Component {
               @defaultValue={{false}}
               @description="When true, all checkboxes in this group will be displayed inline"
             />
-            <Args.String
-              @name="label"
-              @description="The label for the checkbox group"
-            />
+            <Args.String @name="label" @description="The label for the checkbox group" />
             <Args.Boolean
               @name="reverse"
               @defaultValue={{false}}

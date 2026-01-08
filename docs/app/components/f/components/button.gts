@@ -50,10 +50,7 @@ export default class ButtonDemo extends Component {
               @defaultValue={{false}}
               @description="When true, the text will be replaced with a loading spinner"
             />
-            <Args.String
-              @name="text"
-              @description="The text to display on the button"
-            />
+            <Args.String @name="text" @description="The text to display on the button" />
             <Args.String
               @name="type"
               @defaultValue="button"
@@ -62,16 +59,10 @@ export default class ButtonDemo extends Component {
             />
           </Api.Arguments>
           <Api.Actions as |Action p|>
-            <Action
-              @name="onClick"
-              @parameters={{array (p "event" type="MouseEvent")}}
-            />
+            <Action @name="onClick" @parameters={{array (p "event" type="MouseEvent")}} />
           </Api.Actions>
           <Api.Blocks as |Block|>
-            <Block
-              @name="default"
-              @description="The content to display inside the button"
-            />
+            <Block @name="default" @description="The content to display inside the button" />
           </Api.Blocks>
         </:api>
       </Section.Subsection>
@@ -104,11 +95,7 @@ export default class ButtonDemo extends Component {
         </:api>
       </Section.Subsection>
 
-      <Section.Subsection
-        @name="Icon-Only Button"
-        @model={{this}}
-        @elementTag="button"
-      >
+      <Section.Subsection @name="Icon-Only Button" @model={{this}} @elementTag="button">
         <:example as |model|>
           <Button
             class="btn-primary"

@@ -22,11 +22,7 @@ module('Integration | Component | loading-indicator', function (hooks) {
   });
 
   test('label can be displayed', async function (assert) {
-    await render(
-      <template>
-        <LoadingIndicator @label="Foo bar" @showLabel={{true}} />
-      </template>,
-    );
+    await render(<template><LoadingIndicator @label="Foo bar" @showLabel={{true}} /></template>);
 
     assert
       .dom('strong:has(+ div)')

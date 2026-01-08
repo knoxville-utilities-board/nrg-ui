@@ -46,15 +46,9 @@ const MktgCard: TOC<MktgCardSignature> = <template>
       </:body>
     </Card>
   {{else}}
-    <Card
-      @hasBorder={{@hasBorder}}
-      @hasHorizontalDivider={{@hasHorizontalDivider}}
-      ...attributes
-    >
+    <Card @hasBorder={{@hasBorder}} @hasHorizontalDivider={{@hasHorizontalDivider}} ...attributes>
       <:header>
-        <div
-          class="d-flex flex-column justify-content-start align-items-center bg-body mb-2"
-        >
+        <div class="d-flex flex-column justify-content-start align-items-center bg-body mb-2">
           {{#if @leftAlignCallout}}
             <div class="d-flex flex-column justify-content-start w-100 m-0">
               {{yield to="callout"}}

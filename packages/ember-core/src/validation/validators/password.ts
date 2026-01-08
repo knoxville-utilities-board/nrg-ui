@@ -36,10 +36,7 @@ export default class PasswordValidator<
   validate(value: string, options: PasswordOptions): ValidateFnResponse {
     const { minClasses, tests } = options;
 
-    assert(
-      'PasswordValidator requires `minClasses` to be provided',
-      minClasses,
-    );
+    assert('PasswordValidator requires `minClasses` to be provided', minClasses);
 
     assert(
       'PasswordValidator requires `minClasses` to be less than or equal to the number of tests provided',
@@ -56,9 +53,7 @@ export default class PasswordValidator<
       return test;
     });
 
-    const classCount = applicableTests
-      .map((test) => test.test(value))
-      .filter(Boolean).length;
+    const classCount = applicableTests.map((test) => test.test(value)).filter(Boolean).length;
 
     if (classCount >= minClasses) {
       return true;

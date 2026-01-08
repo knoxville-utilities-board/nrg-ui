@@ -1,10 +1,7 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/core';
-import {
-  RangeValidator,
-  validator as buildValidator,
-} from '@nrg-ui/core/validation';
+import { RangeValidator, validator as buildValidator } from '@nrg-ui/core/validation';
 import { setupTest } from 'docs/tests/helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';
@@ -39,10 +36,7 @@ module('Unit | Validator | range', function (hooks) {
     assert.throws(() => {
       const validator = new RangeValidator(this.binding, {}, this.model);
 
-      assert.notOk(
-        true,
-        'Expected an error, but got a result instead: ' + validator.result,
-      );
+      assert.notOk(true, 'Expected an error, but got a result instead: ' + validator.result);
     }, new Error('Assertion Failed: RangeValidator requires at least one of `min` and `max` to be provided'));
   });
 
@@ -59,20 +53,13 @@ module('Unit | Validator | range', function (hooks) {
 
     this.model.field = 15;
 
-    assert.isInvalid(
-      validator.result,
-      'This field must be greater than or equal to 16',
-    );
+    assert.isInvalid(validator.result, 'This field must be greater than or equal to 16');
 
     this.model.field = 16;
 
     assert.isValid(validator.result);
 
-    validator = new RangeValidator(
-      this.binding,
-      { min: 16, minInclusive: false },
-      this.model,
-    );
+    validator = new RangeValidator(this.binding, { min: 16, minInclusive: false }, this.model);
 
     this.model.field = 16;
 
@@ -84,20 +71,13 @@ module('Unit | Validator | range', function (hooks) {
 
     this.model.field = 17;
 
-    assert.isInvalid(
-      validator.result,
-      'This field must be less than or equal to 16',
-    );
+    assert.isInvalid(validator.result, 'This field must be less than or equal to 16');
 
     this.model.field = 16;
 
     assert.isValid(validator.result);
 
-    validator = new RangeValidator(
-      this.binding,
-      { max: 16, maxInclusive: false },
-      this.model,
-    );
+    validator = new RangeValidator(this.binding, { max: 16, maxInclusive: false }, this.model);
 
     this.model.field = 16;
 
@@ -112,10 +92,7 @@ module('Unit | Validator | range', function (hooks) {
 
     this.model.field = 17;
 
-    assert.isInvalid(
-      validator.result,
-      'This field must be less than or equal to 16',
-    );
+    assert.isInvalid(validator.result, 'This field must be less than or equal to 16');
 
     this.model.field = 16;
 

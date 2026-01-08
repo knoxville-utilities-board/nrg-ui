@@ -137,8 +137,7 @@ $dropdown-divider-margin-y: 0;
 }
 .dropdown-header {
   display: block;
-  padding: var(--bs-dropdown-header-padding-y)
-    var(--bs-dropdown-header-padding-x);
+  padding: var(--bs-dropdown-header-padding-y) var(--bs-dropdown-header-padding-x);
   margin-bottom: 0;
   @include font-size($font-size-sm);
   color: var(--bs-dropdown-header-color);

@@ -6,10 +6,7 @@ import type { ContentValue } from '@glint/template';
 const StackedPaneSelectedSubitem2Demo: TOC<{
   Args: { model: ContentValue };
 }> = <template>
-  <StackedPane
-    @ratio="full"
-    @previousRoute="stacked-pane.selected-item.selected-subitem"
-  >
+  <StackedPane @ratio="full" @previousRoute="stacked-pane.selected-item.selected-subitem">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">{{@model}}</h5>

@@ -40,9 +40,7 @@ module('Integration | Component | form/search', function (hooks) {
     const model = new Model();
 
     await render(
-      <template>
-        <Search @binding={{bind model "value"}} @onQuery={{actionHandler}} />
-      </template>,
+      <template><Search @binding={{bind model "value"}} @onQuery={{actionHandler}} /></template>,
     );
 
     assert.dom('div > input').hasClass('form-control').hasValue('');
@@ -78,9 +76,7 @@ module('Integration | Component | form/search', function (hooks) {
     const model = new Model();
 
     await render(
-      <template>
-        <Search @binding={{bind model "value"}} @onQuery={{actionHandler}} />
-      </template>,
+      <template><Search @binding={{bind model "value"}} @onQuery={{actionHandler}} /></template>,
     );
 
     assert.dom('div > input').hasClass('form-control').hasValue('');
@@ -101,9 +97,7 @@ module('Integration | Component | form/search', function (hooks) {
     const model = new Model();
 
     await render(
-      <template>
-        <Search @binding={{bind model "value"}} @onQuery={{actionHandler}} />
-      </template>,
+      <template><Search @binding={{bind model "value"}} @onQuery={{actionHandler}} /></template>,
     );
 
     assert.dom('.spinner-border').doesNotExist();
@@ -111,11 +105,7 @@ module('Integration | Component | form/search', function (hooks) {
 
     await render(
       <template>
-        <Search
-          @binding={{bind model "value"}}
-          @loading={{true}}
-          @onQuery={{actionHandler}}
-        />
+        <Search @binding={{bind model "value"}} @loading={{true}} @onQuery={{actionHandler}} />
       </template>,
     );
 
@@ -130,11 +120,7 @@ module('Integration | Component | form/search', function (hooks) {
 
     await render(
       <template>
-        <Search
-          @binding={{bind model "value"}}
-          @basic={{true}}
-          @onQuery={{actionHandler}}
-        />
+        <Search @binding={{bind model "value"}} @basic={{true}} @onQuery={{actionHandler}} />
       </template>,
     );
 
@@ -150,11 +136,7 @@ module('Integration | Component | form/search', function (hooks) {
 
     await render(
       <template>
-        <Search
-          @binding={{bind model "value"}}
-          @clearable={{true}}
-          @onQuery={{actionHandler}}
-        />
+        <Search @binding={{bind model "value"}} @clearable={{true}} @onQuery={{actionHandler}} />
       </template>,
     );
 

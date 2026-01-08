@@ -76,11 +76,7 @@ class SelectedFileList extends Component<SelectedFileListSignature> {
             >
               {{file.name}}
               {{#unless @disabled}}
-                <Button
-                  data-test-remove
-                  class="btn-link"
-                  @onClick={{fn this.removeFile index}}
-                >
+                <Button data-test-remove class="btn-link" @onClick={{fn this.removeFile index}}>
                   {{t "nrg.file-upload.remove"}}
                 </Button>
               {{/unless}}
@@ -90,11 +86,7 @@ class SelectedFileList extends Component<SelectedFileListSignature> {
       </div>
     {{else}}
       <div
-        class={{classes
-          "form-control"
-          (if @isInvalid "is-invalid")
-          (if @isWarning "is-warning")
-        }}
+        class={{classes "form-control" (if @isInvalid "is-invalid") (if @isWarning "is-warning")}}
       >
         <p class="text-muted m-0">{{t "nrg.file-upload.noFiles"}}</p>
       </div>
@@ -102,10 +94,7 @@ class SelectedFileList extends Component<SelectedFileListSignature> {
   </template>
 }
 
-export default class FileUpload extends BoundValue<
-  FileUploadSignature,
-  File[]
-> {
+export default class FileUpload extends BoundValue<FileUploadSignature, File[]> {
   validatorId?: string;
 
   @tracked
@@ -253,15 +242,8 @@ export default class FileUpload extends BoundValue<
         form.unregisterValidator(this.validatorKey, this.validatorId);
       }
 
-      const fileValidator = new FileValidator(
-        binding,
-        { acceptedTypes: accept },
-        binding.model,
-      );
-      this.validatorId = form.registerValidator(
-        fileValidator,
-        this.validatorKey,
-      );
+      const fileValidator = new FileValidator(binding, { acceptedTypes: accept }, binding.model);
+      this.validatorId = form.registerValidator(fileValidator, this.validatorKey);
     } else {
       if (!this.validatorId) {
         return;
@@ -272,11 +254,9 @@ export default class FileUpload extends BoundValue<
     }
   }
 
-  setupValidatorModifier = modifier(
-    (element: unknown, [accept]: [string[] | undefined]) => {
-      runTask(this, () => this.setupValidator(accept));
-    },
-  );
+  setupValidatorModifier = modifier((element: unknown, [accept]: [string[] | undefined]) => {
+    runTask(this, () => this.setupValidator(accept));
+  });
 
   @action
   toggleIsDragging(isDragging: boolean) {

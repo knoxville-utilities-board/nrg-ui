@@ -75,11 +75,7 @@ class Segment extends Component<SegmentSignature> {
       style={{if @multiple this.widthStyle}}
       title={{@title}}
     >
-      <div
-        class={{this.classList}}
-        style={{unless @multiple this.widthStyle}}
-        ...attributes
-      >
+      <div class={{this.classList}} style={{unless @multiple this.widthStyle}} ...attributes>
         {{#unless @hideLabel}}
           {{this.label}}
         {{/unless}}
@@ -92,13 +88,7 @@ const Progress: TOC<ProgressSignature> = <template>
   {{#if @stacked}}
     <div class="progress-stacked" ...attributes>
       {{yield
-        (component
-          Segment
-          animated=@animated
-          hideLabel=@hideLabel
-          multiple=true
-          striped=@striped
-        )
+        (component Segment animated=@animated hideLabel=@hideLabel multiple=true striped=@striped)
       }}
     </div>
   {{else}}

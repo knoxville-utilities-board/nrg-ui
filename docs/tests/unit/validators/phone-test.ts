@@ -1,10 +1,7 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/core';
-import {
-  PhoneValidator,
-  validator as buildValidator,
-} from '@nrg-ui/core/validation';
+import { PhoneValidator, validator as buildValidator } from '@nrg-ui/core/validation';
 import { setupTest } from 'docs/tests/helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';
@@ -34,11 +31,7 @@ module('Unit | Validator | phone', function (hooks) {
   });
 
   test('`allowBlank` option works', function (this: TestContext, assert) {
-    const validator = new PhoneValidator(
-      this.binding,
-      { allowBlank: true },
-      this.model,
-    );
+    const validator = new PhoneValidator(this.binding, { allowBlank: true }, this.model);
 
     this.model.field = '';
 
@@ -64,11 +57,7 @@ module('Unit | Validator | phone', function (hooks) {
 
     assert.isValid(validator.result);
 
-    validator = new PhoneValidator(
-      this.binding,
-      { areaCode: 'disallow' },
-      this.model,
-    );
+    validator = new PhoneValidator(this.binding, { areaCode: 'disallow' }, this.model);
 
     this.model.field = '5557890';
 
@@ -76,23 +65,13 @@ module('Unit | Validator | phone', function (hooks) {
 
     this.model.field = '1235557890';
 
-    assert.isInvalid(
-      validator.result,
-      'This phone number must not include an area code',
-    );
+    assert.isInvalid(validator.result, 'This phone number must not include an area code');
 
-    validator = new PhoneValidator(
-      this.binding,
-      { areaCode: 'require' },
-      this.model,
-    );
+    validator = new PhoneValidator(this.binding, { areaCode: 'require' }, this.model);
 
     this.model.field = '5557890';
 
-    assert.isInvalid(
-      validator.result,
-      'This phone number must include an area code',
-    );
+    assert.isInvalid(validator.result, 'This phone number must include an area code');
 
     this.model.field = '1235557890';
 
@@ -110,11 +89,7 @@ module('Unit | Validator | phone', function (hooks) {
 
     assert.isValid(validator.result);
 
-    validator = new PhoneValidator(
-      this.binding,
-      { countryCode: 'disallow' },
-      this.model,
-    );
+    validator = new PhoneValidator(this.binding, { countryCode: 'disallow' }, this.model);
 
     this.model.field = '1235557890';
 
@@ -122,23 +97,13 @@ module('Unit | Validator | phone', function (hooks) {
 
     this.model.field = '121235557890';
 
-    assert.isInvalid(
-      validator.result,
-      'This phone number must not include a country code',
-    );
+    assert.isInvalid(validator.result, 'This phone number must not include a country code');
 
-    validator = new PhoneValidator(
-      this.binding,
-      { countryCode: 'require' },
-      this.model,
-    );
+    validator = new PhoneValidator(this.binding, { countryCode: 'require' }, this.model);
 
     this.model.field = '1235557890';
 
-    assert.isInvalid(
-      validator.result,
-      'This phone number must include a country code',
-    );
+    assert.isInvalid(validator.result, 'This phone number must include a country code');
 
     this.model.field = '121235557890';
 
@@ -171,10 +136,7 @@ module('Unit | Validator | phone', function (hooks) {
 
     this.model.field = '5557890';
 
-    assert.isInvalid(
-      validator.result,
-      'This phone number must include an area code',
-    );
+    assert.isInvalid(validator.result, 'This phone number must include an area code');
 
     this.model.field = '7895557890';
 
@@ -214,10 +176,7 @@ module('Unit | Validator | phone', function (hooks) {
 
     this.model.field = '5557890';
 
-    assert.isInvalid(
-      validator.result,
-      'This phone number must include a country code',
-    );
+    assert.isInvalid(validator.result, 'This phone number must include a country code');
 
     this.model.field = '7891235557890';
 
@@ -280,10 +239,7 @@ module('Unit | Validator | phone', function (hooks) {
 
     this.model.field = '5557890';
 
-    assert.isInvalid(
-      validator.result,
-      'This phone number must include an area code',
-    );
+    assert.isInvalid(validator.result, 'This phone number must include an area code');
 
     this.model.field = '4565557890';
 
@@ -327,10 +283,7 @@ module('Unit | Validator | phone', function (hooks) {
 
     this.model.field = '1235557890';
 
-    assert.isInvalid(
-      validator.result,
-      'This phone number must include a country code',
-    );
+    assert.isInvalid(validator.result, 'This phone number must include a country code');
 
     this.model.field = '4561235557890';
 
@@ -369,10 +322,7 @@ module('Unit | Validator | phone', function (hooks) {
 
     this.model.field = '11111235557890';
 
-    assert.isInvalid(
-      validator.result,
-      'This field must be a valid phone number',
-    );
+    assert.isInvalid(validator.result, 'This field must be a valid phone number');
 
     this.model.field = '555789';
 

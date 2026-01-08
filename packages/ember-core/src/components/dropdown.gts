@@ -38,24 +38,12 @@ class Item extends Component<ItemSignature> {
       return;
     }
 
-    this.args.onSelectInternal(
-      evt,
-      this.args.closeOnSelect ?? true,
-      this.args.onSelect,
-    );
+    this.args.onSelectInternal(evt, this.args.closeOnSelect ?? true, this.args.onSelect);
   };
 
   <template>
-    <li
-      aria-selected="false"
-      role="option"
-      data-test-dropdown-item
-      {{on "click" this.onSelect}}
-    >
-      <span
-        class={{classes "dropdown-item" (if @disabled "disabled")}}
-        ...attributes
-      >
+    <li aria-selected="false" role="option" data-test-dropdown-item {{on "click" this.onSelect}}>
+      <span class={{classes "dropdown-item" (if @disabled "disabled")}} ...attributes>
         {{yield}}
       </span>
     </li>
@@ -232,11 +220,7 @@ export default class Dropdown extends Component<DropdownSignature> {
               {{yield visibility to="control"}}
               {{#if this.showRightIcon}}
                 <i
-                  class={{classes
-                    "icon"
-                    this.icon
-                    (unless @iconOnly "float-end my-1 ms-1 me-n1")
-                  }}
+                  class={{classes "icon" this.icon (unless @iconOnly "float-end my-1 ms-1 me-n1")}}
                 ></i>
               {{/if}}
             </button>
@@ -258,11 +242,7 @@ export default class Dropdown extends Component<DropdownSignature> {
                 (hash
                   Divider=(component Divider)
                   Header=(component Header)
-                  Item=(component
-                    Item
-                    closeOnSelect=@closeOnSelect
-                    onSelectInternal=this.onSelect
-                  )
+                  Item=(component Item closeOnSelect=@closeOnSelect onSelectInternal=this.onSelect)
                 )
                 to="menu"
               }}

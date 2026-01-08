@@ -30,11 +30,7 @@ const StackedPaneTemplate: TOC<StackedPaneSignature> = <template>
     <StackedPane>
       <ul class="list-group">
         {{#each @controller.shortRange as |item|}}
-          <LinkTo
-            class="list-group-item"
-            @route="stacked-pane.selected-item"
-            @model={{item}}
-          >
+          <LinkTo class="list-group-item" @route="stacked-pane.selected-item" @model={{item}}>
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">Account {{item}}</h5>
               <small>Person Name</small>
@@ -75,11 +71,7 @@ const StackedPaneTemplate: TOC<StackedPaneSignature> = <template>
             />
             <ul class="list-group">
               {{#each @controller.longRange as |item|}}
-                <LinkTo
-                  class="list-group-item"
-                  @route="stacked-pane.selected-item"
-                  @model={{item}}
-                >
+                <LinkTo class="list-group-item" @route="stacked-pane.selected-item" @model={{item}}>
                   <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">Account {{item}}</h5>
                     <small>Person Name</small>

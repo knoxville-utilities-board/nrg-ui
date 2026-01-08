@@ -67,14 +67,8 @@ export default class ServicePricingDemo extends Component {
               @displayType="IconType"
               @typeLink="https://icons.getbootstrap.com/"
             />
-            <Args.String
-              @description="Renders the label in the top left"
-              @name="label"
-            />
-            <Args.String
-              @description="Renders the product name in the top left"
-              @name="product"
-            />
+            <Args.String @description="Renders the label in the top left" @name="label" />
+            <Args.String @description="Renders the product name in the top left" @name="product" />
             <Args.Boolean
               @description="When true, the service pricing component will be selected"
               @name="selected"

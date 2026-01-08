@@ -22,11 +22,7 @@ export default class ContextMenu extends Service {
 
   async register(
     id: string,
-    {
-      top,
-      bottom,
-      dropdown,
-    }: { top: HTMLDivElement; bottom: HTMLDivElement; dropdown: Dropdown },
+    { top, bottom, dropdown }: { top: HTMLDivElement; bottom: HTMLDivElement; dropdown: Dropdown },
   ) {
     // This must be disconnected from reactivity to avoid triggering
     // errors from reading and updating the same property in the same cycle.
@@ -37,10 +33,7 @@ export default class ContextMenu extends Service {
       `Context menu with id "${id}" already exists. Use a different id or unregister the existing menu.`,
       !this.menus.has(id),
     );
-    assert(
-      `Context menu with id "${id}" must have a top and bottom element.`,
-      top && bottom,
-    );
+    assert(`Context menu with id "${id}" must have a top and bottom element.`, top && bottom);
     assert(`Context menu with id "${id}" must have a dropdown.`, dropdown);
 
     this.menus.set(id, { id, top, bottom, dropdown });

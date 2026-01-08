@@ -1,10 +1,7 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/core';
-import {
-  ConfirmationValidator,
-  validator as buildValidator,
-} from '@nrg-ui/core/validation';
+import { ConfirmationValidator, validator as buildValidator } from '@nrg-ui/core/validation';
 import { setupTest } from 'docs/tests/helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';
@@ -48,10 +45,7 @@ module('Unit | Validator | confirmation', function (hooks) {
       // @ts-expect-error Testing that the `on` option is required
       const validator = new ConfirmationValidator(this.binding, {}, this.model);
 
-      assert.notOk(
-        true,
-        'Expected an error, but got a result instead: ' + validator.result,
-      );
+      assert.notOk(true, 'Expected an error, but got a result instead: ' + validator.result);
     }, new Error('Assertion Failed: ConfirmationValidator requires a property name `on` to be provided'));
   });
 
@@ -84,10 +78,7 @@ module('Unit | Validator | confirmation', function (hooks) {
 
     this.model.passwordConfirmation = 'different';
 
-    assert.isInvalid(
-      validator.result,
-      'This field does not match passwordConfirmation',
-    );
+    assert.isInvalid(validator.result, 'This field does not match passwordConfirmation');
 
     validator = new ConfirmationValidator(
       this.binding,
@@ -95,10 +86,7 @@ module('Unit | Validator | confirmation', function (hooks) {
       this.model,
     );
 
-    assert.isInvalid(
-      validator.result,
-      'This field does not match Confirm Password',
-    );
+    assert.isInvalid(validator.result, 'This field does not match Confirm Password');
 
     validator = new ConfirmationValidator(
       this.binding,
@@ -108,10 +96,7 @@ module('Unit | Validator | confirmation', function (hooks) {
 
     this.model.passwordConfirmation = 'password';
 
-    assert.isInvalid(
-      validator.result,
-      'This field cannot match passwordConfirmation',
-    );
+    assert.isInvalid(validator.result, 'This field cannot match passwordConfirmation');
 
     validator = new ConfirmationValidator(
       this.binding,
@@ -119,10 +104,7 @@ module('Unit | Validator | confirmation', function (hooks) {
       this.model,
     );
 
-    assert.isInvalid(
-      validator.result,
-      'This field cannot match Confirm Password',
-    );
+    assert.isInvalid(validator.result, 'This field cannot match Confirm Password');
   });
 
   test('works with `validator` function', function (this: TestContext, assert) {
@@ -133,10 +115,7 @@ module('Unit | Validator | confirmation', function (hooks) {
 
     this.model.passwordConfirmation = 'different';
 
-    assert.isInvalid(
-      validator.result,
-      'This field does not match passwordConfirmation',
-    );
+    assert.isInvalid(validator.result, 'This field does not match passwordConfirmation');
 
     builder = buildValidator('confirmation', {
       on: 'passwordConfirmation',
@@ -144,9 +123,6 @@ module('Unit | Validator | confirmation', function (hooks) {
     });
     validator = builder(this.binding, this.model);
 
-    assert.isInvalid(
-      validator.result,
-      'This field does not match Confirm Password',
-    );
+    assert.isInvalid(validator.result, 'This field does not match Confirm Password');
   });
 });

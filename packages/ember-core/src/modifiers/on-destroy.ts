@@ -5,10 +5,7 @@ import type Owner from '@ember/owner';
 import type { ArgsFor } from 'ember-modifier';
 
 type CallbackFn<Element, A> = (element: Element, args: A) => void;
-export interface OnDestroySignature<
-  Element extends HTMLElement,
-  Named extends object,
-> {
+export interface OnDestroySignature<Element extends HTMLElement, Named extends object> {
   Element: Element;
   Args: {
     Positional: [CallbackFn<Element, Named>];
@@ -30,11 +27,7 @@ export default class OnDestroy<
     });
   }
 
-  modify(
-    element: Element,
-    [callback]: [CallbackFn<Element, Named>],
-    named: Named,
-  ): void {
+  modify(element: Element, [callback]: [CallbackFn<Element, Named>], named: Named): void {
     this.callback = () => callback(element, named);
   }
 }

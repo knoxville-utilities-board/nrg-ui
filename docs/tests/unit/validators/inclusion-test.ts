@@ -1,10 +1,7 @@
 import { setOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import { bind } from '@nrg-ui/core';
-import {
-  InclusionValidator,
-  validator as buildValidator,
-} from '@nrg-ui/core/validation';
+import { InclusionValidator, validator as buildValidator } from '@nrg-ui/core/validation';
 import { setupTest } from 'docs/tests/helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';
@@ -40,10 +37,7 @@ module('Unit | Validator | inclusion', function (hooks) {
       // @ts-expect-error Testing that the `in` option is required
       const validator = new InclusionValidator(this.binding, {}, this);
 
-      assert.notOk(
-        true,
-        'Expected an error, but got a result instead: ' + validator.result,
-      );
+      assert.notOk(true, 'Expected an error, but got a result instead: ' + validator.result);
     }, new Error('Assertion Failed: InclusionValidator requires an array of valid values to be provided'));
   });
 

@@ -54,9 +54,7 @@ export default class CardDemo extends Component {
               @name="onClick"
               @description="The action to be called when the card is clicked."
               @parameters={{array
-                (p
-                  "event" type="MouseEvent" description="The click event object"
-                )
+                (p "event" type="MouseEvent" description="The click event object")
               }}
             />
           </Api.Actions>

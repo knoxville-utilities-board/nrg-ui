@@ -143,10 +143,7 @@ export default class PopoverDemo extends Component {
             @onHide={{fn this.toast.info "onHide was fired"}}
           >
             <:control as |actions|>
-              <PopoverBlock
-                {{on "mouseenter" actions.show}}
-                {{on "mouseleave" actions.hide}}
-              >
+              <PopoverBlock {{on "mouseenter" actions.show}} {{on "mouseleave" actions.hide}}>
                 Hover me!
               </PopoverBlock>
             </:control>

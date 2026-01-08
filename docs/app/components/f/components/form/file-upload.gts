@@ -67,9 +67,7 @@ export default class FileUploadDemo extends Component {
             <Action
               @name="onRemove"
               @description="The action to call when a file is removed"
-              @parameters={{array
-                (p "file" type="File" description="The file that was removed")
-              }}
+              @parameters={{array (p "file" type="File" description="The file that was removed")}}
             />
           </Api.Actions>
         </:api>

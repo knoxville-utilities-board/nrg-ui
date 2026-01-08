@@ -16,11 +16,7 @@ module('Integration | Component | alert', function (hooks) {
   test('it renders', async function (assert) {
     await render(
       <template>
-        <Alert
-          @dismissible={{true}}
-          @icon="bi-exclamation-triangle-fill"
-          @text="Foo bar"
-        />
+        <Alert @dismissible={{true}} @icon="bi-exclamation-triangle-fill" @text="Foo bar" />
       </template>,
     );
 
@@ -40,11 +36,7 @@ module('Integration | Component | alert', function (hooks) {
 
     await render(
       <template>
-        <Alert
-          @dismissible={{true}}
-          @icon="bi-exclamation-triangle-fill"
-          @type="success"
-        >
+        <Alert @dismissible={{true}} @icon="bi-exclamation-triangle-fill" @type="success">
           Baz
         </Alert>
       </template>,
@@ -78,11 +70,7 @@ module('Integration | Component | alert', function (hooks) {
 
     await render(
       <template>
-        <Alert
-          @dismissible={{true}}
-          @type="success"
-          @onDismiss={{dismissHandler}}
-        />
+        <Alert @dismissible={{true}} @type="success" @onDismiss={{dismissHandler}} />
       </template>,
     );
 

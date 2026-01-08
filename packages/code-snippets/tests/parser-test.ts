@@ -11,12 +11,7 @@ describe('extractSnippetsFromCode', () => {
 // BEGIN-SNIPPET hello
 console.log("Hello");
 // END-SNIPPET`;
-    const result = extractSnippetsFromCode(
-      'file.js',
-      code,
-      startRegex,
-      endRegex,
-    );
+    const result = extractSnippetsFromCode('file.js', code, startRegex, endRegex);
     expect(result).toHaveLength(1);
 
     const [snippet] = result;
@@ -38,12 +33,7 @@ console.log("Hello");
 console.log("World");
 // END-SNIPPET
 `;
-    const result = extractSnippetsFromCode(
-      'file.js',
-      code,
-      startRegex,
-      endRegex,
-    );
+    const result = extractSnippetsFromCode('file.js', code, startRegex, endRegex);
     expect(result).toHaveLength(1);
 
     const [snippet] = result;
@@ -66,12 +56,7 @@ console.log("World");
 // BEGIN-SNIPPET foo
 console.log("Foo");
 `;
-    const result = extractSnippetsFromCode(
-      'file.js',
-      code,
-      startRegex,
-      endRegex,
-    );
+    const result = extractSnippetsFromCode('file.js', code, startRegex, endRegex);
     expect(result).toHaveLength(0);
   });
 
@@ -83,12 +68,7 @@ console.log("Foo");
     }
     // END-SNIPPET`;
 
-    const result = extractSnippetsFromCode(
-      'file.js',
-      code,
-      startRegex,
-      endRegex,
-    );
+    const result = extractSnippetsFromCode('file.js', code, startRegex, endRegex);
     expect(result).toHaveLength(1);
 
     const [snippet] = result;
@@ -106,20 +86,13 @@ console.log("Foo");
   });
 
   it('skips empty snippets', () => {
-    const consoleMock = vi
-      .spyOn(console, 'warn')
-      .mockImplementation(() => null);
+    const consoleMock = vi.spyOn(console, 'warn').mockImplementation(() => null);
 
     const code = `
     // BEGIN-SNIPPET hello
     // END-SNIPPET`;
 
-    const result = extractSnippetsFromCode(
-      'file.js',
-      code,
-      startRegex,
-      endRegex,
-    );
+    const result = extractSnippetsFromCode('file.js', code, startRegex, endRegex);
     expect(result).toHaveLength(0);
 
     expect(consoleMock).toHaveBeenCalledWith(

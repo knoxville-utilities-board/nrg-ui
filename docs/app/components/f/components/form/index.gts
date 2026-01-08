@@ -215,12 +215,7 @@ export default class FormDemo extends Component {
   <template>
     <div class="card p-3">
       {{! BEGIN-SNIPPET form-demo-component }}
-      <Form
-        class="mb-0"
-        @validators={{Validators}}
-        @onSubmit={{this.onSubmit}}
-        as |Form|
-      >
+      <Form class="mb-0" @validators={{Validators}} @onSubmit={{this.onSubmit}} as |Form|>
         <Form.Field @label="File Upload" @required={{this.required}} as |Field|>
           <Field.FileUpload
             @binding={{bind this.model "fileUpload"}}
@@ -242,16 +237,9 @@ export default class FormDemo extends Component {
           <Field.TextArea @binding={{bind this.model "textArea"}} />
         </Form.Field>
         <Form.Field @label="Select" @required={{this.required}} as |Field|>
-          <Field.Select
-            @binding={{bind this.model "select"}}
-            @options={{array "A" "B" "C"}}
-          />
+          <Field.Select @binding={{bind this.model "select"}} @options={{array "A" "B" "C"}} />
         </Form.Field>
-        <Form.Field
-          @label="Multi Select"
-          @required={{this.required}}
-          as |Field|
-        >
+        <Form.Field @label="Multi Select" @required={{this.required}} as |Field|>
           <Field.MultiSelect
             @binding={{bind this.model "multiSelect"}}
             @options={{array "Alpha" "Beta" "Charlie" "Delta" "Echo"}}
@@ -265,30 +253,15 @@ export default class FormDemo extends Component {
           </Field.RadioGroup>
         </Form.Field>
         <Form.Field @label="Datetime" @required={{this.required}} as |Field|>
-          <Field.Datetime
-            @binding={{bind this.model "datetime"}}
-            @minDate={{(dayjs)}}
-          />
+          <Field.Datetime @binding={{bind this.model "datetime"}} @minDate={{(dayjs)}} />
         </Form.Field>
         <Form.Field @label="Date" @required={{this.required}} as |Field|>
-          <Field.Datetime
-            @binding={{bind this.model "date"}}
-            @maxDate={{(dayjs)}}
-            @type="date"
-          />
+          <Field.Datetime @binding={{bind this.model "date"}} @maxDate={{(dayjs)}} @type="date" />
         </Form.Field>
-        <Form.Field
-          @label="Phone Number"
-          @required={{this.required}}
-          as |Field|
-        >
+        <Form.Field @label="Phone Number" @required={{this.required}} as |Field|>
           <Field.PhoneInput @binding={{bind this.model "phone"}} />
         </Form.Field>
-        <Form.Field
-          @label="Phone Number Confirm"
-          @required={{this.required}}
-          as |Field|
-        >
+        <Form.Field @label="Phone Number Confirm" @required={{this.required}} as |Field|>
           <Field.PhoneInput @binding={{bind this.model "phoneConfirm"}} />
         </Form.Field>
         <Form.Field
@@ -298,18 +271,9 @@ export default class FormDemo extends Component {
           as |Field|
         >
           <Field.CheckboxGroup as |Item|>
-            <Item
-              @binding={{bind this.model "checkboxGroup.0"}}
-              @label="Option A"
-            />
-            <Item
-              @binding={{bind this.model "checkboxGroup.1"}}
-              @label="Option B"
-            />
-            <Item
-              @binding={{bind this.model "checkboxGroup.2"}}
-              @label="Option C"
-            />
+            <Item @binding={{bind this.model "checkboxGroup.0"}} @label="Option A" />
+            <Item @binding={{bind this.model "checkboxGroup.1"}} @label="Option B" />
+            <Item @binding={{bind this.model "checkboxGroup.2"}} @label="Option C" />
           </Field.CheckboxGroup>
         </Form.Field>
         <Form.Field @label="Number" @required={{this.required}} as |Field|>
@@ -340,10 +304,7 @@ export default class FormDemo extends Component {
           @onClick={{this.toggleRequired}}
         />
         <Button
-          class="btn{{unless
-              this.model.requirePhoneLength
-              '-outline'
-            }}-secondary mt-3"
+          class="btn{{unless this.model.requirePhoneLength '-outline'}}-secondary mt-3"
           @text="Toggle Phone Length"
           @onClick={{this.toggleRequirePhoneLength}}
         />
@@ -353,11 +314,7 @@ export default class FormDemo extends Component {
       <div class="grid">
         <div class="g-col-12">
           <h3>Model</h3>
-          <CodeBlock
-            @lang="json"
-            @code={{this.modelAsJson}}
-            @showCopyButton={{false}}
-          />
+          <CodeBlock @lang="json" @code={{this.modelAsJson}} @showCopyButton={{false}} />
         </div>
 
         <div class="g-col-12">

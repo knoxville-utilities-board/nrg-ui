@@ -17,10 +17,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           <div class="mb-2">
           </div>
           <div class="d-grid col-8 col-md-4 mx-auto">
-            <LinkTo
-              class="btn btn-primary fw-semibold"
-              @route="core-components.accordion"
-            >
+            <LinkTo class="btn btn-primary fw-semibold" @route="core-components.accordion">
               Go
             </LinkTo>
           </div>
@@ -38,10 +35,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           <div class="mb-2">
           </div>
           <div class="d-grid col-8 col-md-4 mx-auto">
-            <LinkTo
-              class="btn btn-primary fw-semibold"
-              @route="core-components.button"
-            >
+            <LinkTo class="btn btn-primary fw-semibold" @route="core-components.button">
               Go
             </LinkTo>
           </div>
@@ -59,10 +53,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           <div class="mb-2">
           </div>
           <div class="d-grid col-8 col-md-4 mx-auto">
-            <LinkTo
-              class="btn btn-primary fw-semibold"
-              @route="core-components.card"
-            >
+            <LinkTo class="btn btn-primary fw-semibold" @route="core-components.card">
               Go
             </LinkTo>
           </div>
@@ -80,10 +71,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           <div class="mb-2">
           </div>
           <div class="d-grid col-8 col-md-4 mx-auto">
-            <LinkTo
-              class="btn btn-primary fw-semibold"
-              @route="core-components.context-menu"
-            >
+            <LinkTo class="btn btn-primary fw-semibold" @route="core-components.context-menu">
               Go
             </LinkTo>
           </div>
@@ -101,10 +89,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           <div class="mb-2">
           </div>
           <div class="d-grid col-8 col-md-4 mx-auto">
-            <LinkTo
-              class="btn btn-primary fw-semibold"
-              @route="core-components.dropdown"
-            >
+            <LinkTo class="btn btn-primary fw-semibold" @route="core-components.dropdown">
               Go
             </LinkTo>
           </div>
@@ -122,10 +107,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           <div class="mb-2">
           </div>
           <div class="d-grid col-8 col-md-4 mx-auto">
-            <LinkTo
-              class="btn btn-primary fw-semibold"
-              @route="core-components.footer"
-            >
+            <LinkTo class="btn btn-primary fw-semibold" @route="core-components.footer">
               Go
             </LinkTo>
           </div>
@@ -143,10 +125,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           <div class="mb-2">
           </div>
           <div class="d-grid col-8 col-md-4 mx-auto">
-            <LinkTo
-              class="btn btn-primary fw-semibold"
-              @route="core-components.header"
-            >
+            <LinkTo class="btn btn-primary fw-semibold" @route="core-components.header">
               Go
             </LinkTo>
           </div>
@@ -164,10 +143,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           <div class="mb-2">
           </div>
           <div class="d-grid col-8 col-md-4 mx-auto">
-            <LinkTo
-              class="btn btn-primary fw-semibold"
-              @route="core-components.icon"
-            >
+            <LinkTo class="btn btn-primary fw-semibold" @route="core-components.icon">
               Go
             </LinkTo>
           </div>
@@ -185,10 +161,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           <div class="mb-2">
           </div>
           <div class="d-grid col-8 col-md-4 mx-auto">
-            <LinkTo
-              class="btn btn-primary fw-semibold"
-              @route="core-components.loading-indicator"
-            >
+            <LinkTo class="btn btn-primary fw-semibold" @route="core-components.loading-indicator">
               Go
             </LinkTo>
           </div>
@@ -206,10 +179,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           <div class="mb-2">
           </div>
           <div class="d-grid col-8 col-md-4 mx-auto">
-            <LinkTo
-              class="btn btn-primary fw-semibold"
-              @route="core-components.modal"
-            >
+            <LinkTo class="btn btn-primary fw-semibold" @route="core-components.modal">
               Go
             </LinkTo>
           </div>
@@ -227,10 +197,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           <div class="mb-2">
           </div>
           <div class="d-grid col-8 col-md-4 mx-auto">
-            <LinkTo
-              class="btn btn-primary fw-semibold"
-              @route="core-components.pagination"
-            >
+            <LinkTo class="btn btn-primary fw-semibold" @route="core-components.pagination">
               Go
             </LinkTo>
           </div>
@@ -248,10 +215,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           <div class="mb-2">
           </div>
           <div class="d-grid col-8 col-md-4 mx-auto">
-            <LinkTo
-              class="btn btn-primary fw-semibold"
-              @route="core-components.popover"
-            >
+            <LinkTo class="btn btn-primary fw-semibold" @route="core-components.popover">
               Go
             </LinkTo>
           </div>
@@ -269,10 +233,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           <div class="mb-2">
           </div>
           <div class="d-grid col-8 col-md-4 mx-auto">
-            <LinkTo
-              class="btn btn-primary fw-semibold"
-              @route="core-components.progress"
-            >
+            <LinkTo class="btn btn-primary fw-semibold" @route="core-components.progress">
               Go
             </LinkTo>
           </div>
@@ -290,10 +251,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           <div class="mb-2">
           </div>
           <div class="d-grid col-8 col-md-4 mx-auto">
-            <LinkTo
-              class="btn btn-primary fw-semibold"
-              @route="core-components.toaster"
-            >
+            <LinkTo class="btn btn-primary fw-semibold" @route="core-components.toaster">
               Go
             </LinkTo>
           </div>
@@ -311,10 +269,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           <div class="mb-2">
           </div>
           <div class="d-grid col-8 col-md-4 mx-auto">
-            <LinkTo
-              class="btn btn-primary fw-semibold"
-              @route="core-components.tooltip"
-            >
+            <LinkTo class="btn btn-primary fw-semibold" @route="core-components.tooltip">
               Go
             </LinkTo>
           </div>

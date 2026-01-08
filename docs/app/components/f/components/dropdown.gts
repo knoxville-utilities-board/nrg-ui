@@ -67,16 +67,10 @@ export default class DropdownDemo extends Component {
               <Menu.Header>
                 Header
               </Menu.Header>
-              <Menu.Item
-                @disabled={{true}}
-                @onSelect={{fn print "Item 1 clicked"}}
-              >
+              <Menu.Item @disabled={{true}} @onSelect={{fn print "Item 1 clicked"}}>
                 Item 1
               </Menu.Item>
-              <Menu.Item
-                @closeOnSelect={{false}}
-                @onSelect={{fn print "Item 2 clicked"}}
-              >
+              <Menu.Item @closeOnSelect={{false}} @onSelect={{fn print "Item 2 clicked"}}>
                 Item 2 (I don't close on select)
               </Menu.Item>
               <Menu.Item @onSelect={{fn print "Item 3 clicked"}}>Item 3</Menu.Item>
@@ -103,10 +97,7 @@ export default class DropdownDemo extends Component {
               @defaultValue={{true}}
               @description="Whether to close the dropdown when an item is selected"
             />
-            <Args.Boolean
-              @name="disabled"
-              @description="Whether the dropdown is disabled"
-            />
+            <Args.Boolean @name="disabled" @description="Whether the dropdown is disabled" />
             <Args.Boolean
               @name="flip"
               @description="When true, the dropdown placement will auto-flip to stay within viewport."
@@ -167,16 +158,10 @@ export default class DropdownDemo extends Component {
               <Menu.Header>
                 Header
               </Menu.Header>
-              <Menu.Item
-                @disabled={{true}}
-                @onSelect={{fn print "Item 1 clicked"}}
-              >
+              <Menu.Item @disabled={{true}} @onSelect={{fn print "Item 1 clicked"}}>
                 Item 1
               </Menu.Item>
-              <Menu.Item
-                @closeOnSelect={{false}}
-                @onSelect={{fn print "Item 2 clicked"}}
-              >
+              <Menu.Item @closeOnSelect={{false}} @onSelect={{fn print "Item 2 clicked"}}>
                 Item 2 (I don't close on select)
               </Menu.Item>
               <Menu.Item @onSelect={{fn print "Item 3 clicked"}}>Item 3</Menu.Item>
