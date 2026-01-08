@@ -1,21 +1,45 @@
 {
   "solution": {
     "@nrg-ui/version": {
-      "oldVersion": "0.4.1"
-    },
-    "@nrg-ui/code-snippets": {
-      "oldVersion": "0.3.2"
-    },
-    "@nrg-ui/css": {
-      "impact": "patch",
-      "oldVersion": "0.28.0",
-      "newVersion": "0.28.1",
+      "impact": "minor",
+      "oldVersion": "0.4.1",
+      "newVersion": "0.5.0",
       "tagName": "latest",
       "constraints": [
         {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
         },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./packages/app-version/package.json"
+    },
+    "@nrg-ui/code-snippets": {
+      "impact": "minor",
+      "oldVersion": "0.3.2",
+      "newVersion": "0.4.0",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./packages/code-snippets/package.json"
+    },
+    "@nrg-ui/css": {
+      "impact": "patch",
+      "oldVersion": "0.28.1",
+      "newVersion": "0.28.2",
+      "tagName": "latest",
+      "constraints": [
         {
           "impact": "patch",
           "reason": "Appears in changelog section :house: Internal"
@@ -24,22 +48,18 @@
       "pkgJSONPath": "./packages/design-system/package.json"
     },
     "@nrg-ui/core": {
-      "impact": "major",
-      "oldVersion": "0.52.0",
-      "newVersion": "0.53.0",
+      "impact": "minor",
+      "oldVersion": "0.53.0",
+      "newVersion": "0.54.0",
       "tagName": "latest",
       "constraints": [
-        {
-          "impact": "major",
-          "reason": "Appears in changelog section :boom: Breaking Change"
-        },
         {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
         },
         {
           "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
+          "reason": "Appears in changelog section :memo: Documentation"
         },
         {
           "impact": "patch",
@@ -49,15 +69,11 @@
       "pkgJSONPath": "./packages/ember-core/package.json"
     },
     "@nrg-ui/showcase": {
-      "impact": "major",
-      "oldVersion": "0.4.1",
-      "newVersion": "0.5.0",
+      "impact": "minor",
+      "oldVersion": "0.5.0",
+      "newVersion": "0.6.0",
       "tagName": "latest",
       "constraints": [
-        {
-          "impact": "major",
-          "reason": "Has peer dependency `workspace:^0` on @nrg-ui/core"
-        },
         {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
@@ -70,11 +86,15 @@
       "pkgJSONPath": "./packages/showcase/package.json"
     },
     "@nrg-ui/standards": {
-      "impact": "patch",
-      "oldVersion": "0.6.1",
-      "newVersion": "0.6.2",
+      "impact": "minor",
+      "oldVersion": "0.6.2",
+      "newVersion": "0.7.0",
       "tagName": "latest",
       "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
         {
           "impact": "patch",
           "reason": "Appears in changelog section :house: Internal"
@@ -83,18 +103,8 @@
       "pkgJSONPath": "./packages/standards/package.json"
     },
     "@nrg-ui/theme-generator": {
-      "impact": "patch",
-      "oldVersion": "0.3.4",
-      "newVersion": "0.3.5",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./packages/theme-generator/package.json"
+      "oldVersion": "0.3.5"
     }
   },
-  "description": "## Release (2025-12-09)\n\n* @nrg-ui/css 0.28.1 (patch)\n* @nrg-ui/core 0.53.0 (major)\n* @nrg-ui/showcase 0.5.0 (major)\n* @nrg-ui/standards 0.6.2 (patch)\n* @nrg-ui/theme-generator 0.3.5 (patch)\n\n#### :boom: Breaking Change\n* `@nrg-ui/core`\n  * [#755](https://github.com/knoxville-utilities-board/nrg-ui/pull/755) refactor(validation): Rewrite types and remove model argument ([@TSenter](https://github.com/TSenter))\n\n#### :rocket: Enhancement\n* `@nrg-ui/showcase`\n  * [#764](https://github.com/knoxville-utilities-board/nrg-ui/pull/764) feat(code-block): Add option to show line numbers ([@TSenter](https://github.com/TSenter))\n  * [#756](https://github.com/knoxville-utilities-board/nrg-ui/pull/756) feat: Add name to code blocks ([@TSenter](https://github.com/TSenter))\n  * [#757](https://github.com/knoxville-utilities-board/nrg-ui/pull/757) feat(code-block): Maintain formatting before render ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/core`\n  * [#755](https://github.com/knoxville-utilities-board/nrg-ui/pull/755) refactor(validation): Rewrite types and remove model argument ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#762](https://github.com/knoxville-utilities-board/nrg-ui/pull/762) fix(modal): Don't render content when closed ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* [#753](https://github.com/knoxville-utilities-board/nrg-ui/pull/753) docs: Update snippet name ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/css`, `@nrg-ui/core`, `@nrg-ui/showcase`, `@nrg-ui/standards`, `@nrg-ui/theme-generator`\n  * [#761](https://github.com/knoxville-utilities-board/nrg-ui/pull/761) chore: Upgrade Prettier and plugin ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2026-01-08)\n\n* @nrg-ui/version 0.5.0 (minor)\n* @nrg-ui/code-snippets 0.4.0 (minor)\n* @nrg-ui/css 0.28.2 (patch)\n* @nrg-ui/core 0.54.0 (minor)\n* @nrg-ui/showcase 0.6.0 (minor)\n* @nrg-ui/standards 0.7.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/version`, `@nrg-ui/code-snippets`, `@nrg-ui/core`, `@nrg-ui/showcase`, `@nrg-ui/standards`\n  * [#791](https://github.com/knoxville-utilities-board/nrg-ui/pull/791) feat(standards): Add config builder for Prettier ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/standards`\n  * [#789](https://github.com/knoxville-utilities-board/nrg-ui/pull/789) fix(standards): Lazy load dependencies and publish types ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/core`\n  * [#769](https://github.com/knoxville-utilities-board/nrg-ui/pull/769) feat: Upgrade to ember-intl v8 ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* `@nrg-ui/core`\n  * [#767](https://github.com/knoxville-utilities-board/nrg-ui/pull/767) docs(progress): Add progress docs to showcase ([@ChesneyJulian](https://github.com/ChesneyJulian))\n\n#### :house: Internal\n* `@nrg-ui/version`, `@nrg-ui/code-snippets`, `@nrg-ui/css`, `@nrg-ui/core`, `@nrg-ui/showcase`, `@nrg-ui/standards`\n  * [#792](https://github.com/knoxville-utilities-board/nrg-ui/pull/792) chore: Format repository ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/core`\n  * [#788](https://github.com/knoxville-utilities-board/nrg-ui/pull/788) chore: Remove unused types ([@TSenter](https://github.com/TSenter))\n  * [#790](https://github.com/knoxville-utilities-board/nrg-ui/pull/790) chore: Remove ember-auto-import ([@TSenter](https://github.com/TSenter))\n  * [#774](https://github.com/knoxville-utilities-board/nrg-ui/pull/774) chore: Drop support for Ember 5.9 ([@TSenter](https://github.com/TSenter))\n* Other\n  * [#783](https://github.com/knoxville-utilities-board/nrg-ui/pull/783) fix(ci): Update action inputs ([@TSenter](https://github.com/TSenter))\n  * [#780](https://github.com/knoxville-utilities-board/nrg-ui/pull/780) chore: Update release-plan setup ([@TSenter](https://github.com/TSenter))\n  * [#782](https://github.com/knoxville-utilities-board/nrg-ui/pull/782) fix(ci): Add internal label to GitHub Actions PRs ([@TSenter](https://github.com/TSenter))\n  * [#778](https://github.com/knoxville-utilities-board/nrg-ui/pull/778) feat(ci): Update GitHub Actions via Dependabot ([@TSenter](https://github.com/TSenter))\n  * [#772](https://github.com/knoxville-utilities-board/nrg-ui/pull/772) chore: Upgrade to new app blueprint and Ember 6.8 ([@TSenter](https://github.com/TSenter))\n  * [#763](https://github.com/knoxville-utilities-board/nrg-ui/pull/763) chore: Mark Ember 6.8 test as LTS ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }

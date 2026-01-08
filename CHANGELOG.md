@@ -1,5 +1,45 @@
 # Changelog
 
+## Release (2026-01-08)
+
+* @nrg-ui/version 0.5.0 (minor)
+* @nrg-ui/code-snippets 0.4.0 (minor)
+* @nrg-ui/css 0.28.2 (patch)
+* @nrg-ui/core 0.54.0 (minor)
+* @nrg-ui/showcase 0.6.0 (minor)
+* @nrg-ui/standards 0.7.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/version`, `@nrg-ui/code-snippets`, `@nrg-ui/core`, `@nrg-ui/showcase`, `@nrg-ui/standards`
+  * [#791](https://github.com/knoxville-utilities-board/nrg-ui/pull/791) feat(standards): Add config builder for Prettier ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/standards`
+  * [#789](https://github.com/knoxville-utilities-board/nrg-ui/pull/789) fix(standards): Lazy load dependencies and publish types ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`
+  * [#769](https://github.com/knoxville-utilities-board/nrg-ui/pull/769) feat: Upgrade to ember-intl v8 ([@TSenter](https://github.com/TSenter))
+
+#### :memo: Documentation
+* `@nrg-ui/core`
+  * [#767](https://github.com/knoxville-utilities-board/nrg-ui/pull/767) docs(progress): Add progress docs to showcase ([@ChesneyJulian](https://github.com/ChesneyJulian))
+
+#### :house: Internal
+* `@nrg-ui/version`, `@nrg-ui/code-snippets`, `@nrg-ui/css`, `@nrg-ui/core`, `@nrg-ui/showcase`, `@nrg-ui/standards`
+  * [#792](https://github.com/knoxville-utilities-board/nrg-ui/pull/792) chore: Format repository ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/core`
+  * [#788](https://github.com/knoxville-utilities-board/nrg-ui/pull/788) chore: Remove unused types ([@TSenter](https://github.com/TSenter))
+  * [#790](https://github.com/knoxville-utilities-board/nrg-ui/pull/790) chore: Remove ember-auto-import ([@TSenter](https://github.com/TSenter))
+  * [#774](https://github.com/knoxville-utilities-board/nrg-ui/pull/774) chore: Drop support for Ember 5.9 ([@TSenter](https://github.com/TSenter))
+* Other
+  * [#783](https://github.com/knoxville-utilities-board/nrg-ui/pull/783) fix(ci): Update action inputs ([@TSenter](https://github.com/TSenter))
+  * [#780](https://github.com/knoxville-utilities-board/nrg-ui/pull/780) chore: Update release-plan setup ([@TSenter](https://github.com/TSenter))
+  * [#782](https://github.com/knoxville-utilities-board/nrg-ui/pull/782) fix(ci): Add internal label to GitHub Actions PRs ([@TSenter](https://github.com/TSenter))
+  * [#778](https://github.com/knoxville-utilities-board/nrg-ui/pull/778) feat(ci): Update GitHub Actions via Dependabot ([@TSenter](https://github.com/TSenter))
+  * [#772](https://github.com/knoxville-utilities-board/nrg-ui/pull/772) chore: Upgrade to new app blueprint and Ember 6.8 ([@TSenter](https://github.com/TSenter))
+  * [#763](https://github.com/knoxville-utilities-board/nrg-ui/pull/763) chore: Mark Ember 6.8 test as LTS ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Chesney Julian ([@ChesneyJulian](https://github.com/ChesneyJulian))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2025-12-09)
 
 * @nrg-ui/css 0.28.1 (patch)
