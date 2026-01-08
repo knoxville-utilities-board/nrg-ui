@@ -47,3 +47,38 @@ jobs:
           branch: unstable-css
           token: ${{ secrets.GITHUB_TOKEN }}
           working-directory: 'packages/design-system'
+
+      - name: Publish `@nrg-ui/standards`
+        uses: kategengler/put-built-npm-package-contents-on-branch@v2.1.0
+        with:
+          branch: unstable-standards
+          token: ${{ secrets.GITHUB_TOKEN }}
+          working-directory: 'packages/standards'
+
+      - name: Publish `@nrg-ui/app-version`
+        uses: kategengler/put-built-npm-package-contents-on-branch@v2.1.0
+        with:
+          branch: unstable-app-version
+          token: ${{ secrets.GITHUB_TOKEN }}
+          working-directory: 'packages/app-version'
+
+      - name: Publish `@nrg-ui/code-snippets`
+        uses: kategengler/put-built-npm-package-contents-on-branch@v2.1.0
+        with:
+          branch: unstable-code-snippets
+          token: ${{ secrets.GITHUB_TOKEN }}
+          working-directory: 'packages/code-snippets'
+
+      - name: Publish `@nrg-ui/showcase`
+        uses: kategengler/put-built-npm-package-contents-on-branch@v2.1.0
+        with:
+          branch: unstable-showcase
+          token: ${{ secrets.GITHUB_TOKEN }}
+          working-directory: 'packages/showcase'
+
+      - name: Publish `@nrg-ui/theme-generator`
+        uses: kategengler/put-built-npm-package-contents-on-branch@v2.1.0
+        with:
+          branch: unstable-theme-generator
+          token: ${{ secrets.GITHUB_TOKEN }}
+          working-directory: 'packages/theme-generator'
