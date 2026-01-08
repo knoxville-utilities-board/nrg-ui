@@ -20,6 +20,9 @@ importers:
       '@glint/core':
         specifier: ^1.5.2
         version: 1.5.2(typescript@5.9.3)
+      '@nrg-ui/standards':
+        specifier: workspace:^
+        version: link:packages/standards
       concurrently:
         specifier: ^9.2.1
         version: 9.2.1
