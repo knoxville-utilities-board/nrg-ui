@@ -1,4 +1,5 @@
 import { existsSync, readFileSync } from 'fs';
+import { getTsconfig } from 'get-tsconfig';
 import allGlobals from 'globals';
 import { join } from 'path';
 import { cwd } from 'process';
@@ -29,9 +30,7 @@ export class Config {
 
   #loadDeps() {
     if (!this.#deps) {
-      this.#deps = new Map(
-        Object.entries(getDependenciesFromPackage(join(process.cwd(), 'package.json'))),
-      );
+      this.#deps = new Map(Object.entries(getDependenciesFromPackage(join(cwd(), 'package.json'))));
     }
 
     return this.#deps;
@@ -50,7 +49,7 @@ export class Config {
   }
 
   get isEmberAddon() {
-    const packageJson = JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf-8'));
+    const packageJson = JSON.parse(readFileSync(join(cwd(), 'package.json'), 'utf-8'));
 
     return 'ember-addon' in packageJson;
   }
@@ -318,6 +317,8 @@ export class Config {
         return objects;
       }
 
+      const tsconfig = getTsconfig(cwd());
+
       if (this.hasTemplateImports) {
         fileTypes.push('gts');
       }
@@ -344,6 +345,33 @@ export class Config {
           },
           rules: {
             ...rules,
+          },
+        });
+      }
+
+      if (tsconfig?.config.compilerOptions?.allowImportingTsExtensions) {
+        const importPlugin = (await load(
+          'eslint-plugin-import',
+        )) as typeof import('eslint-plugin-import');
+
+        objects.push({
+          name: '@nrg-ui/standards/eslint/ts/import',
+          files,
+          languageOptions: {
+            globals: flatten(globals.map((g) => allGlobals[g])),
+            parser: tseslint.parser,
+          },
+          plugins: {
+            import: importPlugin,
+          },
+          rules: {
+            'import/extensions': [
+              'error',
+              'always',
+              {
+                ignorePackages: true,
+              },
+            ],
           },
         });
       }
