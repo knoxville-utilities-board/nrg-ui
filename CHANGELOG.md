@@ -1,5 +1,15 @@
 # Changelog
 
+## Release (2026-01-11)
+
+
+
+#### :rocket: Enhancement
+* [#793](https://github.com/knoxville-utilities-board/nrg-ui/pull/793) feat(internal): Publish unstable version of every package ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2026-01-08)
 
 * @nrg-ui/version 0.5.0 (minor)
