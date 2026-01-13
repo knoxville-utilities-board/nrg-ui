@@ -64,13 +64,13 @@
   "dependencies": {
     "@embroider/addon-shim": "^1.10.2",
     "@embroider/macros": "^1.19.6",
-    "@mdn/browser-compat-data": "^7.2.2",
+    "@mdn/browser-compat-data": "^7.2.3",
     "chalk": "^4.1.2",
     "content-tag-utils": "^0.6.0",
     "decorator-transforms": "^2.3.1",
     "ember-concurrency": "^5.1.0",
     "ember-template-recast": "^6.1.5",
-    "shiki": "^3.20.0"
+    "shiki": "^3.21.0"
   },
   "devDependencies": {
     "@babel/core": "^7.28.4",
@@ -79,7 +79,7 @@
     "@ember/test-helpers": "^5.4.1",
     "@embroider/addon-dev": "^8.2.0",
     "@glimmer/component": "^2.0.0",
-    "@glint/ember-tsc": "^1.0.8",
+    "@glint/ember-tsc": "^1.0.9",
     "@glint/template": "^1.7.3",
     "@nrg-ui/core": "workspace:^",
     "@nrg-ui/standards": "workspace:^",
@@ -97,16 +97,16 @@
     "eslint-plugin-n": "^17.23.1",
     "prettier": "^3.7.4",
     "prettier-plugin-ember-template-tag": "^2.1.2",
-    "rollup": "^4.54.0",
+    "rollup": "^4.55.1",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.51.0",
-    "vite": "^7.3.0"
+    "typescript-eslint": "^8.52.0",
+    "vite": "^7.3.1"
   },
   "peerDependencies": {
     "@ember/test-helpers": "^5.0.0",
     "@nrg-ui/core": "workspace:^0",
     "ember-source": ">=5.12.0 || ^6.0.0",
-    "vite": "^7.3.0"
+    "vite": "^7.3.1"
   },
   "publishConfig": {
     "access": "public",
