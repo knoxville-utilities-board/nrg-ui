@@ -532,9 +532,9 @@ export default class DatetimeCalendar extends Component<DatetimeCalendarSignatur
       this.manipulateDate('set', { year: cell.year });
     } else if (this.isSelectingDays) {
       this.manipulateDate('set', {
-        date: cell.date,
-        month: cell.month,
         year: cell.year,
+        month: cell.month,
+        date: cell.date,
       });
     }
     this.goToNextWorkFlowStep();
