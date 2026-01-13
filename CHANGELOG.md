@@ -1,5 +1,20 @@
 # Changelog
 
+## Release (2026-01-13)
+
+* @nrg-ui/core 0.54.1 (patch)
+
+#### :rocket: Enhancement
+* [#793](https://github.com/knoxville-utilities-board/nrg-ui/pull/793) feat(internal): Publish unstable version of every package ([@TSenter](https://github.com/TSenter))
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#799](https://github.com/knoxville-utilities-board/nrg-ui/pull/799) fix(datetime): Set year, month, then date ([@DeanLongmire](https://github.com/DeanLongmire))
+
+#### Committers: 2
+- Dean Longmire ([@DeanLongmire](https://github.com/DeanLongmire))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2026-01-08)
 
 * @nrg-ui/version 0.5.0 (minor)
