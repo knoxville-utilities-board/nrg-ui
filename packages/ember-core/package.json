@@ -111,7 +111,7 @@
     "chalk": "^4.1.2",
     "decorator-transforms": "^2.3.1",
     "ember-css-transitions": "^4.5.0",
-    "ember-intl": "^8.0.2",
+    "ember-intl": "^8.0.3",
     "ember-keyboard": "^9.0.4",
     "ember-lifeline": "^7.0.0",
     "ember-modifier": "^4.2.2",
