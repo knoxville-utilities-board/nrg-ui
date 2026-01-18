@@ -122,7 +122,7 @@
     "@babel/plugin-transform-typescript": "^7.28.5",
     "@babel/runtime": "7.28.4",
     "@bertdeblock/gember": "^1.6.0",
-    "@ember-intl/lint": "^0.3.0",
+    "@ember-intl/lint": "^0.4.1",
     "@embroider/addon-dev": "^8.2.0",
     "@glimmer/component": "^2.0.0",
     "@glint/ember-tsc": "^1.0.9",
