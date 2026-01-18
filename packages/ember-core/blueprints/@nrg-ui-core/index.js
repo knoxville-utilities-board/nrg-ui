@@ -34,7 +34,21 @@ module.exports = {
       { name: 'ember-keyboard', target: '^9.0.2' },
       { name: 'ember-lifeline', target: '^7.0.0' },
       { name: 'ismobilejs', target: '^1.1.1' },
+      { name: '@ember-intl/vite', target: '^0.4.0' },
     ]);
+
+    this.ui.writeLine(prefix + chalk.green('Configuring ember-intl...'));
+
+    await this.insertIntoFile(
+      'vite.config.mjs',
+      `import { loadTranslations } from '@ember-intl/vite';`,
+    );
+    await this.insertIntoFile('vite.config.mjs', `loadTranslations(),`, {
+      after: 'plugins: [',
+    });
+    await this.insertIntoFile('tsconfig.json', `"@ember-intl/vite/virtual"`, {
+      after: /"types": \[[^\]*]/,
+    });
 
     this.ui.writeLine(prefix + chalk.green('Configuring assets...'));
 
