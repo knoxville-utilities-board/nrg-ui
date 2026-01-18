@@ -5,6 +5,7 @@ import { ConfirmationValidator, validator as buildValidator } from '@nrg-ui/core
 import { setupTest } from 'docs/tests/helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import { module, test } from 'qunit';
+import translationsForEnUs from 'virtual:ember-intl/translations/en-us';
 
 import type { TestContext as TC } from '@ember/test-helpers';
 import type { Binding } from '@nrg-ui/core';
@@ -29,7 +30,7 @@ declare type TestContext = {
 
 module('Unit | Validator | confirmation', function (hooks) {
   setupTest(hooks);
-  setupIntl(hooks, 'en-us');
+  setupIntl(hooks, 'en-us', translationsForEnUs);
 
   hooks.beforeEach(function (this: TestContext) {
     this.model = new Model();

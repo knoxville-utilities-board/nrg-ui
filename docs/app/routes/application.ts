@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
+import translationsForEnUs from 'virtual:ember-intl/translations/en-us';
 
 import type ThemeService from '@nrg-ui/core/services/theme';
 import type ShikiService from '@nrg-ui/showcase/services/shiki';
@@ -18,10 +19,15 @@ export default class ApplicationRoute extends Route {
   declare shiki: ShikiService;
 
   async beforeModel() {
-    this.intl.setFormats(formats);
-    this.intl.setLocale(['en-us']);
+    this.setupIntl();
     this.theme.load();
 
     this.shiki.initialize.perform();
+  }
+
+  setupIntl() {
+    this.intl.addTranslations('en-us', translationsForEnUs);
+    this.intl.setFormats(formats);
+    this.intl.setLocale('en-us');
   }
 }
