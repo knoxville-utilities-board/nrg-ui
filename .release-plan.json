@@ -10,17 +10,7 @@
       "oldVersion": "0.28.2"
     },
     "@nrg-ui/core": {
-      "impact": "patch",
-      "oldVersion": "0.54.0",
-      "newVersion": "0.54.1",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
-        }
-      ],
-      "pkgJSONPath": "./packages/ember-core/package.json"
+      "oldVersion": "0.54.1"
     },
     "@nrg-ui/showcase": {
       "oldVersion": "0.6.0"
@@ -32,5 +22,5 @@
       "oldVersion": "0.3.5"
     }
   },
-  "description": "## Release (2026-01-13)\n\n* @nrg-ui/core 0.54.1 (patch)\n\n#### :rocket: Enhancement\n* [#793](https://github.com/knoxville-utilities-board/nrg-ui/pull/793) feat(internal): Publish unstable version of every package ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#799](https://github.com/knoxville-utilities-board/nrg-ui/pull/799) fix(datetime): Set year, month, then date ([@DeanLongmire](https://github.com/DeanLongmire))\n\n#### Committers: 2\n- Dean Longmire ([@DeanLongmire](https://github.com/DeanLongmire))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "\n\n\n\n"
 }
