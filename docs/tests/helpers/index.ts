@@ -4,6 +4,7 @@ import {
   setupRenderingTest as upstreamSetupRenderingTest,
   setupTest as upstreamSetupTest,
 } from 'ember-qunit';
+import translationsForEnUs from 'virtual:ember-intl/translations/en-us';
 
 import type { ValidateFnResponse } from '@nrg-ui/core/validation/types';
 import type { SetupTestOptions } from 'ember-qunit';
@@ -44,7 +45,7 @@ function setupRenderingTest(hooks: NestedHooks, options?: SetupTestOptions) {
   upstreamSetupRenderingTest(hooks, options);
 
   // Additional setup for rendering tests can be done here.
-  setupIntl(hooks, 'en-us');
+  setupIntl(hooks, 'en-us', translationsForEnUs);
 }
 
 function setupTest(hooks: NestedHooks, options?: SetupTestOptions) {

@@ -1,3 +1,4 @@
+import { loadTranslations } from '@ember-intl/vite';
 import { classicEmberSupport, ember, extensions } from '@embroider/vite';
 import { codeSnippetsPlugin } from '@nrg-ui/code-snippets';
 import { extractCodeBlocks } from '@nrg-ui/showcase/plugins';
@@ -32,6 +33,7 @@ export default defineConfig(async (config) => {
         babelHelpers: 'runtime',
         extensions,
       }),
+      loadTranslations(),
     ],
   };
 });

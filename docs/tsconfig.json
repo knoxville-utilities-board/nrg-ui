@@ -8,6 +8,11 @@
       "docs/*": ["./app/*"],
       "*": ["./types/*"]
     },
-    "types": ["ember-source/types", "@embroider/core/virtual", "vite/client"]
+    "types": [
+      "ember-source/types",
+      "@embroider/core/virtual",
+      "vite/client",
+      "@ember-intl/vite/virtual"
+    ]
   }
 }
