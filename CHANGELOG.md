@@ -1,5 +1,20 @@
 # Changelog
 
+## Release (2026-01-20)
+
+* @nrg-ui/core 0.55.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#807](https://github.com/knoxville-utilities-board/nrg-ui/pull/807) feat: Setup ember-intl in blueprint ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `@nrg-ui/core`
+  * [#805](https://github.com/knoxville-utilities-board/nrg-ui/pull/805) refactor(docs): Use new @ember-intl/vite plugin for translations ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2026-01-13)
 
 * @nrg-ui/core 0.54.1 (patch)
