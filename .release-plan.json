@@ -10,14 +10,18 @@
       "oldVersion": "0.28.2"
     },
     "@nrg-ui/core": {
-      "impact": "patch",
-      "oldVersion": "0.54.0",
-      "newVersion": "0.54.1",
+      "impact": "minor",
+      "oldVersion": "0.54.1",
+      "newVersion": "0.55.0",
       "tagName": "latest",
       "constraints": [
         {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
           "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
@@ -32,5 +36,5 @@
       "oldVersion": "0.3.5"
     }
   },
-  "description": "## Release (2026-01-13)\n\n* @nrg-ui/core 0.54.1 (patch)\n\n#### :rocket: Enhancement\n* [#793](https://github.com/knoxville-utilities-board/nrg-ui/pull/793) feat(internal): Publish unstable version of every package ([@TSenter](https://github.com/TSenter))\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#799](https://github.com/knoxville-utilities-board/nrg-ui/pull/799) fix(datetime): Set year, month, then date ([@DeanLongmire](https://github.com/DeanLongmire))\n\n#### Committers: 2\n- Dean Longmire ([@DeanLongmire](https://github.com/DeanLongmire))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2026-01-20)\n\n* @nrg-ui/core 0.55.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#807](https://github.com/knoxville-utilities-board/nrg-ui/pull/807) feat: Setup ember-intl in blueprint ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/core`\n  * [#805](https://github.com/knoxville-utilities-board/nrg-ui/pull/805) refactor(docs): Use new @ember-intl/vite plugin for translations ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
