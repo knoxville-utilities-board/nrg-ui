@@ -118,9 +118,9 @@
     "ismobilejs": "^1.1.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.5",
-    "@babel/plugin-transform-typescript": "^7.28.5",
-    "@babel/runtime": "7.28.4",
+    "@babel/core": "^7.28.6",
+    "@babel/plugin-transform-typescript": "^7.28.6",
+    "@babel/runtime": "7.28.6",
     "@bertdeblock/gember": "^1.6.0",
     "@ember-intl/lint": "^0.4.1",
     "@embroider/addon-dev": "^8.2.0",
@@ -142,15 +142,15 @@
     "eslint-plugin-decorator-position": "^6.0.0",
     "eslint-plugin-ember": "^12.7.5",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-n": "^17.23.1",
+    "eslint-plugin-n": "^17.23.2",
     "execa": "^9.6.1",
-    "prettier": "^3.7.4",
+    "prettier": "^3.8.0",
     "prettier-plugin-ember-template-tag": "^2.1.2",
-    "rollup": "^4.55.1",
+    "rollup": "^4.55.2",
     "rollup-plugin-copy": "^3.5.0",
     "tracked-built-ins": "^4.1.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.52.0"
+    "typescript-eslint": "^8.53.1"
   },
   "peerDependencies": {
     "@glimmer/component": "^2.0.0",
