@@ -58,18 +58,18 @@
   "devDependencies": {
     "@nrg-ui/standards": "workspace:^",
     "@rollup/pluginutils": "^5.3.0",
-    "@types/node": "^22.19.5",
+    "@types/node": "^22.19.7",
     "@types/picomatch": "^4.0.2",
-    "@vitest/coverage-v8": "^4.0.16",
+    "@vitest/coverage-v8": "^4.0.17",
     "eslint": "^9.39.2",
     "eslint-plugin-decorator-position": "^6.0.0",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-n": "^17.23.1",
+    "eslint-plugin-n": "^17.23.2",
     "tinyglobby": "^0.2.15",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.52.0",
+    "typescript-eslint": "^8.53.1",
     "vite": "^7.3.1",
-    "vitest": "^4.0.16"
+    "vitest": "^4.0.17"
   },
   "publishConfig": {
     "access": "public",
