@@ -73,6 +73,8 @@ module('Integration | Component | Accordion', function (hooks) {
       </template>,
     );
 
-    assert.dom('div button h3.custom-title').hasText('Custom Title', 'Title block yields correctly');
+    assert
+      .dom('div button h3.custom-title')
+      .hasText('Custom Title', 'Title block yields correctly');
   });
 });
