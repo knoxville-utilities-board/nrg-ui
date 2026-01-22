@@ -412,7 +412,7 @@ export default class Select<T> extends BoundValue<SelectSignature<T>, T> {
                 {{t "nrg.base.loading"}}
               </span>
             {{else}}
-              <i class="bi {{this.caretIcon}} float-end m-1" />
+              <i class="bi {{this.caretIcon}} float-end mx-1" />
             {{/if}}
           </button>
         {{/if}}
