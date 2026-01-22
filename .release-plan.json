@@ -10,18 +10,14 @@
       "oldVersion": "0.28.2"
     },
     "@nrg-ui/core": {
-      "impact": "minor",
-      "oldVersion": "0.54.1",
-      "newVersion": "0.55.0",
+      "impact": "patch",
+      "oldVersion": "0.55.0",
+      "newVersion": "0.55.1",
       "tagName": "latest",
       "constraints": [
         {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        },
-        {
           "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
@@ -36,5 +32,5 @@
       "oldVersion": "0.3.5"
     }
   },
-  "description": "## Release (2026-01-20)\n\n* @nrg-ui/core 0.55.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#807](https://github.com/knoxville-utilities-board/nrg-ui/pull/807) feat: Setup ember-intl in blueprint ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/core`\n  * [#805](https://github.com/knoxville-utilities-board/nrg-ui/pull/805) refactor(docs): Use new @ember-intl/vite plugin for translations ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2026-01-22)\n\n* @nrg-ui/core 0.55.1 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#809](https://github.com/knoxville-utilities-board/nrg-ui/pull/809) fix: Adjust icon margins ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
