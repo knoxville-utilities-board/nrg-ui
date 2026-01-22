@@ -11,6 +11,7 @@ export interface AccordionSignature {
   };
   Blocks: {
     content: [];
+    title: [];
   };
 }
 
@@ -46,7 +47,11 @@ export default class Accordion extends Component<AccordionSignature> {
         type="button"
         {{on "click" this.toggleMenu}}
       >
-        <p class="fw-bold m-2">{{this.title}}</p>
+        {{#if (has-block "title")}}
+          {{yield to="title"}}
+        {{else}}
+          <p class="fw-bold m-2">{{this.title}}</p>
+        {{/if}}
         <i class="p {{this.menuIcon}}" />
       </button>
       <div class="mx-2 mb-0 mt-2 {{this.classList}}">
