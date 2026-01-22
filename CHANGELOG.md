@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2026-01-22)
+
+* @nrg-ui/core 0.55.1 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#809](https://github.com/knoxville-utilities-board/nrg-ui/pull/809) fix: Adjust icon margins ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2026-01-20)
 
 * @nrg-ui/core 0.55.0 (minor)
