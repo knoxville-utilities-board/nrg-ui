@@ -6,7 +6,7 @@ import { tracked } from '@glimmer/tracking';
 export interface AccordionSignature {
   Element: HTMLDivElement;
   Args: {
-    title: string;
+    title?: string;
     defaultOpen?: boolean;
   };
   Blocks: {
@@ -25,7 +25,7 @@ export default class Accordion extends Component<AccordionSignature> {
   }
 
   get title() {
-    return this.args.title;
+    return this.args?.title ?? '';
   }
 
   get classList() {
