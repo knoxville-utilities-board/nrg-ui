@@ -24,10 +24,6 @@ export default class Accordion extends Component<AccordionSignature> {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  get title() {
-    return this.args?.title ?? '';
-  }
-
   get classList() {
     const classes = ['collapse'];
     if (this.isMenuOpen) {
@@ -50,7 +46,7 @@ export default class Accordion extends Component<AccordionSignature> {
         {{#if (has-block "title")}}
           {{yield to="title"}}
         {{else}}
-          <p class="fw-bold m-2">{{this.title}}</p>
+          <p class="fw-bold m-2">{{@title}}</p>
         {{/if}}
         <i class="p {{this.menuIcon}}" />
       </button>
