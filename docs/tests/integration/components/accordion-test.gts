@@ -58,4 +58,23 @@ module('Integration | Component | Accordion', function (hooks) {
         'Icon starts as down caret when defaultOpen parameter is true',
       );
   });
+
+  test('accordion yields title block', async function () {
+    await render(
+      <template>
+        <Accordion>
+          <:title>
+            <h3 class="custom-title">Custom Title</h3>
+          </:title>
+          <:content>
+            <p>Content</p>
+          </:content>
+        </Accordion>
+      </template>,
+    );
+
+    assert
+      .dom('div button h3.custom-title')
+      .hasText('Custom Title', 'Title block yields correctly');
+  });
 });

@@ -6,11 +6,12 @@ import { tracked } from '@glimmer/tracking';
 export interface AccordionSignature {
   Element: HTMLDivElement;
   Args: {
-    title: string;
+    title?: string;
     defaultOpen?: boolean;
   };
   Blocks: {
     content: [];
+    title: [];
   };
 }
 
@@ -21,10 +22,6 @@ export default class Accordion extends Component<AccordionSignature> {
   @action
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
-  }
-
-  get title() {
-    return this.args.title;
   }
 
   get classList() {
@@ -46,7 +43,11 @@ export default class Accordion extends Component<AccordionSignature> {
         type="button"
         {{on "click" this.toggleMenu}}
       >
-        <p class="fw-bold m-2">{{this.title}}</p>
+        {{#if (has-block "title")}}
+          {{yield to="title"}}
+        {{else}}
+          <p class="fw-bold m-2">{{@title}}</p>
+        {{/if}}
         <i class="p {{this.menuIcon}}" />
       </button>
       <div class="mx-2 mb-0 mt-2 {{this.classList}}">

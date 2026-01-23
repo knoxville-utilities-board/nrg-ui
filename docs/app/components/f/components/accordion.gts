@@ -34,6 +34,9 @@ export default class AccordionDemo extends Component {
           <Api.Blocks as |Block|>
             <Block @description="Named yield block to render the hidden content" @name="content" />
           </Api.Blocks>
+          <Api.Blocks as |Block|>
+            <Block @description="Named yield block to render the title content" @name="title" />
+          </Api.Blocks>
         </:api>
       </Section.Subsection>
     </Section>
