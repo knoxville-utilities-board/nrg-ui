@@ -41,10 +41,10 @@
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
     "concurrently": "^9.2.1",
-    "sass": "^1.97.2"
+    "sass": "^1.97.3"
   },
   "dependencies": {
-    "prettier": "^3.8.0"
+    "prettier": "^3.8.1"
   },
   "publishConfig": {
     "access": "public",
