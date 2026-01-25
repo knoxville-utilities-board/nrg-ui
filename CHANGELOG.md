@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2026-01-25)
+
+* @nrg-ui/core 0.56.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#811](https://github.com/knoxville-utilities-board/nrg-ui/pull/811) feat(accordion): Add yield block for title ([@Trishu-Patel](https://github.com/Trishu-Patel))
+
+#### Committers: 1
+- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))
+
 ## Release (2026-01-22)
 
 * @nrg-ui/core 0.55.1 (patch)
