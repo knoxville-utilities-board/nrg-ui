@@ -64,7 +64,7 @@
   "dependencies": {
     "@embroider/addon-shim": "^1.10.2",
     "@embroider/macros": "^1.19.6",
-    "@mdn/browser-compat-data": "^7.2.4",
+    "@mdn/browser-compat-data": "^7.2.5",
     "chalk": "^4.1.2",
     "content-tag-utils": "^0.6.0",
     "decorator-transforms": "^2.3.1",
@@ -95,9 +95,9 @@
     "eslint-plugin-ember": "^12.7.5",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-n": "^17.23.2",
-    "prettier": "^3.8.0",
+    "prettier": "^3.8.1",
     "prettier-plugin-ember-template-tag": "^2.1.2",
-    "rollup": "^4.55.2",
+    "rollup": "^4.56.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.53.1",
     "vite": "^7.3.1"

@@ -31,8 +31,8 @@
     "bootstrap-icons": "^1.13.1",
     "chalk": "^5.4.1",
     "css-tree": "3.1.0",
-    "prettier": "^3.8.0",
-    "sass": "1.97.2",
+    "prettier": "^3.8.1",
+    "sass": "1.97.3",
     "semver": "^7.7.3"
   },
   "publishConfig": {
