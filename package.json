@@ -1,0 +1,53 @@
+{
+  "name": "@nrg-ui/css",
+  "version": "0.28.2",
+  "description": "Bootstrap-based CSS framework",
+  "keywords": [
+    "bootstrap",
+    "design",
+    "design-system"
+  ],
+  "repository": {
+    "directory": "packages/design-system",
+    "type": "git",
+    "url": "https://github.com/knoxville-utilities-board/nrg-ui.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Knoxville Utilities Board",
+    "url": "https://www.kub.org"
+  },
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    "./*": "./dist/*",
+    "./fonts/*": "./dist/assets/icons/fonts/*",
+    "./icons/*": "./dist/assets/icons/*"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build:icons": "node src/build-icons",
+    "build:sass": "sass --load-path node_modules src:dist --no-source-map",
+    "start": "concurrently pnpm:build:icons pnpm:*:sass",
+    "build": "concurrently 'pnpm:build:*' --prefix-colors=auto",
+    "format": "prettier . --cache --write",
+    "sasstest": "sass --help",
+    "watch:sass": "sass --load-path node_modules --watch src:dist"
+  },
+  "devDependencies": {
+    "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1",
+    "concurrently": "^9.2.1",
+    "sass": "^1.97.3"
+  },
+  "dependencies": {
+    "prettier": "^3.8.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
+}
