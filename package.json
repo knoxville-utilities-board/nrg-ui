@@ -1,0 +1,137 @@
+{
+  "name": "@nrg-ui/showcase",
+  "version": "0.6.0",
+  "description": "Build documentation and samples in Ember.js",
+  "keywords": [
+    "ember",
+    "ember-addon",
+    "ember-cli",
+    ""
+  ],
+  "repository": {
+    "directory": "packages/showcase",
+    "type": "git",
+    "url": "https://github.com/knoxville-utilities-board/nrg-ui.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Knoxville Utilities Board",
+    "url": "https://www.kub.org"
+  },
+  "exports": {
+    ".": {
+      "types": "./declarations/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./declarations/*.d.ts",
+      "default": "./dist/*.js"
+    },
+    "./addon-main.js": "./addon-main.cjs"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "declarations/*"
+      ]
+    }
+  },
+  "files": [
+    "addon-main.cjs",
+    "blueprints",
+    "declarations",
+    "dist"
+  ],
+  "scripts": {
+    "build": "concurrently 'pnpm:build:*' --prefix-colors=auto",
+    "build:js": "rollup --config",
+    "build:types": "ember-tsc --declaration",
+    "format": "prettier . --cache --write",
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\" --prefix-colors=auto",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" --prefix-colors=auto && pnpm run format",
+    "lint:format": "prettier . --cache --check",
+    "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
+    "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:types": "ember-tsc --noEmit",
+    "start": "concurrently 'pnpm:start:*' --prefix-colors=auto",
+    "start:js": "rollup --config --watch --no-watch.clearScreen",
+    "start:types": "ember-tsc --declaration --watch",
+    "test": "echo 'A v2 addon does not have tests, run tests in docs'"
+  },
+  "dependencies": {
+    "@embroider/addon-shim": "^1.10.2",
+    "@embroider/macros": "^1.19.6",
+    "@mdn/browser-compat-data": "^7.2.5",
+    "chalk": "^4.1.2",
+    "content-tag-utils": "^0.6.0",
+    "decorator-transforms": "^2.3.1",
+    "ember-concurrency": "^5.1.0",
+    "ember-template-recast": "^6.1.5",
+    "shiki": "^3.21.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.6",
+    "@babel/plugin-transform-typescript": "^7.28.6",
+    "@babel/runtime": "^7.28.6",
+    "@ember/test-helpers": "^5.4.1",
+    "@embroider/addon-dev": "^8.2.0",
+    "@glimmer/component": "^2.0.0",
+    "@glint/ember-tsc": "^1.0.9",
+    "@glint/template": "^1.7.3",
+    "@nrg-ui/core": "workspace:^",
+    "@nrg-ui/standards": "workspace:^",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@tsconfig/ember": "^3.0.12",
+    "@types/hast": "^3.0.4",
+    "@types/qunit": "^2.19.13",
+    "babel-plugin-ember-template-compilation": "^4.0.0",
+    "concurrently": "^9.2.1",
+    "ember-template-lint": "^7.9.3",
+    "eslint": "^9.39.2",
+    "eslint-plugin-decorator-position": "^6.0.0",
+    "eslint-plugin-ember": "^12.7.5",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-n": "^17.23.2",
+    "prettier": "^3.8.1",
+    "prettier-plugin-ember-template-tag": "^2.1.2",
+    "rollup": "^4.56.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.53.1",
+    "vite": "^7.3.1"
+  },
+  "peerDependencies": {
+    "@ember/test-helpers": "^5.0.0",
+    "@nrg-ui/core": "workspace:^0",
+    "ember-source": ">=5.12.0 || ^6.0.0",
+    "vite": "^7.3.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "ember-addon": {
+    "version": 2,
+    "type": "addon",
+    "main": "addon-main.cjs",
+    "app-js": {
+      "./components/code-block.js": "./dist/_app_/components/code-block.js",
+      "./components/component-api/actions.js": "./dist/_app_/components/component-api/actions.js",
+      "./components/component-api/api-link.js": "./dist/_app_/components/component-api/api-link.js",
+      "./components/component-api/arguments.js": "./dist/_app_/components/component-api/arguments.js",
+      "./components/component-api/blocks.js": "./dist/_app_/components/component-api/blocks.js",
+      "./components/copy-button.js": "./dist/_app_/components/copy-button.js",
+      "./components/section.js": "./dist/_app_/components/section.js",
+      "./services/shiki.js": "./dist/_app_/services/shiki.js"
+    }
+  },
+  "release-plan": {
+    "semverIncrementAs": {
+      "major": "minor"
+    }
+  }
+}
