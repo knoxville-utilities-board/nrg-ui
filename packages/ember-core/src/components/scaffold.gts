@@ -136,7 +136,7 @@ export default class Scaffold extends Component<ScaffoldSignature> {
 
   <template>
     {{#let (or (has-block "sidebar") (has-block "sidebar-footer")) as |hasSidebar|}}
-      <div class="min-vh-100 d-flex flex-column">
+      <div class="min-dvh-100 d-flex flex-column">
         <AppBar @environment={{@environment}}>
           <:left as |AppBar|>
             {{#if hasSidebar}}
