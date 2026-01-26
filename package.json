@@ -1,0 +1,83 @@
+{
+  "name": "@nrg-ui/standards",
+  "version": "0.7.0",
+  "description": "Composable standards for NRG UI packages",
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "config",
+    "javascript",
+    "styleguide"
+  ],
+  "repository": {
+    "directory": "packages/standards",
+    "type": "git",
+    "url": "https://github.com/knoxville-utilities-board/nrg-ui.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Knoxville Utilities Board",
+    "url": "https://www.kub.org"
+  },
+  "files": [
+    "declarations",
+    "dist",
+    "README.md",
+    "package.json"
+  ],
+  "main": "./dist/index.js",
+  "bin": {
+    "nrg-standards": "./bin/nrg-standards"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc --build",
+    "build:watch": "tsc --build --watch",
+    "format": "prettier . --cache --write",
+    "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
+    "lint:format": "prettier . --cache --check",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "prepare": "pnpm build",
+    "test": "echo 'The @nrg-ui/standards package does not have tests'"
+  },
+  "dependencies": {
+    "@eslint/js": "^9.39.2",
+    "chalk": "^5.4.1",
+    "execa": "^9.6.1",
+    "find-up": "^8.0.0",
+    "globals": "^17.1.0",
+    "semver": "^7.7.3",
+    "yargs": "^18.0.0"
+  },
+  "optionalDependencies": {
+    "eslint-plugin-decorator-position": "^6.0.0",
+    "eslint-plugin-ember": "^12.7.5",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-n": "^17.23.2",
+    "eslint-plugin-qunit": "8.2.5",
+    "typescript-eslint": "^8.53.1"
+  },
+  "devDependencies": {
+    "@types/eslint": "^9.6.1",
+    "@types/node": "^22.19.7",
+    "@types/semver": "^7.7.1",
+    "@types/yargs": "^17.0.35",
+    "eslint": "^9.39.2",
+    "eslint-plugin-decorator-position": "^6.0.0",
+    "eslint-plugin-import": "^2.32.0",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.53.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "engines": {
+    "node": "^20.19.0"
+  }
+}
