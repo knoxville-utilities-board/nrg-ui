@@ -1,0 +1,42 @@
+{
+  "name": "@nrg-ui/theme-generator",
+  "version": "0.3.5",
+  "description": "Theme generator for @nrg-ui/css",
+  "keywords": [],
+  "repository": {
+    "directory": "packages/theme-generator",
+    "type": "git",
+    "url": "https://github.com/knoxville-utilities-board/nrg-ui.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Knoxville Utilities Board",
+    "url": "https://www.kub.org"
+  },
+  "type": "module",
+  "main": "./src/index.js",
+  "bin": {
+    "nrg-theme-generator": "./bin/nrg-theme-generator.js"
+  },
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "package.json"
+  ],
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1",
+    "chalk": "^5.4.1",
+    "css-tree": "3.1.0",
+    "prettier": "^3.8.1",
+    "sass": "1.97.3",
+    "semver": "^7.7.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
+}
