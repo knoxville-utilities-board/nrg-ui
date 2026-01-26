@@ -1,0 +1,261 @@
+{
+  "name": "@nrg-ui/core",
+  "version": "0.56.0",
+  "description": "Design system for Ember.js built on top of Bootstrap",
+  "keywords": [
+    "bootstrap",
+    "design",
+    "design-system",
+    "ember",
+    "ember-addon"
+  ],
+  "repository": {
+    "directory": "packages/ember-core",
+    "type": "git",
+    "url": "https://github.com/knoxville-utilities-board/nrg-ui.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Knoxville Utilities Board",
+    "url": "https://www.kub.org"
+  },
+  "exports": {
+    ".": {
+      "types": "./declarations/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./test-support": {
+      "types": "./declarations/test-support/index.d.ts",
+      "default": "./dist/test-support/index.js"
+    },
+    "./*": {
+      "types": "./declarations/*.d.ts",
+      "default": "./dist/*.js"
+    },
+    "./addon-main.js": "./addon-main.cjs",
+    "./components": {
+      "types": "./declarations/components/index.d.ts",
+      "default": "./dist/components/index.js"
+    },
+    "./components/form": {
+      "types": "./declarations/components/form/index.d.ts",
+      "default": "./dist/components/form/index.js"
+    },
+    "./helpers": {
+      "types": "./declarations/helpers/index.d.ts",
+      "default": "./dist/helpers/index.js"
+    },
+    "./modifiers": {
+      "types": "./declarations/modifiers/index.d.ts",
+      "default": "./dist/modifiers/index.js"
+    },
+    "./utils": {
+      "types": "./declarations/utils/index.d.ts",
+      "default": "./dist/utils/index.js"
+    },
+    "./validation": {
+      "types": "./declarations/validation/index.d.ts",
+      "default": "./dist/validation/index.js"
+    },
+    "./template-registry": {
+      "types": "./declarations/template-registry.d.ts"
+    },
+    "./service-registry": {
+      "types": "./declarations/service-registry.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "declarations/*"
+      ]
+    }
+  },
+  "files": [
+    "addon-main.cjs",
+    "blueprints",
+    "declarations",
+    "dist",
+    "translations"
+  ],
+  "scripts": {
+    "build": "concurrently 'pnpm:build:*'",
+    "build:icons": "node lib/build-icons.mjs",
+    "build:js": "rollup --config",
+    "build:types": "concurrently 'pnpm:build:types:*' --names 'types:'",
+    "build:types:glint": "ember-tsc --declaration",
+    "format": "prettier . --cache --write",
+    "generate": "pnpm exec gember",
+    "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" --prefix-colors=auto && pnpm format",
+    "lint:format": "prettier . --cache --check",
+    "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
+    "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
+    "lint:intl": "ember-intl-lint",
+    "lint:intl:fix": "ember-intl-lint --fix",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:types": "ember-tsc --noEmit",
+    "start": "concurrently 'pnpm:start:*'",
+    "start:js": "rollup --config --watch --no-watch.clearScreen",
+    "start:types": "ember-tsc --declaration --watch",
+    "test": "echo 'A v2 addon does not have tests, run tests in docs'"
+  },
+  "dependencies": {
+    "@ember/string": "^4.0.1",
+    "@ember/test-helpers": "^5.4.1",
+    "@embroider/addon-shim": "^1.10.2",
+    "@embroider/macros": "^1.19.6",
+    "@floating-ui/dom": "^1.7.4",
+    "chalk": "^4.1.2",
+    "decorator-transforms": "^2.3.1",
+    "ember-css-transitions": "^4.5.0",
+    "ember-intl": "^8.0.3",
+    "ember-keyboard": "^9.0.4",
+    "ember-lifeline": "^7.0.0",
+    "ember-modifier": "^4.2.2",
+    "ismobilejs": "^1.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.6",
+    "@babel/plugin-transform-typescript": "^7.28.6",
+    "@babel/runtime": "7.28.6",
+    "@bertdeblock/gember": "^1.6.0",
+    "@ember-intl/lint": "^0.4.1",
+    "@embroider/addon-dev": "^8.2.0",
+    "@glimmer/component": "^2.0.0",
+    "@glint/ember-tsc": "^1.0.9",
+    "@glint/template": "^1.7.3",
+    "@nrg-ui/css": "workspace:^",
+    "@nrg-ui/standards": "workspace:^",
+    "@rollup/plugin-babel": "^6.1.0",
+    "@tsconfig/ember": "^3.0.12",
+    "babel-plugin-ember-template-compilation": "^4.0.0",
+    "concurrently": "^9.2.1",
+    "dayjs": "^1.11.19",
+    "ember-cli": "~5.12.0",
+    "ember-concurrency": "^5.1.0",
+    "ember-template-lint": "^7.9.3",
+    "ember-truth-helpers": "^5.0.0",
+    "eslint": "^9.39.2",
+    "eslint-plugin-decorator-position": "^6.0.0",
+    "eslint-plugin-ember": "^12.7.5",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-n": "^17.23.2",
+    "execa": "^9.6.1",
+    "prettier": "^3.8.1",
+    "prettier-plugin-ember-template-tag": "^2.1.2",
+    "rollup": "^4.56.0",
+    "rollup-plugin-copy": "^3.5.0",
+    "tracked-built-ins": "^4.1.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.53.1"
+  },
+  "peerDependencies": {
+    "@glimmer/component": "^2.0.0",
+    "@nrg-ui/css": "workspace:^0",
+    "dayjs": "^1.11.19",
+    "ember-concurrency": "^5.1.0",
+    "ember-css-transitions": "^4.4.0",
+    "ember-intl": "^7.0.4 || ^8.0.1",
+    "ember-source": "^5.12.0 || ^6.0.0",
+    "ember-truth-helpers": "^5.0.0",
+    "tracked-built-ins": "^4.1.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "ember-addon": {
+    "version": 2,
+    "type": "addon",
+    "main": "addon-main.cjs",
+    "app-js": {
+      "./components/accordion.js": "./dist/_app_/components/accordion.js",
+      "./components/alert.js": "./dist/_app_/components/alert.js",
+      "./components/app-bar.js": "./dist/_app_/components/app-bar.js",
+      "./components/button-group.js": "./dist/_app_/components/button-group.js",
+      "./components/button.js": "./dist/_app_/components/button.js",
+      "./components/card.js": "./dist/_app_/components/card.js",
+      "./components/context-menu.js": "./dist/_app_/components/context-menu.js",
+      "./components/dropdown.js": "./dist/_app_/components/dropdown.js",
+      "./components/footer.js": "./dist/_app_/components/footer.js",
+      "./components/form/-private/calendar.js": "./dist/_app_/components/form/-private/calendar.js",
+      "./components/form/-private/input-field.js": "./dist/_app_/components/form/-private/input-field.js",
+      "./components/form/bound-value.js": "./dist/_app_/components/form/bound-value.js",
+      "./components/form/checkbox-group.js": "./dist/_app_/components/form/checkbox-group.js",
+      "./components/form/checkbox.js": "./dist/_app_/components/form/checkbox.js",
+      "./components/form/datetime.js": "./dist/_app_/components/form/datetime.js",
+      "./components/form/field.js": "./dist/_app_/components/form/field.js",
+      "./components/form/file-upload.js": "./dist/_app_/components/form/file-upload.js",
+      "./components/form/index.js": "./dist/_app_/components/form/index.js",
+      "./components/form/multi-select.js": "./dist/_app_/components/form/multi-select.js",
+      "./components/form/number-input.js": "./dist/_app_/components/form/number-input.js",
+      "./components/form/phone-input.js": "./dist/_app_/components/form/phone-input.js",
+      "./components/form/radio-group.js": "./dist/_app_/components/form/radio-group.js",
+      "./components/form/search.js": "./dist/_app_/components/form/search.js",
+      "./components/form/select.js": "./dist/_app_/components/form/select.js",
+      "./components/form/text-area.js": "./dist/_app_/components/form/text-area.js",
+      "./components/form/text-input.js": "./dist/_app_/components/form/text-input.js",
+      "./components/header.js": "./dist/_app_/components/header.js",
+      "./components/icon.js": "./dist/_app_/components/icon.js",
+      "./components/index.js": "./dist/_app_/components/index.js",
+      "./components/loading-indicator.js": "./dist/_app_/components/loading-indicator.js",
+      "./components/mktg/card-container.js": "./dist/_app_/components/mktg/card-container.js",
+      "./components/mktg/card.js": "./dist/_app_/components/mktg/card.js",
+      "./components/mktg/feature-list.js": "./dist/_app_/components/mktg/feature-list.js",
+      "./components/mktg/footer.js": "./dist/_app_/components/mktg/footer.js",
+      "./components/mktg/header.js": "./dist/_app_/components/mktg/header.js",
+      "./components/mktg/navbar.js": "./dist/_app_/components/mktg/navbar.js",
+      "./components/mktg/promo-container.js": "./dist/_app_/components/mktg/promo-container.js",
+      "./components/mktg/promo.js": "./dist/_app_/components/mktg/promo.js",
+      "./components/mktg/section-header.js": "./dist/_app_/components/mktg/section-header.js",
+      "./components/mktg/service-pricing.js": "./dist/_app_/components/mktg/service-pricing.js",
+      "./components/mktg/workflow-tray.js": "./dist/_app_/components/mktg/workflow-tray.js",
+      "./components/modal.js": "./dist/_app_/components/modal.js",
+      "./components/nav-item.js": "./dist/_app_/components/nav-item.js",
+      "./components/page-not-found.js": "./dist/_app_/components/page-not-found.js",
+      "./components/pagination.js": "./dist/_app_/components/pagination.js",
+      "./components/popover.js": "./dist/_app_/components/popover.js",
+      "./components/progress.js": "./dist/_app_/components/progress.js",
+      "./components/scaffold.js": "./dist/_app_/components/scaffold.js",
+      "./components/sidebar.js": "./dist/_app_/components/sidebar.js",
+      "./components/stacked-pane.js": "./dist/_app_/components/stacked-pane.js",
+      "./components/stacked-pane/container.js": "./dist/_app_/components/stacked-pane/container.js",
+      "./components/theme-control.js": "./dist/_app_/components/theme-control.js",
+      "./components/toaster.js": "./dist/_app_/components/toaster.js",
+      "./components/tooltip.js": "./dist/_app_/components/tooltip.js",
+      "./helpers/bind.js": "./dist/_app_/helpers/bind.js",
+      "./helpers/classes.js": "./dist/_app_/helpers/classes.js",
+      "./helpers/index.js": "./dist/_app_/helpers/index.js",
+      "./helpers/lookup-service.js": "./dist/_app_/helpers/lookup-service.js",
+      "./helpers/version.js": "./dist/_app_/helpers/version.js",
+      "./initializers/dayjs-plugins.js": "./dist/_app_/initializers/dayjs-plugins.js",
+      "./modifiers/index.js": "./dist/_app_/modifiers/index.js",
+      "./modifiers/on-click-outside.js": "./dist/_app_/modifiers/on-click-outside.js",
+      "./modifiers/on-destroy.js": "./dist/_app_/modifiers/on-destroy.js",
+      "./modifiers/on-insert.js": "./dist/_app_/modifiers/on-insert.js",
+      "./services/context-menu.js": "./dist/_app_/services/context-menu.js",
+      "./services/media.js": "./dist/_app_/services/media.js",
+      "./services/modal.js": "./dist/_app_/services/modal.js",
+      "./services/responsive.js": "./dist/_app_/services/responsive.js",
+      "./services/theme.js": "./dist/_app_/services/theme.js",
+      "./services/toast.js": "./dist/_app_/services/toast.js",
+      "./utils/dom.js": "./dist/_app_/utils/dom.js",
+      "./utils/email.js": "./dist/_app_/utils/email.js",
+      "./utils/ensure-path-exists.js": "./dist/_app_/utils/ensure-path-exists.js",
+      "./utils/index.js": "./dist/_app_/utils/index.js",
+      "./utils/phone.js": "./dist/_app_/utils/phone.js",
+      "./utils/string.js": "./dist/_app_/utils/string.js"
+    },
+    "defaultBlueprint": "@nrg-ui-core"
+  },
+  "release-plan": {
+    "semverIncrementAs": {
+      "major": "minor"
+    }
+  }
+}
