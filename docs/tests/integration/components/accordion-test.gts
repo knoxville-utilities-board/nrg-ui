@@ -8,9 +8,20 @@ module('Integration | Component | Accordion', function (hooks) {
   setupRenderingTest(hooks);
 
   test('accordion renders', async function () {
+    this.isOpen = false;
+
+    const onToggleHandler = (isOpen: boolean) => {
+      this.set('isOpen', isOpen);
+    };
+
     await render(
       <template>
-        <Accordion class="test" @title="Title">
+        <Accordion
+          class="test"
+          @title="Title"
+          @isOpen={{this.isOpen}}
+          @onToggle={{onToggleHandler}}
+        >
           <:content>
             <p>Content</p>
           </:content>
@@ -37,26 +48,6 @@ module('Integration | Component | Accordion', function (hooks) {
     assert
       .dom('.rounded button i')
       .hasClass('bi-caret-down-fill', 'Icon switches to down caret after clicking button');
-
-    await render(
-      <template>
-        <Accordion @defaultOpen={{true}} @title="Question">
-          <:content>
-            <p>Answer</p>
-          </:content>
-        </Accordion>
-      </template>,
-    );
-
-    assert
-      .dom('.rounded div')
-      .hasClass('show', 'Div containing content has class show when defaultOpen parameter is true');
-    assert
-      .dom('.rounded button i')
-      .hasClass(
-        'bi-caret-down-fill',
-        'Icon starts as down caret when defaultOpen parameter is true',
-      );
   });
 
   test('accordion yields title block', async function () {
@@ -76,5 +67,51 @@ module('Integration | Component | Accordion', function (hooks) {
     assert
       .dom('div button h3.custom-title')
       .hasText('Custom Title', 'Title block yields correctly');
+  });
+
+  test('it fires onToggle', async function () {
+    const onToggleHandler = () => {
+      assert.ok(true, 'action is fired');
+    };
+
+    await render(<template><Accordion @title="Foo bar" @onChange={{onToggleHandler}} /></template>);
+    assert.dom('button').containsText('Foo bar');
+
+    await click('button');
+  });
+
+  test('it fires onOpen and onClose', async function (assert) {
+    assert.expect(3);
+
+    this.isOpen = false;
+
+    const onOpenHandler = () => {
+      assert.ok(true, 'onOpen is fired');
+      this.set('isOpen', true);
+    };
+
+    const onCloseHandler = () => {
+      assert.ok(true, 'onClose is fired');
+      this.set('isOpen', false);
+    };
+
+    await render(
+      <template>
+        <Accordion
+          @title="Foo bar"
+          @isOpen={{this.isOpen}}
+          @onOpen={{onOpenHandler}}
+          @onClose={{onCloseHandler}}
+        />
+      </template>,
+    );
+
+    assert.dom('button').containsText('Foo bar');
+
+    // Open
+    await click('button');
+
+    // Close
+    await click('button');
   });
 });

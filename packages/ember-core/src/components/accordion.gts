@@ -1,13 +1,15 @@
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 
 export interface AccordionSignature {
   Element: HTMLDivElement;
   Args: {
+    isOpen: boolean;
     title?: string;
-    defaultOpen?: boolean;
+    onToggle?: (isOpen: boolean) => void;
+    onOpen?: () => void;
+    onClose?: () => void;
   };
   Blocks: {
     content: [];
@@ -16,24 +18,27 @@ export interface AccordionSignature {
 }
 
 export default class Accordion extends Component<AccordionSignature> {
-  @tracked
-  isMenuOpen = this.args.defaultOpen || false;
-
   @action
   toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
+    if (!this.args.isOpen) {
+      this.args.onOpen?.();
+    } else {
+      this.args.onClose?.();
+    }
+
+    this.args.onToggle?.(!this.args.isOpen);
   }
 
   get classList() {
     const classes = ['collapse'];
-    if (this.isMenuOpen) {
+    if (this.args.isOpen) {
       classes.push('show');
     }
     return classes.join(' ');
   }
 
   get menuIcon() {
-    return this.isMenuOpen ? 'bi-caret-down-fill' : 'bi-caret-left-fill';
+    return this.args.isOpen ? 'bi-caret-down-fill' : 'bi-caret-left-fill';
   }
 
   <template>
