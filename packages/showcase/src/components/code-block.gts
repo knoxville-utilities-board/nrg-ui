@@ -12,24 +12,47 @@ import CopyButton from './copy-button.gts';
 import type ShikiService from '../services/shiki.ts';
 import type { AllowedLanguage } from '../services/shiki.ts';
 import type ThemeService from '@nrg-ui/core/services/theme';
-import type { CodeToHastOptions } from 'shiki';
+import type { CodeToHastOptions, ShikiTransformer } from 'shiki';
 
 import '../assets/code-block.css';
 
 const MARKER_PATTERN = '{{__SHOWCASE_ARG_([^}]+)-([^}]+)__}}';
 
+export interface LineHighlight {
+  /**
+   * The starting line number to highlight (1-based)
+   */
+  start: number;
+
+  /**
+   * The ending line number to highlight (1-based). If not provided, only the `start` line will be highlighted.
+   */
+  end?: number;
+
+  /**
+   * The type of highlight to apply. This can be used to style the highlighted lines differently.
+   * Possible values are:
+   * - `undefined`: Default highlight style.
+   * - 'add': Indicates added lines.
+   * - 'remove': Indicates removed lines.
+   */
+  type?: 'add' | 'remove';
+}
+
 export interface CodeBlockSignature {
   Element: HTMLElement;
   Args: {
     code: string;
+    highlights?: LineHighlight | LineHighlight[];
     label?: string;
     lang: AllowedLanguage;
     name?: string;
     showCopyButton?: boolean;
     model?: object;
-    options?: Partial<CodeToHastOptions>;
+    options?: Partial<Omit<CodeToHastOptions, 'transformers'>>;
     showLineNumbers?: boolean;
     startingLineNumber?: number;
+    transformers?: ShikiTransformer[];
 
     inline?: boolean;
   };
@@ -115,11 +138,49 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
 
     assert('Language is required', lang);
 
-    const { resolvedCode } = this;
+    const { resolvedCode, transformers } = this;
 
     return this.shiki.highlight(resolvedCode, lang, {
       ...this.args.options,
+      transformers,
     });
+  }
+
+  get highlights() {
+    const { highlights } = this.args;
+
+    if (!highlights) {
+      return [];
+    }
+
+    return Array.isArray(highlights) ? highlights : [highlights];
+  }
+
+  @cached
+  get transformers(): ShikiTransformer[] {
+    const transformers: ShikiTransformer[] = [...(this.args.transformers ?? [])];
+    const { highlights } = this;
+
+    if (highlights.length) {
+      transformers.push({
+        name: 'showcase-highlight-lines',
+        line(hast, line) {
+          for (const highlight of highlights) {
+            const start = highlight.start;
+            const end = highlight.end ?? highlight.start;
+            const type = highlight.type ?? 'add';
+
+            if (line >= start && line <= end) {
+              this.addClassToHast(hast, `line--highlight${type ? `-${type}` : ''}`);
+            }
+          }
+
+          return hast;
+        },
+      });
+    }
+
+    return transformers;
   }
 
   get hasName() {
