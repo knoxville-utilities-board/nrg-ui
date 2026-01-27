@@ -115,7 +115,11 @@ export default class CodeBlock extends Component<CodeBlockSignature> {
 
     assert('Language is required', lang);
 
-    return this.shiki.highlight(this.resolvedCode, lang);
+    const { resolvedCode } = this;
+
+    return this.shiki.highlight(resolvedCode, lang, {
+      ...this.args.options,
+    });
   }
 
   get hasName() {
