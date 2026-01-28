@@ -25,7 +25,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           </:subheader>
         </MktgSectionHeader>
       </div>
-      <Accordion @defaultOpen={{true}} @title="How does an Accordion Component work?">
+      <Accordion @isOpen={{true}} @title="How does an Accordion Component work?">
         <:content>
           <p>
             Once you click the icon in the upper right corner, this answer will appear. Pass values
@@ -33,28 +33,28 @@ import pageTitle from 'ember-page-title/helpers/page-title';
           </p>
         </:content>
       </Accordion>
-      <Accordion @title="Question?">
+      <Accordion @title="Question?" @isOpen={{false}}>
         <:content>
           <p>
             Answer
           </p>
         </:content>
       </Accordion>
-      <Accordion @title="Question?">
+      <Accordion @title="Question?" @isOpen={{false}}>
         <:content>
           <p>
             Answer
           </p>
         </:content>
       </Accordion>
-      <Accordion @title="Question?">
+      <Accordion @title="Question?" @isOpen={{false}}>
         <:content>
           <p>
             Answer
           </p>
         </:content>
       </Accordion>
-      <Accordion @title="Question?">
+      <Accordion @title="Question?" @isOpen={{false}}>
         <:content>
           <p>
             Answer
