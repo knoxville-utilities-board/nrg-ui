@@ -55,19 +55,19 @@ export default class AccordionDemo extends Component {
           </Api.Arguments>
           <Api.Actions as |Action p|>
             <Action
+              @name="onOpen"
+              @description="This action will be called when the whenever the accordion being opened. This gets called before onToggle."
+            />
+            <Action
+              @name="onClose"
+              @description="This action will be called when the whenever the accordion being closed. This gets called before onToggle."
+            />
+            <Action
               @name="onToggle"
               @parameters={{array
                 (p "isOpen" type="boolean" description="isOpen is the new open state")
               }}
               @description="This action will be called when the whenever the accordion is open or closed. It is the responsibility of the parent component to change the isOpen property in response."
-            />
-            <Action
-              @name="onOpen"
-              @description="This action will be called when the whenever the accordion being opened."
-            />
-            <Action
-              @name="onClose"
-              @description="This action will be called when the whenever the accordion being closed."
             />
           </Api.Actions>
           <Api.Blocks as |Block|>
