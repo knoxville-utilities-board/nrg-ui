@@ -1,3 +1,5 @@
+export { configure } from './configuration.ts';
+
 /* Components - Forms */
 export { default as BoundValue } from './components/form/bound-value.ts';
 export { default as CheckboxGroup } from './components/form/checkbox-group.gts';

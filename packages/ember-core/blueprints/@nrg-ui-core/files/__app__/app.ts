@@ -2,6 +2,7 @@ import Application from '@ember/application';
 import setupInspector from '@embroider/legacy-inspector-support/ember-source-4.12';
 import { importSync, isDevelopingApp, macroCondition } from '@embroider/macros';
 import compatModules from '@embroider/virtual/compat-modules';
+import { configure as configureNrg } from '@nrg-ui/core';
 import loadInitializers from 'ember-load-initializers';
 import Resolver from 'ember-resolver';
 
@@ -23,3 +24,4 @@ export default class App extends Application {
 }
 
 loadInitializers(App, config.modulePrefix, compatModules);
+configureNrg();
