@@ -8,8 +8,8 @@ export interface AccordionSignature {
     isOpen: boolean;
     title?: string;
     onToggle?: (isOpen: boolean) => void;
-    onOpen?: () => void;
-    onClose?: () => void;
+    onOpen?: () => Promise<void>;
+    onClose?: () => Promise<void>;
   };
   Blocks: {
     content: [];
@@ -19,14 +19,16 @@ export interface AccordionSignature {
 
 export default class Accordion extends Component<AccordionSignature> {
   @action
-  toggleMenu() {
-    if (!this.args.isOpen) {
-      this.args.onOpen?.();
+  async toggleMenu() {
+    const isOpening = !this.args.isOpen;
+
+    if (isOpening) {
+      await this.args.onOpen?.();
     } else {
-      this.args.onClose?.();
+      await this.args.onClose?.();
     }
 
-    this.args.onToggle?.(!this.args.isOpen);
+    this.args.onToggle?.(isOpening);
   }
 
   get classList() {
