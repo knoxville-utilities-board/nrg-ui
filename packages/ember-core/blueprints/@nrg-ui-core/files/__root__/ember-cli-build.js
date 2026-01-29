@@ -22,6 +22,9 @@ module.exports = async function (defaults) {
     // Add options here
     '@embroider/macros': {
       setConfig: {
+        'ember-css-transitions': {
+          useTestWaiters: true,
+        },
         '@nrg-ui/core': {
           appVersion: getVersion(),
         },
