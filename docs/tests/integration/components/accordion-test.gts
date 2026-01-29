@@ -1,8 +1,14 @@
 import { click, render } from '@ember/test-helpers';
+import { tracked } from '@glimmer/tracking';
 import { Accordion } from '@nrg-ui/core';
 import { assert, module, test } from 'qunit';
 
 import { setupRenderingTest } from '../../helpers';
+
+class Model {
+  @tracked
+  isOpen = false;
+}
 
 module('Integration | Component | Accordion', function (hooks) {
   setupRenderingTest(hooks);
@@ -82,7 +88,7 @@ module('Integration | Component | Accordion', function (hooks) {
   });
 
   test('it fires onOpen and onClose', async function () {
-    const state = { isOpen: false };
+    const state = new Model();
 
     const onOpenHandler = () => {
       assert.ok(true, 'onOpen is fired');
