@@ -57,10 +57,12 @@ export default class AccordionDemo extends Component {
             <Action
               @name="onOpen"
               @description="This action will be called when the whenever the accordion being opened. This gets called before onToggle."
+              @returnType="Promise<void>"
             />
             <Action
               @name="onClose"
               @description="This action will be called when the whenever the accordion being closed. This gets called before onToggle."
+              @returnType="Promise<void>"
             />
             <Action
               @name="onToggle"
