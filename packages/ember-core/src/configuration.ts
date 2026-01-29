@@ -11,6 +11,9 @@ import Timezone from 'dayjs/plugin/timezone';
 import UTC from 'dayjs/plugin/utc';
 import Weekday from 'dayjs/plugin/weekday';
 
+// Import NRG UI CSS as side effect module
+import '@nrg-ui/css/main.css';
+
 function extendDayjs() {
   dayjs.extend(CustomParseFormat);
   dayjs.extend(Duration);

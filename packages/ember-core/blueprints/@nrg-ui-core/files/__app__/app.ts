@@ -8,7 +8,6 @@ import Resolver from 'ember-resolver';
 
 import config from './config/environment.ts';
 
-import '@nrg-ui/css/main.css';
 import '<%= modulePrefix %>/assets/css/app.css';
 
 if (macroCondition(isDevelopingApp())) {
