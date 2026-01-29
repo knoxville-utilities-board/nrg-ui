@@ -11,7 +11,7 @@ import Timezone from 'dayjs/plugin/timezone';
 import UTC from 'dayjs/plugin/utc';
 import Weekday from 'dayjs/plugin/weekday';
 
-export function initialize() {
+function extendDayjs() {
   dayjs.extend(CustomParseFormat);
   dayjs.extend(Duration);
   dayjs.extend(IsBetween);
@@ -25,6 +25,6 @@ export function initialize() {
   dayjs.extend(Weekday);
 }
 
-export default {
-  initialize,
-};
+export function configure() {
+  extendDayjs();
+}
