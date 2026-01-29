@@ -2,7 +2,7 @@
   min-height: 100dvh;
 }
 
-.ember-application {
+body:not([data-nrg-ignore]) {
   height: 100dvh;
   overflow: hidden;
 }
