@@ -90,12 +90,12 @@ module('Integration | Component | Accordion', function (hooks) {
   test('it fires onOpen and onClose', async function () {
     const state = new Model();
 
-    const onOpenHandler = () => {
+    const onOpenHandler = async (): Promise<void> => {
       assert.ok(true, 'onOpen is fired');
       state.isOpen = true;
     };
 
-    const onCloseHandler = () => {
+    const onCloseHandler = async (): Promise<void> => {
       assert.ok(true, 'onClose is fired');
       state.isOpen = false;
     };
