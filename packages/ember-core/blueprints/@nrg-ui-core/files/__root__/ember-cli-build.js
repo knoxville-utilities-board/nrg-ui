@@ -18,11 +18,13 @@ module.exports = async function (defaults) {
         DEPRECATE_STORE_EXTENDS_EMBER_OBJECT: false,
       },
     },
-    <% if (isTypeScriptProject) {%>'ember-cli-babel': { enableTypeScriptTransform: true },<% } %>
 
     // Add options here
     '@embroider/macros': {
       setConfig: {
+        'ember-css-transitions': {
+          useTestWaiters: true,
+        },
         '@nrg-ui/core': {
           appVersion: getVersion(),
         },

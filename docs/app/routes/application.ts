@@ -19,8 +19,8 @@ export default class ApplicationRoute extends Route {
   declare shiki: ShikiService;
 
   async beforeModel() {
-    this.setupIntl();
     this.theme.load();
+    this.setupIntl();
 
     this.shiki.initialize.perform();
   }
