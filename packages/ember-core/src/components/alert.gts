@@ -7,15 +7,18 @@ import { t } from 'ember-intl';
 
 import type { IconType } from '../';
 
-declare type AlertType =
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'danger'
-  | 'warning'
-  | 'info'
-  | 'light'
-  | 'dark';
+export const alertTypes = [
+  'primary',
+  'secondary',
+  'success',
+  'danger',
+  'warning',
+  'info',
+  'light',
+  'dark',
+] as const;
+
+export type AlertType = (typeof alertTypes)[number];
 
 export interface AlertSignature {
   Element: HTMLDivElement;
