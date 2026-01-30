@@ -6,6 +6,10 @@ dialog {
   transition: all var(--nrg-modal-transition-duration) ease allow-discrete;
   overflow: visible !important;
 
+  &:not(#qunit-fixture dialog) {
+    --nrg-modal-transition-duration: 0s !important;
+  }
+
   // `ember-css-transitions` uses `getComputedStyle` to determine
   // the length of the transition/animation. We need to match the
   // transition duration on the .modal-content element in order
