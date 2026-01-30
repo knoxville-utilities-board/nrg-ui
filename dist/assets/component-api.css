@@ -1,0 +1,23 @@
+.showcase-component-api {
+  .name {
+    font-weight: 500;
+    min-width: 8rem;
+  }
+
+  .type {
+    padding-right: 0;
+    width: 1%;
+  }
+
+  .description {
+    width: 100%;
+  }
+
+  .default {
+    min-width: 8rem;
+  }
+
+  .value {
+    min-width: 15rem;
+  }
+}
