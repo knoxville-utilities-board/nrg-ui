@@ -1,0 +1,10 @@
+export declare const PATH_SEP: string;
+export declare const NODE_BIN_PATH: string;
+type Package = Record<string, any>;
+export declare function load(dep: string): Promise<any>;
+export declare function getPackageFile(path?: string, ignoreCache?: boolean): Package;
+export declare function getDependenciesFromPackage(path?: string): Record<string, string>;
+export declare function format(...files: string[]): Promise<void>;
+export declare function exec(command: string, ...args: string[]): Promise<void>;
+export declare function merge<T>(...objects: T[] | Promise<T>[] | Promise<T[]>[]): Promise<T[]>;
+export {};
