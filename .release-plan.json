@@ -7,23 +7,51 @@
       "oldVersion": "0.4.0"
     },
     "@nrg-ui/css": {
-      "oldVersion": "0.28.2"
-    },
-    "@nrg-ui/core": {
-      "impact": "minor",
-      "oldVersion": "0.55.1",
-      "newVersion": "0.56.0",
+      "impact": "patch",
+      "oldVersion": "0.28.2",
+      "newVersion": "0.28.3",
       "tagName": "latest",
       "constraints": [
         {
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
+        }
+      ],
+      "pkgJSONPath": "./packages/design-system/package.json"
+    },
+    "@nrg-ui/core": {
+      "impact": "major",
+      "oldVersion": "0.56.0",
+      "newVersion": "0.57.0",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "major",
+          "reason": "Appears in changelog section :boom: Breaking Change"
+        },
+        {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./packages/ember-core/package.json"
     },
     "@nrg-ui/showcase": {
-      "oldVersion": "0.6.0"
+      "impact": "major",
+      "oldVersion": "0.6.0",
+      "newVersion": "0.7.0",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "major",
+          "reason": "Has peer dependency `workspace:^0` on @nrg-ui/core"
+        }
+      ],
+      "pkgJSONPath": "./packages/showcase/package.json"
     },
     "@nrg-ui/standards": {
       "oldVersion": "0.7.0"
@@ -32,5 +60,5 @@
       "oldVersion": "0.3.5"
     }
   },
-  "description": "## Release (2026-01-25)\n\n* @nrg-ui/core 0.56.0 (minor)\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#811](https://github.com/knoxville-utilities-board/nrg-ui/pull/811) feat(accordion): Add yield block for title ([@Trishu-Patel](https://github.com/Trishu-Patel))\n\n#### Committers: 1\n- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))\n"
+  "description": "## Release (2026-01-30)\n\n* @nrg-ui/css 0.28.3 (patch)\n* @nrg-ui/core 0.57.0 (major)\n* @nrg-ui/showcase 0.7.0 (major)\n\n#### :boom: Breaking Change\n* `@nrg-ui/core`\n  * [#817](https://github.com/knoxville-utilities-board/nrg-ui/pull/817) refactor: Move Dayjs initializer to configuration ([@TSenter](https://github.com/TSenter))\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#820](https://github.com/knoxville-utilities-board/nrg-ui/pull/820) chore: Polish blueprint and match @ember/app-blueprint ([@TSenter](https://github.com/TSenter))\n  * [#819](https://github.com/knoxville-utilities-board/nrg-ui/pull/819) refactor: Move css import from blueprint to configuration ([@TSenter](https://github.com/TSenter))\n  * [#817](https://github.com/knoxville-utilities-board/nrg-ui/pull/817) refactor: Move Dayjs initializer to configuration ([@TSenter](https://github.com/TSenter))\n  * [#816](https://github.com/knoxville-utilities-board/nrg-ui/pull/816) feat(accordion): Add isToggle, isOpen, and isClose actions ([@Trishu-Patel](https://github.com/Trishu-Patel))\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#814](https://github.com/knoxville-utilities-board/nrg-ui/pull/814) style: Prevent additional scrolling for android mobile ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n\n#### :house: Internal\n* [#821](https://github.com/knoxville-utilities-board/nrg-ui/pull/821) chore(ci): Use Node v22 ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 3\n- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }

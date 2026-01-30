@@ -1,5 +1,34 @@
 # Changelog
 
+## Release (2026-01-30)
+
+* @nrg-ui/css 0.28.3 (patch)
+* @nrg-ui/core 0.57.0 (major)
+* @nrg-ui/showcase 0.7.0 (major)
+
+#### :boom: Breaking Change
+* `@nrg-ui/core`
+  * [#817](https://github.com/knoxville-utilities-board/nrg-ui/pull/817) refactor: Move Dayjs initializer to configuration ([@TSenter](https://github.com/TSenter))
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#820](https://github.com/knoxville-utilities-board/nrg-ui/pull/820) chore: Polish blueprint and match @ember/app-blueprint ([@TSenter](https://github.com/TSenter))
+  * [#819](https://github.com/knoxville-utilities-board/nrg-ui/pull/819) refactor: Move css import from blueprint to configuration ([@TSenter](https://github.com/TSenter))
+  * [#817](https://github.com/knoxville-utilities-board/nrg-ui/pull/817) refactor: Move Dayjs initializer to configuration ([@TSenter](https://github.com/TSenter))
+  * [#816](https://github.com/knoxville-utilities-board/nrg-ui/pull/816) feat(accordion): Add isToggle, isOpen, and isClose actions ([@Trishu-Patel](https://github.com/Trishu-Patel))
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`, `@nrg-ui/core`
+  * [#814](https://github.com/knoxville-utilities-board/nrg-ui/pull/814) style: Prevent additional scrolling for android mobile ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+
+#### :house: Internal
+* [#821](https://github.com/knoxville-utilities-board/nrg-ui/pull/821) chore(ci): Use Node v22 ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 3
+- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2026-01-25)
 
 * @nrg-ui/core 0.56.0 (minor)
