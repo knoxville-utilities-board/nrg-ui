@@ -53,6 +53,11 @@ To use the CSS in a non-Ember application, include the CSS in your project. The 
 </html>
 ```
 
+## Disabling Default Body Styling
+
+By default, the `body` tag includes styling to prevent a scrolling issue caused by native elements in mobile browsers.
+If this creates undesirable behavior, add the custom data attribute of `data-nrg-ignore` to the `body` tag to clear the styling.
+
 ## Contributing
 
 See the [Contributing](../../CONTRIBUTING.md) guide for details.
