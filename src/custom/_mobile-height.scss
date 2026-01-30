@@ -1,0 +1,8 @@
+.min-dvh-100 {
+  min-height: 100dvh;
+}
+
+body:not([data-nrg-ignore]) {
+  height: 100dvh;
+  overflow: hidden;
+}
