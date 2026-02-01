@@ -1,16 +1,17 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import translationsForEnUs from 'virtual:ember-intl/translations/en-us';
-
+<% if (isTypeScriptProject) { %>
 import type ThemeService from '@nrg-ui/core/services/theme';
 import type { IntlService } from 'ember-intl';
+<% } %>
 
 export default class ApplicationRoute extends Route {
   @service('theme')
-  declare theme: ThemeService;
+  <%= isTypeScriptProject ? 'declare theme: ThemeService;' : 'theme;' %>
 
   @service
-  declare intl: IntlService;
+  <%= isTypeScriptProject ? 'declare intl: IntlService;' : 'intl;' %>
 
   async beforeModel() {
     this.theme.load();
