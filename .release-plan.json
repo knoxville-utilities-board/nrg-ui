@@ -11,8 +11,8 @@
     },
     "@nrg-ui/core": {
       "impact": "patch",
-      "oldVersion": "0.57.0",
-      "newVersion": "0.57.1",
+      "oldVersion": "0.57.1",
+      "newVersion": "0.57.2",
       "tagName": "latest",
       "constraints": [
         {
@@ -26,21 +26,11 @@
       "oldVersion": "0.7.0"
     },
     "@nrg-ui/standards": {
-      "impact": "patch",
-      "oldVersion": "0.7.0",
-      "newVersion": "0.7.1",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
-        }
-      ],
-      "pkgJSONPath": "./packages/standards/package.json"
+      "oldVersion": "0.7.1"
     },
     "@nrg-ui/theme-generator": {
       "oldVersion": "0.3.5"
     }
   },
-  "description": "## Release (2026-02-02)\n\n* @nrg-ui/core 0.57.1 (patch)\n* @nrg-ui/standards 0.7.1 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#827](https://github.com/knoxville-utilities-board/nrg-ui/pull/827) fix(blueprint): Only use TS when specified ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/standards`\n  * [#826](https://github.com/knoxville-utilities-board/nrg-ui/pull/826) chore(standards): Update range of allowed Node versions ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2026-02-02)\n\n* @nrg-ui/core 0.57.2 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#829](https://github.com/knoxville-utilities-board/nrg-ui/pull/829) fix(blueprint): Correct ember-intl Vite setup ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
