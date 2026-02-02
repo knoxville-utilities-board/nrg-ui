@@ -1,5 +1,21 @@
 # Changelog
 
+## Release (2026-02-02)
+
+* @nrg-ui/core 0.57.1 (patch)
+* @nrg-ui/standards 0.7.1 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#827](https://github.com/knoxville-utilities-board/nrg-ui/pull/827) fix(blueprint): Only use TS when specified ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* `@nrg-ui/standards`
+  * [#826](https://github.com/knoxville-utilities-board/nrg-ui/pull/826) chore(standards): Update range of allowed Node versions ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2026-01-30)
 
 * @nrg-ui/css 0.28.3 (patch)
