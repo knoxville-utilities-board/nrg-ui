@@ -78,6 +78,6 @@
     "registry": "https://registry.npmjs.org"
   },
   "engines": {
-    "node": "^20.19.0"
+    "node": "^20.19.0 || ^22.12 || >=24"
   }
 }
