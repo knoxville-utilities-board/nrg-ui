@@ -7,32 +7,14 @@
       "oldVersion": "0.4.0"
     },
     "@nrg-ui/css": {
-      "impact": "patch",
-      "oldVersion": "0.28.2",
-      "newVersion": "0.28.3",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
-        }
-      ],
-      "pkgJSONPath": "./packages/design-system/package.json"
+      "oldVersion": "0.28.3"
     },
     "@nrg-ui/core": {
-      "impact": "major",
-      "oldVersion": "0.56.0",
-      "newVersion": "0.57.0",
+      "impact": "patch",
+      "oldVersion": "0.57.0",
+      "newVersion": "0.57.1",
       "tagName": "latest",
       "constraints": [
-        {
-          "impact": "major",
-          "reason": "Appears in changelog section :boom: Breaking Change"
-        },
-        {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        },
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
@@ -41,24 +23,24 @@
       "pkgJSONPath": "./packages/ember-core/package.json"
     },
     "@nrg-ui/showcase": {
-      "impact": "major",
-      "oldVersion": "0.6.0",
-      "newVersion": "0.7.0",
+      "oldVersion": "0.7.0"
+    },
+    "@nrg-ui/standards": {
+      "impact": "patch",
+      "oldVersion": "0.7.0",
+      "newVersion": "0.7.1",
       "tagName": "latest",
       "constraints": [
         {
-          "impact": "major",
-          "reason": "Has peer dependency `workspace:^0` on @nrg-ui/core"
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
-      "pkgJSONPath": "./packages/showcase/package.json"
-    },
-    "@nrg-ui/standards": {
-      "oldVersion": "0.7.0"
+      "pkgJSONPath": "./packages/standards/package.json"
     },
     "@nrg-ui/theme-generator": {
       "oldVersion": "0.3.5"
     }
   },
-  "description": "## Release (2026-01-30)\n\n* @nrg-ui/css 0.28.3 (patch)\n* @nrg-ui/core 0.57.0 (major)\n* @nrg-ui/showcase 0.7.0 (major)\n\n#### :boom: Breaking Change\n* `@nrg-ui/core`\n  * [#817](https://github.com/knoxville-utilities-board/nrg-ui/pull/817) refactor: Move Dayjs initializer to configuration ([@TSenter](https://github.com/TSenter))\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`\n  * [#820](https://github.com/knoxville-utilities-board/nrg-ui/pull/820) chore: Polish blueprint and match @ember/app-blueprint ([@TSenter](https://github.com/TSenter))\n  * [#819](https://github.com/knoxville-utilities-board/nrg-ui/pull/819) refactor: Move css import from blueprint to configuration ([@TSenter](https://github.com/TSenter))\n  * [#817](https://github.com/knoxville-utilities-board/nrg-ui/pull/817) refactor: Move Dayjs initializer to configuration ([@TSenter](https://github.com/TSenter))\n  * [#816](https://github.com/knoxville-utilities-board/nrg-ui/pull/816) feat(accordion): Add isToggle, isOpen, and isClose actions ([@Trishu-Patel](https://github.com/Trishu-Patel))\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`, `@nrg-ui/core`\n  * [#814](https://github.com/knoxville-utilities-board/nrg-ui/pull/814) style: Prevent additional scrolling for android mobile ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n\n#### :house: Internal\n* [#821](https://github.com/knoxville-utilities-board/nrg-ui/pull/821) chore(ci): Use Node v22 ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 3\n- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n- Trishu Patel ([@Trishu-Patel](https://github.com/Trishu-Patel))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2026-02-02)\n\n* @nrg-ui/core 0.57.1 (patch)\n* @nrg-ui/standards 0.7.1 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#827](https://github.com/knoxville-utilities-board/nrg-ui/pull/827) fix(blueprint): Only use TS when specified ([@TSenter](https://github.com/TSenter))\n\n#### :house: Internal\n* `@nrg-ui/standards`\n  * [#826](https://github.com/knoxville-utilities-board/nrg-ui/pull/826) chore(standards): Update range of allowed Node versions ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
