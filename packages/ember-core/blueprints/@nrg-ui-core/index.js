@@ -47,7 +47,7 @@ module.exports = {
       },
     );
     await this.insertIntoFile('vite.config.mjs', `loadTranslations(),`, {
-      after: 'plugins: [',
+      after: /plugins: \[[^\]]*/,
     });
     await this.insertIntoFile('tsconfig.json', `"@ember-intl/vite/virtual"`, {
       after: /"types": \[[^\]*]/,
