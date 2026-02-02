@@ -42,12 +42,15 @@ module.exports = {
     await this.insertIntoFile(
       'vite.config.mjs',
       `import { loadTranslations } from '@ember-intl/vite';`,
+      {
+        before: "import { defineConfig } from 'vite';",
+      },
     );
     await this.insertIntoFile('vite.config.mjs', `loadTranslations(),`, {
-      after: 'plugins: [',
+      after: /plugins: \[[^\]]*/,
     });
-    await this.insertIntoFile('tsconfig.json', `"@ember-intl/vite/virtual"`, {
-      after: /"types": \[[^\]*]/,
+    await this.insertIntoFile('tsconfig.json', `, "@ember-intl/vite/virtual"`, {
+      after: /"types": \[[^\]]*/,
     });
 
     this.ui.writeLine(prefix + chalk.green('Configuring assets...'));
