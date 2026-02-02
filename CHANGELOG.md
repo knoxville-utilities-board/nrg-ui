@@ -2,6 +2,17 @@
 
 ## Release (2026-02-02)
 
+* @nrg-ui/core 0.57.2 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#829](https://github.com/knoxville-utilities-board/nrg-ui/pull/829) fix(blueprint): Correct ember-intl Vite setup ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
+## Release (2026-02-02)
+
 * @nrg-ui/core 0.57.1 (patch)
 * @nrg-ui/standards 0.7.1 (patch)
 
