@@ -16,6 +16,10 @@ const componentMap = [
     route: 'core-components.button',
   },
   {
+    name: 'Button Group',
+    route: 'core-components.button-group',
+  },
+  {
     name: 'Card',
     route: 'core-components.card',
   },

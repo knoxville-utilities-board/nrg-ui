@@ -21,6 +21,7 @@ Router.map(function () {
       this.route('accordion');
       this.route('alert');
       this.route('button');
+      this.route('button-group');
       this.route('card');
       this.route('context-menu');
       this.route('dropdown');

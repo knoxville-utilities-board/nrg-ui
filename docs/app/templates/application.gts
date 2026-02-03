@@ -58,6 +58,9 @@ export default class Application extends Component {
             <Item @route="core-components.button">
               Button
             </Item>
+            <Item @route="core-components.button-group">
+              Button Group
+            </Item>
             <Item @route="core-components.card">
               Card
             </Item>
