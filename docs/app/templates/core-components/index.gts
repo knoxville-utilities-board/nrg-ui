@@ -74,6 +74,7 @@ const componentMap = [
 
   <div class="row row-cols-1 row-cols-md-3 g-3 m-3 mt-4">
 
+    {{!-- eslint-disable-next-line @typescript-eslint/no-unused-vars --}}
     {{#each componentMap as |component|}}
       <div class="mb-0">
         <div class="card bg-secondary-subtle text-center">
