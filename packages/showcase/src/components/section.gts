@@ -138,7 +138,7 @@ export default class Section extends Component<SectionSignature> {
   TypedSubsection = Subsection<any>;
 
   <template>
-    <div class="showcase-section" ...attributes>
+    <div class="showcase-section pt-3" ...attributes>
       {{#let (createLink @name) as |link|}}
         <h2 id={{link}}>
           <a class="showcase-header" href="#{{link}}">
