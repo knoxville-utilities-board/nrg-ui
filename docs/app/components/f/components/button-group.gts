@@ -8,10 +8,11 @@ import ButtonGroup from '@nrg-ui/core/components/button-group';
 import Section from '@nrg-ui/showcase/components/section';
 
 import type { ButtonGroupType } from '@nrg-ui/core/components/button-group';
+import type ToastService from '@nrg-ui/core/services/toast';
 
 export default class ButtonGroupDemo extends Component {
   @service
-  toast;
+  declare toast: ToastService;
 
   @tracked
   disabled = false;
