@@ -10,17 +10,7 @@
       "oldVersion": "0.28.3"
     },
     "@nrg-ui/core": {
-      "impact": "patch",
-      "oldVersion": "0.57.1",
-      "newVersion": "0.57.2",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
-        }
-      ],
-      "pkgJSONPath": "./packages/ember-core/package.json"
+      "oldVersion": "0.57.2"
     },
     "@nrg-ui/showcase": {
       "oldVersion": "0.7.0"
@@ -32,5 +22,5 @@
       "oldVersion": "0.3.5"
     }
   },
-  "description": "## Release (2026-02-02)\n\n* @nrg-ui/core 0.57.2 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/core`\n  * [#829](https://github.com/knoxville-utilities-board/nrg-ui/pull/829) fix(blueprint): Correct ember-intl Vite setup ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "\n\n\n\n"
 }
