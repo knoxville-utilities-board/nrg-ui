@@ -50,7 +50,7 @@
     "execa": "^9.6.1",
     "find-up": "^8.0.0",
     "globals": "^17.3.0",
-    "semver": "^7.7.3",
+    "semver": "^7.7.4",
     "yargs": "^18.0.0"
   },
   "optionalDependencies": {
@@ -58,12 +58,12 @@
     "eslint-plugin-ember": "^12.7.5",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-n": "^17.23.2",
-    "eslint-plugin-qunit": "8.2.5",
+    "eslint-plugin-qunit": "8.2.6",
     "typescript-eslint": "^8.54.0"
   },
   "devDependencies": {
     "@types/eslint": "^9.6.1",
-    "@types/node": "^22.19.7",
+    "@types/node": "^22.19.10",
     "@types/semver": "^7.7.1",
     "@types/yargs": "^17.0.35",
     "eslint": "^9.39.2",
