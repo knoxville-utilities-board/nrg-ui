@@ -45,7 +45,7 @@
     "test": "echo 'The @nrg-ui/standards package does not have tests'"
   },
   "dependencies": {
-    "@eslint/js": "^9.39.2",
+    "@eslint/js": "^10.0.1",
     "chalk": "^5.4.1",
     "execa": "^9.6.1",
     "find-up": "^8.0.0",
