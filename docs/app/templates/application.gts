@@ -52,6 +52,9 @@ export default class Application extends Component {
             <Item @route="core-components.accordion">
               Accordion
             </Item>
+            <Item @route="core-components.alert">
+              Alert
+            </Item>
             <Item @route="core-components.button">
               Button
             </Item>

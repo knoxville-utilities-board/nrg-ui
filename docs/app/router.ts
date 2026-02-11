@@ -19,6 +19,7 @@ Router.map(function () {
     },
     function () {
       this.route('accordion');
+      this.route('alert');
       this.route('button');
       this.route('card');
       this.route('context-menu');
