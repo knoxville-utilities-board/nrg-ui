@@ -6,6 +6,7 @@ import Checkbox from '@nrg-ui/core/components/form/checkbox';
 import Datetime from '@nrg-ui/core/components/form/datetime';
 import NumberInput from '@nrg-ui/core/components/form/number-input';
 import Select from '@nrg-ui/core/components/form/select';
+import TextArea from '@nrg-ui/core/components/form/text-area';
 import TextInput from '@nrg-ui/core/components/form/text-input';
 import { bind } from '@nrg-ui/core/helpers/bind';
 
@@ -213,6 +214,29 @@ export const StringArgument: TOC<ArgumentSignature<string>> = <template>
   </BaseArgument>
 </template>;
 
+export const TextAreaArgument: TOC<ArgumentSignature<string>> = <template>
+  <BaseArgument
+    @alias={{@alias}}
+    @defaultValue={{@defaultValue}}
+    @description={{@description}}
+    @displayType={{@displayType}}
+    @model={{@model}}
+    @name={{@name}}
+    @options={{@options}}
+    @type={{or @type "String"}}
+    @typeLink={{@typeLink}}
+    @value={{@value}}
+    @onInput={{@onInput}}
+    as |base|
+  >
+    {{#unless @hideControl}}
+      <TextArea @binding={{bind base "value"}} />
+    {{/unless}}
+
+    {{yield base base.value}}
+  </BaseArgument>
+</template>;
+
 export interface ArgumentsSignature {
   Element: HTMLTableElement;
   Args: {
@@ -228,6 +252,7 @@ export interface ArgumentsSignature {
         Date: WithBoundArgs<ComponentLike<ArgumentSignature<Date>>, 'model'>;
         Number: WithBoundArgs<ComponentLike<ArgumentSignature<number>>, 'model'>;
         String: WithBoundArgs<ComponentLike<ArgumentSignature<string>>, 'model'>;
+        TextArea: WithBoundArgs<ComponentLike<ArgumentSignature<string>>, 'model'>;
       },
     ];
   };
@@ -263,6 +288,7 @@ export default class Arguments extends Component<ArgumentsSignature> {
               Date=(component DateArgument model=@model)
               Number=(component NumberArgument model=@model)
               String=(component StringArgument model=@model)
+              TextArea=(component TextAreaArgument model=@model)
             )
           }}
         </tbody>
