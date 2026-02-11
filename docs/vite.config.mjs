@@ -23,6 +23,11 @@ export default defineConfig(async (config) => {
 
   return {
     base,
+    server: {
+      warmup: {
+        clientFiles: ['./app/app.ts', './app/routes/application.ts'],
+      },
+    },
     plugins: [
       extractCodeBlocks(),
       codeSnippetsPlugin(),

@@ -61,7 +61,7 @@ export class BaseAction extends Component<BaseActionSignature> {
       .map((param) => `${param.name}: ${param.type ?? 'any'}`)
       .join(', ');
 
-    return `(${params}): ${this.args.returnType ?? 'void'}`;
+    return `(${params}) => ${this.args.returnType ?? 'void'}`;
   }
 
   hasValue(value: unknown): value is string {
