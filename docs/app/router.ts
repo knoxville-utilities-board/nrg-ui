@@ -7,7 +7,10 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function () {
+  this.route('accordion');
+  this.route('application-loading');
   this.route('showcase');
+  this.route('form');
   this.route('cards');
   this.route('marketing');
   this.route('promo');
