@@ -7,6 +7,8 @@ import pageTitle from 'ember-page-title/helpers/page-title';
 import logo from '#app/assets/images/logo.svg';
 
 function generateComponentMap(fileGlobs: Record<string, unknown>, baseRoute: string = '') {
+  const excludedRoutes = ['index', 'application-loading'];
+
   let baseRoutePrefix = './';
   if (baseRoute) {
     // Handle nested routes
@@ -14,7 +16,7 @@ function generateComponentMap(fileGlobs: Record<string, unknown>, baseRoute: str
   }
   return Object.keys(fileGlobs)
     .map((path) => path.replace(baseRoutePrefix, '').replace('.gts', ''))
-    .filter((routeName) => routeName !== 'index')
+    .filter((routeName) => !excludedRoutes.includes(routeName))
     .map((routeName) => ({
       route: baseRoute ? `${baseRoute}.${routeName}` : routeName,
       label: routeName
@@ -40,7 +42,7 @@ const marketingComponentMap = generateComponentMap(
 );
 
 // TODO: Implement services and helpers files
-const excludedComponents = ['services', 'helpers'];
+const templatesToImplement = ['services', 'helpers'];
 
 const templateDirectories = Array.from(
   new Set(
@@ -55,7 +57,7 @@ const templateDirectories = Array.from(
 const rootComponentGlobsWithoutDirectory = Object.fromEntries(
   Object.entries(import.meta.glob('./*.gts')).filter(([path]) => {
     const name = path.replace('./', '').replace('.gts', '');
-    return !templateDirectories.includes(name) && !excludedComponents.includes(name);
+    return !templateDirectories.includes(name) && !templatesToImplement.includes(name);
   }),
 );
 
