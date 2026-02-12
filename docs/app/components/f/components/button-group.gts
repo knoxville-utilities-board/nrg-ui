@@ -8,7 +8,6 @@ import ButtonGroup from '@nrg-ui/core/components/button-group';
 import CodeBlock from '@nrg-ui/showcase/components/code-block';
 import Section from '@nrg-ui/showcase/components/section';
 
-import type { ButtonGroupType } from '@nrg-ui/core/components/button-group';
 import type ToastService from '@nrg-ui/core/services/toast';
 
 export default class ButtonGroupDemo extends Component {
@@ -24,9 +23,6 @@ export default class ButtonGroupDemo extends Component {
 
   @tracked
   label = 'Label';
-
-  @tracked
-  parent: ButtonGroupType | undefined;
 
   @tracked
   toolbar = false;
@@ -58,7 +54,6 @@ export default class ButtonGroupDemo extends Component {
             class="btn-primary"
             @disabled={{model.disabled}}
             @label={{model.label}}
-            @parent={{model.parent}}
             @toolbar={{model.toolbar}}
             @vertical={{model.vertical}}
             as |Group|
