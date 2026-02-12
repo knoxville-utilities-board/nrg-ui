@@ -6,7 +6,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
 
 import logo from '#app/assets/images/logo.svg';
 
-function generateComponentMap(fileGlobs: Record<string, unknown>, baseRoute = '') {
+function generateComponentMap(fileGlobs: Record<string, unknown>, baseRoute: string = '') {
   let baseRoutePrefix = './';
   if (baseRoute) {
     // Handle nested routes
@@ -24,48 +24,44 @@ function generateComponentMap(fileGlobs: Record<string, unknown>, baseRoute = ''
     }));
 }
 
+const coreComponentMap = generateComponentMap(
+  import.meta.glob('./core-components/*.gts'),
+  'core-components',
+);
+
+const formComponentMap = generateComponentMap(
+  import.meta.glob('./core-components/form/*.gts'),
+  'core-components.form',
+);
+
+const marketingComponentMap = generateComponentMap(
+  import.meta.glob('./mktg-components/*.gts'),
+  'mktg-components',
+);
+
+// TODO: Implement services and helpers files
+const excludedComponents = ['services', 'helpers'];
+
+const templateDirectories = Array.from(
+  new Set(
+    Object.keys(import.meta.glob('./**/*.gts'))
+      .map((p) => p.replace('./', ''))
+      .filter((p) => p.includes('/'))
+      .map((p) => p.split('/')[0]),
+  ),
+);
+
+// Component files with the same name as a directory should not be shown
+const rootComponentGlobsWithoutDirectory = Object.fromEntries(
+  Object.entries(import.meta.glob('./*.gts')).filter(([path]) => {
+    const name = path.replace('./', '').replace('.gts', '');
+    return !templateDirectories.includes(name) && !excludedComponents.includes(name);
+  }),
+);
+
+const rootComponentMap = generateComponentMap(rootComponentGlobsWithoutDirectory);
+
 export default class Application extends Component {
-  get coreComponentMap() {
-    return generateComponentMap(import.meta.glob('./core-components/*.gts'), 'core-components');
-  }
-
-  get formComponentMap() {
-    return generateComponentMap(
-      import.meta.glob('./core-components/form/*.gts'),
-      'core-components.form',
-    );
-  }
-
-  get marketingComponentMap() {
-    return generateComponentMap(import.meta.glob('./mktg-components/*.gts'), 'mktg-components');
-  }
-
-  get rootComponentMap() {
-    // TODO: Implement services and helpers files
-    const excludedComponents = ['services', 'helpers'];
-
-    // Component files with the same name as a directory should not be shown
-    const rootComponentGlobsWithoutDirectory = Object.fromEntries(
-      Object.entries(import.meta.glob('./*.gts')).filter(([path]) => {
-        const name = path.replace('./', '').replace('.gts', '');
-        return !this.templateDirectories.includes(name) && !excludedComponents.includes(name);
-      }),
-    );
-
-    return generateComponentMap(rootComponentGlobsWithoutDirectory);
-  }
-
-  get templateDirectories() {
-    return Array.from(
-      new Set(
-        Object.keys(import.meta.glob('./**/*.gts'))
-          .map((p) => p.replace('./', ''))
-          .filter((p) => p.includes('/'))
-          .map((p) => p.split('/')[0]),
-      ),
-    );
-  }
-
   get environment() {
     if (macroCondition(isTesting())) {
       return 'test';
@@ -88,20 +84,20 @@ export default class Application extends Component {
         <AppBar.Environment />
       </:app-bar-left>
       <:sidebar as |Menu|>
-        {{#each this.rootComponentMap as |rootComponent|}}
+        {{#each rootComponentMap as |rootComponent|}}
           <Menu.Item @route={{rootComponent.route}}>
             {{rootComponent.label}}
           </Menu.Item>
         {{/each}}
         <Menu.Group @route="core-components.index">
           <:badge>
-            {{this.coreComponentMap.length}}
+            {{coreComponentMap.length}}
           </:badge>
           <:header>
             Components
           </:header>
           <:items as |Item|>
-            {{#each this.coreComponentMap as |coreComponent|}}
+            {{#each coreComponentMap as |coreComponent|}}
               <Item @route={{coreComponent.route}}>
                 {{coreComponent.label}}
               </Item>
@@ -110,13 +106,13 @@ export default class Application extends Component {
         </Menu.Group>
         <Menu.Group @route="core-components.form.index">
           <:badge>
-            {{this.formComponentMap.length}}
+            {{formComponentMap.length}}
           </:badge>
           <:header>
             Forms
           </:header>
           <:items as |Item|>
-            {{#each this.formComponentMap as |formComponent|}}
+            {{#each formComponentMap as |formComponent|}}
               <Item @route={{formComponent.route}}>
                 {{formComponent.label}}
               </Item>
@@ -125,13 +121,13 @@ export default class Application extends Component {
         </Menu.Group>
         <Menu.Group @route="mktg-components.index">
           <:badge>
-            {{this.marketingComponentMap.length}}
+            {{marketingComponentMap.length}}
           </:badge>
           <:header>
             Marketing Components
           </:header>
           <:items as |Item|>
-            {{#each this.marketingComponentMap as |marketingComponent|}}
+            {{#each marketingComponentMap as |marketingComponent|}}
               <Item @route={{marketingComponent.route}}>
                 {{marketingComponent.label}}
               </Item>
