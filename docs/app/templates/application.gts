@@ -6,6 +6,63 @@ import pageTitle from 'ember-page-title/helpers/page-title';
 
 import logo from '#app/assets/images/logo.svg';
 
+function generateComponentMap(fileGlobs: Record<string, unknown>, baseRoute: string = '') {
+  const excludedRoutes = ['index', 'application-loading'];
+
+  let baseRoutePrefix = './';
+  if (baseRoute) {
+    // Handle nested routes
+    baseRoutePrefix += `${baseRoute.replace(/\./g, '/')}/`;
+  }
+  return Object.keys(fileGlobs)
+    .map((path) => path.replace(baseRoutePrefix, '').replace('.gts', ''))
+    .filter((routeName) => !excludedRoutes.includes(routeName))
+    .map((routeName) => ({
+      route: baseRoute ? `${baseRoute}.${routeName}` : routeName,
+      label: routeName
+        .split('-')
+        .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+        .join(' '),
+    }));
+}
+
+const coreComponentMap = generateComponentMap(
+  import.meta.glob('./core-components/*.gts'),
+  'core-components',
+);
+
+const formComponentMap = generateComponentMap(
+  import.meta.glob('./core-components/form/*.gts'),
+  'core-components.form',
+);
+
+const marketingComponentMap = generateComponentMap(
+  import.meta.glob('./mktg-components/*.gts'),
+  'mktg-components',
+);
+
+// TODO: Implement services and helpers files
+const templatesToImplement = ['services', 'helpers'];
+
+const templateDirectories = Array.from(
+  new Set(
+    Object.keys(import.meta.glob('./**/*.gts'))
+      .map((p) => p.replace('./', ''))
+      .filter((p) => p.includes('/'))
+      .map((p) => p.split('/')[0]),
+  ),
+);
+
+// Component files with the same name as a directory should not be shown
+const rootComponentGlobsWithoutDirectory = Object.fromEntries(
+  Object.entries(import.meta.glob('./*.gts')).filter(([path]) => {
+    const name = path.replace('./', '').replace('.gts', '');
+    return !templateDirectories.includes(name) && !templatesToImplement.includes(name);
+  }),
+);
+
+const rootComponentMap = generateComponentMap(rootComponentGlobsWithoutDirectory);
+
 export default class Application extends Component {
   get environment() {
     if (macroCondition(isTesting())) {
@@ -29,157 +86,54 @@ export default class Application extends Component {
         <AppBar.Environment />
       </:app-bar-left>
       <:sidebar as |Menu|>
-        <Menu.Item @route="showcase">
-          Showcase
-        </Menu.Item>
-        <Menu.Item @route="scaffold">
-          Scaffold
-        </Menu.Item>
-        <Menu.Item @route="side-by-side">
-          Side-by-Side
-        </Menu.Item>
-        <Menu.Item @route="stacked-pane">
-          Stacked Pane
-        </Menu.Item>
+        {{#each rootComponentMap as |rootComponent|}}
+          <Menu.Item @route={{rootComponent.route}}>
+            {{rootComponent.label}}
+          </Menu.Item>
+        {{/each}}
         <Menu.Group @route="core-components.index">
           <:badge>
-            15
+            {{coreComponentMap.length}}
           </:badge>
           <:header>
             Components
           </:header>
           <:items as |Item|>
-            <Item @route="core-components.accordion">
-              Accordion
-            </Item>
-            <Item @route="core-components.alert">
-              Alert
-            </Item>
-            <Item @route="core-components.button">
-              Button
-            </Item>
-            <Item @route="core-components.card">
-              Card
-            </Item>
-            <Item @route="core-components.context-menu">
-              Context Menu
-            </Item>
-            <Item @route="core-components.dropdown">
-              Dropdown
-            </Item>
-            <Item @route="core-components.footer">
-              Footer
-            </Item>
-            <Item @route="core-components.header">
-              Header
-            </Item>
-            <Item @route="core-components.icon">
-              Icon
-            </Item>
-            <Item @route="core-components.loading-indicator">
-              Loading Indicator
-            </Item>
-            <Item @route="core-components.modal">
-              Modal
-            </Item>
-            <Item @route="core-components.pagination">
-              Pagination
-            </Item>
-            <Item @route="core-components.popover">
-              Popover
-            </Item>
-            <Item @route="core-components.progress">
-              Progress
-            </Item>
-            <Item @route="core-components.toaster">
-              Toaster
-            </Item>
-            <Item @route="core-components.tooltip">
-              Tooltip
-            </Item>
+            {{#each coreComponentMap as |coreComponent|}}
+              <Item @route={{coreComponent.route}}>
+                {{coreComponent.label}}
+              </Item>
+            {{/each}}
           </:items>
         </Menu.Group>
         <Menu.Group @route="core-components.form.index">
           <:badge>
-            11
+            {{formComponentMap.length}}
           </:badge>
           <:header>
             Forms
           </:header>
           <:items as |Item|>
-            <Item @route="core-components.form.checkbox">
-              Checkbox
-            </Item>
-            <Item @route="core-components.form.checkbox-group">
-              Checkbox Group
-            </Item>
-            <Item @route="core-components.form.datetime">
-              Datetime
-            </Item>
-            <Item @route="core-components.form.file-upload">
-              File Upload
-            </Item>
-            <Item @route="core-components.form.multi-select">
-              Multi Select
-            </Item>
-            <Item @route="core-components.form.phone-input">
-              Phone Input
-            </Item>
-            <Item @route="core-components.form.radio-group">
-              Radio Group
-            </Item>
-            <Item @route="core-components.form.search">
-              Search
-            </Item>
-            <Item @route="core-components.form.select">
-              Select
-            </Item>
-            <Item @route="core-components.form.text-area">
-              Text Area
-            </Item>
-            <Item @route="core-components.form.text-input">
-              Text Input
-            </Item>
+            {{#each formComponentMap as |formComponent|}}
+              <Item @route={{formComponent.route}}>
+                {{formComponent.label}}
+              </Item>
+            {{/each}}
           </:items>
         </Menu.Group>
         <Menu.Group @route="mktg-components.index">
           <:badge>
-            9
+            {{marketingComponentMap.length}}
           </:badge>
           <:header>
             Marketing Components
           </:header>
           <:items as |Item|>
-            <Item @route="marketing">
-              Example
-            </Item>
-            <Item @route="mktg-components.card-container">
-              Card Container
-            </Item>
-            <Item @route="mktg-components.card">
-              Card
-            </Item>
-            <Item @route="mktg-components.footer">
-              Footer
-            </Item>
-            <Item @route="mktg-components.header">
-              Header
-            </Item>
-            <Item @route="mktg-components.navbar">
-              Navbar
-            </Item>
-            <Item @route="mktg-components.promo-container">
-              Promo Container
-            </Item>
-            <Item @route="mktg-components.promo">
-              Promo
-            </Item>
-            <Item @route="mktg-components.section-header">
-              Section Header
-            </Item>
-            <Item @route="mktg-components.service-pricing">
-              Service Pricing
-            </Item>
+            {{#each marketingComponentMap as |marketingComponent|}}
+              <Item @route={{marketingComponent.route}}>
+                {{marketingComponent.label}}
+              </Item>
+            {{/each}}
           </:items>
         </Menu.Group>
         <Menu.Item @url="https://example.com">
