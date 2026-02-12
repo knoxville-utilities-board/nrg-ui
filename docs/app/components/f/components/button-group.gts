@@ -1,5 +1,5 @@
 import { array, fn } from '@ember/helper';
-import { action } from '@ember/object';
+import { action, get } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -12,7 +12,6 @@ import type { ButtonGroupType } from '@nrg-ui/core/components/button-group';
 import type ToastService from '@nrg-ui/core/services/toast';
 
 export default class ButtonGroupDemo extends Component {
-  snippet = getSnippet('button-group-implementation');
   // BEGIN-SNIPPET button-group-implementation
   @service
   declare toast: ToastService;
@@ -110,7 +109,7 @@ export default class ButtonGroupDemo extends Component {
       </Section.Subsection>
 
       <h5>Implementation</h5>
-      <CodeBlock @lang="gts" @code={{this.snippet.code}} />
+      <CodeBlock @lang="gts" @code={{get (getSnippet "button-group-implementation") "code"}} />
     </Section>
   </template>
 }
