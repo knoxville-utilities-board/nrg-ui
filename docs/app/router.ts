@@ -44,6 +44,7 @@ Router.map(function () {
       this.route('icon');
       this.route('loading-indicator');
       this.route('modal');
+      this.route('page-not-found');
       this.route('pagination');
       this.route('popover');
       this.route('progress');
