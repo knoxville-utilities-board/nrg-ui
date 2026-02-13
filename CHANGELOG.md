@@ -1,5 +1,32 @@
 # Changelog
 
+## Release (2026-02-13)
+
+* @nrg-ui/core 0.57.3 (patch)
+* @nrg-ui/showcase 0.8.0 (minor)
+* @nrg-ui/standards 0.8.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/standards`
+  * [#861](https://github.com/knoxville-utilities-board/nrg-ui/pull/861) feat(eslint): Allow custom globals ([@TSenter](https://github.com/TSenter))
+* Other
+  * [#860](https://github.com/knoxville-utilities-board/nrg-ui/pull/860) docs: Handle 404 errors ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+* `@nrg-ui/showcase`
+  * [#855](https://github.com/knoxville-utilities-board/nrg-ui/pull/855) feat(Showcase): Create TextArea api argument ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+
+#### :memo: Documentation
+* Other
+  * [#862](https://github.com/knoxville-utilities-board/nrg-ui/pull/862) docs(PageNotFound): Create showcase documentation ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+  * [#845](https://github.com/knoxville-utilities-board/nrg-ui/pull/845) docs(ButtonGroup): Create showcase documentation ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+  * [#859](https://github.com/knoxville-utilities-board/nrg-ui/pull/859) docs(Application): Dynamically generate sidebar links ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+  * [#853](https://github.com/knoxville-utilities-board/nrg-ui/pull/853) docs(CoreComponents/Index): Dynamically generate component cards ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+* `@nrg-ui/core`
+  * [#832](https://github.com/knoxville-utilities-board/nrg-ui/pull/832) docs(Alert): Create showcase documentation ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+
+#### Committers: 2
+- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2026-02-02)
 
 * @nrg-ui/core 0.57.2 (patch)
