@@ -8,6 +8,20 @@ import { getDependenciesFromPackage, load } from '../utils.js';
 
 import type { ESLint, Linter } from 'eslint';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+interface Nothing {}
+
+/**
+ * Borrowed from Shiki.js <https://github.com/shikijs/shiki/blob/213f19bf464423795f20ce51fe73fe7bb5d45e00/packages/types/src/utils.ts#L7-L14>
+ *
+ * type StringLiteralUnion<'foo'> = 'foo' | string
+ * This has auto completion whereas `'foo' | string` doesn't
+ * Adapted from https://github.com/microsoft/TypeScript/issues/29729
+ */
+export type StringLiteralUnion<T extends U, U = string> = T | (U & Nothing);
+export type Global = keyof typeof allGlobals;
+export type AnyGlobal = StringLiteralUnion<Global>;
+
 export const defaultJsIgnores = ['node_modules/', 'dist/', 'vendor/', 'assets/'];
 export const defaultTsIgnores = defaultJsIgnores.concat(['declarations/']);
 
@@ -106,7 +120,7 @@ export class Config {
       ];
     },
 
-    base: async (globals: (keyof typeof allGlobals)[] = ['browser']): Promise<Linter.Config[]> => {
+    base: async (globals: Global[] = ['browser']): Promise<Linter.Config[]> => {
       const objects: Linter.Config[] = [];
 
       if (this.hasDependency('babel-eslint')) {
@@ -122,7 +136,7 @@ export class Config {
       objects.push({
         name: '@nrg-ui/standards/eslint/js/recommended',
         languageOptions: {
-          globals: flatten(globals.map((g) => allGlobals[g])),
+          globals: flatten(globals.map((g) => allGlobals[g as Global] ?? { [g]: false })),
         },
         rules: {
           ...recommendedConfigs.recommended.rules,
