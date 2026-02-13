@@ -136,7 +136,7 @@ export class Config {
       objects.push({
         name: '@nrg-ui/standards/eslint/js/recommended',
         languageOptions: {
-          globals: flatten(globals.map((g) => allGlobals[g as Global] ?? { [g]: false })),
+          globals: flatten(globals.map((g) => allGlobals[g as Global] ?? { [g]: 'readonly' })),
         },
         rules: {
           ...recommendedConfigs.recommended.rules,
