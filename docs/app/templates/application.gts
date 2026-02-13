@@ -7,7 +7,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
 import logo from '#app/assets/images/logo.svg';
 
 function generateComponentMap(fileGlobs: Record<string, unknown>, baseRoute: string = '') {
-  const excludedRoutes = ['index', 'application-loading'];
+  const excludedRoutes = ['index', 'application-loading', 'not-found'];
 
   let baseRoutePrefix = './';
   if (baseRoute) {
