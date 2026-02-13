@@ -120,7 +120,7 @@ export class Config {
       ];
     },
 
-    base: async (globals: Global[] = ['browser']): Promise<Linter.Config[]> => {
+    base: async (globals: AnyGlobal[] = ['browser']): Promise<Linter.Config[]> => {
       const objects: Linter.Config[] = [];
 
       if (this.hasDependency('babel-eslint')) {
@@ -249,7 +249,7 @@ export class Config {
     },
 
     js: async (
-      globals: (keyof typeof allGlobals)[] = ['browser'],
+      globals: AnyGlobal[] = ['browser'],
       rules?: Linter.RulesRecord,
     ): Promise<Linter.Config[]> => {
       const objects: Linter.Config[] = [];
@@ -286,7 +286,7 @@ export class Config {
           name: '@nrg-ui/standards/eslint/js/import',
           files,
           languageOptions: {
-            globals: flatten(globals.map((g) => allGlobals[g])),
+            globals: flatten(globals.map((g) => allGlobals[g as Global] ?? { [g]: 'readonly' })),
             parser: defaultParser,
           },
           plugins: {
@@ -309,7 +309,7 @@ export class Config {
         objects.push({
           name: '@nrg-ui/standards/eslint/js/custom',
           languageOptions: {
-            globals: flatten(globals.map((g) => allGlobals[g])),
+            globals: flatten(globals.map((g) => allGlobals[g as Global] ?? { [g]: 'readonly' })),
           },
           files,
           rules: {
@@ -322,7 +322,7 @@ export class Config {
     },
 
     ts: async (
-      globals: (keyof typeof allGlobals)[] = ['browser'],
+      globals: AnyGlobal[] = ['browser'],
       rules?: Linter.RulesRecord,
     ): Promise<Linter.Config[]> => {
       const objects: Linter.Config[] = [];
@@ -347,7 +347,7 @@ export class Config {
           name: '@nrg-ui/standards/eslint/ts/custom',
           files,
           languageOptions: {
-            globals: flatten(globals.map((g) => allGlobals[g])),
+            globals: flatten(globals.map((g) => allGlobals[g as Global] ?? { [g]: 'readonly' })),
             parser: tseslint.parser,
             parserOptions: {
               tsconfigRootDir: cwd(),
