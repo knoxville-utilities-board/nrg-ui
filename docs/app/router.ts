@@ -21,6 +21,7 @@ Router.map(function () {
     function () {
       this.route('accordion');
       this.route('alert');
+      this.route('app-bar');
       this.route('button');
       this.route('button-group');
       this.route('card');
