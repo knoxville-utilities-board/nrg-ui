@@ -57,13 +57,13 @@
     "eslint-plugin-decorator-position": "^6.0.0",
     "eslint-plugin-ember": "^12.7.5",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-n": "^17.23.2",
+    "eslint-plugin-n": "^17.24.0",
     "eslint-plugin-qunit": "8.2.6",
-    "typescript-eslint": "^8.54.0"
+    "typescript-eslint": "^8.55.0"
   },
   "devDependencies": {
     "@types/eslint": "^9.6.1",
-    "@types/node": "^22.19.10",
+    "@types/node": "^22.19.11",
     "@types/semver": "^7.7.1",
     "@types/yargs": "^17.0.35",
     "eslint": "^9.39.2",
@@ -71,7 +71,7 @@
     "eslint-plugin-import": "^2.32.0",
     "prettier": "^3.8.1",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.54.0"
+    "typescript-eslint": "^8.55.0"
   },
   "publishConfig": {
     "access": "public",
