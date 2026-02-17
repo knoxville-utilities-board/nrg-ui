@@ -1,19 +1,13 @@
-import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import AppBar from '@nrg-ui/core/components/app-bar';
 import Section from '@nrg-ui/showcase/components/section';
+import { t } from 'ember-intl';
 import pageTitle from 'ember-page-title/helpers/page-title';
 
 export default class AppBarDemo extends Component {
   @tracked
   environment = 'dev';
-
-  @tracked
-  leftContent = htmlSafe('<p class="d-none d-md-block m-0 ps-3 fs-5">Left Content</p>');
-
-  @tracked
-  rightContent = htmlSafe('<p class="m-0">Right Content</p>');
 
   <template>
     {{pageTitle "App Bar"}}
@@ -23,11 +17,15 @@ export default class AppBarDemo extends Component {
           <:example as |model|>
             <AppBar @environment={{model.environment}}>
               <:left as |AppBar|>
-                {{htmlSafe model.leftContent}}
+                <p class="d-none d-md-block m-0 ps-3 fs-5">Docs | @nrg-ui/core</p>
                 <AppBar.Environment />
               </:left>
               <:right>
-                {{htmlSafe model.rightContent}}
+                <i
+                  class="bi bi-three-dots-vertical p-1"
+                  role="button"
+                  title={{t "nrg.navbar.toggleContextMenu"}}
+                />
               </:right>
             </AppBar>
           </:example>
@@ -37,15 +35,19 @@ export default class AppBarDemo extends Component {
                 @name="environment"
                 @description="The environment to display in the app bar component. If it is 'prod', or 'production', it will not be displayed."
               />
-              <Args.TextArea
-                @name="leftContent"
-                @description="The content to display in the left slot of the app bar. Can be set to any HTML string. AppBar.Environment can be used to display the environment in the left slot as well."
-              />
-              <Args.TextArea
-                @name="rightContent"
-                @description="The content to display in the right slot of the app bar. Can be set to any HTML string."
-              />
             </Api.Arguments>
+            <Api.Blocks as |Block|>
+              <Block
+                @description="Named yield block to display in the left slot of the app bar. <AppBar.Environment /> can be used to display the environment in the left slot as well."
+                @name="leftContent"
+              />
+            </Api.Blocks>
+            <Api.Blocks as |Block|>
+              <Block
+                @description="Named yield block to display in the right slot of the app bar."
+                @name="rightContent"
+              />
+            </Api.Blocks>
           </:api>
         </Section.Subsection>
       </Section>
