@@ -1,8 +1,8 @@
-import ContextMenuService from './services/context-menu.ts';
-import ModalService from './services/modal.ts';
-import ResponsiveService from './services/responsive.ts';
-import ThemeService from './services/theme.ts';
-import ToastService from './services/toast.ts';
+import type ContextMenuService from './services/context-menu.ts';
+import type ModalService from './services/modal.ts';
+import type ResponsiveService from './services/responsive.ts';
+import type ThemeService from './services/theme.ts';
+import type ToastService from './services/toast.ts';
 
 export default interface ServiceRegistry {
   'context-menu': ContextMenuService;
