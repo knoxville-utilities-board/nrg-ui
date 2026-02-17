@@ -1,12 +1,15 @@
-import { array, hash } from '@ember/helper';
+import { array, fn, hash } from '@ember/helper';
+import { on } from '@ember/modifier';
+import { action } from '@ember/object';
 import Component from '@glimmer/component';
 
 import CodeBlock from './code-block.gts';
-import { createLink, getMdnLinkForElement } from '../utils.ts';
+import { createImportPath, createLink, getMdnLinkForElement } from '../utils.ts';
 import Actions from './component-api/actions.gts';
 import Arguments from './component-api/arguments.gts';
 import Blocks from './component-api/blocks.gts';
 
+import type { ImportSlug } from '../utils.ts';
 import type { ActionsSignature } from './component-api/actions.gts';
 import type { ArgumentsSignature } from './component-api/arguments.gts';
 import type { BlocksSignature } from './component-api/blocks.gts';
@@ -23,6 +26,7 @@ export interface SubsectionSignature<Model extends object = object> {
 
     elementTag?: string;
     name: string;
+    importSlug?: ImportSlug;
     sectionName: string;
     sourceCode?: string;
     sourceLanguage?: BundledLanguage;
@@ -103,7 +107,7 @@ export class Subsection<Model extends object = object> extends Component<
         {{#let (createLink (array @sectionName @name "source")) as |link|}}
           <h5 id={{link}}>
             <a class="showcase-header" href="#{{link}}">
-              Source
+              {{@sectionName}}
             </a>
           </h5>
         {{/let}}
@@ -119,6 +123,7 @@ export interface SectionSignature {
   Element: HTMLDivElement;
   Args: {
     name: string;
+    importSlug?: ImportSlug;
   };
   Blocks: {
     default: [
@@ -137,14 +142,30 @@ export default class Section extends Component<SectionSignature> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   TypedSubsection = Subsection<any>;
 
+  @action
+  copyToClipboard(text: string) {
+    navigator.clipboard.writeText(text);
+  }
+
   <template>
     <div class="showcase-section" ...attributes>
       {{#let (createLink @name) as |link|}}
-        <h2 id={{link}}>
-          <a class="showcase-header" href="#{{link}}">
-            {{@name}}
-          </a>
-        </h2>
+        <div class="d-flex justify-content-between align-items-center">
+          <h2 id={{link}}>
+            <a class="showcase-header" href="#{{link}}">
+              {{@name}}
+            </a>
+          </h2>
+          <button
+            class="btn btn-outline-secondary btn-sm"
+            type="button"
+            title="Copy import statement to clipboard"
+            {{on "click" (fn this.copyToClipboard (createImportPath @name @parentName))}}
+          >
+            {{createImportPath @name @parentName}}
+            <i class="bi bi-clipboard ms-1"></i>
+          </button>
+        </div>
       {{/let}}
       <hr />
       {{yield (hash Subsection=(component this.TypedSubsection sectionName=@name))}}
