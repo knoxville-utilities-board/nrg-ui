@@ -4,6 +4,24 @@ export const ELEMENT_INDEX = bcd.html['elements']!;
 export const API_INDEX = bcd.api;
 export const BUILTINS_INDEX = bcd.javascript['builtins']!;
 
+export function createImportPath(name: string, parentName?: string) {
+  let basePath = `import ${name} from '@nrg-ui/components`;
+  if (parentName) {
+    basePath += `/${parentName.toLowerCase().replace(/\s+/g, '-')}`;
+  }
+
+  return basePath += `/${name.toLowerCase().replace(/\s+/g, '-')}';`;
+}
+
+export function createImportDisplayPath(name: string, parentName?: string) {
+  let basePath = '@nrg-ui/components';
+  if (parentName) {
+    basePath += `/${parentName.toLowerCase().replace(/\s+/g, '-')}`;
+  }
+
+  return basePath + `/${name.toLowerCase().replace(/\s+/g, '-')}`;
+}
+
 export function createLink(name: string | string[]) {
   if (Array.isArray(name)) {
     name = name.filter(Boolean).join('-');
