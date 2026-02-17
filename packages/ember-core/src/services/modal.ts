@@ -1,7 +1,7 @@
 import Service from '@ember/service';
 import { tracked } from 'tracked-built-ins';
 
-export default class Modal extends Service {
+export default class ModalService extends Service {
   modalIds: string[] = [];
 
   @tracked
@@ -34,6 +34,6 @@ export default class Modal extends Service {
 
 declare module '@ember/service' {
   interface Registry {
-    modal: Modal;
+    modal: ModalService;
   }
 }

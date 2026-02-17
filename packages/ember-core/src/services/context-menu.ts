@@ -13,7 +13,7 @@ export interface Menu {
   dropdown: Dropdown;
 }
 
-export default class ContextMenu extends Service {
+export default class ContextMenuService extends Service {
   menus = new TrackedMap<string, Menu>();
 
   menu(id: string) {
@@ -50,6 +50,6 @@ export default class ContextMenu extends Service {
 
 declare module '@ember/service' {
   interface Registry {
-    'context-menu': ContextMenu;
+    'context-menu': ContextMenuService;
   }
 }

@@ -15,7 +15,7 @@ export type ToastOptions = {
   timeoutReference?: Timer;
 };
 
-export default class Toast extends Service {
+export default class ToastService extends Service {
   @tracked
   queue: Array<ToastOptions> = new TrackedArray();
 
@@ -94,6 +94,6 @@ export default class Toast extends Service {
 
 declare module '@ember/service' {
   interface Registry {
-    toast: Toast;
+    toast: ToastService;
   }
 }
