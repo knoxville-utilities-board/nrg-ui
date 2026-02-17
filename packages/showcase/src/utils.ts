@@ -5,6 +5,9 @@ export const API_INDEX = bcd.api;
 export const BUILTINS_INDEX = bcd.javascript['builtins']!;
 
 export function createImportPath(name: string, parentName?: string) {
+  if(parentName === 'form') {
+    return `import Form from '@nrg-ui/components/form';`;
+  }
   let basePath = `import ${name} from '@nrg-ui/components`;
   if (parentName) {
     basePath += `/${parentName.toLowerCase().replace(/\s+/g, '-')}`;
@@ -14,6 +17,10 @@ export function createImportPath(name: string, parentName?: string) {
 }
 
 export function createImportDisplayPath(name: string, parentName?: string) {
+  if(parentName === 'form') {
+    return '@nrg-ui/components/form';
+  }
+
   let basePath = '@nrg-ui/components';
   if (parentName) {
     basePath += `/${parentName.toLowerCase().replace(/\s+/g, '-')}`;

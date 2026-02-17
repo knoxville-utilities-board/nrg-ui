@@ -34,7 +34,7 @@ export default class CheckboxGroupDemo extends Component {
   option3 = false;
 
   <template>
-    <Section @name="Checkbox Group" as |Section|>
+    <Section @name="Checkbox Group" @parentName="form" as |Section|>
       <Section.Subsection @name="Basic" @model={{this}} @elementTag="div">
         <:example as |model|>
           <CheckboxGroup

@@ -59,7 +59,7 @@ export default class DatetimeDemo extends Component {
   }
 
   <template>
-    <Section @name="Datetime" as |Section|>
+    <Section @name="Datetime" @parentName="form" as |Section|>
       <Section.Subsection @name="Basic" @model={{this}} @elementTag="div">
         <:example as |model|>
           <Datetime

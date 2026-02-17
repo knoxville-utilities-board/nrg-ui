@@ -23,7 +23,7 @@ export default class PhoneInputDemo extends Component {
   value = '';
 
   <template>
-    <Section @name="Phone Input" as |Section|>
+    <Section @name="Phone Input" @parentName="form" as |Section|>
       <Section.Subsection @name="Basic" @model={{this}} @elementTag="input">
         <:example as |model|>
           <PhoneInput

@@ -31,7 +31,7 @@ export default class FileUploadDemo extends Component {
   }
 
   <template>
-    <Section @name="File Upload" as |Section|>
+    <Section @name="File Upload" @parentName="form" as |Section|>
       <Section.Subsection @name="Basic" @model={{this}} @elementTag="div">
         <:example as |model|>
           <FileUpload
