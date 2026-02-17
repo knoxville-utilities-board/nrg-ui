@@ -4,7 +4,7 @@ import NavItem from '@nrg-ui/core/components/nav-item';
 import Section from '@nrg-ui/showcase/components/section';
 
 <template>
-  <Section @name="Navbar" as |Section|>
+  <Section @name="Navbar" @parentName="mktg-components" as |Section|>
     <Section.Subsection @name="Basics" @model={{this}} @elementTag="nav">
       <:example>
         <MktgNavbar>

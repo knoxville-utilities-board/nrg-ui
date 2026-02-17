@@ -3,7 +3,7 @@ import MktgPromoContainer from '@nrg-ui/core/components/mktg/promo-container';
 import Section from '@nrg-ui/showcase/components/section';
 
 <template>
-  <Section @name="Promo Container" as |Section|>
+  <Section @name="Promo Container" @parentName="mktg-components" as |Section|>
     <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
       {{! <:description>
         <p>The promo container acts as a container for one or more promo

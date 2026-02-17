@@ -9,7 +9,7 @@ export default class PromoDemo extends Component {
   productName = 'Product';
 
   <template>
-    <Section @name="Promo" as |Section|>
+    <Section @name="Promo" @parentName="mktg-components" as |Section|>
       <Section.Subsection @name="Horizontal Promo" @model={{this}} @elementTag="div">
         <:example as |model|>
           <MktgPromo class="bg-primary text-white" @productName={{model.productName}}>
