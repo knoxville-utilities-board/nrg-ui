@@ -1,6 +1,6 @@
 {
   "name": "@nrg-ui/core",
-  "version": "0.57.3",
+  "version": "0.57.4",
   "description": "Design system for Ember.js built on top of Bootstrap",
   "keywords": [
     "bootstrap",
