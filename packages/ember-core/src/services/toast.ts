@@ -1,6 +1,7 @@
 import { action } from '@ember/object';
 import Service from '@ember/service';
 import { isBlank } from '@ember/utils';
+import { isTesting, macroCondition } from '@embroider/macros';
 import { tracked } from '@glimmer/tracking';
 import { cancelTask, runTask } from 'ember-lifeline';
 import { TrackedArray } from 'tracked-built-ins';
@@ -60,6 +61,11 @@ export default class ToastService extends Service {
     if (isBlank(options.timeout) && options.sticky !== true) {
       options.timeout = 5000;
     }
+
+    if (macroCondition(isTesting())) {
+      options.timeout = 0;
+    }
+
     if (options.timeout) {
       options.timeoutReference = runTask(
         this,
