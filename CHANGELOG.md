@@ -1,5 +1,21 @@
 # Changelog
 
+## Release (2026-02-18)
+
+* @nrg-ui/core 0.57.4 (patch)
+
+#### :memo: Documentation
+* [#863](https://github.com/knoxville-utilities-board/nrg-ui/pull/863) docs(AppBar): Create showcase documentation ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+
+#### :house: Internal
+* `@nrg-ui/core`
+  * [#870](https://github.com/knoxville-utilities-board/nrg-ui/pull/870) feat(toast): Remove timeout during tests ([@TSenter](https://github.com/TSenter))
+  * [#869](https://github.com/knoxville-utilities-board/nrg-ui/pull/869) chore: Update service names for better Intellisense ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2026-02-13)
 
 * @nrg-ui/core 0.57.3 (patch)
