@@ -9,7 +9,7 @@ export default class FooterDemo extends Component {
   hasDivider = false;
 
   <template>
-    <Section @name="Footer" @parentName="mktg-components" as |Section|>
+    <Section @name="Footer" @parentName="mktg" as |Section|>
       <Section.Subsection @name="Basics" @model={{this}} @elementTag="footer">
         <:example as |model|>
           <MktgFooter class="bg-primary" @hasDivider={{model.hasDivider}}>

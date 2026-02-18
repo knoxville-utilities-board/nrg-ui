@@ -23,7 +23,7 @@ export default class ServicePricingDemo extends Component {
   selected = true;
 
   <template>
-    <Section @name="Service Pricing" @parentName="mktg-components" as |Section|>
+    <Section @name="Service Pricing" @parentName="mktg" as |Section|>
       <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
         <:example as |model|>
           <MktgServicePricing
