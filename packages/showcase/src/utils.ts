@@ -1,32 +1,25 @@
+import { getOwnConfig } from '@embroider/macros';
 import bcd from '@mdn/browser-compat-data';
 
 export const ELEMENT_INDEX = bcd.html['elements']!;
 export const API_INDEX = bcd.api;
 export const BUILTINS_INDEX = bcd.javascript['builtins']!;
 
-export function createImportPath(name: string, parentName?: string) {
-  if(parentName === 'form') {
-    return `import Form from '@nrg-ui/components/form';`;
+export function createImportPath(name?: string, parentName?: string) {
+  name = name?.replace(/\s+/g, '') ?? '';
+
+  const basePath = getOwnConfig()?.imports?.basePath ?? '@nrg-ui/core';
+
+  if (parentName === 'form') {
+    name = 'Form';
   }
-  let basePath = `import ${name} from '@nrg-ui/components`;
+
+  let importStatement = `import { ${name} } from '${basePath}`;
   if (parentName) {
-    basePath += `/${parentName.toLowerCase().replace(/\s+/g, '-')}`;
+    importStatement += `/${parentName.toLowerCase().replace(/\s+/g, '-')}`;
   }
 
-  return basePath += `/${name.toLowerCase().replace(/\s+/g, '-')}';`;
-}
-
-export function createImportDisplayPath(name: string, parentName?: string) {
-  if(parentName === 'form') {
-    return '@nrg-ui/components/form';
-  }
-
-  let basePath = '@nrg-ui/components';
-  if (parentName) {
-    basePath += `/${parentName.toLowerCase().replace(/\s+/g, '-')}`;
-  }
-
-  return basePath + `/${name.toLowerCase().replace(/\s+/g, '-')}`;
+  return `${importStatement}';`;
 }
 
 export function createLink(name: string | string[]) {

@@ -4,7 +4,7 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 
 import CodeBlock from './code-block.gts';
-import { createImportDisplayPath, createImportPath, createLink, getMdnLinkForElement } from '../utils.ts';
+import { createImportPath, createLink, getMdnLinkForElement } from '../utils.ts';
 import Actions from './component-api/actions.gts';
 import Arguments from './component-api/arguments.gts';
 import Blocks from './component-api/blocks.gts';
@@ -122,6 +122,7 @@ export interface SectionSignature {
   Element: HTMLDivElement;
   Args: {
     name: string;
+    parentName?: string;
   };
   Blocks: {
     default: [
@@ -160,7 +161,7 @@ export default class Section extends Component<SectionSignature> {
             title="Copy import statement to clipboard"
             {{on "click" (fn this.copyToClipboard (createImportPath @name @parentName))}}
           >
-            {{createImportDisplayPath @name @parentName}}
+            {{createImportPath @name @parentName}}
             <i class="bi bi-clipboard ms-1"></i>
           </button>
         </div>
