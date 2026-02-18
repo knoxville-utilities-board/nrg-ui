@@ -5,7 +5,7 @@ import isMobile, { type isMobileResult } from 'ismobilejs';
 import type MediaService from './media.ts';
 import type Owner from '@ember/owner';
 
-export default class Responsive extends Service {
+export default class ResponsiveService extends Service {
   @service
   declare media: MediaService;
 
@@ -56,6 +56,6 @@ export default class Responsive extends Service {
 
 declare module '@ember/service' {
   interface Registry {
-    responsive: Responsive;
+    responsive: ResponsiveService;
   }
 }

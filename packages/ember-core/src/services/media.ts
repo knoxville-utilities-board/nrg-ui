@@ -27,7 +27,7 @@ export const defaultBreakpoints = Object.freeze({
   xxlarge: '(min-width: 1400px)',
 });
 
-export default class Media extends Service {
+export default class MediaService extends Service {
   _mockedBreakpoint = 'desktop';
 
   @tracked
@@ -155,6 +155,6 @@ export default class Media extends Service {
 
 declare module '@ember/service' {
   interface Registry {
-    media: Media;
+    media: MediaService;
   }
 }
