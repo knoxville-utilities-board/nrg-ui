@@ -49,7 +49,7 @@ export default class extends Component {
   }
 
   <template>
-    <Section @name="Select" as |Section|>
+    <Section @name="Select" @parentName="form" as |Section|>
       <Section.Subsection @name="String Options" @model={{this}} @elementTag="button">
         <:example as |model|>
           <Select

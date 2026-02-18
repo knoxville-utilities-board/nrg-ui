@@ -12,7 +12,7 @@ export default class HeaderDemo extends Component {
   flexCollapse = false;
 
   <template>
-    <Section @name="Header" as |Section|>
+    <Section @name="Header" @parentName="mktg" as |Section|>
       <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
         <:example as |model|>
           <MktgHeader

@@ -1,8 +1,26 @@
+import { getOwnConfig } from '@embroider/macros';
 import bcd from '@mdn/browser-compat-data';
 
 export const ELEMENT_INDEX = bcd.html['elements']!;
 export const API_INDEX = bcd.api;
 export const BUILTINS_INDEX = bcd.javascript['builtins']!;
+
+export function createImportPath(name?: string, parentName?: string) {
+  name = name?.replace(/\s+/g, '') ?? '';
+
+  const basePath = getOwnConfig()?.imports?.basePath ?? '@nrg-ui/core';
+
+  if (parentName === 'form') {
+    name = 'Form';
+  }
+
+  let importStatement = `import { ${name} } from '${basePath}`;
+  if (parentName) {
+    importStatement += `/${parentName.toLowerCase().replace(/\s+/g, '-')}`;
+  }
+
+  return `${importStatement}';`;
+}
 
 export function createLink(name: string | string[]) {
   if (Array.isArray(name)) {

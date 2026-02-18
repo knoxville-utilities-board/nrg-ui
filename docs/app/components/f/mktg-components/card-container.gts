@@ -2,7 +2,7 @@ import MktgCardContainer from '@nrg-ui/core/components/mktg/card-container';
 import Section from '@nrg-ui/showcase/components/section';
 
 <template>
-  <Section @name="Card Container" as |Section|>
+  <Section @name="Card Container" @parentName="mktg" as |Section|>
     <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
       <:example>
         <MktgCardContainer as |Container|>

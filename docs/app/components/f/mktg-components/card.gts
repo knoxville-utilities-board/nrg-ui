@@ -23,7 +23,7 @@ export default class CardDemo extends Component {
   hasHorizontalDivider = true;
 
   <template>
-    <Section @name="Card" as |Section|>
+    <Section @name="Card" @parentName="mktg" as |Section|>
       <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
         <:example as |model|>
           <MktgCard

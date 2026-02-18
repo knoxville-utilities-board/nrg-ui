@@ -48,7 +48,7 @@ export default class MultiSelectDemo extends Component {
   }
 
   <template>
-    <Section @name="Multi Select" as |Section|>
+    <Section @name="Multi Select" @parentName="form" as |Section|>
       <Section.Subsection @name="String Options" @model={{this}} @elementTag="button">
         <:example as |model|>
           <MultiSelect

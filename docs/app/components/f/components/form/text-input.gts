@@ -26,7 +26,7 @@ export default class TextInputDemo extends Component {
   value = '';
 
   <template>
-    <Section @name="Text Input" as |Section|>
+    <Section @name="Text Input" @parentName="form" as |Section|>
       <Section.Subsection @name="Basic" @model={{this}} @elementTag="input">
         <:example as |model|>
           <TextInput

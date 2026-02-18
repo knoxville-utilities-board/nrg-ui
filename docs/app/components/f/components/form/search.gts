@@ -137,7 +137,7 @@ export default class SearchDemo extends Component {
   }
 
   <template>
-    <Section @name="Search" as |Section|>
+    <Section @name="Search" @parentName="form" as |Section|>
       <Section.Subsection @name="Basic" @model={{this}} @elementTag="div">
         <:example as |model|>
           <Search

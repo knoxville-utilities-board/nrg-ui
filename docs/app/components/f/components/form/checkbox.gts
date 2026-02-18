@@ -29,7 +29,7 @@ export default class CheckboxDemo extends Component {
   value = false;
 
   <template>
-    <Section @name="Checkbox" as |Section|>
+    <Section @name="Checkbox" @parentName="form" as |Section|>
       <Section.Subsection @name="Basic" @model={{this}} @elementTag="input">
         <:example as |model|>
           <Checkbox

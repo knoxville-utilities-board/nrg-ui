@@ -30,6 +30,11 @@ module.exports = async function (defaults) {
         '@nrg-ui/core': {
           appVersion: version,
         },
+        '@nrg-ui/showcase': {
+          imports: {
+            basePath: '@nrg-ui/core',
+          },
+        },
       },
     },
     babel: {

@@ -12,7 +12,7 @@ export default class SectionHeaderDemo extends Component {
   title = 'Title';
 
   <template>
-    <Section @name="Section Header" as |Section|>
+    <Section @name="Section Header" @parentName="mktg" as |Section|>
       <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
         <:example as |model|>
           <MktgSectionHeader class="col-12" @subject={{model.subject}} @title={{model.title}}>

@@ -26,7 +26,7 @@ export default class TextAreaDemo extends Component {
   value = '';
 
   <template>
-    <Section @name="Text Area" as |Section|>
+    <Section @name="Text Area" @parentName="form" as |Section|>
       <Section.Subsection @name="Basic" @model={{this}} @elementTag="textarea">
         <:example as |model|>
           <TextArea

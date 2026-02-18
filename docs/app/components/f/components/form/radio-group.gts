@@ -30,7 +30,7 @@ export default class RadioGroupDemo extends Component {
   value = '2';
 
   <template>
-    <Section @name="Radio Group" as |Section|>
+    <Section @name="Radio Group" @parentName="form" as |Section|>
       <Section.Subsection @name="Basic" @model={{this}} @elementTag="div">
         <:example as |model|>
           <RadioGroup
