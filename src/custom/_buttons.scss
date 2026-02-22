@@ -1,0 +1,48 @@
+@use "sass:color";
+@each $color, $value in $colors {
+  .btn-#{$color} {
+    @include button-variant($value, $value);
+  }
+}
+
+@each $color, $value in $colors {
+  .btn-outline-#{$color} {
+    @include button-outline-variant($value);
+  }
+}
+
+.btn.loading > .content {
+  visibility: hidden;
+}
+
+@if variable-exists(btn-primary-dark) {
+  $btn-bg: $btn-primary-dark;
+
+  [data-bs-theme="dark"] {
+    .btn-primary {
+      @include button-variant($btn-bg, $btn-bg);
+      --#{$prefix}btn-color: var(--bs-body-color);
+      --#{$prefix}btn-hover-color: var(--bs-body-color);
+      --#{$prefix}btn-active-color: var(--bs-body-color);
+      --#{$prefix}btn-disabled-color: var(--bs-body-color);
+    }
+
+    .btn-outline-primary {
+      @include button-outline-variant($btn-bg);
+      --#{$prefix}btn-hover-color: var(--bs-body-color);
+      --#{$prefix}btn-active-color: var(--bs-body-color);
+    }
+  }
+
+  @if variable-exists(btn-secondary-dark) {
+    $btn-bg: $btn-secondary-dark;
+
+    .btn-secondary {
+      @include button-variant($btn-bg, $btn-bg);
+    }
+
+    .btn-outline-secondary {
+      @include button-outline-variant($btn-bg);
+    }
+  }
+}

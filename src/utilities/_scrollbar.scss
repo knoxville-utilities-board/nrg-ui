@@ -1,0 +1,22 @@
+body {
+  scrollbar-color: rgba(var(--bs-body-color-rgb), 0.25) rgba(var(--bs-body-color-rgb), 0.1);
+  scrollbar-width: thin;
+}
+
+body ::-webkit-scrollbar-track {
+  background: rgba(var(--bs-body-color-rgb), 0.1);
+}
+
+body ::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  border-radius: 5px;
+  background: rgba(var(--bs-body-color-rgb), 0.25);
+  -webkit-transition: color 0.2s ease;
+  transition: color 0.2s ease;
+}
+
+body ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+}
