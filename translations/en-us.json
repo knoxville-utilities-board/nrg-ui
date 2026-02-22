@@ -1,0 +1,161 @@
+{
+  "nrg": {
+    "base": {
+      "close": "Close",
+      "datetime": {
+        "date": "Today",
+        "datetime": "Now",
+        "time": "Now"
+      },
+      "loading": "Loading",
+      "next": "Next",
+      "previous": "Previous",
+      "clear": "Clear",
+      "theme": {
+        "auto": "Auto",
+        "dark": "Dark mode",
+        "light": "Light mode",
+        "label": "Theme"
+      },
+      "remove": "Remove"
+    },
+    "app-bar": {
+      "about": {
+        "item": "About",
+        "version": "Version {version}"
+      }
+    },
+    "file-upload": {
+      "dragAndDrop": "Drop files here or",
+      "noFiles": "No files selected",
+      "remove": "Remove",
+      "selectFiles": "click to browse"
+    },
+    "multi-select": {
+      "defaultText": "Select at least one option",
+      "noOptions": "No options found"
+    },
+    "navbar": {
+      "toggleContextMenu": "Toggle context menu"
+    },
+    "page-not-found": {
+      "title": "Page Not Found",
+      "message": "The page you requested could not be found."
+    },
+    "pagination": {
+      "detailedMeta": "{start, number} - {end, number} of {total, number}",
+      "jumpToPage": {
+        "start": "Page",
+        "end": "of {total, number}"
+      },
+      "pageSize": "{value, number} per page"
+    },
+    "select": {
+      "defaultText": "Select an Option",
+      "noOptions": "No options found"
+    },
+    "search": {
+      "placeholder": "Search",
+      "noResults": "No results found"
+    },
+    "stacked-pane": {
+      "navigate-back": "Go back"
+    },
+    "validation": {
+      "confirmation": {
+        "invalid": "This field does not match {label}",
+        "match": "This field cannot match {label}"
+      },
+      "custom": {
+        "invalid": "This field is invalid"
+      },
+      "email": {
+        "domain": {
+          "invalid": "This email must not be from one of the following domains: {domains}",
+          "valid": "This email must be from one of the following domains: {domains}"
+        },
+        "invalid": "This field must be a valid email address"
+      },
+      "exclusion": {
+        "in": "This field is not a valid value. Value cannot be: {in}"
+      },
+      "file": {
+        "acceptedTypes": "Only files of the following types are accepted: {types}",
+        "unacceptedTypes": "Files of the following types are not accepted: {types}",
+        "application": "applications",
+        "audio": "audio",
+        "document": "documents",
+        "image": "images",
+        "text": "text",
+        "video": "videos"
+      },
+      "inclusion": {
+        "in": "This field is not a valid value. Valid values are: {in}"
+      },
+      "length": {
+        "array": {
+          "between": "This field must have between {min} and {max} values (has {length})",
+          "tooLong": "This field must have at most {max} values (has {length})",
+          "tooShort": "This field must have at least {min} values (has {length})",
+          "wrongLength": "This field must have {is} values (has {length})"
+        },
+        "invalid": "This field is invalid",
+        "string": {
+          "between": "This field must be between {min} and {max} characters (has {length})",
+          "tooLong": "This field must be at most {max} characters (has {length})",
+          "tooShort": "This field must be at least {min} characters (has {length})",
+          "wrongLength": "This field must be {is} characters (has {length})"
+        }
+      },
+      "number": {
+        "isValue": "This field must be {isValue, number}",
+        "notANumber": "This field must be a number",
+        "integer": "This field must be an integer",
+        "positive": "This field must be a positive number",
+        "negative": "This field must be a negative number",
+        "even": "This field must be an even number",
+        "odd": "This field must be an odd number",
+        "precision": "This field must have at most {precision} decimal places",
+        "multipleOf": "This field must be a multiple of {multipleOf, number}"
+      },
+      "password": {
+        "strength": "Password does not meet the minimum strength requirements"
+      },
+      "phone": {
+        "areaCode": {
+          "invalid": "This phone number must not include one of the following area codes: {areaCodes}",
+          "notAllowed": "This phone number must not include an area code",
+          "required": "This phone number must include an area code",
+          "valid": "This phone number must include a valid area code: {areaCodes}"
+        },
+        "countryCode": {
+          "invalid": "This phone number must not include one of the following country codes: {countryCodes}",
+          "notAllowed": "This phone number must not include a country code",
+          "required": "This phone number must include a country code",
+          "valid": "This phone number must include a valid country code: {countryCodes}"
+        },
+        "exchangeCode": {
+          "invalid": "This phone number must not include one of the following exchange codes: {exchangeCodes}",
+          "valid": "This phone number must include a valid exchange code: {exchangeCodes}"
+        },
+        "invalid": "This field must be a valid phone number"
+      },
+      "presence": {
+        "blank": "This field cannot be blank",
+        "notBlank": "This field must be blank",
+        "listBlank": "At least one option must be selected"
+      },
+      "range": {
+        "greaterThan": "This field must be greater than {min, number}",
+        "greaterThanOrEqualTo": "This field must be greater than or equal to {min, number}",
+        "lessThan": "This field must be less than {max, number}",
+        "lessThanOrEqualTo": "This field must be less than or equal to {max, number}",
+        "notANumber": "This field must be a number"
+      },
+      "regex": {
+        "match": "This field is invalid",
+        "doesNotMatch": "This field is invalid"
+      }
+    }
+  }
+}
