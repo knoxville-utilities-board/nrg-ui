@@ -1,0 +1,49 @@
+.showcase-section,
+.showcase-subsection {
+  h2,
+  h4,
+  h5,
+  h6 {
+    &:has(> a.showcase-header) {
+      position: relative;
+    }
+
+    & > a.showcase-header {
+      color: inherit;
+      position: relative;
+      text-decoration: none;
+      display: block;
+
+      &::before {
+        position: absolute;
+        content: "\F470";
+        font-family: "bootstrap-icons";
+        left: -1.5em;
+        opacity: 0;
+        color: inherit;
+      }
+    }
+
+    &:hover > a.showcase-header::before,
+    & > a.showcase-header:focus::before {
+      opacity: 1;
+    }
+  }
+}
+
+.showcase-example {
+  position: relative;
+
+  &::after {
+    content: "Example";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 0.7rem;
+    background-color: rgba(var(--bs-secondary-rgb), var(--bs-border-opacity)) !important;
+    color: #fff !important;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0 var(--bs-border-radius) 0 var(--bs-border-radius);
+  }
+}

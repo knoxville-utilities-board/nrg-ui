@@ -1,0 +1,76 @@
+pre.code-block {
+  margin-bottom: 0;
+}
+
+.code-block-wrapper {
+  &[data-label]::after {
+    content: attr(data-label);
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 0.7rem;
+    background-color: rgba(var(--bs-secondary-rgb), var(--bs-border-opacity)) !important;
+    color: #fff !important;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0 var(--bs-border-radius) 0 var(--bs-border-radius);
+  }
+
+  .copy-button {
+    position: absolute;
+    top: 0.65rem;
+    right: 0.65rem;
+  }
+
+  &.line-numbers {
+    counter-increment: line calc(var(--showcase-starting-line, 1) - 1);
+    counter-reset: line;
+
+    & span.line::before {
+      --showcase-starting-line: attr(data-starting-line);
+
+      color: var(--showcase-line-number-color, var(--bs-secondary-text-emphasis));
+      content: counter(line);
+      counter-increment: line;
+      display: inline-block;
+      margin-right: 1.5em;
+      text-align: right;
+      width: var(--showcase-line-number-width, 2em);
+    }
+  }
+}
+
+.inline:has(.code-block) {
+  border-radius: var(--bs-border-radius) !important;
+  border: 1px solid rgba(var(--bs-secondary-rgb), 1) !important;
+  padding: 0.1rem 0.3rem;
+  width: max-content;
+}
+
+[data-bs-theme="light"] {
+  --showcase-line-number-color: var(--bs-tertiary-color);
+}
+
+[data-bs-theme="dark"] {
+  --showcase-line-number-color: var(--bs-border-color);
+}
+
+[data-bs-theme="light"] .shiki,
+[data-bs-theme="light"] .shiki span {
+  color: var(--shiki-light) !important;
+  background-color: var(--shiki-light-bg) !important;
+  /* Optional, if you also want font styles */
+  font-style: var(--shiki-light-font-style) !important;
+  font-weight: var(--shiki-light-font-weight) !important;
+  text-decoration: var(--shiki-light-text-decoration) !important;
+}
+
+[data-bs-theme="dark"] .shiki,
+[data-bs-theme="dark"] .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  /* Optional, if you also want font styles */
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
