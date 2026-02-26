@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2026-02-26)
+
+* @nrg-ui/css 0.28.4 (patch)
+
+#### :bug: Bug Fix
+* `@nrg-ui/css`
+  * [#874](https://github.com/knoxville-utilities-board/nrg-ui/pull/874) fix(sidebar): Add cursor for non-url items ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2026-02-18)
 
 * @nrg-ui/core 0.57.4 (patch)
