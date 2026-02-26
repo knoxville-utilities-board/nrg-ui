@@ -7,20 +7,20 @@
       "oldVersion": "0.4.0"
     },
     "@nrg-ui/css": {
-      "oldVersion": "0.28.3"
-    },
-    "@nrg-ui/core": {
       "impact": "patch",
-      "oldVersion": "0.57.3",
-      "newVersion": "0.57.4",
+      "oldVersion": "0.28.3",
+      "newVersion": "0.28.4",
       "tagName": "latest",
       "constraints": [
         {
           "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
-      "pkgJSONPath": "./packages/ember-core/package.json"
+      "pkgJSONPath": "./packages/design-system/package.json"
+    },
+    "@nrg-ui/core": {
+      "oldVersion": "0.57.4"
     },
     "@nrg-ui/showcase": {
       "oldVersion": "0.8.0"
@@ -32,5 +32,5 @@
       "oldVersion": "0.3.5"
     }
   },
-  "description": "## Release (2026-02-18)\n\n* @nrg-ui/core 0.57.4 (patch)\n\n#### :memo: Documentation\n* [#863](https://github.com/knoxville-utilities-board/nrg-ui/pull/863) docs(AppBar): Create showcase documentation ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n\n#### :house: Internal\n* `@nrg-ui/core`\n  * [#870](https://github.com/knoxville-utilities-board/nrg-ui/pull/870) feat(toast): Remove timeout during tests ([@TSenter](https://github.com/TSenter))\n  * [#869](https://github.com/knoxville-utilities-board/nrg-ui/pull/869) chore: Update service names for better Intellisense ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2026-02-26)\n\n* @nrg-ui/css 0.28.4 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`\n  * [#874](https://github.com/knoxville-utilities-board/nrg-ui/pull/874) fix(sidebar): Add cursor for non-url items ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
