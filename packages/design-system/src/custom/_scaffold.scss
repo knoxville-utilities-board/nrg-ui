@@ -101,6 +101,10 @@ h6 {
     &:hover .external-icon {
       display: block;
     }
+
+    &.list-group-item-action {
+      cursor: pointer;
+    }
   }
 
   & .badge {
