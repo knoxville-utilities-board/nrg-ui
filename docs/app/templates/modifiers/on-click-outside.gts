@@ -1,11 +1,31 @@
+import { action } from '@ember/object';
+import { service } from '@ember/service';
+import Component from '@glimmer/component';
+import onClickOutside from '@nrg-ui/core/modifiers/on-click-outside';
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import OnClickOutsideDemo from '#app/components/f/modifiers/on-click-outside.gts';
+import type ToastService from '@nrg-ui/core/services/toast';
 
-<template>
-  {{pageTitle "on-click-outside"}}
+export default class OnClickOutsideComponent extends Component {
+  @service
+  declare toast: ToastService;
 
-  <div class="container mx-auto">
-    <OnClickOutsideDemo />
-  </div>
-</template>
+  @action
+  clickOutside(evt: MouseEvent) {
+    this.toast.info('Item clicked outside');
+    console.log('Clicked outside:', evt);
+  }
+
+  <template>
+    {{pageTitle "on-click-outside"}}
+
+    <div class="container mx-auto">
+      <div
+        class="d-flex h-100 border border-primary bg-primary-subtle align-items-center justify-content-center"
+        {{onClickOutside this.clickOutside}}
+      >
+        <span>Don't click me</span>
+      </div>
+    </div>
+  </template>
+}
