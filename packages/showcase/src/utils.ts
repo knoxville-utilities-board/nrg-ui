@@ -30,7 +30,7 @@ export function createImportPath(
 
   const slug = importSlug ?? options?.importSlug ?? '';
 
-  if(!slug) {
+  if (!slug) {
     return `import ${titleCasedName} from '${dasherizedName}'`;
   }
 
