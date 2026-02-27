@@ -30,59 +30,59 @@ export default class CheckboxDemo extends Component {
   value = false;
 
   <template>
-      {{pageTitle "Checkbox"}}
+    {{pageTitle "Checkbox"}}
 
-  <div class="container mx-auto">
-    <Section @name="Checkbox" as |Section|>
-      <Section.Subsection @name="Basic" @model={{this}} @elementTag="input">
-        <:example as |model|>
-          <Checkbox
-            @binding={{bind model "value"}}
-            @fieldOptions={{hash disabled=model.disabled}}
-            @inline={{model.inline}}
-            @label={{model.label}}
-            @reverse={{model.reverse}}
-            @type={{model.type}}
-            @onChange={{fn print "The value changed to"}}
-          />
-        </:example>
-        <:api as |Api|>
-          <Api.Arguments as |Args|>
-            <Args.Boolean
-              @name="disabled"
-              @defaultValue={{false}}
-              @description="When true, the input will be disabled"
+    <div class="container mx-auto">
+      <Section @name="Checkbox" as |Section|>
+        <Section.Subsection @name="Basic" @model={{this}} @elementTag="input">
+          <:example as |model|>
+            <Checkbox
+              @binding={{bind model "value"}}
+              @fieldOptions={{hash disabled=model.disabled}}
+              @inline={{model.inline}}
+              @label={{model.label}}
+              @reverse={{model.reverse}}
+              @type={{model.type}}
+              @onChange={{fn print "The value changed to"}}
             />
-            <Args.Boolean
-              @name="inline"
-              @defaultValue={{false}}
-              @description="When true, the input will be displayed inline"
-            />
-            <Args.String @name="label" @description="The label to display next to the checkbox" />
-            <Args.Boolean
-              @name="reverse"
-              @defaultValue={{false}}
-              @description="When true, the input will be displayed on the reverse side of the container"
-            />
-            <Args.String
-              @defaultValue="checkbox"
-              @name="type"
-              @description="The type of checkbox to render"
-              @options={{array "checkbox" "switch"}}
-            />
-          </Api.Arguments>
-          <Api.Actions as |Action p|>
-            <Action
-              @name="onChange"
-              @description="The action to call when the value changes"
-              @parameters={{array
-                (p "newValue" description="The new value of the checkbox" type="Boolean")
-              }}
-            />
-          </Api.Actions>
-        </:api>
-      </Section.Subsection>
-    </Section>
+          </:example>
+          <:api as |Api|>
+            <Api.Arguments as |Args|>
+              <Args.Boolean
+                @name="disabled"
+                @defaultValue={{false}}
+                @description="When true, the input will be disabled"
+              />
+              <Args.Boolean
+                @name="inline"
+                @defaultValue={{false}}
+                @description="When true, the input will be displayed inline"
+              />
+              <Args.String @name="label" @description="The label to display next to the checkbox" />
+              <Args.Boolean
+                @name="reverse"
+                @defaultValue={{false}}
+                @description="When true, the input will be displayed on the reverse side of the container"
+              />
+              <Args.String
+                @defaultValue="checkbox"
+                @name="type"
+                @description="The type of checkbox to render"
+                @options={{array "checkbox" "switch"}}
+              />
+            </Api.Arguments>
+            <Api.Actions as |Action p|>
+              <Action
+                @name="onChange"
+                @description="The action to call when the value changes"
+                @parameters={{array
+                  (p "newValue" description="The new value of the checkbox" type="Boolean")
+                }}
+              />
+            </Api.Actions>
+          </:api>
+        </Section.Subsection>
+      </Section>
     </div>
   </template>
 }
