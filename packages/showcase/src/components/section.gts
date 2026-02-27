@@ -2,6 +2,7 @@ import { array, fn, hash } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
+import { and } from 'ember-truth-helpers';
 
 import CodeBlock from './code-block.gts';
 import { createImportPath, createLink, getMdnLinkForElement } from '../utils.ts';
@@ -155,15 +156,17 @@ export default class Section extends Component<SectionSignature> {
               {{@name}}
             </a>
           </h2>
-          <button
-            class="btn btn-outline-secondary btn-sm"
-            type="button"
-            title="Copy import statement to clipboard"
-            {{on "click" (fn this.copyToClipboard (createImportPath @name @importSlug))}}
-          >
-            {{createImportPath @name @importSlug}}
-            <i class="bi bi-clipboard ms-1"></i>
-          </button>
+          {{#if (and @name @importSlug)}}
+            <button
+              class="btn btn-outline-secondary btn-sm"
+              type="button"
+              title="Copy import statement to clipboard"
+              {{on "click" (fn this.copyToClipboard (createImportPath @name @importSlug))}}
+            >
+              {{createImportPath @name @importSlug}}
+              <i class="bi bi-clipboard ms-1"></i>
+            </button>
+          {{/if}}
         </div>
       {{/let}}
       <hr />
