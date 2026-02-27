@@ -1,11 +1,82 @@
+import { A } from '@ember/array';
+import { array, hash } from '@ember/helper';
+import { action } from '@ember/object';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+import FileUpload from '@nrg-ui/core/components/form/file-upload';
+import { bind } from '@nrg-ui/core/helpers/bind';
+import Section from '@nrg-ui/showcase/components/section';
 import pageTitle from 'ember-page-title/helpers/page-title';
 
-import FileUploadDemo from '#app/components/f/components/form/file-upload.gts';
+export default class FileUploadDemo extends Component {
+  @tracked
+  disabled = false;
 
-<template>
-  {{pageTitle "File Upload"}}
+  @tracked
+  accept: string[] = A(['.pdf', 'image/*']);
 
-  <div class="container mx-auto">
-    <FileUploadDemo />
-  </div>
-</template>
+  @tracked
+  value = [];
+
+  @action
+  onSelect(files: File[]) {
+    console.log('Bound value: ', this.value);
+    for (const file of files) {
+      console.log(`The file ${file['name']} was selected`);
+    }
+  }
+
+  @action
+  onRemove(file: File) {
+    console.log('The file ' + file['name'] + ' was removed');
+  }
+
+  <template>
+    {{pageTitle "File Upload"}}
+
+    <div class="container mx-auto">
+      <Section @name="File Upload" as |Section|>
+        <Section.Subsection @name="Basic" @model={{this}} @elementTag="div">
+          <:example as |model|>
+            <FileUpload
+              @accept={{model.accept}}
+              @binding={{bind model "property"}}
+              @fieldOptions={{hash disabled=this.disabled}}
+              @onChange={{model.onSelect}}
+              @onRemove={{model.onRemove}}
+            />
+          </:example>
+          <:api as |Api|>
+            <Api.Arguments as |Args|>
+              {{! TODO }}
+              {{!-- <Args.Array
+              @name="accept"
+              @description="The accepted file types. This is a list of file extensions or MIME types."
+              @defaultValue="[]"
+              @items={{this.accept}}
+              @type="String"
+            /> --}}
+              <Args.Boolean
+                @name="disabled"
+                @description="Disables the file upload component"
+                @defaultValue={{false}}
+              />
+            </Api.Arguments>
+            <Api.Actions as |Action p|>
+              <Action
+                @name="onChange"
+                @description="The action to call when a file is selected"
+                @parameters={{array (p "files" type="File[]")}}
+              />
+              <Action
+                @name="onRemove"
+                @description="The action to call when a file is removed"
+                @parameters={{array (p "file" type="File" description="The file that was removed")}}
+              />
+            </Api.Actions>
+          </:api>
+        </Section.Subsection>
+      </Section>
+    </div>
+  </template>
+}
