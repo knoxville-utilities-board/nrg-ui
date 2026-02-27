@@ -9,7 +9,6 @@ import Actions from './component-api/actions.gts';
 import Arguments from './component-api/arguments.gts';
 import Blocks from './component-api/blocks.gts';
 
-import type { ImportSlug } from '../utils.ts';
 import type { ActionsSignature } from './component-api/actions.gts';
 import type { ArgumentsSignature } from './component-api/arguments.gts';
 import type { BlocksSignature } from './component-api/blocks.gts';
@@ -26,7 +25,7 @@ export interface SubsectionSignature<Model extends object = object> {
 
     elementTag?: string;
     name: string;
-    importSlug?: ImportSlug;
+    importSlug?: string;
     sectionName: string;
     sourceCode?: string;
     sourceLanguage?: BundledLanguage;
@@ -123,7 +122,7 @@ export interface SectionSignature {
   Element: HTMLDivElement;
   Args: {
     name: string;
-    importSlug?: ImportSlug;
+    importSlug?: string;
   };
   Blocks: {
     default: [
@@ -160,9 +159,9 @@ export default class Section extends Component<SectionSignature> {
             class="btn btn-outline-secondary btn-sm"
             type="button"
             title="Copy import statement to clipboard"
-            {{on "click" (fn this.copyToClipboard (createImportPath @name @parentName))}}
+            {{on "click" (fn this.copyToClipboard (createImportPath @name @importSlug))}}
           >
-            {{createImportPath @name @parentName}}
+            {{createImportPath @name @importSlug}}
             <i class="bi bi-clipboard ms-1"></i>
           </button>
         </div>

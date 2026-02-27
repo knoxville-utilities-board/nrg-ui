@@ -12,7 +12,7 @@ export default class AppBarDemo extends Component {
   <template>
     {{pageTitle "App Bar"}}
     <div class="container mx-auto">
-      <Section @name="App Bar" as |Section|>
+      <Section @name="App Bar" @importSlug="base" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="button">
           <:example as |model|>
             <AppBar @environment={{model.environment}}>

@@ -27,7 +27,7 @@ export default class PhoneInputDemo extends Component {
     {{pageTitle "Phone Input"}}
 
     <div class="container mx-auto">
-      <Section @name="Phone Input" as |Section|>
+      <Section @name="Phone Input" @importSlug="form" as |Section|>
         <Section.Subsection @name="Basic" @model={{this}} @elementTag="input">
           <:example as |model|>
             <PhoneInput

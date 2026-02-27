@@ -32,7 +32,7 @@ export default class TooltipDemo extends Component {
     {{pageTitle "Tooltip"}}
 
     <div class="container mx-auto">
-      <Section @name="Tooltip" as |Section|>
+      <Section @name="Tooltip" @importSlug="base" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
           <:example as |model|>
             <div class="p-2">

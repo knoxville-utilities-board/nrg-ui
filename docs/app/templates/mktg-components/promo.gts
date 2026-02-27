@@ -13,7 +13,7 @@ export default class PromoDemo extends Component {
     {{pageTitle "Promo"}}
 
     <div class="container mx-auto">
-      <Section @name="Promo" as |Section|>
+      <Section @name="Promo" @importSlug="mktg" as |Section|>
         <Section.Subsection @name="Horizontal Promo" @model={{this}} @elementTag="div">
           <:example as |model|>
             <MktgPromo class="bg-primary text-white" @productName={{model.productName}}>

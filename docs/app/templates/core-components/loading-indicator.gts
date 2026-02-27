@@ -20,7 +20,7 @@ export default class LoadingIndicatorDemo extends Component {
     {{pageTitle "Loading Indicator"}}
 
     <div class="container mx-auto">
-      <Section @name="Loading Indicator" as |Section|>
+      <Section @name="Loading Indicator" @importSlug="base" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
           <:example as |model|>
             <LoadingIndicator

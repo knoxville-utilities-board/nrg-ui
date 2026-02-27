@@ -30,7 +30,7 @@ export default class ButtonDemo extends Component {
   <template>
     {{pageTitle "Button"}}
     <div class="container mx-auto">
-      <Section @name="Button" as |Section|>
+      <Section @name="Button" @importSlug="base" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="button">
           <:example as |model|>
             <Button

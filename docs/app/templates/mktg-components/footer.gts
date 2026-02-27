@@ -13,7 +13,7 @@ export default class FooterDemo extends Component {
     {{pageTitle "Footer"}}
 
     <div class="container mx-auto">
-      <Section @name="Footer" as |Section|>
+      <Section @name="Footer" @importSlug="mktg" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="footer">
           <:example as |model|>
             <MktgFooter class="bg-primary" @hasDivider={{model.hasDivider}}>

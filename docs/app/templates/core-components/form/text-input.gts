@@ -30,7 +30,7 @@ export default class TextInputDemo extends Component {
     {{pageTitle "Text Input"}}
 
     <div class="container mx-auto">
-      <Section @name="Text Input" as |Section|>
+      <Section @name="Text Input" @importSlug="form" as |Section|>
         <Section.Subsection @name="Basic" @model={{this}} @elementTag="input">
           <:example as |model|>
             <TextInput

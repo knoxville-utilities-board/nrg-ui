@@ -34,7 +34,7 @@ export default class RadioGroupDemo extends Component {
     {{pageTitle "Radio Group"}}
 
     <div class="container mx-auto">
-      <Section @name="Radio Group" as |Section|>
+      <Section @name="Radio Group" @importSlug="form" as |Section|>
         <Section.Subsection @name="Basic" @model={{this}} @elementTag="div">
           <:example as |model|>
             <RadioGroup

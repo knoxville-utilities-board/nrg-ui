@@ -33,7 +33,7 @@ export default class CheckboxDemo extends Component {
     {{pageTitle "Checkbox"}}
 
     <div class="container mx-auto">
-      <Section @name="Checkbox" as |Section|>
+      <Section @name="Checkbox" @importSlug="form" as |Section|>
         <Section.Subsection @name="Basic" @model={{this}} @elementTag="input">
           <:example as |model|>
             <Checkbox

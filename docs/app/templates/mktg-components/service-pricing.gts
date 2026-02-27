@@ -27,7 +27,7 @@ export default class ServicePricingDemo extends Component {
     {{pageTitle "ServicePricing"}}
 
     <div class="container mx-auto">
-      <Section @name="Service Pricing" as |Section|>
+      <Section @name="Service Pricing" @importSlug="mktg" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
           <:example as |model|>
             <MktgServicePricing

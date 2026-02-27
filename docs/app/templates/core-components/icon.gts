@@ -69,7 +69,7 @@ export default class IconDemo extends Component {
     {{pageTitle "Icon"}}
 
     <div class="container mx-auto">
-      <Section @name="Icon" as |Section|>
+      <Section @name="Icon" @importSlug="base" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
           <:example as |model|>
             <Icon

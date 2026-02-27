@@ -35,7 +35,7 @@ export default class FileUploadDemo extends Component {
     {{pageTitle "File Upload"}}
 
     <div class="container mx-auto">
-      <Section @name="File Upload" as |Section|>
+      <Section @name="File Upload" @importSlug="form" as |Section|>
         <Section.Subsection @name="Basic" @model={{this}} @elementTag="div">
           <:example as |model|>
             <FileUpload

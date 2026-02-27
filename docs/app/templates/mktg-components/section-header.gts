@@ -16,7 +16,7 @@ export default class SectionHeaderDemo extends Component {
     {{pageTitle "Section Header"}}
 
     <div class="container mx-auto">
-      <Section @name="Section Header" as |Section|>
+      <Section @name="Section Header" @importSlug="mktg" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
           <:example as |model|>
             <MktgSectionHeader class="col-12" @subject={{model.subject}} @title={{model.title}}>

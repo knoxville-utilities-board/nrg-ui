@@ -44,7 +44,7 @@ export default class ContextMenuDemo extends Component {
     {{pageTitle "Context Menu"}}
 
     <div class="container mx-auto">
-      <Section @name="Context Menu" as |Section|>
+      <Section @name="Context Menu" @importSlug="base" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
           <:example as |model|>
             <ContextMenu

@@ -38,7 +38,7 @@ export default class CheckboxGroupDemo extends Component {
     {{pageTitle "Checkbox Group"}}
 
     <div class="container mx-auto">
-      <Section @name="Checkbox Group" as |Section|>
+      <Section @name="Checkbox Group" @importSlug="form" as |Section|>
         <Section.Subsection @name="Basic" @model={{this}} @elementTag="div">
           <:example as |model|>
             <CheckboxGroup

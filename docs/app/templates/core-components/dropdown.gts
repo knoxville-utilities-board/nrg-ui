@@ -48,7 +48,7 @@ export default class DropdownDemo extends Component {
     {{pageTitle "Dropdown"}}
 
     <div class="container mx-auto">
-      <Section @name="Dropdown" as |Section|>
+      <Section @name="Dropdown" @importSlug="base" as |Section|>
         <Section.Subsection @name="Basic" @model={{this}} @elementTag="div">
           <:example as |model|>
             <Dropdown

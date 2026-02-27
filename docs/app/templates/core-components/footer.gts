@@ -6,7 +6,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
   {{pageTitle "Footer"}}
 
   <div class="container mx-auto">
-    <Section @name="Footer" as |Section|>
+    <Section @name="Footer" @importSlug="base" as |Section|>
       <Section.Subsection @name="Basics" @model={{this}} @elementTag="footer">
         <:example>
           <Footer>
