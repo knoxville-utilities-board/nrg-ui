@@ -138,7 +138,7 @@ jobs:
         working-directory: ./packages/code-snippets
 
       - name: Upload Coverage
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: coverage-${{ matrix.artifact }}
           path: packages/code-snippets/coverage
@@ -152,13 +152,13 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Download Coverage Artifact (pull request)
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: coverage-pull-request
           path: packages/code-snippets/coverage-pull-request
 
       - name: Download Coverage Artifact (main)
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: coverage-main
           path: packages/code-snippets/coverage-main
