@@ -161,9 +161,6 @@ importers:
       ember-keyboard:
         specifier: ^9.0.4
         version: 9.0.4(@babel/core@7.29.0)(@ember/test-helpers@5.4.1(@babel/core@7.29.0)(@glint/template@1.7.4))
-      ember-lifeline:
-        specifier: ^7.0.0
-        version: 7.0.0(@ember/test-helpers@5.4.1(@babel/core@7.29.0)(@glint/template@1.7.4))
       ember-load-initializers:
         specifier: ^3.0.1
         version: 3.0.1(ember-source@6.8.3(@glimmer/component@2.0.0)(rsvp@4.8.5))
@@ -206,9 +203,6 @@ importers:
       eslint-plugin-qunit:
         specifier: ^8.2.6
         version: 8.2.6(eslint@9.39.2)
-      ismobilejs:
-        specifier: ^1.1.1
-        version: 1.1.1
       prettier:
         specifier: ^3.8.1
         version: 3.8.1
