@@ -1,13 +1,58 @@
 version: 2
-updates:
-  - package-ecosystem: 'npm'
-    directory: '/'
+
+multi-ecosystem-groups:
+  npm:
     schedule:
       interval: 'weekly'
       day: 'sunday'
     labels:
       - 'dependencies'
       - 'internal'
+
+updates:
+  - package-ecosystem: 'npm'
+    multi-ecosystem-group: 'npm'
+    directories:
+      - '/packages/*'
+    versioning-strategy: widen
+    patterns: ['*']
+    groups:
+      security:
+        patterns:
+          - '*'
+        applies-to: security-updates
+        update-types:
+          - 'patch'
+          - 'minor'
+          - 'major'
+      version:
+        patterns:
+          - '*'
+        applies-to: version-updates
+        update-types:
+          - 'patch'
+          - 'minor'
+    ignore:
+      - dependency-name: '@types/*'
+        update-types:
+          - 'version-update:semver-major'
+      - dependency-name: 'chalk'
+        update-types:
+          - 'version-update:semver-major'
+      - dependency-name: 'ember-cli'
+        update-types:
+          - 'version-update:semver-minor'
+          - 'version-update:semver-major'
+      - dependency-name: 'ember-source'
+        update-types:
+          - 'version-update:semver-minor'
+          - 'version-update:semver-major'
+
+  - package-ecosystem: 'npm'
+    multi-ecosystem-group: 'npm'
+    directory: '/docs/'
+    versioning-strategy: 'increase'
+    patterns: ['*']
     groups:
       security:
         patterns:
