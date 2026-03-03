@@ -18,6 +18,14 @@ export interface NumberInputArgs {
   formatPrecision?: number;
 }
 
+export const numberInputFormats = [
+  'number',
+  'currency',
+  'percent',
+] as const;
+
+export type NumberInputFormat = (typeof numberInputFormats)[string];
+
 export default class NumberInput extends InputField<NumberInputArgs, number> {
   @tracked
   isFocused = false;

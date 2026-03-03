@@ -34,6 +34,7 @@ Router.map(function () {
         this.route('datetime');
         this.route('file-upload');
         this.route('multi-select');
+        this.route('number-input');
         this.route('phone-input');
         this.route('radio-group');
         this.route('search');
