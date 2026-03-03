@@ -20,7 +20,7 @@ export default class ThemeControlDemo extends Component {
   <template>
     {{pageTitle "Theme Control"}}
     <div class="container mx-auto">
-      <Section @name="Theme Control" as |Section|>
+      <Section @name="Theme Control" @importSlug="base" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
           <:example as |model|>
             <ThemeControl @onChange={{model.onChange}} />
