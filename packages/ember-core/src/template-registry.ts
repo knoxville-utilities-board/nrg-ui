@@ -45,7 +45,6 @@ import {
 } from './components/stacked-pane.gts';
 import Toaster from './components/toaster.gts';
 import Bind from './helpers/bind.ts';
-import LookupService from './helpers/lookup-service.ts';
 import Version from './helpers/version.ts';
 import OnClickOutside from './modifiers/on-click-outside.ts';
 import OnInsert from './modifiers/on-insert.ts';
@@ -104,7 +103,6 @@ export interface ComponentRegistry {
 
 export interface HelperRegistry {
   bind: typeof Bind;
-  'lookup-service': typeof LookupService;
   version: typeof Version;
 }
 
