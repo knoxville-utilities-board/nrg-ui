@@ -26,14 +26,10 @@ module.exports = {
       { name: '@embroider/macros' },
       { name: '@nrg-ui/css' },
       { name: '@nrg-ui/version' },
-      { name: 'dayjs', target: '^1.11.19' },
       { name: 'ember-cli-deprecation-workflow', target: '^4.0.0' },
       { name: 'ember-concurrency', target: '^5.1.0' },
       { name: 'ember-css-transitions', target: '^4.5.0' },
       { name: 'ember-intl', target: '^8.0.3' },
-      { name: 'ember-keyboard', target: '^9.0.4' },
-      { name: 'ember-lifeline', target: '^7.0.0' },
-      { name: 'ismobilejs', target: '^1.1.1' },
       { name: '@ember-intl/vite', target: '^0.4.0' },
     ]);
 

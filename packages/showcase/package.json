@@ -62,9 +62,11 @@
     "test": "echo 'A v2 addon does not have tests, run tests in docs'"
   },
   "dependencies": {
+    "@ember/test-helpers": "^5.0.0",
     "@embroider/addon-shim": "^1.10.2",
     "@embroider/macros": "^1.20.0",
     "@mdn/browser-compat-data": "^7.3.5",
+    "@nrg-ui/core": "workspace:^",
     "chalk": "^4.1.2",
     "content-tag-utils": "^0.6.0",
     "decorator-transforms": "^2.3.1",
@@ -76,12 +78,10 @@
     "@babel/core": "^7.29.0",
     "@babel/plugin-transform-typescript": "^7.28.6",
     "@babel/runtime": "^7.28.6",
-    "@ember/test-helpers": "^5.4.1",
     "@embroider/addon-dev": "^8.3.0",
     "@glimmer/component": "^2.0.0",
     "@glint/ember-tsc": "^1.1.1",
     "@glint/template": "^1.7.4",
-    "@nrg-ui/core": "workspace:^",
     "@nrg-ui/standards": "workspace:^",
     "@rollup/plugin-babel": "^6.0.4",
     "@tsconfig/ember": "^3.0.12",
@@ -89,6 +89,7 @@
     "@types/qunit": "^2.19.13",
     "babel-plugin-ember-template-compilation": "^4.0.0",
     "concurrently": "^9.2.1",
+    "ember-source": ">=5.12.0 || ^6.0.0",
     "ember-template-lint": "^7.9.3",
     "eslint": "^9.39.2",
     "eslint-plugin-decorator-position": "^6.0.0",
@@ -103,9 +104,6 @@
     "vite": "^7.3.1"
   },
   "peerDependencies": {
-    "@ember/test-helpers": "^5.0.0",
-    "@nrg-ui/core": "workspace:^0",
-    "ember-source": ">=5.12.0 || ^6.0.0",
     "vite": "^7.3.1"
   },
   "publishConfig": {
