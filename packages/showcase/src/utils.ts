@@ -11,16 +11,13 @@ type ImportOptions = {
   type?: boolean;
 };
 
-export function createImportPath(
-  name: string,
-  options?: string | ImportOptions,
-): string {
+export function createImportPath(name: string, options?: string | ImportOptions): string {
   const dasherizedName = name.toLowerCase().replace(/\s+/g, '-');
   const titleCasedName = name.replace(/\s+(\w)/g, (_, c) => c.toUpperCase());
 
   const IMPORT_SLUG_MAP: Record<string, string> = getOwnConfig()?.imports ?? {};
 
-  const slug = typeof options === 'string' ? options : options?.importSlug ?? '';
+  const slug = typeof options === 'string' ? options : (options?.importSlug ?? '');
 
   if (!slug) {
     return `import ${titleCasedName} from '${dasherizedName}'`;
