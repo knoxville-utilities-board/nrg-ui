@@ -11,16 +11,16 @@ type ImportOptions = {
   type?: boolean;
 };
 
+const IMPORT_SLUG_MAP: Record<string, string> = getOwnConfig()?.imports ?? {};
+
 export function createImportPath(name: string, options?: string | ImportOptions): string {
   const dasherizedName = name.toLowerCase().replace(/\s+/g, '-');
   const titleCasedName = name.replace(/\s+(\w)/g, (_, c) => c.toUpperCase());
 
-  const IMPORT_SLUG_MAP: Record<string, string> = getOwnConfig()?.imports ?? {};
-
   const slug = typeof options === 'string' ? options : (options?.importSlug ?? '');
 
   if (!slug) {
-    return `import ${titleCasedName} from '${dasherizedName}'`;
+    return `import ${titleCasedName} from '${dasherizedName}';`;
   }
 
   let isTypeImport = false;
@@ -32,7 +32,7 @@ export function createImportPath(name: string, options?: string | ImportOptions)
   assert(`Import slug ${slug} is not defined`, IMPORT_SLUG_MAP[slug]);
   const basePath = IMPORT_SLUG_MAP[slug];
 
-  return `${prefix} ${titleCasedName} from '${basePath}/${dasherizedName}'`;
+  return `${prefix} ${titleCasedName} from '${basePath}/${dasherizedName}';`;
 }
 
 export function createLink(name: string | string[]) {
