@@ -4,7 +4,7 @@ This Ember.js addon allows developers to quickly build interactive API documenta
 
 ## Compatibility
 
-- Ember.js v5.12 or above
+- Ember.js v6.4 or above
 - Embroider or ember-auto-import v2
 
 ## Installation

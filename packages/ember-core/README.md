@@ -4,7 +4,7 @@ Opinionated UI addon based on how KUB scaffolds web applications
 
 ## Compatibility
 
-- Ember.js v5.12 or above
+- Ember.js v6.4 or above
 - Embroider or ember-auto-import v2
 
 ## Installation
