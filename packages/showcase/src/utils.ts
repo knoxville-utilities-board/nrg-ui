@@ -1,3 +1,4 @@
+import { assert } from '@ember/debug';
 import { getOwnConfig } from '@embroider/macros';
 import bcd from '@mdn/browser-compat-data';
 
@@ -12,23 +13,27 @@ type ImportOptions = {
 
 export function createImportPath(
   name: string,
-  importSlug?: string,
-  options?: ImportOptions,
+  options?: string | ImportOptions,
 ): string {
-  const dasherizedName = name?.toLowerCase().replace(/\s+/g, '-') ?? '';
-  const titleCasedName = name?.replace(/\s+(\w)/g, (_, c) => c.toUpperCase()) ?? '';
+  const dasherizedName = name.toLowerCase().replace(/\s+/g, '-');
+  const titleCasedName = name.replace(/\s+(\w)/g, (_, c) => c.toUpperCase());
 
-  const importSlugMap: Record<string, string> = getOwnConfig()?.imports ?? {};
+  const IMPORT_SLUG_MAP: Record<string, string> = getOwnConfig()?.imports ?? {};
 
-  const slug = importSlug ?? options?.importSlug ?? '';
+  const slug = typeof options === 'string' ? options : options?.importSlug ?? '';
 
   if (!slug) {
     return `import ${titleCasedName} from '${dasherizedName}'`;
   }
 
-  const isTypeImport = options?.type === true;
+  let isTypeImport = false;
+  if (typeof options === 'object' && options.type) {
+    isTypeImport = true;
+  }
   const prefix = isTypeImport ? 'import type' : 'import';
-  const basePath = importSlugMap[slug];
+
+  assert(`Import slug ${slug} is not defined`, IMPORT_SLUG_MAP[slug]);
+  const basePath = IMPORT_SLUG_MAP[slug];
 
   return `${prefix} ${titleCasedName} from '${basePath}/${dasherizedName}'`;
 }
