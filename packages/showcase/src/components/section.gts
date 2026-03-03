@@ -2,7 +2,6 @@ import { array, fn, hash } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
-import { and } from 'ember-truth-helpers';
 
 import CodeBlock from './code-block.gts';
 import { createImportPath, createLink, getMdnLinkForElement } from '../utils.ts';
@@ -18,6 +17,10 @@ import type { BundledLanguage } from 'shiki';
 
 import '../assets/component-api.css';
 import '../assets/section.css';
+
+function and(...params: unknown[]): boolean {
+  return params.every(Boolean);
+}
 
 export interface SubsectionSignature<Model extends object = object> {
   Element: HTMLDivElement;
