@@ -223,7 +223,6 @@
       "./helpers/bind.js": "./dist/_app_/helpers/bind.js",
       "./helpers/classes.js": "./dist/_app_/helpers/classes.js",
       "./helpers/index.js": "./dist/_app_/helpers/index.js",
-      "./helpers/lookup-service.js": "./dist/_app_/helpers/lookup-service.js",
       "./helpers/version.js": "./dist/_app_/helpers/version.js",
       "./modifiers/index.js": "./dist/_app_/modifiers/index.js",
       "./modifiers/on-click-outside.js": "./dist/_app_/modifiers/on-click-outside.js",
