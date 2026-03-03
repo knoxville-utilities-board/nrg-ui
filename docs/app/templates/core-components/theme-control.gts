@@ -1,3 +1,4 @@
+import { array } from '@ember/helper';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
@@ -20,15 +21,16 @@ export default class ThemeControlDemo extends Component {
     {{pageTitle "Theme Control"}}
     <div class="container mx-auto">
       <Section @name="Theme Control" as |Section|>
-        <Section.Subsection @name="Basics" @model={{this}} @elementTag="theme-control">
+        <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
           <:example as |model|>
             <ThemeControl @onChange={{model.onChange}} />
           </:example>
           <:api as |Api|>
-            <Api.Actions as |Action|>
+            <Api.Actions as |Action p|>
               <Action
                 @name="onChange"
                 @description="This action will be called whenever the theme is changed."
+                @parameters={{array (p "newValue" type="string")}}
               />
             </Api.Actions>
           </:api>
