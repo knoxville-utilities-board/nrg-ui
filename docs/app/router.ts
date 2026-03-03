@@ -49,6 +49,7 @@ Router.map(function () {
       this.route('pagination');
       this.route('popover');
       this.route('progress');
+      this.route('theme-control');
       this.route('toaster');
       this.route('tooltip');
     },
