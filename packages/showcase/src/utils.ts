@@ -10,14 +10,6 @@ type ImportOptions = {
   type?: boolean;
 };
 
-declare module '@embroider/macros' {
-  interface EmbroiderConfig {
-    imports?: Record<string, string>;
-  }
-
-  export function getOwnConfig(): EmbroiderConfig | undefined;
-}
-
 export function createImportPath(
   name: string,
   importSlug?: string,
