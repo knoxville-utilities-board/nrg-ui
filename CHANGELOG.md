@@ -1,5 +1,35 @@
 # Changelog
 
+## Release (2026-03-03)
+
+* @nrg-ui/code-snippets 0.5.0 (minor)
+* @nrg-ui/core 0.58.0 (major)
+* @nrg-ui/showcase 0.9.0 (major)
+
+#### :boom: Breaking Change
+* `@nrg-ui/core`, `@nrg-ui/showcase`
+  * [#887](https://github.com/knoxville-utilities-board/nrg-ui/pull/887) chore!: Drop support for Ember < 6.4 ([@TSenter](https://github.com/TSenter))
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`, `@nrg-ui/showcase`
+  * [#887](https://github.com/knoxville-utilities-board/nrg-ui/pull/887) chore!: Drop support for Ember < 6.4 ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/showcase`
+  * [#881](https://github.com/knoxville-utilities-board/nrg-ui/pull/881) feat: Upgrade Shiki to v4 ([@TSenter](https://github.com/TSenter))
+* `@nrg-ui/code-snippets`, `@nrg-ui/core`, `@nrg-ui/showcase`
+  * [#884](https://github.com/knoxville-utilities-board/nrg-ui/pull/884) feat: Remove most peer deps ([@TSenter](https://github.com/TSenter))
+
+#### :memo: Documentation
+* [#886](https://github.com/knoxville-utilities-board/nrg-ui/pull/886) docs(ThemeControl): Create showcase documentation ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+* [#875](https://github.com/knoxville-utilities-board/nrg-ui/pull/875) refactor: Define showcase demo components within template folder ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+
+#### :house: Internal
+* [#888](https://github.com/knoxville-utilities-board/nrg-ui/pull/888) chore(dependabot): Revert version update options ([@TSenter](https://github.com/TSenter))
+* [#882](https://github.com/knoxville-utilities-board/nrg-ui/pull/882) chore(dependabot): Don't increase versions for libraries ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 2
+- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2026-02-26)
 
 * @nrg-ui/css 0.28.4 (patch)

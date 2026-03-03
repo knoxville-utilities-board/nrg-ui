@@ -4,26 +4,58 @@
       "oldVersion": "0.5.0"
     },
     "@nrg-ui/code-snippets": {
-      "oldVersion": "0.4.0"
+      "impact": "minor",
+      "oldVersion": "0.4.0",
+      "newVersion": "0.5.0",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        }
+      ],
+      "pkgJSONPath": "./packages/code-snippets/package.json"
     },
     "@nrg-ui/css": {
-      "impact": "patch",
-      "oldVersion": "0.28.3",
-      "newVersion": "0.28.4",
+      "oldVersion": "0.28.4"
+    },
+    "@nrg-ui/core": {
+      "impact": "major",
+      "oldVersion": "0.57.4",
+      "newVersion": "0.58.0",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "major",
+          "reason": "Appears in changelog section :boom: Breaking Change"
+        },
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        }
+      ],
+      "pkgJSONPath": "./packages/ember-core/package.json"
+    },
+    "@nrg-ui/showcase": {
+      "impact": "major",
+      "oldVersion": "0.8.0",
+      "newVersion": "0.9.0",
       "tagName": "latest",
       "constraints": [
         {
           "impact": "patch",
-          "reason": "Appears in changelog section :bug: Bug Fix"
+          "reason": "Has dependency `workspace:^` on @nrg-ui/core"
+        },
+        {
+          "impact": "major",
+          "reason": "Appears in changelog section :boom: Breaking Change"
+        },
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
         }
       ],
-      "pkgJSONPath": "./packages/design-system/package.json"
-    },
-    "@nrg-ui/core": {
-      "oldVersion": "0.57.4"
-    },
-    "@nrg-ui/showcase": {
-      "oldVersion": "0.8.0"
+      "pkgJSONPath": "./packages/showcase/package.json"
     },
     "@nrg-ui/standards": {
       "oldVersion": "0.8.0"
@@ -32,5 +64,5 @@
       "oldVersion": "0.3.5"
     }
   },
-  "description": "## Release (2026-02-26)\n\n* @nrg-ui/css 0.28.4 (patch)\n\n#### :bug: Bug Fix\n* `@nrg-ui/css`\n  * [#874](https://github.com/knoxville-utilities-board/nrg-ui/pull/874) fix(sidebar): Add cursor for non-url items ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 1\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
+  "description": "## Release (2026-03-03)\n\n* @nrg-ui/code-snippets 0.5.0 (minor)\n* @nrg-ui/core 0.58.0 (major)\n* @nrg-ui/showcase 0.9.0 (major)\n\n#### :boom: Breaking Change\n* `@nrg-ui/core`, `@nrg-ui/showcase`\n  * [#887](https://github.com/knoxville-utilities-board/nrg-ui/pull/887) chore!: Drop support for Ember < 6.4 ([@TSenter](https://github.com/TSenter))\n\n#### :rocket: Enhancement\n* `@nrg-ui/core`, `@nrg-ui/showcase`\n  * [#887](https://github.com/knoxville-utilities-board/nrg-ui/pull/887) chore!: Drop support for Ember < 6.4 ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/showcase`\n  * [#881](https://github.com/knoxville-utilities-board/nrg-ui/pull/881) feat: Upgrade Shiki to v4 ([@TSenter](https://github.com/TSenter))\n* `@nrg-ui/code-snippets`, `@nrg-ui/core`, `@nrg-ui/showcase`\n  * [#884](https://github.com/knoxville-utilities-board/nrg-ui/pull/884) feat: Remove most peer deps ([@TSenter](https://github.com/TSenter))\n\n#### :memo: Documentation\n* [#886](https://github.com/knoxville-utilities-board/nrg-ui/pull/886) docs(ThemeControl): Create showcase documentation ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n* [#875](https://github.com/knoxville-utilities-board/nrg-ui/pull/875) refactor: Define showcase demo components within template folder ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n\n#### :house: Internal\n* [#888](https://github.com/knoxville-utilities-board/nrg-ui/pull/888) chore(dependabot): Revert version update options ([@TSenter](https://github.com/TSenter))\n* [#882](https://github.com/knoxville-utilities-board/nrg-ui/pull/882) chore(dependabot): Don't increase versions for libraries ([@TSenter](https://github.com/TSenter))\n\n#### Committers: 2\n- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))\n- Tyler Senter ([@TSenter](https://github.com/TSenter))\n"
 }
