@@ -47,7 +47,7 @@ export default class ToasterDemo extends Component {
     {{pageTitle "Toaster"}}
 
     <div class="container mx-auto">
-      <Section @name="Toaster" as |Section|>
+      <Section @name="Toaster" @importSlug="base" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
           <:example>
             <Button class="btn-primary" @onClick={{this.createToast}}>

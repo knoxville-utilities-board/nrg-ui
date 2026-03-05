@@ -8,7 +8,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
   {{pageTitle "Navbar"}}
 
   <div class="container mx-auto">
-    <Section @name="Navbar" as |Section|>
+    <Section @name="Navbar" @importSlug="mktg" as |Section|>
       <Section.Subsection @name="Basics" @model={{this}} @elementTag="nav">
         <:example>
           <MktgNavbar>

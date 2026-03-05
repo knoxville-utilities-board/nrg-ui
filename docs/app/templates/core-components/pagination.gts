@@ -50,7 +50,7 @@ export default class PaginationDemo extends Component {
     {{pageTitle "Pagination"}}
 
     <div class="container mx-auto">
-      <Section @name="Pagination" as |Section|>
+      <Section @name="Pagination" @importSlug="base" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="ul">
           <:example as |model|>
             <Pagination

@@ -30,7 +30,7 @@ export default class TextAreaDemo extends Component {
     {{pageTitle "Text Area"}}
 
     <div class="container mx-auto">
-      <Section @name="Text Area" as |Section|>
+      <Section @name="Text Area" @importSlug="form" as |Section|>
         <Section.Subsection @name="Basic" @model={{this}} @elementTag="textarea">
           <:example as |model|>
             <TextArea

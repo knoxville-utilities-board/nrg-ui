@@ -6,6 +6,7 @@ import '@glint/ember-tsc/types';
 import 'ember-source/types';
 
 export interface EmbroiderOptions {
+  imports?: Record<string, string>;
   languages?: BundledLanguage[];
   themes?: {
     light?: BundledTheme[];

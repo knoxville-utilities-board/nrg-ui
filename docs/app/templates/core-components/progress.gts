@@ -99,7 +99,7 @@ export default class ProgressDemo extends Component {
   <template>
     {{pageTitle "Progress"}}
     <div class="container mx-auto">
-      <Section @name="Progress" as |Section|>
+      <Section @name="Progress" @importSlug="base" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
           <:example as |model|>
             <div class="mt-4">

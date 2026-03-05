@@ -52,7 +52,7 @@ export default class PopoverDemo extends Component {
     {{pageTitle "Popover"}}
 
     <div class="container mx-auto">
-      <Section @name="Popover" as |Section|>
+      <Section @name="Popover" @importSlug="base" as |Section|>
         <Section.Subsection @name="Button" @model={{this}}>
           <:example as |model|>
             <Popover

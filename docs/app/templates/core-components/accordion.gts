@@ -28,7 +28,7 @@ export default class AccordionDemo extends Component {
     {{pageTitle "Accordion"}}
     <div class="container mx-auto">
 
-      <Section @name="Accordion" as |Section|>
+      <Section @name="Accordion" @importSlug="base" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
           <:example as |model|>
             <Accordion

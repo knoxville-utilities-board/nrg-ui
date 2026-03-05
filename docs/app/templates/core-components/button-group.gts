@@ -51,7 +51,7 @@ export default class ButtonGroupDemo extends Component {
     {{pageTitle "Button Group"}}
 
     <div class="container mx-auto">
-      <Section @name="Button group" as |Section|>
+      <Section @name="Button group" @importSlug="base" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="button">
           <:example as |model|>
             <ButtonGroup

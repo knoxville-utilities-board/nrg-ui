@@ -30,6 +30,13 @@ module.exports = async function (defaults) {
         '@nrg-ui/core': {
           appVersion: version,
         },
+        '@nrg-ui/showcase': {
+          imports: {
+            base: '@nrg-ui/core/components',
+            mktg: '@nrg-ui/core/components/mktg',
+            form: '@nrg-ui/core/components/form',
+          },
+        },
       },
     },
     babel: {

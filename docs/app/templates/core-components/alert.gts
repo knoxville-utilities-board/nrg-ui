@@ -25,7 +25,7 @@ export default class AlertDemo extends Component {
   <template>
     {{pageTitle "Alert"}}
     <div class="container mx-auto">
-      <Section @name="Alert" as |Section|>
+      <Section @name="Alert" @importSlug="base" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="button">
           <:example as |model|>
             <Alert

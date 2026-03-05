@@ -33,7 +33,7 @@ export default class extends Component {
     <div class="row g-0">
       <div class="col px-md-0 py-3">
         <div class="container mx-auto">
-          <Section @name="Section Title" as |S|>
+          <Section @name="Section Title" @importSlug="base" as |S|>
             <S.Subsection
               @elementTag="button"
               @model={{this.model}}

@@ -7,7 +7,7 @@ import pageTitle from 'ember-page-title/helpers/page-title';
   {{pageTitle "Promo Container"}}
 
   <div class="container mx-auto">
-    <Section @name="Promo Container" as |Section|>
+    <Section @name="Promo Container" @importSlug="mktg" as |Section|>
       <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
         {{! <:description>
         <p>The promo container acts as a container for one or more promo

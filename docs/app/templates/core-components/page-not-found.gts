@@ -12,7 +12,7 @@ export default class PageNotFoundDemo extends Component {
     {{pageTitle "Page Not Found"}}
 
     <div class="container mx-auto">
-      <Section @name="Page Not Found" as |Section|>
+      <Section @name="Page Not Found" @importSlug="base" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="button">
           <:example as |model|>
             <PageNotFound @url={{model.url}} />

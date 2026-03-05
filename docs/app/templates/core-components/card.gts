@@ -19,7 +19,7 @@ export default class CardDemo extends Component {
     {{pageTitle "Card"}}
 
     <div class="container mx-auto">
-      <Section @name="Card" as |Section|>
+      <Section @name="Card" @importSlug="base" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
           <:example as |model|>
             <Card

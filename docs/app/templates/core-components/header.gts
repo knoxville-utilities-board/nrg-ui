@@ -12,7 +12,7 @@ export default class HeaderDemo extends Component {
     {{pageTitle "Header"}}
 
     <div class="container mx-auto">
-      <Section @name="Header" as |Section|>
+      <Section @name="Header" @importSlug="base" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="div">
           <:example as |model|>
             <div class="container-fluid">

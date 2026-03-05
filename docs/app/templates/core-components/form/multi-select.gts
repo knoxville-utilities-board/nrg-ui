@@ -52,7 +52,7 @@ export default class MultiSelectDemo extends Component {
     {{pageTitle "Multi Select"}}
 
     <div class="container mx-auto">
-      <Section @name="Multi Select" as |Section|>
+      <Section @name="Multi Select" @importSlug="form" as |Section|>
         <Section.Subsection @name="String Options" @model={{this}} @elementTag="button">
           <:example as |model|>
             <MultiSelect

@@ -141,7 +141,7 @@ export default class SearchDemo extends Component {
     {{pageTitle "Search"}}
 
     <div class="container mx-auto">
-      <Section @name="Search" as |Section|>
+      <Section @name="Search" @importSlug="form" as |Section|>
         <Section.Subsection @name="Basic" @model={{this}} @elementTag="div">
           <:example as |model|>
             <Search

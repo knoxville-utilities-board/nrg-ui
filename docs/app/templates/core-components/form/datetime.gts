@@ -63,7 +63,7 @@ export default class DatetimeDemo extends Component {
     {{pageTitle "Datetime"}}
 
     <div class="container mx-auto">
-      <Section @name="Datetime" as |Section|>
+      <Section @name="Datetime" @importSlug="form" as |Section|>
         <Section.Subsection @name="Basic" @model={{this}} @elementTag="div">
           <:example as |model|>
             <Datetime

@@ -50,7 +50,7 @@ export default class ModalDemo extends Component {
     {{pageTitle "Modal"}}
 
     <div class="container mx-auto">
-      <Section @name="Modal" as |Section|>
+      <Section @name="Modal" @importSlug="base" as |Section|>
         <Section.Subsection @name="Basics" @model={{this}} @elementTag="dialog">
           <:example as |model|>
             <Modal
