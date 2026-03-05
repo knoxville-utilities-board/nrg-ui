@@ -59,6 +59,7 @@ Router.map(function () {
   this.route('mktg-components', function () {
     this.route('card');
     this.route('card-container');
+    this.route('feature-list');
     this.route('footer');
     this.route('header');
     this.route('navbar');
