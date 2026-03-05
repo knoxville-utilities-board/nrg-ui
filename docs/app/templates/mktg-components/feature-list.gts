@@ -55,27 +55,33 @@ export default class FeatureListDemo extends Component {
           <:api as |Api|>
             <Api.Arguments as |Args|>
               <Args.String
-                @name="featureTextOne"
+                @alias="featureTextOne"
+                @name="text"
                 @description="The text to display for the first feature"
               />
               <Args.String
-                @name="featureTextTwo"
+                @alias="featureTextTwo"
+                @name="text"
                 @description="The text to display for the second feature"
               />
               <Args.String
-                @name="iconOne"
+                @alias="iconOne"
+                @name="icon"
                 @description="The bootstrap icon class to display for the first feature."
               />
               <Args.String
-                @name="iconTwo"
+                @alias="iconTwo"
+                @name="icon"
                 @description="The bootstrap icon class to display for the second feature."
               />
               <Args.String
-                @name="metaOne"
+                @alias="metaOne"
+                @name="meta"
                 @description="The meta text to display for the first feature."
               />
               <Args.String
-                @name="metaTwo"
+                @alias="metaTwo"
+                @name="meta"
                 @description="The meta text to display for the second feature."
               />
               <Args.String
