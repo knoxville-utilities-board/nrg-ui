@@ -3,14 +3,14 @@ import Component from '@glimmer/component';
 import type { TOC } from '@ember/component/template-only';
 import type { ComponentLike, WithBoundArgs } from '@glint/template';
 
-const columnMap = {
+export const columnMap = {
   1: 'g-col-lg-12',
   2: 'g-col-lg-6',
   3: 'g-col-lg-4',
   4: 'g-col-lg-3',
   6: 'g-col-lg-2',
   12: 'g-col-lg-1',
-};
+} as const;
 
 export interface MktgFeatureSignature {
   Args: {
