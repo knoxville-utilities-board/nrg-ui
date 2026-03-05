@@ -1,5 +1,24 @@
 # Changelog
 
+## Release (2026-03-05)
+
+* @nrg-ui/core 0.58.1 (patch)
+* @nrg-ui/showcase 0.10.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/showcase`
+  * [#868](https://github.com/knoxville-utilities-board/nrg-ui/pull/868) feat(ShowCase): Add copyable component import ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+
+#### :memo: Documentation
+* Other
+  * [#894](https://github.com/knoxville-utilities-board/nrg-ui/pull/894) chore: Remove unused description block ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+* `@nrg-ui/core`
+  * [#893](https://github.com/knoxville-utilities-board/nrg-ui/pull/893) docs(Mktg/FeatureList): Create showcase documentation ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+  * [#891](https://github.com/knoxville-utilities-board/nrg-ui/pull/891) docs(NumberInput): Create showcase documentation ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+
+#### Committers: 1
+- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+
 ## Release (2026-03-03)
 
 * @nrg-ui/code-snippets 0.5.0 (minor)
