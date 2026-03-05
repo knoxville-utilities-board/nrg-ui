@@ -28,13 +28,6 @@ import pageTitle from 'ember-page-title/helpers/page-title';
             </Container.MktgCard>
           </MktgCardContainer>
         </:example>
-        <:description>
-          <p>This component acts as a container for the base card and the marketing name-spaced card
-            components. Note that the container implements Bootstrap's CSS grid, so to determine
-            organization, a class of 'g-col-{number}' needs to be passed to each child card of the
-            container.
-            <br />Note that the cards within the container must be implemented using dot notation.</p>
-        </:description>
       </Section.Subsection>
     </Section>
   </div>
