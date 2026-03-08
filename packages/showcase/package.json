@@ -64,8 +64,8 @@
   "dependencies": {
     "@ember/test-helpers": "^5.0.0",
     "@embroider/addon-shim": "^1.10.2",
-    "@embroider/macros": "^1.20.0",
-    "@mdn/browser-compat-data": "^7.3.5",
+    "@embroider/macros": "^1.20.1",
+    "@mdn/browser-compat-data": "^7.3.6",
     "@nrg-ui/core": "workspace:^",
     "chalk": "^4.1.2",
     "content-tag-utils": "^0.6.0",
