@@ -14,9 +14,6 @@ export default class NavItemDemo extends Component {
   @tracked
   route = 'core-components.accordion';
 
-  @tracked
-  model = null;
-
   <template>
     {{pageTitle "Nav Item"}}
 

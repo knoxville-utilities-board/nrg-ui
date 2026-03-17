@@ -45,8 +45,12 @@ export default class NavItem extends Component<NavItemSignature> {
     <li class={{this.classList}} ...attributes>
       {{#if @url}}
         <a class="nav-link" href={{@url}}>{{@label}}</a>
-      {{else}}
+      {{else if @model}}
         <LinkTo @route={{@route}} @model={{@model}} class="nav-link">
+          {{@label}}
+        </LinkTo>
+      {{else}}
+        <LinkTo @route={{@route}} class="nav-link">
           {{@label}}
         </LinkTo>
       {{/if}}
