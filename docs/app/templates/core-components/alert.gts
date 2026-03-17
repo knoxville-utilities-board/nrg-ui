@@ -42,7 +42,12 @@ export default class AlertDemo extends Component {
                 @defaultValue="false"
                 @description="Whether the alert can be dismissed"
               />
-              <Args.String @name="icon" @description="The icon to display in the alert" />
+              <Args.String
+                @displayType="icon"
+                @name="icon"
+                @route="core-components.icon"
+                @description="The icon to display in the alert"
+              />
               <Args.String @name="text" @description="The text to display in the alert" />
               <Args.String
                 @name="type"
@@ -74,7 +79,12 @@ export default class AlertDemo extends Component {
                 @defaultValue="false"
                 @description="Whether the alert can be dismissed"
               />
-              <Args.String @name="icon" @description="The icon to display in the alert" />
+              <Args.String
+                @displayType="icon"
+                @name="icon"
+                @route="core-components.icon"
+                @description="The icon to display in the alert"
+              />
               <Args.String
                 @name="type"
                 @defaultValue="primary"

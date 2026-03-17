@@ -35,6 +35,7 @@ export interface ArgumentSignature<T> {
     required?: boolean;
     type?: string;
     typeLink?: string;
+    route?: string;
     value?: T;
 
     onInput?: (value: T) => void;
@@ -50,6 +51,7 @@ export interface BaseArgumentSignature<T> {
     displayType?: string;
     type: string;
     typeLink?: string;
+    route?: string;
 
     onInput?: (value: T) => void;
   } & ArgumentSignature<T>['Args'];
@@ -100,7 +102,12 @@ export class BaseArgument<T> extends Component<BaseArgumentSignature<T>> {
         {{/if}}
       </td>
       <td class="type">
-        <ApiLink @displayType={{@displayType}} @link={{@typeLink}} @type={{@type}} />
+        <ApiLink
+          @displayType={{@displayType}}
+          @link={{@typeLink}}
+          @route={{@route}}
+          @type={{@type}}
+        />
       </td>
       <td class="description">
         {{@description}}
@@ -132,6 +139,7 @@ export const BooleanArgument: TOC<ArgumentSignature<boolean>> = <template>
     @options={{@options}}
     @type={{or @type "Boolean"}}
     @typeLink={{@typeLink}}
+    @route={{@route}}
     @value={{@value}}
     @onInput={{@onInput}}
     ...attributes
@@ -156,6 +164,7 @@ export const DateArgument: TOC<ArgumentSignature<Date>> = <template>
     @options={{@options}}
     @type={{or @type "Date"}}
     @typeLink={{@typeLink}}
+    @route={{@route}}
     @value={{@value}}
     @onInput={{@onInput}}
     ...attributes
@@ -179,6 +188,7 @@ export const NumberArgument: TOC<ArgumentSignature<number>> = <template>
     @name={{@name}}
     @type={{or @type "Number"}}
     @typeLink={{@typeLink}}
+    @route={{@route}}
     @value={{@value}}
     @onInput={{@onInput}}
     as |base|
@@ -202,6 +212,7 @@ export const StringArgument: TOC<ArgumentSignature<string>> = <template>
     @options={{@options}}
     @type={{or @type "String"}}
     @typeLink={{@typeLink}}
+    @route={{@route}}
     @value={{@value}}
     @onInput={{@onInput}}
     as |base|
@@ -225,6 +236,7 @@ export const TextAreaArgument: TOC<ArgumentSignature<string>> = <template>
     @options={{@options}}
     @type={{or @type "String"}}
     @typeLink={{@typeLink}}
+    @route={{@route}}
     @value={{@value}}
     @onInput={{@onInput}}
     as |base|

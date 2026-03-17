@@ -1,3 +1,5 @@
+import { LinkTo } from '@ember/routing';
+
 import { getMdnLinkForApi } from '../../utils.ts';
 import { TypeCodeBlock } from '../code-block.gts';
 
@@ -8,6 +10,7 @@ export interface ApiLinkSignature {
   Args: {
     displayType?: string;
     link?: string;
+    route?: string;
     type: string;
   };
 }
@@ -54,6 +57,14 @@ export const ApiLink: TOC<ApiLinkSignature> = <template>
         @inline={{true}}
       />
     </a>
+  {{else if @route}}
+    <LinkTo class="api-link" @route={{@route}}>
+      <TypeCodeBlock
+        class="me-1"
+        @code={{or @displayType (getDisplayType @type)}}
+        @inline={{true}}
+      />
+    </LinkTo>
   {{else}}
     {{#let (getDocType @type) as |mdnLink|}}
       {{#if mdnLink}}
