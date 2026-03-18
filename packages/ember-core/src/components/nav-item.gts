@@ -41,12 +41,20 @@ export default class NavItem extends Component<NavItemSignature> {
     return classes.join(' ');
   }
 
+  get route() {
+    return this.args.route ?? '';
+  }
+
   <template>
     <li class={{this.classList}} ...attributes>
       {{#if @url}}
         <a class="nav-link" href={{@url}}>{{@label}}</a>
+      {{else if @model}}
+        <LinkTo @route={{this.route}} @model={{@model}} class="nav-link">
+          {{@label}}
+        </LinkTo>
       {{else}}
-        <LinkTo @route={{@route}} @model={{@model}} class="nav-link">
+        <LinkTo @route={{this.route}} class="nav-link">
           {{@label}}
         </LinkTo>
       {{/if}}
