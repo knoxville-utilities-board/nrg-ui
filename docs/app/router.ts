@@ -54,6 +54,7 @@ Router.map(function () {
       this.route('theme-control');
       this.route('toaster');
       this.route('tooltip');
+      this.route('scaffold');
     },
   );
   this.route('helpers');
@@ -74,7 +75,6 @@ Router.map(function () {
     this.route('on-destroy');
     this.route('on-insert');
   });
-  this.route('scaffold');
   this.route('services');
   this.route('side-by-side', function () {
     this.route(
