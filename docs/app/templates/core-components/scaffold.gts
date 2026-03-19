@@ -57,7 +57,10 @@ export default class ScaffoldDemo extends Component {
                 @defaultValue="application"
                 @description="The id of the context menu to use for this scaffold. This should correspond to the id of a ContextMenu component rendered within the scaffold's context-menu block."
               />
-              <Args.String @name="environment" @description="The current environment rendered as <AppBar.Environment />" />
+              <Args.String
+                @name="environment"
+                @description="The current environment rendered as <AppBar.Environment />"
+              />
             </Api.Arguments>
           </:api>
         </Section.Subsection>
