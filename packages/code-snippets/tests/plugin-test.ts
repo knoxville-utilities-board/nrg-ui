@@ -182,6 +182,8 @@ describe('vite-plugin-code-snippets', () => {
       expect(snippet.code).toContain(`console.log("C");`);
       expect(snippet.code).toContain(`console.log("D");`);
 
+      // console.log(JSON.stringify(snippet, null, 2));
+
       expect(snippet.sources[0].location.file).toContain('example.js');
       expect(snippet.sources[1].location.file).toContain('example.js');
       expect(snippet.sources[2].location.file).toContain('example-2.js');
