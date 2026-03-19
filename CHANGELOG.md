@@ -1,5 +1,27 @@
 # Changelog
 
+## Release (2026-03-19)
+
+* @nrg-ui/core 0.58.2 (patch)
+* @nrg-ui/showcase 0.11.0 (minor)
+
+#### :rocket: Enhancement
+* `@nrg-ui/showcase`
+  * [#906](https://github.com/knoxville-utilities-board/nrg-ui/pull/906) feat: Update action signature type ([@TSenter](https://github.com/TSenter))
+  * [#903](https://github.com/knoxville-utilities-board/nrg-ui/pull/903) feat(Showcase/ApiLink): Accept route argument ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+
+#### :bug: Bug Fix
+* `@nrg-ui/core`
+  * [#907](https://github.com/knoxville-utilities-board/nrg-ui/pull/907) fix(popover): Show arrow when selected ([@TSenter](https://github.com/TSenter))
+
+#### :memo: Documentation
+* `@nrg-ui/core`
+  * [#904](https://github.com/knoxville-utilities-board/nrg-ui/pull/904) docs(NavItem): Create showcase documentation ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+
+#### Committers: 2
+- Jayden Leuciuc ([@jayden-leuciuc](https://github.com/jayden-leuciuc))
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2026-03-05)
 
 * @nrg-ui/core 0.58.1 (patch)
