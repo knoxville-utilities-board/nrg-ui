@@ -299,7 +299,6 @@ export default class Popover extends Component<PopoverSignature> {
         class={{classes
           (unless this.isShown "hidden")
           (concat "popover bs-popover-" this.adjustedSide)
-          "overflow-x-auto"
         }}
         {{onInsert this.initPopover}}
         {{this.showPopoverModifier @alignment @arrow @controlElement @offset @side}}
