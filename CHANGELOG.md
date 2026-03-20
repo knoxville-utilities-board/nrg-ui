@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2026-03-20)
+
+* @nrg-ui/standards 0.8.1 (patch)
+
+#### :house: Internal
+* `@nrg-ui/standards`
+  * [#909](https://github.com/knoxville-utilities-board/nrg-ui/pull/909) chore: Widen ESLint range to v9 ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2026-03-19)
 
 * @nrg-ui/core 0.58.2 (patch)
