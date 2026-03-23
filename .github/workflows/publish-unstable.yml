@@ -34,7 +34,28 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
 
+      - name: Detect changes
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            app-version:
+              - 'packages/app-version/**'
+            code-snippets:
+              - 'packages/code-snippets/**'
+            design-system:
+              - 'packages/design-system/**'
+            ember-core:
+              - 'packages/ember-core/**'
+            standards:
+              - 'packages/standards/**'
+            showcase:
+              - 'packages/showcase/**'
+            theme-generator:
+              - 'packages/theme-generator/**'
+
       - name: Publish `@nrg-ui/core`
+        if: steps.filter.outputs.ember-core == 'true'
         uses: kategengler/put-built-npm-package-contents-on-branch@v2.1.0
         with:
           branch: unstable-ember
@@ -42,6 +63,7 @@ jobs:
           working-directory: 'packages/ember-core'
 
       - name: Publish `@nrg-ui/css`
+        if: steps.filter.outputs.design-system == 'true'
         uses: kategengler/put-built-npm-package-contents-on-branch@v2.1.0
         with:
           branch: unstable-css
@@ -49,6 +71,7 @@ jobs:
           working-directory: 'packages/design-system'
 
       - name: Publish `@nrg-ui/standards`
+        if: steps.filter.outputs.standards == 'true'
         uses: kategengler/put-built-npm-package-contents-on-branch@v2.1.0
         with:
           branch: unstable-standards
@@ -56,6 +79,7 @@ jobs:
           working-directory: 'packages/standards'
 
       - name: Publish `@nrg-ui/app-version`
+        if: steps.filter.outputs.app-version == 'true'
         uses: kategengler/put-built-npm-package-contents-on-branch@v2.1.0
         with:
           branch: unstable-app-version
@@ -63,6 +87,7 @@ jobs:
           working-directory: 'packages/app-version'
 
       - name: Publish `@nrg-ui/code-snippets`
+        if: steps.filter.outputs.code-snippets == 'true'
         uses: kategengler/put-built-npm-package-contents-on-branch@v2.1.0
         with:
           branch: unstable-code-snippets
@@ -70,6 +95,7 @@ jobs:
           working-directory: 'packages/code-snippets'
 
       - name: Publish `@nrg-ui/showcase`
+        if: steps.filter.outputs.showcase == 'true'
         uses: kategengler/put-built-npm-package-contents-on-branch@v2.1.0
         with:
           branch: unstable-showcase
@@ -77,6 +103,7 @@ jobs:
           working-directory: 'packages/showcase'
 
       - name: Publish `@nrg-ui/theme-generator`
+        if: steps.filter.outputs.theme-generator == 'true'
         uses: kategengler/put-built-npm-package-contents-on-branch@v2.1.0
         with:
           branch: unstable-theme-generator
