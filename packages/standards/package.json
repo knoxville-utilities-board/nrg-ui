@@ -41,6 +41,7 @@
     "lint:format": "prettier . --cache --check",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
+    "lint:types": "tsc --noEmit",
     "prepare": "pnpm build",
     "test": "echo 'The @nrg-ui/standards package does not have tests'"
   },
