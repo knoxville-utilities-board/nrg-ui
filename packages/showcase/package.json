@@ -86,7 +86,6 @@
     "@rollup/plugin-babel": "^7.0.0",
     "@tsconfig/ember": "^3.0.12",
     "@types/hast": "^3.0.4",
-    "@types/qunit": "^2.19.13",
     "babel-plugin-ember-template-compilation": "^4.0.0",
     "concurrently": "^9.2.1",
     "ember-source": "^6.4.0",

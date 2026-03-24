@@ -37,7 +37,6 @@
   "pnpm": {
     "overrides": {
       "@babel/runtime": "^7.26.10 || ^8.0.0",
-      "@types/eslint": "^9.6.1",
       "ansi-html": "^0.0.8",
       "brace-expansion": "^1.1.12 || ^2.0.1",
       "form-data": "^4.0.4",
