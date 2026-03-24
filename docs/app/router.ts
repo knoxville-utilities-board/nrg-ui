@@ -51,10 +51,10 @@ Router.map(function () {
       this.route('pagination');
       this.route('popover');
       this.route('progress');
+      this.route('scaffold');
       this.route('theme-control');
       this.route('toaster');
       this.route('tooltip');
-      this.route('scaffold');
     },
   );
   this.route('helpers');
