@@ -9,6 +9,7 @@
       "*": ["./types/*"]
     },
     "types": [
+      "qunit",
       "ember-source/types",
       "@embroider/core/virtual",
       "vite/client",
