@@ -6,6 +6,7 @@
     "module": "CommonJS",
     "esModuleInterop": true,
     "lib": ["ES2020"],
+    "types": ["node"],
 
     "noEmit": false,
     "emitDeclarationOnly": false,
