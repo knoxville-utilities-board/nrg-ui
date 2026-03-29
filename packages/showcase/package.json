@@ -1,6 +1,6 @@
 {
   "name": "@nrg-ui/showcase",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "Build documentation and samples in Ember.js",
   "keywords": [
     "ember",

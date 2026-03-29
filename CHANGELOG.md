@@ -1,5 +1,22 @@
 # Changelog
 
+## Release (2026-03-29)
+
+* @nrg-ui/version 0.5.1 (patch)
+* @nrg-ui/code-snippets 0.5.1 (patch)
+* @nrg-ui/core 0.58.3 (patch)
+* @nrg-ui/showcase 0.11.1 (patch)
+* @nrg-ui/standards 0.8.2 (patch)
+
+#### :house: Internal
+* `@nrg-ui/version`, `@nrg-ui/code-snippets`, `@nrg-ui/core`, `@nrg-ui/showcase`, `@nrg-ui/standards`
+  * [#917](https://github.com/knoxville-utilities-board/nrg-ui/pull/917) chore: Upgrade to TypeScript 6 ([@TSenter](https://github.com/TSenter))
+* Other
+  * [#911](https://github.com/knoxville-utilities-board/nrg-ui/pull/911) chore(ci): Only publish unstable packages that changed ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2026-03-20)
 
 * @nrg-ui/standards 0.8.1 (patch)
