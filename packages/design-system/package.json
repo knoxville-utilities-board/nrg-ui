@@ -44,7 +44,7 @@
     "sass": "^1.99.0"
   },
   "dependencies": {
-    "prettier": "^3.8.1"
+    "prettier": "^3.8.2"
   },
   "publishConfig": {
     "access": "public",
