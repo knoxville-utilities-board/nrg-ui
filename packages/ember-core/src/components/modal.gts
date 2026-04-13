@@ -87,7 +87,7 @@ export default class Modal extends Component<ModalSignature> {
   }
 
   @action
-  onClose() {
+  onDialogClose() {
     if (!this.args.isOpen) {
       return;
     }
@@ -133,7 +133,7 @@ export default class Modal extends Component<ModalSignature> {
       class={{this.classList}}
       id={{this.dialogId}}
       {{on "cancel" this.onDismiss}}
-      {{on "close" this.onClose}}
+      {{on "close" this.onDialogClose}}
       {{this.onInsert}}
       {{this.onUpdate @isOpen}}
       ...attributes
