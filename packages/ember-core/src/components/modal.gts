@@ -19,6 +19,7 @@ export interface ModalSignature {
     subtle?: boolean;
     position?: 'center' | 'left' | 'right';
 
+    onOpen?: () => void;
     onDismiss?: () => void;
   };
   Blocks: {
@@ -87,7 +88,7 @@ export default class Modal extends Component<ModalSignature> {
   }
 
   @action
-  onClose() {
+  onDialogClose() {
     if (!this.args.isOpen) {
       return;
     }
@@ -118,6 +119,7 @@ export default class Modal extends Component<ModalSignature> {
 
   @action
   openModal() {
+    this.args.onOpen?.();
     this.dialogElement.showModal();
     this.modalService.openModal(this.dialogId);
   }
@@ -133,7 +135,7 @@ export default class Modal extends Component<ModalSignature> {
       class={{this.classList}}
       id={{this.dialogId}}
       {{on "cancel" this.onDismiss}}
-      {{on "close" this.onClose}}
+      {{on "close" this.onDialogClose}}
       {{this.onInsert}}
       {{this.onUpdate @isOpen}}
       ...attributes
