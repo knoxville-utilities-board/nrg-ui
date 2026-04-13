@@ -1,4 +1,5 @@
-import { click, render } from '@ember/test-helpers';
+import { click, render, rerender } from '@ember/test-helpers';
+import { tracked } from '@glimmer/tracking';
 import { Modal } from '@nrg-ui/core';
 import { module, test } from 'qunit';
 
@@ -90,5 +91,39 @@ module('Integration | Component | modal', function (hooks) {
 
     await render(<template><Modal @isOpen={{true}} /></template>);
     assert.dom('dialog').isVisible();
+  });
+
+  test('onOpen action fires', async function (assert) {
+    class State {
+      @tracked
+      isOpen = true;
+    }
+
+    const state = new State();
+
+    const onOpen = () => {
+      assert.step('onOpen action is fired');
+    };
+    const onDismiss = () => {
+      state.isOpen = false;
+      assert.step('onDismiss action is fired with event');
+    };
+
+    await render(
+      <template>
+        <Modal @isOpen={{state.isOpen}} @onOpen={{onOpen}} @onDismiss={{onDismiss}} />
+      </template>,
+    );
+
+    await click('.btn-close');
+
+    state.isOpen = true;
+    await rerender();
+
+    assert.verifySteps([
+      'onOpen action is fired',
+      'onDismiss action is fired with event',
+      'onOpen action is fired',
+    ]);
   });
 });
