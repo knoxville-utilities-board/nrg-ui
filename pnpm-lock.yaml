@@ -53,8 +53,8 @@ importers:
         specifier: ^0.9.4
         version: 0.9.4
       '@ember-intl/vite':
-        specifier: ^0.5.6
-        version: 0.5.6
+        specifier: ^1.0.0
+        version: 1.0.0
       '@ember/app-tsconfig':
         specifier: ^2.0.0
         version: 2.0.0
@@ -1418,8 +1418,8 @@ packages:
     engines: {node: 20.* || >= 22}
     hasBin: true
 
-  '@ember-intl/vite@0.5.6':
-    resolution: {integrity: sha512-uHoaxZkGZ1mXdHL0Tn7yBEaOjsB2R0GBN8cdPpkyPT6WyTVJJKNGVh7EzZGCA0HvInwo0p2PrKMGiQ2DleDC5g==}
+  '@ember-intl/vite@1.0.0':
+    resolution: {integrity: sha512-eOKjAIQREdywfvt4beigecmWJ0pW3eId6kHlMIEFefH1ZHTblgDA/i7LFxzDB+goI8MSnyGxICeLUMsmwZpS7Q==}
     engines: {node: 20.* || >= 22}
 
   '@ember-tooling/blueprint-blueprint@0.2.1':
@@ -2948,6 +2948,7 @@ packages:
   '@xmldom/xmldom@0.9.9':
     resolution: {integrity: sha512-qycIHAucxy/LXAYIjmLmtQ8q9GPnMbnjG1KXhWm9o5sCr6pOYDATkMPiTNa6/v8eELyqOQ2FsEqeoFYmgv/gJg==}
     engines: {node: '>=14.6'}
+    deprecated: this version has critical issues, please update to the latest version
 
   abbrev@1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -8952,7 +8953,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@ember-intl/vite@0.5.6':
+  '@ember-intl/vite@1.0.0':
     dependencies:
       '@codemod-utils/files': 4.0.1
       js-yaml: 4.1.1
