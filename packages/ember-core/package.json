@@ -141,17 +141,17 @@
     "ember-template-lint": "^7.9.3",
     "ember-truth-helpers": "^5.0.0",
     "eslint": "^9.39.2",
-    "eslint-plugin-decorator-position": "^6.0.0",
+    "eslint-plugin-decorator-position": "^6.1.0",
     "eslint-plugin-ember": "^12.7.5",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-n": "^17.24.0",
     "execa": "^9.6.1",
-    "prettier": "^3.8.2",
-    "prettier-plugin-ember-template-tag": "^2.1.4",
-    "rollup": "^4.60.1",
+    "prettier": "^3.8.3",
+    "prettier-plugin-ember-template-tag": "^2.1.5",
+    "rollup": "^4.60.2",
     "rollup-plugin-copy": "^3.5.0",
-    "typescript": "^6.0.2",
-    "typescript-eslint": "^8.58.1"
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.58.2"
   },
   "publishConfig": {
     "access": "public",
