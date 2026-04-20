@@ -41,11 +41,11 @@
     "@nrg-ui/standards": "workspace:^",
     "@types/node": "^22.19.17",
     "eslint": "^9.39.2",
-    "eslint-plugin-decorator-position": "^6.0.0",
+    "eslint-plugin-decorator-position": "^6.1.0",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-n": "^17.24.0",
-    "typescript": "^6.0.2",
-    "typescript-eslint": "^8.58.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.58.2",
     "vitest": "^4.1.4"
   },
   "publishConfig": {
