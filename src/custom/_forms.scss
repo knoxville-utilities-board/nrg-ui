@@ -1,0 +1,177 @@
+.form-control.dropdown {
+  & + .popover > .popover-body > .dropdown-menu {
+    max-width: 100%;
+  }
+}
+
+.dropdown-menu.scrollable {
+  max-height: clamp(9rem, 50vh, 21rem);
+  overflow-y: auto;
+}
+
+/* I'm open to changing the color (it's the "orange" color from
+ * Fomantic) but I think it's a good idea to have a color that's
+ * different from the default "warning" color from Bootstrap.
+ * The default Bootstrap warning color is hard to read, and the
+ * "emphasis" variant is gross (see `text-warning-emphasis`):
+ * <https://getbootstrap.com/docs/5.3/utilities/colors/#colors>
+ */
+$warning-custom: #f2711c;
+:root {
+  --bs-form-warning-rgb: 242, 113, 28;
+  --bs-form-warning-color: #f2711c;
+  --bs-form-warning-border-color: #f2711c;
+}
+
+input,
+textarea,
+select,
+.form-control {
+  &[disabled] {
+    & ~ .warning-feedback {
+      display: none;
+    }
+  }
+
+  &:not([disabled]) {
+    &:not(input[type="checkbox"]):not(input[type="radio"]) {
+      background-image: inherit !important;
+      padding-right: revert !important;
+    }
+
+    & ~ .warning-feedback {
+      @extend .invalid-feedback;
+      color: var(--bs-form-warning-color);
+      display: block;
+    }
+  }
+}
+
+input.form-control,
+textarea.form-control,
+select.form-select,
+.form-control,
+.form-check,
+.form-check-input {
+  &.is-warning:not([disabled]) {
+    @extend .is-invalid;
+
+    border-color: var(--bs-form-warning-border-color);
+  }
+
+  &.is-warning:focus:not([disabled]) {
+    @extend .is-invalid, :focus;
+
+    border-color: var(--bs-form-warning-border-color);
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-form-warning-rgb), 0.25);
+  }
+}
+
+.form-check-input.is-warning:not([disabled]) {
+  @extend .is-invalid;
+
+  &:checked {
+    &:focus,
+    & {
+      background-color: var(--bs-form-warning-color);
+    }
+  }
+
+  &:focus,
+  & {
+    & ~ .form-check-label {
+      color: var(--bs-form-warning-color);
+    }
+  }
+}
+
+.form-check-label {
+  user-select: none;
+}
+
+.form-label,
+.form-check,
+form button[type="submit"] {
+  &:not(:first-child) {
+    margin-top: 1em;
+  }
+}
+
+.form-check-group .form-check {
+  margin-top: 0;
+}
+
+input::placeholder {
+  opacity: 0.75;
+}
+
+/* Datetime calendar */
+.calendar {
+  @extend .text-center;
+
+  div[role="dialog"]:has(> &) {
+    z-index: $zindex-tooltip;
+  }
+
+  cursor: unset;
+
+  & > thead > .header {
+    & :hover {
+      background-color: var(--bs-secondary-bg);
+    }
+  }
+
+  & .cell {
+    min-width: 2ch;
+
+    &:not(.disabled) {
+      cursor: pointer;
+    }
+
+    &.disabled {
+      color: rgba(var(--bs-secondary-rgb), 0.75);
+      background-color: var(--bs-secondary-bg);
+    }
+
+    &:hover,
+    &.active {
+      background-color: var(--bs-secondary-bg);
+    }
+
+    &.today {
+      font-weight: bold;
+    }
+
+    &.focus {
+      box-shadow: inset 0 0 0 1px $focus-ring-color;
+    }
+  }
+}
+
+.calendar.input-group:has(input.form-control.is-invalid) > span.input-group-text {
+  border-left-color: var(--bs-form-invalid-border-color);
+  border-top-color: var(--bs-form-invalid-border-color);
+  border-bottom-color: var(--bs-form-invalid-border-color);
+}
+
+.calendar.input-group:has(input.form-control.is-warning) > span.input-group-text {
+  border-left-color: var(--bs-form-warning-border-color);
+  border-top-color: var(--bs-form-warning-border-color);
+  border-bottom-color: var(--bs-form-warning-border-color);
+}
+
+div.dropdown:has(.is-invalid) ~ .invalid-feedback,
+div.dropdown:has(.is-warning) ~ .warning-feedback,
+.calendar.input-group:has(input.is-invalid) ~ .invalid-feedback,
+.calendar.input-group:has(input.is-warning) ~ .warning-feedback {
+  display: block;
+}
+
+.dropdown-item {
+  white-space: normal;
+}
+
+.multi-select > .card-body > .badge {
+  --bs-bg-opacity: 0.5;
+  --bs-badge-font-weight: 600;
+}
