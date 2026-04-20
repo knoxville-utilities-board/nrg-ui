@@ -51,6 +51,7 @@ Router.map(function () {
       this.route('pagination');
       this.route('popover');
       this.route('progress');
+      this.route('scaffold');
       this.route('theme-control');
       this.route('toaster');
       this.route('tooltip');
@@ -74,7 +75,6 @@ Router.map(function () {
     this.route('on-destroy');
     this.route('on-insert');
   });
-  this.route('scaffold');
   this.route('services');
   this.route('side-by-side', function () {
     this.route(
