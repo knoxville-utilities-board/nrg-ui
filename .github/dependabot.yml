@@ -53,7 +53,7 @@ updates:
     labels:
       - 'dependencies'
       - 'internal'
-    versioning-strategy: 'increase'
+    versioning-strategy: 'auto'
     groups:
       security:
         patterns:
