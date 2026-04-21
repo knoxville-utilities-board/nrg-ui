@@ -1,17 +1,14 @@
 version: 2
 
 updates:
-  # All libraries
   - package-ecosystem: 'npm'
-    directories:
-      - '/packages/*'
+    directory: '/'
     schedule:
       interval: 'weekly'
       day: 'sunday'
     labels:
       - 'dependencies'
       - 'internal'
-    versioning-strategy: 'widen'
     groups:
       security:
         patterns:
@@ -35,42 +32,6 @@ updates:
       - dependency-name: 'chalk'
         update-types:
           - 'version-update:semver-major'
-      - dependency-name: 'ember-cli'
-        update-types:
-          - 'version-update:semver-minor'
-          - 'version-update:semver-major'
-      - dependency-name: 'ember-source'
-        update-types:
-          - 'version-update:semver-minor'
-          - 'version-update:semver-major'
-
-  # Docs app
-  - package-ecosystem: 'npm'
-    directory: '/docs'
-    schedule:
-      interval: 'weekly'
-      day: 'sunday'
-    labels:
-      - 'dependencies'
-      - 'internal'
-    versioning-strategy: 'auto'
-    groups:
-      security:
-        patterns:
-          - '*'
-        applies-to: security-updates
-        update-types:
-          - 'patch'
-          - 'minor'
-          - 'major'
-      version:
-        patterns:
-          - '*'
-        applies-to: version-updates
-        update-types:
-          - 'patch'
-          - 'minor'
-    ignore:
       - dependency-name: 'ember-cli'
         update-types:
           - 'version-update:semver-minor'
