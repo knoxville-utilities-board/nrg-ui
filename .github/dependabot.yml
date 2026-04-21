@@ -1,14 +1,17 @@
 version: 2
 
 updates:
+  # All libraries
   - package-ecosystem: 'npm'
-    directory: '/'
+    directories:
+      - '/packages/*'
     schedule:
       interval: 'weekly'
       day: 'sunday'
     labels:
       - 'dependencies'
       - 'internal'
+    versioning-strategy: 'widen'
     groups:
       security:
         patterns:
