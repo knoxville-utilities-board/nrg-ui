@@ -44,6 +44,42 @@ updates:
           - 'version-update:semver-minor'
           - 'version-update:semver-major'
 
+  # Docs app
+  - package-ecosystem: 'npm'
+    directory: '/docs'
+    schedule:
+      interval: 'weekly'
+      day: 'sunday'
+    labels:
+      - 'dependencies'
+      - 'internal'
+    versioning-strategy: 'increase'
+    groups:
+      security:
+        patterns:
+          - '*'
+        applies-to: security-updates
+        update-types:
+          - 'patch'
+          - 'minor'
+          - 'major'
+      version:
+        patterns:
+          - '*'
+        applies-to: version-updates
+        update-types:
+          - 'patch'
+          - 'minor'
+    ignore:
+      - dependency-name: 'ember-cli'
+        update-types:
+          - 'version-update:semver-minor'
+          - 'version-update:semver-major'
+      - dependency-name: 'ember-source'
+        update-types:
+          - 'version-update:semver-minor'
+          - 'version-update:semver-major'
+
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
