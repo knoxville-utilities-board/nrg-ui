@@ -1,7 +1,21 @@
 packages:
   - docs
   - packages/*
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - core-js
-  - esbuild
+overrides:
+  '@babel/runtime': ^7.26.10 || ^8.0.0
+  ansi-html: ^0.0.8
+  brace-expansion: ^1.1.12 || ^2.0.1
+  form-data: ^4.0.4
+  on-headers: ^1.1.0
+  sane: ^5.0.1
+autoInstallPeers: false
+strictPeerDependents: true
+resolvePeersFromWorkspaceRoot: false
+dedupePeerDependents: true
+publicHoistPattern:
+  - ember-source
+resolutionMode: highest
+allowBuilds:
+  '@parcel/watcher': true
+  core-js: true
+  esbuild: true
