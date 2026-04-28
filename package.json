@@ -1,0 +1,55 @@
+{
+  "name": "@nrg-ui/version",
+  "version": "0.5.1",
+  "description": "Get application version from different sources",
+  "keywords": [],
+  "repository": {
+    "directory": "packages/app-version",
+    "type": "git",
+    "url": "https://github.com/knoxville-utilities-board/nrg-ui.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Knoxville Utilities Board",
+    "url": "https://www.kub.org"
+  },
+  "main": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "declarations",
+    "dist",
+    "README.md",
+    "package.json"
+  ],
+  "scripts": {
+    "build": "tsc --build",
+    "build:watch": "tsc --build --watch",
+    "format": "prettier . --cache --write",
+    "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
+    "lint:format": "prettier . --cache --check",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "prepare": "pnpm build",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "git-repo-info": "^2.1.1"
+  },
+  "devDependencies": {
+    "@nrg-ui/standards": "workspace:^",
+    "@types/node": "^22.19.17",
+    "eslint": "^9.39.2",
+    "eslint-plugin-decorator-position": "^6.1.0",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-n": "^17.24.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.1",
+    "vitest": "^4.1.5"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
+}
