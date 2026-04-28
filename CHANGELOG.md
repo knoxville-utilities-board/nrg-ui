@@ -1,5 +1,23 @@
 # Changelog
 
+## Release (2026-04-28)
+
+* @nrg-ui/core 0.59.0 (minor)
+* @nrg-ui/showcase 0.11.2 (patch)
+
+#### :rocket: Enhancement
+* `@nrg-ui/core`
+  * [#924](https://github.com/knoxville-utilities-board/nrg-ui/pull/924) feat(modal): Add `onOpen` action ([@TSenter](https://github.com/TSenter))
+
+#### :house: Internal
+* [#950](https://github.com/knoxville-utilities-board/nrg-ui/pull/950) chore: Upgrade to pnpm 11 and Node 24 ([@TSenter](https://github.com/TSenter))
+* [#944](https://github.com/knoxville-utilities-board/nrg-ui/pull/944) fix(dependabot): Revert config changes ([@TSenter](https://github.com/TSenter))
+* [#933](https://github.com/knoxville-utilities-board/nrg-ui/pull/933) chore(dependabot): Update lockfile for docs version changes ([@TSenter](https://github.com/TSenter))
+* [#928](https://github.com/knoxville-utilities-board/nrg-ui/pull/928) feat(dependabot): Adjust type of version updates ([@TSenter](https://github.com/TSenter))
+
+#### Committers: 1
+- Tyler Senter ([@TSenter](https://github.com/TSenter))
+
 ## Release (2026-03-29)
 
 * @nrg-ui/version 0.5.1 (patch)
